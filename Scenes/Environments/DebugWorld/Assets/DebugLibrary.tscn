@@ -1,0 +1,57 @@
+[gd_scene load_steps=15 format=3 uid="uid://c8a82xuvf8e7i"]
+
+[ext_resource type="PackedScene" uid="uid://v86b0onsx4mn" path="res://Scenes/Environments/DebugWorld/Assets/BlenderImports/CornerDL.glb" id="1_pbpvj"]
+[ext_resource type="PackedScene" uid="uid://ckww7j7af0kdk" path="res://Scenes/Environments/DebugWorld/Assets/BlenderImports/CornerDR.glb" id="2_fvh4h"]
+[ext_resource type="Script" path="res://Scenes/Environments/DebugWorld/Scripts/DebugBlock.gd" id="2_gowvk"]
+[ext_resource type="PackedScene" uid="uid://xsykbc4hftfj" path="res://Scenes/Environments/DebugWorld/Assets/BlenderImports/CornerUL.glb" id="3_lurew"]
+[ext_resource type="PackedScene" uid="uid://7ph1pmgxlgy6" path="res://Scenes/Environments/DebugWorld/Assets/BlenderImports/CornerUR.glb" id="4_x2x2u"]
+[ext_resource type="PackedScene" uid="uid://b1o5pdyvk3615" path="res://Scenes/Environments/DebugWorld/Assets/BlenderImports/FullBlock.glb" id="5_msm8m"]
+[ext_resource type="PackedScene" uid="uid://dsbwg4sgvdofd" path="res://Scenes/Environments/DebugWorld/Assets/BlenderImports/InnerDL.glb" id="6_op3hg"]
+[ext_resource type="PackedScene" uid="uid://b5fomo7ax7r0i" path="res://Scenes/Environments/DebugWorld/Assets/BlenderImports/InnerDR.glb" id="7_rp1am"]
+[ext_resource type="PackedScene" uid="uid://d1cli4q3eg8r3" path="res://Scenes/Environments/DebugWorld/Assets/BlenderImports/InnerUL.glb" id="8_t4fa6"]
+[ext_resource type="PackedScene" uid="uid://x1rgw55dow5h" path="res://Scenes/Environments/DebugWorld/Assets/BlenderImports/InnerUR.glb" id="9_8h66e"]
+[ext_resource type="PackedScene" uid="uid://8as7gwuvgg5l" path="res://Scenes/Environments/DebugWorld/Assets/BlenderImports/WedgeD.glb" id="10_tufws"]
+[ext_resource type="PackedScene" uid="uid://cobssidtlroay" path="res://Scenes/Environments/DebugWorld/Assets/BlenderImports/WedgeL.glb" id="11_f5y2c"]
+[ext_resource type="PackedScene" uid="uid://dqbartklxklvw" path="res://Scenes/Environments/DebugWorld/Assets/BlenderImports/WedgeR.glb" id="12_mdluu"]
+[ext_resource type="PackedScene" uid="uid://bkyw2oxl0jgrg" path="res://Scenes/Environments/DebugWorld/Assets/BlenderImports/WedgeU.glb" id="13_vp8og"]
+
+[node name="DebugLibrary" type="Node3D"]
+
+[node name="CornerDL" parent="." instance=ExtResource("1_pbpvj")]
+script = ExtResource("2_gowvk")
+
+[node name="CornerDR" parent="." instance=ExtResource("2_fvh4h")]
+script = ExtResource("2_gowvk")
+
+[node name="CornerUL" parent="." instance=ExtResource("3_lurew")]
+script = ExtResource("2_gowvk")
+
+[node name="CornerUR" parent="." instance=ExtResource("4_x2x2u")]
+script = ExtResource("2_gowvk")
+
+[node name="FullBlock" parent="." instance=ExtResource("5_msm8m")]
+script = ExtResource("2_gowvk")
+
+[node name="InnerDL" parent="." instance=ExtResource("6_op3hg")]
+script = ExtResource("2_gowvk")
+
+[node name="InnerDR" parent="." instance=ExtResource("7_rp1am")]
+script = ExtResource("2_gowvk")
+
+[node name="InnerUL" parent="." instance=ExtResource("8_t4fa6")]
+script = ExtResource("2_gowvk")
+
+[node name="InnerUR" parent="." instance=ExtResource("9_8h66e")]
+script = ExtResource("2_gowvk")
+
+[node name="WedgeD" parent="." instance=ExtResource("10_tufws")]
+script = ExtResource("2_gowvk")
+
+[node name="WedgeL" parent="." instance=ExtResource("11_f5y2c")]
+script = ExtResource("2_gowvk")
+
+[node name="WedgeR" parent="." instance=ExtResource("12_mdluu")]
+script = ExtResource("2_gowvk")
+
+[node name="WedgeU" parent="." instance=ExtResource("13_vp8og")]
+script = ExtResource("2_gowvk")
