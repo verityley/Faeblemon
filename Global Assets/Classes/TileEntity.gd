@@ -48,7 +48,7 @@ func CheckTarget(direction:Vector2i) -> bool: #Assigns tile data based on direct
 	targetTileData = currentWorld.locationDatabase.get_cell_tile_data(currentLayer, targetTile)
 	
 	if targetTileData == null:
-		print("No tile at target, looping below until found.")
+		#print("No tile at target, looping below until found.")
 		while targetTileData == null:
 			targetDistance += 1
 			targetTile = Vector2i(targetTile.x, targetTile.y + 1)
@@ -103,49 +103,46 @@ func MoveByDirection(direction:Vector2i):
 		print("Blocked!")
 		return
 	
+	#Insert "Allow Cross" system of checking cardinal blocks for passability if moving diagonally.
 	
 	#BEGIN Movement Allowances:
-	var currentMatches:bool
-	if (currentSlopeDir.x == direction.x and direction.x != 0) or (currentSlopeDir.y == direction.y and direction.y != 0):
-		currentMatches = true
-	var targetMatches:bool
-	if (targetSlopeDir.x == direction.x and direction.x != 0) or (targetSlopeDir.y == direction.y and direction.y != 0):
-		targetMatches = true
-	var negativeMatches:bool
-	if (currentSlopeDir.x == -direction.x and direction.x != 0) or (currentSlopeDir.y == -direction.y and direction.y != 0):
-		negativeMatches = true
-	var negTargetMatches:bool
-	if (targetSlopeDir.x == -direction.x and direction.x != 0) or (targetSlopeDir.y == -direction.y and direction.y != 0):
-		negTargetMatches = true
-	
-	var slopeMatches:bool
-	if (currentSlopeDir.x == targetSlopeDir.x and targetSlopeDir.x != 0) or (currentSlopeDir.y == targetSlopeDir.y and targetSlopeDir.y != 0):
-		slopeMatches = true
-	
-	var targetMatchesZero:bool
-	if targetSlopeDir == Vector2i(0,0):
-		targetMatchesZero = true
-	
-	
-	if (targetMatches and !targetBelow) \
+	if (
+	(
+	((targetSlopeDir.x == direction.x and direction.x != 0) or
+	(targetSlopeDir.y == direction.y and direction.y != 0)) and
+	!targetBelow
+	)
 	#Direction matches slope entry from ground.
-	
-	or (negTargetMatches and targetBelow) \
+	) or (
+	((targetSlopeDir.x == -direction.x and direction.x != 0) or 
+	(targetSlopeDir.y == -direction.y and direction.y != 0)) and 
+	targetBelow
 	#Direction matches reverse slope entry from top.
-	
-	or (slopeMatches and currentSlopeDir != Vector2i(0,0)) \
+	) or (
+	((currentSlopeDir.x == targetSlopeDir.x and targetSlopeDir.x != 0) or
+	(currentSlopeDir.y == targetSlopeDir.y and targetSlopeDir.y != 0)) and
+	currentSlopeDir != Vector2i(0,0)
 	#Slopes are equal/parallel, not on flat ground.
-	
-	or (negativeMatches and targetMatchesZero and targetBelow) \
+	) or (
+	((currentSlopeDir.x == -direction.x and direction.x != 0) or
+	(currentSlopeDir.y == -direction.y and direction.y != 0)) and
+	targetSlopeDir == Vector2i(0,0) and
+	targetBelow
 	#Direction matches slope exit to ground.
-	
-	or (currentMatches and targetMatchesZero and !targetBelow) \
+	) or (
+	((currentSlopeDir.x == direction.x and direction.x != 0) or
+	(currentSlopeDir.y == direction.y and direction.y != 0)) and
+	targetSlopeDir == Vector2i(0,0) and
+	!targetBelow
 	#Direction matches slope exit to top.
-	
-	or (currentSlopeDir == Vector2i(0,0) and targetMatchesZero and !targetBelow):
+	) or (
+	currentSlopeDir == Vector2i(0,0) and
+	targetSlopeDir == Vector2i(0,0) and
+	!targetBelow
 	#Moving from flat ground to flat ground.
-	
+	):
 	#END Movement Allowances
+	
 		#Enact movement animation/positioning and update world coordinates to match.
 		isMoving = true
 		
@@ -156,7 +153,12 @@ func MoveByDirection(direction:Vector2i):
 		var halfwayOffsetY:float = 0
 		if targetBelow and targetSlopeDir != Vector2i(0,0):
 			halfwayOffsetY = 1
-		if slopeMatches and currentCoords.y-1 == targetCoords.y:
+		if ((
+		((currentSlopeDir.x == targetSlopeDir.x and targetSlopeDir.x != 0) or
+		(currentSlopeDir.y == targetSlopeDir.y and targetSlopeDir.y != 0)) and
+		currentSlopeDir != Vector2i(0,0)
+		#Slopes are equal/parallel, not on flat ground.
+		)) and currentCoords.y-1 == targetCoords.y:
 			halfwayOffsetY = targetHeight
 		
 		var halfwayPoint:Vector3 = Vector3(float(targetCoords.x) - (float(direction.x)/2), float(targetCoords.y) + halfwayOffsetY, float(targetCoords.z + (currentLayer - targetDistance)) - (float(direction.y)/2))

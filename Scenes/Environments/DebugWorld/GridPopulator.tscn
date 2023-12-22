@@ -183,6 +183,7 @@ script = ExtResource("1_65a55")
 locationDatabase = NodePath("TileMap")
 
 [node name="TileMap" type="TileMap" parent="."]
+visible = false
 y_sort_enabled = true
 scale = Vector2(0.1, 0.1)
 tile_set = SubResource("TileSet_3wwgg")
