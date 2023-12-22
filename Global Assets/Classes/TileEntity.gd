@@ -105,23 +105,44 @@ func MoveByDirection(direction:Vector2i):
 	
 	
 	#BEGIN Movement Allowances:
+	var currentMatches:bool
+	if (currentSlopeDir.x == direction.x and direction.x != 0) or (currentSlopeDir.y == direction.y and direction.y != 0):
+		currentMatches = true
+	var targetMatches:bool
+	if (targetSlopeDir.x == direction.x and direction.x != 0) or (targetSlopeDir.y == direction.y and direction.y != 0):
+		targetMatches = true
+	var negativeMatches:bool
+	if (currentSlopeDir.x == -direction.x and direction.x != 0) or (currentSlopeDir.y == -direction.y and direction.y != 0):
+		negativeMatches = true
+	var negTargetMatches:bool
+	if (targetSlopeDir.x == -direction.x and direction.x != 0) or (targetSlopeDir.y == -direction.y and direction.y != 0):
+		negTargetMatches = true
 	
-	if (targetSlopeDir == direction and targetBelow == false) \
+	var slopeMatches:bool
+	if (currentSlopeDir.x == targetSlopeDir.x and targetSlopeDir.x != 0) or (currentSlopeDir.y == targetSlopeDir.y and targetSlopeDir.y != 0):
+		slopeMatches = true
+	
+	var targetMatchesZero:bool
+	if targetSlopeDir == Vector2i(0,0):
+		targetMatchesZero = true
+	
+	
+	if (targetMatches and !targetBelow) \
 	#Direction matches slope entry from ground.
 	
-	or (targetSlopeDir == -direction and targetBelow == true) \
+	or (negTargetMatches and targetBelow) \
 	#Direction matches reverse slope entry from top.
 	
-	or (currentSlopeDir == targetSlopeDir and currentSlopeDir != Vector2i(0,0)) \
+	or (slopeMatches and currentSlopeDir != Vector2i(0,0)) \
 	#Slopes are equal/parallel, not on flat ground.
 	
-	or (currentSlopeDir == -direction and targetSlopeDir == Vector2i(0,0) and targetBelow == true) \
+	or (negativeMatches and targetMatchesZero and targetBelow) \
 	#Direction matches slope exit to ground.
 	
-	or (currentSlopeDir == direction and targetSlopeDir == Vector2i(0,0) and targetBelow == false)\
+	or (currentMatches and targetMatchesZero and !targetBelow) \
 	#Direction matches slope exit to top.
 	
-	or (currentSlopeDir == Vector2i(0,0) and targetSlopeDir == Vector2i(0,0) and targetBelow == false):
+	or (currentSlopeDir == Vector2i(0,0) and targetMatchesZero and !targetBelow):
 	#Moving from flat ground to flat ground.
 	
 	#END Movement Allowances
@@ -135,8 +156,8 @@ func MoveByDirection(direction:Vector2i):
 		var halfwayOffsetY:float = 0
 		if targetBelow and targetSlopeDir != Vector2i(0,0):
 			halfwayOffsetY = 1
-		if targetSlopeDir == currentSlopeDir and (currentSlopeDir == Vector2i(-direction.y, direction.x) or currentSlopeDir == -Vector2i(-direction.y, direction.x)):
-			halfwayOffsetY = 0.5
+		if slopeMatches and currentCoords.y-1 == targetCoords.y:
+			halfwayOffsetY = targetHeight
 		
 		var halfwayPoint:Vector3 = Vector3(float(targetCoords.x) - (float(direction.x)/2), float(targetCoords.y) + halfwayOffsetY, float(targetCoords.z + (currentLayer - targetDistance)) - (float(direction.y)/2))
 		if direction.length() > 1:

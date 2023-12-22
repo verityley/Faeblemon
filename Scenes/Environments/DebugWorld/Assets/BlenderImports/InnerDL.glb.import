@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dsbwg4sgvdofd"
+uid="uid://dmeah77sv28qw"
 path="res://.godot/imported/InnerDL.glb-57d2b2a3e6528e84415b8099f64efa24.scn"
 
 [deps]
@@ -28,12 +28,5 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:InnerDL2": {
-"generate/physics": true,
-"physics/shape_type": 2
-}
-}
-}
+_subresources={}
 gltf/embedded_image_handling=1

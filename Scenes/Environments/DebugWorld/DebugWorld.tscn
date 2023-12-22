@@ -38,7 +38,6 @@ moveTime = 0.3
 
 [node name="Sprite3D" type="Sprite3D" parent="TileEntity"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -0.0767198, 0, 0)
-sorting_use_aabb_center = false
 pixel_size = 0.0005
 billboard = 1
 texture_filter = 0
