@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7akh0euqqstg"]
+[gd_scene load_steps=6 format=3 uid="uid://c7akh0euqqstg"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/PlayerCharacter.gd" id="2_1urw4"]
+[ext_resource type="Script" path="res://Scenes/Environments/DebugWorld/NPCMovement.gd" id="3_bk65j"]
 [ext_resource type="PackedScene" uid="uid://bm1dw1haqqhuc" path="res://Scenes/Environments/DebugWorld/GridPopulator.tscn" id="3_qc0hd"]
 [ext_resource type="Texture2D" uid="uid://gmn7ufxe7b6d" path="res://Scenes/Player/Assets/PlayerChar.png" id="4_27uwr"]
 
@@ -29,24 +30,44 @@ texture = ExtResource("4_27uwr")
 
 [node name="Camera3D" type="Camera3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 3, 3)
+current = true
 
-[node name="TileEntity" type="Node3D" parent="." node_paths=PackedStringArray("currentWorld")]
+[node name="Player" type="Node3D" parent="." node_paths=PackedStringArray("currentWorld")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, -1)
 script = ExtResource("2_1urw4")
 currentWorld = NodePath("../GripPopulator")
 moveTime = 0.3
 
-[node name="Sprite3D" type="Sprite3D" parent="TileEntity"]
+[node name="Sprite3D" type="Sprite3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -0.0767198, 0, 0)
+sorting_offset = 0.01
 pixel_size = 0.0005
 billboard = 1
 texture_filter = 0
 render_priority = 1
 texture = ExtResource("4_27uwr")
 
-[node name="Camera3D" type="Camera3D" parent="TileEntity"]
+[node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 3, 3)
 current = true
+
+[node name="NPCTest" type="Node3D" parent="." node_paths=PackedStringArray("currentWorld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, -1)
+script = ExtResource("3_bk65j")
+walkPath = Array[Vector2i]([Vector2i(1, 0), Vector2i(0, -1), Vector2i(-1, 0), Vector2i(0, 1)])
+currentWorld = NodePath("../GripPopulator")
+moveTime = 0.4
+
+[node name="Sprite3D" type="Sprite3D" parent="NPCTest"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -0.0767198, 0, 0)
+flip_h = true
+pixel_size = 0.0005
+billboard = 1
+texture_filter = 0
+render_priority = 1
+texture = ExtResource("4_27uwr")
+
+[node name="Timer" type="Timer" parent="NPCTest"]
 
 [node name="GripPopulator" parent="." instance=ExtResource("3_qc0hd")]
 
