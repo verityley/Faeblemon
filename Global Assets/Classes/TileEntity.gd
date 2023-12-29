@@ -7,6 +7,7 @@ var currentCoords:Vector3i
 var targetCoords:Vector3i
 var currentTileData:TileData
 var targetTileData:TileData
+var directionFacing:Vector2i
 @export var currentWorld:Node
 
 #Movement Properties
@@ -15,6 +16,7 @@ var targetTileData:TileData
 @export var jumpAllowance:int
 
 var isMoving:bool = false
+var isPathing:bool = false
 var openInput:bool = false
 
 #Occupying Properties
@@ -64,14 +66,17 @@ func CheckTarget(direction:Vector2i) -> bool: #Assigns tile data based on direct
 	
 	currentCoords = Vector3i(currentTile.x, currentLayer, currentTile.y)
 	targetCoords = Vector3i(targetTile.x, currentLayer - targetDistance, targetTile.y)
+	
+	if targetTileData.get_custom_data("Walkable") == false:
+		print("Blocked at Check")
+		return false
 	#prints(currentCoords, targetCoords)
 	return true
 
 
-func MoveByDirection(direction:Vector2i):
+func MoveByDirection(direction:Vector2i) -> bool:
 	if targetTileData == null:
-		return
-	
+		return false
 	var walkable:bool = targetTileData.get_custom_data("Walkable")
 	var targetSlopeDir:Vector2i = targetTileData.get_custom_data("SlopeDir")
 	var targetHeight:float = targetTileData.get_custom_data("TargetPos").y
@@ -84,16 +89,16 @@ func MoveByDirection(direction:Vector2i):
 	if targetDistance > 0:
 		targetBelow = true
 		if targetDistance > 2:
-			print("Too steep, need to jump! No slope to land on.")
-			return
+			print("Too steep, can't jump! No slope to land on.")
+			return false
 		elif targetDistance == 2 and currentSlopeDir == Vector2i(0,0):
 			print(currentSlopeDir)
-			print("Too steep, need to jump!")
-			return
+			print("Too steep, can't jump!")
+			return false
 		elif targetDistance == 1 and currentSlopeDir == Vector2i(0,0) and targetSlopeDir == Vector2i(0,0):
 			print(currentSlopeDir)
 			print("Too steep, but this is safe to jump!")
-			return #Eventually replace with jump function
+			return false#Eventually replace with jump function
 	var slopeStep:int = 0
 	
 	if targetSlopeDir != Vector2i(0,0):
@@ -101,7 +106,7 @@ func MoveByDirection(direction:Vector2i):
 	
 	if walkable == false:
 		print("Blocked!")
-		return
+		return false
 	
 	#Insert "Allow Cross" system of checking cardinal blocks for passability if moving diagonally.
 	
@@ -145,7 +150,7 @@ func MoveByDirection(direction:Vector2i):
 	
 		#Enact movement animation/positioning and update world coordinates to match.
 		isMoving = true
-		
+		ChangeDirection(direction)
 		worldCoords = Vector3i(targetCoords.x, targetCoords.y + slopeStep, targetCoords.z + (currentLayer - targetDistance))
 		#print("Coords: ", worldCoords)
 		var tween = get_tree().create_tween()
@@ -170,16 +175,107 @@ func MoveByDirection(direction:Vector2i):
 			tween.tween_property(self, "position", targetPosition, moveTime/2)
 		await tween.finished
 		isMoving = false
+		return true
 		#tween.tween_callback(self.queue_free)
 		
 		#print("Position: ", position)
 	
+	return false
+
+func ChangeDirection(direction:Vector2i):
+	directionFacing = direction
+	var facingUp:bool
+	var facingRight:bool
 	
-
-
-
-func PathfindToPosition():
+	if direction.x < 0:
+		facingRight = true
+	elif direction.x > 0:
+		facingRight = false
+	else:
+		facingRight = $Sprite3D.flip_h
+	
+	if direction.y > 0:
+		facingUp = true
+	elif direction.y < 0:
+		facingUp = false
+	
+	if get_child(0) is Sprite3D:
+		$Sprite3D.flip_h = facingRight
 	pass
+
+func PathfindToPosition(pathTarget:Vector3i) -> bool: #This is all SUPER temporary, please clean up later with A*
+	var possible:bool
+	var distanceTotal:int
+	var layerShift:int
+	var distanceX:int
+	var distanceZ:int
+	
+	isPathing = true
+	
+	layerShift = worldCoords.y - pathTarget.y
+	pathTarget.z = pathTarget.z - layerShift
+	#prints("Current Coords:", worldCoords, "Target Coords:", pathTarget)
+	distanceX = abs(worldCoords.x - pathTarget.x)
+	distanceZ = abs((worldCoords.z - layerShift) - pathTarget.z)
+	
+	distanceTotal = distanceX + distanceZ
+	#print(distanceTotal)
+	
+	possible = true
+	while possible and distanceTotal > 0 or worldCoords == pathTarget:
+		var pathfindDir:Vector2i
+		if worldCoords.x < pathTarget.x:
+			pathfindDir.x = 1
+		elif worldCoords.x > pathTarget.x:
+			pathfindDir.x = -1
+		else:
+			pathfindDir.x = 0
+		
+		if worldCoords.z < pathTarget.z:
+			pathfindDir.y = 1
+		elif worldCoords.z > pathTarget.z:
+			pathfindDir.y = -1
+		else:
+			pathfindDir.y = 0
+		#print(pathfindDir)
+		
+		if pathfindDir == Vector2i(0,0):
+			possible = true
+			break
+		
+		if isMoving == false: #Place any other movement conditionals here, give options in case of failure
+			#print("Checking Target")
+			if self.CheckTarget(pathfindDir) == true:
+				#print("Can Move Any Direction")
+				if await self.MoveByDirection(pathfindDir) == false:
+					possible = false
+					break
+			elif self.CheckTarget(Vector2i(pathfindDir.x, 0)) == true and pathfindDir.x != 0:
+				pathfindDir.y = 0
+				#print("Can Move Horizontal")
+				if await self.MoveByDirection(pathfindDir) == false:
+					possible = false
+					break
+			elif self.CheckTarget(Vector2i(0, pathfindDir.y)) == true and pathfindDir.y != 0:
+				pathfindDir.x = 0
+				#print("Can Move Vertical")
+				if await self.MoveByDirection(pathfindDir) == false:
+					possible = false
+					break
+			else:
+				possible = false
+				break
+			
+			#print("World: ", worldCoords, " Target: ", pathTarget)
+			#print("Distance Left: ", distanceTotal)
+			distanceX -= abs(pathfindDir.x)
+			distanceZ -= abs(pathfindDir.y)
+			distanceTotal = distanceX + distanceZ
+	
+	#print("Movement Complete. Target Reached? ", possible)
+	#print("World Coords: ", worldCoords)
+	isPathing = false
+	return possible
 
 func Interact():
 	pass

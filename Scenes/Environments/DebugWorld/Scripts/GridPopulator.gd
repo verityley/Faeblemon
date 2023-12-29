@@ -1,14 +1,31 @@
-extends Node3D
+@tool
+extends EditorScript
 
 @export var locationDatabase:TileMap
 var testMat = preload("res://Scenes/Environments/DebugWorld/Assets/TestMat.tres")
+var populated:bool = false
+@export var gridNode:Node
+@export var deleteAll:bool = false
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	Populate()
+func _run():
+	gridNode = get_scene()
+	locationDatabase = get_scene().get_node("TileMap")
+	if deleteAll == false:
+		Populate()
+	else:
+		for mesh in gridNode.get_children():
+			if mesh is MeshInstance3D:
+				mesh.queue_free()
+		gridNode.populated = false
 
 
 func Populate():
+	if gridNode.populated == true:
+		for mesh in gridNode.get_children():
+			if mesh is MeshInstance3D:
+				mesh.queue_free()
+		gridNode.populated = false
 	
 	for layer in range(locationDatabase.get_layers_count()):
 		for tile in locationDatabase.get_used_cells(layer):
@@ -23,5 +40,9 @@ func Populate():
 			meshInstance.scale = Vector3(0.5, 0.5, 0.5)
 			#print(meshInstance.position)
 			
-			self.add_child(meshInstance)
+			gridNode.add_child(meshInstance)
+			meshInstance.owner = get_scene()
+			populated = true
+	
+	gridNode.locationDatabase = locationDatabase
 
