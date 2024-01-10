@@ -16,7 +16,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-EventBus="*res://Scenes/Preloads/EventBus.tscn"
+Faebles="*res://Global Assets/Preloads/Faebles.gd"
+EventBus="*res://Global Assets/Preloads/EventBus.gd"
 
 [input]
 

@@ -2,6 +2,7 @@ extends Node3D
 
 @export var locationDatabase:TileMap
 @export var populated:bool
+var entityDatabase:Dictionary
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

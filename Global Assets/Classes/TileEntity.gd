@@ -28,6 +28,7 @@ var openInput:bool = false
 @export var interactable:bool
 @export var interactionNode:Node #Assign to a node with events to run when interacted with.
 
+
 func CheckTarget(direction:Vector2i) -> bool: #Assigns tile data based on direction from current tile.
 	var currentLayer:int = worldCoords.y
 	var currentTile:Vector2i = Vector2i(worldCoords.x, worldCoords.z - currentLayer)
@@ -70,6 +71,7 @@ func CheckTarget(direction:Vector2i) -> bool: #Assigns tile data based on direct
 	if targetTileData.get_custom_data("Walkable") == false:
 		print("Blocked at Check")
 		return false
+	
 	#prints(currentCoords, targetCoords)
 	return true
 
@@ -152,6 +154,7 @@ func MoveByDirection(direction:Vector2i) -> bool:
 		isMoving = true
 		ChangeDirection(direction)
 		worldCoords = Vector3i(targetCoords.x, targetCoords.y + slopeStep, targetCoords.z + (currentLayer - targetDistance))
+
 		#print("Coords: ", worldCoords)
 		var tween = get_tree().create_tween()
 		var targetPosition:Vector3 = Vector3(targetCoords.x, targetCoords.y + targetHeight, targetCoords.z + (currentLayer - targetDistance))
@@ -201,6 +204,7 @@ func ChangeDirection(direction:Vector2i):
 	
 	if get_child(0) is Sprite3D:
 		$Sprite3D.flip_h = facingRight
+		#Insert check for if sprite has a back sprite, set equal to facing up
 	pass
 
 func PathfindToPosition(pathTarget:Vector3i) -> bool: #This is all SUPER temporary, please clean up later with A*
@@ -278,7 +282,9 @@ func PathfindToPosition(pathTarget:Vector3i) -> bool: #This is all SUPER tempora
 	return possible
 
 func Interact():
-	pass
+	var targetEntity:TileEntity
+	
+	
 
 func InteractedWith():
 	pass

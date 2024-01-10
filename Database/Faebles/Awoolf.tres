@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="Faeble" load_steps=3 format=3 uid="uid://cv4hvji0gml4"]
+
+[ext_resource type="Texture2D" uid="uid://cameht1wp1112" path="res://Global Assets/Graphics/Monster Graphics/baaphiFront.png" id="1_70og0"]
+[ext_resource type="Script" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_yqab5"]
+
+[resource]
+script = ExtResource("1_yqab5")
+name = "Awoolf"
+ID = 0
+sprite = ExtResource("1_70og0")
+shinySprite = ExtResource("1_70og0")
+UISprite = ExtResource("1_70og0")
+battlerScale = 0.3
+worldScale = 0.1
+UIScale = 0.01
+groundOffset = Vector3(0, 0, 0)
+minQuality = 2
+maxQuality = 20
+brawn = 8
+vigor = 8
+wit = 2
+ambition = 4
+grace = 6
+resolve = 5
+heart = 6
+profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
+movePool = {}
+assignedMoves = Array[Resource("res://Global Assets/Classes/Spell.gd")]([null, null, null, null])
+feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
+traitBig = false
+traitTall = false
+traitSmall = false
+traitJumping = false
+traitFlying = false
+traitPhase = false
+canEvolve = false
+evoLevel = 0
+evoBranch = false
+description = ""
+rumors = ""

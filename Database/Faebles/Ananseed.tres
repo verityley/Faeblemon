@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="Faeble" load_steps=5 format=3 uid="uid://bfd3m6cnqbvjp"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_rhns2"]
+[ext_resource type="Resource" uid="uid://bh2iaf16ugog4" path="res://Database/Spells/BugBite.tres" id="2_vlmds"]
+[ext_resource type="Resource" uid="uid://dv8g1bdy5qvqx" path="res://Database/Spells/FairyStrike.tres" id="3_y4pqu"]
+[ext_resource type="Resource" uid="uid://c32bf0gyun7y" path="res://Database/Spells/SpiderSlam.tres" id="4_gcore"]
+
+[resource]
+script = ExtResource("1_rhns2")
+name = ""
+ID = 0
+battlerScale = 0.0
+worldScale = 0.0
+UIScale = 0.0
+groundOffset = Vector3(0, 0, 0)
+minQuality = 2
+maxQuality = 20
+brawn = 4
+vigor = 4
+wit = 6
+ambition = 8
+grace = 5
+resolve = 5
+heart = 6
+profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
+skillPool = {
+ExtResource("2_vlmds"): 1,
+ExtResource("3_y4pqu"): 2,
+ExtResource("4_gcore"): 3
+}
+assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null, null])
+feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
+traitBig = false
+traitTall = false
+traitSmall = true
+traitJumping = false
+traitFlying = false
+traitPhasing = false
+canEvolve = false
+evoLevel = 0
+evoBranch = false
+description = ""
+rumors = ""

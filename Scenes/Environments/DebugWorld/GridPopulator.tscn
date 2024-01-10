@@ -175,8 +175,6 @@ custom_data_layer_2/name = "SlopeDir"
 custom_data_layer_2/type = 6
 custom_data_layer_3/name = "TargetPos"
 custom_data_layer_3/type = 9
-custom_data_layer_4/name = "Filled"
-custom_data_layer_4/type = 1
 sources/0 = SubResource("TileSetAtlasSource_3a0ob")
 
 [node name="LevelData" type="Node3D" node_paths=PackedStringArray("locationDatabase")]
