@@ -4,4 +4,15 @@
 
 [resource]
 script = ExtResource("1_u3q7h")
-name = "Fairy Strike"
+skillName = "Fairy Strike"
+skillCost = 0
+skillNature = ""
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 2
+rangeMax = 3
+canPierce = false
+canArc = true

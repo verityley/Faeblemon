@@ -26,7 +26,7 @@ profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
 skillPool = {
 ExtResource("2_vlmds"): 1,
 ExtResource("3_y4pqu"): 2,
-ExtResource("4_gcore"): 3
+ExtResource("4_gcore"): 5
 }
 assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null, null])
 feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])

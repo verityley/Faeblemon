@@ -1,0 +1,278 @@
+[gd_scene load_steps=6 format=3 uid="uid://drqvkgmnd65q8"]
+
+[ext_resource type="Texture2D" uid="uid://d2mfdlvuvy1ke" path="res://Scenes/UI/PartyWindow/Assets/PartyContractBase.png" id="1_kadsg"]
+[ext_resource type="Texture2D" uid="uid://dhabtj3gba2x4" path="res://Scenes/UI/PartyWindow/Assets/PartyScroll.png" id="2_yhy6c"]
+[ext_resource type="Texture2D" uid="uid://bkook55la77e3" path="res://Scenes/UI/PartyWindow/Assets/PartySeal.png" id="3_wndjm"]
+[ext_resource type="Texture2D" uid="uid://66tgjtxxdnou" path="res://Scenes/UI/PartyWindow/Assets/PartyTypeRibbon.png" id="4_jviun"]
+[ext_resource type="Texture2D" uid="uid://dwav1afa5hh05" path="res://Scenes/UI/PartyWindow/Assets/PartySummaryPage.png" id="5_166iy"]
+
+[node name="PartyWindowType2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PartySlot6" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = 214.0
+offset_right = 32.0
+offset_bottom = 364.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+
+[node name="PartyContractBase" type="Sprite2D" parent="PartySlot6"]
+visible = false
+position = Vector2(578, 77)
+texture = ExtResource("1_kadsg")
+
+[node name="PartyScroll" type="Sprite2D" parent="PartySlot6"]
+position = Vector2(578, 75)
+texture = ExtResource("2_yhy6c")
+
+[node name="PartySeal" type="Sprite2D" parent="PartySlot6"]
+position = Vector2(185, 76)
+texture = ExtResource("3_wndjm")
+
+[node name="PartyTypeRibbon" type="Sprite2D" parent="PartySlot6"]
+position = Vector2(297, 76)
+texture = ExtResource("4_jviun")
+
+[node name="PartyTypeRibbon2" type="Sprite2D" parent="PartySlot6"]
+position = Vector2(334, 76)
+texture = ExtResource("4_jviun")
+
+[node name="PartySlot5" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = 106.0
+offset_right = 32.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+
+[node name="PartyContractBase" type="Sprite2D" parent="PartySlot5"]
+visible = false
+position = Vector2(578, 77)
+texture = ExtResource("1_kadsg")
+
+[node name="PartyScroll" type="Sprite2D" parent="PartySlot5"]
+position = Vector2(578, 75)
+texture = ExtResource("2_yhy6c")
+
+[node name="PartySeal" type="Sprite2D" parent="PartySlot5"]
+position = Vector2(185, 76)
+texture = ExtResource("3_wndjm")
+
+[node name="PartyTypeRibbon" type="Sprite2D" parent="PartySlot5"]
+position = Vector2(297, 76)
+texture = ExtResource("4_jviun")
+
+[node name="PartyTypeRibbon2" type="Sprite2D" parent="PartySlot5"]
+position = Vector2(334, 76)
+texture = ExtResource("4_jviun")
+
+[node name="PartySlot4" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 31.0
+offset_right = 31.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+
+[node name="PartyContractBase" type="Sprite2D" parent="PartySlot4"]
+visible = false
+position = Vector2(578, 77)
+texture = ExtResource("1_kadsg")
+
+[node name="PartyScroll" type="Sprite2D" parent="PartySlot4"]
+position = Vector2(578, 75)
+texture = ExtResource("2_yhy6c")
+
+[node name="PartySeal" type="Sprite2D" parent="PartySlot4"]
+position = Vector2(185, 76)
+texture = ExtResource("3_wndjm")
+
+[node name="PartyTypeRibbon" type="Sprite2D" parent="PartySlot4"]
+position = Vector2(297, 76)
+texture = ExtResource("4_jviun")
+
+[node name="PartyTypeRibbon2" type="Sprite2D" parent="PartySlot4"]
+position = Vector2(334, 76)
+texture = ExtResource("4_jviun")
+
+[node name="PartySlot3" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = -106.0
+offset_right = 32.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+
+[node name="PartyContractBase" type="Sprite2D" parent="PartySlot3"]
+visible = false
+position = Vector2(578, 77)
+texture = ExtResource("1_kadsg")
+
+[node name="PartyScroll" type="Sprite2D" parent="PartySlot3"]
+position = Vector2(578, 75)
+texture = ExtResource("2_yhy6c")
+
+[node name="PartySeal" type="Sprite2D" parent="PartySlot3"]
+position = Vector2(185, 76)
+texture = ExtResource("3_wndjm")
+
+[node name="PartyTypeRibbon" type="Sprite2D" parent="PartySlot3"]
+position = Vector2(297, 76)
+texture = ExtResource("4_jviun")
+
+[node name="PartyTypeRibbon2" type="Sprite2D" parent="PartySlot3"]
+position = Vector2(334, 76)
+texture = ExtResource("4_jviun")
+
+[node name="PartySlot2" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -214.0
+offset_right = 2.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+
+[node name="PartyContractBase" type="Sprite2D" parent="PartySlot2"]
+visible = false
+position = Vector2(578, 77)
+texture = ExtResource("1_kadsg")
+
+[node name="PartyScroll" type="Sprite2D" parent="PartySlot2"]
+position = Vector2(578, 75)
+texture = ExtResource("2_yhy6c")
+
+[node name="PartySeal" type="Sprite2D" parent="PartySlot2"]
+position = Vector2(185, 76)
+texture = ExtResource("3_wndjm")
+
+[node name="PartyTypeRibbon" type="Sprite2D" parent="PartySlot2"]
+position = Vector2(297, 76)
+texture = ExtResource("4_jviun")
+
+[node name="PartyTypeRibbon2" type="Sprite2D" parent="PartySlot2"]
+position = Vector2(334, 76)
+texture = ExtResource("4_jviun")
+
+[node name="PartySlot1" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -320.0
+offset_right = -18.0
+offset_bottom = -170.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+
+[node name="PartySummaryPage" type="Sprite2D" parent="PartySlot1"]
+visible = false
+position = Vector2(580, 382.857)
+texture = ExtResource("5_166iy")
+
+[node name="PartyContractBase" type="Sprite2D" parent="PartySlot1"]
+visible = false
+position = Vector2(578, 77)
+texture = ExtResource("1_kadsg")
+
+[node name="PartyScroll" type="Sprite2D" parent="PartySlot1"]
+position = Vector2(578, 75)
+texture = ExtResource("2_yhy6c")
+
+[node name="PartySeal" type="Sprite2D" parent="PartySlot1"]
+position = Vector2(185, 76)
+texture = ExtResource("3_wndjm")
+
+[node name="PartyTypeRibbon" type="Sprite2D" parent="PartySlot1"]
+position = Vector2(297, 76)
+texture = ExtResource("4_jviun")
+
+[node name="PartyTypeRibbon2" type="Sprite2D" parent="PartySlot1"]
+position = Vector2(334, 76)
+texture = ExtResource("4_jviun")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="PartySlot1"]
+clip_contents = true
+layout_mode = 0
+offset_left = 371.0
+offset_top = 19.0
+offset_right = 1050.0
+offset_bottom = 134.0
+border_width = 5.0
+
+[node name="NameDisplay" type="Label" parent="PartySlot1/ReferenceRect"]
+layout_mode = 0
+offset_left = 2.85724
+offset_top = 19.5714
+offset_right = 272.857
+offset_bottom = 91.5714
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "[Faeblemon]"
+
+[node name="LevelDisplay" type="Label" parent="PartySlot1/ReferenceRect"]
+layout_mode = 0
+offset_left = 13.2858
+offset_top = 68.1429
+offset_right = 153.286
+offset_bottom = 140.143
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "Ch.[XX]"
+
+[node name="LevelDisplay2" type="Label" parent="PartySlot1/ReferenceRect"]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 68.1429
+offset_right = 279.0
+offset_bottom = 140.143
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "of"
+
+[node name="TitleDisplay" type="Label" parent="PartySlot1/ReferenceRect"]
+layout_mode = 0
+offset_left = 180.429
+offset_top = 68.1429
+offset_right = 521.429
+offset_bottom = 140.143
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "[Faeble's Story Title]"

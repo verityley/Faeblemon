@@ -1,0 +1,474 @@
+[gd_scene load_steps=28 format=3 uid="uid://dh7tyx44ndu4d"]
+
+[ext_resource type="ArrayMesh" uid="uid://v74we45008ok" path="res://Scenes/Battle/Assets/FaebleStage.obj" id="1_17gk1"]
+[ext_resource type="Script" path="res://Scenes/Battle/BattleManager.gd" id="1_505cq"]
+[ext_resource type="Texture2D" uid="uid://cameht1wp1112" path="res://Global Assets/Graphics/Monster Graphics/baaphiFront.png" id="2_16ouh"]
+[ext_resource type="Material" uid="uid://ytndtjf3e6hv" path="res://Scenes/Battle/Assets/GridRange.tres" id="2_ux2q1"]
+[ext_resource type="Material" uid="uid://xspvswp7ls4u" path="res://Scenes/Battle/Assets/GridOff.tres" id="2_y7wb8"]
+[ext_resource type="Material" uid="uid://nhu5n787ojgf" path="res://Scenes/Battle/Assets/GridBlocked.tres" id="3_h4shl"]
+[ext_resource type="Material" uid="uid://0j0wmectwi5e" path="res://Scenes/Battle/Assets/GridOpen.tres" id="4_2dq0b"]
+[ext_resource type="Material" uid="uid://56bjihwx8oo4" path="res://Scenes/Battle/Assets/GridTarget.tres" id="6_uichl"]
+[ext_resource type="Material" uid="uid://q178eedsw24q" path="res://Scenes/Battle/Assets/GridSelect.tres" id="7_gf7jt"]
+[ext_resource type="PackedScene" uid="uid://byv0fp70da6ui" path="res://Scenes/Battle/StatusBox.tscn" id="8_br008"]
+[ext_resource type="Script" path="res://Scenes/Battle/Battler.gd" id="9_7kgqg"]
+[ext_resource type="Script" path="res://Scenes/Battle/CommandsManager.gd" id="10_38tva"]
+[ext_resource type="Texture2D" uid="uid://ckj8wm0yhey45" path="res://Scenes/Battle/Assets/FamiliarCommand.png" id="10_clb5f"]
+[ext_resource type="Resource" uid="uid://dv8g1bdy5qvqx" path="res://Database/Spells/FairyStrike.tres" id="11_ebhpw"]
+[ext_resource type="Texture2D" uid="uid://ctdbe6mqj1ar1" path="res://Scenes/Battle/Assets/AttackCommand.png" id="11_kf0xf"]
+[ext_resource type="Texture2D" uid="uid://cn044nishsqir" path="res://Scenes/Battle/Assets/MoveCommand.png" id="12_86oy4"]
+[ext_resource type="Texture2D" uid="uid://cjmkt1uhnw5sa" path="res://Scenes/Battle/Assets/WitchCommand.png" id="13_7l6dm"]
+[ext_resource type="Texture2D" uid="uid://c874jgwsucl7l" path="res://Scenes/Battle/Assets/SpellCommand.png" id="14_gflsh"]
+[ext_resource type="Texture2D" uid="uid://bjde4nx2jlk0t" path="res://Scenes/Battle/Assets/TacticsCommand.png" id="15_446dc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fyixc"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("2_16ouh")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1kf2k"]
+lightmap_size_hint = Vector2i(12, 17)
+material = SubResource("StandardMaterial3D_fyixc")
+size = Vector2(1, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_npvua"]
+size = Vector3(0.6, 0.6, 0.1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cte37"]
+size = Vector2(1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cxbsr"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_jbgqr"]
+size = Vector2(3, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_25bou"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2em3"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_25bou")
+
+[node name="BattleStage" type="Node3D" node_paths=PackedStringArray("stageMesh", "fullstageCam", "overviewCam", "currentBattler")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+script = ExtResource("1_505cq")
+stageMesh = NodePath("FaebleStage")
+fullstageCam = NodePath("FullstageCam")
+overviewCam = NodePath("OverviewCam")
+clearMat = ExtResource("2_y7wb8")
+blockMat = ExtResource("3_h4shl")
+openMat = ExtResource("4_2dq0b")
+rangeMat = ExtResource("2_ux2q1")
+targetMat = ExtResource("6_uichl")
+selectMat = ExtResource("7_gf7jt")
+gridOffset = Vector3(-4.5, 0.5, -0.5)
+currentBattler = NodePath("Battler")
+
+[node name="AttackManager" type="Node" parent="."]
+
+[node name="TurnManager" type="Node" parent="."]
+
+[node name="StatsManager" type="Node" parent="."]
+
+[node name="Battler" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, 0.5)
+script = ExtResource("9_7kgqg")
+currentHP = 10
+currentMP = 10
+currentSpeed = 10
+movepoints = 2
+positionIndex = Vector2i(3, 1)
+
+[node name="Faeble1" type="MeshInstance3D" parent="Battler"]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 0, 0, 0)
+mesh = SubResource("QuadMesh_1kf2k")
+skeleton = NodePath("../..")
+
+[node name="Commands" type="Node3D" parent="." node_paths=PackedStringArray("battleManager", "hoveredBattler")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -1.59291, 1.63264, 0.515259)
+script = ExtResource("10_38tva")
+battleManager = NodePath("..")
+hoveredBattler = NodePath("../Battler")
+tempAttack = ExtResource("11_ebhpw")
+
+[node name="Familiar" type="Sprite3D" parent="Commands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -1.49012e-08)
+visible = false
+texture = ExtResource("10_clb5f")
+
+[node name="Area3D" type="Area3D" parent="Commands/Familiar"]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Commands/Familiar/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, 0)
+shape = SubResource("BoxShape3D_npvua")
+
+[node name="Attack" type="Sprite3D" parent="Commands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -1.49012e-08)
+visible = false
+texture = ExtResource("11_kf0xf")
+
+[node name="Area3D" type="Area3D" parent="Commands/Attack"]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Commands/Attack/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, 0)
+shape = SubResource("BoxShape3D_npvua")
+
+[node name="Move" type="Sprite3D" parent="Commands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+visible = false
+texture = ExtResource("12_86oy4")
+
+[node name="Area3D" type="Area3D" parent="Commands/Move"]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Commands/Move/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, 0)
+shape = SubResource("BoxShape3D_npvua")
+
+[node name="Witch" type="Sprite3D" parent="Commands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -2.98023e-08)
+visible = false
+texture = ExtResource("13_7l6dm")
+
+[node name="Area3D" type="Area3D" parent="Commands/Witch"]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Commands/Witch/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, 0)
+shape = SubResource("BoxShape3D_npvua")
+
+[node name="Spell" type="Sprite3D" parent="Commands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -1.49012e-08)
+visible = false
+texture = ExtResource("14_gflsh")
+
+[node name="Area3D" type="Area3D" parent="Commands/Spell"]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Commands/Spell/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, 0)
+shape = SubResource("BoxShape3D_npvua")
+
+[node name="Tactics" type="Sprite3D" parent="Commands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+visible = false
+texture = ExtResource("15_446dc")
+
+[node name="Area3D" type="Area3D" parent="Commands/Tactics"]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Commands/Tactics/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, 0)
+shape = SubResource("BoxShape3D_npvua")
+
+[node name="FaebleStage" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, -0.5, -1, -0.55)
+mesh = ExtResource("1_17gk1")
+
+[node name="GridSquareT1" type="MeshInstance3D" parent="FaebleStage"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8, 1.85, 1.19209e-06)
+mesh = SubResource("PlaneMesh_cte37")
+surface_material_override/0 = ExtResource("2_ux2q1")
+
+[node name="Area3D" type="Area3D" parent="FaebleStage/GridSquareT1"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaebleStage/GridSquareT1/Area3D"]
+shape = SubResource("BoxShape3D_cxbsr")
+
+[node name="GridSquareT2" type="MeshInstance3D" parent="FaebleStage"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 1.85, 5.96046e-07)
+mesh = SubResource("PlaneMesh_cte37")
+surface_material_override/0 = ExtResource("2_ux2q1")
+
+[node name="Area3D" type="Area3D" parent="FaebleStage/GridSquareT2"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaebleStage/GridSquareT2/Area3D"]
+shape = SubResource("BoxShape3D_cxbsr")
+
+[node name="GridSquareT3" type="MeshInstance3D" parent="FaebleStage"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4, 1.85, 3.57628e-07)
+mesh = SubResource("PlaneMesh_cte37")
+surface_material_override/0 = ExtResource("2_ux2q1")
+
+[node name="Area3D" type="Area3D" parent="FaebleStage/GridSquareT3"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaebleStage/GridSquareT3/Area3D"]
+shape = SubResource("BoxShape3D_cxbsr")
+
+[node name="GridSquareT4" type="MeshInstance3D" parent="FaebleStage"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2, 1.85, -2.38419e-07)
+mesh = SubResource("PlaneMesh_cte37")
+surface_material_override/0 = ExtResource("2_ux2q1")
+
+[node name="Area3D" type="Area3D" parent="FaebleStage/GridSquareT4"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaebleStage/GridSquareT4/Area3D"]
+shape = SubResource("BoxShape3D_cxbsr")
+
+[node name="GridSquareT5" type="MeshInstance3D" parent="FaebleStage"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.85, -4.76837e-07)
+mesh = SubResource("PlaneMesh_cte37")
+surface_material_override/0 = ExtResource("2_ux2q1")
+
+[node name="Area3D" type="Area3D" parent="FaebleStage/GridSquareT5"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaebleStage/GridSquareT5/Area3D"]
+shape = SubResource("BoxShape3D_cxbsr")
+
+[node name="GridSquareT6" type="MeshInstance3D" parent="FaebleStage"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2, 1.85, -8.34465e-07)
+mesh = SubResource("PlaneMesh_cte37")
+surface_material_override/0 = ExtResource("2_ux2q1")
+
+[node name="Area3D" type="Area3D" parent="FaebleStage/GridSquareT6"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaebleStage/GridSquareT6/Area3D"]
+shape = SubResource("BoxShape3D_cxbsr")
+
+[node name="GridSquareT7" type="MeshInstance3D" parent="FaebleStage"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 1.85, -1.07288e-06)
+mesh = SubResource("PlaneMesh_cte37")
+surface_material_override/0 = ExtResource("2_ux2q1")
+
+[node name="Area3D" type="Area3D" parent="FaebleStage/GridSquareT7"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaebleStage/GridSquareT7/Area3D"]
+shape = SubResource("BoxShape3D_cxbsr")
+
+[node name="GridSquareT8" type="MeshInstance3D" parent="FaebleStage"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, 1.85, -1.43051e-06)
+mesh = SubResource("PlaneMesh_cte37")
+surface_material_override/0 = ExtResource("2_ux2q1")
+
+[node name="Area3D" type="Area3D" parent="FaebleStage/GridSquareT8"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaebleStage/GridSquareT8/Area3D"]
+shape = SubResource("BoxShape3D_cxbsr")
+
+[node name="GridSquareT9" type="MeshInstance3D" parent="FaebleStage"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8, 1.85, -1.66893e-06)
+mesh = SubResource("PlaneMesh_cte37")
+surface_material_override/0 = ExtResource("2_ux2q1")
+
+[node name="Area3D" type="Area3D" parent="FaebleStage/GridSquareT9"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaebleStage/GridSquareT9/Area3D"]
+shape = SubResource("BoxShape3D_cxbsr")
+
+[node name="GridSquareB1" type="MeshInstance3D" parent="FaebleStage"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8, 1.85, -2)
+mesh = SubResource("PlaneMesh_cte37")
+surface_material_override/0 = ExtResource("2_ux2q1")
+
+[node name="Area3D" type="Area3D" parent="FaebleStage/GridSquareB1"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaebleStage/GridSquareB1/Area3D"]
+shape = SubResource("BoxShape3D_cxbsr")
+
+[node name="GridSquareB2" type="MeshInstance3D" parent="FaebleStage"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 1.85, -2)
+mesh = SubResource("PlaneMesh_cte37")
+surface_material_override/0 = ExtResource("2_ux2q1")
+
+[node name="Area3D" type="Area3D" parent="FaebleStage/GridSquareB2"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaebleStage/GridSquareB2/Area3D"]
+shape = SubResource("BoxShape3D_cxbsr")
+
+[node name="GridSquareB3" type="MeshInstance3D" parent="FaebleStage"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4, 1.85, -2)
+mesh = SubResource("PlaneMesh_cte37")
+surface_material_override/0 = ExtResource("2_ux2q1")
+
+[node name="Area3D" type="Area3D" parent="FaebleStage/GridSquareB3"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaebleStage/GridSquareB3/Area3D"]
+shape = SubResource("BoxShape3D_cxbsr")
+
+[node name="GridSquareB4" type="MeshInstance3D" parent="FaebleStage"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2, 1.85, -2)
+mesh = SubResource("PlaneMesh_cte37")
+surface_material_override/0 = ExtResource("2_ux2q1")
+
+[node name="Area3D" type="Area3D" parent="FaebleStage/GridSquareB4"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaebleStage/GridSquareB4/Area3D"]
+shape = SubResource("BoxShape3D_cxbsr")
+
+[node name="GridSquareB5" type="MeshInstance3D" parent="FaebleStage"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.78814e-06, 1.85, -2)
+mesh = SubResource("PlaneMesh_cte37")
+surface_material_override/0 = ExtResource("2_ux2q1")
+
+[node name="Area3D" type="Area3D" parent="FaebleStage/GridSquareB5"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaebleStage/GridSquareB5/Area3D"]
+shape = SubResource("BoxShape3D_cxbsr")
+
+[node name="GridSquareB6" type="MeshInstance3D" parent="FaebleStage"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2, 1.85, -2)
+mesh = SubResource("PlaneMesh_cte37")
+surface_material_override/0 = ExtResource("2_ux2q1")
+
+[node name="Area3D" type="Area3D" parent="FaebleStage/GridSquareB6"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaebleStage/GridSquareB6/Area3D"]
+shape = SubResource("BoxShape3D_cxbsr")
+
+[node name="GridSquareB7" type="MeshInstance3D" parent="FaebleStage"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 1.85, -2)
+mesh = SubResource("PlaneMesh_cte37")
+surface_material_override/0 = ExtResource("2_ux2q1")
+
+[node name="Area3D" type="Area3D" parent="FaebleStage/GridSquareB7"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaebleStage/GridSquareB7/Area3D"]
+shape = SubResource("BoxShape3D_cxbsr")
+
+[node name="GridSquareB8" type="MeshInstance3D" parent="FaebleStage"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, 1.85, -2)
+mesh = SubResource("PlaneMesh_cte37")
+surface_material_override/0 = ExtResource("2_ux2q1")
+
+[node name="Area3D" type="Area3D" parent="FaebleStage/GridSquareB8"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaebleStage/GridSquareB8/Area3D"]
+shape = SubResource("BoxShape3D_cxbsr")
+
+[node name="GridSquareB9" type="MeshInstance3D" parent="FaebleStage"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8, 1.85, -2)
+mesh = SubResource("PlaneMesh_cte37")
+surface_material_override/0 = ExtResource("2_ux2q1")
+
+[node name="Area3D" type="Area3D" parent="FaebleStage/GridSquareB9"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FaebleStage/GridSquareB9/Area3D"]
+shape = SubResource("BoxShape3D_cxbsr")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.699663, 0.714473, 0, -0.714473, 0.699663, 0, 9.46926, 0)
+
+[node name="StatusCard1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, -2)
+mesh = SubResource("QuadMesh_jbgqr")
+surface_material_override/0 = SubResource("StandardMaterial3D_h2em3")
+
+[node name="StatusCard2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.75, -2)
+mesh = SubResource("QuadMesh_jbgqr")
+surface_material_override/0 = SubResource("StandardMaterial3D_h2em3")
+
+[node name="StatusCard3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, -2)
+mesh = SubResource("QuadMesh_jbgqr")
+surface_material_override/0 = SubResource("StandardMaterial3D_h2em3")
+
+[node name="StatusCard4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.75, -2)
+mesh = SubResource("QuadMesh_jbgqr")
+surface_material_override/0 = SubResource("StandardMaterial3D_h2em3")
+
+[node name="Leader1" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -5.5, 0.65, 0)
+mesh = SubResource("QuadMesh_1kf2k")
+
+[node name="Leader2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 4.5, 0.65, 0)
+mesh = SubResource("QuadMesh_1kf2k")
+
+[node name="Faeble2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -2.5, 0.5, -0.5)
+mesh = SubResource("QuadMesh_1kf2k")
+
+[node name="Faeble3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0.5, 0.5, 0.5)
+mesh = SubResource("QuadMesh_1kf2k")
+
+[node name="Faeble4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 1.5, 0.5, -0.5)
+mesh = SubResource("QuadMesh_1kf2k")
+
+[node name="FullstageCam" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, -0.5, 4, 7)
+current = true
+fov = 45.0
+
+[node name="OverviewCam" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866026, 0, -0.866026, 0.5, -0.5, 6, 3)
+fov = 45.0
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(320, 104)
+
+[node name="StatusBox" parent="SubViewport" instance=ExtResource("8_br008")]
+offset_right = 0.0
+offset_bottom = 0.0
+
+[connection signal="mouse_entered" from="Commands/Familiar/Area3D" to="Commands" method="SelectMenu" binds= ["Familiar"]]
+[connection signal="mouse_exited" from="Commands/Familiar/Area3D" to="Commands" method="SelectMenu" binds= ["Familiar", true]]
+[connection signal="mouse_entered" from="Commands/Attack/Area3D" to="Commands" method="SelectMenu" binds= ["Attack"]]
+[connection signal="mouse_exited" from="Commands/Attack/Area3D" to="Commands" method="SelectMenu" binds= ["Attack", true]]
+[connection signal="mouse_entered" from="Commands/Move/Area3D" to="Commands" method="SelectMenu" binds= ["Move"]]
+[connection signal="mouse_exited" from="Commands/Move/Area3D" to="Commands" method="SelectMenu" binds= ["Move", true]]
+[connection signal="mouse_entered" from="Commands/Witch/Area3D" to="Commands" method="SelectMenu" binds= ["Witch"]]
+[connection signal="mouse_exited" from="Commands/Witch/Area3D" to="Commands" method="SelectMenu" binds= ["Witch", true]]
+[connection signal="mouse_entered" from="Commands/Spell/Area3D" to="Commands" method="SelectMenu" binds= ["Spell"]]
+[connection signal="mouse_exited" from="Commands/Spell/Area3D" to="Commands" method="SelectMenu" binds= ["Spell", true]]
+[connection signal="mouse_entered" from="Commands/Tactics/Area3D" to="Commands" method="SelectMenu" binds= ["Tactics"]]
+[connection signal="mouse_exited" from="Commands/Tactics/Area3D" to="Commands" method="SelectMenu" binds= ["Tactics", true]]
+[connection signal="mouse_entered" from="FaebleStage/GridSquareT1/Area3D" to="." method="SelectSquare" binds= [Vector2i(0, 0)]]
+[connection signal="mouse_exited" from="FaebleStage/GridSquareT1/Area3D" to="." method="SelectSquare" binds= [Vector2i(0, 0), true]]
+[connection signal="mouse_entered" from="FaebleStage/GridSquareT2/Area3D" to="." method="SelectSquare" binds= [Vector2i(1, 0)]]
+[connection signal="mouse_exited" from="FaebleStage/GridSquareT2/Area3D" to="." method="SelectSquare" binds= [Vector2i(1, 0), true]]
+[connection signal="mouse_entered" from="FaebleStage/GridSquareT3/Area3D" to="." method="SelectSquare" binds= [Vector2i(2, 0)]]
+[connection signal="mouse_exited" from="FaebleStage/GridSquareT3/Area3D" to="." method="SelectSquare" binds= [Vector2i(2, 0), true]]
+[connection signal="mouse_entered" from="FaebleStage/GridSquareT4/Area3D" to="." method="SelectSquare" binds= [Vector2i(3, 0)]]
+[connection signal="mouse_exited" from="FaebleStage/GridSquareT4/Area3D" to="." method="SelectSquare" binds= [Vector2i(3, 0), true]]
+[connection signal="mouse_entered" from="FaebleStage/GridSquareT5/Area3D" to="." method="SelectSquare" binds= [Vector2i(4, 0)]]
+[connection signal="mouse_exited" from="FaebleStage/GridSquareT5/Area3D" to="." method="SelectSquare" binds= [Vector2i(4, 0), true]]
+[connection signal="mouse_entered" from="FaebleStage/GridSquareT6/Area3D" to="." method="SelectSquare" binds= [Vector2i(5, 0)]]
+[connection signal="mouse_exited" from="FaebleStage/GridSquareT6/Area3D" to="." method="SelectSquare" binds= [Vector2i(5, 0), true]]
+[connection signal="mouse_entered" from="FaebleStage/GridSquareT7/Area3D" to="." method="SelectSquare" binds= [Vector2i(6, 0)]]
+[connection signal="mouse_exited" from="FaebleStage/GridSquareT7/Area3D" to="." method="SelectSquare" binds= [Vector2i(6, 0), true]]
+[connection signal="mouse_entered" from="FaebleStage/GridSquareT8/Area3D" to="." method="SelectSquare" binds= [Vector2i(7, 0)]]
+[connection signal="mouse_exited" from="FaebleStage/GridSquareT8/Area3D" to="." method="SelectSquare" binds= [Vector2i(7, 0), true]]
+[connection signal="mouse_entered" from="FaebleStage/GridSquareT9/Area3D" to="." method="SelectSquare" binds= [Vector2i(8, 0)]]
+[connection signal="mouse_exited" from="FaebleStage/GridSquareT9/Area3D" to="." method="SelectSquare" binds= [Vector2i(8, 0), true]]
+[connection signal="mouse_entered" from="FaebleStage/GridSquareB1/Area3D" to="." method="SelectSquare" binds= [Vector2i(0, 1)]]
+[connection signal="mouse_exited" from="FaebleStage/GridSquareB1/Area3D" to="." method="SelectSquare" binds= [Vector2i(0, 1), true]]
+[connection signal="mouse_entered" from="FaebleStage/GridSquareB2/Area3D" to="." method="SelectSquare" binds= [Vector2i(1, 1)]]
+[connection signal="mouse_exited" from="FaebleStage/GridSquareB2/Area3D" to="." method="SelectSquare" binds= [Vector2i(1, 1), true]]
+[connection signal="mouse_entered" from="FaebleStage/GridSquareB3/Area3D" to="." method="SelectSquare" binds= [Vector2i(2, 1)]]
+[connection signal="mouse_exited" from="FaebleStage/GridSquareB3/Area3D" to="." method="SelectSquare" binds= [Vector2i(2, 1), true]]
+[connection signal="mouse_entered" from="FaebleStage/GridSquareB4/Area3D" to="." method="SelectSquare" binds= [Vector2i(3, 1)]]
+[connection signal="mouse_exited" from="FaebleStage/GridSquareB4/Area3D" to="." method="SelectSquare" binds= [Vector2i(3, 1), true]]
+[connection signal="mouse_entered" from="FaebleStage/GridSquareB5/Area3D" to="." method="SelectSquare" binds= [Vector2i(4, 1)]]
+[connection signal="mouse_exited" from="FaebleStage/GridSquareB5/Area3D" to="." method="SelectSquare" binds= [Vector2i(4, 1), true]]
+[connection signal="mouse_entered" from="FaebleStage/GridSquareB6/Area3D" to="." method="SelectSquare" binds= [Vector2i(5, 1)]]
+[connection signal="mouse_exited" from="FaebleStage/GridSquareB6/Area3D" to="." method="SelectSquare" binds= [Vector2i(5, 1), true]]
+[connection signal="mouse_entered" from="FaebleStage/GridSquareB7/Area3D" to="." method="SelectSquare" binds= [Vector2i(6, 1)]]
+[connection signal="mouse_exited" from="FaebleStage/GridSquareB7/Area3D" to="." method="SelectSquare" binds= [Vector2i(6, 1), true]]
+[connection signal="mouse_entered" from="FaebleStage/GridSquareB8/Area3D" to="." method="SelectSquare" binds= [Vector2i(7, 1)]]
+[connection signal="mouse_exited" from="FaebleStage/GridSquareB8/Area3D" to="." method="SelectSquare" binds= [Vector2i(7, 1), true]]
+[connection signal="mouse_entered" from="FaebleStage/GridSquareB9/Area3D" to="." method="SelectSquare" binds= [Vector2i(8, 1)]]
+[connection signal="mouse_exited" from="FaebleStage/GridSquareB9/Area3D" to="." method="SelectSquare" binds= [Vector2i(8, 1), true]]
