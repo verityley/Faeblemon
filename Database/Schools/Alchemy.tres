@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="School" load_steps=3 format=3 uid="uid://cl8db7w0h0fb2"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/School.gd" id="1_h46a7"]
+[ext_resource type="Texture2D" uid="uid://n42t1hcagi6l" path="res://Global Assets/Graphics/Type Graphics/School Plates/AlchemyNameplate.png" id="1_yv5jc"]
+
+[resource]
+script = ExtResource("1_h46a7")
+name = "Alchemy"
+typeIndex = 9
+nameplate = ExtResource("1_yv5jc")

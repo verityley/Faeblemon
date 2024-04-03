@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="School" load_steps=3 format=3 uid="uid://qsa5frtrqsay"]
+
+[ext_resource type="Texture2D" uid="uid://wtrwrgbxw62s" path="res://Global Assets/Graphics/Type Graphics/School Plates/LunarNameplate.png" id="1_44112"]
+[ext_resource type="Script" path="res://Global Assets/Classes/School.gd" id="2_x0v3g"]
+
+[resource]
+script = ExtResource("2_x0v3g")
+name = "Lunar"
+typeIndex = 1
+nameplate = ExtResource("1_44112")

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Domain" load_steps=13 format=3 uid="uid://c6hkdhy68qsqm"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Domain.gd" id="1_5bkkd"]
+[ext_resource type="Resource" uid="uid://wo31up2dxi0g" path="res://Database/Domains/Construct.tres" id="2_k4uls"]
+[ext_resource type="Resource" uid="uid://cmi3i261g3njv" path="res://Database/Domains/Cryptid.tres" id="3_0fqp4"]
+[ext_resource type="Resource" uid="uid://dx6ef6t5q3ruc" path="res://Database/Domains/Draconic.tres" id="4_u7v6t"]
+[ext_resource type="Resource" uid="uid://dfv6h587fxq2k" path="res://Database/Domains/Eldritch.tres" id="5_2v78r"]
+[ext_resource type="Resource" uid="uid://bldym4cl8lnh7" path="res://Database/Domains/Fairytale.tres" id="6_40qfy"]
+[ext_resource type="Resource" uid="uid://c4ju0ee2lda3j" path="res://Database/Domains/Haunting.tres" id="7_k7adg"]
+[ext_resource type="Resource" uid="uid://kr8ejkbjip5h" path="res://Database/Domains/Heroic.tres" id="8_pm1yv"]
+[ext_resource type="Resource" uid="uid://b2s6tw6v4icgs" path="res://Database/Domains/Pantheon.tres" id="9_kqhd4"]
+[ext_resource type="Resource" uid="uid://cvhcgyhumqrql" path="res://Database/Domains/Primal.tres" id="10_m1e3u"]
+[ext_resource type="Resource" uid="uid://d32tt0oqhs4pt" path="res://Database/Domains/Profane.tres" id="11_7qx6l"]
+[ext_resource type="Resource" uid="uid://bkek55add4qy3" path="res://Database/Domains/Sacred.tres" id="12_d23bi"]
+
+[resource]
+script = ExtResource("1_5bkkd")
+name = ""
+typeMatchups = {
+ExtResource("2_k4uls"): 0,
+ExtResource("3_0fqp4"): 0,
+ExtResource("4_u7v6t"): 0,
+ExtResource("5_2v78r"): 0,
+ExtResource("6_40qfy"): 0,
+ExtResource("7_k7adg"): 0,
+ExtResource("8_pm1yv"): 0,
+ExtResource("9_kqhd4"): 0,
+ExtResource("10_m1e3u"): 0,
+ExtResource("11_7qx6l"): 0,
+ExtResource("12_d23bi"): 0
+}
+typeIndex = 0

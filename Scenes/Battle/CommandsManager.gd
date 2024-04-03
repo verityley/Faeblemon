@@ -3,10 +3,11 @@ extends Node3D
 #Also contains current state of turn, and sends signals to board state on UI selection
 @export var menuState:String = "Start" #Start, Wait, Witch, Familiar, Hide
 @export var battleManager:BattleManager
-@export var hoveredBattler:Battler #extremely TEMPORARY
+@export var selectedBattler:Battler #extremely TEMPORARY
+@export var menuOffset:Vector3
 var selectedState:String
 var hideState:String
-var currentSelected:Node3D
+var optionSelected:Node3D
 var witchChosen:bool
 var familiarChosen:bool
 var moveTaken:bool
@@ -16,9 +17,8 @@ var attackTaken:bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	MenuFlow(menuState)
+	#MenuFlow(menuState)
 	pass
-
 
 func _input(event):
 	#print(event)
@@ -30,12 +30,13 @@ func _input(event):
 			MenuFlow("Hide")
 			print("Hiding Menu")
 	
-	if currentSelected != null:
+	if optionSelected != null:
 		if event.is_action_pressed("Confirm") or event.is_action_pressed("LeftMouse"):
 			MenuFlow(selectedState)
 			selectedState = ""
 
 func MenuFlow(state):
+	position = selectedBattler.position + menuOffset
 	if state == "Reset": #Use this to clear all variable values, end of turn(?)
 		HideMenu(true, false)
 		selectedState = ""
@@ -43,8 +44,8 @@ func MenuFlow(state):
 		familiarChosen = false
 		moveTaken = false
 		attackTaken = false
-		currentSelected.scale = Vector3(1,1,1)
-		currentSelected = null
+		optionSelected.scale = Vector3(1,1,1)
+		optionSelected = null
 		menuState = "Start"
 	if state == "Hide": #Temporarily hide, but remember last menu
 		HideMenu(true)
@@ -69,7 +70,7 @@ func MenuFlow(state):
 		for button in get_children():
 			button.hide()
 		familiarChosen = true
-		if !moveTaken or hoveredBattler.movepoints > 0:
+		if !moveTaken or selectedBattler.movepoints > 0:
 			$Move.show() #eventually replace with greyed out unclickable option
 		if !attackTaken:
 			$Attack.show()
@@ -78,7 +79,7 @@ func MenuFlow(state):
 	if state == "Move": #Familiar moving, show movement grid and move points
 		for button in get_children():
 			button.hide()
-		battleManager.CheckMoves(hoveredBattler) #TEMPORARY
+		battleManager.CheckMoves(selectedBattler) #TEMPORARY
 		battleManager.ChangeBoardState("Moving")
 		print(battleManager.boardState)
 		menuState = "Move"
@@ -87,7 +88,7 @@ func MenuFlow(state):
 	if state == "Attack": #Familiar attacking, show attack options, mana, and ranges
 		for button in get_children():
 			button.hide()
-		battleManager.CheckAttackRange(hoveredBattler, tempAttack)
+		battleManager.CheckAttackRange(selectedBattler, tempAttack)
 		battleManager.ChangeBoardState("Attacking")
 		menuState = "Attack"
 		pass
@@ -131,11 +132,14 @@ func HideMenu(hide:bool, recall:bool=true):
 
 func SelectMenu(state:String, exit=false):
 	if exit: #If exited or canceled, revert scale and value
-		currentSelected.scale = Vector3(1,1,1)
-		currentSelected = null
+		optionSelected.scale = Vector3(1,1,1)
+		optionSelected = null
 		selectedState = ""
 		return
 	#print(str(self) + "/" + state) #Find child by name, from self
-	currentSelected = get_node(str(get_path()) + "/" + state)
-	currentSelected.scale += Vector3(0.2, 0.2, 0.2) #Replace with tween effect eventually
+	optionSelected = get_node(str(get_path()) + "/" + state)
+	optionSelected.scale += Vector3(0.2, 0.2, 0.2) #Replace with tween effect eventually
 	selectedState = state
+
+func ChangeTarget():
+	pass

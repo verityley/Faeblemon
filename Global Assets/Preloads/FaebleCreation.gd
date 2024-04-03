@@ -1,10 +1,5 @@
 extends Node
 
-@export var playerParty:Array[Faeble]
-@export var maxPartySize:int = 6
-@export var playerCity:Array[Faeble]
-var battleFaebles:Array[Faeble]
-
 @export var limitBreakOdds:int = 800 #These are all "1 out of X", not the percent chance.
 @export var shinyOdds:int = 1000
 @export var altSchoolOdds:int = 500
@@ -14,7 +9,7 @@ var battleFaebles:Array[Faeble]
 @export var energyRatio:Vector2i = Vector2i(1,1)
 
 func _ready():
-	#CreateFaeble(preload("res://Database/Faebles/Ananseed.tres"), 8)
+	CreateFaeble(preload("res://Database/Faebles/001Awoolf.tres"), 8)
 	pass
 
 
@@ -72,26 +67,79 @@ func CreateFaeble(faebleEntry:Faeble, initLevel:int, mook:bool = false, commande
 	print("Final: ", instance.profArray)
 	#End of Proficiency Init
 	
-	#Start of Stat Assignment
-	instance.brawn = clampi(instance.brawn + instance.profArray[0], instance.minQuality, instance.maxQuality)
-	print("Brawn: ", instance.brawn)
-	instance.vigor = clampi(instance.vigor + instance.profArray[1], instance.minQuality, instance.maxQuality)
-	print("Vigor: ", instance.vigor)
-	instance.wit = clampi(instance.wit + instance.profArray[2], instance.minQuality, instance.maxQuality)
-	print("Wit: ", instance.wit)
-	instance.ambition = clampi(instance.ambition + instance.profArray[3], instance.minQuality, instance.maxQuality)
-	print("Ambition: ", instance.ambition)
-	instance.grace =  clampi(instance.grace + instance.profArray[4], instance.minQuality, instance.maxQuality)
-	print("Grace: ", instance.grace)
-	instance.resolve = clampi(instance.resolve + instance.profArray[5], instance.minQuality, instance.maxQuality)
-	print("Resolve: ", instance.resolve)
-	instance.heart = clampi(instance.heart + instance.profArray[6], instance.minQuality, instance.maxQuality)
-	print("Heart: ", instance.heart)
 	
 	#Start of ASI and Level-up reward Assignment
 	instance.level = initLevel
-	instance.traitImprovements = floori(float(initLevel) / 4) * 2 #Gain 2 points every 4 levels
+	instance.traitImprovements = floori(float(initLevel) / 4) #Gain 2 points every 4 levels
 	prints("Level:", instance.level, "Current ASIs:", instance.traitImprovements)
+	var addToPrim:int = 0
+	var addToSeco:int = 0
+	for improvement in range(instance.traitImprovements):
+		if RNG.randi_range(0,1) == 1:
+			addToPrim += 2
+		else:
+			addToPrim += 1
+			addToSeco += 1
+	
+	prints("Adding", addToPrim,"to",instance.prefPrimary)
+	prints("Adding", addToSeco,"to",instance.prefSecondary)
+	#Start of Stat Assignment
+	if instance.prefPrimary == "Brawn":
+		instance.brawn = clampi(instance.brawn + instance.profArray[0] + addToPrim, instance.minQuality, instance.maxQuality)
+	elif instance.prefSecondary == "Brawn":
+		instance.brawn = clampi(instance.brawn + instance.profArray[0] + addToSeco, instance.minQuality, instance.maxQuality)
+	else:
+		instance.brawn = clampi(instance.brawn + instance.profArray[0], instance.minQuality, instance.maxQuality)
+	print("Brawn: ", instance.brawn)
+	
+	if instance.prefPrimary == "Vigor":
+		instance.vigor = clampi(instance.vigor + instance.profArray[1] + addToPrim, instance.minQuality, instance.maxQuality)
+	elif instance.prefSecondary == "Vigor":
+		instance.vigor = clampi(instance.vigor + instance.profArray[1] + addToSeco, instance.minQuality, instance.maxQuality)
+	else:
+		instance.vigor = clampi(instance.vigor + instance.profArray[1], instance.minQuality, instance.maxQuality)
+	print("Vigor: ", instance.vigor)
+	
+	if instance.prefPrimary == "Wit":
+		instance.wit = clampi(instance.wit + instance.profArray[2] + addToPrim, instance.minQuality, instance.maxQuality)
+	elif instance.prefSecondary == "Wit":
+		instance.wit = clampi(instance.wit + instance.profArray[2] + addToSeco, instance.minQuality, instance.maxQuality)
+	else:
+		instance.wit = clampi(instance.wit + instance.profArray[2], instance.minQuality, instance.maxQuality)
+	print("Wit: ", instance.wit)
+	
+	if instance.prefPrimary == "Ambition":
+		instance.ambition = clampi(instance.ambition + instance.profArray[3] + addToPrim, instance.minQuality, instance.maxQuality)
+	elif instance.prefSecondary == "Ambition":
+		instance.ambition = clampi(instance.ambition + instance.profArray[3] + addToSeco, instance.minQuality, instance.maxQuality)
+	else:
+		instance.ambition = clampi(instance.ambition + instance.profArray[3], instance.minQuality, instance.maxQuality)
+	print("Ambition: ", instance.ambition)
+	
+	if instance.prefPrimary == "Grace":
+		instance.grace = clampi(instance.grace + instance.profArray[4] + addToPrim, instance.minQuality, instance.maxQuality)
+	elif instance.prefSecondary == "Grace":
+		instance.grace = clampi(instance.grace + instance.profArray[4] + addToSeco, instance.minQuality, instance.maxQuality)
+	else:
+		instance.grace = clampi(instance.grace + instance.profArray[4], instance.minQuality, instance.maxQuality)
+	print("Grace: ", instance.grace)
+	
+	if instance.prefPrimary == "Resolve":
+		instance.resolve = clampi(instance.resolve + instance.profArray[5] + addToPrim, instance.minQuality, instance.maxQuality)
+	elif instance.prefSecondary == "Resolve":
+		instance.resolve = clampi(instance.resolve + instance.profArray[5] + addToSeco, instance.minQuality, instance.maxQuality)
+	else:
+		instance.resolve = clampi(instance.resolve + instance.profArray[5], instance.minQuality, instance.maxQuality)
+	print("Resolve: ", instance.resolve)
+	
+	if instance.prefPrimary == "Heart":
+		instance.heart = clampi(instance.heart + instance.profArray[6] + addToPrim, instance.minQuality, instance.maxQuality)
+	elif instance.prefSecondary == "Heart":
+		instance.heart = clampi(instance.heart + instance.profArray[6] + addToSeco, instance.minQuality, instance.maxQuality)
+	else:
+		instance.heart = clampi(instance.heart + instance.profArray[6], instance.minQuality, instance.maxQuality)
+	print("Heart: ", instance.heart)
+	
 	for i in range(initLevel - 1):
 		if RNG.randi_range(1,rewardRatio.x + rewardRatio.y) > rewardRatio.y:
 			instance.hpIncreases += 1
@@ -148,16 +196,7 @@ func CreateFaeble(faebleEntry:Faeble, initLevel:int, mook:bool = false, commande
 	return instance
 
 
-func AddToParty(faebleInstance:Faeble):
-	if playerParty.size() >= maxPartySize:
-		print("Party too full, give choice to swap and send one to city.")
-	else:
-		pass
-
 func AddToCity(faebleInstance:Faeble):
-	pass
-
-func EnterBattle(faebleInstance:Faeble, enemy:bool): #This should specifically create a *battle* instance
 	pass
 
 func LevelUp(faebleInstance:Faeble):

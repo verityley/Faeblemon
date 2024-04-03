@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="School" load_steps=3 format=3 uid="uid://capgkhjk2jdlj"]
+
+[ext_resource type="Texture2D" uid="uid://kndv36a2s516" path="res://Global Assets/Graphics/Type Graphics/School Plates/GroveNameplate.png" id="1_rfdlx"]
+[ext_resource type="Script" path="res://Global Assets/Classes/School.gd" id="2_ter32"]
+
+[resource]
+script = ExtResource("2_ter32")
+name = "Grove"
+typeIndex = 4
+nameplate = ExtResource("1_rfdlx")

@@ -2,10 +2,11 @@ extends Node3D
 class_name Battler
 #Holds all battler-specific information, independently for each battler on the field.
 @export var faebleEntry:Faeble
+@export var playerControl:bool
 
 @export_category("Main Resources")
 @export var currentHP:int
-@export var currentMP:int
+@export var currentEnergy:int
 @export var currentSpeed:int
 @export var movepoints:int
 
@@ -51,5 +52,27 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
+
+func ResetStats():
+	pass
+
+func ChangeHealth():
+	pass #Include handling for hitting 0, going over max, etc
+
+func ChangeMana():
+	pass
+
+func ChangeSpeed():
+	pass
+
+func ChangeMovepoints():
+	pass
+
+func ChangeStatus():
+	pass #Include handling for hitting half, hitting full, reducing past thresholds, etc
+
+func ChangeStage():
+	pass
+

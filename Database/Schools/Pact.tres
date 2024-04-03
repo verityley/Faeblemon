@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="School" load_steps=3 format=3 uid="uid://bit2tuyhefdhg"]
+
+[ext_resource type="Texture2D" uid="uid://ckehhwjhdqcjd" path="res://Global Assets/Graphics/Type Graphics/School Plates/PactNameplate.png" id="1_t5wmx"]
+[ext_resource type="Script" path="res://Global Assets/Classes/School.gd" id="2_7flrj"]
+
+[resource]
+script = ExtResource("2_7flrj")
+name = "Pact"
+typeIndex = 11
+nameplate = ExtResource("1_t5wmx")

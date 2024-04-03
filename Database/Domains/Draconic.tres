@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="Domain" load_steps=16 format=3 uid="uid://dx6ef6t5q3ruc"]
+
+[ext_resource type="Texture2D" uid="uid://73cewqgrxmql" path="res://Global Assets/Graphics/Type Graphics/Domain Plates/DraconicNameplate.png" id="1_y4146"]
+[ext_resource type="Script" path="res://Global Assets/Classes/Domain.gd" id="2_4lt4x"]
+[ext_resource type="Resource" uid="uid://cl8db7w0h0fb2" path="res://Database/Schools/Alchemy.tres" id="3_adt20"]
+[ext_resource type="Resource" uid="uid://087ema067pet" path="res://Database/Schools/Blessing.tres" id="4_q4vj0"]
+[ext_resource type="Resource" uid="uid://crdybp6i852y4" path="res://Database/Schools/Coven.tres" id="5_siy4g"]
+[ext_resource type="Resource" uid="uid://cy460pjjcakrm" path="res://Database/Schools/Curse.tres" id="6_5ctka"]
+[ext_resource type="Resource" uid="uid://dvn0i2tiim6q8" path="res://Database/Schools/Geo.tres" id="7_fl65b"]
+[ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="8_kspwk"]
+[ext_resource type="Resource" uid="uid://de8kbqj72dt47" path="res://Database/Schools/Hearth.tres" id="9_odjxg"]
+[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Lunar.tres" id="10_pgnei"]
+[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Mundane.tres" id="11_1ojpl"]
+[ext_resource type="Resource" uid="uid://bit2tuyhefdhg" path="res://Database/Schools/Pact.tres" id="12_1gytf"]
+[ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Performance.tres" id="13_xm7ni"]
+[ext_resource type="Resource" uid="uid://c10g7loedmtw7" path="res://Database/Schools/Storm.tres" id="14_43bsq"]
+[ext_resource type="Resource" uid="uid://6sqrvld48ww6" path="res://Database/Schools/Weird.tres" id="15_14p5x"]
+
+[resource]
+script = ExtResource("2_4lt4x")
+name = "Draconic"
+typeMatchups = {
+ExtResource("3_adt20"): 0,
+ExtResource("4_q4vj0"): 1,
+ExtResource("5_siy4g"): 0,
+ExtResource("6_5ctka"): 0,
+ExtResource("7_fl65b"): 1,
+ExtResource("8_kspwk"): 0,
+ExtResource("9_odjxg"): -1,
+ExtResource("10_pgnei"): -1,
+ExtResource("11_1ojpl"): -1,
+ExtResource("12_1gytf"): 1,
+ExtResource("13_xm7ni"): -1,
+ExtResource("14_43bsq"): -1,
+ExtResource("15_14p5x"): 0
+}
+typeIndex = 0
+nameplate = ExtResource("1_y4146")

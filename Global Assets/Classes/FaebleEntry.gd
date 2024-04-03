@@ -12,8 +12,8 @@ class_name Faeble
 @export var altSigSchool2:School
 
 @export_category("Visual Parameters")
-@export var sprite:Texture2D
-@export var shinySprite:Texture2D
+@export var sprite:CompressedTexture2D
+@export var shinySprite:CompressedTexture2D
 @export var UISprite:Texture2D
 @export var battlerScale:float #Scale used in battle scenes
 @export var worldScale:float #Scale used in world or city scenes
@@ -38,6 +38,8 @@ var energyIncreases:int = 0
 @export var heart:int #Determines your base starting HP
 
 @export var profArray:Array[int] = [0, 0, 0, 0, 0, 0, 0]
+@export var prefPrimary:String #Used for wild ASIs
+@export var prefSecondary:String
 
 @export_category("Combat Parameters")
 var maxHP:int = 1
@@ -61,6 +63,11 @@ var learnedSkills:Array[Skill] #These are all the skills they know by their leve
 #evolve via: higher level fighter, lower level fighter, captured enemy, knows move, location, party members present
 #Consider using inheritance classes for evo methods, and having them share the same function call
 @export var evoBranch:bool
+
+@export_category("Instance-Only Parameters")
+@export var currentHP:int
+@export var currentStamina:int #This determines how many after-battle heals a faeble has left.
+@export var fainted:bool
 
 @export_category("Description")
 @export_multiline var description:String #Look into parsing string and revealing bits by level

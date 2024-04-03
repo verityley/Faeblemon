@@ -18,3 +18,5 @@ class_name Skill
 @export var rangeMax:int = 10
 @export var canPierce:bool = true
 @export var canArc:bool = true
+@export var targetAlly:bool = false
+@export var targetAll:bool = false

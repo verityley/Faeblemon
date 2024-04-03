@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="Domain" load_steps=16 format=3 uid="uid://cmi3i261g3njv"]
+
+[ext_resource type="Texture2D" uid="uid://btcix7epdhxy4" path="res://Global Assets/Graphics/Type Graphics/Domain Plates/CryptidNameplate.png" id="1_2lqgn"]
+[ext_resource type="Script" path="res://Global Assets/Classes/Domain.gd" id="2_beken"]
+[ext_resource type="Resource" uid="uid://cl8db7w0h0fb2" path="res://Database/Schools/Alchemy.tres" id="3_7eroq"]
+[ext_resource type="Resource" uid="uid://087ema067pet" path="res://Database/Schools/Blessing.tres" id="4_ju5p5"]
+[ext_resource type="Resource" uid="uid://crdybp6i852y4" path="res://Database/Schools/Coven.tres" id="5_2mtbr"]
+[ext_resource type="Resource" uid="uid://cy460pjjcakrm" path="res://Database/Schools/Curse.tres" id="6_uit86"]
+[ext_resource type="Resource" uid="uid://dvn0i2tiim6q8" path="res://Database/Schools/Geo.tres" id="7_aspek"]
+[ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="8_27oo1"]
+[ext_resource type="Resource" uid="uid://de8kbqj72dt47" path="res://Database/Schools/Hearth.tres" id="9_lpi52"]
+[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Lunar.tres" id="10_378li"]
+[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Mundane.tres" id="11_co5l2"]
+[ext_resource type="Resource" uid="uid://bit2tuyhefdhg" path="res://Database/Schools/Pact.tres" id="12_e4gi0"]
+[ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Performance.tres" id="13_ksncx"]
+[ext_resource type="Resource" uid="uid://c10g7loedmtw7" path="res://Database/Schools/Storm.tres" id="14_eyjb0"]
+[ext_resource type="Resource" uid="uid://6sqrvld48ww6" path="res://Database/Schools/Weird.tres" id="15_d2x53"]
+
+[resource]
+script = ExtResource("2_beken")
+name = "Cryptid"
+typeMatchups = {
+ExtResource("3_7eroq"): 0,
+ExtResource("4_ju5p5"): 0,
+ExtResource("5_2mtbr"): 0,
+ExtResource("6_uit86"): 0,
+ExtResource("7_aspek"): 0,
+ExtResource("8_27oo1"): -1,
+ExtResource("9_lpi52"): 1,
+ExtResource("10_378li"): -1,
+ExtResource("11_co5l2"): -1,
+ExtResource("12_e4gi0"): 0,
+ExtResource("13_ksncx"): 0,
+ExtResource("14_eyjb0"): 0,
+ExtResource("15_d2x53"): 0
+}
+typeIndex = 3
+nameplate = ExtResource("1_2lqgn")

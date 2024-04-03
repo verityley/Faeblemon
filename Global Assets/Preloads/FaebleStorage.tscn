@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://fu2qyp7su26t"]
+
+[ext_resource type="Script" path="res://Global Assets/Preloads/FaebleStorage.gd" id="1_th8ns"]
+[ext_resource type="Resource" uid="uid://cvjtub6vapo34" path="res://Database/Faebles/001Awoolf.tres" id="2_8dxpb"]
+[ext_resource type="Resource" uid="uid://bfd3m6cnqbvjp" path="res://Database/Faebles/Ananseed.tres" id="3_v0hfg"]
+
+[node name="FaebleStorage" type="Node"]
+script = ExtResource("1_th8ns")
+playerParty = Array[Resource("res://Global Assets/Classes/FaebleEntry.gd")]([ExtResource("2_8dxpb"), ExtResource("3_v0hfg"), ExtResource("2_8dxpb")])
+enemyParty = Array[Resource("res://Global Assets/Classes/FaebleEntry.gd")]([ExtResource("2_8dxpb"), ExtResource("3_v0hfg")])

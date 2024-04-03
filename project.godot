@@ -16,8 +16,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-FaebleEntry="*res://Global Assets/Preloads/FaebleEntry.gd"
+FaebleCreation="*res://Global Assets/Preloads/FaebleCreation.gd"
 EventBus="*res://Global Assets/Preloads/EventBus.gd"
+FaebleStorage="*res://Global Assets/Preloads/FaebleStorage.tscn"
 
 [input]
 
