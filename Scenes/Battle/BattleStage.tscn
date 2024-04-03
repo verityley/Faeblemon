@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dh7tyx44ndu4d"]
+[gd_scene load_steps=39 format=3 uid="uid://dh7tyx44ndu4d"]
 
 [ext_resource type="ArrayMesh" uid="uid://v74we45008ok" path="res://Scenes/Battle/Assets/FaebleStage.obj" id="1_17gk1"]
 [ext_resource type="Script" path="res://Scenes/Battle/BattleManager.gd" id="1_505cq"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://cjmkt1uhnw5sa" path="res://Scenes/Battle/Assets/WitchCommand.png" id="13_7l6dm"]
 [ext_resource type="Texture2D" uid="uid://c874jgwsucl7l" path="res://Scenes/Battle/Assets/SpellCommand.png" id="14_gflsh"]
 [ext_resource type="Texture2D" uid="uid://bjde4nx2jlk0t" path="res://Scenes/Battle/Assets/TacticsCommand.png" id="15_446dc"]
+[ext_resource type="Texture2D" uid="uid://dtpgcfywcdx0p" path="res://Scenes/Battle/Assets/TurnCommand.png" id="16_1gakd"]
 [ext_resource type="Texture2D" uid="uid://cqal6qlsn6lgn" path="res://Global Assets/Graphics/Monster Graphics/aconidFront.png" id="17_pmunv"]
 [ext_resource type="Texture2D" uid="uid://cmq32un2xwhha" path="res://Global Assets/Graphics/Monster Graphics/PlayerChar.png" id="19_nax5p"]
 
@@ -107,10 +108,6 @@ selectMat = ExtResource("7_gf7jt")
 gridOffset = Vector3(-4.5, 0.5, -0.5)
 currentBattler = NodePath("Battler1")
 
-[node name="AttackManager" type="Node" parent="."]
-
-[node name="TurnManager" type="Node" parent="."]
-
 [node name="StatsManager" type="Node" parent="."]
 
 [node name="Commands" type="Node3D" parent="." node_paths=PackedStringArray("battleManager")]
@@ -189,6 +186,18 @@ texture = ExtResource("15_446dc")
 monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Commands/Tactics/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, 0)
+shape = SubResource("BoxShape3D_npvua")
+
+[node name="EndTurn" type="Sprite3D" parent="Commands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+texture = ExtResource("16_1gakd")
+
+[node name="Area3D" type="Area3D" parent="Commands/EndTurn"]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Commands/EndTurn/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, 0)
 shape = SubResource("BoxShape3D_npvua")
 
@@ -512,6 +521,8 @@ offset_bottom = 0.0
 [connection signal="mouse_exited" from="Commands/Spell/Area3D" to="Commands" method="SelectMenu" binds= ["Spell", true]]
 [connection signal="mouse_entered" from="Commands/Tactics/Area3D" to="Commands" method="SelectMenu" binds= ["Tactics"]]
 [connection signal="mouse_exited" from="Commands/Tactics/Area3D" to="Commands" method="SelectMenu" binds= ["Tactics", true]]
+[connection signal="mouse_entered" from="Commands/EndTurn/Area3D" to="Commands" method="SelectMenu" binds= ["EndTurn"]]
+[connection signal="mouse_exited" from="Commands/EndTurn/Area3D" to="Commands" method="SelectMenu" binds= ["EndTurn", true]]
 [connection signal="mouse_entered" from="FaebleStage/GridSquareT1/Area3D" to="." method="SelectSquare" binds= [Vector2i(0, 0)]]
 [connection signal="mouse_exited" from="FaebleStage/GridSquareT1/Area3D" to="." method="SelectSquare" binds= [Vector2i(0, 0), true]]
 [connection signal="mouse_entered" from="FaebleStage/GridSquareT2/Area3D" to="." method="SelectSquare" binds= [Vector2i(1, 0)]]

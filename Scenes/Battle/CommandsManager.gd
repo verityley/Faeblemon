@@ -1,10 +1,12 @@
 extends Node3D
+class_name Commands
 #Contains the actions and methods for basic UI option flow
 #Also contains current state of turn, and sends signals to board state on UI selection
 @export var menuState:String = "Start" #Start, Wait, Witch, Familiar, Hide
 @export var battleManager:BattleManager
-@export var selectedBattler:Battler #extremely TEMPORARY
+@export var selectedBattler:Battler
 @export var menuOffset:Vector3
+var menuHidden:bool
 var selectedState:String
 var hideState:String
 var optionSelected:Node3D
@@ -13,7 +15,7 @@ var familiarChosen:bool
 var moveTaken:bool
 var attackTaken:bool
 
-@export var tempAttack:Skill
+@export var tempAttack:Skill #extremely TEMPORARY
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,23 +32,33 @@ func _input(event):
 			MenuFlow("Hide")
 			print("Hiding Menu")
 	
+	if event.is_action_pressed("RightMouse") and !menuHidden:
+		if menuState != "Reset"  and menuState != "Start":
+			if menuState == "Witch" and !witchChosen:
+				MenuFlow("Start")
+			elif menuState == "Familiar" and !familiarChosen:
+				MenuFlow("Start")
+	
 	if optionSelected != null:
 		if event.is_action_pressed("Confirm") or event.is_action_pressed("LeftMouse"):
 			MenuFlow(selectedState)
 			selectedState = ""
 
 func MenuFlow(state):
-	position = selectedBattler.position + menuOffset
 	if state == "Reset": #Use this to clear all variable values, end of turn(?)
-		HideMenu(true, false)
+		#HideMenu(true, false)
+		if selectedBattler != null:
+			position = selectedBattler.position + menuOffset
 		selectedState = ""
 		witchChosen = false
 		familiarChosen = false
 		moveTaken = false
 		attackTaken = false
-		optionSelected.scale = Vector3(1,1,1)
-		optionSelected = null
-		menuState = "Start"
+		if optionSelected != null:
+			optionSelected.scale = Vector3(1,1,1)
+			optionSelected = null
+		MenuFlow("Start")
+	
 	if state == "Hide": #Temporarily hide, but remember last menu
 		HideMenu(true)
 		menuState = "Hide"
@@ -54,8 +66,11 @@ func MenuFlow(state):
 		HideMenu(false)
 	
 	if state == "Start": #Fresh state, show topmost available options
+		#show()
+		position = selectedBattler.position + menuOffset
 		for button in get_children():
 			button.hide()
+		$EndTurn.show()
 		if witchChosen:
 			state = "Witch"
 		elif familiarChosen:
@@ -65,11 +80,14 @@ func MenuFlow(state):
 			$Witch.show()
 			menuState = "Start"
 	
+	if state == "EndTurn":
+		battleManager.ProgressTurn()
+		MenuFlow("Reset")
 	
 	if state == "Familiar": #Familiar acting, show move and attack
 		for button in get_children():
 			button.hide()
-		familiarChosen = true
+		$EndTurn.show()
 		if !moveTaken or selectedBattler.movepoints > 0:
 			$Move.show() #eventually replace with greyed out unclickable option
 		if !attackTaken:
@@ -77,8 +95,9 @@ func MenuFlow(state):
 		menuState = "Familiar"
 	
 	if state == "Move": #Familiar moving, show movement grid and move points
-		for button in get_children():
-			button.hide()
+		#for button in get_children():
+			#button.hide()
+		HideMenu(true, true)
 		battleManager.CheckMoves(selectedBattler) #TEMPORARY
 		battleManager.ChangeBoardState("Moving")
 		print(battleManager.boardState)
@@ -86,8 +105,9 @@ func MenuFlow(state):
 		pass
 	
 	if state == "Attack": #Familiar attacking, show attack options, mana, and ranges
-		for button in get_children():
-			button.hide()
+		#for button in get_children():
+			#button.hide()
+		HideMenu(true, true)
 		battleManager.CheckAttackRange(selectedBattler, tempAttack)
 		battleManager.ChangeBoardState("Attacking")
 		menuState = "Attack"
@@ -97,7 +117,7 @@ func MenuFlow(state):
 	if state == "Witch": #Witch selected, show tactics and spells
 		for button in get_children():
 			button.hide()
-		witchChosen = true
+		$EndTurn.show()
 		if !moveTaken:
 			$Tactics.show()
 		if !attackTaken:
@@ -117,7 +137,10 @@ func MenuFlow(state):
 		pass
 
 func HideMenu(hide:bool, recall:bool=true):
+	if selectedBattler != null:
+		position = selectedBattler.position + menuOffset
 	if hide:
+		menuHidden = true
 		if recall:
 			hideState = menuState
 		else:
@@ -125,6 +148,7 @@ func HideMenu(hide:bool, recall:bool=true):
 		for button in get_children():
 			button.hide()
 	else:
+		menuHidden = false
 		if recall and hideState != null:
 			MenuFlow(hideState)
 		else:
@@ -132,7 +156,8 @@ func HideMenu(hide:bool, recall:bool=true):
 
 func SelectMenu(state:String, exit=false):
 	if exit: #If exited or canceled, revert scale and value
-		optionSelected.scale = Vector3(1,1,1)
+		if optionSelected != null:
+			optionSelected.scale = Vector3(1,1,1)
 		optionSelected = null
 		selectedState = ""
 		return

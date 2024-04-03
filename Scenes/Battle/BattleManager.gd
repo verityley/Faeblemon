@@ -5,7 +5,7 @@ class_name BattleManager
 @export_category("Initialization")
 @export var gridDatabase:Dictionary
 @export var stageMesh:Node3D
-@export var commandMenu:Node3D
+@export var commandMenu:Commands
 @export var stageSize:Vector2i = Vector2i(9,2)
 @export var battlerObjects:Array[Battler] #Stores the battler objects for each faebleon the field
 
@@ -41,6 +41,19 @@ func _ready():
 	pass
 
 func _input(event):
+	if event.is_action_pressed("RightMouse") and boardState != "Waiting":
+		if boardState == "Moving":
+			commandMenu.HideMenu(false, true)
+		
+		if boardState == "Attacking":
+			commandMenu.HideMenu(false, true)
+		
+		for grid in gridDatabase:
+			ChangeTileOverlay(grid, "Clear")
+		selectedGrid = null
+		selectedState = ""
+		selectedPos = Vector2i(-1,-1)
+		ChangeBoardState("Waiting")
 	if selectedGrid != null: #TEMP FUNCTIONALITY NEEDS STATE CHECK
 		if event.is_action_pressed("Confirm") or event.is_action_pressed("LeftMouse"):
 			if boardState == "Moving":
@@ -48,12 +61,18 @@ func _input(event):
 				spentPoints = abs(currentBattler.positionIndex.x - selectedPos.x)
 				spentPoints += abs(currentBattler.positionIndex.y - selectedPos.y)
 				currentBattler.movepoints -= spentPoints
+				commandMenu.HideMenu(true, true)
 				MoveTo(currentBattler, selectedPos)
 				commandMenu.moveTaken = true
+				commandMenu.familiarChosen = true
+				commandMenu.HideMenu(false, false)
 			if boardState == "Attacking":
-				commandMenu.attackTaken = true
-				#TEMPTEMPTEMP
 				AttackAnim(currentBattler, selectedPos, true)
+				commandMenu.HideMenu(true, true)
+				commandMenu.attackTaken = true
+				commandMenu.familiarChosen = true
+				commandMenu.HideMenu(false, false)
+				#TEMPTEMPTEMP
 			
 			for grid in gridDatabase:
 				ChangeTileOverlay(grid, "Clear")
@@ -62,7 +81,7 @@ func _input(event):
 			selectedPos = Vector2i(-1,-1)
 			commandMenu.MenuFlow("Start")
 			ChangeBoardState("Waiting")
-			print(selectedPos)
+			#print(selectedPos)
 
 #------------------------------Board State Functions--------------------------------------
 
@@ -112,10 +131,9 @@ func InitBoardState(playerTeam:Array[Faeble], enemyTeam:Array[Faeble]):
 		RemoveBattler(3)
 	#Initialize connections to stat cards
 	#Initialize turn order and set first turn actor
+	InitOrder()
 	#TEMP
-	commandMenu.selectedBattler = battlerObjects[0]
-	battlerObjects[0].add_child(commandMenu)
-	commandMenu.MenuFlow("Start")
+	
 	#END TEMP
 #endregion
 
@@ -186,7 +204,7 @@ func ChangeTileOverlay(location:Vector2i, state:String):
 		ChangeTileData(location, "State", "Open")
 	elif state == "Range":
 		gridSquare.set_surface_override_material(0, rangeMat)
-		ChangeTileData(location, "Active", true)
+		ChangeTileData(location, "Active", false)
 		ChangeTileData(location, "State", "Range")
 	elif state == "Target":
 		gridSquare.set_surface_override_material(0, targetMat)
@@ -279,26 +297,14 @@ func ShowHideCard():
 #endregion
 
 #------------------------------Turn Functions--------------------------------------
-#START HERE NEXT ERIKA, Turn-end button too, or end when move and attack fulfilled
 
 #region Turn Functions
-func InitOrder():
+func InitOrder(): #Resets speed first, for first turn population
 	print("Starting new battle.")
-	PopulateOrder()
-
-func PopulateOrder():
-	pass
-
-func ProgressTurn():
-	pass
-
-func NewRound():
-	pass
-
-func SpeedSorter(a:Battler,b:Battler) -> bool:
-	if a.currentSpeed > b.currentSpeed:
-		return true
-	return false
+	ResetSpeed(battlerObjects)
+	PopulateOrder(battlerObjects.duplicate())
+	ProgressTurn()
+	commandMenu.MenuFlow("Reset")
 
 func ResetSpeed(battlers:Array[Battler]):
 	for battler in battlers:
@@ -309,6 +315,31 @@ func ResetSpeed(battlers:Array[Battler]):
 		#if solo, +1 pointsmod
 		battler.currentSpeed = battler.faebleEntry.grace + speedMod
 		battler.movepoints = battler.currentSpeed/5 + pointsMod
+
+func PopulateOrder(battlers:Array[Battler]):
+	battlers.sort_custom(SpeedSorter)
+	roundOrder = battlers
+	for battler in roundOrder:
+		print(battler.faebleEntry.name)
+
+func ProgressTurn():
+	currentBattler = roundOrder.pop_front()
+	if currentBattler != null:
+		commandMenu.selectedBattler = currentBattler
+		print("It is ", currentBattler.faebleEntry.name, "'s turn.")
+	else:
+		NewRound()
+
+func NewRound(): #Resets speed after population, to allow prior turn moves to reduce speed
+	print("Starting new round.")
+	PopulateOrder(battlerObjects.duplicate())
+	ResetSpeed(roundOrder)
+	ProgressTurn()
+
+func SpeedSorter(a:Battler,b:Battler) -> bool:
+	if a.currentSpeed > b.currentSpeed:
+		return true
+	return false
 #endregion
 
 #------------------------------Movement Functions--------------------------------------
