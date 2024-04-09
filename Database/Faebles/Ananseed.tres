@@ -25,12 +25,13 @@ brawn = 4
 vigor = 0
 wit = 6
 ambition = 8
-grace = 8
+grace = 18
 resolve = 5
 heart = 6
 profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
 prefPrimary = ""
 prefSecondary = ""
+HPCap = 60
 skillPool = {
 ExtResource("2_nq16r"): 1,
 ExtResource("3_pmtl0"): 2,

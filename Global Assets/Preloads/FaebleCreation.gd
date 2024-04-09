@@ -5,11 +5,12 @@ extends Node
 @export var altSchoolOdds:int = 500
 
 @export var rewardRatio:Vector2i = Vector2i(4,2)
-@export var heartRatio:Vector2i = Vector2i(2,3)
+@export var heartRatio:Vector2i = Vector2i(2,1)
 @export var energyRatio:Vector2i = Vector2i(1,1)
 
 func _ready():
-	CreateFaeble(preload("res://Database/Faebles/001Awoolf.tres"), 8)
+	#CreateFaeble(preload("res://Database/Faebles/001Awoolf.tres"), 8)
+	
 	pass
 
 
@@ -147,6 +148,8 @@ func CreateFaeble(faebleEntry:Faeble, initLevel:int, mook:bool = false, commande
 			instance.energyIncreases += 1
 	
 	instance.maxHP = (instance.heart*heartRatio.x) + (instance.hpIncreases*heartRatio.y)
+	instance.maxHP = clampi(instance.maxHP, 1, instance.HPCap)
+	instance.currentHP = instance.maxHP
 	var baseEnergy:int = float(instance.brawn + instance.wit) / 2
 	instance.maxEnergy = (baseEnergy*energyRatio.x) + (instance.energyIncreases*energyRatio.y)
 	prints("HP Increases:", instance.hpIncreases, "Energy Increases:", instance.energyIncreases)
@@ -196,8 +199,23 @@ func CreateFaeble(faebleEntry:Faeble, initLevel:int, mook:bool = false, commande
 	return instance
 
 
-func AddToCity(faebleInstance:Faeble):
-	pass
+func CreateEncounter(enemyFaebles:Array[Faeble], levelGoal:int, _enemyWitch):
+	var level:int = clampi(levelGoal - enemyFaebles.size(), 1, levelGoal)
+	for faeble in enemyFaebles:
+		if faeble == null:
+			continue
+		level += clampi(level+1, 1, levelGoal)
+		CreateFaeble(faeble, level)
+	var index:int = 0
+	for faeble in FaebleStorage.enemyParty:
+		if faeble == null:
+			index += 1
+			continue
+		level += clampi(level+1, 1, levelGoal)
+		print("Creating party instance of ", faeble.name)
+		var faebleInstance = FaebleCreation.CreateFaeble(faeble, 4)
+		FaebleStorage.enemyParty[index] = faebleInstance
+		index += 1 
 
 func LevelUp(faebleInstance:Faeble):
 	pass

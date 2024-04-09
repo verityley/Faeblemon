@@ -42,6 +42,7 @@ var energyIncreases:int = 0
 @export var prefSecondary:String
 
 @export_category("Combat Parameters")
+@export var HPCap:int = 60
 var maxHP:int = 1
 var maxEnergy:int = 1
 @export var skillPool:Dictionary

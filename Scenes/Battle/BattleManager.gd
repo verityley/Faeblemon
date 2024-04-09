@@ -6,6 +6,8 @@ class_name BattleManager
 @export var gridDatabase:Dictionary
 @export var stageMesh:Node3D
 @export var commandMenu:Commands
+@export var battleUI:Node
+var battleBoxes:Array[StatusBox]
 @export var stageSize:Vector2i = Vector2i(9,2)
 @export var battlerObjects:Array[Battler] #Stores the battler objects for each faebleon the field
 
@@ -36,8 +38,10 @@ var roundOrder:Array[Battler]
 #var boardState:String
 
 func _ready():
+	FaebleCreation.CreateEncounter(FaebleStorage.enemyParty, 4, null)
 	PopulateGrid()
 	InitBoardState(FaebleStorage.playerParty, FaebleStorage.enemyParty)
+	InitOrder()
 	pass
 
 func _input(event):
@@ -57,10 +61,13 @@ func _input(event):
 	if selectedGrid != null: #TEMP FUNCTIONALITY NEEDS STATE CHECK
 		if event.is_action_pressed("Confirm") or event.is_action_pressed("LeftMouse"):
 			if boardState == "Moving":
-				var spentPoints:int #TEMPORARY
+				#TEMPORARY
+				var spentPoints:int 
 				spentPoints = abs(currentBattler.positionIndex.x - selectedPos.x)
 				spentPoints += abs(currentBattler.positionIndex.y - selectedPos.y)
-				currentBattler.movepoints -= spentPoints
+				currentBattler.ChangeMovepoints(-spentPoints)
+				currentBattler.currentSpeed -= spentPoints*5
+				#TEMP TEMP TEMP
 				commandMenu.HideMenu(true, true)
 				MoveTo(currentBattler, selectedPos)
 				commandMenu.moveTaken = true
@@ -101,40 +108,94 @@ func ChangeBoardState(state:String):
 func InitBoardState(playerTeam:Array[Faeble], enemyTeam:Array[Faeble]):
 	#Opening animations
 	#Import battlers for each team, assign teams, assign starting locations
+	for box in battleUI.get_children():
+		battleBoxes.append(box)
 	var currentFaeble
+	var removeBattler:Array = [null, null, null, null]
+	var partyIndex:int = 0
 	#Player's First Faeble
-	currentFaeble = playerTeam.pop_front() 
-	if currentFaeble != null and !currentFaeble.fainted:
+	currentFaeble = playerTeam[partyIndex]
+	while currentFaeble == null or currentFaeble.fainted:
+		partyIndex += 1
+		if partyIndex >= FaebleStorage.maxPartySize:
+			print("Error! Player has no Faebles to fight with!")
+			print("P.S. This should never happen.")
+			removeBattler[0] = battlerObjects[0]
+			currentFaeble = null
+			break
+		print("Faeble not available, choosing next in party.")
+		currentFaeble = playerTeam[partyIndex]
+	if currentFaeble != null:
 		AddBattler(0, currentFaeble, true, 3, 1)
-	else:
-		print("Error! Player has no Faebles to fight with!")
-		RemoveBattler(0)
+		print("Faeble found, assigning, ", currentFaeble.name," to player position 1.")
+	
 	#Player's Second Faeble
-	currentFaeble = playerTeam.pop_front() 
-	if currentFaeble != null and !currentFaeble.fainted:
-		AddBattler(1, currentFaeble, true, 2, 0)
+	partyIndex += 1
+	if partyIndex < FaebleStorage.maxPartySize:
+		currentFaeble = playerTeam[partyIndex]
+		while currentFaeble == null or currentFaeble.fainted:
+			partyIndex += 1
+			if partyIndex >= FaebleStorage.maxPartySize:
+				print("Error! Player has no Faebles left to partner up!")
+				removeBattler[1] = battlerObjects[1]
+				currentFaeble = null
+				break
+			print("Faeble not available, choosing next in party.")
+			currentFaeble = playerTeam[partyIndex]
+		if currentFaeble != null:
+			AddBattler(1, currentFaeble, true, 2, 0)
+			print("Faeble found, assigning, ", currentFaeble.name," to player position 2.")
 	else:
-		RemoveBattler(1)
+		removeBattler[1] = battlerObjects[1]
+		print("Error! Player has no Faebles left to partner up!")
 	
 	#Enemy's First Faeble
-	currentFaeble = enemyTeam.pop_front() 
-	if currentFaeble != null and !currentFaeble.fainted:
+	partyIndex = 0
+	currentFaeble = enemyTeam[partyIndex]
+	while currentFaeble == null or currentFaeble.fainted:
+		partyIndex += 1
+		if partyIndex >= FaebleStorage.maxPartySize:
+			print("Error! Enemy has no Faebles to fight with!")
+			print("P.S. This should never EVER happen.")
+			removeBattler[2] = battlerObjects[2]
+			currentFaeble = null
+			break
+		print("Faeble not available, choosing next in party.")
+		currentFaeble = enemyTeam[partyIndex]
+	if currentFaeble != null:
 		AddBattler(2, currentFaeble, false, 5, 1)
-	else:
-		print("Error! Enemy has no Faebles to fight with!")
-		RemoveBattler(2)
-	#Enemy's Second Faeble
-	currentFaeble = enemyTeam.pop_front() 
-	if currentFaeble != null and !currentFaeble.fainted:
-		AddBattler(3, currentFaeble, false, 6, 0)
-	else:
-		RemoveBattler(3)
-	#Initialize connections to stat cards
-	#Initialize turn order and set first turn actor
-	InitOrder()
-	#TEMP
+		print("Faeble found, assigning, ", currentFaeble.name," to enemy position 1.")
 	
-	#END TEMP
+	#Enemy's Second Faeble
+	partyIndex += 1
+	if partyIndex < FaebleStorage.maxPartySize:
+		currentFaeble = enemyTeam[partyIndex]
+		while currentFaeble == null or currentFaeble.fainted:
+			partyIndex += 1
+			if partyIndex >= FaebleStorage.maxPartySize:
+				print("Error! Enemy has no Faebles left to partner up!")
+				removeBattler[3] = battlerObjects[3]
+				currentFaeble = null
+				break
+			print("Faeble not available, choosing next in party.")
+			currentFaeble = enemyTeam[partyIndex]
+		if currentFaeble != null:
+			AddBattler(3, currentFaeble, false, 6, 0)
+			print("Faeble found, assigning, ", currentFaeble.name," to enemy position 2.")
+	else:
+		removeBattler[3] = battlerObjects[3]
+		print("Error! Enemy has no Faebles left to partner up!")
+	
+	#Remove as one batch after init, to ensure AddBattler doesnt break.
+	#print(battlerObjects)
+	var index:int = 0
+	for battler in removeBattler:
+		if battler != null:
+			battler.hide()
+			battleBoxes[index].hide()
+			#battlerObjects.erase(battler)
+		index += 1
+	#print(battlerObjects)
 #endregion
 
 #------------------------------Grid Functions--------------------------------------
@@ -217,11 +278,21 @@ func SelectSquare(location:Vector2i, exit=false):
 	if exit:
 		ChangeTileOverlay(location, selectedState)
 		selectedGrid = null
+		currentBattler.statusBox.SetMovepointsDisplay(currentBattler.movepoints)
+		currentBattler.statusBox.SetSpeedDisplay(currentBattler.currentSpeed)
 		return
 	selectedGrid = gridDatabase[location]["Square"]
 	selectedState = gridDatabase[location]["State"]
 	selectedPos = location
 	selectedGrid.set_surface_override_material(0, selectMat)
+	#TEMP TEMP TEMP
+	if boardState == "Moving":
+		var estPoints:int 
+		estPoints = abs(currentBattler.positionIndex.x - selectedPos.x)
+		estPoints += abs(currentBattler.positionIndex.y - selectedPos.y)
+		currentBattler.statusBox.SetMovepointsDisplay(currentBattler.movepoints - estPoints)
+		var estSpeed:int = clampi(currentBattler.currentSpeed - (estPoints*5),0,30)
+		currentBattler.statusBox.SetSpeedDisplay(estSpeed)
 	#Send signal that something was selected
 
 func SelectArea(location:Vector2i, atkRange:int, exit=false, allRows:bool=false):
@@ -270,6 +341,7 @@ func SwapBattler():
 func AddBattler(index:int, faebleInstance:Faeble, player:bool, xPos:int, yPos:int):
 	battlerObjects[index].faebleEntry = faebleInstance
 	battlerObjects[index].playerControl = player
+	battlerObjects[index].statusBox = battleBoxes[index]
 	battlerObjects[index].currentHP = faebleInstance.maxHP
 	battlerObjects[index].currentEnergy = faebleInstance.maxEnergy
 	battlerObjects[index].currentSpeed = faebleInstance.grace
@@ -280,10 +352,21 @@ func AddBattler(index:int, faebleInstance:Faeble, player:bool, xPos:int, yPos:in
 	ChangeTileData(Vector2i(xPos,yPos), "Occupied", true)
 	var texture = battlerObjects[index].get_child(0).get_surface_override_material(0)
 	texture.albedo_texture = faebleInstance.sprite
+	battlerObjects[index].statusBox.ResetStats(faebleInstance)
 	battlerObjects[index].show()
 
-func RemoveBattler(index:int):
-	battlerObjects[index].hide()
+func RemoveBattler(battler:Battler):
+	battler.hide()
+	battler.statusBox.hide()
+	battler.faebleEntry = null
+	battler.playerControl = false
+	battler.statusBox = null
+	battler.currentHP = 0
+	battler.currentEnergy = 0
+	battler.currentSpeed = 0
+	ChangeTileData(battler.positionIndex, "Occupancy", null)
+	ChangeTileData(battler.positionIndex, "Occupied", false)
+	battler.positionIndex = Vector2i(-1,-1)
 	#battlers.remove_at(polePosition)
 
 func AttachMenu():
@@ -301,22 +384,19 @@ func ShowHideCard():
 #region Turn Functions
 func InitOrder(): #Resets speed first, for first turn population
 	print("Starting new battle.")
-	ResetSpeed(battlerObjects)
+	for battler in battlerObjects:
+		if battler.faebleEntry == null:
+			continue
+		else:
+			battler.ResetSpeed()
 	PopulateOrder(battlerObjects.duplicate())
 	ProgressTurn()
 	commandMenu.MenuFlow("Reset")
 
-func ResetSpeed(battlers:Array[Battler]):
-	for battler in battlers:
-		var speedMod:int = 0
-		var pointsMod:int = 1
-		#if speed reduce status threshold met, -x on speedmod
-		#if speed stage up or down, +x to speedmod
-		#if solo, +1 pointsmod
-		battler.currentSpeed = battler.faebleEntry.grace + speedMod
-		battler.movepoints = battler.currentSpeed/5 + pointsMod
-
 func PopulateOrder(battlers:Array[Battler]):
+	for battler in battlers:
+		if battler.faebleEntry == null:
+			battlers.erase(battler)
 	battlers.sort_custom(SpeedSorter)
 	roundOrder = battlers
 	for battler in roundOrder:
@@ -333,12 +413,20 @@ func ProgressTurn():
 func NewRound(): #Resets speed after population, to allow prior turn moves to reduce speed
 	print("Starting new round.")
 	PopulateOrder(battlerObjects.duplicate())
-	ResetSpeed(roundOrder)
+	for battler in roundOrder:
+		if battler.faebleEntry == null:
+			continue
+		else:
+			battler.ResetSpeed()
 	ProgressTurn()
 
 func SpeedSorter(a:Battler,b:Battler) -> bool:
 	if a.currentSpeed > b.currentSpeed:
 		return true
+	elif a.currentSpeed == b.currentSpeed:
+		var coinFlip:int = RandomNumberGenerator.new().randi_range(0,1)
+		if coinFlip == 1:
+			return true
 	return false
 #endregion
 
@@ -362,7 +450,7 @@ func MoveTo(battler:Battler, location:Vector2i):
 	commandMenu.hide()
 	var distance = abs(location.x - battler.positionIndex.x)*0.3
 	if facing != mesh.rotation.y:
-		tween.tween_property(mesh, "rotation", Vector3(0,facing,0), distance/2)
+		tween.tween_property(mesh, "rotation", Vector3(0,facing,0), 0.3)
 	tween.tween_property(battler, "position", (Vector3(location.x,0,battler.positionIndex.y) + gridOffset), distance)
 	tween.tween_property(battler, "position", (Vector3(location.x,0,location.y) + gridOffset), 0.2)
 	await tween.finished

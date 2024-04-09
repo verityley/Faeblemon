@@ -8,7 +8,6 @@
 [ext_resource type="Material" uid="uid://0j0wmectwi5e" path="res://Scenes/Battle/Assets/GridOpen.tres" id="4_2dq0b"]
 [ext_resource type="Material" uid="uid://56bjihwx8oo4" path="res://Scenes/Battle/Assets/GridTarget.tres" id="6_uichl"]
 [ext_resource type="Material" uid="uid://q178eedsw24q" path="res://Scenes/Battle/Assets/GridSelect.tres" id="7_gf7jt"]
-[ext_resource type="PackedScene" uid="uid://byv0fp70da6ui" path="res://Scenes/Battle/StatusBox.tscn" id="8_br008"]
 [ext_resource type="Script" path="res://Scenes/Battle/Battler.gd" id="9_7kgqg"]
 [ext_resource type="Script" path="res://Scenes/Battle/CommandsManager.gd" id="10_38tva"]
 [ext_resource type="Texture2D" uid="uid://ckj8wm0yhey45" path="res://Scenes/Battle/Assets/FamiliarCommand.png" id="10_clb5f"]
@@ -21,9 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://dtpgcfywcdx0p" path="res://Scenes/Battle/Assets/TurnCommand.png" id="16_1gakd"]
 [ext_resource type="Texture2D" uid="uid://cqal6qlsn6lgn" path="res://Global Assets/Graphics/Monster Graphics/aconidFront.png" id="17_pmunv"]
 [ext_resource type="Texture2D" uid="uid://cmq32un2xwhha" path="res://Global Assets/Graphics/Monster Graphics/PlayerChar.png" id="19_nax5p"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_npvua"]
-size = Vector3(0.6, 0.6, 0.1)
+[ext_resource type="PackedScene" uid="uid://7jeufek082os" path="res://Scenes/Battle/BattleBook.tscn" id="21_hb1ek"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_v6vgs"]
 lightmap_size_hint = Vector2i(12, 17)
@@ -64,21 +61,27 @@ transparency = 1
 cull_mode = 2
 albedo_texture = SubResource("CompressedTexture2D_k7c3w")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_npvua"]
+size = Vector3(0.6, 0.6, 0.1)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_cte37"]
 size = Vector2(1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cxbsr"]
 size = Vector3(1, 0.2, 1)
 
-[sub_resource type="QuadMesh" id="QuadMesh_jbgqr"]
-size = Vector2(3, 1)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_25bou"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_c5i2l"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2em3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvl1e"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_25bou")
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_c5i2l")
+
+[sub_resource type="QuadMesh" id="QuadMesh_t22fg"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_fvl1e")
+size = Vector2(16, 9)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o5iau"]
 transparency = 1
@@ -91,11 +94,12 @@ lightmap_size_hint = Vector2i(12, 17)
 material = SubResource("StandardMaterial3D_o5iau")
 size = Vector2(1, 1.5)
 
-[node name="BattleStage" type="Node3D" node_paths=PackedStringArray("stageMesh", "commandMenu", "battlerObjects", "fullstageCam", "overviewCam", "currentBattler")]
+[node name="BattleStage" type="Node3D" node_paths=PackedStringArray("stageMesh", "commandMenu", "battleUI", "battlerObjects", "fullstageCam", "overviewCam", "currentBattler")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 script = ExtResource("1_505cq")
 stageMesh = NodePath("FaebleStage")
 commandMenu = NodePath("Commands")
+battleUI = NodePath("SubViewport/BattleBook")
 battlerObjects = [NodePath("Battler1"), NodePath("Battler2"), NodePath("Battler3"), NodePath("Battler4")]
 fullstageCam = NodePath("FullstageCam")
 overviewCam = NodePath("OverviewCam")
@@ -108,7 +112,60 @@ selectMat = ExtResource("7_gf7jt")
 gridOffset = Vector3(-4.5, 0.5, -0.5)
 currentBattler = NodePath("Battler1")
 
-[node name="StatsManager" type="Node" parent="."]
+[node name="Battler1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, 0.5)
+script = ExtResource("9_7kgqg")
+playerControl = true
+currentHP = 10
+currentSpeed = 10
+movepoints = 5
+positionIndex = Vector2i(3, 1)
+
+[node name="FaebleMesh" type="MeshInstance3D" parent="Battler1"]
+mesh = SubResource("QuadMesh_v6vgs")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_qd73e")
+
+[node name="Battler2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.5, -0.5)
+script = ExtResource("9_7kgqg")
+playerControl = true
+currentHP = 10
+currentSpeed = 10
+movepoints = 2
+positionIndex = Vector2i(2, 0)
+
+[node name="FaebleMesh" type="MeshInstance3D" parent="Battler2"]
+mesh = SubResource("QuadMesh_e8kaj")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_8ai5o")
+
+[node name="Battler3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
+script = ExtResource("9_7kgqg")
+currentHP = 10
+currentSpeed = 10
+movepoints = 2
+positionIndex = Vector2i(5, 1)
+facingFlip = true
+
+[node name="FaebleMesh" type="MeshInstance3D" parent="Battler3"]
+mesh = SubResource("QuadMesh_62in7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_0lqss")
+
+[node name="Battler4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, -0.5)
+script = ExtResource("9_7kgqg")
+currentHP = 10
+currentSpeed = 10
+movepoints = 2
+positionIndex = Vector2i(6, 0)
+facingFlip = true
+
+[node name="FaebleMesh" type="MeshInstance3D" parent="Battler4"]
+mesh = SubResource("QuadMesh_4abtl")
+surface_material_override/0 = SubResource("StandardMaterial3D_cp2ci")
 
 [node name="Commands" type="Node3D" parent="." node_paths=PackedStringArray("battleManager")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.6, 0.5)
@@ -200,65 +257,6 @@ monitoring = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Commands/EndTurn/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, 0)
 shape = SubResource("BoxShape3D_npvua")
-
-[node name="Battler1" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, 0.5)
-script = ExtResource("9_7kgqg")
-playerControl = true
-currentHP = 10
-currentSpeed = 10
-movepoints = 5
-positionIndex = Vector2i(3, 1)
-
-[node name="FaebleMesh" type="MeshInstance3D" parent="Battler1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("QuadMesh_v6vgs")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_qd73e")
-
-[node name="Battler2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.5, -0.5)
-script = ExtResource("9_7kgqg")
-playerControl = true
-currentHP = 10
-currentSpeed = 10
-movepoints = 2
-positionIndex = Vector2i(2, 0)
-
-[node name="FaebleMesh" type="MeshInstance3D" parent="Battler2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("QuadMesh_e8kaj")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_8ai5o")
-
-[node name="Battler3" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
-script = ExtResource("9_7kgqg")
-currentHP = 10
-currentSpeed = 10
-movepoints = 2
-positionIndex = Vector2i(5, 1)
-facingFlip = true
-
-[node name="FaebleMesh" type="MeshInstance3D" parent="Battler3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("QuadMesh_62in7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_0lqss")
-
-[node name="Battler4" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, -0.5)
-script = ExtResource("9_7kgqg")
-currentHP = 10
-currentSpeed = 10
-movepoints = 2
-positionIndex = Vector2i(6, 0)
-facingFlip = true
-
-[node name="FaebleMesh" type="MeshInstance3D" parent="Battler4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("QuadMesh_4abtl")
-surface_material_override/0 = SubResource("StandardMaterial3D_cp2ci")
 
 [node name="FaebleStage" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, -0.5, -1, -0.55)
@@ -462,28 +460,12 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FaebleStage/GridSquareB9/Area3D"]
 shape = SubResource("BoxShape3D_cxbsr")
 
+[node name="BattleBack" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.772741, 0.207055, 0, -0.207055, 0.772741, -0.5, 0.3, -2)
+mesh = SubResource("QuadMesh_t22fg")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.699663, 0.714473, 0, -0.714473, 0.699663, 0, 9.46926, 0)
-
-[node name="StatusCard1" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, -2)
-mesh = SubResource("QuadMesh_jbgqr")
-surface_material_override/0 = SubResource("StandardMaterial3D_h2em3")
-
-[node name="StatusCard2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.75, -2)
-mesh = SubResource("QuadMesh_jbgqr")
-surface_material_override/0 = SubResource("StandardMaterial3D_h2em3")
-
-[node name="StatusCard3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, -2)
-mesh = SubResource("QuadMesh_jbgqr")
-surface_material_override/0 = SubResource("StandardMaterial3D_h2em3")
-
-[node name="StatusCard4" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.75, -2)
-mesh = SubResource("QuadMesh_jbgqr")
-surface_material_override/0 = SubResource("StandardMaterial3D_h2em3")
 
 [node name="Leader1" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -5.5, 0.65, 0)
@@ -503,11 +485,9 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0.866026, 0, -0.866026, 0.5, -0.5, 6, 3
 fov = 45.0
 
 [node name="SubViewport" type="SubViewport" parent="."]
-size = Vector2i(320, 104)
+size = Vector2i(1280, 720)
 
-[node name="StatusBox" parent="SubViewport" instance=ExtResource("8_br008")]
-offset_right = 0.0
-offset_bottom = 0.0
+[node name="BattleBook" parent="SubViewport" instance=ExtResource("21_hb1ek")]
 
 [connection signal="mouse_entered" from="Commands/Familiar/Area3D" to="Commands" method="SelectMenu" binds= ["Familiar"]]
 [connection signal="mouse_exited" from="Commands/Familiar/Area3D" to="Commands" method="SelectMenu" binds= ["Familiar", true]]
