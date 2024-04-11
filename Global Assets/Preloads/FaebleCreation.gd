@@ -71,6 +71,7 @@ func CreateFaeble(faebleEntry:Faeble, initLevel:int, mook:bool = false, commande
 	
 	#Start of ASI and Level-up reward Assignment
 	instance.level = initLevel
+	instance.tier = floori(float(initLevel) / 5) + 1
 	instance.traitImprovements = floori(float(initLevel) / 4) #Gain 2 points every 4 levels
 	prints("Level:", instance.level, "Current ASIs:", instance.traitImprovements)
 	var addToPrim:int = 0

@@ -32,10 +32,20 @@ var boardState:String
 var selectedGrid:Node3D
 var selectedState:String
 var selectedPos:Vector2i
+var selectedArea:Array[Vector2i]
 var selectedCamera:Node
-@export var currentBattler:Battler
-var roundOrder:Array[Battler]
 #var boardState:String
+
+@export_category("Battle-State Variables")
+@export var currentPhase:PlanarPhase
+@export var currentBattler:Battler
+var currentSkill:Skill
+var roundOrder:Array[Battler]
+#@export var weaknessFactor:float = 0.5
+#@export var resistanceFactor:float = 1
+#@export var defenseFactor:float = 0
+@export var stageIncrease:int = 2
+
 
 func _ready():
 	FaebleCreation.CreateEncounter(FaebleStorage.enemyParty, 4, null)
@@ -47,9 +57,11 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("RightMouse") and boardState != "Waiting":
 		if boardState == "Moving":
+			SelectSquare(selectedPos, true)
 			commandMenu.HideMenu(false, true)
 		
 		if boardState == "Attacking":
+			SelectSquare(selectedPos, true)
 			commandMenu.HideMenu(false, true)
 		
 		for grid in gridDatabase:
@@ -66,7 +78,7 @@ func _input(event):
 				spentPoints = abs(currentBattler.positionIndex.x - selectedPos.x)
 				spentPoints += abs(currentBattler.positionIndex.y - selectedPos.y)
 				currentBattler.ChangeMovepoints(-spentPoints)
-				currentBattler.currentSpeed -= spentPoints*5
+				#currentBattler.currentSpeed -= spentPoints*5
 				#TEMP TEMP TEMP
 				commandMenu.HideMenu(true, true)
 				MoveTo(currentBattler, selectedPos)
@@ -74,7 +86,13 @@ func _input(event):
 				commandMenu.familiarChosen = true
 				commandMenu.HideMenu(false, false)
 			if boardState == "Attacking":
-				AttackAnim(currentBattler, selectedPos, true)
+				if currentSkill.canBurst:
+					for grid in selectedArea:
+						if gridDatabase[grid]["Occupant"] != null:
+							currentSkill.Execute(self, currentBattler, gridDatabase[grid]["Occupant"])
+				elif gridDatabase[selectedPos]["Occupant"] != null:
+					currentSkill.Execute(self, currentBattler, gridDatabase[selectedPos]["Occupant"])
+					AttackAnim(currentBattler, selectedPos, true)
 				commandMenu.HideMenu(true, true)
 				commandMenu.attackTaken = true
 				commandMenu.familiarChosen = true
@@ -216,7 +234,7 @@ func PopulateGrid():
 			attributes["Active"] = bool(false)
 			attributes["Occupied"] = bool(false) #if tile is blocked and filled
 			attributes["Obstacle"] = null #Any stage hazard present, not all Occupy
-			attributes["Occupancy"] = null #Battler present in that position
+			attributes["Occupant"] = null #Battler present in that position
 			gridDatabase[vectorIndex] = attributes
 			ChangeTileOverlay(vectorIndex, "Clear")
 			#prints(vectorIndex, gridDatabase[vectorIndex]["Square"].name)
@@ -241,9 +259,9 @@ func ChangeTileData(location:Vector2i, attribute:String, dataToChange):
 		if dataToChange != null:
 			print("Error! Obstacle entity must be of type: Obstacle")
 			return
-	if attribute == "Occupancy" and not dataToChange is Battler:
+	if attribute == "Occupant" and not dataToChange is Battler:
 		if dataToChange != null:
-			print("Error! Occupancy entity must be of type: Battler")
+			print("Error! Occupant entity must be of type: Battler")
 			return
 	#Post error check, assign value
 	gridDatabase[location][attribute] = dataToChange
@@ -265,7 +283,7 @@ func ChangeTileOverlay(location:Vector2i, state:String):
 		ChangeTileData(location, "State", "Open")
 	elif state == "Range":
 		gridSquare.set_surface_override_material(0, rangeMat)
-		ChangeTileData(location, "Active", false)
+		ChangeTileData(location, "Active", true)
 		ChangeTileData(location, "State", "Range")
 	elif state == "Target":
 		gridSquare.set_surface_override_material(0, targetMat)
@@ -278,8 +296,13 @@ func SelectSquare(location:Vector2i, exit=false):
 	if exit:
 		ChangeTileOverlay(location, selectedState)
 		selectedGrid = null
-		currentBattler.statusBox.SetMovepointsDisplay(currentBattler.movepoints)
-		currentBattler.statusBox.SetSpeedDisplay(currentBattler.currentSpeed)
+		if boardState == "Moving":
+			currentBattler.statusBox.SetMovepointsDisplay(currentBattler.movepoints)
+			currentBattler.statusBox.SetSpeedDisplay(currentBattler.currentSpeed)
+		if boardState == "Attacking":
+			if currentSkill.canBurst == true:
+				print("Exiting AoE")
+				SelectArea(location, currentSkill.burstRange, true, currentSkill.canArc)
 		return
 	selectedGrid = gridDatabase[location]["Square"]
 	selectedState = gridDatabase[location]["State"]
@@ -293,6 +316,11 @@ func SelectSquare(location:Vector2i, exit=false):
 		currentBattler.statusBox.SetMovepointsDisplay(currentBattler.movepoints - estPoints)
 		var estSpeed:int = clampi(currentBattler.currentSpeed - (estPoints*5),0,30)
 		currentBattler.statusBox.SetSpeedDisplay(estSpeed)
+	
+	if boardState == "Attacking":
+		if currentSkill.canBurst == true:
+			print("Targeting AoE")
+			SelectArea(location, currentSkill.burstRange, false, currentSkill.canArc)
 	#Send signal that something was selected
 
 func SelectArea(location:Vector2i, atkRange:int, exit=false, allRows:bool=false):
@@ -325,11 +353,14 @@ func SelectArea(location:Vector2i, atkRange:int, exit=false, allRows:bool=false)
 		for grid in gridArea:
 			ChangeTileOverlay(grid, gridDatabase[grid]["State"])
 		#selectedGrid = null
+		selectedArea.clear()
 		return
 	else:
 		for grid in gridArea:
 			gridDatabase[grid]["Square"].set_surface_override_material(0, selectMat)
+		selectedArea = gridArea.duplicate()
 	#Send signal that something was selected
+	
 #endregion
 
 #------------------------------Battler Functions--------------------------------------
@@ -348,7 +379,7 @@ func AddBattler(index:int, faebleInstance:Faeble, player:bool, xPos:int, yPos:in
 	battlerObjects[index].hide()
 	battlerObjects[index].position = Vector3(xPos,0,yPos) + gridOffset
 	battlerObjects[index].positionIndex = Vector2i(xPos,yPos)
-	ChangeTileData(Vector2i(xPos,yPos), "Occupancy", battlerObjects[index])
+	ChangeTileData(Vector2i(xPos,yPos), "Occupant", battlerObjects[index])
 	ChangeTileData(Vector2i(xPos,yPos), "Occupied", true)
 	var texture = battlerObjects[index].get_child(0).get_surface_override_material(0)
 	texture.albedo_texture = faebleInstance.sprite
@@ -364,7 +395,7 @@ func RemoveBattler(battler:Battler):
 	battler.currentHP = 0
 	battler.currentEnergy = 0
 	battler.currentSpeed = 0
-	ChangeTileData(battler.positionIndex, "Occupancy", null)
+	ChangeTileData(battler.positionIndex, "Occupant", null)
 	ChangeTileData(battler.positionIndex, "Occupied", false)
 	battler.positionIndex = Vector2i(-1,-1)
 	#battlers.remove_at(polePosition)
@@ -445,7 +476,7 @@ func MoveTo(battler:Battler, location:Vector2i):
 		facing = 0
 	print("Facing, after change: ", facing)
 	#Target position offset is x-4.5, y=0.5, z-0.5
-	ChangeTileData(battler.positionIndex, "Occupancy", null)
+	ChangeTileData(battler.positionIndex, "Occupant", null)
 	ChangeTileData(battler.positionIndex, "Occupied", false)
 	commandMenu.hide()
 	var distance = abs(location.x - battler.positionIndex.x)*0.3
@@ -458,7 +489,7 @@ func MoveTo(battler:Battler, location:Vector2i):
 	commandMenu.show()
 	battler.positionIndex = location
 	print("Facing, after tween: ", mesh.rotation.y)
-	ChangeTileData(location, "Occupancy", battler)
+	ChangeTileData(location, "Occupant", battler)
 	ChangeTileData(location, "Occupied", true)
 	
 
@@ -544,27 +575,100 @@ func CheckAttackRange(battler:Battler, attack:Skill):
 		if gridDatabase[pos]["Occupied"] == true:
 			if attack.targetAll:
 				ChangeTileOverlay(pos, "Target")
-			elif gridDatabase[pos]["Occupancy"].playerControl == false and !attack.targetAlly:
+			elif gridDatabase[pos]["Occupant"].playerControl == false and !attack.targetAlly:
 				ChangeTileOverlay(pos, "Target")
-			elif gridDatabase[pos]["Occupancy"].playerControl == true and !attack.targetAlly:
+			elif gridDatabase[pos]["Occupant"].playerControl == true and !attack.targetAlly:
 				ChangeTileOverlay(pos, "Block")
-			elif gridDatabase[pos]["Occupancy"].playerControl == false and attack.targetAlly:
+			elif gridDatabase[pos]["Occupant"].playerControl == false and attack.targetAlly:
 				ChangeTileOverlay(pos, "Block")
-			elif gridDatabase[pos]["Occupancy"].playerControl == true and attack.targetAlly:
+			elif gridDatabase[pos]["Occupant"].playerControl == true and attack.targetAlly:
 				ChangeTileOverlay(pos, "Target")
 		else:
 			ChangeTileOverlay(pos, "Range")
 
-func CheckOffenses():
-	pass
+func DamageCalc(attacker:Battler, defender:Battler, attack:Skill) -> int: #Returns Outgoing Damage
+	var ATB:int = attacker.faebleEntry.tier
+	var AHTB:int = ceili(float(attacker.faebleEntry.tier) / 2)
+	var DTB:int = defender.faebleEntry.tier
+	var DHTB:int = ceili(float(defender.faebleEntry.tier) / 2)
+	var damage:int = attack.skillDamage
+	var attackerStat:int
+	var defenderStat:int
+	prints("Initial Damage:", damage, "Attacker Tier:", ATB, "Defender Tier:", DTB)
+	if attack.skillNature == "Physical":
+		attackerStat = attacker.faebleEntry.brawn + (attacker.brawnStage * stageIncrease)
+		defenderStat = defender.faebleEntry.vigor + (attacker.vigorStage * stageIncrease)
+	elif attack.skillNature == "Magical":
+		attackerStat = attacker.faebleEntry.wit + (attacker.witStage * stageIncrease)
+		defenderStat = defender.faebleEntry.ambition + (attacker.ambitionStage * stageIncrease)
+	else:
+		print("Error! Invalid damage type!")
+	
+	if attack.skillType == attacker.faebleEntry.sigSchool:
+		damage += AHTB
+	
+	if attackerStat >= defenderStat + 4:
+		damage += ATB
+	elif attackerStat >= defenderStat + 2:
+		damage += AHTB
+	elif defenderStat >= attackerStat + 2:
+		damage -= DHTB
+	elif defenderStat >= attackerStat + 4:
+		damage -= DTB
+	prints("Post Stats Damage:", damage, "Attacker Stat:", attackerStat, "Defender Stat:", defenderStat)
+	
+	var matchupMod:int = CheckMatchups(defender.faebleEntry, attack.skillType)
+	prints("Matchup Changing by:", matchupMod)
+	if matchupMod > 0:
+		damage += (matchupMod * ATB)
+	if matchupMod < 0:
+		damage += (matchupMod * DTB)
+	
+	print("Final Damage: ", damage)
+	return damage
 
-func CheckDefenses():
-	pass
+func CheckMatchups(target:Faeble, attackingType:School) -> int: #Returns multiplier int
+	var mod:int #Output
+	var damageMultiplier:int = 1 #Running tally of adjustment multiplier (affects variable below)
+	var damageAdjustment:int = 0 #Running tally of resistance "stage"
+	# Import types for defenses
+	var firstType:Domain = target.firstDomain 
+	var secondType:Domain = target.secondDomain
+	var signatureType:School = target.sigSchool
+	
+	if firstType != null: #Get first type matchup index for attacking type
+		if firstType.typeMatchups.has(attackingType):
+			damageAdjustment += firstType.typeMatchups[attackingType]
+			#print(firstType.name)
+	
+	if secondType != null: #Get second type matchup index for attacking type
+		if secondType.typeMatchups.has(attackingType):
+			damageAdjustment += secondType.typeMatchups[attackingType]
+			#print(secondType.name)
+	
+	if signatureType != null: #If the signature school of this monster equals the attacking type, add a step towards resistance
+		if attackingType == signatureType:
+			damageAdjustment -= 1
+	
+	if attackingType.name == "Weird" and currentPhase != null: #Increment Weird if any planar phase is present
+		damageAdjustment += 1
+	elif attackingType.name != "Weird" and currentPhase != null: #If a planar status is present, check for relevency and multiplier/additive adjustment
+		if currentPhase.adjustAdditive == true: #If additive, apply to Adjustment
+			if currentPhase.typeList.has(attackingType) or currentPhase.allTypes == true:
+				damageAdjustment += currentPhase.addPosi
+			else:
+				damageAdjustment += currentPhase.addNega
+			
+		if currentPhase.adjustMulti == true: #If multiplicative, apply to multiplier
+			if currentPhase.typeList.has(attackingType) or currentPhase.allTypes == true:
+				damageMultiplier *= currentPhase.multiPosi
+			else:
+				damageMultiplier *= currentPhase.multiNega
+	
+	mod = damageAdjustment * damageMultiplier
+	return mod
 
-func CheckMatchups():
-	pass
-
-func DamageCalc():
+func LaunchAttack():
 	pass
 
 func AttackAnim(battler:Battler, target:Vector2i, melee:bool):

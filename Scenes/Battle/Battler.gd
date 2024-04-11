@@ -14,12 +14,12 @@ class_name Battler
 @export var movepoints:int
 
 @export_category("Stat Changes")
-@export var strStage:int = 0
-@export var dexStage:int = 0
-@export var conStage:int = 0
-@export var wisStage:int = 0
-@export var intStage:int = 0
-@export var chaStage:int = 0
+@export var brawnStage:int = 0
+@export var vigorStage:int = 0
+@export var witStage:int = 0
+@export var ambitionStage:int = 0
+@export var graceStage:int = 0
+@export var resolveStage:int = 0
 
 @export_category("Status Conditions")
 @export var decayBuildup:int = 0 #Tick damage, and reduces Vigor
@@ -74,10 +74,12 @@ func ResetSpeed():
 	
 
 func ChangeHealth(amount:int):
+	print("Taking ", amount, " Damage!")
 	currentHP = clampi(currentHP+amount, 0, faebleEntry.maxHP)
 	if currentHP == 0:
 		faebleEntry.fainted = true
 		battleManager.RemoveBattler(self)
+		return
 	statusBox.SetHealthDisplay(currentHP) #Include handling for hitting 0, going over max, etc
 
 func ChangeMana(amount:int):

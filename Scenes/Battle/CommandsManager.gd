@@ -108,7 +108,9 @@ func MenuFlow(state):
 		#for button in get_children():
 			#button.hide()
 		HideMenu(true, true)
-		battleManager.CheckAttackRange(selectedBattler, tempAttack)
+		#battleManager.CheckAttackRange(selectedBattler, tempAttack)
+		battleManager.currentSkill = tempAttack
+		tempAttack.Target(battleManager, selectedBattler)
 		battleManager.ChangeBoardState("Attacking")
 		menuState = "Attack"
 		pass

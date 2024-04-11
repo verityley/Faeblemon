@@ -112,9 +112,10 @@ selectMat = ExtResource("7_gf7jt")
 gridOffset = Vector3(-4.5, 0.5, -0.5)
 currentBattler = NodePath("Battler1")
 
-[node name="Battler1" type="Node3D" parent="."]
+[node name="Battler1" type="Node3D" parent="." node_paths=PackedStringArray("battleManager")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, 0.5)
 script = ExtResource("9_7kgqg")
+battleManager = NodePath("..")
 playerControl = true
 currentHP = 10
 currentSpeed = 10
@@ -126,9 +127,10 @@ mesh = SubResource("QuadMesh_v6vgs")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qd73e")
 
-[node name="Battler2" type="Node3D" parent="."]
+[node name="Battler2" type="Node3D" parent="." node_paths=PackedStringArray("battleManager")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.5, -0.5)
 script = ExtResource("9_7kgqg")
+battleManager = NodePath("..")
 playerControl = true
 currentHP = 10
 currentSpeed = 10
@@ -140,9 +142,10 @@ mesh = SubResource("QuadMesh_e8kaj")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_8ai5o")
 
-[node name="Battler3" type="Node3D" parent="."]
+[node name="Battler3" type="Node3D" parent="." node_paths=PackedStringArray("battleManager")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
 script = ExtResource("9_7kgqg")
+battleManager = NodePath("..")
 currentHP = 10
 currentSpeed = 10
 movepoints = 2
@@ -154,9 +157,10 @@ mesh = SubResource("QuadMesh_62in7")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_0lqss")
 
-[node name="Battler4" type="Node3D" parent="."]
+[node name="Battler4" type="Node3D" parent="." node_paths=PackedStringArray("battleManager")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, -0.5)
 script = ExtResource("9_7kgqg")
+battleManager = NodePath("..")
 currentHP = 10
 currentSpeed = 10
 movepoints = 2

@@ -104,8 +104,8 @@ func SetHealthDisplay(total:int):
 	if maxContainers > 10 and containers > 10:
 		extraContainers = ceili(float(total - 40)/2)
 		maxExtras = ceili(float(maxHealthPips - 40)/2)
-		print(extraContainers)
-		print(maxExtras)
+		#print(extraContainers)
+		#print(maxExtras)
 		containers = 10
 		maxContainers = 10
 	
@@ -113,7 +113,7 @@ func SetHealthDisplay(total:int):
 		maxContainers = 10
 	
 	prints("Total Health:", maxHealthPips, "Current Health:", total)
-	print(maxContainers)
+	#print(maxContainers)
 	var lastFill
 	for i in maxContainers:
 		healthFills[i].frame = 0
