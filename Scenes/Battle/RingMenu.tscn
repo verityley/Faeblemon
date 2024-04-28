@@ -1,0 +1,177 @@
+[gd_scene load_steps=14 format=3 uid="uid://3h5g5dp2wlp7"]
+
+[ext_resource type="Script" path="res://MagicCircleMenu.gd" id="1_d54ur"]
+[ext_resource type="Texture2D" uid="uid://cca623b2a817h" path="res://Scenes/Battle/Assets/circleMenu.png" id="1_mk3wl"]
+[ext_resource type="Texture2D" uid="uid://degu8bplk2w3o" path="res://Scenes/Battle/Assets/circleOptionsSprite.png" id="3_capju"]
+[ext_resource type="Texture2D" uid="uid://7tnv5a5yrt3l" path="res://Scenes/Battle/Assets/circleMenuBack.png" id="3_qsccj"]
+[ext_resource type="Texture2D" uid="uid://y6atdpkgn6cw" path="res://Scenes/Battle/Assets/circleOptionsSpriteBack.png" id="4_oqihd"]
+[ext_resource type="Texture2D" uid="uid://d8x7l3m2n4xn" path="res://Scenes/Battle/Assets/circleMenuCenter.png" id="5_pdwlx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ncre1"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_mk3wl")
+
+[sub_resource type="QuadMesh" id="QuadMesh_36p0v"]
+material = SubResource("StandardMaterial3D_ncre1")
+size = Vector2(4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eka5n"]
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hp00d"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("5_pdwlx")
+
+[sub_resource type="QuadMesh" id="QuadMesh_la3r7"]
+material = SubResource("StandardMaterial3D_hp00d")
+size = Vector2(2.1, 2.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycpsw"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.588235)
+albedo_texture = ExtResource("3_qsccj")
+
+[sub_resource type="QuadMesh" id="QuadMesh_w6drr"]
+material = SubResource("StandardMaterial3D_ycpsw")
+size = Vector2(4, 4)
+
+[node name="RingMenu" type="Node3D"]
+script = ExtResource("1_d54ur")
+rotationTime = 1.5
+menuState = "Familiar"
+
+[node name="RingMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_36p0v")
+
+[node name="RingOption" type="MeshInstance3D" parent="RingMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.333, 0)
+
+[node name="Area3D" type="Area3D" parent="RingMesh/RingOption"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RingMesh/RingOption/Area3D"]
+shape = SubResource("BoxShape3D_eka5n")
+
+[node name="Sprite3D" type="Sprite3D" parent="RingMesh/RingOption"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.03)
+render_priority = 1
+texture = ExtResource("3_capju")
+hframes = 4
+vframes = 3
+
+[node name="Sprite3D2" type="Sprite3D" parent="RingMesh/RingOption"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.03)
+modulate = Color(1, 1, 1, 0.784314)
+render_priority = -1
+texture = ExtResource("4_oqihd")
+hframes = 4
+vframes = 3
+
+[node name="RingOption1" type="MeshInstance3D" parent="RingMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.333, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="RingMesh/RingOption1"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RingMesh/RingOption1/Area3D"]
+shape = SubResource("BoxShape3D_eka5n")
+
+[node name="Sprite3D" type="Sprite3D" parent="RingMesh/RingOption1"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.03)
+render_priority = 1
+texture = ExtResource("3_capju")
+hframes = 4
+vframes = 3
+frame = 1
+
+[node name="Sprite3D2" type="Sprite3D" parent="RingMesh/RingOption1"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.03)
+modulate = Color(1, 1, 1, 0.784314)
+render_priority = -1
+texture = ExtResource("4_oqihd")
+hframes = 4
+vframes = 3
+frame = 1
+
+[node name="RingOption2" type="MeshInstance3D" parent="RingMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.333, 0)
+
+[node name="Area3D" type="Area3D" parent="RingMesh/RingOption2"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RingMesh/RingOption2/Area3D"]
+shape = SubResource("BoxShape3D_eka5n")
+
+[node name="Sprite3D" type="Sprite3D" parent="RingMesh/RingOption2"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.03)
+render_priority = 1
+texture = ExtResource("3_capju")
+hframes = 4
+vframes = 3
+frame = 2
+
+[node name="Sprite3D2" type="Sprite3D" parent="RingMesh/RingOption2"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.03)
+modulate = Color(1, 1, 1, 0.784314)
+render_priority = -1
+texture = ExtResource("4_oqihd")
+hframes = 4
+vframes = 3
+frame = 2
+
+[node name="RingOption3" type="MeshInstance3D" parent="RingMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33279, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="RingMesh/RingOption3"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RingMesh/RingOption3/Area3D"]
+shape = SubResource("BoxShape3D_eka5n")
+
+[node name="Sprite3D" type="Sprite3D" parent="RingMesh/RingOption3"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.03)
+render_priority = 1
+texture = ExtResource("3_capju")
+hframes = 4
+vframes = 3
+frame = 3
+
+[node name="Sprite3D2" type="Sprite3D" parent="RingMesh/RingOption3"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.03)
+modulate = Color(1, 1, 1, 0.784314)
+render_priority = -1
+texture = ExtResource("4_oqihd")
+hframes = 4
+vframes = 3
+frame = 3
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.40632)
+
+[node name="RingMeshCenter" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.001)
+mesh = SubResource("QuadMesh_la3r7")
+
+[node name="RingMeshBack" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.359329)
+visible = false
+mesh = SubResource("QuadMesh_w6drr")
+
+[node name="RingMeshBack2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.76777, -1.76777, 0, 1.76777, 1.76777, 0, 0, 0, 2.5, 0, 0, -0.359329)
+mesh = SubResource("QuadMesh_w6drr")
+
+[connection signal="mouse_entered" from="RingMesh/RingOption/Area3D" to="." method="SelectMenu" binds= [0]]
+[connection signal="mouse_exited" from="RingMesh/RingOption/Area3D" to="." method="SelectMenu" binds= [0, true]]
+[connection signal="mouse_entered" from="RingMesh/RingOption1/Area3D" to="." method="SelectMenu" binds= [1]]
+[connection signal="mouse_exited" from="RingMesh/RingOption1/Area3D" to="." method="SelectMenu" binds= [1, true]]
+[connection signal="mouse_entered" from="RingMesh/RingOption2/Area3D" to="." method="SelectMenu" binds= [2]]
+[connection signal="mouse_exited" from="RingMesh/RingOption2/Area3D" to="." method="SelectMenu" binds= [2, true]]
+[connection signal="mouse_entered" from="RingMesh/RingOption3/Area3D" to="." method="SelectMenu" binds= [3]]
+[connection signal="mouse_exited" from="RingMesh/RingOption3/Area3D" to="." method="SelectMenu" binds= [3, true]]

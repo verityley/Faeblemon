@@ -5,7 +5,7 @@ class_name BattleManager
 @export_category("Initialization")
 @export var gridDatabase:Dictionary
 @export var stageMesh:Node3D
-@export var commandMenu:Commands
+@export var commandMenu:RingMenu
 @export var battleUI:Node
 var battleBoxes:Array[StatusBox]
 @export var stageSize:Vector2i = Vector2i(9,2)
@@ -51,6 +51,7 @@ func _ready():
 	FaebleCreation.CreateEncounter(FaebleStorage.enemyParty, 4, null)
 	PopulateGrid()
 	InitBoardState(FaebleStorage.playerParty, FaebleStorage.enemyParty)
+	StartupCam()
 	InitOrder()
 	pass
 
@@ -58,11 +59,11 @@ func _input(event):
 	if event.is_action_pressed("RightMouse") and boardState != "Waiting":
 		if boardState == "Moving":
 			SelectSquare(selectedPos, true)
-			commandMenu.HideMenu(false, true)
+			#commandMenu.HideMenu(false, true)
 		
 		if boardState == "Attacking":
 			SelectSquare(selectedPos, true)
-			commandMenu.HideMenu(false, true)
+			#commandMenu.HideMenu(false, true)
 		
 		for grid in gridDatabase:
 			ChangeTileOverlay(grid, "Clear")
@@ -80,11 +81,12 @@ func _input(event):
 				currentBattler.ChangeMovepoints(-spentPoints)
 				#currentBattler.currentSpeed -= spentPoints*5
 				#TEMP TEMP TEMP
-				commandMenu.HideMenu(true, true)
+				#commandMenu.HideMenu(true, true)
 				MoveTo(currentBattler, selectedPos)
 				commandMenu.moveTaken = true
+				commandMenu.MenuFlow(0)
 				commandMenu.familiarChosen = true
-				commandMenu.HideMenu(false, false)
+				#commandMenu.HideMenu(false, false)
 			if boardState == "Attacking":
 				if currentSkill.canBurst:
 					for grid in selectedArea:
@@ -93,10 +95,10 @@ func _input(event):
 				elif gridDatabase[selectedPos]["Occupant"] != null:
 					currentSkill.Execute(self, currentBattler, gridDatabase[selectedPos]["Occupant"])
 					AttackAnim(currentBattler, selectedPos, true)
-				commandMenu.HideMenu(true, true)
+				#commandMenu.HideMenu(true, true)
 				commandMenu.attackTaken = true
 				commandMenu.familiarChosen = true
-				commandMenu.HideMenu(false, false)
+				#commandMenu.HideMenu(false, false)
 				#TEMPTEMPTEMP
 			
 			for grid in gridDatabase:
@@ -104,7 +106,7 @@ func _input(event):
 			selectedGrid = null
 			selectedState = ""
 			selectedPos = Vector2i(-1,-1)
-			commandMenu.MenuFlow("Start")
+			#commandMenu.MenuFlow("Start")
 			ChangeBoardState("Waiting")
 			#print(selectedPos)
 
@@ -181,6 +183,7 @@ func InitBoardState(playerTeam:Array[Faeble], enemyTeam:Array[Faeble]):
 		print("Faeble not available, choosing next in party.")
 		currentFaeble = enemyTeam[partyIndex]
 	if currentFaeble != null:
+		#await get_tree().create_timer(1).timeout
 		AddBattler(2, currentFaeble, false, 5, 1)
 		print("Faeble found, assigning, ", currentFaeble.name," to enemy position 1.")
 	
@@ -198,6 +201,7 @@ func InitBoardState(playerTeam:Array[Faeble], enemyTeam:Array[Faeble]):
 			print("Faeble not available, choosing next in party.")
 			currentFaeble = enemyTeam[partyIndex]
 		if currentFaeble != null:
+			#await get_tree().create_timer(1).timeout
 			AddBattler(3, currentFaeble, false, 6, 0)
 			print("Faeble found, assigning, ", currentFaeble.name," to enemy position 2.")
 	else:
@@ -291,6 +295,9 @@ func ChangeTileOverlay(location:Vector2i, state:String):
 		ChangeTileData(location, "State", "Target")
 
 func SelectSquare(location:Vector2i, exit=false):
+	if location == Vector2i(-1,-1):
+		print("Location out of bounds, selection is empty.")
+		return
 	if !gridDatabase[location]["Active"]:
 		return
 	if exit:
@@ -381,7 +388,14 @@ func AddBattler(index:int, faebleInstance:Faeble, player:bool, xPos:int, yPos:in
 	battlerObjects[index].positionIndex = Vector2i(xPos,yPos)
 	ChangeTileData(Vector2i(xPos,yPos), "Occupant", battlerObjects[index])
 	ChangeTileData(Vector2i(xPos,yPos), "Occupied", true)
-	var texture = battlerObjects[index].get_child(0).get_surface_override_material(0)
+	var spriteMesh = battlerObjects[index].get_child(0)
+	spriteMesh.scale = faebleInstance.battlerScale
+	spriteMesh.position = Vector3(0,0,0) + (faebleInstance.groundOffset)
+	if player:
+		spriteMesh.rotation = Vector3(0,deg_to_rad(180),0)
+	else:
+		spriteMesh.rotation = Vector3(0,0,0)
+	var texture = spriteMesh.get_surface_override_material(0)
 	texture.albedo_texture = faebleInstance.sprite
 	battlerObjects[index].statusBox.ResetStats(faebleInstance)
 	battlerObjects[index].show()
@@ -422,7 +436,7 @@ func InitOrder(): #Resets speed first, for first turn population
 			battler.ResetSpeed()
 	PopulateOrder(battlerObjects.duplicate())
 	ProgressTurn()
-	commandMenu.MenuFlow("Reset")
+	commandMenu.MenuAction(-1)
 
 func PopulateOrder(battlers:Array[Battler]):
 	for battler in battlers:
@@ -431,12 +445,20 @@ func PopulateOrder(battlers:Array[Battler]):
 	battlers.sort_custom(SpeedSorter)
 	roundOrder = battlers
 	for battler in roundOrder:
+		if battler.faebleEntry == null:
+			print("This faeble has fainted, skipping")
+			continue
 		print(battler.faebleEntry.name)
 
 func ProgressTurn():
 	currentBattler = roundOrder.pop_front()
 	if currentBattler != null:
+		if currentBattler.faebleEntry == null:
+			print("This faeble has fainted, skipping")
+			ProgressTurn()
+			return
 		commandMenu.selectedBattler = currentBattler
+		commandMenu.MenuAction(-1)
 		print("It is ", currentBattler.faebleEntry.name, "'s turn.")
 	else:
 		NewRound()
@@ -478,15 +500,16 @@ func MoveTo(battler:Battler, location:Vector2i):
 	#Target position offset is x-4.5, y=0.5, z-0.5
 	ChangeTileData(battler.positionIndex, "Occupant", null)
 	ChangeTileData(battler.positionIndex, "Occupied", false)
-	commandMenu.hide()
+	#commandMenu.hide()
+	#MAYBE TEMP, might move all visual elements to their own manager object.
 	var distance = abs(location.x - battler.positionIndex.x)*0.3
 	if facing != mesh.rotation.y:
 		tween.tween_property(mesh, "rotation", Vector3(0,facing,0), 0.3)
 	tween.tween_property(battler, "position", (Vector3(location.x,0,battler.positionIndex.y) + gridOffset), distance)
 	tween.tween_property(battler, "position", (Vector3(location.x,0,location.y) + gridOffset), 0.2)
 	await tween.finished
-	commandMenu.position = battler.position + commandMenu.menuOffset
-	commandMenu.show()
+	#commandMenu.position = battler.position + commandMenu.menuOffset
+	#commandMenu.show()
 	battler.positionIndex = location
 	print("Facing, after tween: ", mesh.rotation.y)
 	ChangeTileData(location, "Occupant", battler)
@@ -694,6 +717,29 @@ func AttackAnim(battler:Battler, target:Vector2i, melee:bool):
 #endregion
 
 #------------------------------Camera Functions--------------------------------------
+func StartupCam():
+	for index in range(battlerObjects.size()):
+		battlerObjects[index].hide()
+	await get_tree().create_timer(2).timeout
+	
+	var tween = get_tree().create_tween()
+	
+	tween.tween_property(targetCam, "rotation", Vector3(deg_to_rad(-20), deg_to_rad(10), 0), 0.5)
+	await get_tree().create_timer(0.5).timeout
+	battlerObjects[0].show()
+	await get_tree().create_timer(1).timeout
+	battlerObjects[1].show()
+	await get_tree().create_timer(0.5).timeout
+	tween = get_tree().create_tween()
+	tween.tween_property(targetCam, "rotation", Vector3(deg_to_rad(-20), deg_to_rad(-10), 0), 1)
+	await get_tree().create_timer(1).timeout
+	battlerObjects[2].show()
+	await get_tree().create_timer(1).timeout
+	battlerObjects[3].show()
+	await get_tree().create_timer(0.5).timeout
+	tween = get_tree().create_tween()
+	tween.tween_property(targetCam, "rotation", Vector3(deg_to_rad(-15), 0, 0), 1)
+
 
 func ChangeCam():
 	pass

@@ -15,10 +15,10 @@ ID = 1
 firstDomain = ExtResource("1_dnl1a")
 sigSchool = ExtResource("3_ryjph")
 sprite = ExtResource("6_ny226")
-battlerScale = 0.0
+battlerScale = Vector3(0.8, 0.8, 0.8)
 worldScale = 0.0
 UIScale = 0.0
-groundOffset = Vector3(0, 0, 0)
+groundOffset = Vector3(0, -0.1, 0)
 minQuality = 2
 maxQuality = 20
 brawn = 8
@@ -31,6 +31,7 @@ heart = 8
 profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
 prefPrimary = "Brawn"
 prefSecondary = "Heart"
+HPCap = 60
 skillPool = {
 ExtResource("2_vrbm8"): 1,
 ExtResource("3_nk0fx"): 2,

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dh7tyx44ndu4d"]
+[gd_scene load_steps=41 format=3 uid="uid://dh7tyx44ndu4d"]
 
 [ext_resource type="ArrayMesh" uid="uid://v74we45008ok" path="res://Scenes/Battle/Assets/FaebleStage.obj" id="1_17gk1"]
 [ext_resource type="Script" path="res://Scenes/Battle/BattleManager.gd" id="1_505cq"]
@@ -19,8 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://bjde4nx2jlk0t" path="res://Scenes/Battle/Assets/TacticsCommand.png" id="15_446dc"]
 [ext_resource type="Texture2D" uid="uid://dtpgcfywcdx0p" path="res://Scenes/Battle/Assets/TurnCommand.png" id="16_1gakd"]
 [ext_resource type="Texture2D" uid="uid://cqal6qlsn6lgn" path="res://Global Assets/Graphics/Monster Graphics/aconidFront.png" id="17_pmunv"]
+[ext_resource type="PackedScene" uid="uid://3h5g5dp2wlp7" path="res://Scenes/Battle/RingMenu.tscn" id="19_3fugl"]
 [ext_resource type="Texture2D" uid="uid://cmq32un2xwhha" path="res://Global Assets/Graphics/Monster Graphics/PlayerChar.png" id="19_nax5p"]
 [ext_resource type="PackedScene" uid="uid://7jeufek082os" path="res://Scenes/Battle/BattleBook.tscn" id="21_hb1ek"]
+[ext_resource type="ArrayMesh" uid="uid://cs7b3ifm3ahdy" path="res://Scenes/Battle/Assets/FaebleBook.obj" id="23_8sutd"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_v6vgs"]
 lightmap_size_hint = Vector2i(12, 17)
@@ -94,15 +96,16 @@ lightmap_size_hint = Vector2i(12, 17)
 material = SubResource("StandardMaterial3D_o5iau")
 size = Vector2(1, 1.5)
 
-[node name="BattleStage" type="Node3D" node_paths=PackedStringArray("stageMesh", "commandMenu", "battleUI", "battlerObjects", "fullstageCam", "overviewCam", "currentBattler")]
+[node name="BattleStage" type="Node3D" node_paths=PackedStringArray("stageMesh", "commandMenu", "battleUI", "battlerObjects", "fullstageCam", "overviewCam", "targetCam", "currentBattler")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 script = ExtResource("1_505cq")
 stageMesh = NodePath("FaebleStage")
-commandMenu = NodePath("Commands")
+commandMenu = NodePath("RingMenu")
 battleUI = NodePath("SubViewport/BattleBook")
 battlerObjects = [NodePath("Battler1"), NodePath("Battler2"), NodePath("Battler3"), NodePath("Battler4")]
 fullstageCam = NodePath("FullstageCam")
 overviewCam = NodePath("OverviewCam")
+targetCam = NodePath("TargetCam")
 clearMat = ExtResource("2_y7wb8")
 blockMat = ExtResource("3_h4shl")
 openMat = ExtResource("4_2dq0b")
@@ -138,6 +141,7 @@ movepoints = 2
 positionIndex = Vector2i(2, 0)
 
 [node name="FaebleMesh" type="MeshInstance3D" parent="Battler2"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 mesh = SubResource("QuadMesh_e8kaj")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_8ai5o")
@@ -168,6 +172,7 @@ positionIndex = Vector2i(6, 0)
 facingFlip = true
 
 [node name="FaebleMesh" type="MeshInstance3D" parent="Battler4"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.3, 0)
 mesh = SubResource("QuadMesh_4abtl")
 surface_material_override/0 = SubResource("StandardMaterial3D_cp2ci")
 
@@ -175,7 +180,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cp2ci")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.6, 0.5)
 script = ExtResource("10_38tva")
 battleManager = NodePath("..")
-menuOffset = Vector3(0, 1.1, 0)
+menuOffset = Vector3(0, 1.1, 0.5)
 tempAttack = ExtResource("11_ebhpw")
 
 [node name="Familiar" type="Sprite3D" parent="Commands"]
@@ -261,6 +266,12 @@ monitoring = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Commands/EndTurn/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, 0)
 shape = SubResource("BoxShape3D_npvua")
+
+[node name="RingMenu" parent="." node_paths=PackedStringArray("battleManager") instance=ExtResource("19_3fugl")]
+transform = Transform3D(1.45, 0, 0, 0, 1.40059, 0.375288, 0, -0.375288, 1.40059, -0.5, 3.3, -3.303)
+rotationTime = 1.2
+menuState = "Start"
+battleManager = NodePath("..")
 
 [node name="FaebleStage" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, -0.5, -1, -0.55)
@@ -465,11 +476,11 @@ monitorable = false
 shape = SubResource("BoxShape3D_cxbsr")
 
 [node name="BattleBack" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.8, 0, 0, 0, 0.772741, 0.207055, 0, -0.207055, 0.772741, -0.5, 0.3, -2)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -0.5, 1.5, -3)
 mesh = SubResource("QuadMesh_t22fg")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.699663, 0.714473, 0, -0.714473, 0.699663, 0, 9.46926, 0)
+transform = Transform3D(0.965926, -0.184919, 0.181086, 0, 0.699663, 0.714473, -0.258819, -0.690128, 0.675823, 0, 9.46926, 0)
 
 [node name="Leader1" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -5.5, 0.65, 0)
@@ -479,9 +490,13 @@ mesh = SubResource("QuadMesh_88xce")
 transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 4.5, 0.65, 0)
 mesh = SubResource("QuadMesh_88xce")
 
-[node name="FullstageCam" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, -0.5, 4, 7)
+[node name="TargetCam" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -0.5, 3.5, 5)
 current = true
+fov = 60.0
+
+[node name="FullstageCam" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, -0.5, 5, 7)
 fov = 45.0
 
 [node name="OverviewCam" type="Camera3D" parent="."]
@@ -489,9 +504,14 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0.866026, 0, -0.866026, 0.5, -0.5, 6, 3
 fov = 45.0
 
 [node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
 size = Vector2i(1280, 720)
 
 [node name="BattleBook" parent="SubViewport" instance=ExtResource("21_hb1ek")]
+
+[node name="FaebleBook" type="MeshInstance3D" parent="."]
+transform = Transform3D(19, 0, 0, 0, 4.91756, -18.3526, 0, 18.3526, 4.91756, -0.5, 2.66746, -5.01111)
+mesh = ExtResource("23_8sutd")
 
 [connection signal="mouse_entered" from="Commands/Familiar/Area3D" to="Commands" method="SelectMenu" binds= ["Familiar"]]
 [connection signal="mouse_exited" from="Commands/Familiar/Area3D" to="Commands" method="SelectMenu" binds= ["Familiar", true]]

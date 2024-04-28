@@ -15,7 +15,8 @@ class_name Faeble
 @export var sprite:CompressedTexture2D
 @export var shinySprite:CompressedTexture2D
 @export var UISprite:Texture2D
-@export var battlerScale:float #Scale used in battle scenes
+@export var icon:CompressedTexture2D
+@export var battlerScale:Vector3 #Scale used in battle scenes
 @export var worldScale:float #Scale used in world or city scenes
 @export var UIScale:float #Scale used in UI elements
 @export var groundOffset:Vector3 #How far to offset from center
