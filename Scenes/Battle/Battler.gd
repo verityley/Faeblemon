@@ -78,11 +78,13 @@ func ChangeHealth(amount:int):
 	currentHP = clampi(currentHP+amount, 0, faebleEntry.maxHP)
 	if currentHP == 0:
 		faebleEntry.fainted = true
+		print(faebleEntry.name, " has fainted!")
 		battleManager.RemoveBattler(self)
 		return
 	statusBox.SetHealthDisplay(currentHP) #Include handling for hitting 0, going over max, etc
 
-func ChangeMana(amount:int):
+func ChangeEnergy(amount:int):
+	print("Using ", amount, " Energy!")
 	if currentEnergy - amount < 0:
 		print("Not enough Energy!")
 		return false

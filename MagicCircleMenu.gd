@@ -5,6 +5,7 @@ class_name RingMenu
 #Contains the actions and methods for basic UI option flow
 #Also contains current state of turn, and sends signals to board state on UI selection
 @export var ringMesh:MeshInstance3D
+@export var skillDisplay:Node
 @export var optionDistance:float = 1.333
 @export var rotationTime:float = 2
 @export var selectedIndex:int
@@ -19,7 +20,8 @@ Move,
 Witch,
 Party,
 Spells,
-End
+End,
+TurnCycle
 }
 var rotating:bool
 
@@ -29,6 +31,7 @@ var rotating:bool
 @export var menuOffset:Vector3
 var menuHidden:bool
 var selectedState:String
+var selectedSkill:Skill
 var hideState:String
 var optionSelected:Node3D
 var witchChosen:bool
@@ -36,6 +39,7 @@ var familiarChosen:bool
 var moveTaken:bool
 var attackTaken:bool
 
+@export var emptyDisplay:CompressedTexture2D
 @export var tempAttack:Skill #extremely TEMPORARY
 
 # Called when the node enters the scene tree for the first time.
@@ -55,14 +59,14 @@ func _input(event):
 			#MenuFlow("Hide")
 			#print("Hiding Menu")
 	
-	if event.is_action_pressed("RightMouse") and !menuHidden:
-		if menuState != "Reset"  and menuState != "Start":
-			if menuState == "Witch" and !witchChosen:
-				#MenuFlow("Start")
-				pass
-			elif menuState == "Familiar" and !familiarChosen:
-				#MenuFlow("Start")
-				pass
+	#if event.is_action_pressed("RightMouse") and !menuHidden:
+		#if menuState != "Reset"  and menuState != "Start":
+			#if menuState == "Witch" and !witchChosen:
+				##MenuFlow("Start")
+				#pass
+			#elif menuState == "Familiar" and !familiarChosen:
+				##MenuFlow("Start")
+				#pass
 	
 	if optionSelected != null:
 		if event.is_action_pressed("Confirm") or event.is_action_pressed("LeftMouse"):
@@ -71,7 +75,10 @@ func _input(event):
 			
 			await RotateToTop(selectedIndex)
 			#CompassReorder(selectedIndex)
-			ResetCircle()
+			if currentState == States.Attack:
+				CompassReorder(selectedIndex)
+			else:
+				ResetCircle()
 			print("Current State: ", currentState, " Selected Option: ", selectedIndex)
 			MenuFlow(selectedIndex)
 			#MenuFlow(selectedState)
@@ -111,6 +118,15 @@ func RotateCircle(degrees:float):
 
 func ResetCircle():
 	#await get_tree().create_timer(rotationTime+0.03)
+	var index = 0
+	
+	for i in range(compassIndex.size()):
+		compassIndex[i] = index
+		if index >= 3:
+			index = 0
+		else:
+			index += 1
+	
 	ringMesh.rotation = Vector3(0,0,0)
 	for ring in ringMesh.get_children():
 		ring.rotation_degrees = Vector3(0,0,0)
@@ -152,25 +168,42 @@ func MenuAction(state:int):
 			familiarChosen = false
 			moveTaken = false
 			attackTaken = false
+			selectedSkill = null
 			if optionSelected != null:
 				optionSelected.scale = Vector3(1,1,1)
 				optionSelected = null
 			MenuAction(States.Start)
 		
 		States.Start:
+			print("Circle Menu: Start")
 			for child in ringMesh.get_children():
 				child.show()
 				child.get_child(1).frame_coords.y = 0
-				child.get_child(2).frame_coords.y = 0
+				child.get_child(0).show()
+				child.get_child(1).show()
+				child.get_child(2).hide() #Hide Skill Option sprites
+				child.get_child(3).hide()
+				#child.get_child(2).frame_coords.y = 0
+			skillDisplay.hide()
+			selectedSkill = null
+			MenuAction(States.Familiar)
 			
-			ringMesh.get_child(0).hide()
-			currentState = States.Start
+			#ringMesh.get_child(0).hide()
+			#currentState = States.Start
 		
 		States.Familiar:
+			print("Circle Menu: Familiar")
+			var index:int = 0
 			for child in ringMesh.get_children():
 				child.show()
-				child.get_child(1).frame_coords.y = 1
-				child.get_child(2).frame_coords.y = 1
+				child.get_child(1).frame_coords = Vector2i(index, 1)
+				child.get_child(1).show()
+				child.get_child(2).hide() #Hide Skill Option sprites
+				index += 1
+			skillDisplay.hide()
+			selectedSkill = null
+			if attackTaken and selectedBattler.movepoints <= 0:
+				MenuAction(States.End)
 			
 			if attackTaken:
 				ringMesh.get_child(1).hide()
@@ -187,14 +220,55 @@ func MenuAction(state:int):
 			currentState = States.Familiar
 		
 		States.Attack:
+			print("Circle Menu: Attack")
+			if selectedSkill != null:
+				#Still TO DO:
+				#Highlight energy cost on status box
+				#Fade out display when turning
+				skillDisplay.texture = selectedSkill.moveDisplay
+				#battleManager.CheckAttackRange(selectedBattler, selectedSkill)
+				battleManager.currentSkill = selectedSkill
+				selectedSkill.Target(battleManager, selectedBattler)
+				battleManager.ChangeBoardState("Attacking")
+				return
+			
+			var index:int = 0
 			for child in ringMesh.get_children():
-				child.hide()
-			ringMesh.get_child(0).show()
+				child.show()
+				child.get_child(1).hide()
+				child.get_child(2).show()
+				var currentMove:Skill = selectedBattler.faebleEntry.assignedSkills[index-1]
+				if currentMove != null:
+					child.get_child(2).texture = (
+					currentMove.movePreview)
+					if selectedBattler.currentEnergy < currentMove.skillCost:
+						print("Not enough energy for ", currentMove.skillName)
+						child.get_child(2).modulate = Color(0.8,0.8,0.8,0.8)
+						child.get_child(0).hide()
+					else:
+						child.get_child(2).modulate = Color(1,1,1,1)
+						child.get_child(0).show()
+				else:
+					#child.get_child(2).hide()
+					if index != 0:
+						child.hide()
+				index += 1
+			skillDisplay.texture = emptyDisplay
+			ringMesh.get_child(0).get_child(1).frame_coords = Vector2i(1, 0)
+			ringMesh.get_child(0).get_child(1).show() #Revert back button to shown
+			ringMesh.get_child(0).get_child(2).hide()
+			skillDisplay.show()
+			#battleManager.CheckAttackRange(selectedBattler, tempAttack)
+			#battleManager.currentSkill = tempAttack #Replace with selected move
+			#tempAttack.Target(battleManager, selectedBattler)
+			#battleManager.ChangeBoardState("Attacking")
 			currentState = States.Attack
 		
 		States.Move:
+			print("Circle Menu: Move")
 			for child in ringMesh.get_children():
 				child.hide()
+			ringMesh.get_child(0).get_child(1).frame_coords = Vector2i(1, 0)
 			ringMesh.get_child(0).show()
 			battleManager.CheckMoves(selectedBattler) #TEMPORARY
 			battleManager.ChangeBoardState("Moving")
@@ -202,10 +276,11 @@ func MenuAction(state:int):
 			currentState = States.Move
 		
 		States.Witch:
+			print("Circle Menu: Witch")
 			for child in ringMesh.get_children():
 				child.show()
 				child.get_child(1).frame_coords.y = 2
-				child.get_child(2).frame_coords.y = 2
+				#child.get_child(2).frame_coords.y = 2
 			
 			if moveTaken: #or selectedBattler.movepoints <= 0:
 				ringMesh.get_child(1).hide() #eventually replace with greyed out unclickable option
@@ -222,22 +297,67 @@ func MenuAction(state:int):
 			currentState = States.Witch
 		
 		States.Party:
+			print("Circle Menu: Party")
 			for child in ringMesh.get_children():
 				child.hide()
 			ringMesh.get_child(0).show()
 			currentState = States.Party
 		
 		States.Spells:
+			print("Circle Menu: Spells")
 			for child in ringMesh.get_children():
 				child.hide()
 			ringMesh.get_child(0).show()
 			currentState = States.Spells
 		
 		States.End:
+			print("Circle Menu: End")
 			for child in ringMesh.get_children():
 				child.hide()
 			currentState = States.End
 			battleManager.ProgressTurn()
+			#TO DO
+			#Also put in the turn order display stuff here! To showcase change of turn
+		
+		States.TurnCycle:
+			print("Circle Menu: Turn Cycle")
+			var turnOrder:Array[Battler] = battleManager.roundOrder.duplicate()
+			if turnOrder.size() >= 3:
+				var lastBattler = turnOrder.pop_back()
+				turnOrder.push_front(battleManager.currentBattler)
+				turnOrder.push_front(lastBattler)
+			else:
+				turnOrder.push_front(battleManager.currentBattler)
+				turnOrder.push_front(null)
+			print(turnOrder)
+			var index:int = 0
+			for child in ringMesh.get_children():
+				child.show()
+				for sprite in child.get_children():
+					sprite.hide()
+					print("Hiding Sprite: ", sprite)
+				child.get_child(3).show()
+				print(child.get_child(3))
+				if turnOrder[index] != null:
+					child.get_child(3).texture = turnOrder[index].faebleEntry.UISprite
+					print(index, ": ", turnOrder[index].faebleEntry.name)
+				else:
+					child.get_child(3).texture = null
+				index += 1
+				if index >= turnOrder.size():
+					break
+			await get_tree().create_timer(0.15).timeout
+			#print("Does it get to here? 1")
+			await RotateToTop(1)
+			battleManager.currentBattler.get_child(1).show()
+			battleManager.currentBattler.statusBox.get_child(7).show()
+			#print("Does it get to here? 2")
+			await get_tree().create_timer(1.0).timeout
+			#print("Does it get to here? 3")
+			ResetCircle()
+			currentState = States.TurnCycle
+			#print("Does it get to here? 4")
+			MenuAction(States.Reset)
 
 func MenuFlow(option:int):
 	match currentState:
@@ -255,7 +375,7 @@ func MenuFlow(option:int):
 		States.Familiar:
 			match option:
 				0:
-					MenuAction(States.Start)
+					MenuAction(States.Witch)
 				1:
 					MenuAction(States.Attack)
 				2:
@@ -267,20 +387,35 @@ func MenuFlow(option:int):
 			match option:
 				0:
 					MenuAction(States.Familiar)
+					battleManager.CleanBoardState()
 		
 		States.Attack:
 			match option:
 				0:
+					selectedSkill = null
 					MenuAction(States.Familiar)
+					battleManager.CleanBoardState()
+				1:
+					battleManager.CleanBoardState()
+					selectedSkill = selectedBattler.faebleEntry.assignedSkills[0]
+					MenuAction(States.Attack)
+				2:
+					battleManager.CleanBoardState()
+					selectedSkill = selectedBattler.faebleEntry.assignedSkills[1]
+					MenuAction(States.Attack)
+				3:
+					battleManager.CleanBoardState()
+					selectedSkill = selectedBattler.faebleEntry.assignedSkills[2]
+					MenuAction(States.Attack)
 		
 		States.Witch:
 			match option:
 				0:
-					MenuAction(States.Start)
+					MenuAction(States.Familiar)
 				1:
 					MenuAction(States.Party)
 				2:
-					MenuAction(States.End)
+					MenuAction(States.Party) #Replace eventually
 				3:
 					MenuAction(States.Spells)
 		

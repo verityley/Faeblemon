@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dh7tyx44ndu4d"]
+[gd_scene load_steps=42 format=3 uid="uid://dh7tyx44ndu4d"]
 
 [ext_resource type="ArrayMesh" uid="uid://v74we45008ok" path="res://Scenes/Battle/Assets/FaebleStage.obj" id="1_17gk1"]
 [ext_resource type="Script" path="res://Scenes/Battle/BattleManager.gd" id="1_505cq"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Scenes/Battle/Battler.gd" id="9_7kgqg"]
 [ext_resource type="Script" path="res://Scenes/Battle/CommandsManager.gd" id="10_38tva"]
 [ext_resource type="Texture2D" uid="uid://ckj8wm0yhey45" path="res://Scenes/Battle/Assets/FamiliarCommand.png" id="10_clb5f"]
+[ext_resource type="Texture2D" uid="uid://bvfyy5fvar8co" path="res://Scenes/Battle/Assets/CurrentIndicator.png" id="10_dmvnb"]
 [ext_resource type="Resource" uid="uid://dv8g1bdy5qvqx" path="res://Database/Skills/FairyStrike.tres" id="11_ebhpw"]
 [ext_resource type="Texture2D" uid="uid://ctdbe6mqj1ar1" path="res://Scenes/Battle/Assets/AttackCommand.png" id="11_kf0xf"]
 [ext_resource type="Texture2D" uid="uid://cn044nishsqir" path="res://Scenes/Battle/Assets/MoveCommand.png" id="12_86oy4"]
@@ -116,29 +117,41 @@ gridOffset = Vector3(-4.5, 0.5, -0.5)
 currentBattler = NodePath("Battler1")
 
 [node name="Battler1" type="Node3D" parent="." node_paths=PackedStringArray("battleManager")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, 0.5)
-script = ExtResource("9_7kgqg")
-battleManager = NodePath("..")
-playerControl = true
-currentHP = 10
-currentSpeed = 10
-movepoints = 5
-positionIndex = Vector2i(3, 1)
-
-[node name="FaebleMesh" type="MeshInstance3D" parent="Battler1"]
-mesh = SubResource("QuadMesh_v6vgs")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_qd73e")
-
-[node name="Battler2" type="Node3D" parent="." node_paths=PackedStringArray("battleManager")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.5, -0.5)
 script = ExtResource("9_7kgqg")
 battleManager = NodePath("..")
 playerControl = true
 currentHP = 10
 currentSpeed = 10
-movepoints = 2
+movepoints = 5
 positionIndex = Vector2i(2, 0)
+
+[node name="FaebleMesh" type="MeshInstance3D" parent="Battler1"]
+mesh = SubResource("QuadMesh_v6vgs")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_qd73e")
+
+[node name="CurrentIndicator" type="Sprite3D" parent="Battler1"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, -0.55, 0)
+visible = false
+texture = ExtResource("10_dmvnb")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Battler1/CurrentIndicator"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+light_color = Color(0.4, 1, 1, 1)
+light_energy = 0.5
+light_volumetric_fog_energy = 0.0
+omni_range = 0.5
+
+[node name="Battler2" type="Node3D" parent="." node_paths=PackedStringArray("battleManager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, 0.5)
+script = ExtResource("9_7kgqg")
+battleManager = NodePath("..")
+playerControl = true
+currentHP = 10
+currentSpeed = 10
+movepoints = 2
+positionIndex = Vector2i(3, 1)
 
 [node name="FaebleMesh" type="MeshInstance3D" parent="Battler2"]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
@@ -146,22 +159,19 @@ mesh = SubResource("QuadMesh_e8kaj")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_8ai5o")
 
+[node name="CurrentIndicator" type="Sprite3D" parent="Battler2"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, -0.55, 0)
+visible = false
+texture = ExtResource("10_dmvnb")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Battler2/CurrentIndicator"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+light_color = Color(0.4, 1, 1, 1)
+light_energy = 0.5
+light_volumetric_fog_energy = 0.0
+omni_range = 0.5
+
 [node name="Battler3" type="Node3D" parent="." node_paths=PackedStringArray("battleManager")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
-script = ExtResource("9_7kgqg")
-battleManager = NodePath("..")
-currentHP = 10
-currentSpeed = 10
-movepoints = 2
-positionIndex = Vector2i(5, 1)
-facingFlip = true
-
-[node name="FaebleMesh" type="MeshInstance3D" parent="Battler3"]
-mesh = SubResource("QuadMesh_62in7")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_0lqss")
-
-[node name="Battler4" type="Node3D" parent="." node_paths=PackedStringArray("battleManager")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, -0.5)
 script = ExtResource("9_7kgqg")
 battleManager = NodePath("..")
@@ -171,10 +181,49 @@ movepoints = 2
 positionIndex = Vector2i(6, 0)
 facingFlip = true
 
+[node name="FaebleMesh" type="MeshInstance3D" parent="Battler3"]
+mesh = SubResource("QuadMesh_62in7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_0lqss")
+
+[node name="CurrentIndicator" type="Sprite3D" parent="Battler3"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, -0.55, 0)
+visible = false
+texture = ExtResource("10_dmvnb")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Battler3/CurrentIndicator"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+light_color = Color(0.4, 1, 1, 1)
+light_energy = 0.5
+light_volumetric_fog_energy = 0.0
+omni_range = 0.5
+
+[node name="Battler4" type="Node3D" parent="." node_paths=PackedStringArray("battleManager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
+script = ExtResource("9_7kgqg")
+battleManager = NodePath("..")
+currentHP = 10
+currentSpeed = 10
+movepoints = 2
+positionIndex = Vector2i(5, 1)
+facingFlip = true
+
 [node name="FaebleMesh" type="MeshInstance3D" parent="Battler4"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.3, 0)
 mesh = SubResource("QuadMesh_4abtl")
 surface_material_override/0 = SubResource("StandardMaterial3D_cp2ci")
+
+[node name="CurrentIndicator" type="Sprite3D" parent="Battler4"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, -0.55, 0)
+visible = false
+texture = ExtResource("10_dmvnb")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Battler4/CurrentIndicator"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+light_color = Color(0.4, 1, 1, 1)
+light_energy = 0.5
+light_volumetric_fog_energy = 0.0
+omni_range = 0.5
 
 [node name="Commands" type="Node3D" parent="." node_paths=PackedStringArray("battleManager")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.6, 0.5)
@@ -268,8 +317,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, 0)
 shape = SubResource("BoxShape3D_npvua")
 
 [node name="RingMenu" parent="." node_paths=PackedStringArray("battleManager") instance=ExtResource("19_3fugl")]
-transform = Transform3D(1.45, 0, 0, 0, 1.40059, 0.375288, 0, -0.375288, 1.40059, -0.5, 3.3, -3.303)
-rotationTime = 1.2
+transform = Transform3D(1.3, 0, 0, 0, 1.2557, 0.336466, 0, -0.336466, 1.2557, -0.5, 3.48158, -3.18579)
+rotationTime = 0.8
 menuState = "Start"
 battleManager = NodePath("..")
 

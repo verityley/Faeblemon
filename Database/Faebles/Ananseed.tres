@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Faeble" load_steps=8 format=3 uid="uid://bfd3m6cnqbvjp"]
+[gd_resource type="Resource" script_class="Faeble" load_steps=9 format=3 uid="uid://bfd3m6cnqbvjp"]
 
+[ext_resource type="Texture2D" uid="uid://mrf0rxkhgq5i" path="res://Global Assets/Graphics/Monster Graphics/Icons/ananseedIcon.png" id="1_kxo1q"]
 [ext_resource type="Script" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_rhns2"]
 [ext_resource type="Resource" uid="uid://bldym4cl8lnh7" path="res://Database/Domains/Fairytale.tres" id="1_xtu4f"]
 [ext_resource type="Resource" uid="uid://bh2iaf16ugog4" path="res://Database/Skills/BugBite.tres" id="2_nq16r"]
@@ -15,6 +16,7 @@ ID = 0
 firstDomain = ExtResource("1_xtu4f")
 sigSchool = ExtResource("3_yuqtt")
 sprite = ExtResource("7_5awgn")
+UISprite = ExtResource("1_kxo1q")
 battlerScale = Vector3(0.6, 0.6, 0.6)
 worldScale = 0.0
 UIScale = 0.0
@@ -37,7 +39,7 @@ ExtResource("2_nq16r"): 1,
 ExtResource("3_pmtl0"): 2,
 ExtResource("4_mynae"): 5
 }
-assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null, null])
+assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null])
 feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
 traitBig = false
 traitTall = false
@@ -49,7 +51,7 @@ canEvolve = false
 evoLevel = 0
 evoBranch = false
 currentHP = 0
-currentStamina = 0
+currentEnergy = 0
 fainted = false
 description = ""
 rumors = ""

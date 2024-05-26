@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Faeble" load_steps=8 format=3 uid="uid://cvjtub6vapo34"]
+[gd_resource type="Resource" script_class="Faeble" load_steps=9 format=3 uid="uid://cvjtub6vapo34"]
 
 [ext_resource type="Resource" uid="uid://d32tt0oqhs4pt" path="res://Database/Domains/Profane.tres" id="1_dnl1a"]
 [ext_resource type="Script" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_yqab5"]
+[ext_resource type="Texture2D" uid="uid://bqctvjfms5vqp" path="res://Global Assets/Graphics/Monster Graphics/Icons/awoolfIcon.png" id="1_yysfs"]
 [ext_resource type="Resource" uid="uid://bh2iaf16ugog4" path="res://Database/Skills/BugBite.tres" id="2_vrbm8"]
 [ext_resource type="Resource" uid="uid://dv8g1bdy5qvqx" path="res://Database/Skills/FairyStrike.tres" id="3_nk0fx"]
 [ext_resource type="Resource" uid="uid://cy460pjjcakrm" path="res://Database/Schools/Curse.tres" id="3_ryjph"]
@@ -15,6 +16,7 @@ ID = 1
 firstDomain = ExtResource("1_dnl1a")
 sigSchool = ExtResource("3_ryjph")
 sprite = ExtResource("6_ny226")
+UISprite = ExtResource("1_yysfs")
 battlerScale = Vector3(0.8, 0.8, 0.8)
 worldScale = 0.0
 UIScale = 0.0
@@ -33,11 +35,11 @@ prefPrimary = "Brawn"
 prefSecondary = "Heart"
 HPCap = 60
 skillPool = {
-ExtResource("2_vrbm8"): 1,
-ExtResource("3_nk0fx"): 2,
+ExtResource("2_vrbm8"): 2,
+ExtResource("3_nk0fx"): 1,
 ExtResource("4_hh7kl"): 5
 }
-assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null, null])
+assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null])
 feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
 traitBig = false
 traitTall = false
@@ -49,7 +51,7 @@ canEvolve = false
 evoLevel = 0
 evoBranch = false
 currentHP = 0
-currentStamina = 0
+currentEnergy = 0
 fainted = false
 description = ""
 rumors = ""

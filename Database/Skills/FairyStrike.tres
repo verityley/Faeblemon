@@ -1,24 +1,29 @@
-[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://dv8g1bdy5qvqx"]
+[gd_resource type="Resource" script_class="Skill" load_steps=5 format=3 uid="uid://dv8g1bdy5qvqx"]
 
 [ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_u3q7h"]
+[ext_resource type="Texture2D" uid="uid://jlm135j3noks" path="res://Global Assets/Graphics/Skill Graphics/attackCircleBase.png" id="1_v4d34"]
+[ext_resource type="Texture2D" uid="uid://cflyw4x8o3iur" path="res://Global Assets/Graphics/Skill Graphics/attackCircleOption.png" id="2_vfcna"]
 [ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="2_xyaxd"]
 
 [resource]
 script = ExtResource("1_u3q7h")
 skillName = "Fairy Strike"
 skillType = ExtResource("2_xyaxd")
-skillCost = 0
+skillCost = 3
 skillNature = "Physical"
 skillDamage = 4
+witchSkill = true
 commandDifficulty = 0
 commandTiming = 0
+movePreview = ExtResource("2_vfcna")
+moveDisplay = ExtResource("1_v4d34")
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 2
+rangeMin = 0
 rangeMax = 3
 canPierce = false
-canArc = true
+canArc = false
 canBurst = false
 burstRange = 0
 targetAlly = false

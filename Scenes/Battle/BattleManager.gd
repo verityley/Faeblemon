@@ -56,21 +56,6 @@ func _ready():
 	pass
 
 func _input(event):
-	if event.is_action_pressed("RightMouse") and boardState != "Waiting":
-		if boardState == "Moving":
-			SelectSquare(selectedPos, true)
-			#commandMenu.HideMenu(false, true)
-		
-		if boardState == "Attacking":
-			SelectSquare(selectedPos, true)
-			#commandMenu.HideMenu(false, true)
-		
-		for grid in gridDatabase:
-			ChangeTileOverlay(grid, "Clear")
-		selectedGrid = null
-		selectedState = ""
-		selectedPos = Vector2i(-1,-1)
-		ChangeBoardState("Waiting")
 	if selectedGrid != null: #TEMP FUNCTIONALITY NEEDS STATE CHECK
 		if event.is_action_pressed("Confirm") or event.is_action_pressed("LeftMouse"):
 			if boardState == "Moving":
@@ -84,8 +69,8 @@ func _input(event):
 				#commandMenu.HideMenu(true, true)
 				MoveTo(currentBattler, selectedPos)
 				commandMenu.moveTaken = true
-				commandMenu.MenuFlow(0)
 				commandMenu.familiarChosen = true
+				commandMenu.MenuFlow(0)
 				#commandMenu.HideMenu(false, false)
 			if boardState == "Attacking":
 				if currentSkill.canBurst:
@@ -94,25 +79,31 @@ func _input(event):
 							currentSkill.Execute(self, currentBattler, gridDatabase[grid]["Occupant"])
 				elif gridDatabase[selectedPos]["Occupant"] != null:
 					currentSkill.Execute(self, currentBattler, gridDatabase[selectedPos]["Occupant"])
-					AttackAnim(currentBattler, selectedPos, true)
+					if !currentSkill.witchSkill:
+						AttackAnim(currentBattler, selectedPos, true)
 				#commandMenu.HideMenu(true, true)
 				commandMenu.attackTaken = true
 				commandMenu.familiarChosen = true
+				commandMenu.ResetCircle()
+				commandMenu.MenuFlow(0)
 				#commandMenu.HideMenu(false, false)
 				#TEMPTEMPTEMP
 			
-			for grid in gridDatabase:
-				ChangeTileOverlay(grid, "Clear")
-			selectedGrid = null
-			selectedState = ""
-			selectedPos = Vector2i(-1,-1)
-			#commandMenu.MenuFlow("Start")
-			ChangeBoardState("Waiting")
-			#print(selectedPos)
+			CleanBoardState()
+			
 
 #------------------------------Board State Functions--------------------------------------
 
 #region Board State Functions
+func CleanBoardState():
+	for grid in gridDatabase:
+		ChangeTileOverlay(grid, "Clear")
+		selectedGrid = null
+		selectedState = ""
+		selectedPos = Vector2i(-1,-1)
+		#commandMenu.MenuFlow("Start")
+		ChangeBoardState("Waiting")
+
 func ChangeBoardState(state:String):
 	if (
 	state != "Moving" and 
@@ -146,7 +137,7 @@ func InitBoardState(playerTeam:Array[Faeble], enemyTeam:Array[Faeble]):
 		print("Faeble not available, choosing next in party.")
 		currentFaeble = playerTeam[partyIndex]
 	if currentFaeble != null:
-		AddBattler(0, currentFaeble, true, 3, 1)
+		AddBattler(0, currentFaeble, true, 3, 0)
 		print("Faeble found, assigning, ", currentFaeble.name," to player position 1.")
 	
 	#Player's Second Faeble
@@ -163,7 +154,7 @@ func InitBoardState(playerTeam:Array[Faeble], enemyTeam:Array[Faeble]):
 			print("Faeble not available, choosing next in party.")
 			currentFaeble = playerTeam[partyIndex]
 		if currentFaeble != null:
-			AddBattler(1, currentFaeble, true, 2, 0)
+			AddBattler(1, currentFaeble, true, 2, 1)
 			print("Faeble found, assigning, ", currentFaeble.name," to player position 2.")
 	else:
 		removeBattler[1] = battlerObjects[1]
@@ -184,7 +175,7 @@ func InitBoardState(playerTeam:Array[Faeble], enemyTeam:Array[Faeble]):
 		currentFaeble = enemyTeam[partyIndex]
 	if currentFaeble != null:
 		#await get_tree().create_timer(1).timeout
-		AddBattler(2, currentFaeble, false, 5, 1)
+		AddBattler(2, currentFaeble, false, 5, 0)
 		print("Faeble found, assigning, ", currentFaeble.name," to enemy position 1.")
 	
 	#Enemy's Second Faeble
@@ -202,7 +193,7 @@ func InitBoardState(playerTeam:Array[Faeble], enemyTeam:Array[Faeble]):
 			currentFaeble = enemyTeam[partyIndex]
 		if currentFaeble != null:
 			#await get_tree().create_timer(1).timeout
-			AddBattler(3, currentFaeble, false, 6, 0)
+			AddBattler(3, currentFaeble, false, 6, 1)
 			print("Faeble found, assigning, ", currentFaeble.name," to enemy position 2.")
 	else:
 		removeBattler[3] = battlerObjects[3]
@@ -436,7 +427,7 @@ func InitOrder(): #Resets speed first, for first turn population
 			battler.ResetSpeed()
 	PopulateOrder(battlerObjects.duplicate())
 	ProgressTurn()
-	commandMenu.MenuAction(-1)
+	#commandMenu.MenuAction(-1)
 
 func PopulateOrder(battlers:Array[Battler]):
 	for battler in battlers:
@@ -451,6 +442,9 @@ func PopulateOrder(battlers:Array[Battler]):
 		print(battler.faebleEntry.name)
 
 func ProgressTurn():
+	if currentBattler != null:
+		currentBattler.get_child(1).hide()
+		currentBattler.statusBox.get_child(7).hide()
 	currentBattler = roundOrder.pop_front()
 	if currentBattler != null:
 		if currentBattler.faebleEntry == null:
@@ -458,9 +452,12 @@ func ProgressTurn():
 			ProgressTurn()
 			return
 		commandMenu.selectedBattler = currentBattler
-		commandMenu.MenuAction(-1)
+		commandMenu.MenuAction(8)
 		print("It is ", currentBattler.faebleEntry.name, "'s turn.")
 	else:
+		for battler in battlerObjects:
+			battler.get_child(1).hide()
+			battler.statusBox.get_child(7).hide()
 		NewRound()
 
 func NewRound(): #Resets speed after population, to allow prior turn moves to reduce speed
@@ -488,6 +485,7 @@ func SpeedSorter(a:Battler,b:Battler) -> bool:
 #region Movement Functions
 func MoveTo(battler:Battler, location:Vector2i):
 	print("Moving!")
+	battler.get_child(1).hide()
 	var tween = get_tree().create_tween()
 	var mesh = battler.get_child(0)
 	var facing:float = mesh.rotation.y
@@ -514,24 +512,53 @@ func MoveTo(battler:Battler, location:Vector2i):
 	print("Facing, after tween: ", mesh.rotation.y)
 	ChangeTileData(location, "Occupant", battler)
 	ChangeTileData(location, "Occupied", true)
-	
+	if battler == currentBattler:
+		battler.get_child(1).show()
 
 func MoveBy(battler:Battler, amount:Vector2i):
 	var targetPos:Vector2i = battler.positionIndex + amount
 	MoveTo(battler, targetPos)
 
 func CheckMoves(battler:Battler):
-	var atkRange = battler.movepoints
+	var moveRange = battler.movepoints
 	var location = battler.positionIndex
 	var inRange:Array[Vector2i]
-	for x in range(-atkRange, atkRange+1): #Add positions to left and right of battler
+	var blockedRight:int = -1
+	var blockedLeft:int = -1
+	for x in range(-moveRange, moveRange+1): #Add positions to left and right of battler
 		if x == 0:
 			continue
 		var posIndex:Vector2i = location + Vector2i(x, 0)
 		if posIndex.x > 8 or posIndex.x < 0:
 			continue
+		if gridDatabase[posIndex]["Occupied"] == true:
+			var targetControl:bool = gridDatabase[posIndex]["Occupant"].playerControl
+			var battlerControl:bool = currentBattler.playerControl
+			if posIndex.x > location.x and targetControl != battlerControl:
+				if blockedRight == -1:
+					blockedRight = posIndex.x
+					print("New blocker (on right): ", blockedRight)
+				elif posIndex.x < blockedRight:
+					blockedRight = posIndex.x
+					print("New closest blocker (on right): ", blockedRight)
+			if posIndex.x < location.x and targetControl != battlerControl:
+				if blockedLeft == -1:
+					blockedLeft = posIndex.x
+					print("New blocker (on left): ", blockedLeft)
+				elif posIndex.x > blockedLeft:
+					blockedLeft = posIndex.x
+					print("New closest blocker (on left): ", blockedLeft)
 		inRange.append(posIndex)
 		#print(posIndex, "First Pass")
+	var erasing:Array[Vector2i]
+	for loc in inRange: #Remove errant locations beyond a blocking entity
+		print("Checking Location: ", loc)
+		if blockedLeft != -1 and loc.x < blockedLeft:
+			erasing.append(loc)
+			print("Location blocked on left, removing: ", loc)
+		if blockedRight != -1 and loc.x > blockedRight:
+			erasing.append(loc)
+			print("Location blocked on right, removing: ", loc)
 	#Define location on opposite row
 	var otherRow:Vector2i
 	if location.y == 0:
@@ -540,14 +567,52 @@ func CheckMoves(battler:Battler):
 		otherRow = Vector2i(location.x, 0)
 	print("Other Row Location: ", otherRow)
 	#then check left and right in range-1
-	for x in range(-atkRange+1, atkRange): #Add positions to left and right of battler
+	blockedRight = -1
+	blockedLeft = -1
+	for x in range(-moveRange+1, moveRange): #Add positions to left and right of battler
+		if gridDatabase[otherRow]["Occupied"] == true:
+			var targetControl:bool = gridDatabase[otherRow]["Occupant"].playerControl
+			var battlerControl:bool = currentBattler.playerControl
+			if targetControl != battlerControl:
+				inRange.append(otherRow)
+				break
 		var posIndex:Vector2i = otherRow + Vector2i(x, 0)
 		if posIndex.x > 8 or posIndex.x < 0:
 			continue
+		if gridDatabase[posIndex]["Occupied"] == true: #Eventually add flight/slip/traits check
+			var targetControl:bool = gridDatabase[posIndex]["Occupant"].playerControl
+			var battlerControl:bool = currentBattler.playerControl
+			if posIndex.x > location.x and targetControl != battlerControl:
+				if blockedRight == -1:
+					blockedRight = posIndex.x
+					print("New blocker (on right): ", blockedRight)
+				elif posIndex.x < blockedRight:
+					blockedRight = posIndex.x
+					print("New closest blocker (on right): ", blockedRight)
+			if posIndex.x < location.x and targetControl != battlerControl:
+				if blockedLeft == -1:
+					blockedLeft = posIndex.x
+					print("New blocker (on left): ", blockedLeft)
+				elif posIndex.x > blockedLeft:
+					blockedLeft = posIndex.x
+					print("New closest blocker (on left): ", blockedLeft)
 		inRange.append(posIndex)
 		#print(posIndex, "Second Pass")
 	#Need a part in here that checks for moveblockers, then checks which side moveblocker is on
+	for loc in inRange: #Remove errant locations beyond a blocking entity
+		if loc.y != otherRow.y:
+			print("Not on opposite row, skipping ", loc)
+			continue
+		print("Checking Location: ", loc)
+		if blockedLeft != -1 and loc.x < blockedLeft:
+			erasing.append(loc)
+			print("Location blocked on left, removing: ", loc)
+		if blockedRight != -1 and loc.x > blockedRight:
+			erasing.append(loc)
+			print("Location blocked on right, removing: ", loc)
 	#Finally, remove (or prevent appending) any position index > or < than moveblocker posIndex
+	for loc in erasing:
+		inRange.erase(loc)
 	for pos in inRange:
 		if gridDatabase[pos]["Occupied"] == true:
 			ChangeTileOverlay(pos, "Block")
@@ -563,16 +628,50 @@ func CheckAttackRange(battler:Battler, attack:Skill):
 	var rangeMax = attack.rangeMax
 	var location = battler.positionIndex
 	var inRange:Array[Vector2i]
+	if attack.witchSkill:
+		if battler.playerControl:
+			location = Vector2i(0,0)
+		if !battler.playerControl:
+			location = Vector2i(8,0)
+		inRange.append(location)
+	var blockedRight:int = -1
+	var blockedLeft:int = -1
 	for x in range(-rangeMax, rangeMax+1): #Add positions to left and right of battler
 		if x == 0:
-			continue
-		if x > -rangeMin and x < rangeMin:
 			continue
 		var posIndex:Vector2i = location + Vector2i(x, 0)
 		if posIndex.x > 8 or posIndex.x < 0:
 			continue
+		if gridDatabase[posIndex]["Occupied"] == true and attack.canPierce == false:
+			var targetControl:bool = gridDatabase[posIndex]["Occupant"].playerControl
+			var battlerControl:bool = currentBattler.playerControl
+			if posIndex.x > location.x and targetControl != battlerControl:
+				if blockedRight == -1:
+					blockedRight = posIndex.x
+					print("New blocker (on right): ", blockedRight)
+				elif posIndex.x < blockedRight:
+					blockedRight = posIndex.x
+					print("New closest blocker (on right): ", blockedRight)
+			if posIndex.x < location.x and targetControl != battlerControl:
+				if blockedLeft == -1:
+					blockedLeft = posIndex.x
+					print("New blocker (on left): ", blockedLeft)
+				elif posIndex.x > blockedLeft:
+					blockedLeft = posIndex.x
+					print("New closest blocker (on left): ", blockedLeft)
+		if x > -rangeMin and x < rangeMin:
+			continue
 		inRange.append(posIndex)
-		#print(posIndex, "First Pass")
+	print(inRange, "First Pass")
+	var erasing:Array[Vector2i]
+	for loc in inRange: #Remove errant locations beyond a blocking entity
+		print("Checking Location: ", loc)
+		if blockedLeft != -1 and loc.x < blockedLeft:
+			erasing.append(loc)
+			print("Location blocked on left, removing: ", loc)
+		if blockedRight != -1 and loc.x > blockedRight:
+			erasing.append(loc)
+			print("Location blocked on right, removing: ", loc)
 	#Define location on opposite row
 	var otherRow:Vector2i
 	if location.y == 0:
@@ -582,30 +681,80 @@ func CheckAttackRange(battler:Battler, attack:Skill):
 	print("Other Row Location: ", otherRow)
 	#then check left and right in range-1
 	if attack.canArc == true:
+		blockedRight = -1
+		blockedLeft = -1
 		for x in range(-rangeMax+1, rangeMax): #Add positions to left and right of battler
+			if gridDatabase[otherRow]["Occupied"] == true and attack.canPierce == false:
+				var targetControl:bool = gridDatabase[otherRow]["Occupant"].playerControl
+				var battlerControl:bool = currentBattler.playerControl
+				if targetControl != battlerControl:
+					break
 			if x == 0:
 				continue
 			var posIndex:Vector2i = otherRow + Vector2i(x, 0)
 			if posIndex.x > 8 or posIndex.x < 0:
 				continue
+			if gridDatabase[posIndex]["Occupied"] == true and attack.canPierce == false:
+				var targetControl:bool = gridDatabase[posIndex]["Occupant"].playerControl
+				var battlerControl:bool = currentBattler.playerControl
+				if posIndex.x > location.x and targetControl != battlerControl:
+					if blockedRight == -1:
+						blockedRight = posIndex.x
+						print("New blocker (on right): ", blockedRight)
+					elif posIndex.x < blockedRight:
+						blockedRight = posIndex.x
+						print("New closest blocker (on right): ", blockedRight)
+				if posIndex.x < location.x and targetControl != battlerControl:
+					if blockedLeft == -1:
+						blockedLeft = posIndex.x
+						print("New blocker (on left): ", blockedLeft)
+					elif posIndex.x > blockedLeft:
+						blockedLeft = posIndex.x
+						print("New closest blocker (on left): ", blockedLeft)
 			inRange.append(posIndex)
 			#print(posIndex, "Second Pass")
+		for loc in inRange: #Remove errant locations beyond a blocking entity
+			if loc.y != otherRow.y:
+				print("Not on opposite row, skipping ", loc)
+				continue
+			print("Checking Location: ", loc)
+			if blockedLeft != -1 and loc.x < blockedLeft:
+				erasing.append(loc)
+				print("Location blocked on left, removing: ", loc)
+			if blockedRight != -1 and loc.x > blockedRight:
+				erasing.append(loc)
+				print("Location blocked on right, removing: ", loc)
 	if rangeMin <= 1:
 		inRange.append(otherRow)
+	if attack.witchSkill:
+		for x in range(-rangeMax, rangeMax+1): #Add positions to left and right of battler
+			if x == 0:
+				continue
+			if x > -rangeMin and x < rangeMin:
+				continue
+			var posIndex:Vector2i = otherRow + Vector2i(x, 0)
+			if posIndex.x > 8 or posIndex.x < 0:
+				continue
+			inRange.append(posIndex)
 	#Need a part in here that checks for moveblockers, then checks which side moveblocker is on
 	#Finally, remove (or prevent appending) any position index > or < than moveblocker posIndex
+	for loc in erasing:
+		inRange.erase(loc)
 	for pos in inRange:
 		if gridDatabase[pos]["Occupied"] == true:
+			var targetControl:bool = gridDatabase[pos]["Occupant"].playerControl
+			var battlerControl:bool = currentBattler.playerControl
+			
 			if attack.targetAll:
 				ChangeTileOverlay(pos, "Target")
-			elif gridDatabase[pos]["Occupant"].playerControl == false and !attack.targetAlly:
+			else:
+				if attack.targetAlly:
+					battlerControl = !battlerControl
+			
+			if targetControl != battlerControl:
 				ChangeTileOverlay(pos, "Target")
-			elif gridDatabase[pos]["Occupant"].playerControl == true and !attack.targetAlly:
+			elif targetControl == battlerControl:
 				ChangeTileOverlay(pos, "Block")
-			elif gridDatabase[pos]["Occupant"].playerControl == false and attack.targetAlly:
-				ChangeTileOverlay(pos, "Block")
-			elif gridDatabase[pos]["Occupant"].playerControl == true and attack.targetAlly:
-				ChangeTileOverlay(pos, "Target")
 		else:
 			ChangeTileOverlay(pos, "Range")
 
@@ -695,6 +844,7 @@ func LaunchAttack():
 	pass
 
 func AttackAnim(battler:Battler, target:Vector2i, melee:bool):
+	battler.get_child(1).hide()
 	var tween = get_tree().create_tween()
 	var mesh = battler.get_child(0)
 	var facing:float = mesh.rotation.y
@@ -714,31 +864,33 @@ func AttackAnim(battler:Battler, target:Vector2i, melee:bool):
 	tween.tween_property(battler, "position", pos1, 0.2)
 	tween.tween_property(battler, "position", pos2, 0.2)
 	await tween.finished
+	if battler == currentBattler:
+		battler.get_child(1).show()
 #endregion
 
 #------------------------------Camera Functions--------------------------------------
 func StartupCam():
 	for index in range(battlerObjects.size()):
 		battlerObjects[index].hide()
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1).timeout
 	
 	var tween = get_tree().create_tween()
 	
-	tween.tween_property(targetCam, "rotation", Vector3(deg_to_rad(-20), deg_to_rad(10), 0), 0.5)
-	await get_tree().create_timer(0.5).timeout
+	tween.tween_property(targetCam, "rotation", Vector3(deg_to_rad(-20), deg_to_rad(10), 0), 0.25)
+	await get_tree().create_timer(0.25).timeout
 	battlerObjects[0].show()
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.5).timeout
 	battlerObjects[1].show()
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.25).timeout
 	tween = get_tree().create_tween()
-	tween.tween_property(targetCam, "rotation", Vector3(deg_to_rad(-20), deg_to_rad(-10), 0), 1)
-	await get_tree().create_timer(1).timeout
+	tween.tween_property(targetCam, "rotation", Vector3(deg_to_rad(-20), deg_to_rad(-10), 0), 0.5)
+	await get_tree().create_timer(0.5).timeout
 	battlerObjects[2].show()
-	await get_tree().create_timer(1).timeout
-	battlerObjects[3].show()
 	await get_tree().create_timer(0.5).timeout
+	battlerObjects[3].show()
+	await get_tree().create_timer(0.25).timeout
 	tween = get_tree().create_tween()
-	tween.tween_property(targetCam, "rotation", Vector3(deg_to_rad(-15), 0, 0), 1)
+	tween.tween_property(targetCam, "rotation", Vector3(deg_to_rad(-15), 0, 0), 0.5)
 
 
 func ChangeCam():

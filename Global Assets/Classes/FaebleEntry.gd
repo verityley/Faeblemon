@@ -47,7 +47,7 @@ var energyIncreases:int = 0
 var maxHP:int = 1
 var maxEnergy:int = 1
 @export var skillPool:Dictionary
-@export var assignedSkills:Array[Skill] = [null, null, null, null]
+@export var assignedSkills:Array[Skill] = [null, null, null]
 var learnedSkills:Array[Skill] #These are all the skills they know by their level, or with Scrolls
 @export var feats:Array[Feat]
 @export var traitBig:bool #This Faeble takes up the entire column of the battlefield
@@ -68,7 +68,7 @@ var learnedSkills:Array[Skill] #These are all the skills they know by their leve
 
 @export_category("Instance-Only Parameters")
 @export var currentHP:int
-@export var currentStamina:int #This determines how many after-battle heals a faeble has left.
+@export var currentEnergy:int #This determines how many after-battle heals a faeble has left.
 @export var fainted:bool
 
 @export_category("Description")

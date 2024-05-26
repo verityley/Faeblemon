@@ -1,11 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://3h5g5dp2wlp7"]
+[gd_scene load_steps=17 format=3 uid="uid://3h5g5dp2wlp7"]
 
 [ext_resource type="Script" path="res://MagicCircleMenu.gd" id="1_d54ur"]
 [ext_resource type="Texture2D" uid="uid://cca623b2a817h" path="res://Scenes/Battle/Assets/circleMenu.png" id="1_mk3wl"]
-[ext_resource type="Texture2D" uid="uid://degu8bplk2w3o" path="res://Scenes/Battle/Assets/circleOptionsSprite.png" id="3_capju"]
+[ext_resource type="Resource" uid="uid://dv8g1bdy5qvqx" path="res://Database/Skills/FairyStrike.tres" id="2_d0vq4"]
+[ext_resource type="Texture2D" uid="uid://cye56x2h3wyf3" path="res://Scenes/Battle/Assets/circleOptionsSpriteFull.png" id="3_hynpo"]
 [ext_resource type="Texture2D" uid="uid://7tnv5a5yrt3l" path="res://Scenes/Battle/Assets/circleMenuBack.png" id="3_qsccj"]
-[ext_resource type="Texture2D" uid="uid://y6atdpkgn6cw" path="res://Scenes/Battle/Assets/circleOptionsSpriteBack.png" id="4_oqihd"]
 [ext_resource type="Texture2D" uid="uid://d8x7l3m2n4xn" path="res://Scenes/Battle/Assets/circleMenuCenter.png" id="5_pdwlx"]
+[ext_resource type="Texture2D" uid="uid://cflyw4x8o3iur" path="res://Global Assets/Graphics/Skill Graphics/attackCircleOption.png" id="5_t48df"]
+[ext_resource type="Texture2D" uid="uid://jlm135j3noks" path="res://Global Assets/Graphics/Skill Graphics/attackCircleBase.png" id="6_i87ir"]
+[ext_resource type="Texture2D" uid="uid://mrf0rxkhgq5i" path="res://Global Assets/Graphics/Monster Graphics/Icons/ananseedIcon.png" id="7_hlsr5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ncre1"]
 transparency = 1
@@ -41,10 +44,14 @@ albedo_texture = ExtResource("3_qsccj")
 material = SubResource("StandardMaterial3D_ycpsw")
 size = Vector2(4, 4)
 
-[node name="RingMenu" type="Node3D"]
+[node name="RingMenu" type="Node3D" node_paths=PackedStringArray("ringMesh", "skillDisplay")]
 script = ExtResource("1_d54ur")
-rotationTime = 1.5
+ringMesh = NodePath("RingMesh")
+skillDisplay = NodePath("SkillDisplay")
+rotationTime = 0.5
 menuState = "Familiar"
+emptyDisplay = ExtResource("6_i87ir")
+tempAttack = ExtResource("2_d0vq4")
 
 [node name="RingMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_36p0v")
@@ -61,17 +68,22 @@ shape = SubResource("BoxShape3D_eka5n")
 [node name="Sprite3D" type="Sprite3D" parent="RingMesh/RingOption"]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.03)
 render_priority = 1
-texture = ExtResource("3_capju")
+texture = ExtResource("3_hynpo")
 hframes = 4
 vframes = 3
+frame = 4
 
-[node name="Sprite3D2" type="Sprite3D" parent="RingMesh/RingOption"]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.03)
-modulate = Color(1, 1, 1, 0.784314)
-render_priority = -1
-texture = ExtResource("4_oqihd")
-hframes = 4
-vframes = 3
+[node name="SkillOption" type="Sprite3D" parent="RingMesh/RingOption"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.0585779)
+visible = false
+render_priority = 2
+texture = ExtResource("5_t48df")
+
+[node name="TurnPortrait" type="Sprite3D" parent="RingMesh/RingOption"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.0655764)
+visible = false
+render_priority = 2
+texture = ExtResource("7_hlsr5")
 
 [node name="RingOption1" type="MeshInstance3D" parent="RingMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.333, 0, 0)
@@ -85,19 +97,22 @@ shape = SubResource("BoxShape3D_eka5n")
 [node name="Sprite3D" type="Sprite3D" parent="RingMesh/RingOption1"]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.03)
 render_priority = 1
-texture = ExtResource("3_capju")
+texture = ExtResource("3_hynpo")
 hframes = 4
 vframes = 3
-frame = 1
+frame = 5
 
-[node name="Sprite3D2" type="Sprite3D" parent="RingMesh/RingOption1"]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.03)
-modulate = Color(1, 1, 1, 0.784314)
-render_priority = -1
-texture = ExtResource("4_oqihd")
-hframes = 4
-vframes = 3
-frame = 1
+[node name="SkillOption" type="Sprite3D" parent="RingMesh/RingOption1"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.0585779)
+visible = false
+render_priority = 2
+texture = ExtResource("5_t48df")
+
+[node name="TurnPortrait" type="Sprite3D" parent="RingMesh/RingOption1"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.0655764)
+visible = false
+render_priority = 2
+texture = ExtResource("7_hlsr5")
 
 [node name="RingOption2" type="MeshInstance3D" parent="RingMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.333, 0)
@@ -111,19 +126,22 @@ shape = SubResource("BoxShape3D_eka5n")
 [node name="Sprite3D" type="Sprite3D" parent="RingMesh/RingOption2"]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.03)
 render_priority = 1
-texture = ExtResource("3_capju")
+texture = ExtResource("3_hynpo")
 hframes = 4
 vframes = 3
-frame = 2
+frame = 6
 
-[node name="Sprite3D2" type="Sprite3D" parent="RingMesh/RingOption2"]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.03)
-modulate = Color(1, 1, 1, 0.784314)
-render_priority = -1
-texture = ExtResource("4_oqihd")
-hframes = 4
-vframes = 3
-frame = 2
+[node name="SkillOption" type="Sprite3D" parent="RingMesh/RingOption2"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.0585779)
+visible = false
+render_priority = 2
+texture = ExtResource("5_t48df")
+
+[node name="TurnPortrait" type="Sprite3D" parent="RingMesh/RingOption2"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.0655764)
+visible = false
+render_priority = 2
+texture = ExtResource("7_hlsr5")
 
 [node name="RingOption3" type="MeshInstance3D" parent="RingMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33279, 0, 0)
@@ -134,25 +152,30 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RingMesh/RingOption3/Area3D"]
 shape = SubResource("BoxShape3D_eka5n")
 
-[node name="Sprite3D" type="Sprite3D" parent="RingMesh/RingOption3"]
+[node name="MenuOption" type="Sprite3D" parent="RingMesh/RingOption3"]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.03)
 render_priority = 1
-texture = ExtResource("3_capju")
+texture = ExtResource("3_hynpo")
 hframes = 4
 vframes = 3
-frame = 3
+frame = 7
 
-[node name="Sprite3D2" type="Sprite3D" parent="RingMesh/RingOption3"]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.03)
-modulate = Color(1, 1, 1, 0.784314)
-render_priority = -1
-texture = ExtResource("4_oqihd")
-hframes = 4
-vframes = 3
-frame = 3
+[node name="SkillOption" type="Sprite3D" parent="RingMesh/RingOption3"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.0585779)
+visible = false
+render_priority = 2
+texture = ExtResource("5_t48df")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.40632)
+[node name="TurnPortrait" type="Sprite3D" parent="RingMesh/RingOption3"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.0655764)
+visible = false
+render_priority = 2
+texture = ExtResource("7_hlsr5")
+
+[node name="SkillDisplay" type="Sprite3D" parent="."]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.0523285)
+render_priority = 1
+texture = ExtResource("6_i87ir")
 
 [node name="RingMeshCenter" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.001)
@@ -166,6 +189,9 @@ mesh = SubResource("QuadMesh_w6drr")
 [node name="RingMeshBack2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.76777, -1.76777, 0, 1.76777, 1.76777, 0, 0, 0, 2.5, 0, 0, -0.359329)
 mesh = SubResource("QuadMesh_w6drr")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.40632)
 
 [connection signal="mouse_entered" from="RingMesh/RingOption/Area3D" to="." method="SelectMenu" binds= [0]]
 [connection signal="mouse_exited" from="RingMesh/RingOption/Area3D" to="." method="SelectMenu" binds= [0, true]]

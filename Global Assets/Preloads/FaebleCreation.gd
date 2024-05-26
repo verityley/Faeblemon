@@ -153,6 +153,7 @@ func CreateFaeble(faebleEntry:Faeble, initLevel:int, mook:bool = false, commande
 	instance.currentHP = instance.maxHP
 	var baseEnergy:int = float(instance.brawn + instance.wit) / 2
 	instance.maxEnergy = (baseEnergy*energyRatio.x) + (instance.energyIncreases*energyRatio.y)
+	instance.currentEnergy = instance.maxEnergy
 	prints("HP Increases:", instance.hpIncreases, "Energy Increases:", instance.energyIncreases)
 	prints("Max HP:", instance.maxHP, "Max Energy:", instance.maxEnergy)
 	#End of reward assignment
