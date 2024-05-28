@@ -6,5 +6,7 @@
 [resource]
 script = ExtResource("2_0yobn")
 name = "Geo"
+nameShort = "Geo"
 typeIndex = 3
 nameplate = ExtResource("1_5m462")
+typeColor = Color(0.368627, 0.298039, 0.282353, 1)

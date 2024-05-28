@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf0xuy6nuq2jc"]
+
+[ext_resource type="Texture2D" uid="uid://bxiljp8d564o2" path="res://Scenes/Battle/Assets/DamageIcon.png" id="1_kt84s"]
+
+[node name="DamagePopup" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+alpha_cut = 2
+texture = ExtResource("1_kt84s")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0115169)
+alpha_cut = 2
+render_priority = 2
+outline_render_priority = 1
+outline_modulate = Color(0, 0, 0, 0.458824)
+text = "00"
+font_size = 48

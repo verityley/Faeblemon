@@ -1,10 +1,12 @@
 [gd_resource type="Resource" script_class="School" load_steps=3 format=3 uid="uid://de8kbqj72dt47"]
 
-[ext_resource type="Texture2D" uid="uid://bi2gpdulgllgk" path="res://Global Assets/Graphics/Type Graphics/School Plates/SolarNameplate.png" id="1_q57li"]
+[ext_resource type="Texture2D" uid="uid://dmyeck4xon2qc" path="res://Global Assets/Graphics/Type Graphics/School Plates/HearthNameplate.png" id="1_mwp5n"]
 [ext_resource type="Script" path="res://Global Assets/Classes/School.gd" id="2_jqspu"]
 
 [resource]
 script = ExtResource("2_jqspu")
 name = "Hearth"
+nameShort = "Hearth"
 typeIndex = 0
-nameplate = ExtResource("1_q57li")
+nameplate = ExtResource("1_mwp5n")
+typeColor = Color(0.92549, 0.556863, 0.121569, 1)

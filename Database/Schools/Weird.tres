@@ -6,5 +6,7 @@
 [resource]
 script = ExtResource("2_y3gbb")
 name = "Weird"
+nameShort = "Weird"
 typeIndex = 12
 nameplate = ExtResource("1_vglbn")
+typeColor = Color(0.545098, 0.286275, 1, 1)

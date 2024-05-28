@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://3h5g5dp2wlp7"]
+[gd_scene load_steps=24 format=3 uid="uid://3h5g5dp2wlp7"]
 
 [ext_resource type="Script" path="res://MagicCircleMenu.gd" id="1_d54ur"]
 [ext_resource type="Texture2D" uid="uid://cca623b2a817h" path="res://Scenes/Battle/Assets/circleMenu.png" id="1_mk3wl"]
@@ -6,9 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://cye56x2h3wyf3" path="res://Scenes/Battle/Assets/circleOptionsSpriteFull.png" id="3_hynpo"]
 [ext_resource type="Texture2D" uid="uid://7tnv5a5yrt3l" path="res://Scenes/Battle/Assets/circleMenuBack.png" id="3_qsccj"]
 [ext_resource type="Texture2D" uid="uid://d8x7l3m2n4xn" path="res://Scenes/Battle/Assets/circleMenuCenter.png" id="5_pdwlx"]
-[ext_resource type="Texture2D" uid="uid://cflyw4x8o3iur" path="res://Global Assets/Graphics/Skill Graphics/attackCircleOption.png" id="5_t48df"]
 [ext_resource type="Texture2D" uid="uid://jlm135j3noks" path="res://Global Assets/Graphics/Skill Graphics/attackCircleBase.png" id="6_i87ir"]
+[ext_resource type="Texture2D" uid="uid://sc0ir4tgs4ik" path="res://Scenes/Battle/Assets/attackPreviewFull.png" id="6_yu6j7"]
 [ext_resource type="Texture2D" uid="uid://mrf0rxkhgq5i" path="res://Global Assets/Graphics/Monster Graphics/Icons/ananseedIcon.png" id="7_hlsr5"]
+[ext_resource type="Texture2D" uid="uid://ylp6xdkfqebl" path="res://Scenes/Battle/Assets/previewEnergyFULL.png" id="7_qwhi7"]
+[ext_resource type="Texture2D" uid="uid://eu6j30534237" path="res://Scenes/Battle/Assets/attackCircleFull.png" id="9_6k17c"]
+[ext_resource type="Texture2D" uid="uid://bryltx42otweu" path="res://Scenes/Battle/Assets/ArcIcon.png" id="10_jxaae"]
+[ext_resource type="Texture2D" uid="uid://30bu1ow02vvv" path="res://Scenes/Battle/Assets/BurstIcon.png" id="11_uqq2b"]
+[ext_resource type="Texture2D" uid="uid://bxni3es4pul0k" path="res://Scenes/Battle/Assets/PierceIcon.png" id="12_hv1aw"]
+[ext_resource type="Texture2D" uid="uid://d1bcuysey3mqv" path="res://Scenes/Battle/Assets/attackEnergyFull.png" id="13_xgt0k"]
+[ext_resource type="Texture2D" uid="uid://57no20asw0be" path="res://Global Assets/Graphics/Skill Graphics/attackDetailsBase.png" id="14_wvqi8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ncre1"]
 transparency = 1
@@ -44,10 +51,11 @@ albedo_texture = ExtResource("3_qsccj")
 material = SubResource("StandardMaterial3D_ycpsw")
 size = Vector2(4, 4)
 
-[node name="RingMenu" type="Node3D" node_paths=PackedStringArray("ringMesh", "skillDisplay")]
+[node name="RingMenu" type="Node3D" node_paths=PackedStringArray("ringMesh", "skillDisplay", "actionDisplay")]
 script = ExtResource("1_d54ur")
 ringMesh = NodePath("RingMesh")
 skillDisplay = NodePath("SkillDisplay")
+actionDisplay = NodePath("RingMeshCenter/ActionDisplay")
 rotationTime = 0.5
 menuState = "Familiar"
 emptyDisplay = ExtResource("6_i87ir")
@@ -65,7 +73,7 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RingMesh/RingOption/Area3D"]
 shape = SubResource("BoxShape3D_eka5n")
 
-[node name="Sprite3D" type="Sprite3D" parent="RingMesh/RingOption"]
+[node name="MenuOption" type="Sprite3D" parent="RingMesh/RingOption"]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.03)
 render_priority = 1
 texture = ExtResource("3_hynpo")
@@ -76,13 +84,37 @@ frame = 4
 [node name="SkillOption" type="Sprite3D" parent="RingMesh/RingOption"]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.0585779)
 visible = false
+render_priority = 3
+texture = ExtResource("6_yu6j7")
+hframes = 13
+vframes = 2
+frame = 12
+
+[node name="EnergyPreview" type="Sprite3D" parent="RingMesh/RingOption/SkillOption"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.005)
 render_priority = 2
-texture = ExtResource("5_t48df")
+texture = ExtResource("7_qwhi7")
+hframes = 12
+
+[node name="AttackName" type="Label3D" parent="RingMesh/RingOption/SkillOption"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.141768, 0)
+render_priority = 5
+outline_render_priority = 4
+text = "Attack Name"
+font_size = 26
+outline_size = 10
+
+[node name="TypeName" type="Label3D" parent="RingMesh/RingOption/SkillOption"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.127558, 0)
+render_priority = 5
+outline_render_priority = 4
+text = "TypeName"
+outline_size = 8
 
 [node name="TurnPortrait" type="Sprite3D" parent="RingMesh/RingOption"]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.0655764)
 visible = false
-render_priority = 2
+render_priority = 4
 texture = ExtResource("7_hlsr5")
 
 [node name="RingOption1" type="MeshInstance3D" parent="RingMesh"]
@@ -94,7 +126,7 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RingMesh/RingOption1/Area3D"]
 shape = SubResource("BoxShape3D_eka5n")
 
-[node name="Sprite3D" type="Sprite3D" parent="RingMesh/RingOption1"]
+[node name="MenuOption" type="Sprite3D" parent="RingMesh/RingOption1"]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.03)
 render_priority = 1
 texture = ExtResource("3_hynpo")
@@ -105,8 +137,32 @@ frame = 5
 [node name="SkillOption" type="Sprite3D" parent="RingMesh/RingOption1"]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.0585779)
 visible = false
+render_priority = 3
+texture = ExtResource("6_yu6j7")
+hframes = 13
+vframes = 2
+frame = 12
+
+[node name="EnergyPreview" type="Sprite3D" parent="RingMesh/RingOption1/SkillOption"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.005)
 render_priority = 2
-texture = ExtResource("5_t48df")
+texture = ExtResource("7_qwhi7")
+hframes = 12
+
+[node name="AttackName" type="Label3D" parent="RingMesh/RingOption1/SkillOption"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.141768, 0)
+render_priority = 5
+outline_render_priority = 4
+text = "Attack Name"
+font_size = 26
+outline_size = 10
+
+[node name="TypeName" type="Label3D" parent="RingMesh/RingOption1/SkillOption"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.127558, 0)
+render_priority = 5
+outline_render_priority = 4
+text = "TypeName"
+outline_size = 8
 
 [node name="TurnPortrait" type="Sprite3D" parent="RingMesh/RingOption1"]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.0655764)
@@ -123,7 +179,7 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RingMesh/RingOption2/Area3D"]
 shape = SubResource("BoxShape3D_eka5n")
 
-[node name="Sprite3D" type="Sprite3D" parent="RingMesh/RingOption2"]
+[node name="MenuOption" type="Sprite3D" parent="RingMesh/RingOption2"]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.03)
 render_priority = 1
 texture = ExtResource("3_hynpo")
@@ -134,8 +190,32 @@ frame = 6
 [node name="SkillOption" type="Sprite3D" parent="RingMesh/RingOption2"]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.0585779)
 visible = false
+render_priority = 3
+texture = ExtResource("6_yu6j7")
+hframes = 13
+vframes = 2
+frame = 12
+
+[node name="EnergyPreview" type="Sprite3D" parent="RingMesh/RingOption2/SkillOption"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.005)
 render_priority = 2
-texture = ExtResource("5_t48df")
+texture = ExtResource("7_qwhi7")
+hframes = 12
+
+[node name="AttackName" type="Label3D" parent="RingMesh/RingOption2/SkillOption"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.141768, 0)
+render_priority = 5
+outline_render_priority = 4
+text = "Attack Name"
+font_size = 26
+outline_size = 10
+
+[node name="TypeName" type="Label3D" parent="RingMesh/RingOption2/SkillOption"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.127558, 0)
+render_priority = 5
+outline_render_priority = 4
+text = "TypeName"
+outline_size = 8
 
 [node name="TurnPortrait" type="Sprite3D" parent="RingMesh/RingOption2"]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.0655764)
@@ -163,8 +243,32 @@ frame = 7
 [node name="SkillOption" type="Sprite3D" parent="RingMesh/RingOption3"]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.0585779)
 visible = false
+render_priority = 3
+texture = ExtResource("6_yu6j7")
+hframes = 13
+vframes = 2
+frame = 12
+
+[node name="EnergyPreview" type="Sprite3D" parent="RingMesh/RingOption3/SkillOption"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.005)
 render_priority = 2
-texture = ExtResource("5_t48df")
+texture = ExtResource("7_qwhi7")
+hframes = 12
+
+[node name="AttackName" type="Label3D" parent="RingMesh/RingOption3/SkillOption"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.141768, 0)
+render_priority = 5
+outline_render_priority = 4
+text = "Attack Name"
+font_size = 26
+outline_size = 10
+
+[node name="TypeName" type="Label3D" parent="RingMesh/RingOption3/SkillOption"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.127558, 0)
+render_priority = 5
+outline_render_priority = 4
+text = "TypeName"
+outline_size = 8
 
 [node name="TurnPortrait" type="Sprite3D" parent="RingMesh/RingOption3"]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.0655764)
@@ -173,13 +277,85 @@ render_priority = 2
 texture = ExtResource("7_hlsr5")
 
 [node name="SkillDisplay" type="Sprite3D" parent="."]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.0523285)
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0.0345536)
+visible = false
+texture = ExtResource("9_6k17c")
+hframes = 13
+vframes = 2
+
+[node name="AttackName" type="Label3D" parent="SkillDisplay"]
+transform = Transform3D(1.11111, 0, 0, 0, 1.11111, 0, 0, 0, 1.11111, 0, -0.088, 0)
+render_priority = 2
+outline_render_priority = 1
+text = "Attack Name"
+font_size = 52
+
+[node name="TypeName" type="Label3D" parent="SkillDisplay"]
+transform = Transform3D(1.11111, 0, 0, 0, 1.11111, 0, 0, 0, 1.11111, 0, -0.677179, 0)
+render_priority = 2
+outline_render_priority = 1
+text = "TypeName"
+font_size = 36
+outline_size = 8
+
+[node name="RangeMin" type="Label3D" parent="SkillDisplay"]
+transform = Transform3D(1.11111, 0, 0, 0, 1.11111, 0, 0, 0, 1.11111, 0.660125, -1.05678, 0)
+render_priority = 2
+outline_render_priority = 1
+text = "0"
+font_size = 36
+outline_size = 8
+
+[node name="RangeMax" type="Label3D" parent="SkillDisplay"]
+transform = Transform3D(1.11111, 0, 0, 0, 1.11111, 0, 0, 0, 1.11111, 1.02449, -0.680765, 0)
+render_priority = 2
+outline_render_priority = 1
+text = "8"
+font_size = 52
+outline_size = 8
+
+[node name="ArcIcon" type="Sprite3D" parent="SkillDisplay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.43252, 0.720104, 0)
+render_priority = 2
+texture = ExtResource("10_jxaae")
+
+[node name="BurstIcon" type="Sprite3D" parent="SkillDisplay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14591, 1.11665, 0)
+render_priority = 2
+texture = ExtResource("11_uqq2b")
+
+[node name="BurstRange" type="Label3D" parent="SkillDisplay/BurstIcon"]
+transform = Transform3D(1.11111, 0, 0, 0, 1.11111, 0, 0, 0, 1.11111, -0.170982, -0.167583, 0)
+render_priority = 2
+outline_render_priority = 1
+text = "0"
+font_size = 28
+outline_size = 6
+
+[node name="PierceIcon" type="Sprite3D" parent="SkillDisplay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.740715, 1.37504, 0)
+render_priority = 2
+texture = ExtResource("12_hv1aw")
+
+[node name="EnergyDisplay" type="Sprite3D" parent="SkillDisplay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.825821, 0.819855, 0)
 render_priority = 1
-texture = ExtResource("6_i87ir")
+texture = ExtResource("13_xgt0k")
+hframes = 10
+frame = 9
+
+[node name="AttackDetails" type="Sprite3D" parent="SkillDisplay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0152977, 0.565638, -0.00402948)
+render_priority = 2
+texture = ExtResource("14_wvqi8")
+frame = 9
 
 [node name="RingMeshCenter" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.001)
 mesh = SubResource("QuadMesh_la3r7")
+
+[node name="ActionDisplay" type="Label3D" parent="RingMeshCenter"]
+font_size = 64
 
 [node name="RingMeshBack" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.359329)
@@ -188,6 +364,7 @@ mesh = SubResource("QuadMesh_w6drr")
 
 [node name="RingMeshBack2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.76777, -1.76777, 0, 1.76777, 1.76777, 0, 0, 0, 2.5, 0, 0, -0.359329)
+visible = false
 mesh = SubResource("QuadMesh_w6drr")
 
 [node name="Camera3D" type="Camera3D" parent="."]

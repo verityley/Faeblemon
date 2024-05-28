@@ -6,5 +6,7 @@
 [resource]
 script = ExtResource("2_7flrj")
 name = "Pact"
+nameShort = "Pact"
 typeIndex = 11
 nameplate = ExtResource("1_t5wmx")
+typeColor = Color(0.92549, 0.14902, 0.121569, 1)

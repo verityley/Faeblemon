@@ -6,5 +6,7 @@
 [resource]
 script = ExtResource("2_aonae")
 name = "Mundane"
+nameShort = "Mundane"
 typeIndex = 7
 nameplate = ExtResource("1_gk681")
+typeColor = Color(0.384314, 0.2, 0.168627, 1)

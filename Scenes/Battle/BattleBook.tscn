@@ -63,6 +63,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "20"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CurrentIndicator" type="Sprite2D" parent="StatusBox"]
 visible = false
@@ -119,6 +120,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "20"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CurrentIndicator" type="Sprite2D" parent="StatusBox2"]
 visible = false
@@ -175,6 +177,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "20"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CurrentIndicator" type="Sprite2D" parent="StatusBox3"]
 visible = false
@@ -231,6 +234,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "20"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CurrentIndicator" type="Sprite2D" parent="StatusBox4"]
 visible = false

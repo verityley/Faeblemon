@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="Leader" load_steps=3 format=3 uid="uid://cx83gg5jmqkxy"]
+
+[ext_resource type="Resource" uid="uid://coyq2vgk2qsyv" path="res://Database/Skills/WitchSkills/Channel.tres" id="1_deetd"]
+[ext_resource type="Script" path="res://Global Assets/Classes/Leader.gd" id="2_6i8iu"]
+
+[resource]
+script = ExtResource("2_6i8iu")
+name = "Player"
+ID = 0
+battlerScale = Vector3(0, 0, 0)
+worldScale = 0.0
+UIScale = 0.0
+groundOffset = Vector3(0, 0, 0)
+minQuality = 2
+maxQuality = 20
+brawn = 0
+vigor = 0
+wit = 0
+ambition = 0
+grace = 0
+resolve = 0
+heart = 0
+profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
+prefPrimary = ""
+prefSecondary = ""
+HPCap = 60
+skillPool = {}
+assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([ExtResource("1_deetd"), null, null])
+feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
+traitBig = false
+traitTall = false
+traitSmall = false
+traitJumping = false
+traitFlying = false
+traitPhasing = false
+canEvolve = false
+evoLevel = 0
+evoBranch = false
+currentHP = 0
+currentEnergy = 0
+fainted = false
+description = ""
+rumors = ""

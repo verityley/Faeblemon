@@ -6,5 +6,8 @@
 
 [node name="FaebleStorage" type="Node"]
 script = ExtResource("1_th8ns")
+codex = {
+"Awoolf": ExtResource("2_8dxpb")
+}
 playerParty = Array[Resource("res://Global Assets/Classes/FaebleEntry.gd")]([ExtResource("2_8dxpb"), ExtResource("3_v0hfg"), ExtResource("2_8dxpb"), null, null, null])
 enemyParty = Array[Resource("res://Global Assets/Classes/FaebleEntry.gd")]([ExtResource("2_8dxpb"), ExtResource("3_v0hfg"), null, null, null, null])

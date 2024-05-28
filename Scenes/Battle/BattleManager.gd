@@ -7,9 +7,11 @@ class_name BattleManager
 @export var stageMesh:Node3D
 @export var commandMenu:RingMenu
 @export var battleUI:Node
-var battleBoxes:Array[StatusBox]
+var battleBoxes:Array[StatusBox3D]
 @export var stageSize:Vector2i = Vector2i(9,2)
 @export var battlerObjects:Array[Battler] #Stores the battler objects for each faebleon the field
+@export var playerLeader:Leader
+@export var enemyLeader:Leader
 
 @export_category("Camera Parameters")
 @export var playerCam:Node
@@ -46,9 +48,11 @@ var roundOrder:Array[Battler]
 #@export var defenseFactor:float = 0
 @export var stageIncrease:int = 2
 
+@export_category("Animation Parameters")
+@export var damagePop:Node3D
 
 func _ready():
-	FaebleCreation.CreateEncounter(FaebleStorage.enemyParty, 4, null)
+	#FaebleCreation.CreateEncounter(FaebleStorage.enemyParty, 4, null)
 	PopulateGrid()
 	InitBoardState(FaebleStorage.playerParty, FaebleStorage.enemyParty)
 	StartupCam()
@@ -81,11 +85,16 @@ func _input(event):
 					currentSkill.Execute(self, currentBattler, gridDatabase[selectedPos]["Occupant"])
 					if !currentSkill.witchSkill:
 						AttackAnim(currentBattler, selectedPos, true)
+						commandMenu.familiarChosen = true
+						commandMenu.attackTaken = true
+						commandMenu.ResetCircle()
+						commandMenu.MenuFlow(0)
+					else:
+						commandMenu.witchChosen = true
+						commandMenu.ResetCircle()
+						commandMenu.MenuAction(commandMenu.States.End)
 				#commandMenu.HideMenu(true, true)
-				commandMenu.attackTaken = true
-				commandMenu.familiarChosen = true
-				commandMenu.ResetCircle()
-				commandMenu.MenuFlow(0)
+				
 				#commandMenu.HideMenu(false, false)
 				#TEMPTEMPTEMP
 			
@@ -364,8 +373,12 @@ func SelectArea(location:Vector2i, atkRange:int, exit=false, allRows:bool=false)
 #------------------------------Battler Functions--------------------------------------
 
 #region Battler Functions
-func SwapBattler():
-	pass
+func SwapBattler(battlerTarget:Battler, swapTarget:Faeble):
+	var playerControl:bool = battlerTarget.playerControl
+	var position:Vector2i = battlerTarget.positionIndex
+	var battlerIndex:int = battlerObjects.find(battlerTarget)
+	RemoveBattler(battlerTarget)
+	AddBattler(battlerIndex, swapTarget, playerControl, position.x, position.y)
 
 func AddBattler(index:int, faebleInstance:Faeble, player:bool, xPos:int, yPos:int):
 	battlerObjects[index].faebleEntry = faebleInstance
@@ -452,7 +465,7 @@ func ProgressTurn():
 			ProgressTurn()
 			return
 		commandMenu.selectedBattler = currentBattler
-		commandMenu.MenuAction(8)
+		commandMenu.MenuAction(commandMenu.States.TurnCycle)
 		print("It is ", currentBattler.faebleEntry.name, "'s turn.")
 	else:
 		for battler in battlerObjects:
@@ -648,37 +661,37 @@ func CheckAttackRange(battler:Battler, attack:Skill):
 			if posIndex.x > location.x and targetControl != battlerControl:
 				if blockedRight == -1:
 					blockedRight = posIndex.x
-					print("New blocker (on right): ", blockedRight)
+					#print("New blocker (on right): ", blockedRight)
 				elif posIndex.x < blockedRight:
 					blockedRight = posIndex.x
-					print("New closest blocker (on right): ", blockedRight)
+					#print("New closest blocker (on right): ", blockedRight)
 			if posIndex.x < location.x and targetControl != battlerControl:
 				if blockedLeft == -1:
 					blockedLeft = posIndex.x
-					print("New blocker (on left): ", blockedLeft)
+					#print("New blocker (on left): ", blockedLeft)
 				elif posIndex.x > blockedLeft:
 					blockedLeft = posIndex.x
-					print("New closest blocker (on left): ", blockedLeft)
+					#print("New closest blocker (on left): ", blockedLeft)
 		if x > -rangeMin and x < rangeMin:
 			continue
 		inRange.append(posIndex)
-	print(inRange, "First Pass")
+	#print(inRange, "First Pass")
 	var erasing:Array[Vector2i]
 	for loc in inRange: #Remove errant locations beyond a blocking entity
-		print("Checking Location: ", loc)
+		#print("Checking Location: ", loc)
 		if blockedLeft != -1 and loc.x < blockedLeft:
 			erasing.append(loc)
-			print("Location blocked on left, removing: ", loc)
+			#print("Location blocked on left, removing: ", loc)
 		if blockedRight != -1 and loc.x > blockedRight:
 			erasing.append(loc)
-			print("Location blocked on right, removing: ", loc)
+			#print("Location blocked on right, removing: ", loc)
 	#Define location on opposite row
 	var otherRow:Vector2i
 	if location.y == 0:
 		otherRow = Vector2i(location.x, 1)
 	elif location.y == 1:
 		otherRow = Vector2i(location.x, 0)
-	print("Other Row Location: ", otherRow)
+	#print("Other Row Location: ", otherRow)
 	#then check left and right in range-1
 	if attack.canArc == true:
 		blockedRight = -1
@@ -700,30 +713,30 @@ func CheckAttackRange(battler:Battler, attack:Skill):
 				if posIndex.x > location.x and targetControl != battlerControl:
 					if blockedRight == -1:
 						blockedRight = posIndex.x
-						print("New blocker (on right): ", blockedRight)
+						#print("New blocker (on right): ", blockedRight)
 					elif posIndex.x < blockedRight:
 						blockedRight = posIndex.x
-						print("New closest blocker (on right): ", blockedRight)
+						#print("New closest blocker (on right): ", blockedRight)
 				if posIndex.x < location.x and targetControl != battlerControl:
 					if blockedLeft == -1:
 						blockedLeft = posIndex.x
-						print("New blocker (on left): ", blockedLeft)
+						#print("New blocker (on left): ", blockedLeft)
 					elif posIndex.x > blockedLeft:
 						blockedLeft = posIndex.x
-						print("New closest blocker (on left): ", blockedLeft)
+						#print("New closest blocker (on left): ", blockedLeft)
 			inRange.append(posIndex)
 			#print(posIndex, "Second Pass")
 		for loc in inRange: #Remove errant locations beyond a blocking entity
 			if loc.y != otherRow.y:
-				print("Not on opposite row, skipping ", loc)
+				#print("Not on opposite row, skipping ", loc)
 				continue
-			print("Checking Location: ", loc)
+			#print("Checking Location: ", loc)
 			if blockedLeft != -1 and loc.x < blockedLeft:
 				erasing.append(loc)
-				print("Location blocked on left, removing: ", loc)
+				#print("Location blocked on left, removing: ", loc)
 			if blockedRight != -1 and loc.x > blockedRight:
 				erasing.append(loc)
-				print("Location blocked on right, removing: ", loc)
+				#print("Location blocked on right, removing: ", loc)
 	if rangeMin <= 1:
 		inRange.append(otherRow)
 	if attack.witchSkill:
@@ -846,6 +859,7 @@ func LaunchAttack():
 func AttackAnim(battler:Battler, target:Vector2i, melee:bool):
 	battler.get_child(1).hide()
 	var tween = get_tree().create_tween()
+	var poptween = get_tree().create_tween()
 	var mesh = battler.get_child(0)
 	var facing:float = mesh.rotation.y
 	var pos1:Vector3
@@ -863,9 +877,32 @@ func AttackAnim(battler:Battler, target:Vector2i, melee:bool):
 		tween.tween_property(mesh, "rotation", Vector3(0,facing,0), 0.3)
 	tween.tween_property(battler, "position", pos1, 0.2)
 	tween.tween_property(battler, "position", pos2, 0.2)
+	
 	await tween.finished
 	if battler == currentBattler:
 		battler.get_child(1).show()
+
+func DamagePopup(target:Vector2i, damageNum:int = 0, superFX:bool=false):
+	var tween = get_tree().create_tween()
+	var tween2 = get_tree().create_tween()
+	var pos = Vector3(target.x, 0, target.y) + gridOffset
+	var popup:Node3D = damagePop.duplicate()
+	add_child(popup)
+	popup.hide()
+	var popPos:Vector3 = pos + Vector3(0,0.5,0)
+	popup.position = pos
+	if damageNum > 0:
+		popup.get_child(1).text = str(damageNum)
+		if superFX:
+			popup.get_child(1).text += "!"
+		popup.show()
+	
+	tween.tween_property(popup, "position", popPos, 0.2)
+	tween.tween_property(popup.get_child(0), "modulate:a", 0, 0.4)
+	tween2.tween_property(popup.get_child(1), "modulate:a", 0, 1.2)
+	
+	await tween.finished
+	popup.queue_free()
 #endregion
 
 #------------------------------Camera Functions--------------------------------------

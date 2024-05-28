@@ -1,26 +1,24 @@
-[gd_resource type="Resource" script_class="Skill" load_steps=5 format=3 uid="uid://dv8g1bdy5qvqx"]
+[gd_resource type="Resource" script_class="Skill" load_steps=4 format=3 uid="uid://dv8g1bdy5qvqx"]
 
+[ext_resource type="Texture2D" uid="uid://57no20asw0be" path="res://Global Assets/Graphics/Skill Graphics/attackDetailsBase.png" id="1_abbxc"]
 [ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_u3q7h"]
-[ext_resource type="Texture2D" uid="uid://jlm135j3noks" path="res://Global Assets/Graphics/Skill Graphics/attackCircleBase.png" id="1_v4d34"]
-[ext_resource type="Texture2D" uid="uid://cflyw4x8o3iur" path="res://Global Assets/Graphics/Skill Graphics/attackCircleOption.png" id="2_vfcna"]
-[ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="2_xyaxd"]
+[ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Performance.tres" id="4_ajy3o"]
 
 [resource]
 script = ExtResource("1_u3q7h")
 skillName = "Fairy Strike"
-skillType = ExtResource("2_xyaxd")
+skillType = ExtResource("4_ajy3o")
 skillCost = 3
 skillNature = "Physical"
 skillDamage = 4
-witchSkill = true
+witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
-movePreview = ExtResource("2_vfcna")
-moveDisplay = ExtResource("1_v4d34")
+moveDisplay = ExtResource("1_abbxc")
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 0
+rangeMin = 2
 rangeMax = 3
 canPierce = false
 canArc = false

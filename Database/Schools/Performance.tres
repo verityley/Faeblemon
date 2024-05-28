@@ -6,5 +6,7 @@
 [resource]
 script = ExtResource("2_vja36")
 name = "Performance"
+nameShort = "Perform"
 typeIndex = 8
 nameplate = ExtResource("1_28uht")
+typeColor = Color(0.933333, 0.384314, 0.556863, 1)

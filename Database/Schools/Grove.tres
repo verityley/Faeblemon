@@ -6,5 +6,7 @@
 [resource]
 script = ExtResource("2_ter32")
 name = "Grove"
+nameShort = "Grove"
 typeIndex = 4
 nameplate = ExtResource("1_rfdlx")
+typeColor = Color(0.0980392, 0.376471, 0.101961, 1)

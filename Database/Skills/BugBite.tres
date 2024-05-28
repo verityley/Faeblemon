@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="Skill" load_steps=5 format=3 uid="uid://bh2iaf16ugog4"]
+[gd_resource type="Resource" script_class="Skill" load_steps=4 format=3 uid="uid://bh2iaf16ugog4"]
 
+[ext_resource type="Texture2D" uid="uid://drop2rgebxuua" path="res://Global Assets/Graphics/Skill Graphics/bugBite.png" id="1_guq00"]
 [ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_o6da4"]
-[ext_resource type="Texture2D" uid="uid://cv2oqgxi4suko" path="res://Global Assets/Graphics/Skill Graphics/Bug Bite/bugbiteFull.png" id="1_xn47c"]
-[ext_resource type="Texture2D" uid="uid://glonwtmvu7iv" path="res://Global Assets/Graphics/Skill Graphics/Bug Bite/bugbiteOption.png" id="2_3udjq"]
 [ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="4_4hg77"]
 
 [resource]
@@ -10,13 +9,12 @@ script = ExtResource("1_o6da4")
 skillName = "Bug Bite"
 skillType = ExtResource("4_4hg77")
 skillCost = 1
-skillNature = "Physical"
+skillNature = "Magical"
 skillDamage = 3
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
-movePreview = ExtResource("2_3udjq")
-moveDisplay = ExtResource("1_xn47c")
+moveDisplay = ExtResource("1_guq00")
 moveDescription = ""
 targetType = ""
 targetScope = ""

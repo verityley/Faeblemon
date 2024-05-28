@@ -5,7 +5,7 @@ class_name Battler
 
 @export var faebleEntry:Faeble
 @export var playerControl:bool
-@export var statusBox:StatusBox
+@export var statusBox:StatusBox3D
 
 @export_category("Main Resources")
 @export var currentHP:int
@@ -79,6 +79,7 @@ func ChangeHealth(amount:int):
 	if currentHP == 0:
 		faebleEntry.fainted = true
 		print(faebleEntry.name, " has fainted!")
+		#Check if party team has available member, swap, otherwise remove
 		battleManager.RemoveBattler(self)
 		return
 	statusBox.SetHealthDisplay(currentHP) #Include handling for hitting 0, going over max, etc

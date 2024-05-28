@@ -6,6 +6,7 @@ class_name RingMenu
 #Also contains current state of turn, and sends signals to board state on UI selection
 @export var ringMesh:MeshInstance3D
 @export var skillDisplay:Node
+@export var actionDisplay:Label3D
 @export var optionDistance:float = 1.333
 @export var rotationTime:float = 2
 @export var selectedIndex:int
@@ -18,8 +19,9 @@ Familiar,
 Attack,
 Move,
 Witch,
-Party,
 Spells,
+Party,
+Items,
 End,
 TurnCycle
 }
@@ -75,7 +77,7 @@ func _input(event):
 			
 			await RotateToTop(selectedIndex)
 			#CompassReorder(selectedIndex)
-			if currentState == States.Attack:
+			if currentState == States.Attack or currentState == States.Spells:
 				CompassReorder(selectedIndex)
 			else:
 				ResetCircle()
@@ -161,6 +163,7 @@ func MenuAction(state:int):
 	match state:
 		States.Reset:
 			print("Resetting Ring Menu")
+			await get_tree().create_timer(0.15).timeout
 			selectedState = ""
 			selectedIndex = -1
 			currentState = States.Start
@@ -172,6 +175,7 @@ func MenuAction(state:int):
 			if optionSelected != null:
 				optionSelected.scale = Vector3(1,1,1)
 				optionSelected = null
+			ResetCircle()
 			MenuAction(States.Start)
 		
 		States.Start:
@@ -193,6 +197,9 @@ func MenuAction(state:int):
 		
 		States.Familiar:
 			print("Circle Menu: Familiar")
+			if attackTaken and selectedBattler.movepoints <= 0:
+				MenuAction(States.End)
+				return
 			var index:int = 0
 			for child in ringMesh.get_children():
 				child.show()
@@ -202,31 +209,69 @@ func MenuAction(state:int):
 				index += 1
 			skillDisplay.hide()
 			selectedSkill = null
-			if attackTaken and selectedBattler.movepoints <= 0:
-				MenuAction(States.End)
+			
 			
 			if attackTaken:
-				ringMesh.get_child(1).hide()
+				ringMesh.get_child(1).get_child(1).modulate = Color(0.6,0.6,0.6,0.8)
+				ringMesh.get_child(1).get_child(0).hide()
+				#ringMesh.get_child(1).hide()
 			else:
-				ringMesh.get_child(1).show()
+				ringMesh.get_child(1).get_child(1).modulate = Color(1,1,1,1)
+				ringMesh.get_child(1).get_child(0).show()
 			if moveTaken and selectedBattler.movepoints <= 0:
-				ringMesh.get_child(3).hide() #eventually replace with greyed out unclickable option
+				ringMesh.get_child(3).get_child(1).modulate = Color(0.6,0.6,0.6,0.8)
+				ringMesh.get_child(3).get_child(0).hide() #eventually replace with greyed out unclickable option
 			else:
-				ringMesh.get_child(3).show()
+				ringMesh.get_child(3).get_child(1).modulate = Color(1,1,1,1)
+				ringMesh.get_child(3).get_child(0).show()
 			if moveTaken or attackTaken:
-				ringMesh.get_child(0).hide()
+				ringMesh.get_child(0).get_child(1).modulate = Color(0.6,0.6,0.6,0.8)
+				ringMesh.get_child(0).get_child(0).hide()
 			else:
-				ringMesh.get_child(0).show()
+				ringMesh.get_child(0).get_child(1).modulate = Color(1,1,1,1)
+				ringMesh.get_child(0).get_child(0).show()
 			currentState = States.Familiar
 		
 		States.Attack:
 			print("Circle Menu: Attack")
+			if selectedSkill == null:
+				skillDisplay.hide()
 			if selectedSkill != null:
+				skillDisplay.show()
 				#Still TO DO:
 				#Highlight energy cost on status box
 				#Fade out display when turning
-				skillDisplay.texture = selectedSkill.moveDisplay
+				skillDisplay.frame = selectedSkill.skillType.typeIndex
+				if selectedSkill.skillNature == "Physical":
+					skillDisplay.frame_coords.y = 0
+				elif selectedSkill.skillNature == "Magical":
+					skillDisplay.frame_coords.y = 1
 				#battleManager.CheckAttackRange(selectedBattler, selectedSkill)
+				skillDisplay.get_child(0).text = selectedSkill.skillName
+				skillDisplay.get_child(1).text = selectedSkill.skillType.nameShort
+				skillDisplay.get_child(1).modulate = (selectedSkill.
+				skillType.typeColor + Color(0.3,0.3,0.3,1.0))
+				skillDisplay.get_child(2).text = str(selectedSkill.rangeMin)
+				skillDisplay.get_child(3).text = str(selectedSkill.rangeMax)
+				if selectedSkill.canArc:
+					skillDisplay.get_child(4).show()
+				else:
+					skillDisplay.get_child(4).hide()
+				if selectedSkill.canBurst:
+					skillDisplay.get_child(5).get_child(0).text = selectedSkill.burstRange
+					skillDisplay.get_child(5).show()
+				else:
+					skillDisplay.get_child(5).hide()
+				if selectedSkill.canPierce:
+					skillDisplay.get_child(6).show()
+				else:
+					skillDisplay.get_child(6).hide()
+				if selectedSkill.skillCost > 0 and selectedSkill.skillCost < 11:
+					skillDisplay.get_child(7).show()
+					skillDisplay.get_child(7).frame = selectedSkill.skillCost-1
+				else:
+					skillDisplay.get_child(7).hide()
+				skillDisplay.get_child(8).texture = selectedSkill.moveDisplay
 				battleManager.currentSkill = selectedSkill
 				selectedSkill.Target(battleManager, selectedBattler)
 				battleManager.ChangeBoardState("Attacking")
@@ -238,12 +283,26 @@ func MenuAction(state:int):
 				child.get_child(1).hide()
 				child.get_child(2).show()
 				var currentMove:Skill = selectedBattler.faebleEntry.assignedSkills[index-1]
+				var currentType:School
 				if currentMove != null:
-					child.get_child(2).texture = (
-					currentMove.movePreview)
+					currentType = currentMove.skillType
+					child.get_child(2).frame = currentType.typeIndex
+					if currentMove.skillNature == "Physical":
+						child.get_child(2).frame_coords.y = 0
+					elif currentMove.skillNature == "Magical":
+						child.get_child(2).frame_coords.y = 1
+					child.get_child(2).get_child(1).text = currentMove.skillName
+					child.get_child(2).get_child(2).text = currentType.nameShort
+					child.get_child(2).get_child(2).modulate = currentType.typeColor + Color(0.3,0.3,0.3,1.0)
+					if currentMove.skillCost > 0 and currentMove.skillCost < 11:
+						child.get_child(2).get_child(0).frame = currentMove.skillCost
+					elif currentMove.skillCost == 0:
+						child.get_child(2).get_child(0).frame = 0
+					elif currentMove.skillCost > 10:
+						child.get_child(2).get_child(0).frame = 11
 					if selectedBattler.currentEnergy < currentMove.skillCost:
 						print("Not enough energy for ", currentMove.skillName)
-						child.get_child(2).modulate = Color(0.8,0.8,0.8,0.8)
+						child.get_child(2).modulate = Color(0.6,0.6,0.6,0.8)
 						child.get_child(0).hide()
 					else:
 						child.get_child(2).modulate = Color(1,1,1,1)
@@ -253,11 +312,13 @@ func MenuAction(state:int):
 					if index != 0:
 						child.hide()
 				index += 1
-			skillDisplay.texture = emptyDisplay
+			#skillDisplay.texture = emptyDisplay
 			ringMesh.get_child(0).get_child(1).frame_coords = Vector2i(1, 0)
+			ringMesh.get_child(0).get_child(1).modulate = Color(1,1,1,1)
+			ringMesh.get_child(0).get_child(0).show()
 			ringMesh.get_child(0).get_child(1).show() #Revert back button to shown
 			ringMesh.get_child(0).get_child(2).hide()
-			skillDisplay.show()
+			#skillDisplay.show()
 			#battleManager.CheckAttackRange(selectedBattler, tempAttack)
 			#battleManager.currentSkill = tempAttack #Replace with selected move
 			#tempAttack.Target(battleManager, selectedBattler)
@@ -277,24 +338,39 @@ func MenuAction(state:int):
 		
 		States.Witch:
 			print("Circle Menu: Witch")
+			var index:int = 0
+			for child in ringMesh.get_children():
+				child.show()
+				child.get_child(1).frame_coords = Vector2i(index, 1)
+				child.get_child(1).show()
+				child.get_child(2).hide() #Hide Skill Option sprites
+				index += 1
+			skillDisplay.hide()
 			for child in ringMesh.get_children():
 				child.show()
 				child.get_child(1).frame_coords.y = 2
 				#child.get_child(2).frame_coords.y = 2
 			
-			if moveTaken: #or selectedBattler.movepoints <= 0:
-				ringMesh.get_child(1).hide() #eventually replace with greyed out unclickable option
-			else:
-				ringMesh.get_child(1).show()
-			if attackTaken:
-				ringMesh.get_child(3).hide()
-			else:
-				ringMesh.get_child(3).show()
-			if witchChosen:
-				ringMesh.get_child(0).hide()
-			else:
-				ringMesh.get_child(0).show()
+			#if moveTaken: #or selectedBattler.movepoints <= 0:
+				#ringMesh.get_child(1).hide() #eventually replace with greyed out unclickable option
+			#else:
+				#ringMesh.get_child(1).show()
+			#if attackTaken:
+				#ringMesh.get_child(3).hide()
+			#else:
+				#ringMesh.get_child(3).show()
+			#if witchChosen:
+				#ringMesh.get_child(0).hide()
+			#else:
+				#ringMesh.get_child(0).show()
 			currentState = States.Witch
+		
+		States.Items:
+			print("Circle Menu: Party")
+			for child in ringMesh.get_children():
+				child.hide()
+			ringMesh.get_child(0).show()
+			currentState = States.Items
 		
 		States.Party:
 			print("Circle Menu: Party")
@@ -305,15 +381,81 @@ func MenuAction(state:int):
 		
 		States.Spells:
 			print("Circle Menu: Spells")
+			var currentLeader:Leader
+			if selectedBattler.playerControl == true:
+				currentLeader = battleManager.playerLeader
+			else:
+				currentLeader = battleManager.enemyLeader
+			if selectedSkill != null:
+				skillDisplay.show()
+				#Still TO DO:
+				#Highlight energy cost on status box
+				#Fade out display when turning
+				skillDisplay.frame = 12
+				skillDisplay.frame_coords.y = 1
+				#battleManager.CheckAttackRange(selectedBattler, selectedSkill)
+				skillDisplay.get_child(0).text = selectedSkill.skillName
+				skillDisplay.get_child(1).text = "Spell"
+				skillDisplay.get_child(1).modulate = Color(1.0,1.0,1.0,1.0)
+				skillDisplay.get_child(2).text = str(selectedSkill.rangeMin)
+				skillDisplay.get_child(3).text = str(selectedSkill.rangeMax)
+				skillDisplay.get_child(4).show()
+				if selectedSkill.canBurst:
+					skillDisplay.get_child(5).get_child(0).text = selectedSkill.burstRange
+					skillDisplay.get_child(5).show()
+				else:
+					skillDisplay.get_child(5).hide()
+				skillDisplay.get_child(6).show()
+				skillDisplay.get_child(7).hide()
+				skillDisplay.get_child(8).texture = selectedSkill.moveDisplay
+				#battleManager.CheckAttackRange(selectedBattler, selectedSkill)
+				battleManager.currentSkill = selectedSkill
+				selectedSkill.Target(battleManager, selectedBattler)
+				battleManager.ChangeBoardState("Attacking")
+				return
+			
+			var index:int = 0
 			for child in ringMesh.get_children():
-				child.hide()
-			ringMesh.get_child(0).show()
+				child.show()
+				child.get_child(1).hide()
+				child.get_child(2).show()
+				var currentMove:Skill = currentLeader.assignedSkills[index-1]
+				if currentMove != null:
+					child.get_child(2).frame = 12
+					child.get_child(2).frame_coords.y = 1
+					child.get_child(2).get_child(0).frame = 0
+					child.get_child(2).get_child(1).text = currentMove.skillName
+					child.get_child(2).get_child(2).text = "Spell" #Replace with type if needed
+					child.get_child(2).get_child(2).modulate = Color(1.0,1.0,1.0,1.0)
+					if currentLeader.currentEnergy < currentMove.skillCost:
+						print("Not enough energy for ", currentMove.skillName)
+						child.get_child(2).modulate = Color(0.6,0.6,0.6,0.8)
+						child.get_child(0).hide()
+					else:
+						child.get_child(2).modulate = Color(1,1,1,1)
+						child.get_child(0).show()
+				else:
+					#child.get_child(2).hide()
+					if index != 0:
+						child.hide()
+				index += 1
+			#skillDisplay.texture = emptyDisplay
+			ringMesh.get_child(0).get_child(1).frame_coords = Vector2i(1, 0)
+			ringMesh.get_child(0).get_child(1).show() #Revert back button to shown
+			ringMesh.get_child(0).get_child(2).hide()
+			#skillDisplay.show()
+			#battleManager.CheckAttackRange(selectedBattler, tempAttack)
+			#battleManager.currentSkill = tempAttack #Replace with selected move
+			#tempAttack.Target(battleManager, selectedBattler)
+			#battleManager.ChangeBoardState("Attacking")
 			currentState = States.Spells
 		
 		States.End:
 			print("Circle Menu: End")
 			for child in ringMesh.get_children():
 				child.hide()
+				child.get_child(2).hide()
+			skillDisplay.hide()
 			currentState = States.End
 			battleManager.ProgressTurn()
 			#TO DO
@@ -331,7 +473,9 @@ func MenuAction(state:int):
 				turnOrder.push_front(null)
 			print(turnOrder)
 			var index:int = 0
+			skillDisplay.hide()
 			for child in ringMesh.get_children():
+				child.get_child(2).hide()
 				child.show()
 				for sprite in child.get_children():
 					sprite.hide()
@@ -346,7 +490,7 @@ func MenuAction(state:int):
 				index += 1
 				if index >= turnOrder.size():
 					break
-			await get_tree().create_timer(0.15).timeout
+			await get_tree().create_timer(0.25).timeout
 			#print("Does it get to here? 1")
 			await RotateToTop(1)
 			battleManager.currentBattler.get_child(1).show()
@@ -354,9 +498,10 @@ func MenuAction(state:int):
 			#print("Does it get to here? 2")
 			await get_tree().create_timer(1.0).timeout
 			#print("Does it get to here? 3")
-			ResetCircle()
+			#ResetCircle()
 			currentState = States.TurnCycle
 			#print("Does it get to here? 4")
+			#await get_tree().create_timer(0.15).timeout
 			MenuAction(States.Reset)
 
 func MenuFlow(option:int):
@@ -413,21 +558,45 @@ func MenuFlow(option:int):
 				0:
 					MenuAction(States.Familiar)
 				1:
-					MenuAction(States.Party)
+					MenuAction(States.Spells)
 				2:
 					MenuAction(States.Party) #Replace eventually
 				3:
-					MenuAction(States.Spells)
+					MenuAction(States.Items)
 		
 		States.Party:
 			match option:
 				0:
 					MenuAction(States.Witch)
 		
-		States.Spells:
+		States.Items:
 			match option:
 				0:
 					MenuAction(States.Witch)
+		
+		States.Spells:
+			var currentLeader:Leader
+			if selectedBattler.playerControl == true:
+				currentLeader = battleManager.playerLeader
+			else:
+				currentLeader = battleManager.enemyLeader
+			match option:
+				0:
+					selectedSkill = null
+					MenuAction(States.Witch)
+					battleManager.CleanBoardState()
+				1:
+					battleManager.CleanBoardState()
+					selectedSkill = currentLeader.assignedSkills[0]
+					MenuAction(States.Spells)
+				2:
+					battleManager.CleanBoardState()
+					selectedSkill = currentLeader.assignedSkills[1]
+					MenuAction(States.Spells)
+				3:
+					battleManager.CleanBoardState()
+					selectedSkill = currentLeader.assignedSkills[2]
+					MenuAction(States.Spells)
 		
 
 #func OldMenuFlow(state):
@@ -556,6 +725,7 @@ func SelectMenu(index:int, exit=false):
 		if optionSelected != null:
 			optionSelected.scale = Vector3(1,1,1)
 		optionSelected = null
+		actionDisplay.text = ""
 		selectedState = ""
 		return
 	if rotating:
@@ -564,6 +734,54 @@ func SelectMenu(index:int, exit=false):
 	optionSelected = ringMesh.get_child(index)
 	optionSelected.scale = Vector3(1.1,1.1,1.1) #Replace with tween effect eventually
 	selectedIndex = index
+	match currentState:
+		States.Start:
+			actionDisplay.text = ""
+		
+		States.Familiar:
+			match index:
+				0:
+					actionDisplay.text = "Witch"
+				1:
+					actionDisplay.text = "Attack"
+				2:
+					actionDisplay.text = "End Turn"
+				3:
+					actionDisplay.text = "Move"
+		
+		States.Move:
+			match index:
+				0:
+					actionDisplay.text = "Back"
+		
+		States.Attack:
+			match index:
+				0:
+					actionDisplay.text = "Back"
+		
+		States.Witch:
+			match index:
+				0:
+					actionDisplay.text = "Familiar"
+				1:
+					actionDisplay.text = "Spells"
+				2:
+					actionDisplay.text = "Party"
+				3:
+					actionDisplay.text = "Items"
+		
+		States.Party:
+			match index:
+				0:
+					actionDisplay.text = "Back"
+		
+		States.Items:
+			match index:
+				0:
+					actionDisplay.text = "Back"
+		
+		States.Spells:
+			actionDisplay.text = ""
 
 func ChangeTarget():
 	pass

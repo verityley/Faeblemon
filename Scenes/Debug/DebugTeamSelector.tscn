@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmukdm4y1b4ls"]
+
+[ext_resource type="Script" path="res://Scenes/Debug/DebugTeamSelector.gd" id="1_7qpb1"]
+[ext_resource type="PackedScene" uid="uid://mqq6g13wywjw" path="res://Scenes/Debug/FamiliarSelector.tscn" id="1_mksh4"]
+
+[node name="DebugTeamSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7qpb1")
+
+[node name="BattleSimSelector" parent="." instance=ExtResource("1_mksh4")]
+layout_mode = 1
+offset_left = -4.0
+offset_right = -4.0
+
+[node name="BattleSimSelector2" parent="." instance=ExtResource("1_mksh4")]
+layout_mode = 1
+offset_left = 639.0
+offset_right = 639.0
+
+[node name="FinishButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -99.0
+offset_top = -72.0
+offset_right = 30.0
+offset_bottom = -24.9999
+grow_horizontal = 2
+grow_vertical = 0
+text = "Finish Selection"
+
+[connection signal="pressed" from="FinishButton" to="." method="_on_finish_pressed"]

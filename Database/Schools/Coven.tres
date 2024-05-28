@@ -6,5 +6,7 @@
 [resource]
 script = ExtResource("2_anl63")
 name = "Coven"
+nameShort = "Coven"
 typeIndex = 10
 nameplate = ExtResource("1_317f1")
+typeColor = Color(0.423529, 0.803922, 0.27451, 1)

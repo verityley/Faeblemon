@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://degu8bplk2w3o"
-path.s3tc="res://.godot/imported/circleOptionsSprite.png-ec9e53ebcc7108cb3d5aa7e6d5c1e87d.s3tc.ctex"
+path="res://.godot/imported/circleOptionsSprite.png-ec9e53ebcc7108cb3d5aa7e6d5c1e87d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Scenes/Battle/Assets/circleOptionsSprite.png"
-dest_files=["res://.godot/imported/circleOptionsSprite.png-ec9e53ebcc7108cb3d5aa7e6d5c1e87d.s3tc.ctex"]
+dest_files=["res://.godot/imported/circleOptionsSprite.png-ec9e53ebcc7108cb3d5aa7e6d5c1e87d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

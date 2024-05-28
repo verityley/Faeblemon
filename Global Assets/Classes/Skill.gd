@@ -38,4 +38,8 @@ func Execute(battleManager:BattleManager, user:Battler, target:Battler):
 	if skillDamage > 0:
 		damageTally = battleManager.DamageCalc(user, target, self)
 	damageTally = -clampi(damageTally, 0, 99)
+	var superFX:bool
+	if -damageTally > skillDamage:
+		superFX = true
+	battleManager.DamagePopup(target.positionIndex, -damageTally, superFX)
 	target.ChangeHealth(damageTally)
