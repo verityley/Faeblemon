@@ -4,9 +4,9 @@ extends Node
 @export var shinyOdds:int = 1000
 @export var altSchoolOdds:int = 500
 
-@export var rewardRatio:Vector2i = Vector2i(4,2)
-@export var heartRatio:Vector2i = Vector2i(2,1)
-@export var energyRatio:Vector2i = Vector2i(1,1)
+@export var rewardRatio:Vector2i = Vector2i(4,2) #Health:Energy
+@export var heartRatio:Vector2i = Vector2i(2,1) #Heart:Reward
+@export var energyRatio:Vector2i = Vector2i(1,1) #Wit/Brawn:Reward
 
 func _ready():
 	#CreateFaeble(preload("res://Database/Faebles/001Awoolf.tres"), 8)

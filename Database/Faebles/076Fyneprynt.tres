@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="Faeble" load_steps=8 format=3 uid="uid://drw6jgxbqdpcc"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_6pwv2"]
+[ext_resource type="Resource" uid="uid://crdybp6i852y4" path="res://Database/Schools/Coven.tres" id="1_uubhu"]
+[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Mundane.tres" id="2_otvk4"]
+[ext_resource type="Resource" uid="uid://d32tt0oqhs4pt" path="res://Database/Domains/Profane.tres" id="3_jkxwn"]
+[ext_resource type="Texture2D" uid="uid://hf1us3hfxnos" path="res://Global Assets/Graphics/Monster Graphics/Icons/FynepryntIcon.png" id="4_sruhw"]
+[ext_resource type="Resource" uid="uid://bit2tuyhefdhg" path="res://Database/Schools/Pact.tres" id="6_uk1fg"]
+[ext_resource type="Texture2D" uid="uid://ckcuwxn5j0fst" path="res://Global Assets/Graphics/Monster Graphics/Fyneprynt.png" id="7_8trx7"]
+
+[resource]
+script = ExtResource("1_6pwv2")
+name = "Fyneprynt"
+ID = 76
+firstDomain = ExtResource("3_jkxwn")
+sigSchool = ExtResource("6_uk1fg")
+altSigSchool1 = ExtResource("1_uubhu")
+altSigSchool2 = ExtResource("2_otvk4")
+sprite = ExtResource("7_8trx7")
+icon = ExtResource("4_sruhw")
+battlerScale = Vector3(2, 2, 2)
+worldScale = 0.0
+UIScale = 0.0
+groundOffset = Vector3(0, 0.4, 0)
+minQuality = 2
+maxQuality = 20
+brawn = 8
+vigor = 5
+wit = 16
+ambition = 16
+grace = 10
+resolve = 14
+heart = 15
+profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
+prefPrimary = "Wit"
+prefSecondary = "Ambition"
+HPCap = 60
+skillPool = {}
+assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null])
+feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
+traitBig = false
+traitTall = false
+traitSmall = false
+traitJumping = false
+traitFlying = false
+traitPhasing = false
+canEvolve = false
+evoLevel = 0
+evoBranch = false
+currentHP = 0
+currentEnergy = 0
+fainted = false
+description = ""
+rumors = ""

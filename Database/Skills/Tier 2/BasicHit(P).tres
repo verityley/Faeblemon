@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://cba8kh4jyh2ks"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_dyvmf"]
+
+[resource]
+script = ExtResource("1_dyvmf")
+skillName = ""
+skillCost = 0
+skillNature = ""
+skillDamage = 0
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 0
+rangeMax = 10
+canPierce = true
+canArc = true
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

@@ -258,7 +258,7 @@ func MenuAction(state:int):
 				else:
 					skillDisplay.get_child(4).hide()
 				if selectedSkill.canBurst:
-					skillDisplay.get_child(5).get_child(0).text = selectedSkill.burstRange
+					skillDisplay.get_child(5).get_child(0).text = str(selectedSkill.burstRange)
 					skillDisplay.get_child(5).show()
 				else:
 					skillDisplay.get_child(5).hide()
@@ -483,7 +483,7 @@ func MenuAction(state:int):
 				child.get_child(3).show()
 				print(child.get_child(3))
 				if turnOrder[index] != null:
-					child.get_child(3).texture = turnOrder[index].faebleEntry.UISprite
+					child.get_child(3).texture = turnOrder[index].faebleEntry.icon
 					print(index, ": ", turnOrder[index].faebleEntry.name)
 				else:
 					child.get_child(3).texture = null

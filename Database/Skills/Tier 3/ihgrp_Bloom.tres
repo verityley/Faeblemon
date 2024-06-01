@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://bxwdt7wwtxspt"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_mr8qa"]
+[ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="2_2qoct"]
+
+[resource]
+script = ExtResource("1_mr8qa")
+skillName = "Grassblade"
+skillType = ExtResource("2_2qoct")
+skillCost = 2
+skillNature = "Physical"
+skillDamage = 3
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 0
+rangeMax = 2
+canPierce = false
+canArc = true
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

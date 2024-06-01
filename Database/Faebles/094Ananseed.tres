@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="Faeble" load_steps=8 format=3 uid="uid://bwsk6gvcequ40"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_axtbf"]
+[ext_resource type="Resource" uid="uid://bit2tuyhefdhg" path="res://Database/Schools/Pact.tres" id="1_o3vbj"]
+[ext_resource type="Resource" uid="uid://cy460pjjcakrm" path="res://Database/Schools/Curse.tres" id="2_3sr6v"]
+[ext_resource type="Resource" uid="uid://bldym4cl8lnh7" path="res://Database/Domains/Fairytale.tres" id="3_lf37e"]
+[ext_resource type="Texture2D" uid="uid://dxihe3743hu8g" path="res://Global Assets/Graphics/Monster Graphics/Ananseed.png" id="4_7cby4"]
+[ext_resource type="Texture2D" uid="uid://mrf0rxkhgq5i" path="res://Global Assets/Graphics/Monster Graphics/Icons/ananseedIcon.png" id="4_8fney"]
+[ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="6_xt2rn"]
+
+[resource]
+script = ExtResource("1_axtbf")
+name = "Ananseed"
+ID = 94
+firstDomain = ExtResource("3_lf37e")
+sigSchool = ExtResource("6_xt2rn")
+altSigSchool1 = ExtResource("1_o3vbj")
+altSigSchool2 = ExtResource("2_3sr6v")
+sprite = ExtResource("4_7cby4")
+icon = ExtResource("4_8fney")
+battlerScale = Vector3(0.9, 0.9, 0.9)
+worldScale = 0.0
+UIScale = 0.0
+groundOffset = Vector3(0, -0.15, 0)
+minQuality = 2
+maxQuality = 20
+brawn = 4
+vigor = 5
+wit = 6
+ambition = 8
+grace = 4
+resolve = 2
+heart = 5
+profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
+prefPrimary = "Ambition"
+prefSecondary = "Wit"
+HPCap = 60
+skillPool = {}
+assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null])
+feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
+traitBig = false
+traitTall = false
+traitSmall = false
+traitJumping = false
+traitFlying = false
+traitPhasing = false
+canEvolve = false
+evoLevel = 0
+evoBranch = false
+currentHP = 0
+currentEnergy = 0
+fainted = false
+description = ""
+rumors = ""

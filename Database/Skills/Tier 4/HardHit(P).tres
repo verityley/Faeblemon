@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://ds7mdknxq3pcy"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_kjuxr"]
+[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Mundane.tres" id="2_l26g0"]
+
+[resource]
+script = ExtResource("1_kjuxr")
+skillName = "Basic Hit"
+skillType = ExtResource("2_l26g0")
+skillCost = 3
+skillNature = "Physical"
+skillDamage = 4
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 0
+rangeMax = 2
+canPierce = false
+canArc = false
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

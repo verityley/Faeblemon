@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://osj6pgt2heix"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_4wynl"]
+[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Mundane.tres" id="2_dniwd"]
+
+[resource]
+script = ExtResource("1_4wynl")
+skillName = "Trash Multi"
+skillType = ExtResource("2_dniwd")
+skillCost = 3
+skillNature = "Physical"
+skillDamage = 2
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 0
+rangeMax = 1
+canPierce = false
+canArc = false
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

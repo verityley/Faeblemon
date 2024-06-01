@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://cf4oxtm4gs58f"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_ytaww"]
+[ext_resource type="Resource" uid="uid://6sqrvld48ww6" path="res://Database/Schools/Weird.tres" id="2_dj176"]
+
+[resource]
+script = ExtResource("1_ytaww")
+skillName = "Knock"
+skillType = ExtResource("2_dj176")
+skillCost = 3
+skillNature = "Magical"
+skillDamage = 3
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 1
+rangeMax = 2
+canPierce = true
+canArc = true
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

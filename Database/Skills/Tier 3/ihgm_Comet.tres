@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://papgubpg51ww"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_34cld"]
+[ext_resource type="Resource" uid="uid://dvn0i2tiim6q8" path="res://Database/Schools/Geo.tres" id="2_diu12"]
+
+[resource]
+script = ExtResource("1_34cld")
+skillName = "Glassblow"
+skillType = ExtResource("2_diu12")
+skillCost = 3
+skillNature = "Magical"
+skillDamage = 3
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 0
+rangeMax = 4
+canPierce = false
+canArc = false
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

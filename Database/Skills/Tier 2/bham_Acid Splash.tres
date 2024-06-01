@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://ck6f5f6emrl0b"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_a0m2a"]
+[ext_resource type="Resource" uid="uid://cl8db7w0h0fb2" path="res://Database/Schools/Alchemy.tres" id="2_1fim5"]
+
+[resource]
+script = ExtResource("1_a0m2a")
+skillName = "Acid Splash"
+skillType = ExtResource("2_1fim5")
+skillCost = 4
+skillNature = "Magical"
+skillDamage = 3
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 2
+rangeMax = 4
+canPierce = false
+canArc = true
+canBurst = true
+burstRange = 1
+targetAlly = false
+targetAll = false

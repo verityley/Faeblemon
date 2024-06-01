@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://dwwvy3qxnx5ki"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_l33en"]
+[ext_resource type="Resource" uid="uid://cy460pjjcakrm" path="res://Database/Schools/Curse.tres" id="2_ecex4"]
+
+[resource]
+script = ExtResource("1_l33en")
+skillName = "Blightcall"
+skillType = ExtResource("2_ecex4")
+skillCost = 3
+skillNature = "Magical"
+skillDamage = 3
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 2
+rangeMax = 4
+canPierce = true
+canArc = false
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

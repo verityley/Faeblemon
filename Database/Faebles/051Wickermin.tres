@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="Faeble" load_steps=9 format=3 uid="uid://biq7qgd15crc6"]
+
+[ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="1_52wic"]
+[ext_resource type="Script" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_od5v6"]
+[ext_resource type="Resource" uid="uid://6sqrvld48ww6" path="res://Database/Schools/Weird.tres" id="2_uuwgs"]
+[ext_resource type="Resource" uid="uid://cmi3i261g3njv" path="res://Database/Domains/Cryptid.tres" id="3_3do0i"]
+[ext_resource type="Texture2D" uid="uid://c6wf14fvpy7nl" path="res://Global Assets/Graphics/Monster Graphics/Icons/WickerminIcon.png" id="4_o6bh8"]
+[ext_resource type="Resource" uid="uid://bldym4cl8lnh7" path="res://Database/Domains/Fairytale.tres" id="6_fqxql"]
+[ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Performance.tres" id="7_psu1q"]
+[ext_resource type="Texture2D" uid="uid://bp16wld817luf" path="res://Global Assets/Graphics/Monster Graphics/Wickermin.png" id="8_55e5c"]
+
+[resource]
+script = ExtResource("1_od5v6")
+name = "Wickermin"
+ID = 51
+firstDomain = ExtResource("3_3do0i")
+secondDomain = ExtResource("6_fqxql")
+sigSchool = ExtResource("7_psu1q")
+altSigSchool1 = ExtResource("1_52wic")
+altSigSchool2 = ExtResource("2_uuwgs")
+sprite = ExtResource("8_55e5c")
+icon = ExtResource("4_o6bh8")
+battlerScale = Vector3(1.8, 1.8, 1.8)
+worldScale = 0.0
+UIScale = 0.0
+groundOffset = Vector3(0, 0.3, 0)
+minQuality = 2
+maxQuality = 20
+brawn = 12
+vigor = 8
+wit = 12
+ambition = 16
+grace = 18
+resolve = 16
+heart = 5
+profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
+prefPrimary = "Grace"
+prefSecondary = "Resolve"
+HPCap = 60
+skillPool = {}
+assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null])
+feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
+traitBig = false
+traitTall = false
+traitSmall = false
+traitJumping = false
+traitFlying = false
+traitPhasing = false
+canEvolve = false
+evoLevel = 0
+evoBranch = false
+currentHP = 0
+currentEnergy = 0
+fainted = false
+description = ""
+rumors = ""

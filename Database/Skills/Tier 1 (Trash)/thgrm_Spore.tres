@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://ct2s36amdushr"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_suk84"]
+[ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="2_r4gg8"]
+
+[resource]
+script = ExtResource("1_suk84")
+skillName = "Spore"
+skillType = ExtResource("2_r4gg8")
+skillCost = 0
+skillNature = "Magical"
+skillDamage = 1
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 2
+rangeMax = 3
+canPierce = false
+canArc = false
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

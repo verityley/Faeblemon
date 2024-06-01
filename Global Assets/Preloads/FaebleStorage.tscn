@@ -1,13 +1,58 @@
-[gd_scene load_steps=4 format=3 uid="uid://fu2qyp7su26t"]
+[gd_scene load_steps=26 format=3 uid="uid://fu2qyp7su26t"]
 
 [ext_resource type="Script" path="res://Global Assets/Preloads/FaebleStorage.gd" id="1_th8ns"]
-[ext_resource type="Resource" uid="uid://cvjtub6vapo34" path="res://Database/Faebles/001Awoolf.tres" id="2_8dxpb"]
-[ext_resource type="Resource" uid="uid://bfd3m6cnqbvjp" path="res://Database/Faebles/Ananseed.tres" id="3_v0hfg"]
+[ext_resource type="Resource" uid="uid://rij6snba6q0t" path="res://Database/Faebles/003Sqwyrm.tres" id="2_fnisy"]
+[ext_resource type="Resource" uid="uid://bnxk305sfoqvn" path="res://Database/Faebles/009Bismaida.tres" id="3_a8o43"]
+[ext_resource type="Resource" uid="uid://bwsk6gvcequ40" path="res://Database/Faebles/094Ananseed.tres" id="4_4huhr"]
+[ext_resource type="Resource" uid="uid://c4cqfm1l7qjs4" path="res://Database/Faebles/079Werewool.tres" id="4_6mawc"]
+[ext_resource type="Resource" uid="uid://co5p0cdtlouq3" path="res://Database/Faebles/010Basidusa.tres" id="4_e2j7y"]
+[ext_resource type="Resource" uid="uid://c35sr7lc0bckf" path="res://Database/Faebles/030Ratincture.tres" id="4_qyuyv"]
+[ext_resource type="Resource" uid="uid://cfijjfl0vkrtr" path="res://Database/Faebles/065Koin.tres" id="4_w3nx7"]
+[ext_resource type="Resource" uid="uid://dpd3txufvfbpk" path="res://Database/Faebles/080Rampion.tres" id="5_81ur4"]
+[ext_resource type="Resource" uid="uid://b1i8u2ktggwpc" path="res://Database/Faebles/111Slobble.tres" id="5_kcuvj"]
+[ext_resource type="Resource" uid="uid://eufk3iycdxhw" path="res://Database/Faebles/095Aconid.tres" id="5_o5sjn"]
+[ext_resource type="Resource" uid="uid://doqntayychfst" path="res://Database/Faebles/031Ratonic.tres" id="5_tqccm"]
+[ext_resource type="Resource" uid="uid://cvppt440vx0if" path="res://Database/Faebles/011Tsunchi.tres" id="5_xcb1a"]
+[ext_resource type="Resource" uid="uid://drw6jgxbqdpcc" path="res://Database/Faebles/076Fyneprynt.tres" id="5_y7gce"]
+[ext_resource type="Resource" uid="uid://bf78lkq0e3rha" path="res://Database/Faebles/012Solonoko.tres" id="6_5y2ge"]
+[ext_resource type="Resource" uid="uid://ckxdrcd7h5u5y" path="res://Database/Faebles/091Bumblebard.tres" id="7_8e4jm"]
+[ext_resource type="Resource" uid="uid://7hnia3pyi1xp" path="res://Database/Faebles/096Arachalyx.tres" id="7_oncuf"]
+[ext_resource type="Resource" uid="uid://wog3gcpu8kgk" path="res://Database/Faebles/019Scallywotl.tres" id="7_ou5a7"]
+[ext_resource type="Resource" uid="uid://duwgvjsm8x6gx" path="res://Database/Faebles/050Harleaf.tres" id="7_sg81m"]
+[ext_resource type="Resource" uid="uid://svscmiij8fgp" path="res://Database/Faebles/077Awoolf.tres" id="7_w2k2h"]
+[ext_resource type="Resource" uid="uid://dgi7hj2ejt1bt" path="res://Database/Faebles/110Pubble.tres" id="8_58iwg"]
+[ext_resource type="Resource" uid="uid://biq7qgd15crc6" path="res://Database/Faebles/051Wickermin.tres" id="8_b5cse"]
+[ext_resource type="Resource" uid="uid://dwa5hctarcwbf" path="res://Database/Faebles/020Leviabyss.tres" id="8_did10"]
+[ext_resource type="Resource" uid="uid://coinvel76rro6" path="res://Database/Faebles/093Violasp.tres" id="8_g1mnq"]
+[ext_resource type="Resource" uid="uid://dy0hv60ybwnkq" path="res://Database/Faebles/078Baasher.tres" id="8_i5gdt"]
 
 [node name="FaebleStorage" type="Node"]
 script = ExtResource("1_th8ns")
 codex = {
-"Awoolf": ExtResource("2_8dxpb")
+"003 -  Sqwyrm": ExtResource("2_fnisy"),
+"009 -  Bismaida": ExtResource("3_a8o43"),
+"010 - Basidusa": ExtResource("4_e2j7y"),
+"011 - Tsunchi": ExtResource("5_xcb1a"),
+"012 - Solonoko": ExtResource("6_5y2ge"),
+"019 - Scallywotl": ExtResource("7_ou5a7"),
+"020 - Leviabyss": ExtResource("8_did10"),
+"030 - Ratincture": ExtResource("4_qyuyv"),
+"031 - Ratonic": ExtResource("5_tqccm"),
+"050 - Harleaf": ExtResource("7_sg81m"),
+"051 - Wickermin": ExtResource("8_b5cse"),
+"065 - Koin": ExtResource("4_w3nx7"),
+"076 - Fyneprynt": ExtResource("5_y7gce"),
+"077 - Awoolf": ExtResource("7_w2k2h"),
+"078 - Baasher": ExtResource("8_i5gdt"),
+"079 - Werewool": ExtResource("4_6mawc"),
+"080 - Rampion": ExtResource("5_81ur4"),
+"091 - Bumblebard": ExtResource("7_8e4jm"),
+"093 - Violasp": ExtResource("8_g1mnq"),
+"094 - Ananseed": ExtResource("4_4huhr"),
+"095 - Aconid": ExtResource("5_o5sjn"),
+"096 - Arachalyx": ExtResource("7_oncuf"),
+"110 - Pubble": ExtResource("8_58iwg"),
+"111 - Slobble": ExtResource("5_kcuvj")
 }
-playerParty = Array[Resource("res://Global Assets/Classes/FaebleEntry.gd")]([ExtResource("2_8dxpb"), ExtResource("3_v0hfg"), ExtResource("2_8dxpb"), null, null, null])
-enemyParty = Array[Resource("res://Global Assets/Classes/FaebleEntry.gd")]([ExtResource("2_8dxpb"), ExtResource("3_v0hfg"), null, null, null, null])
+playerParty = Array[Resource("res://Global Assets/Classes/FaebleEntry.gd")]([null, null, null, null, null, null])
+enemyParty = Array[Resource("res://Global Assets/Classes/FaebleEntry.gd")]([null, null, null, null, null, null])

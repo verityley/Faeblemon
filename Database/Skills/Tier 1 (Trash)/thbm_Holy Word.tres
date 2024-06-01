@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://dee0pdmoxboln"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_hh0xo"]
+[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Mundane.tres" id="2_puwxh"]
+
+[resource]
+script = ExtResource("1_hh0xo")
+skillName = "Trash Attack"
+skillType = ExtResource("2_puwxh")
+skillCost = 1
+skillNature = "Magical"
+skillDamage = 1
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 2
+rangeMax = 2
+canPierce = false
+canArc = false
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

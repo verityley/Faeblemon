@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://y1is2qljsucf"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_ito3m"]
+[ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Performance.tres" id="2_273wc"]
+
+[resource]
+script = ExtResource("1_ito3m")
+skillName = "Stepswing"
+skillType = ExtResource("2_273wc")
+skillCost = 3
+skillNature = "Physical"
+skillDamage = 4
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 0
+rangeMax = 2
+canPierce = false
+canArc = true
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

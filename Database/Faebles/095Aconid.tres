@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="Faeble" load_steps=8 format=3 uid="uid://eufk3iycdxhw"]
+
+[ext_resource type="Resource" uid="uid://bit2tuyhefdhg" path="res://Database/Schools/Pact.tres" id="1_45fx2"]
+[ext_resource type="Script" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_jwc1s"]
+[ext_resource type="Resource" uid="uid://cy460pjjcakrm" path="res://Database/Schools/Curse.tres" id="2_ylwqp"]
+[ext_resource type="Resource" uid="uid://bldym4cl8lnh7" path="res://Database/Domains/Fairytale.tres" id="3_b4ysh"]
+[ext_resource type="Texture2D" uid="uid://dql35e2434b2i" path="res://Global Assets/Graphics/Monster Graphics/Icons/AconidIcon.png" id="4_gkrrf"]
+[ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="6_jgmwe"]
+[ext_resource type="Texture2D" uid="uid://dks32kw6kbnbe" path="res://Global Assets/Graphics/Monster Graphics/Aconid.png" id="7_usl5p"]
+
+[resource]
+script = ExtResource("1_jwc1s")
+name = "Aconid"
+ID = 95
+firstDomain = ExtResource("3_b4ysh")
+sigSchool = ExtResource("6_jgmwe")
+altSigSchool1 = ExtResource("1_45fx2")
+altSigSchool2 = ExtResource("2_ylwqp")
+sprite = ExtResource("7_usl5p")
+icon = ExtResource("4_gkrrf")
+battlerScale = Vector3(1, 1, 1)
+worldScale = 0.0
+UIScale = 0.0
+groundOffset = Vector3(0, -0.15, 0)
+minQuality = 2
+maxQuality = 20
+brawn = 7
+vigor = 10
+wit = 13
+ambition = 16
+grace = 7
+resolve = 4
+heart = 10
+profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
+prefPrimary = "Ambition"
+prefSecondary = "Wit"
+HPCap = 60
+skillPool = {}
+assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null])
+feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
+traitBig = false
+traitTall = false
+traitSmall = false
+traitJumping = false
+traitFlying = false
+traitPhasing = false
+canEvolve = false
+evoLevel = 0
+evoBranch = false
+currentHP = 0
+currentEnergy = 0
+fainted = false
+description = ""
+rumors = ""

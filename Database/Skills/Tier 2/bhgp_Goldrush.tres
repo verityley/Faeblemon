@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://c4tdqiajtkhhc"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_r83k3"]
+[ext_resource type="Resource" uid="uid://dvn0i2tiim6q8" path="res://Database/Schools/Geo.tres" id="2_weu0e"]
+
+[resource]
+script = ExtResource("1_r83k3")
+skillName = "Goldrush"
+skillType = ExtResource("2_weu0e")
+skillCost = 3
+skillNature = "Physical"
+skillDamage = 5
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 1
+rangeMax = 1
+canPierce = false
+canArc = false
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://bg2prr6r7tw8m"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_ag802"]
+[ext_resource type="Resource" uid="uid://6sqrvld48ww6" path="res://Database/Schools/Weird.tres" id="2_b4lq1"]
+
+[resource]
+script = ExtResource("1_ag802")
+skillName = "Tendril Lash"
+skillType = ExtResource("2_b4lq1")
+skillCost = 3
+skillNature = "Physical"
+skillDamage = 4
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 0
+rangeMax = 3
+canPierce = true
+canArc = false
+canBurst = true
+burstRange = 1
+targetAlly = false
+targetAll = false

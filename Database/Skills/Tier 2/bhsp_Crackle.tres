@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://dtbs250yoj2tj"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_k13i0"]
+[ext_resource type="Resource" uid="uid://c10g7loedmtw7" path="res://Database/Schools/Storm.tres" id="2_jfvgm"]
+
+[resource]
+script = ExtResource("1_k13i0")
+skillName = "Crackle"
+skillType = ExtResource("2_jfvgm")
+skillCost = 3
+skillNature = "Physical"
+skillDamage = 3
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 1
+rangeMax = 3
+canPierce = true
+canArc = false
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

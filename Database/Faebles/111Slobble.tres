@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="Faeble" load_steps=9 format=3 uid="uid://b1i8u2ktggwpc"]
+
+[ext_resource type="Resource" uid="uid://6sqrvld48ww6" path="res://Database/Schools/Weird.tres" id="1_5jlso"]
+[ext_resource type="Script" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_xmmfo"]
+[ext_resource type="Resource" uid="uid://bit2tuyhefdhg" path="res://Database/Schools/Pact.tres" id="2_npsa8"]
+[ext_resource type="Resource" uid="uid://dfv6h587fxq2k" path="res://Database/Domains/Eldritch.tres" id="3_rfdyv"]
+[ext_resource type="Texture2D" uid="uid://dweuhcqmqc8yh" path="res://Global Assets/Graphics/Monster Graphics/Icons/SlobbleIcon.png" id="4_wptc8"]
+[ext_resource type="Resource" uid="uid://c4ju0ee2lda3j" path="res://Database/Domains/Haunting.tres" id="6_3l885"]
+[ext_resource type="Resource" uid="uid://cl8db7w0h0fb2" path="res://Database/Schools/Alchemy.tres" id="7_kgn37"]
+[ext_resource type="Texture2D" uid="uid://b8yp6ncmldpxm" path="res://Global Assets/Graphics/Monster Graphics/Slobble.png" id="8_exmdi"]
+
+[resource]
+script = ExtResource("1_xmmfo")
+name = "Slobble"
+ID = 111
+firstDomain = ExtResource("3_rfdyv")
+secondDomain = ExtResource("6_3l885")
+sigSchool = ExtResource("7_kgn37")
+altSigSchool1 = ExtResource("1_5jlso")
+altSigSchool2 = ExtResource("2_npsa8")
+sprite = ExtResource("8_exmdi")
+icon = ExtResource("4_wptc8")
+battlerScale = Vector3(0.9, 0.9, 0.9)
+worldScale = 0.0
+UIScale = 0.0
+groundOffset = Vector3(0, -0.3, 0)
+minQuality = 2
+maxQuality = 20
+brawn = 13
+vigor = 16
+wit = 10
+ambition = 7
+grace = 4
+resolve = 10
+heart = 16
+profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
+prefPrimary = "Heart Vigor"
+prefSecondary = ""
+HPCap = 60
+skillPool = {}
+assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null])
+feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
+traitBig = false
+traitTall = false
+traitSmall = false
+traitJumping = false
+traitFlying = false
+traitPhasing = false
+canEvolve = false
+evoLevel = 0
+evoBranch = false
+currentHP = 0
+currentEnergy = 0
+fainted = false
+description = ""
+rumors = ""

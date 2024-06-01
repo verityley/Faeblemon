@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://7o5gckwo8v0m"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_pwcdr"]
+[ext_resource type="Resource" uid="uid://bit2tuyhefdhg" path="res://Database/Schools/Pact.tres" id="2_a2heu"]
+
+[resource]
+script = ExtResource("1_pwcdr")
+skillName = "Inkblot"
+skillType = ExtResource("2_a2heu")
+skillCost = 4
+skillNature = "Magical"
+skillDamage = 5
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 2
+rangeMax = 5
+canPierce = false
+canArc = true
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

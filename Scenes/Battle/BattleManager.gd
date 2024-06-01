@@ -624,13 +624,16 @@ func CheckMoves(battler:Battler):
 			erasing.append(loc)
 			print("Location blocked on right, removing: ", loc)
 	#Finally, remove (or prevent appending) any position index > or < than moveblocker posIndex
-	for loc in erasing:
-		inRange.erase(loc)
+	#for loc in erasing:
+	#	inRange.erase(loc)
 	for pos in inRange:
 		if gridDatabase[pos]["Occupied"] == true:
 			ChangeTileOverlay(pos, "Block")
 		else:
-			ChangeTileOverlay(pos, "Open")
+			if erasing.has(pos):
+				ChangeTileOverlay(pos, "Block")
+			else:
+				ChangeTileOverlay(pos, "Open")
 #endregion
 
 #------------------------------Attack Functions--------------------------------------
@@ -751,8 +754,8 @@ func CheckAttackRange(battler:Battler, attack:Skill):
 			inRange.append(posIndex)
 	#Need a part in here that checks for moveblockers, then checks which side moveblocker is on
 	#Finally, remove (or prevent appending) any position index > or < than moveblocker posIndex
-	for loc in erasing:
-		inRange.erase(loc)
+	#for loc in erasing:
+	#	inRange.erase(loc)
 	for pos in inRange:
 		if gridDatabase[pos]["Occupied"] == true:
 			var targetControl:bool = gridDatabase[pos]["Occupant"].playerControl
@@ -769,7 +772,10 @@ func CheckAttackRange(battler:Battler, attack:Skill):
 			elif targetControl == battlerControl:
 				ChangeTileOverlay(pos, "Block")
 		else:
-			ChangeTileOverlay(pos, "Range")
+			if erasing.has(pos):
+				ChangeTileOverlay(pos, "Block")
+			else:
+				ChangeTileOverlay(pos, "Range")
 
 func DamageCalc(attacker:Battler, defender:Battler, attack:Skill) -> int: #Returns Outgoing Damage
 	var ATB:int = attacker.faebleEntry.tier

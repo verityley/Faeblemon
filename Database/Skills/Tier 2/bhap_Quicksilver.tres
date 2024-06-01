@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://c3it5ycqyatai"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_ne771"]
+[ext_resource type="Resource" uid="uid://cl8db7w0h0fb2" path="res://Database/Schools/Alchemy.tres" id="2_vndbh"]
+
+[resource]
+script = ExtResource("1_ne771")
+skillName = "Quicksilver"
+skillType = ExtResource("2_vndbh")
+skillCost = 4
+skillNature = "Physical"
+skillDamage = 4
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 1
+rangeMax = 2
+canPierce = true
+canArc = true
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

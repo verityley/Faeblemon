@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://cqt1xnpt8ygie"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_0kfgk"]
+[ext_resource type="Resource" uid="uid://de8kbqj72dt47" path="res://Database/Schools/Hearth.tres" id="2_qf3mf"]
+
+[resource]
+script = ExtResource("1_0kfgk")
+skillName = "Firebolt"
+skillType = ExtResource("2_qf3mf")
+skillCost = 1
+skillNature = "Magical"
+skillDamage = 1
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 2
+rangeMax = 3
+canPierce = false
+canArc = false
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

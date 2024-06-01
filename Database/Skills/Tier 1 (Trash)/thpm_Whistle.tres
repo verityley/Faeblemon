@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://u0tlvfn4dt6t"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_ous6k"]
+[ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Performance.tres" id="2_ge6g8"]
+
+[resource]
+script = ExtResource("1_ous6k")
+skillName = "Whistle"
+skillType = ExtResource("2_ge6g8")
+skillCost = 1
+skillNature = "Magical"
+skillDamage = 1
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 2
+rangeMax = 3
+canPierce = false
+canArc = true
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

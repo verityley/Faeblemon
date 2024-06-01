@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="Faeble" load_steps=9 format=3 uid="uid://c35sr7lc0bckf"]
+
+[ext_resource type="Resource" uid="uid://crdybp6i852y4" path="res://Database/Schools/Coven.tres" id="1_jbbcs"]
+[ext_resource type="Script" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_th8wy"]
+[ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="2_2w0tf"]
+[ext_resource type="Resource" uid="uid://cvhcgyhumqrql" path="res://Database/Domains/Primal.tres" id="3_yn01q"]
+[ext_resource type="Texture2D" uid="uid://cbpb8dkape58y" path="res://Global Assets/Graphics/Monster Graphics/Icons/RatinctureIcon.png" id="4_16tji"]
+[ext_resource type="Resource" uid="uid://c4ju0ee2lda3j" path="res://Database/Domains/Haunting.tres" id="6_hs0xb"]
+[ext_resource type="Resource" uid="uid://cl8db7w0h0fb2" path="res://Database/Schools/Alchemy.tres" id="7_3bbxw"]
+[ext_resource type="Texture2D" uid="uid://bcoycmiic0cle" path="res://Global Assets/Graphics/Monster Graphics/Ratincture.png" id="8_olwtp"]
+
+[resource]
+script = ExtResource("1_th8wy")
+name = "Ratincture"
+ID = 30
+firstDomain = ExtResource("3_yn01q")
+secondDomain = ExtResource("6_hs0xb")
+sigSchool = ExtResource("7_3bbxw")
+altSigSchool1 = ExtResource("1_jbbcs")
+altSigSchool2 = ExtResource("2_2w0tf")
+sprite = ExtResource("8_olwtp")
+icon = ExtResource("4_16tji")
+battlerScale = Vector3(1, 1, 1)
+worldScale = 0.0
+UIScale = 0.0
+groundOffset = Vector3(0, -0.1, 0)
+minQuality = 2
+maxQuality = 20
+brawn = 5
+vigor = 10
+wit = 5
+ambition = 10
+grace = 7
+resolve = 12
+heart = 10
+profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
+prefPrimary = "Vigor"
+prefSecondary = "Ambition"
+HPCap = 60
+skillPool = {}
+assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null])
+feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
+traitBig = false
+traitTall = false
+traitSmall = false
+traitJumping = false
+traitFlying = false
+traitPhasing = false
+canEvolve = false
+evoLevel = 0
+evoBranch = false
+currentHP = 0
+currentEnergy = 0
+fainted = false
+description = ""
+rumors = ""

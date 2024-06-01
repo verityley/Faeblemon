@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://odafm32tg4fb"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_js4cu"]
+[ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Performance.tres" id="2_sycwt"]
+
+[resource]
+script = ExtResource("1_js4cu")
+skillName = "Shrill Note"
+skillType = ExtResource("2_sycwt")
+skillCost = 3
+skillNature = "Magical"
+skillDamage = 3
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 3
+rangeMax = 4
+canPierce = false
+canArc = false
+canBurst = true
+burstRange = 1
+targetAlly = false
+targetAll = false

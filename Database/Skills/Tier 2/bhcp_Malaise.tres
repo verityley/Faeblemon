@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://d3pnfo0d88vwq"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_y75e5"]
+[ext_resource type="Resource" uid="uid://cy460pjjcakrm" path="res://Database/Schools/Curse.tres" id="2_eho06"]
+
+[resource]
+script = ExtResource("1_y75e5")
+skillName = "Malaise"
+skillType = ExtResource("2_eho06")
+skillCost = 3
+skillNature = "Physical"
+skillDamage = 4
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 1
+rangeMax = 2
+canPierce = true
+canArc = false
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

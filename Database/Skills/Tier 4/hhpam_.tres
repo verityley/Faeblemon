@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://bco63qbkgqcy1"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_d8xfh"]
+[ext_resource type="Resource" uid="uid://bit2tuyhefdhg" path="res://Database/Schools/Pact.tres" id="2_s6ahd"]
+
+[resource]
+script = ExtResource("1_d8xfh")
+skillName = "Hard Hit"
+skillType = ExtResource("2_s6ahd")
+skillCost = 8
+skillNature = "Magical"
+skillDamage = 10
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 3
+rangeMax = 5
+canPierce = false
+canArc = false
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

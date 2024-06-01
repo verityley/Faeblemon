@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="Faeble" load_steps=8 format=3 uid="uid://cvppt440vx0if"]
+
+[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Lunar.tres" id="1_1gpbr"]
+[ext_resource type="Script" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_oquen"]
+[ext_resource type="Resource" uid="uid://087ema067pet" path="res://Database/Schools/Blessing.tres" id="2_tidy2"]
+[ext_resource type="Resource" uid="uid://bkek55add4qy3" path="res://Database/Domains/Sacred.tres" id="3_341xk"]
+[ext_resource type="Texture2D" uid="uid://d0gyqbsb4vpnl" path="res://Global Assets/Graphics/Monster Graphics/Icons/TsunchiIcon.png" id="4_56sfe"]
+[ext_resource type="Resource" uid="uid://de8kbqj72dt47" path="res://Database/Schools/Hearth.tres" id="6_is6yw"]
+[ext_resource type="Texture2D" uid="uid://bc2bec6iy7b6j" path="res://Global Assets/Graphics/Monster Graphics/Tsunchi.png" id="7_qoc23"]
+
+[resource]
+script = ExtResource("1_oquen")
+name = "Tsunchi"
+ID = 11
+firstDomain = ExtResource("3_341xk")
+sigSchool = ExtResource("6_is6yw")
+altSigSchool1 = ExtResource("1_1gpbr")
+altSigSchool2 = ExtResource("2_tidy2")
+sprite = ExtResource("7_qoc23")
+icon = ExtResource("4_56sfe")
+battlerScale = Vector3(1.2, 1.2, 1.2)
+worldScale = 0.0
+UIScale = 0.0
+groundOffset = Vector3(0, -0.1, 0)
+minQuality = 2
+maxQuality = 20
+brawn = 3
+vigor = 7
+wit = 8
+ambition = 9
+grace = 3
+resolve = 12
+heart = 10
+profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
+prefPrimary = "Resolve"
+prefSecondary = "Ambition"
+HPCap = 60
+skillPool = {}
+assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null])
+feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
+traitBig = false
+traitTall = false
+traitSmall = false
+traitJumping = false
+traitFlying = false
+traitPhasing = false
+canEvolve = false
+evoLevel = 0
+evoBranch = false
+currentHP = 0
+currentEnergy = 0
+fainted = false
+description = ""
+rumors = ""

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://bmyeshg6b6yix"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_1go8m"]
+[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Lunar.tres" id="2_otd5n"]
+
+[resource]
+script = ExtResource("1_1go8m")
+skillName = "Hard Hit"
+skillType = ExtResource("2_otd5n")
+skillCost = 8
+skillNature = "Physical"
+skillDamage = 10
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 1
+rangeMax = 1
+canPierce = false
+canArc = false
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

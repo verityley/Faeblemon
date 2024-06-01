@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://b0ybee3ckcejt"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_bjkon"]
+[ext_resource type="Resource" uid="uid://de8kbqj72dt47" path="res://Database/Schools/Hearth.tres" id="2_e055y"]
+
+[resource]
+script = ExtResource("1_bjkon")
+skillName = "Firecracker"
+skillType = ExtResource("2_e055y")
+skillCost = 3
+skillNature = "Magical"
+skillDamage = 3
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 2
+rangeMax = 4
+canPierce = false
+canArc = false
+canBurst = true
+burstRange = 2
+targetAlly = false
+targetAll = false

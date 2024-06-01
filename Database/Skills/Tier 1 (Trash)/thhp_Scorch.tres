@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://cb56nrnvv4pyq"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_hscgi"]
+[ext_resource type="Resource" uid="uid://de8kbqj72dt47" path="res://Database/Schools/Hearth.tres" id="2_gkp06"]
+
+[resource]
+script = ExtResource("1_hscgi")
+skillName = "Scorch"
+skillType = ExtResource("2_gkp06")
+skillCost = 1
+skillNature = "Physical"
+skillDamage = 2
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 1
+rangeMax = 2
+canPierce = false
+canArc = false
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

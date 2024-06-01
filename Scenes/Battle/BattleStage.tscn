@@ -13,14 +13,14 @@
 [ext_resource type="Script" path="res://Scenes/Battle/CommandsManager.gd" id="10_38tva"]
 [ext_resource type="Texture2D" uid="uid://ckj8wm0yhey45" path="res://Scenes/Battle/Assets/FamiliarCommand.png" id="10_clb5f"]
 [ext_resource type="Texture2D" uid="uid://bvfyy5fvar8co" path="res://Scenes/Battle/Assets/CurrentIndicator.png" id="10_dmvnb"]
-[ext_resource type="Resource" uid="uid://dv8g1bdy5qvqx" path="res://Database/Skills/FairyStrike.tres" id="11_ebhpw"]
+[ext_resource type="Texture2D" uid="uid://b6byvcbsfq3rb" path="res://Global Assets/Graphics/Monster Graphics/SqwrymMoarSketchy.png" id="10_u7b61"]
 [ext_resource type="Texture2D" uid="uid://ctdbe6mqj1ar1" path="res://Scenes/Battle/Assets/AttackCommand.png" id="11_kf0xf"]
 [ext_resource type="Texture2D" uid="uid://cn044nishsqir" path="res://Scenes/Battle/Assets/MoveCommand.png" id="12_86oy4"]
+[ext_resource type="Resource" uid="uid://dv8g1bdy5qvqx" path="res://Database/Skills/Debug Skills/FairyStrike.tres" id="13_0xbbo"]
 [ext_resource type="Texture2D" uid="uid://cjmkt1uhnw5sa" path="res://Scenes/Battle/Assets/WitchCommand.png" id="13_7l6dm"]
 [ext_resource type="Texture2D" uid="uid://c874jgwsucl7l" path="res://Scenes/Battle/Assets/SpellCommand.png" id="14_gflsh"]
 [ext_resource type="Texture2D" uid="uid://bjde4nx2jlk0t" path="res://Scenes/Battle/Assets/TacticsCommand.png" id="15_446dc"]
 [ext_resource type="Texture2D" uid="uid://dtpgcfywcdx0p" path="res://Scenes/Battle/Assets/TurnCommand.png" id="16_1gakd"]
-[ext_resource type="Texture2D" uid="uid://cqal6qlsn6lgn" path="res://Global Assets/Graphics/Monster Graphics/aconidFront.png" id="17_pmunv"]
 [ext_resource type="PackedScene" uid="uid://3h5g5dp2wlp7" path="res://Scenes/Battle/RingMenu.tscn" id="19_3fugl"]
 [ext_resource type="Texture2D" uid="uid://cmq32un2xwhha" path="res://Global Assets/Graphics/Monster Graphics/PlayerChar.png" id="19_nax5p"]
 [ext_resource type="PackedScene" uid="uid://dicqe0rtlrn5g" path="res://Scenes/Battle/StatusBox3D.tscn" id="23_2vtp1"]
@@ -30,16 +30,14 @@
 
 [sub_resource type="QuadMesh" id="QuadMesh_v6vgs"]
 lightmap_size_hint = Vector2i(12, 17)
-size = Vector2(1, 1.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qd73e"]
 transparency = 4
 cull_mode = 2
-albedo_texture = ExtResource("17_pmunv")
+albedo_texture = ExtResource("10_u7b61")
 
 [sub_resource type="QuadMesh" id="QuadMesh_e8kaj"]
 lightmap_size_hint = Vector2i(12, 17)
-size = Vector2(1, 1.5)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k7c3w"]
 load_path = "res://.godot/imported/baaphiFront.png-74d43c8ea6aec33138141521e070b438.s3tc.ctex"
@@ -51,7 +49,6 @@ albedo_texture = SubResource("CompressedTexture2D_k7c3w")
 
 [sub_resource type="QuadMesh" id="QuadMesh_62in7"]
 lightmap_size_hint = Vector2i(12, 17)
-size = Vector2(1, 1.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0lqss"]
 transparency = 4
@@ -60,7 +57,6 @@ albedo_texture = SubResource("CompressedTexture2D_k7c3w")
 
 [sub_resource type="QuadMesh" id="QuadMesh_4abtl"]
 lightmap_size_hint = Vector2i(12, 17)
-size = Vector2(1, 1.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cp2ci"]
 transparency = 4
@@ -202,6 +198,7 @@ movepoints = 5
 positionIndex = Vector2i(2, 0)
 
 [node name="FaebleMesh" type="MeshInstance3D" parent="Battler1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.246136, 0)
 mesh = SubResource("QuadMesh_v6vgs")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qd73e")
@@ -228,7 +225,7 @@ movepoints = 2
 positionIndex = Vector2i(3, 1)
 
 [node name="FaebleMesh" type="MeshInstance3D" parent="Battler2"]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.246136, 0)
 mesh = SubResource("QuadMesh_e8kaj")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_8ai5o")
@@ -255,6 +252,7 @@ positionIndex = Vector2i(6, 0)
 facingFlip = true
 
 [node name="FaebleMesh" type="MeshInstance3D" parent="Battler3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.246136, 0)
 mesh = SubResource("QuadMesh_62in7")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_0lqss")
@@ -281,7 +279,7 @@ positionIndex = Vector2i(5, 1)
 facingFlip = true
 
 [node name="FaebleMesh" type="MeshInstance3D" parent="Battler4"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.3, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0538644, 0)
 mesh = SubResource("QuadMesh_4abtl")
 surface_material_override/0 = SubResource("StandardMaterial3D_cp2ci")
 
@@ -301,7 +299,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.6, 0.5)
 script = ExtResource("10_38tva")
 battleManager = NodePath("..")
 menuOffset = Vector3(0, 1.1, 0.5)
-tempAttack = ExtResource("11_ebhpw")
+tempAttack = ExtResource("13_0xbbo")
 
 [node name="Familiar" type="Sprite3D" parent="Commands"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -1.49012e-08)

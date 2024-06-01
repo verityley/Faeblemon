@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://k5dylssesht7"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_q2d8v"]
+[ext_resource type="Resource" uid="uid://cy460pjjcakrm" path="res://Database/Schools/Curse.tres" id="2_javs2"]
+
+[resource]
+script = ExtResource("1_q2d8v")
+skillName = "Hex"
+skillType = ExtResource("2_javs2")
+skillCost = 1
+skillNature = "Magical"
+skillDamage = 2
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 2
+rangeMax = 2
+canPierce = false
+canArc = false
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

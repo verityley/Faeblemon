@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://plgsfhmbfipy"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_s3u6b"]
+[ext_resource type="Resource" uid="uid://087ema067pet" path="res://Database/Schools/Blessing.tres" id="2_ey7i4"]
+
+[resource]
+script = ExtResource("1_s3u6b")
+skillName = "Banish"
+skillType = ExtResource("2_ey7i4")
+skillCost = 3
+skillNature = "Physical"
+skillDamage = 4
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 0
+rangeMax = 2
+canPierce = true
+canArc = false
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

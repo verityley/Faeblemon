@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="Faeble" load_steps=9 format=3 uid="uid://dwa5hctarcwbf"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_06wqt"]
+[ext_resource type="Resource" uid="uid://cy460pjjcakrm" path="res://Database/Schools/Curse.tres" id="1_81x8u"]
+[ext_resource type="Resource" uid="uid://6sqrvld48ww6" path="res://Database/Schools/Weird.tres" id="2_lj782"]
+[ext_resource type="Resource" uid="uid://c4ju0ee2lda3j" path="res://Database/Domains/Haunting.tres" id="3_lth31"]
+[ext_resource type="Texture2D" uid="uid://c58wm7c8gc4lh" path="res://Global Assets/Graphics/Monster Graphics/Icons/LeviabyssIcon.png" id="4_by6o6"]
+[ext_resource type="Resource" uid="uid://dx6ef6t5q3ruc" path="res://Database/Domains/Draconic.tres" id="6_s1krs"]
+[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Lunar.tres" id="7_siow8"]
+[ext_resource type="Texture2D" uid="uid://dvqg3j34whm58" path="res://Global Assets/Graphics/Monster Graphics/Leviabyss.png" id="8_v0c7n"]
+
+[resource]
+script = ExtResource("1_06wqt")
+name = "Leviabyss"
+ID = 20
+firstDomain = ExtResource("3_lth31")
+secondDomain = ExtResource("6_s1krs")
+sigSchool = ExtResource("7_siow8")
+altSigSchool1 = ExtResource("1_81x8u")
+altSigSchool2 = ExtResource("2_lj782")
+sprite = ExtResource("8_v0c7n")
+icon = ExtResource("4_by6o6")
+battlerScale = Vector3(2.2, 2.2, 2.2)
+worldScale = 0.0
+UIScale = 0.0
+groundOffset = Vector3(0, 0.25, 0)
+minQuality = 2
+maxQuality = 20
+brawn = 16
+vigor = 10
+wit = 16
+ambition = 5
+grace = 12
+resolve = 8
+heart = 14
+profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
+prefPrimary = "Brawn"
+prefSecondary = "Wit"
+HPCap = 60
+skillPool = {}
+assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null])
+feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
+traitBig = false
+traitTall = false
+traitSmall = false
+traitJumping = false
+traitFlying = false
+traitPhasing = false
+canEvolve = false
+evoLevel = 0
+evoBranch = false
+currentHP = 0
+currentEnergy = 0
+fainted = false
+description = ""
+rumors = ""

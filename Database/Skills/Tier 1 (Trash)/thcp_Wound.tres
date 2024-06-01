@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://bf21bn0adojg4"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_0v0e3"]
+[ext_resource type="Resource" uid="uid://cy460pjjcakrm" path="res://Database/Schools/Curse.tres" id="2_i72i7"]
+
+[resource]
+script = ExtResource("1_0v0e3")
+skillName = "Wound"
+skillType = ExtResource("2_i72i7")
+skillCost = 1
+skillNature = "Physical"
+skillDamage = 3
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 1
+rangeMax = 1
+canPierce = false
+canArc = false
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

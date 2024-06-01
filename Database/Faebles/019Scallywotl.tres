@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="Faeble" load_steps=12 format=3 uid="uid://wog3gcpu8kgk"]
+
+[ext_resource type="Resource" uid="uid://cy460pjjcakrm" path="res://Database/Schools/Curse.tres" id="1_e5nh8"]
+[ext_resource type="Script" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_iam25"]
+[ext_resource type="Resource" uid="uid://6sqrvld48ww6" path="res://Database/Schools/Weird.tres" id="2_s5jwd"]
+[ext_resource type="Resource" uid="uid://c4ju0ee2lda3j" path="res://Database/Domains/Haunting.tres" id="3_qrfmi"]
+[ext_resource type="Texture2D" uid="uid://c3efbxw0nllib" path="res://Global Assets/Graphics/Monster Graphics/Icons/ScallywotlIcon.png" id="4_5r5vy"]
+[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Lunar.tres" id="6_807ie"]
+[ext_resource type="Texture2D" uid="uid://omab5vuova0x" path="res://Global Assets/Graphics/Monster Graphics/Scallywotl.png" id="7_nyrt7"]
+[ext_resource type="Resource" uid="uid://k5dylssesht7" path="res://Database/Skills/Tier 1 (Trash)/thcm_Hex.tres" id="8_qw8qb"]
+[ext_resource type="Resource" uid="uid://bf21bn0adojg4" path="res://Database/Skills/Tier 1 (Trash)/thcp_Wound.tres" id="9_k3h7f"]
+[ext_resource type="Resource" uid="uid://dgqsx6v7sfmhf" path="res://Database/Skills/Tier 1 (Trash)/thlm_Icebolt.tres" id="10_ci45e"]
+[ext_resource type="Resource" uid="uid://c0566law7lytr" path="res://Database/Skills/Tier 1 (Trash)/thlp_Frostbite.tres" id="11_438i2"]
+
+[resource]
+script = ExtResource("1_iam25")
+name = "Scallywotl"
+ID = 19
+firstDomain = ExtResource("3_qrfmi")
+sigSchool = ExtResource("6_807ie")
+altSigSchool1 = ExtResource("1_e5nh8")
+altSigSchool2 = ExtResource("2_s5jwd")
+sprite = ExtResource("7_nyrt7")
+icon = ExtResource("4_5r5vy")
+battlerScale = Vector3(1.3, 1.3, 1.3)
+worldScale = 0.0
+UIScale = 0.0
+groundOffset = Vector3(0, -0.05, 0)
+minQuality = 2
+maxQuality = 20
+brawn = 10
+vigor = 7
+wit = 10
+ambition = 3
+grace = 7
+resolve = 5
+heart = 10
+profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
+prefPrimary = "Brawn"
+prefSecondary = "Wit"
+HPCap = 60
+skillPool = {
+ExtResource("8_qw8qb"): 1,
+ExtResource("9_k3h7f"): 1,
+ExtResource("10_ci45e"): 1,
+ExtResource("11_438i2"): 1
+}
+assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null])
+feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
+traitBig = false
+traitTall = false
+traitSmall = false
+traitJumping = false
+traitFlying = false
+traitPhasing = false
+canEvolve = false
+evoLevel = 0
+evoBranch = false
+currentHP = 0
+currentEnergy = 0
+fainted = false
+description = ""
+rumors = ""
