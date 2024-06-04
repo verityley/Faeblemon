@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Faeble" load_steps=8 format=3 uid="uid://cfijjfl0vkrtr"]
+[gd_resource type="Resource" script_class="Faeble" load_steps=20 format=3 uid="uid://cfijjfl0vkrtr"]
 
 [ext_resource type="Script" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_l5fth"]
 [ext_resource type="Resource" uid="uid://cl8db7w0h0fb2" path="res://Database/Schools/Alchemy.tres" id="1_nw66k"]
@@ -7,6 +7,18 @@
 [ext_resource type="Texture2D" uid="uid://ddeabrety2hww" path="res://Global Assets/Graphics/Monster Graphics/Icons/KoinIcon.png" id="4_x6sxl"]
 [ext_resource type="Resource" uid="uid://dvn0i2tiim6q8" path="res://Database/Schools/Geo.tres" id="6_plngh"]
 [ext_resource type="Texture2D" uid="uid://bohhb4wc75a5e" path="res://Global Assets/Graphics/Monster Graphics/Koin.png" id="7_10xfl"]
+[ext_resource type="Resource" uid="uid://bppg3i2g2w1go" path="res://Database/Skills/Tier 1 (Trash)/thbp_Radiance.tres" id="7_lophc"]
+[ext_resource type="Resource" uid="uid://dnuf1iyk0cj0a" path="res://Database/Skills/Tier 1 (Trash)/thmm_Sling.tres" id="8_uq70k"]
+[ext_resource type="Resource" uid="uid://dgqsx6v7sfmhf" path="res://Database/Skills/Tier 1 (Trash)/thlm_Icebolt.tres" id="9_j802i"]
+[ext_resource type="Resource" uid="uid://cyjfwp8bpxro4" path="res://Database/Skills/Tier 2/bhbm_Hallow.tres" id="10_8171j"]
+[ext_resource type="Resource" uid="uid://c3it5ycqyatai" path="res://Database/Skills/Tier 2/bhap_Quicksilver.tres" id="11_vqlpl"]
+[ext_resource type="Resource" uid="uid://dsebgasxthd8n" path="res://Database/Skills/Tier 2/bhlp_Wavebreak.tres" id="12_ddmqg"]
+[ext_resource type="Resource" uid="uid://dsd681qfv8agi" path="res://Database/Skills/Tier 3/ihbm_Sanctify.tres" id="13_6dcyj"]
+[ext_resource type="Resource" uid="uid://bdtlqlpgrwmf7" path="res://Database/Skills/Tier 3/ihap_Boil.tres" id="14_gs2ms"]
+[ext_resource type="Resource" uid="uid://bxe0c4xde0ijr" path="res://Database/Skills/Tier 3/ihlm_Moonbeam.tres" id="15_mfeh8"]
+[ext_resource type="Resource" uid="uid://cmhfoo71hum43" path="res://Database/Skills/Tier 4/hhbm_.tres" id="16_o6vxv"]
+[ext_resource type="Resource" uid="uid://cef0x17o2vli1" path="res://Database/Skills/Tier 4/hhlm_.tres" id="17_4pjg6"]
+[ext_resource type="Resource" uid="uid://5emwic33uige" path="res://Database/Skills/Tier 4/hhap_.tres" id="18_ckktq"]
 
 [resource]
 script = ExtResource("1_l5fth")
@@ -24,9 +36,9 @@ UIScale = 0.0
 groundOffset = Vector3(0, 0.2, 0)
 minQuality = 2
 maxQuality = 20
-brawn = 6
-vigor = 18
-wit = 10
+brawn = 8
+vigor = 16
+wit = 8
 ambition = 16
 grace = 16
 resolve = 8
@@ -35,7 +47,20 @@ profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
 prefPrimary = "Vigor"
 prefSecondary = "Grace"
 HPCap = 60
-skillPool = {}
+skillPool = {
+ExtResource("7_lophc"): 1,
+ExtResource("8_uq70k"): 1,
+ExtResource("9_j802i"): 3,
+ExtResource("10_8171j"): 6,
+ExtResource("11_vqlpl"): 7,
+ExtResource("12_ddmqg"): 9,
+ExtResource("13_6dcyj"): 11,
+ExtResource("14_gs2ms"): 13,
+ExtResource("15_mfeh8"): 14,
+ExtResource("16_o6vxv"): 17,
+ExtResource("17_4pjg6"): 18,
+ExtResource("18_ckktq"): 19
+}
 assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null])
 feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
 traitBig = false

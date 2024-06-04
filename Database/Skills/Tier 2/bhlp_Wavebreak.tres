@@ -7,9 +7,9 @@
 script = ExtResource("1_27b2m")
 skillName = "Wavebreak"
 skillType = ExtResource("2_we7n5")
-skillCost = 3
+skillCost = 4
 skillNature = "Physical"
-skillDamage = 4
+skillDamage = 5
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

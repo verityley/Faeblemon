@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("1_x7mq1")
-skillName = "Hard Hit"
+skillName = "Weird Spell"
 skillType = ExtResource("2_au1v1")
-skillCost = 8
+skillCost = 10
 skillNature = "Magical"
-skillDamage = 10
+skillDamage = 12
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
@@ -17,7 +17,7 @@ moveDescription = ""
 targetType = ""
 targetScope = ""
 rangeMin = 1
-rangeMax = 2
+rangeMax = 1
 canPierce = false
 canArc = false
 canBurst = false

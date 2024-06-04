@@ -182,6 +182,7 @@ func MenuAction(state:int):
 			print("Circle Menu: Start")
 			for child in ringMesh.get_children():
 				child.show()
+				child.get_child(1).modulate = Color(1,1,1,1)
 				child.get_child(1).frame_coords.y = 0
 				child.get_child(0).show()
 				child.get_child(1).show()
@@ -204,8 +205,11 @@ func MenuAction(state:int):
 			for child in ringMesh.get_children():
 				child.show()
 				child.get_child(1).frame_coords = Vector2i(index, 1)
+				child.get_child(1).modulate = Color(1,1,1,1)
+				child.get_child(0).show()
 				child.get_child(1).show()
 				child.get_child(2).hide() #Hide Skill Option sprites
+				child.get_child(3).hide()
 				index += 1
 			skillDisplay.hide()
 			selectedSkill = null
@@ -218,12 +222,14 @@ func MenuAction(state:int):
 			else:
 				ringMesh.get_child(1).get_child(1).modulate = Color(1,1,1,1)
 				ringMesh.get_child(1).get_child(0).show()
+			
 			if moveTaken and selectedBattler.movepoints <= 0:
 				ringMesh.get_child(3).get_child(1).modulate = Color(0.6,0.6,0.6,0.8)
 				ringMesh.get_child(3).get_child(0).hide() #eventually replace with greyed out unclickable option
 			else:
 				ringMesh.get_child(3).get_child(1).modulate = Color(1,1,1,1)
 				ringMesh.get_child(3).get_child(0).show()
+			
 			if moveTaken or attackTaken:
 				ringMesh.get_child(0).get_child(1).modulate = Color(0.6,0.6,0.6,0.8)
 				ringMesh.get_child(0).get_child(0).hide()
@@ -271,6 +277,14 @@ func MenuAction(state:int):
 					skillDisplay.get_child(7).frame = selectedSkill.skillCost-1
 				else:
 					skillDisplay.get_child(7).hide()
+				
+				if selectedSkill.moveDisplay == null and selectedSkill.skillDamage > 0:
+					print("Empty damage preview, enabling placeholder")
+					skillDisplay.get_child(8).get_child(0).text = "Damage: " + str(selectedSkill.skillDamage)
+					print("Temp Damage: ", skillDisplay.get_child(8).get_child(0).text)
+				else:
+					skillDisplay.get_child(8).get_child(0).text = ""
+				skillDisplay.get_child(8).show()
 				skillDisplay.get_child(8).texture = selectedSkill.moveDisplay
 				battleManager.currentSkill = selectedSkill
 				selectedSkill.Target(battleManager, selectedBattler)
@@ -329,7 +343,11 @@ func MenuAction(state:int):
 			print("Circle Menu: Move")
 			for child in ringMesh.get_children():
 				child.hide()
+			
 			ringMesh.get_child(0).get_child(1).frame_coords = Vector2i(1, 0)
+			ringMesh.get_child(0).get_child(1).modulate = Color(1,1,1,1)
+			ringMesh.get_child(0).get_child(0).show()
+			ringMesh.get_child(0).get_child(1).show()
 			ringMesh.get_child(0).show()
 			battleManager.CheckMoves(selectedBattler) #TEMPORARY
 			battleManager.ChangeBoardState("Moving")

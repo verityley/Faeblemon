@@ -7,9 +7,9 @@
 script = ExtResource("1_suk84")
 skillName = "Spore"
 skillType = ExtResource("2_r4gg8")
-skillCost = 0
+skillCost = 1
 skillNature = "Magical"
-skillDamage = 1
+skillDamage = 2
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

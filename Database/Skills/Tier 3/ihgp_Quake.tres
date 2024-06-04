@@ -5,22 +5,22 @@
 
 [resource]
 script = ExtResource("1_1og6o")
-skillName = "Earthbind"
+skillName = "Quake"
 skillType = ExtResource("2_q5n7f")
-skillCost = 3
+skillCost = 8
 skillNature = "Physical"
-skillDamage = 4
+skillDamage = 12
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 0
-rangeMax = 2
+rangeMin = 1
+rangeMax = 3
 canPierce = false
 canArc = false
-canBurst = false
-burstRange = 0
+canBurst = true
+burstRange = 2
 targetAlly = false
 targetAll = false

@@ -7,9 +7,9 @@
 script = ExtResource("1_8xsid")
 skillName = "Arcane Arrow"
 skillType = ExtResource("2_igw5h")
-skillCost = 4
+skillCost = 6
 skillNature = "Magical"
-skillDamage = 5
+skillDamage = 8
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

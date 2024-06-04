@@ -54,5 +54,5 @@ codex = {
 "110 - Pubble": ExtResource("8_58iwg"),
 "111 - Slobble": ExtResource("5_kcuvj")
 }
-playerParty = Array[Resource("res://Global Assets/Classes/FaebleEntry.gd")]([null, null, null, null, null, null])
-enemyParty = Array[Resource("res://Global Assets/Classes/FaebleEntry.gd")]([null, null, null, null, null, null])
+playerParty = Array[Resource("res://Global Assets/Classes/FaebleEntry.gd")]([ExtResource("4_6mawc"), null, null, null, null, null])
+enemyParty = Array[Resource("res://Global Assets/Classes/FaebleEntry.gd")]([ExtResource("5_81ur4"), null, null, null, null, null])

@@ -4,12 +4,13 @@
 [ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="2_ni8hy"]
 
 [resource]
+resource_name = "bhgrp_Grassblade"
 script = ExtResource("1_hia4x")
 skillName = "Grassblade"
 skillType = ExtResource("2_ni8hy")
-skillCost = 2
+skillCost = 3
 skillNature = "Physical"
-skillDamage = 3
+skillDamage = 4
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

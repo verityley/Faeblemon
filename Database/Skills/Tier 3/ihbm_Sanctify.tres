@@ -5,19 +5,19 @@
 
 [resource]
 script = ExtResource("1_0w3do")
-skillName = "Hallow"
+skillName = "Sanctify"
 skillType = ExtResource("2_xo5gc")
-skillCost = 3
+skillCost = 8
 skillNature = "Magical"
-skillDamage = 3
+skillDamage = 10
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 1
-rangeMax = 4
+rangeMin = 2
+rangeMax = 5
 canPierce = true
 canArc = false
 canBurst = false

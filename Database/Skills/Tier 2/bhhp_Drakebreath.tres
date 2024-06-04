@@ -7,9 +7,9 @@
 script = ExtResource("1_opko3")
 skillName = "Drakebreath"
 skillType = ExtResource("2_q1u5k")
-skillCost = 3
+skillCost = 4
 skillNature = "Physical"
-skillDamage = 4
+skillDamage = 5
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

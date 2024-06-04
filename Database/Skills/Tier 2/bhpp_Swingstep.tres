@@ -7,9 +7,9 @@
 script = ExtResource("1_2b8io")
 skillName = "Swingstep"
 skillType = ExtResource("2_05hhi")
-skillCost = 3
+skillCost = 4
 skillNature = "Physical"
-skillDamage = 4
+skillDamage = 6
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

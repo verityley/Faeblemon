@@ -7,9 +7,9 @@
 script = ExtResource("1_nj8rv")
 skillName = "Thorn"
 skillType = ExtResource("2_q3qo3")
-skillCost = 0
+skillCost = 1
 skillNature = "Physical"
-skillDamage = 1
+skillDamage = 2
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

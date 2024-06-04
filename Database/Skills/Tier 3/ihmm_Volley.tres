@@ -5,20 +5,20 @@
 
 [resource]
 script = ExtResource("1_gue2u")
-skillName = "Shatter"
+skillName = "Volley"
 skillType = ExtResource("2_l2jx2")
-skillCost = 2
+skillCost = 6
 skillNature = "Magical"
-skillDamage = 3
+skillDamage = 10
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 3
-rangeMax = 5
-canPierce = false
+rangeMin = 2
+rangeMax = 4
+canPierce = true
 canArc = false
 canBurst = false
 burstRange = 0

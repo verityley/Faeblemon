@@ -16,6 +16,7 @@ func _ready():
 
 func CreateFaeble(faebleEntry:Faeble, initLevel:int, mook:bool = false, commander:Faeble = null) -> Faeble:
 	var instance:Faeble = faebleEntry.duplicate()
+	var learnList:Dictionary = faebleEntry.skillPool.duplicate()
 	
 	var RNG = RandomNumberGenerator.new()
 	var profRoll:int #This is -2 to 2, or -1 to 1 if first roll is 1
@@ -159,9 +160,11 @@ func CreateFaeble(faebleEntry:Faeble, initLevel:int, mook:bool = false, commande
 	#End of reward assignment
 	
 	#Start of Movepool Population
-	for skill in instance.skillPool:
-			if instance.skillPool[skill] <= instance.level:
-				instance.learnedSkills.append(skill)
+	#print(learnList)
+	for skill in learnList:
+		#print(skill.skillName)
+		if learnList[skill] <= instance.level:
+			instance.learnedSkills.append(skill)
 	#Fill out current slots with random skills from learnlist, replace with Most Recent later
 	var highestSkill:int = instance.learnedSkills.size()-1
 	for slot in range(instance.assignedSkills.size()):

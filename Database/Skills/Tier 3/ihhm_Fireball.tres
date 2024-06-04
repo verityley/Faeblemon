@@ -5,22 +5,22 @@
 
 [resource]
 script = ExtResource("1_itysf")
-skillName = "Firecracker"
+skillName = "Fireball"
 skillType = ExtResource("2_o6e7i")
-skillCost = 3
+skillCost = 8
 skillNature = "Magical"
-skillDamage = 3
+skillDamage = 8
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 1
+rangeMin = 2
 rangeMax = 4
 canPierce = false
-canArc = false
+canArc = true
 canBurst = true
-burstRange = 2
+burstRange = 3
 targetAlly = false
-targetAll = false
+targetAll = true

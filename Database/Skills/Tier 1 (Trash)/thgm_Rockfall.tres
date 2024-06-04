@@ -7,9 +7,9 @@
 script = ExtResource("1_7q73n")
 skillName = "Rockfall"
 skillType = ExtResource("2_cdtkt")
-skillCost = 1
+skillCost = 2
 skillNature = "Magical"
-skillDamage = 1
+skillDamage = 2
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

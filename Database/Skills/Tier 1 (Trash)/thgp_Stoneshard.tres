@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://luxxoojs0rwt"]
 
 [ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_082qb"]
-[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Mundane.tres" id="2_gh8g7"]
+[ext_resource type="Resource" uid="uid://dvn0i2tiim6q8" path="res://Database/Schools/Geo.tres" id="2_7uofb"]
 
 [resource]
 script = ExtResource("1_082qb")
 skillName = "Stoneshard"
-skillType = ExtResource("2_gh8g7")
-skillCost = 1
+skillType = ExtResource("2_7uofb")
+skillCost = 2
 skillNature = "Physical"
-skillDamage = 3
+skillDamage = 4
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

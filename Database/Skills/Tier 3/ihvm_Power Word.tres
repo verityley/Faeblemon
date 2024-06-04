@@ -5,18 +5,18 @@
 
 [resource]
 script = ExtResource("1_6vbe1")
-skillName = "Arcane Arrow"
+skillName = "Power Word"
 skillType = ExtResource("2_fymtg")
-skillCost = 4
+skillCost = 10
 skillNature = "Magical"
-skillDamage = 4
+skillDamage = 14
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 1
+rangeMin = 3
 rangeMax = 4
 canPierce = false
 canArc = false

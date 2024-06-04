@@ -7,9 +7,9 @@
 script = ExtResource("1_ous6k")
 skillName = "Whistle"
 skillType = ExtResource("2_ge6g8")
-skillCost = 1
+skillCost = 3
 skillNature = "Magical"
-skillDamage = 1
+skillDamage = 2
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

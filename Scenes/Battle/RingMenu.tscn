@@ -349,6 +349,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0152977, 0.565638, -0.00402
 render_priority = 2
 texture = ExtResource("14_wvqi8")
 
+[node name="AttackPlaceholder" type="Label3D" parent="SkillDisplay/AttackDetails"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0590638)
+render_priority = 4
+outline_render_priority = 3
+
 [node name="RingMeshCenter" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.001)
 mesh = SubResource("QuadMesh_la3r7")

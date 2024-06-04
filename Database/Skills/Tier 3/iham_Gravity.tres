@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("1_snu02")
-skillName = "Acid Splash"
+skillName = "Gravity"
 skillType = ExtResource("2_ooiij")
-skillCost = 4
+skillCost = 9
 skillNature = "Magical"
-skillDamage = 3
+skillDamage = 10
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
@@ -17,10 +17,10 @@ moveDescription = ""
 targetType = ""
 targetScope = ""
 rangeMin = 1
-rangeMax = 4
-canPierce = false
+rangeMax = 5
+canPierce = true
 canArc = true
-canBurst = true
-burstRange = 1
+canBurst = false
+burstRange = 0
 targetAlly = false
 targetAll = false

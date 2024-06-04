@@ -7,9 +7,9 @@
 script = ExtResource("1_y5tef")
 skillName = "Earthbind"
 skillType = ExtResource("2_8ic4u")
-skillCost = 3
+skillCost = 4
 skillNature = "Magical"
-skillDamage = 3
+skillDamage = 5
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

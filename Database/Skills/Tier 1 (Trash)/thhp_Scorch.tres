@@ -7,9 +7,9 @@
 script = ExtResource("1_hscgi")
 skillName = "Scorch"
 skillType = ExtResource("2_gkp06")
-skillCost = 1
+skillCost = 2
 skillNature = "Physical"
-skillDamage = 2
+skillDamage = 3
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

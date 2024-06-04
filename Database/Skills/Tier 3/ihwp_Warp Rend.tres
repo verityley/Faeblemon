@@ -5,22 +5,22 @@
 
 [resource]
 script = ExtResource("1_ag802")
-skillName = "Tendril Lash"
+skillName = "Warp Rend"
 skillType = ExtResource("2_b4lq1")
-skillCost = 3
+skillCost = 8
 skillNature = "Physical"
-skillDamage = 4
+skillDamage = 10
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 0
-rangeMax = 3
+rangeMin = 3
+rangeMax = 6
 canPierce = true
-canArc = false
-canBurst = true
-burstRange = 1
+canArc = true
+canBurst = false
+burstRange = 0
 targetAlly = false
 targetAll = false

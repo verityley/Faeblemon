@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("1_i1qmr")
-skillName = "Crackle"
+skillName = "Skystrike"
 skillType = ExtResource("2_tb0e6")
-skillCost = 3
+skillCost = 8
 skillNature = "Physical"
-skillDamage = 4
+skillDamage = 10
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
@@ -17,7 +17,7 @@ moveDescription = ""
 targetType = ""
 targetScope = ""
 rangeMin = 1
-rangeMax = 3
+rangeMax = 5
 canPierce = true
 canArc = false
 canBurst = false

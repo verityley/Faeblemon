@@ -5,18 +5,18 @@
 
 [resource]
 script = ExtResource("1_ito3m")
-skillName = "Stepswing"
+skillName = "Feytouch"
 skillType = ExtResource("2_273wc")
-skillCost = 3
+skillCost = 8
 skillNature = "Physical"
-skillDamage = 4
+skillDamage = 10
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 0
+rangeMin = 1
 rangeMax = 2
 canPierce = false
 canArc = true

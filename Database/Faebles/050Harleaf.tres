@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Faeble" load_steps=9 format=3 uid="uid://duwgvjsm8x6gx"]
+[gd_resource type="Resource" script_class="Faeble" load_steps=21 format=3 uid="uid://duwgvjsm8x6gx"]
 
-[ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="1_16b62"]
+[ext_resource type="Resource" uid="uid://de8kbqj72dt47" path="res://Database/Schools/Hearth.tres" id="1_e0jwh"]
 [ext_resource type="Script" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_x5nu6"]
 [ext_resource type="Resource" uid="uid://6sqrvld48ww6" path="res://Database/Schools/Weird.tres" id="2_2ekjy"]
 [ext_resource type="Resource" uid="uid://cmi3i261g3njv" path="res://Database/Domains/Cryptid.tres" id="3_aofhy"]
@@ -8,6 +8,18 @@
 [ext_resource type="Resource" uid="uid://bldym4cl8lnh7" path="res://Database/Domains/Fairytale.tres" id="6_dj3vp"]
 [ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Performance.tres" id="7_c21ba"]
 [ext_resource type="Texture2D" uid="uid://b7rtg0ax6w50c" path="res://Global Assets/Graphics/Monster Graphics/Harleaf.png" id="8_qehci"]
+[ext_resource type="Resource" uid="uid://c4sissiwwyyvn" path="res://Database/Skills/Tier 1 (Trash)/thpp_Tempotap.tres" id="8_u0jvw"]
+[ext_resource type="Resource" uid="uid://cb56nrnvv4pyq" path="res://Database/Skills/Tier 1 (Trash)/thhp_Scorch.tres" id="9_wlpty"]
+[ext_resource type="Resource" uid="uid://u0tlvfn4dt6t" path="res://Database/Skills/Tier 1 (Trash)/thpm_Whistle.tres" id="10_2rfil"]
+[ext_resource type="Resource" uid="uid://chbqrsuu5c82s" path="res://Database/Skills/Tier 2/bhpp_Swingstep.tres" id="11_3jfbj"]
+[ext_resource type="Resource" uid="uid://b0ybee3ckcejt" path="res://Database/Skills/Tier 2/bhhm_Firecracker.tres" id="12_ycoy3"]
+[ext_resource type="Resource" uid="uid://cf4oxtm4gs58f" path="res://Database/Skills/Tier 2/bhwm_Knock.tres" id="13_71h1b"]
+[ext_resource type="Resource" uid="uid://db1cn0maugvv6" path="res://Database/Skills/Tier 3/ihpm_Orchestrate.tres" id="14_ri47o"]
+[ext_resource type="Resource" uid="uid://bg2prr6r7tw8m" path="res://Database/Skills/Tier 3/ihwp_Warp Rend.tres" id="15_fpckf"]
+[ext_resource type="Resource" uid="uid://goieia6oyu61" path="res://Database/Skills/Tier 3/ihhp_Immolate.tres" id="16_5es4p"]
+[ext_resource type="Resource" uid="uid://t3rm4iwxmixv" path="res://Database/Skills/Tier 4/hhpm_.tres" id="17_gpgnt"]
+[ext_resource type="Resource" uid="uid://033qdkygdr6m" path="res://Database/Skills/Tier 4/hhwm_.tres" id="18_1eoir"]
+[ext_resource type="Resource" uid="uid://bokl8te2gkf5w" path="res://Database/Skills/Tier 4/hhpp_.tres" id="19_c55h5"]
 
 [resource]
 script = ExtResource("1_x5nu6")
@@ -16,7 +28,7 @@ ID = 51
 firstDomain = ExtResource("3_aofhy")
 secondDomain = ExtResource("6_dj3vp")
 sigSchool = ExtResource("7_c21ba")
-altSigSchool1 = ExtResource("1_16b62")
+altSigSchool1 = ExtResource("1_e0jwh")
 altSigSchool2 = ExtResource("2_2ekjy")
 sprite = ExtResource("8_qehci")
 icon = ExtResource("4_uf6n1")
@@ -37,7 +49,20 @@ profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
 prefPrimary = "Grace"
 prefSecondary = "Resolve"
 HPCap = 60
-skillPool = {}
+skillPool = {
+ExtResource("8_u0jvw"): 1,
+ExtResource("9_wlpty"): 1,
+ExtResource("10_2rfil"): 3,
+ExtResource("11_3jfbj"): 6,
+ExtResource("12_ycoy3"): 7,
+ExtResource("13_71h1b"): 9,
+ExtResource("14_ri47o"): 11,
+ExtResource("15_fpckf"): 13,
+ExtResource("16_5es4p"): 14,
+ExtResource("17_gpgnt"): 17,
+ExtResource("18_1eoir"): 18,
+ExtResource("19_c55h5"): 19
+}
 assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null])
 feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
 traitBig = false

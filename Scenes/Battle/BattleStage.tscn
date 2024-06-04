@@ -601,13 +601,13 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -5, 3, 0)
 
 [node name="StatusBox2" parent="StatusBoxes" instance=ExtResource("23_2vtp1")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, -2.98023e-08, 0, 2.98023e-08, 1.2, -5, 1, -1.19209e-07)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, -1.19209e-07, 0, 1.19209e-07, 1.2, -4.99952, 0.808259, -0.0601709)
 
 [node name="StatusBox3" parent="StatusBoxes" instance=ExtResource("23_2vtp1")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 5, 3, 0)
 
 [node name="StatusBox4" parent="StatusBoxes" instance=ExtResource("23_2vtp1")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 5, 1, 0)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, -1.19209e-07, 0, 1.19209e-07, 1.2, 5.00048, 0.808259, -0.0601709)
 
 [node name="Leader1" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -5.5, 0.65, 0)

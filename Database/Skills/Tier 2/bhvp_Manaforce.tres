@@ -7,9 +7,9 @@
 script = ExtResource("1_vo6n8")
 skillName = "Manaforce"
 skillType = ExtResource("2_n074x")
-skillCost = 4
+skillCost = 6
 skillNature = "Physical"
-skillDamage = 5
+skillDamage = 8
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

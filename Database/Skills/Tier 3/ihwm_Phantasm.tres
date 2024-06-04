@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("1_ohya1")
-skillName = "Knock"
+skillName = "Phantasm"
 skillType = ExtResource("2_uoydt")
-skillCost = 3
+skillCost = 8
 skillNature = "Magical"
-skillDamage = 3
+skillDamage = 10
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

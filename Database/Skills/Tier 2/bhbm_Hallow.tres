@@ -7,9 +7,9 @@
 script = ExtResource("1_v4n6f")
 skillName = "Hallow"
 skillType = ExtResource("2_4o6hi")
-skillCost = 3
+skillCost = 4
 skillNature = "Magical"
-skillDamage = 3
+skillDamage = 5
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

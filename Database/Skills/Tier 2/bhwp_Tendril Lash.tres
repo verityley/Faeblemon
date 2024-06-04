@@ -7,9 +7,9 @@
 script = ExtResource("1_kvpfa")
 skillName = "Tendril Lash"
 skillType = ExtResource("2_lhke8")
-skillCost = 3
+skillCost = 4
 skillNature = "Physical"
-skillDamage = 4
+skillDamage = 6
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

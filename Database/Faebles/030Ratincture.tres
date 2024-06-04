@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Faeble" load_steps=9 format=3 uid="uid://c35sr7lc0bckf"]
+[gd_resource type="Resource" script_class="Faeble" load_steps=21 format=3 uid="uid://c35sr7lc0bckf"]
 
-[ext_resource type="Resource" uid="uid://crdybp6i852y4" path="res://Database/Schools/Coven.tres" id="1_jbbcs"]
+[ext_resource type="Resource" uid="uid://087ema067pet" path="res://Database/Schools/Blessing.tres" id="1_fufpn"]
 [ext_resource type="Script" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_th8wy"]
 [ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="2_2w0tf"]
 [ext_resource type="Resource" uid="uid://cvhcgyhumqrql" path="res://Database/Domains/Primal.tres" id="3_yn01q"]
@@ -8,6 +8,18 @@
 [ext_resource type="Resource" uid="uid://c4ju0ee2lda3j" path="res://Database/Domains/Haunting.tres" id="6_hs0xb"]
 [ext_resource type="Resource" uid="uid://cl8db7w0h0fb2" path="res://Database/Schools/Alchemy.tres" id="7_3bbxw"]
 [ext_resource type="Texture2D" uid="uid://bcoycmiic0cle" path="res://Global Assets/Graphics/Monster Graphics/Ratincture.png" id="8_olwtp"]
+[ext_resource type="Resource" uid="uid://ct2s36amdushr" path="res://Database/Skills/Tier 1 (Trash)/thgrm_Spore.tres" id="8_w8qrn"]
+[ext_resource type="Resource" uid="uid://cthckxb4gbqy1" path="res://Database/Skills/Tier 1 (Trash)/thmp_Slash.tres" id="9_lieio"]
+[ext_resource type="Resource" uid="uid://bf21bn0adojg4" path="res://Database/Skills/Tier 1 (Trash)/thcp_Wound.tres" id="10_7uurd"]
+[ext_resource type="Resource" uid="uid://ck6f5f6emrl0b" path="res://Database/Skills/Tier 2/bham_Acid Splash.tres" id="11_8mq2u"]
+[ext_resource type="Resource" uid="uid://decl4tafbn6c2" path="res://Database/Skills/Tier 2/bhbp_Banish.tres" id="12_54daj"]
+[ext_resource type="Resource" uid="uid://c3it5ycqyatai" path="res://Database/Skills/Tier 2/bhap_Quicksilver.tres" id="13_qegf5"]
+[ext_resource type="Resource" uid="uid://bdtlqlpgrwmf7" path="res://Database/Skills/Tier 3/ihap_Boil.tres" id="14_hgwu0"]
+[ext_resource type="Resource" uid="uid://dqu41d3wp58dy" path="res://Database/Skills/Tier 3/ihcm_Plague.tres" id="15_ystor"]
+[ext_resource type="Resource" uid="uid://dsd681qfv8agi" path="res://Database/Skills/Tier 3/ihbm_Sanctify.tres" id="16_qkkeg"]
+[ext_resource type="Resource" uid="uid://cuosjaiiyt7f5" path="res://Database/Skills/Tier 4/hham_.tres" id="17_nhimm"]
+[ext_resource type="Resource" uid="uid://b3setskq24oei" path="res://Database/Skills/Tier 4/hhgrm_.tres" id="18_ak7b8"]
+[ext_resource type="Resource" uid="uid://cmhfoo71hum43" path="res://Database/Skills/Tier 4/hhbm_.tres" id="19_m2j1h"]
 
 [resource]
 script = ExtResource("1_th8wy")
@@ -16,7 +28,7 @@ ID = 30
 firstDomain = ExtResource("3_yn01q")
 secondDomain = ExtResource("6_hs0xb")
 sigSchool = ExtResource("7_3bbxw")
-altSigSchool1 = ExtResource("1_jbbcs")
+altSigSchool1 = ExtResource("1_fufpn")
 altSigSchool2 = ExtResource("2_2w0tf")
 sprite = ExtResource("8_olwtp")
 icon = ExtResource("4_16tji")
@@ -37,7 +49,20 @@ profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
 prefPrimary = "Vigor"
 prefSecondary = "Ambition"
 HPCap = 60
-skillPool = {}
+skillPool = {
+ExtResource("8_w8qrn"): 1,
+ExtResource("9_lieio"): 1,
+ExtResource("10_7uurd"): 3,
+ExtResource("11_8mq2u"): 6,
+ExtResource("12_54daj"): 7,
+ExtResource("13_qegf5"): 9,
+ExtResource("14_hgwu0"): 11,
+ExtResource("15_ystor"): 13,
+ExtResource("16_qkkeg"): 14,
+ExtResource("17_nhimm"): 17,
+ExtResource("18_ak7b8"): 18,
+ExtResource("19_m2j1h"): 19
+}
 assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null])
 feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
 traitBig = false

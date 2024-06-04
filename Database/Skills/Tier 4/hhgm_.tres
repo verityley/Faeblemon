@@ -5,19 +5,19 @@
 
 [resource]
 script = ExtResource("1_ld27u")
-skillName = "Hard Hit"
+skillName = "Geo Spell"
 skillType = ExtResource("2_7guji")
-skillCost = 8
+skillCost = 10
 skillNature = "Magical"
-skillDamage = 10
+skillDamage = 12
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 3
-rangeMax = 5
+rangeMin = 5
+rangeMax = 6
 canPierce = false
 canArc = false
 canBurst = false

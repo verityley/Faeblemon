@@ -7,9 +7,9 @@
 script = ExtResource("1_eg2xq")
 skillName = "Javelin"
 skillType = ExtResource("2_v3rvl")
-skillCost = 2
+skillCost = 3
 skillNature = "Magical"
-skillDamage = 3
+skillDamage = 5
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

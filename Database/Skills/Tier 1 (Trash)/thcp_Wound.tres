@@ -7,9 +7,9 @@
 script = ExtResource("1_0v0e3")
 skillName = "Wound"
 skillType = ExtResource("2_i72i7")
-skillCost = 1
+skillCost = 3
 skillNature = "Physical"
-skillDamage = 3
+skillDamage = 4
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

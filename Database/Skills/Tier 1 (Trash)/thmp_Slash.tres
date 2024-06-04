@@ -7,7 +7,7 @@
 script = ExtResource("1_j8rfg")
 skillName = "Slash"
 skillType = ExtResource("2_nxico")
-skillCost = 0
+skillCost = 1
 skillNature = "Physical"
 skillDamage = 2
 witchSkill = false
@@ -17,7 +17,7 @@ moveDescription = ""
 targetType = ""
 targetScope = ""
 rangeMin = 1
-rangeMax = 1
+rangeMax = 2
 canPierce = false
 canArc = false
 canBurst = false

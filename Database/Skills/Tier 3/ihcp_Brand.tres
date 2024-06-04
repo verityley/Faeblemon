@@ -5,18 +5,18 @@
 
 [resource]
 script = ExtResource("1_kkw7q")
-skillName = "Malaise"
+skillName = "Brand"
 skillType = ExtResource("2_hbc7w")
-skillCost = 3
+skillCost = 8
 skillNature = "Physical"
-skillDamage = 4
+skillDamage = 12
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 0
+rangeMin = 1
 rangeMax = 2
 canPierce = true
 canArc = false

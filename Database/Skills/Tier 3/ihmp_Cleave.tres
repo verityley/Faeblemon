@@ -4,23 +4,24 @@
 [ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Mundane.tres" id="2_0i2xm"]
 
 [resource]
+resource_name = "ihmp_Cleave"
 script = ExtResource("1_cdgl6")
-skillName = "Lance"
+skillName = "Cleave"
 skillType = ExtResource("2_0i2xm")
-skillCost = 2
+skillCost = 6
 skillNature = "Physical"
-skillDamage = 4
+skillDamage = 10
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 2
+rangeMin = 1
 rangeMax = 3
-canPierce = true
+canPierce = false
 canArc = false
-canBurst = false
-burstRange = 0
+canBurst = true
+burstRange = 1
 targetAlly = false
 targetAll = false

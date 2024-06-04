@@ -5,19 +5,19 @@
 
 [resource]
 script = ExtResource("1_34cld")
-skillName = "Glassblow"
+skillName = "Comet"
 skillType = ExtResource("2_diu12")
-skillCost = 3
+skillCost = 8
 skillNature = "Magical"
-skillDamage = 3
+skillDamage = 10
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 0
-rangeMax = 4
+rangeMin = 1
+rangeMax = 5
 canPierce = false
 canArc = false
 canBurst = false

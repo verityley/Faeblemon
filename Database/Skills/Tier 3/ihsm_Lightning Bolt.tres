@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://bjlxjsbdgvewd"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_0iar0"]
+[ext_resource type="Resource" uid="uid://c10g7loedmtw7" path="res://Database/Schools/Storm.tres" id="2_hymkd"]
+
+[resource]
+script = ExtResource("1_0iar0")
+skillName = "Lightning Bolt"
+skillType = ExtResource("2_hymkd")
+skillCost = 8
+skillNature = "Magical"
+skillDamage = 8
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 3
+rangeMax = 8
+canPierce = true
+canArc = false
+canBurst = true
+burstRange = 3
+targetAlly = false
+targetAll = true

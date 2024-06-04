@@ -5,19 +5,19 @@
 
 [resource]
 script = ExtResource("1_blm4l")
-skillName = "Hard Hit"
+skillName = "Weird Hit"
 skillType = ExtResource("2_ttmi4")
-skillCost = 8
+skillCost = 10
 skillNature = "Physical"
-skillDamage = 10
+skillDamage = 12
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 4
-rangeMax = 5
+rangeMin = 5
+rangeMax = 6
 canPierce = false
 canArc = false
 canBurst = false

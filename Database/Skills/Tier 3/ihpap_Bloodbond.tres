@@ -1,23 +1,23 @@
 [gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://inc4r36majln"]
 
 [ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_jtsnv"]
-[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Mundane.tres" id="2_u3m5q"]
+[ext_resource type="Resource" uid="uid://bit2tuyhefdhg" path="res://Database/Schools/Pact.tres" id="2_a4bt6"]
 
 [resource]
 script = ExtResource("1_jtsnv")
-skillName = "Quill"
-skillType = ExtResource("2_u3m5q")
-skillCost = 4
+skillName = "Bloodbond"
+skillType = ExtResource("2_a4bt6")
+skillCost = 8
 skillNature = "Physical"
-skillDamage = 5
+skillDamage = 10
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 0
-rangeMax = 3
+rangeMin = 1
+rangeMax = 2
 canPierce = false
 canArc = true
 canBurst = false

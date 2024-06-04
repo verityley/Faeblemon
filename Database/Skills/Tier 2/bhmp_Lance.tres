@@ -5,19 +5,19 @@
 
 [resource]
 script = ExtResource("1_8way5")
-skillName = "Basic Hit"
+skillName = "Lance"
 skillType = ExtResource("2_ch6ng")
 skillCost = 3
 skillNature = "Physical"
-skillDamage = 4
+skillDamage = 6
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 0
-rangeMax = 2
+rangeMin = 2
+rangeMax = 3
 canPierce = false
 canArc = false
 canBurst = false

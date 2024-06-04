@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("1_0gt4w")
-skillName = "Inkblot"
+skillName = "Inscribe"
 skillType = ExtResource("2_un57i")
-skillCost = 4
+skillCost = 8
 skillNature = "Magical"
-skillDamage = 4
+skillDamage = 10
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
@@ -17,7 +17,7 @@ moveDescription = ""
 targetType = ""
 targetScope = ""
 rangeMin = 1
-rangeMax = 5
+rangeMax = 4
 canPierce = false
 canArc = true
 canBurst = false

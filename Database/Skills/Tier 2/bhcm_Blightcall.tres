@@ -7,9 +7,9 @@
 script = ExtResource("1_l33en")
 skillName = "Blightcall"
 skillType = ExtResource("2_ecex4")
-skillCost = 3
+skillCost = 4
 skillNature = "Magical"
-skillDamage = 3
+skillDamage = 5
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

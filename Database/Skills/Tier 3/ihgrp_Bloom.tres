@@ -5,19 +5,19 @@
 
 [resource]
 script = ExtResource("1_mr8qa")
-skillName = "Grassblade"
+skillName = "Bloom"
 skillType = ExtResource("2_2qoct")
-skillCost = 2
+skillCost = 6
 skillNature = "Physical"
-skillDamage = 3
+skillDamage = 8
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 0
-rangeMax = 2
+rangeMin = 1
+rangeMax = 3
 canPierce = false
 canArc = true
 canBurst = false

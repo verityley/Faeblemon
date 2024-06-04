@@ -7,9 +7,9 @@
 script = ExtResource("1_ytaww")
 skillName = "Knock"
 skillType = ExtResource("2_dj176")
-skillCost = 3
+skillCost = 4
 skillNature = "Magical"
-skillDamage = 3
+skillDamage = 5
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

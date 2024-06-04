@@ -81,6 +81,16 @@ func _input(event):
 					for grid in selectedArea:
 						if gridDatabase[grid]["Occupant"] != null:
 							currentSkill.Execute(self, currentBattler, gridDatabase[grid]["Occupant"])
+					if !currentSkill.witchSkill:
+						#AttackAnim(currentBattler, selectedPos, true)
+						commandMenu.familiarChosen = true
+						commandMenu.attackTaken = true
+						commandMenu.ResetCircle()
+						commandMenu.MenuFlow(0)
+					else:
+						commandMenu.witchChosen = true
+						commandMenu.ResetCircle()
+						commandMenu.MenuAction(commandMenu.States.End)
 				elif gridDatabase[selectedPos]["Occupant"] != null:
 					currentSkill.Execute(self, currentBattler, gridDatabase[selectedPos]["Occupant"])
 					if !currentSkill.witchSkill:
@@ -815,6 +825,7 @@ func DamageCalc(attacker:Battler, defender:Battler, attack:Skill) -> int: #Retur
 	if matchupMod < 0:
 		damage += (matchupMod * DTB)
 	
+	damage = clampi(damage, 1, 99)
 	print("Final Damage: ", damage)
 	return damage
 
@@ -888,7 +899,7 @@ func AttackAnim(battler:Battler, target:Vector2i, melee:bool):
 	if battler == currentBattler:
 		battler.get_child(1).show()
 
-func DamagePopup(target:Vector2i, damageNum:int = 0, superFX:bool=false):
+func DamagePopup(target:Vector2i, damageNum:int = 0, superFX:bool=false, weakFX:bool = false):
 	var tween = get_tree().create_tween()
 	var tween2 = get_tree().create_tween()
 	var pos = Vector3(target.x, 0, target.y) + gridOffset
@@ -901,6 +912,8 @@ func DamagePopup(target:Vector2i, damageNum:int = 0, superFX:bool=false):
 		popup.get_child(1).text = str(damageNum)
 		if superFX:
 			popup.get_child(1).text += "!"
+		elif weakFX:
+			popup.get_child(1).text += ".."
 		popup.show()
 	
 	tween.tween_property(popup, "position", popPos, 0.2)
@@ -922,15 +935,17 @@ func StartupCam():
 	tween.tween_property(targetCam, "rotation", Vector3(deg_to_rad(-20), deg_to_rad(10), 0), 0.25)
 	await get_tree().create_timer(0.25).timeout
 	battlerObjects[0].show()
-	await get_tree().create_timer(0.5).timeout
-	battlerObjects[1].show()
+	if battlerObjects[1].faebleEntry != null:
+		await get_tree().create_timer(0.5).timeout
+		battlerObjects[1].show()
 	await get_tree().create_timer(0.25).timeout
 	tween = get_tree().create_tween()
 	tween.tween_property(targetCam, "rotation", Vector3(deg_to_rad(-20), deg_to_rad(-10), 0), 0.5)
 	await get_tree().create_timer(0.5).timeout
 	battlerObjects[2].show()
-	await get_tree().create_timer(0.5).timeout
-	battlerObjects[3].show()
+	if battlerObjects[3].faebleEntry != null:
+		await get_tree().create_timer(0.5).timeout
+		battlerObjects[3].show()
 	await get_tree().create_timer(0.25).timeout
 	tween = get_tree().create_tween()
 	tween.tween_property(targetCam, "rotation", Vector3(deg_to_rad(-15), 0, 0), 0.5)

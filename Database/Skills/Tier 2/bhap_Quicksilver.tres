@@ -7,9 +7,9 @@
 script = ExtResource("1_ne771")
 skillName = "Quicksilver"
 skillType = ExtResource("2_vndbh")
-skillCost = 4
+skillCost = 5
 skillNature = "Physical"
-skillDamage = 4
+skillDamage = 6
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("1_f3qkv")
-skillName = "Hard Hit"
+skillName = "Alchemy Hit"
 skillType = ExtResource("2_6dos2")
-skillCost = 8
+skillCost = 10
 skillNature = "Physical"
-skillDamage = 10
+skillDamage = 12
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

@@ -5,21 +5,21 @@
 
 [resource]
 script = ExtResource("1_7fuk5")
-skillName = "Wavebreak"
+skillName = "Crescent"
 skillType = ExtResource("2_gmfx8")
-skillCost = 3
+skillCost = 6
 skillNature = "Physical"
-skillDamage = 4
+skillDamage = 10
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 0
-rangeMax = 3
-canPierce = false
-canArc = true
+rangeMin = 4
+rangeMax = 5
+canPierce = true
+canArc = false
 canBurst = false
 burstRange = 0
 targetAlly = false

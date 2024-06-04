@@ -40,6 +40,12 @@ func ResetStats(faebleEntry:Faeble):
 	MaxEnergyReset()
 	SetEnergyDisplay(faebleEntry.currentEnergy)
 	ResetSpeed(faebleEntry.grace, maxMovePips)
+	#TEMP
+	$TypeNameplate.texture = faebleEntry.firstDomain.nameplate
+	if faebleEntry.secondDomain != null:
+		$TypeNameplate2.texture = faebleEntry.secondDomain.nameplate
+	else:
+		$TypeNameplate2.texture = null
 
 
 func MaxHealthReset():

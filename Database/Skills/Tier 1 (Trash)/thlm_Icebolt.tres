@@ -7,9 +7,9 @@
 script = ExtResource("1_1iee8")
 skillName = "Icebolt"
 skillType = ExtResource("2_1ofir")
-skillCost = 1
+skillCost = 2
 skillNature = "Magical"
-skillDamage = 1
+skillDamage = 3
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

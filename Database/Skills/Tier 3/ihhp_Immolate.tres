@@ -5,22 +5,22 @@
 
 [resource]
 script = ExtResource("1_hyqaq")
-skillName = "Drakebreath"
+skillName = "Immolate"
 skillType = ExtResource("2_d6o1r")
-skillCost = 3
+skillCost = 8
 skillNature = "Physical"
-skillDamage = 4
+skillDamage = 10
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 0
+rangeMin = 1
 rangeMax = 2
 canPierce = false
-canArc = false
-canBurst = true
-burstRange = 1
+canArc = true
+canBurst = false
+burstRange = 2
 targetAlly = false
-targetAll = false
+targetAll = true

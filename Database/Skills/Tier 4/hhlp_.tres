@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("1_1go8m")
-skillName = "Hard Hit"
+skillName = "Lunar Hit"
 skillType = ExtResource("2_otd5n")
-skillCost = 8
+skillCost = 10
 skillNature = "Physical"
-skillDamage = 10
+skillDamage = 12
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

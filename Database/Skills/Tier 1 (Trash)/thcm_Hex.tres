@@ -7,9 +7,9 @@
 script = ExtResource("1_q2d8v")
 skillName = "Hex"
 skillType = ExtResource("2_javs2")
-skillCost = 1
+skillCost = 3
 skillNature = "Magical"
-skillDamage = 2
+skillDamage = 3
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

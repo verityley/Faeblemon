@@ -5,18 +5,18 @@
 
 [resource]
 script = ExtResource("1_rhs01")
-skillName = "Manaforce"
+skillName = "Disintegrate"
 skillType = ExtResource("2_liddm")
-skillCost = 4
+skillCost = 10
 skillNature = "Physical"
-skillDamage = 5
+skillDamage = 14
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 0
+rangeMin = 1
 rangeMax = 2
 canPierce = false
 canArc = false

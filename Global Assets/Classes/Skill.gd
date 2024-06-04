@@ -39,7 +39,16 @@ func Execute(battleManager:BattleManager, user:Battler, target:Battler):
 		damageTally = battleManager.DamageCalc(user, target, self)
 	damageTally = -clampi(damageTally, 0, 99)
 	var superFX:bool
-	if -damageTally > skillDamage:
+	var weakFX:bool
+	var matchupMod:int = battleManager.CheckMatchups(target.faebleEntry, skillType)
+	if matchupMod > 0:
 		superFX = true
-	battleManager.DamagePopup(target.positionIndex, -damageTally, superFX)
+		weakFX = false
+	elif matchupMod < 0:
+		superFX = false
+		weakFX = true
+	else:
+		superFX = false
+		weakFX = false
+	battleManager.DamagePopup(target.positionIndex, -damageTally, superFX, weakFX)
 	target.ChangeHealth(damageTally)

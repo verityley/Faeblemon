@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("1_wpwfk")
-skillName = "Hard Hit"
+skillName = "Perform Hit"
 skillType = ExtResource("2_t5pxn")
-skillCost = 8
+skillCost = 10
 skillNature = "Physical"
-skillDamage = 10
+skillDamage = 12
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0

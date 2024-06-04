@@ -1,26 +1,26 @@
 [gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://db1cn0maugvv6"]
 
 [ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_wb63y"]
-[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Mundane.tres" id="2_1m7r7"]
+[ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Performance.tres" id="2_g6104"]
 
 [resource]
 script = ExtResource("1_wb63y")
-skillName = "Whistle"
-skillType = ExtResource("2_1m7r7")
-skillCost = 3
+skillName = "Orchestrate"
+skillType = ExtResource("2_g6104")
+skillCost = 8
 skillNature = "Magical"
-skillDamage = 3
+skillDamage = 10
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 3
+rangeMin = 4
 rangeMax = 4
-canPierce = false
-canArc = true
-canBurst = false
-burstRange = 0
+canPierce = true
+canArc = false
+canBurst = true
+burstRange = 2
 targetAlly = false
 targetAll = false

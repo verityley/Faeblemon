@@ -5,22 +5,22 @@
 
 [resource]
 script = ExtResource("1_4axl7")
-skillName = "Quicksilver"
+skillName = "Boil"
 skillType = ExtResource("2_58l42")
-skillCost = 4
+skillCost = 9
 skillNature = "Physical"
-skillDamage = 4
+skillDamage = 10
 witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
 moveDescription = ""
 targetType = ""
 targetScope = ""
-rangeMin = 0
-rangeMax = 2
-canPierce = true
+rangeMin = 1
+rangeMax = 3
+canPierce = false
 canArc = true
-canBurst = false
-burstRange = 0
+canBurst = true
+burstRange = 1
 targetAlly = false
 targetAll = false

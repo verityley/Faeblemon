@@ -7,7 +7,7 @@
 script = ExtResource("1_nnt4v")
 skillName = "Frostbite"
 skillType = ExtResource("2_qwi0m")
-skillCost = 1
+skillCost = 2
 skillNature = "Physical"
 skillDamage = 2
 witchSkill = false
