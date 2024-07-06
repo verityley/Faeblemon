@@ -467,7 +467,8 @@ func PopulateOrder(battlers:Array[Battler]):
 func ProgressTurn():
 	if currentBattler != null:
 		currentBattler.get_child(1).hide()
-		currentBattler.statusBox.get_child(7).hide()
+		if currentBattler.statusBox != null:
+			currentBattler.statusBox.get_child(7).hide()
 	currentBattler = roundOrder.pop_front()
 	if currentBattler != null:
 		if currentBattler.faebleEntry == null:
@@ -479,8 +480,11 @@ func ProgressTurn():
 		print("It is ", currentBattler.faebleEntry.name, "'s turn.")
 	else:
 		for battler in battlerObjects:
+			if battler == null:
+				continue
 			battler.get_child(1).hide()
-			battler.statusBox.get_child(7).hide()
+			if battler.statusBox != null:
+				battler.statusBox.get_child(7).hide()
 		NewRound()
 
 func NewRound(): #Resets speed after population, to allow prior turn moves to reduce speed
