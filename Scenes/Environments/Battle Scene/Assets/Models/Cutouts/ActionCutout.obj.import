@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cb8nd7g01no8k"
+path="res://.godot/imported/ActionCutout.obj-d398fcb1d0e661a82d9409d5cffcf024.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ActionCutout.obj-d398fcb1d0e661a82d9409d5cffcf024.mesh"]
+
+source_file="res://Scenes/Environments/Battle Scene/Assets/Models/Cutouts/ActionCutout.obj"
+dest_files=["res://.godot/imported/ActionCutout.obj-d398fcb1d0e661a82d9409d5cffcf024.mesh", "res://.godot/imported/ActionCutout.obj-d398fcb1d0e661a82d9409d5cffcf024.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(0.2, 0.2, 0.2)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

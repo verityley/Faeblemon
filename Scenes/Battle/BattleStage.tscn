@@ -78,7 +78,7 @@ size = Vector2(1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_cxbsr"]
 size = Vector3(1, 0.2, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o5iau"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqnn6"]
 transparency = 4
 cull_mode = 2
 albedo_texture = ExtResource("19_nax5p")
@@ -86,7 +86,7 @@ texture_filter = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_88xce"]
 lightmap_size_hint = Vector2i(12, 17)
-material = SubResource("StandardMaterial3D_o5iau")
+material = SubResource("StandardMaterial3D_rqnn6")
 size = Vector2(1, 1.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pn0iq"]
@@ -146,13 +146,13 @@ ground_horizon_color = Color(0.286275, 0.176471, 0.0666667, 1)
 ground_curve = 0.874267
 ground_energy_multiplier = 0.75
 
-[sub_resource type="Sky" id="Sky_dacy0"]
+[sub_resource type="Sky" id="Sky_buklo"]
 sky_material = SubResource("ProceduralSkyMaterial_44yfx")
 
 [sub_resource type="Environment" id="Environment_fh6q6"]
 background_mode = 2
 background_energy_multiplier = 0.5
-sky = SubResource("Sky_dacy0")
+sky = SubResource("Sky_buklo")
 ambient_light_color = Color(0.670588, 0.498039, 0.498039, 1)
 ambient_light_sky_contribution = 0.0
 ambient_light_energy = 0.3

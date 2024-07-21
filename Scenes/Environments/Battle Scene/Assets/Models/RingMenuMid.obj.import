@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://gkexyffstjeh"
+path="res://.godot/imported/RingMenuMid.obj-0bed3cd1a53d0353163d2f3654a51146.mesh"
+
+[deps]
+
+files=["res://.godot/imported/RingMenuMid.obj-0bed3cd1a53d0353163d2f3654a51146.mesh"]
+
+source_file="res://Scenes/Environments/Battle Scene/Assets/Models/RingMenuMid.obj"
+dest_files=["res://.godot/imported/RingMenuMid.obj-0bed3cd1a53d0353163d2f3654a51146.mesh", "res://.godot/imported/RingMenuMid.obj-0bed3cd1a53d0353163d2f3654a51146.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(0.8, 0.8, 0.8)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

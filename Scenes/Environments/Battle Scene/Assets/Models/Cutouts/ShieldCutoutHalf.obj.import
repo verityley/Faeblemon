@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dxaixcomui14x"
+path="res://.godot/imported/ShieldCutoutHalf.obj-318c80dccd835c1634eea8d403e8ad2d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ShieldCutoutHalf.obj-318c80dccd835c1634eea8d403e8ad2d.mesh"]
+
+source_file="res://Scenes/Environments/Battle Scene/Assets/Models/Cutouts/ShieldCutoutHalf.obj"
+dest_files=["res://.godot/imported/ShieldCutoutHalf.obj-318c80dccd835c1634eea8d403e8ad2d.mesh", "res://.godot/imported/ShieldCutoutHalf.obj-318c80dccd835c1634eea8d403e8ad2d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(0.2, 0.2, 0.2)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

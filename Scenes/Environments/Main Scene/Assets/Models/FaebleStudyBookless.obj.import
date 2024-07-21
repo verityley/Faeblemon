@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cy2e38m3n3wxo"
+path="res://.godot/imported/FaebleStudyBookless.obj-5a9b8ce682f2e47290eb40dca67a5e1e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/FaebleStudyBookless.obj-5a9b8ce682f2e47290eb40dca67a5e1e.mesh"]
+
+source_file="res://Scenes/Environments/Main Scene/Assets/Models/FaebleStudyBookless.obj"
+dest_files=["res://.godot/imported/FaebleStudyBookless.obj-5a9b8ce682f2e47290eb40dca67a5e1e.mesh", "res://.godot/imported/FaebleStudyBookless.obj-5a9b8ce682f2e47290eb40dca67a5e1e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(10, 10, 10)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
