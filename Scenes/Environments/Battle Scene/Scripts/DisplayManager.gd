@@ -142,6 +142,7 @@ func ChangeCurrent(resource:int, amount:int, player:bool): #Does not work for Ac
 	var tally:int = amount
 	for box in targetBoxes:
 		#box.show()
+		#Insert Health exception for quarters, tally for 1,2,3
 		if tally == 1:
 			box.mesh = halfResource
 			tally -= 1

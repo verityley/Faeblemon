@@ -1,9 +1,11 @@
 extends Node3D
+class_name CapBehaviorManager
+
 
 @export var captureSystem:Node3D
 
 #External Variables
-var currentPath:int #The current intended path to take in the loaded path enum/array
+var queuePath:int #The current intended path to take in the loaded path enum/array
 var patience:int #This is changed by Personality based on certain actions. At 0, retreat.
 var posing:bool #true as long as pose anim is up
 

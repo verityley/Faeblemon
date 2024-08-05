@@ -43,12 +43,11 @@ vigor = 18
 wit = 5
 ambition = 16
 grace = 12
-resolve = 8
 heart = 18
-profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
+profArray = Array[int]([0, 0, 0, 0, 0, 0])
 prefPrimary = "Brawn"
 prefSecondary = "Vigor"
-HPCap = 60
+HPCap = 40
 skillPool = {
 ExtResource("8_xg4bp"): 1,
 ExtResource("9_34kut"): 1,
@@ -65,17 +64,16 @@ ExtResource("19_rsoia"): 19
 }
 assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null])
 feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
-traitBig = false
-traitTall = false
-traitSmall = false
-traitJumping = false
-traitFlying = false
-traitPhasing = false
+centerPosition = Vector3(0, 0, 0)
+colliderShape = PackedVector2Array()
+idealZoom = 0.0
 canEvolve = false
 evoLevel = 0
 evoBranch = false
 currentHP = 0
-currentEnergy = 0
+currentMana = 0
+currentResolve = 0
 fainted = false
 description = ""
-rumors = ""
+tags = Array[String]([])
+rumors = Array[String]([])

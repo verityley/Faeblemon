@@ -4,9 +4,22 @@ extends Node
 @export var shinyOdds:int = 1000
 @export var altSchoolOdds:int = 500
 
+@export var healthRatio:int = 4 #Health per point of HRT
+@export var initStatRatio:float = 0.6 #How much stats should be reduced by to build up towards
+@export var pointsPerLevel:int = 4
+
 @export var rewardRatio:Vector2i = Vector2i(4,2) #Health:Energy
 @export var heartRatio:Vector2i = Vector2i(2,1) #Heart:Reward
 @export var energyRatio:Vector2i = Vector2i(1,1) #Wit/Brawn:Reward
+
+enum Stats{
+	Brawn=0,
+	Vigor,
+	Wit,
+	Ambition,
+	Grace,
+	Heart
+}
 
 func _ready():
 	#CreateFaeble(preload("res://Database/Faebles/001Awoolf.tres"), 8)
@@ -14,11 +27,12 @@ func _ready():
 	pass
 
 
-func CreateFaeble(faebleEntry:Faeble, initLevel:int, mook:bool = false, commander:Faeble = null) -> Faeble:
+func CreateFaeble(faebleEntry:Faeble, initLevel:int) -> Faeble:
 	var instance:Faeble = faebleEntry.duplicate()
 	var learnList:Dictionary = faebleEntry.skillPool.duplicate()
 	
 	var RNG = RandomNumberGenerator.new()
+	RNG.randomize()
 	var profRoll:int #This is -2 to 2, or -1 to 1 if first roll is 1
 	var profMax:int = 3 #The max in either direction a side can go, total across all stats
 	var breakRoll:int = RNG.randi_range(0, limitBreakOdds)
@@ -38,7 +52,7 @@ func CreateFaeble(faebleEntry:Faeble, initLevel:int, mook:bool = false, commande
 				instance.profArray[i] = 0
 			break
 		
-		statRoll = RNG.randi_range(0,6)
+		statRoll = RNG.randi_range(0,5)
 		if instance.profArray[statRoll] < 0 and profRoll < 0:
 			print("Stat already assigned.")
 			continue
@@ -69,101 +83,111 @@ func CreateFaeble(faebleEntry:Faeble, initLevel:int, mook:bool = false, commande
 	print("Final: ", instance.profArray)
 	#End of Proficiency Init
 	
+	#Initialization of adjusted stats from entry base
+	var statAdjusts:Array[int] = [
+		instance.brawn + instance.profArray[Stats.Brawn],
+		instance.vigor + instance.profArray[Stats.Vigor],
+		instance.wit + instance.profArray[Stats.Wit],
+		instance.ambition + instance.profArray[Stats.Ambition],
+		instance.grace + instance.profArray[Stats.Grace],
+		instance.heart + instance.profArray[Stats.Heart]
+	]
+	for stat in range(statAdjusts.size()):
+		var attribute:int = clampi(statAdjusts[stat], instance.minQuality, instance.maxQuality)
+		instance.roomToGrow[stat] = attribute
+		#print("Original stat: ", attribute)
+		attribute *= initStatRatio
+		instance.roomToGrow[stat] -= attribute
+		statAdjusts[stat] = attribute
+		print("Reduced stat: ", statAdjusts[stat])
+		#print("Room to grow: ", instance.roomToGrow[stat])
+	
+	
+	instance.brawn = clampi(statAdjusts[Stats.Brawn], instance.minQuality, instance.maxQuality)
+	instance.vigor = clampi(statAdjusts[Stats.Vigor], instance.minQuality, instance.maxQuality)
+	instance.wit = clampi(statAdjusts[Stats.Wit], instance.minQuality, instance.maxQuality)
+	instance.ambition = clampi(statAdjusts[Stats.Ambition], instance.minQuality, instance.maxQuality)
+	instance.grace = clampi(statAdjusts[Stats.Grace], instance.minQuality, instance.maxQuality)
+	instance.heart = clampi(statAdjusts[Stats.Heart], instance.minQuality, instance.maxQuality)
 	
 	#Start of ASI and Level-up reward Assignment
-	instance.level = initLevel
-	instance.tier = floori(float(initLevel) / 5) + 1
-	instance.traitImprovements = floori(float(initLevel) / 4) #Gain 2 points every 4 levels
-	prints("Level:", instance.level, "Current ASIs:", instance.traitImprovements)
-	var addToPrim:int = 0
-	var addToSeco:int = 0
-	for improvement in range(instance.traitImprovements):
-		if RNG.randi_range(0,1) == 1:
-			addToPrim += 2
-		else:
-			addToPrim += 1
-			addToSeco += 1
+	instance.chapter = initLevel
+	prints("Level:", instance.chapter)
+	var asiSpread:Array[String]=["Brawn", "Vigor", "Wit", "Ambition", "Grace", "Heart"]
+	asiSpread.append(instance.prefPrimary)
+	asiSpread.append(instance.prefPrimary)
+	asiSpread.append(instance.prefPrimary)
+	asiSpread.append(instance.prefSecondary)
+	asiSpread.append(instance.prefSecondary)
+	for asi in range(instance.chapter - 1):
+		var index:int = 0
+		var bannedSelects:Array[int] = []
+		while index < pointsPerLevel:
+			var attribute:String
+			var selection:int = RNG.randi_range(0,asiSpread.size()-1)
+			attribute = asiSpread[selection]
+			match attribute:
+				"Brawn":
+					selection = 0
+				"Vigor":
+					selection = 1
+				"Wit":
+					selection = 2
+				"Ambition":
+					selection = 3
+				"Grace":
+					selection = 4
+				"Heart":
+					selection = 5
+			if instance.roomToGrow[selection] <= 0:
+				continue
+			if bannedSelects.has(selection):
+				print(attribute, " has already maxed out this level, skipping.")
+				continue
+			print("Improving ", attribute)
+			instance.statImprovements[selection] += 1
+			prints(attribute, "is now", instance.statImprovements[selection], 
+			"out of", pointsPerLevel - instance.profArray[selection])
+			
+			if instance.statImprovements[selection] >= pointsPerLevel - instance.profArray[selection]:
+				statAdjusts[selection] += 1
+				instance.roomToGrow[selection] -= 1
+				print(attribute, " has been fully improved! Increasing to ", statAdjusts[selection])
+				instance.statImprovements[selection] = 0
+				bannedSelects.append(selection)
+			index += 1
+		print("Level up complete!")
+		pass
+		
+	instance.brawn = clampi(statAdjusts[Stats.Brawn], instance.minQuality, instance.maxQuality)
+	instance.vigor = clampi(statAdjusts[Stats.Vigor], instance.minQuality, instance.maxQuality)
+	instance.wit = clampi(statAdjusts[Stats.Wit], instance.minQuality, instance.maxQuality)
+	instance.ambition = clampi(statAdjusts[Stats.Ambition], instance.minQuality, instance.maxQuality)
+	instance.grace = clampi(statAdjusts[Stats.Grace], instance.minQuality, instance.maxQuality)
+	instance.heart = clampi(statAdjusts[Stats.Heart], instance.minQuality, instance.maxQuality)
 	
-	prints("Adding", addToPrim,"to",instance.prefPrimary)
-	prints("Adding", addToSeco,"to",instance.prefSecondary)
-	#Start of Stat Assignment
-	if instance.prefPrimary == "Brawn":
-		instance.brawn = clampi(instance.brawn + instance.profArray[0] + addToPrim, instance.minQuality, instance.maxQuality)
-	elif instance.prefSecondary == "Brawn":
-		instance.brawn = clampi(instance.brawn + instance.profArray[0] + addToSeco, instance.minQuality, instance.maxQuality)
-	else:
-		instance.brawn = clampi(instance.brawn + instance.profArray[0], instance.minQuality, instance.maxQuality)
-	print("Brawn: ", instance.brawn)
-	
-	if instance.prefPrimary == "Vigor":
-		instance.vigor = clampi(instance.vigor + instance.profArray[1] + addToPrim, instance.minQuality, instance.maxQuality)
-	elif instance.prefSecondary == "Vigor":
-		instance.vigor = clampi(instance.vigor + instance.profArray[1] + addToSeco, instance.minQuality, instance.maxQuality)
-	else:
-		instance.vigor = clampi(instance.vigor + instance.profArray[1], instance.minQuality, instance.maxQuality)
-	print("Vigor: ", instance.vigor)
-	
-	if instance.prefPrimary == "Wit":
-		instance.wit = clampi(instance.wit + instance.profArray[2] + addToPrim, instance.minQuality, instance.maxQuality)
-	elif instance.prefSecondary == "Wit":
-		instance.wit = clampi(instance.wit + instance.profArray[2] + addToSeco, instance.minQuality, instance.maxQuality)
-	else:
-		instance.wit = clampi(instance.wit + instance.profArray[2], instance.minQuality, instance.maxQuality)
-	print("Wit: ", instance.wit)
-	
-	if instance.prefPrimary == "Ambition":
-		instance.ambition = clampi(instance.ambition + instance.profArray[3] + addToPrim, instance.minQuality, instance.maxQuality)
-	elif instance.prefSecondary == "Ambition":
-		instance.ambition = clampi(instance.ambition + instance.profArray[3] + addToSeco, instance.minQuality, instance.maxQuality)
-	else:
-		instance.ambition = clampi(instance.ambition + instance.profArray[3], instance.minQuality, instance.maxQuality)
-	print("Ambition: ", instance.ambition)
-	
-	if instance.prefPrimary == "Grace":
-		instance.grace = clampi(instance.grace + instance.profArray[4] + addToPrim, instance.minQuality, instance.maxQuality)
-	elif instance.prefSecondary == "Grace":
-		instance.grace = clampi(instance.grace + instance.profArray[4] + addToSeco, instance.minQuality, instance.maxQuality)
-	else:
-		instance.grace = clampi(instance.grace + instance.profArray[4], instance.minQuality, instance.maxQuality)
-	print("Grace: ", instance.grace)
-	
-	if instance.prefPrimary == "Resolve":
-		instance.resolve = clampi(instance.resolve + instance.profArray[5] + addToPrim, instance.minQuality, instance.maxQuality)
-	elif instance.prefSecondary == "Resolve":
-		instance.resolve = clampi(instance.resolve + instance.profArray[5] + addToSeco, instance.minQuality, instance.maxQuality)
-	else:
-		instance.resolve = clampi(instance.resolve + instance.profArray[5], instance.minQuality, instance.maxQuality)
-	print("Resolve: ", instance.resolve)
-	
-	if instance.prefPrimary == "Heart":
-		instance.heart = clampi(instance.heart + instance.profArray[6] + addToPrim, instance.minQuality, instance.maxQuality)
-	elif instance.prefSecondary == "Heart":
-		instance.heart = clampi(instance.heart + instance.profArray[6] + addToSeco, instance.minQuality, instance.maxQuality)
-	else:
-		instance.heart = clampi(instance.heart + instance.profArray[6], instance.minQuality, instance.maxQuality)
-	print("Heart: ", instance.heart)
-	
-	for i in range(initLevel - 1):
-		if RNG.randi_range(1,rewardRatio.x + rewardRatio.y) > rewardRatio.y:
-			instance.hpIncreases += 1
-		else:
-			instance.energyIncreases += 1
-	
-	instance.maxHP = (instance.heart*heartRatio.x) + (instance.hpIncreases*heartRatio.y)
+	print("Brawn:", instance.brawn)
+	print("Vigor:", instance.vigor)
+	print("Wit:", instance.wit)
+	print("Ambition:", instance.ambition)
+	print("Grace:", instance.grace)
+	print("Heart:", instance.heart)
+	instance.maxHP = (instance.heart*healthRatio)
 	instance.maxHP = clampi(instance.maxHP, 1, instance.HPCap)
 	instance.currentHP = instance.maxHP
-	var baseEnergy:int = float(instance.brawn + instance.wit) / 2
-	instance.maxEnergy = (baseEnergy*energyRatio.x) + (instance.energyIncreases*energyRatio.y)
-	instance.currentEnergy = instance.maxEnergy
-	prints("HP Increases:", instance.hpIncreases, "Energy Increases:", instance.energyIncreases)
-	prints("Max HP:", instance.maxHP, "Max Energy:", instance.maxEnergy)
+	instance.maxMana = float(instance.brawn + instance.wit) / 2
+	instance.currentMana = instance.maxMana
+	instance.maxResolve = float(instance.vigor + instance.ambition) / 2
+	prints("Max HP:", instance.maxHP,
+	"Max Mana:", instance.maxMana,
+	"Max Resolve:", instance.maxResolve)
 	#End of reward assignment
 	
 	#Start of Movepool Population
 	#print(learnList)
 	for skill in learnList:
 		#print(skill.skillName)
-		if learnList[skill] <= instance.level:
+		if learnList[skill] <= instance.act:
 			instance.learnedSkills.append(skill)
 	#Fill out current slots with random skills from learnlist, replace with Most Recent later
 	var highestSkill:int = instance.learnedSkills.size()-1
@@ -180,20 +204,14 @@ func CreateFaeble(faebleEntry:Faeble, initLevel:int, mook:bool = false, commande
 	
 	if breakRoll == limitBreakOdds:
 		print("Limit Break!")
-		if mook == true:
-			pass #Send this shiny roll to the commander instead
 	
 	#Change out sprite for alt color if chances succeed.
 	if shinyRoll == shinyOdds:
 		print("Shiny!")
-		if mook == true:
-			pass #Send this shiny roll to the commander instead
 		instance.sprite = instance.shinySprite
 	
 	#Swap out sig school for one of two alt schools, if chances succeed
 	if schoolRoll == altSchoolOdds:
-		if mook == true:
-			pass #Send this shiny roll to the commander instead
 		if RNG.randi_range(0,1) == 0:
 			print("Alt School 1!")
 			instance.sigSchool = instance.altSigSchool1

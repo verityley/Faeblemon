@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CapturePath" load_steps=2 format=3 uid="uid://bjybb6ln67ya5"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/CapturePath.gd" id="1_cv5op"]
+
+[resource]
+script = ExtResource("1_cv5op")
+path = {
+"Actions": [1, 0, 1, 0],
+"Nodes": [Vector3(0, 0, -2), Vector3(0, 0, 0), Vector3(0, 0, 2), Vector3(0, 0, 0)],
+"Timing": [1.0, 0.3, 2.0, 0.5]
+}

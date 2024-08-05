@@ -1,6 +1,8 @@
 extends Node3D
+class_name CapCameraManager
 
 @export var captureSystem:Node3D
+var disabled:bool
 
 #External Variables
 var faebleSeen:bool #Is the Faeble within the Area Check?
@@ -34,7 +36,7 @@ var viewSize:Vector2
 @export var cardinalRays:Array[RayCast3D]
 @export var colliderArea:Area3D
 @onready var targetFaeble:Node3D = $"../../Outputs/PathManager/EnemyBattler" #TEMP
-@onready var targetCollider:Area3D = targetFaeble.get_child(0)
+@onready var targetCollider:Area3D = targetFaeble.get_child(0) #TEMP
 
 #Setup Functions
 func _ready():
@@ -46,8 +48,10 @@ func _ready():
 	prints(viewSize, screenBuffer)
 
 #Process Functions
-func _input(event):
+func _input(event): #Move this to CaptureSystem TEMP
 	#TEMP eventually replace with smooth zoom
+	if disabled:
+		return
 	var zoomAxis:float = Input.get_axis("ScrollUp", "ScrollDown")
 	var zoomFactor:float
 	var camTarget:float
@@ -75,6 +79,8 @@ func _input(event):
 			print("Faeble is overflowing the frame!")
 
 func _process(delta:float):
+	if disabled:
+		return
 	var inputVector:Vector3 = Vector3.ZERO
 	var mousePosition:Vector2 = get_viewport().get_mouse_position()
 	var mouseFactor:Vector2
@@ -118,7 +124,7 @@ func CenterCheck(targetPoint:Vector3) -> float:
 	else:
 		return 0
 
-func OverflowCheck(targetObject:Area3D) -> bool:
+func OverflowCheck(targetObject:Area3D) -> bool: #Might change out for collider intersect check
 	var raysHit:Array[bool]
 	raysHit.resize(cardinalRays.size())
 	var index:int = 0
@@ -129,20 +135,27 @@ func OverflowCheck(targetObject:Area3D) -> bool:
 		else:
 			raysHit[index] = false
 		index += 1
-	if raysHit[1] and raysHit[2]:
+	if raysHit[0] and raysHit[1]:
 		return true
-	if raysHit[3] and raysHit[4]:
+	if raysHit[2] and raysHit[3]:
 		return true
 	return false
 	#If opposite cardinal rays connect with the faeble collider, faeble is out of frame.
 
-func PropCheck():
+func PropCheck() -> int:
 	#Check faeblecollider if overlapping on layer 4
 	pass #Check if faeble collider is touching any prop colliders, no need for rays after all
+	return 0
 
 
 
 #Tangible Action Functions
+func TakePicture():
+	faebleSeen = AreaCheck()
+	centerDistance = CenterCheck(targetCollider.get_child(0).global_position)
+	overflowFrame = OverflowCheck(targetCollider)
+	propsHit = PropCheck()
+
 func CamZoom(amount:float, scaler:float):
 	var camtween:Tween = get_tree().create_tween()
 	var colltween:Tween = get_tree().create_tween()

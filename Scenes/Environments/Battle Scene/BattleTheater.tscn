@@ -1,5 +1,6 @@
-[gd_scene load_steps=66 format=3 uid="uid://bhp03qdbwqg24"]
+[gd_scene load_steps=73 format=3 uid="uid://bhp03qdbwqg24"]
 
+[ext_resource type="Script" path="res://Scenes/Environments/Battle Scene/BattleSystem.gd" id="1_fvdts"]
 [ext_resource type="Script" path="res://Scenes/Environments/Battle Scene/Scripts/FieldManager.gd" id="2_yxjww"]
 [ext_resource type="Texture2D" uid="uid://bcoycmiic0cle" path="res://Global Assets/Graphics/Monster Graphics/Ratincture.png" id="3_civxg"]
 [ext_resource type="Script" path="res://Scenes/Environments/Battle Scene/Scripts/DisplayManager.gd" id="6_nigti"]
@@ -19,9 +20,15 @@
 [ext_resource type="Texture2D" uid="uid://bdue06m3kc64d" path="res://Global Assets/Graphics/Monster Graphics/Werewool.png" id="14_wmxa5"]
 [ext_resource type="Script" path="res://Scenes/Environments/Battle Scene/Scripts/Capture System/CameraManager.gd" id="16_7i3oi"]
 [ext_resource type="Texture2D" uid="uid://c8mhu76n6awaf" path="res://Scenes/Environments/Battle Scene/Assets/CamPlaceholder.png" id="16_057yu"]
+[ext_resource type="Script" path="res://Scenes/Environments/Battle Scene/Scripts/Capture System/CaptureSystem.gd" id="16_frhkl"]
 [ext_resource type="ArrayMesh" uid="uid://5nu24k3xgnv3" path="res://Scenes/Environments/Battle Scene/Assets/Models/battletheaterPrompter.obj" id="18_607nv"]
 [ext_resource type="Script" path="res://Scenes/Environments/Battle Scene/Scripts/Capture System/BehaviorManager.gd" id="18_vaslh"]
 [ext_resource type="Texture2D" uid="uid://ckcuwxn5j0fst" path="res://Global Assets/Graphics/Monster Graphics/Fyneprynt.png" id="19_qjxfo"]
+[ext_resource type="Script" path="res://Scenes/Environments/Battle Scene/Scripts/Capture System/PathManager.gd" id="19_rg770"]
+[ext_resource type="Resource" uid="uid://cfijjfl0vkrtr" path="res://Database/Faebles/065Koin.tres" id="20_2ftew"]
+[ext_resource type="Texture2D" uid="uid://bohhb4wc75a5e" path="res://Global Assets/Graphics/Monster Graphics/Koin.png" id="20_bbost"]
+[ext_resource type="Resource" uid="uid://boyn4gyre1a4m" path="res://Database/Behaviors/Paths/BasicPeekLR.tres" id="21_d3826"]
+[ext_resource type="Resource" uid="uid://bjybb6ln67ya5" path="res://Database/Behaviors/Paths/BasicBackForth.tres" id="21_p64w0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lk85q"]
 resource_name = "FrontPlate"
@@ -91,14 +98,6 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_v2ygh")
 size = Vector2(9.7, 3.7)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_asp05"]
-resource_name = "FrontPlate"
-albedo_color = Color(0.756863, 0.517647, 0.356863, 1)
-metallic_specular = 0.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_34ph3"]
-material = SubResource("StandardMaterial3D_asp05")
-
 [sub_resource type="QuadMesh" id="QuadMesh_48h0r"]
 lightmap_size_hint = Vector2i(12, 17)
 
@@ -117,6 +116,14 @@ albedo_texture = ExtResource("3_civxg")
 emission_enabled = true
 emission_energy_multiplier = 16.0
 emission_operator = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_asp05"]
+resource_name = "FrontPlate"
+albedo_color = Color(0.756863, 0.517647, 0.356863, 1)
+metallic_specular = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_34ph3"]
+material = SubResource("StandardMaterial3D_asp05")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wr15a"]
 transparency = 4
@@ -230,7 +237,7 @@ lightmap_size_hint = Vector2i(12, 17)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16ueh"]
 transparency = 4
 cull_mode = 2
-albedo_texture = ExtResource("19_qjxfo")
+albedo_texture = ExtResource("20_bbost")
 
 [sub_resource type="QuadMesh" id="QuadMesh_syjpp"]
 lightmap_size_hint = Vector2i(12, 17)
@@ -357,9 +364,9 @@ _surfaces = [{
 }]
 
 [node name="BattleSystem" type="Node3D"]
+script = ExtResource("1_fvdts")
 
 [node name="Inputs" type="Node3D" parent="."]
-visible = false
 
 [node name="CommandManager" type="Node3D" parent="Inputs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
@@ -369,7 +376,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
 [node name="AIManager" type="Node3D" parent="Inputs"]
 
 [node name="Outputs" type="Node3D" parent="."]
-visible = false
 
 [node name="DisplayManager" type="Node3D" parent="Outputs" node_paths=PackedStringArray("battleManager", "playerPlate", "enemyPlate")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.471401, 0, 0)
@@ -1324,16 +1330,6 @@ movetime = 0.2
 [node name="PlayerBattler" type="Node3D" parent="Outputs/FieldManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65, -0.5, -2)
 
-[node name="FaebleStick" type="MeshInstance3D" parent="Outputs/FieldManager/PlayerBattler"]
-transform = Transform3D(0.05, 0, 0, 0, 1.3, 0, 0, 0, 0.05, -0.0342228, -0.290289, 0)
-mesh = SubResource("BoxMesh_34ph3")
-
-[node name="FaebleSprite" type="Sprite3D" parent="Outputs/FieldManager/PlayerBattler"]
-transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, -0.035, 0.5, -0.065)
-visible = false
-flip_h = true
-texture = ExtResource("3_civxg")
-
 [node name="FaebleMesh" type="MeshInstance3D" parent="Outputs/FieldManager/PlayerBattler"]
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -0.0692228, 0.298653, -0.0221257)
 mesh = SubResource("QuadMesh_48h0r")
@@ -1345,17 +1341,18 @@ mesh = SubResource("QuadMesh_48h0r")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_i5q1t")
 
-[node name="EnemyBattler" type="Node3D" parent="Outputs/FieldManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65, -0.5, 1.85)
-
-[node name="FaebleStick" type="MeshInstance3D" parent="Outputs/FieldManager/EnemyBattler"]
-transform = Transform3D(0.05, 0, 0, 0, 1.3, 0, 0, 0, 0.2, 0, 0, 0)
+[node name="FaebleStick" type="MeshInstance3D" parent="Outputs/FieldManager/PlayerBattler"]
+transform = Transform3D(0.05, 0, 0, 0, 1.3, 0, 0, 0, 0.05, -0.0342228, -0.290289, 0)
 mesh = SubResource("BoxMesh_34ph3")
 
-[node name="FaebleSprite" type="Sprite3D" parent="Outputs/FieldManager/EnemyBattler"]
-transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, -0.035, 0.5, 0.065)
+[node name="FaebleSprite" type="Sprite3D" parent="Outputs/FieldManager/PlayerBattler"]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, -0.035, 0.5, -0.065)
 visible = false
+flip_h = true
 texture = ExtResource("3_civxg")
+
+[node name="EnemyBattler" type="Node3D" parent="Outputs/FieldManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65, -0.5, 1.85)
 
 [node name="FaebleMesh" type="MeshInstance3D" parent="Outputs/FieldManager/EnemyBattler"]
 transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -0.035, 0.923229, 0.0650001)
@@ -1367,6 +1364,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0342014)
 mesh = SubResource("QuadMesh_48h0r")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_rs8tq")
+
+[node name="FaebleStick" type="MeshInstance3D" parent="Outputs/FieldManager/EnemyBattler"]
+transform = Transform3D(0.05, 0, 0, 0, 1.3, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("BoxMesh_34ph3")
+
+[node name="FaebleSprite" type="Sprite3D" parent="Outputs/FieldManager/EnemyBattler"]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, -0.035, 0.5, 0.065)
+visible = false
+texture = ExtResource("3_civxg")
 
 [node name="MessageManager" type="Node3D" parent="Outputs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.52319, -0.949942, 0)
@@ -1398,6 +1404,8 @@ visible = false
 mesh = SubResource("QuadMesh_7k0cv")
 
 [node name="CaptureSystem" type="Node3D" parent="."]
+visible = false
+script = ExtResource("16_frhkl")
 
 [node name="Inputs" type="Node3D" parent="CaptureSystem"]
 
@@ -1420,7 +1428,7 @@ cardinalRays = [NodePath("CaptureCam/OverflowCheck/LeftCheck"), NodePath("Captur
 colliderArea = NodePath("CaptureCam/AreaCheck")
 
 [node name="CaptureCam" type="Camera3D" parent="CaptureSystem/Inputs/CameraManager"]
-transform = Transform3D(-4.37114e-08, 0.0871557, -0.996195, 0, 0.996195, 0.0871557, 1, 3.8097e-09, -4.35451e-08, -4.5, 0.455, -0.129)
+transform = Transform3D(-4.37114e-08, 0.0871557, -0.996195, 0, 0.996195, 0.0871557, 1, 3.8097e-09, -4.35451e-08, -4.5, 0.455, 0)
 current = true
 fov = 30.0
 size = 0.1
@@ -1508,28 +1516,33 @@ script = ExtResource("18_vaslh")
 
 [node name="Outputs" type="Node3D" parent="CaptureSystem"]
 
-[node name="PathManager" type="Node3D" parent="CaptureSystem/Outputs"]
+[node name="PathManager" type="Node3D" parent="CaptureSystem/Outputs" node_paths=PackedStringArray("captureSystem", "faebleObject")]
+script = ExtResource("19_rg770")
+captureSystem = NodePath("../..")
+faebleObject = NodePath("EnemyBattler")
+peekTime = 0.5
+duckTime = 0.3
+stageCenter = Vector3(-1.65, -0.5, 0)
+testfaeble = ExtResource("20_2ftew")
+testPath = ExtResource("21_d3826")
+testPath2 = ExtResource("21_p64w0")
 
 [node name="EnemyBattler" type="Node3D" parent="CaptureSystem/Outputs/PathManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65, -0.5, -0.183321)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65, -0.5, 0)
 
 [node name="FaebleHitbox" type="Area3D" parent="CaptureSystem/Outputs/PathManager/EnemyBattler"]
 collision_layer = 15
 
-[node name="FynepryntCenter" type="Node3D" parent="CaptureSystem/Outputs/PathManager/EnemyBattler/FaebleHitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.043, 0.768697, 0.0127718)
+[node name="CenterPoint" type="Node3D" parent="CaptureSystem/Outputs/PathManager/EnemyBattler/FaebleHitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.043, 0.578121, 0.0127718)
 
-[node name="FynepryntCollider" type="CollisionPolygon3D" parent="CaptureSystem/Outputs/PathManager/EnemyBattler/FaebleHitbox"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0541507, 0.549354, 0)
-depth = 0.0
-polygon = PackedVector2Array(-0.0889469, -0.358156, 0.0792611, -0.344699, 0.0747755, -0.0351969, 0.225041, 0.159924, 0.316995, 0.458213, 0.00300679, 0.615207, -0.106889, 0.615207, -0.167444, 0.547924, -0.213538, 0.22515)
-
-[node name="FaebleStick" type="MeshInstance3D" parent="CaptureSystem/Outputs/PathManager/EnemyBattler"]
-transform = Transform3D(0.05, 0, 0, 0, 1.3, 0, 0, 0, 0.1, 0, 0, 0)
-mesh = SubResource("BoxMesh_34ph3")
+[node name="FaebleShape" type="CollisionPolygon3D" parent="CaptureSystem/Outputs/PathManager/EnemyBattler/FaebleHitbox"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.05, 0.5, 0)
+depth = 0.01
+polygon = PackedVector2Array(-0.318015, -0.10366, -0.0860794, -0.292557, 0.0071733, -0.263864, 0.155421, -0.0606208, 0.313233, -0.0199723, 0.37301, 0.207181, 0.162594, 0.388904, -0.210416, 0.367384, -0.382575, 0.147404)
 
 [node name="FaebleMesh" type="MeshInstance3D" parent="CaptureSystem/Outputs/PathManager/EnemyBattler"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.035, 0.672431, 0.0255411)
+transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.49691e-08, -0.035, 0.568175, -0.0082196)
 mesh = SubResource("QuadMesh_o0dkk")
 surface_material_override/0 = SubResource("StandardMaterial3D_16ueh")
 
@@ -1539,9 +1552,15 @@ mesh = SubResource("QuadMesh_syjpp")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_4k51d")
 
+[node name="FaebleStick" type="MeshInstance3D" parent="CaptureSystem/Outputs/PathManager/EnemyBattler"]
+transform = Transform3D(0.05, 0, 0, 0, 1.3, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_34ph3")
+
 [node name="PictureManager" type="Node3D" parent="CaptureSystem/Outputs"]
 
 [node name="Environment" type="Node3D" parent="."]
+
+[node name="PropManager" type="Node3D" parent="Environment"]
 
 [node name="FXManager" type="Node3D" parent="Environment"]
 
@@ -1553,6 +1572,7 @@ skeleton = NodePath("../../..")
 
 [node name="Camera3D" type="Camera3D" parent="Environment/FXManager" node_paths=PackedStringArray("player_spot", "enemy_spot", "shadowbox", "highlights", "lightbox")]
 transform = Transform3D(-4.3258e-08, -0.143665, -0.989626, -6.27977e-09, 0.989626, -0.143665, 1, -4.52971e-14, -4.37114e-08, -6.19547, -0.126045, 0)
+current = true
 fov = 55.0
 script = ExtResource("7_tl5aw")
 camStart = Vector3(-9.5, 3.5, 0)
@@ -1651,7 +1671,6 @@ omni_attenuation = 0.25
 
 [node name="PlayerSpot" type="SpotLight3D" parent="Environment/FXManager/Ambience" node_paths=PackedStringArray("target")]
 transform = Transform3D(0.338199, 0.308158, -0.889191, -0.0509847, 0.94948, 0.309659, 0.939693, -0.0593913, 0.336824, -8.29009, 1.61663, -1.33042)
-visible = false
 light_color = Color(1, 0.996078, 0.690196, 1)
 light_energy = 8.0
 light_volumetric_fog_energy = 50.0
@@ -1663,7 +1682,6 @@ target = NodePath("../../../../Outputs/FieldManager/PlayerBattler/FaebleMesh")
 
 [node name="EnemySpot" type="SpotLight3D" parent="Environment/FXManager/Ambience" node_paths=PackedStringArray("target")]
 transform = Transform3D(-0.333777, 0.374156, -0.865217, 0.074639, 0.925462, 0.371415, 0.939692, 0.0593908, -0.336825, -8.29024, 1.61662, 1.33)
-visible = false
 light_color = Color(1, 0.996078, 0.690196, 1)
 light_energy = 8.0
 light_volumetric_fog_energy = 50.0
@@ -1675,7 +1693,6 @@ target = NodePath("../../../../Outputs/FieldManager/EnemyBattler/FaebleMesh")
 
 [node name="Leader1" type="MeshInstance3D" parent="Environment/FXManager"]
 transform = Transform3D(0.25, 0, -0.433013, 0, 0.5, 0, 0.433013, 0, 0.25, -2.581, -0.122693, -2.5)
-visible = false
 mesh = SubResource("QuadMesh_tsucr")
 
 [node name="Leader2" type="MeshInstance3D" parent="Environment/FXManager"]

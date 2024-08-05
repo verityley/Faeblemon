@@ -56,8 +56,22 @@ func ChangeDistance(amount:int):
 	
 
 #Tangible Action Functions
-func ChangeFaeble(): #Swaps out the mesh texture for given battler, and adjusts height and scale.
-	pass
+func ChangeFaeble(faeble:Faeble, player:bool):
+	var faebleMesh:MeshInstance3D
+	if player:
+		faebleMesh = playerObject.get_child(0)
+	else:
+		faebleMesh = enemyObject.get_child(0)
+	faebleMesh.position = faeble.groundOffset
+	faebleMesh.scale = faeble.battlerScale
+	var texture = faebleMesh.get_surface_override_material(0)
+	texture.albedo_texture = faeble.sprite
+	var shadow = faebleMesh.get_child(0)
+	#shadow.position = faeble.groundOffset
+	#shadow.scale = faeble.battlerScale
+	texture = shadow.get_surface_override_material(0)
+	texture.albedo_texture = faeble.sprite
+	#faebleObject = faeble
 
 func ChangePositions(targetDistance:int): #Directly set positions for battlers along the stage line.
 	var midpoint:Vector3 = Vector3(leftBound.x, leftBound.y, 0)

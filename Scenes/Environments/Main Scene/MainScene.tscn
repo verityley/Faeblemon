@@ -112,7 +112,7 @@ visible = false
 fov = 55.0
 
 [node name="BattleManager" parent="." instance=ExtResource("4_rnhbn")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 11.331, -24.8031)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 11.331, -26.3451)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.540549, 0.601095, -0.588635, -1.54268e-08, 0.699663, 0.714473, 0.841313, -0.386208, 0.378202, 0, 9.46926, 0)
