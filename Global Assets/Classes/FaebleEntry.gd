@@ -46,10 +46,15 @@ var act:int #Increased by research, determines overall faeble unlock progress.
 var maxHP:int = 1
 var maxMana:int = 1
 var maxResolve:int = 1
+@export var powerBonus:int = 1
+@export var manaBonus:int = 0
+@export var resolveBonus:int = 0
 @export var skillPool:Dictionary
 @export var assignedSkills:Array[Skill] = [null, null, null]
 var learnedSkills:Array[Skill] #These are all the skills they know by their level, or with Scrolls
 @export var feats:Array[Feat]
+@export var customResource:int #Used for faebles with unique mechanics to their moves
+@export var customName:String #Name of custom resource
 
 @export_category("Capture Parameters")
 @export var centerPosition:Vector3
@@ -68,7 +73,7 @@ var learnedSkills:Array[Skill] #These are all the skills they know by their leve
 @export_category("Instance-Only Parameters")
 @export var currentHP:int
 @export var currentMana:int #This determines how many after-battle heals a faeble has left.
-@export var currentResolve:int #Shouldnt need to be used I think? since resets every battle
+#@export var currentResolve:int #Shouldnt need to be used I think? since resets every battle
 @export var fainted:bool
 
 @export_category("Description")

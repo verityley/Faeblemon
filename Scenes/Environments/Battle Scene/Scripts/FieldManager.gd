@@ -1,4 +1,5 @@
 extends Node3D
+class_name FieldManager
 
 @export var battleManager:Node3D
 
@@ -21,8 +22,7 @@ var combatDistance:int
 
 #Setup Functions
 func _ready():
-	combatDistance = 5
-	ChangePositions(maxDistance)
+	#combatDistance = 5
 	#await get_tree().create_timer(2.0).timeout
 	#ChangeDistance(1)
 	#await get_tree().create_timer(0.5).timeout
@@ -47,13 +47,19 @@ func ChangeDistance(amount:int):
 	combatDistance = clampi(combatDistance + amount, 0, maxDistance)
 	print("New Distance: ", combatDistance)
 	
-	if amount > 0:
-		#ChangePositions(combatDistance)
-		AnimatePosition(combatDistance, true) #Play forward movement animation
-	if amount < 0:
-		#ChangePositions(combatDistance)
-		AnimatePosition(combatDistance, false) #Play backward animation
-	
+	AnimatePosition(combatDistance)
+
+func MoveFaeble(amount:int, player:bool):
+	#Moves single faeble, then equalizes. Connect with prop manager eventually
+	if combatDistance == maxDistance and amount > 0:
+		return
+	if combatDistance == 0 and amount < 0:
+		return
+	combatDistance = clampi(combatDistance + amount, 0, maxDistance)
+	print("New Distance: ", combatDistance)
+	await AnimateSingle(combatDistance, player)
+	await get_tree().create_timer(0.1).timeout
+	await AnimatePosition(combatDistance)
 
 #Tangible Action Functions
 func ChangeFaeble(faeble:Faeble, player:bool):
@@ -85,7 +91,7 @@ func ChangePositions(targetDistance:int): #Directly set positions for battlers a
 	enemyObject.position = newenemypos
 	combatDistance = targetDistance
 
-func AnimatePosition(targetDistance:int, forward:bool): #Sequence animation and tweens for simultaneous battler movement.
+func AnimatePosition(targetDistance:int): #Sequence animation and tweens for simultaneous battler movement.
 	var midpoint:Vector3 = Vector3(leftBound.x, leftBound.y, 0)
 	var factor:float = float(maxDistance - targetDistance) / float(maxDistance)
 	var playertween = get_tree().create_tween()
@@ -94,10 +100,31 @@ func AnimatePosition(targetDistance:int, forward:bool): #Sequence animation and 
 	var newplayerpos = leftBound.lerp(midpoint - Vector3(0,0,centerBuffer), factor)
 	#prints(leftBound, newplayerpos)
 	#playerObject.position = newplayerpos
-	playertween.tween_property(playerObject, "position", newplayerpos, movetime)
+	playertween.tween_property(playerObject, "position", newplayerpos, movetime*2)
 	var newenemypos = rightBound.lerp(midpoint + Vector3(0,0,centerBuffer), factor)
-	enemytween.tween_property(enemyObject, "position", newenemypos, movetime)
+	enemytween.tween_property(enemyObject, "position", newenemypos, movetime*2)
 	#prints(rightBound, newenemypos)
 	#enemyObject.position = newenemypos
 	await playertween.finished and enemytween.finished
+	print("Movement Complete!")
+
+func AnimateSingle(targetDistance:int, player:bool): 
+	#Sequence animation and tweens for simultaneous battler movement.
+	var factor:float = float(maxDistance - targetDistance) / float(maxDistance)
+	var tween = get_tree().create_tween()
+	#print("Lerp Factor: ", factor)
+	var bound:Vector3 = rightBound
+	var battler:Node3D = enemyObject
+	var enemy:Node3D = playerObject
+	if player:
+		bound = leftBound
+		battler = playerObject
+		enemy = enemyObject
+	var newpos = bound.lerp(enemy.position, factor)
+	#prints(leftBound, newplayerpos)
+	#playerObject.position = newplayerpos
+	tween.tween_property(battler, "position", newpos, movetime)
+	#prints(rightBound, newenemypos)
+	#enemyObject.position = newenemypos
+	await tween.finished
 	print("Movement Complete!")

@@ -4,7 +4,7 @@ extends Node
 @export var shinyOdds:int = 1000
 @export var altSchoolOdds:int = 500
 
-@export var healthRatio:int = 4 #Health per point of HRT
+@export var healthRatio:int = 2 #Health per point of HRT
 @export var initStatRatio:float = 0.6 #How much stats should be reduced by to build up towards
 @export var pointsPerLevel:int = 4
 

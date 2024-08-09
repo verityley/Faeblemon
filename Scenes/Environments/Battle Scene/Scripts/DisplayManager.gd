@@ -1,6 +1,7 @@
 extends Node3D
+class_name DisplayManager
 
-@export var battleManager:Node3D
+@export var battleSystem:BattleSystem
 
 #External Variables
 
@@ -16,6 +17,8 @@ extends Node3D
 @export var halfMaxMana:Mesh
 @export var fullMana:Mesh
 @export var blockerMaterial:Material
+
+@export var animTime:float = 0.15
 
 #Internal Variables
 @onready var phBoxes:Array[Node] = playerPlate.get_child(0).get_children()
@@ -102,56 +105,99 @@ func ChangeMax(resource:int, max:int, player:bool):
 	
 
 #Tangible Action Functions
-func ChangeCurrent(resource:int, amount:int, player:bool): #Does not work for Action Points
+func ChangeCurrent(resource:int, amount:int, player:bool, animate:bool=false): #Does not work for Action Points
 	if resource == Resources.Actions:
 		print("Actions max can't be changed.") #Might change for status effects?
 		return
 	var targetBoxes:Array
 	var halfResource:Mesh
 	var fullResource:Mesh
+	var deplete:bool = false
 	if player:
 		match resource:
 			Resources.Health:
+				if amount < battleSystem.pHealth:
+					deplete = true
 				targetBoxes = phBoxes
 				halfResource = halfHeart
 				fullResource = fullHeart
 			Resources.Resolve:
+				if amount < battleSystem.pResolve:
+					deplete = true
 				targetBoxes = prBoxes
 				halfResource = halfResolve
 				fullResource = fullResolve
 			Resources.Mana:
+				if amount < battleSystem.pMana:
+					deplete = true
 				targetBoxes = pmBoxes
 				halfResource = halfMana
 				fullResource = fullMana
 	else:
 		match resource:
 			Resources.Health:
+				if amount < battleSystem.eHealth:
+					deplete = true
 				targetBoxes = ehBoxes
 				halfResource = halfHeart
 				fullResource = fullHeart
 			Resources.Resolve:
+				if amount < battleSystem.eResolve:
+					deplete = true
 				targetBoxes = erBoxes
 				halfResource = halfResolve
 				fullResource = fullResolve
 			Resources.Mana:
+				if amount < battleSystem.eMana:
+					deplete = true
 				targetBoxes = emBoxes
 				halfResource = halfMana
 				fullResource = fullMana
 	
 	#After resource declaration, show/hide blockers in array
 	var tally:int = amount
+	var animBoxes:Array[Node3D]
+	var animResources:Array[Mesh]
+	var animHalf:Array[bool]
 	for box in targetBoxes:
 		#box.show()
+		#box.mesh = fullResource
 		#Insert Health exception for quarters, tally for 1,2,3
 		if tally == 1:
-			box.mesh = halfResource
 			tally -= 1
+			if !box.get_child(0).visible and animate:
+				animBoxes.append(box)
+				animResources.append(halfResource)
+				animHalf.append(true)
+			else:
+				box.mesh = halfResource
 		elif tally == 0:
 			#box.hide()
-			box.mesh = null
+			if !box.get_child(0).visible and animate and deplete:
+				animBoxes.append(box)
+				animResources.append(null)
+				animHalf.append(false)
+				#await AnimateChange(box, null, deplete, false)
+			else:
+				box.mesh = null
 		else:
-			box.mesh = fullResource
 			tally -= 2
+			if !box.get_child(0).visible and animate and !deplete and box.mesh != fullResource:
+				animBoxes.append(box)
+				animResources.append(fullResource)
+				if box.mesh == halfResource:
+					animHalf.append(true)
+				else:
+					animHalf.append(false)
+				#await AnimateChange(box, fullResource, deplete, false)
+			else:
+				box.mesh = fullResource
+	if deplete:
+		animBoxes.reverse()
+		animResources.reverse()
+		animHalf.reverse()
+	for i in range(animBoxes.size()):
+		await AnimateChange(animBoxes[i], animResources[i], deplete, animHalf[i])
 	
 
 func ChangeActions(amount:int, player:bool):
@@ -168,3 +214,38 @@ func ChangeActions(amount:int, player:bool):
 			tally -= 1
 		else:
 			box.hide()
+
+func AnimateChange(container:Node3D, resource, deplete:bool, half:bool):
+	var tween = get_tree().create_tween()
+	var target:Vector3
+	#var animContainer = container.duplicate()
+	#add_child(animContainer)
+	#container.hide()
+	var tempContainer:Node3D
+	if deplete:
+		if half:
+			tempContainer = MeshInstance3D.new()
+			add_child(tempContainer)
+			tempContainer.global_position = container.global_position
+			tempContainer.mesh = resource
+		#print("Depleting")
+		target = container.position + Vector3(0,0,0.7)
+		tween.tween_property(container, "position", target, animTime)
+		await tween.finished
+		container.mesh = resource
+		container.position  -= Vector3(0,0,0.7)
+	else:
+		#print("Regaining")
+		tempContainer = MeshInstance3D.new()
+		add_child(tempContainer)
+		tempContainer.global_position = container.global_position
+		tempContainer.mesh = container.mesh
+		container.mesh = resource
+		target = container.position
+		container.position += Vector3(0,0,0.7)
+		tween.tween_property(container, "position", target, animTime)
+		await tween.finished
+	if tempContainer != null:
+		tempContainer.queue_free()
+	#container.show()
+	#animContainer.queue_free()
