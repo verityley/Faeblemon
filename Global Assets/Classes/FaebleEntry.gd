@@ -20,6 +20,7 @@ class_name Faeble
 @export var worldScale:float #Scale used in world or city scenes
 @export var UIScale:float #Scale used in UI elements
 @export var groundOffset:Vector3 #How far to offset from center
+@export var commandOffset:float
 
 
 
@@ -60,6 +61,7 @@ var learnedSkills:Array[Skill] #These are all the skills they know by their leve
 @export var centerPosition:Vector3
 @export var colliderShape:PackedVector2Array
 @export var idealZoom:float
+
 
 @export_category("Evolution Parameters")
 @export var canEvolve:bool

@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://bhp03qdbwqg24"]
+[gd_scene load_steps=95 format=3 uid="uid://bhp03qdbwqg24"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Battle Scene/Scripts/BattleSystem.gd" id="1_pdhdj"]
 [ext_resource type="Resource" uid="uid://c35sr7lc0bckf" path="res://Database/Faebles/030Ratincture.tres" id="2_3s01x"]
@@ -7,24 +7,26 @@
 [ext_resource type="Texture2D" uid="uid://bcoycmiic0cle" path="res://Global Assets/Graphics/Monster Graphics/Ratincture.png" id="3_civxg"]
 [ext_resource type="Script" path="res://Scenes/Environments/Battle Scene/Scripts/CommandManager.gd" id="4_1f14f"]
 [ext_resource type="Texture2D" uid="uid://cdsyyxcgwde5d" path="res://Scenes/Environments/Battle Scene/Assets/BattleCommand.png" id="4_2bx4k"]
-[ext_resource type="Texture2D" uid="uid://bsrlyape7j56i" path="res://Scenes/Environments/Battle Scene/Assets/CommandAttack.png" id="5_25n8b"]
+[ext_resource type="Texture2D" uid="uid://bnkwbpfeb6e75" path="res://Scenes/Environments/Battle Scene/Assets/MoveLeftGreen.png" id="4_yesga"]
+[ext_resource type="Texture2D" uid="uid://b3amsm7jpbm3q" path="res://Scenes/Environments/Battle Scene/Assets/MoveRightGreen.png" id="5_367c3"]
 [ext_resource type="Script" path="res://Scenes/Environments/Battle Scene/Scripts/DisplayManager.gd" id="6_nigti"]
 [ext_resource type="ArrayMesh" uid="uid://cddx5cwaofco2" path="res://Scenes/Environments/Battle Scene/Assets/Models/StatusPlate.obj" id="6_oplxk"]
-[ext_resource type="Texture2D" uid="uid://cpw8pxixd3nn8" path="res://Scenes/Environments/Battle Scene/Assets/CommandGuard.png" id="7_4klw8"]
 [ext_resource type="ArrayMesh" uid="uid://cs2ppw4j86w7f" path="res://Scenes/Environments/Battle Scene/Assets/Models/Cutouts/HeartCutoutHalf.obj" id="7_csy35"]
 [ext_resource type="ArrayMesh" uid="uid://dmvfxfnmemc33" path="res://Scenes/Environments/Battle Scene/Assets/Models/Cutouts/HeartCutout.obj" id="7_je3j2"]
 [ext_resource type="Script" path="res://Scenes/Environments/Battle Scene/Scripts/Spotlight.gd" id="7_l2ko4"]
 [ext_resource type="Script" path="res://Scenes/Environments/Battle Scene/Scripts/tempstartcam.gd" id="7_tl5aw"]
 [ext_resource type="Texture2D" uid="uid://cmq32un2xwhha" path="res://Global Assets/Graphics/Monster Graphics/PlayerChar.png" id="8_07kop"]
-[ext_resource type="Texture2D" uid="uid://tdfoj2ov76gd" path="res://Scenes/Environments/Battle Scene/Assets/CommandRecharge.png" id="8_334xt"]
+[ext_resource type="Texture2D" uid="uid://dnu8we7w1tbnk" path="res://Scenes/Environments/Battle Scene/Assets/CommandAttackColor.png" id="8_ctgb7"]
 [ext_resource type="ArrayMesh" uid="uid://mq6ja37r647r" path="res://Scenes/Environments/Battle Scene/Assets/Models/Cutouts/ShieldCutout.obj" id="8_un7n7"]
 [ext_resource type="ArrayMesh" uid="uid://dxaixcomui14x" path="res://Scenes/Environments/Battle Scene/Assets/Models/Cutouts/ShieldCutoutHalf.obj" id="9_4wd7e"]
-[ext_resource type="Texture2D" uid="uid://byq11aro8axqp" path="res://Scenes/Environments/Battle Scene/Assets/CommandSwitch.png" id="9_al5pt"]
+[ext_resource type="Texture2D" uid="uid://cixwn01dtw8yi" path="res://Scenes/Environments/Battle Scene/Assets/CommandGuardColor.png" id="9_deyjw"]
 [ext_resource type="ArrayMesh" uid="uid://dglanmnluwoiw" path="res://Scenes/Environments/Battle Scene/Assets/Models/Cutouts/ManaCutout.obj" id="9_ipmi8"]
 [ext_resource type="ArrayMesh" uid="uid://bncwa0rh8fir" path="res://Scenes/Environments/Battle Scene/Assets/Models/Cutouts/ActionCutoutBig.obj" id="10_el6n5"]
-[ext_resource type="Texture2D" uid="uid://bqg1np47f1dqv" path="res://Scenes/Environments/Battle Scene/Assets/CommandDash.png" id="10_lr74c"]
+[ext_resource type="Texture2D" uid="uid://ltjrq7i7f4oj" path="res://Scenes/Environments/Battle Scene/Assets/CommandRechargeColor.png" id="10_rqydl"]
 [ext_resource type="ArrayMesh" uid="uid://cb8nd7g01no8k" path="res://Scenes/Environments/Battle Scene/Assets/Models/Cutouts/ActionCutout.obj" id="11_al8cc"]
+[ext_resource type="Texture2D" uid="uid://o3eo3wls2ad" path="res://Scenes/Environments/Battle Scene/Assets/CommandSwitchColor.png" id="11_km8ad"]
 [ext_resource type="ArrayMesh" uid="uid://w0t8aw1tvqf7" path="res://Scenes/Environments/Battle Scene/Assets/Models/Cutouts/ManaCutoutHalf.obj" id="11_m3swo"]
+[ext_resource type="Texture2D" uid="uid://bq4yvwi3avha0" path="res://Scenes/Environments/Battle Scene/Assets/CommandDashColor.png" id="12_2l7po"]
 [ext_resource type="ArrayMesh" uid="uid://o2y772y3s4e3" path="res://Scenes/Environments/Battle Scene/Assets/Models/Cutouts/ManaMaxHalf.obj" id="12_t7lmm"]
 [ext_resource type="Texture2D" uid="uid://bdue06m3kc64d" path="res://Global Assets/Graphics/Monster Graphics/Werewool.png" id="14_wmxa5"]
 [ext_resource type="Script" path="res://Scenes/Environments/Battle Scene/Scripts/Capture System/CameraManager.gd" id="16_7i3oi"]
@@ -39,8 +41,19 @@
 [ext_resource type="Resource" uid="uid://boyn4gyre1a4m" path="res://Database/Behaviors/Paths/BasicPeekLR.tres" id="21_d3826"]
 [ext_resource type="Resource" uid="uid://bjybb6ln67ya5" path="res://Database/Behaviors/Paths/BasicBackForth.tres" id="21_p64w0"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_fjyjx"]
+size = Vector3(0.05, 1, 0.025)
+
 [sub_resource type="QuadMesh" id="QuadMesh_hsuvc"]
 size = Vector2(0.7, 0.7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lac6y"]
+transparency = 4
+albedo_texture = ExtResource("4_yesga")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sovnq"]
+transparency = 4
+albedo_texture = ExtResource("5_367c3")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_616r3"]
 transparency = 1
@@ -48,7 +61,7 @@ albedo_texture = ExtResource("4_2bx4k")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4jyps"]
 transparency = 4
-albedo_texture = ExtResource("5_25n8b")
+albedo_texture = ExtResource("8_ctgb7")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_f7w2i"]
 top_radius = 0.01
@@ -56,19 +69,19 @@ bottom_radius = 0.01
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nvjwk"]
 transparency = 4
-albedo_texture = ExtResource("7_4klw8")
+albedo_texture = ExtResource("9_deyjw")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uu8ky"]
 transparency = 4
-albedo_texture = ExtResource("8_334xt")
+albedo_texture = ExtResource("10_rqydl")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_egloi"]
 transparency = 4
-albedo_texture = ExtResource("9_al5pt")
+albedo_texture = ExtResource("11_km8ad")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w27b4"]
 transparency = 4
-albedo_texture = ExtResource("10_lr74c")
+albedo_texture = ExtResource("12_2l7po")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lk85q"]
 resource_name = "FrontPlate"
@@ -418,49 +431,131 @@ propManager = NodePath("CaptureSystem/Outputs/PropManager")
 
 [node name="Inputs" type="Node3D" parent="."]
 
-[node name="CommandManager" type="Node3D" parent="Inputs" node_paths=PackedStringArray("battleSystem", "commandObjects", "attackObjects")]
+[node name="CommandManager" type="Node3D" parent="Inputs" node_paths=PackedStringArray("battleSystem", "commandAnchor", "moveAnchor", "commandObjects", "attackObjects")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 1, 0)
-visible = false
 script = ExtResource("4_1f14f")
 battleSystem = NodePath("../..")
-commandObjects = [NodePath("AttackCommand/AttackPin"), NodePath("GuardCommand/GuardPin"), NodePath("RechargeCommand/RechargePin"), NodePath("SwitchCommand/SwitchPin"), NodePath("DashCommand/DashPin")]
-attackObjects = [NodePath("AttackCommands/AttackCommand1"), NodePath("AttackCommands/AttackCommand2"), NodePath("AttackCommands/AttackCommand3")]
+commandAnchor = NodePath("Commands")
+moveAnchor = NodePath("MoveCommands")
+commandObjects = [NodePath("Commands/AttackCommand/AttackPin"), NodePath("Commands/GuardCommand/GuardPin"), NodePath("Commands/RechargeCommand/RechargePin"), NodePath("Commands/SwitchCommand/SwitchPin"), NodePath("Commands/DashCommand/DashPin")]
+attackObjects = [NodePath("Commands/AttackCommands/AttackCommand1"), NodePath("Commands/AttackCommands/AttackCommand2"), NodePath("Commands/AttackCommands/AttackCommand3")]
 commandPositions = Array[Vector3]([Vector3(-0.7, -0.2, 0), Vector3(-0.3, 0, 0.7), Vector3(0.4, 0.3, 0.5), Vector3(0.4, 0.3, -0.5), Vector3(-0.3, 0, -0.7)])
 attackPositions = Array[Vector3]([Vector3(0, 0, 0), Vector3(0.35, -0.55, -0.01), Vector3(-0.35, -0.55, -0.01)])
 
-[node name="AttackCommands" type="Node3D" parent="Inputs/CommandManager"]
+[node name="MoveCommands" type="Node3D" parent="Inputs/CommandManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.225, 0)
+
+[node name="LeftArrows" type="Node3D" parent="Inputs/CommandManager/MoveCommands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4)
+
+[node name="ArrowStick" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/LeftArrows"]
+transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.49691e-08, 0.0219445, -0.358009, 0.0461892)
+mesh = SubResource("BoxMesh_fjyjx")
+skeleton = NodePath("../LeftArrow")
+
+[node name="LeftArrow" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/LeftArrows"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_hsuvc")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lac6y")
+
+[node name="LeftArrow2" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/LeftArrows"]
+transform = Transform3D(-3.0598e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.0598e-08, 0.02, 0, -0.175)
+mesh = SubResource("QuadMesh_hsuvc")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lac6y")
+
+[node name="LeftArrow3" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/LeftArrows"]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0.04, 0, -0.3)
+mesh = SubResource("QuadMesh_hsuvc")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lac6y")
+
+[node name="LeftArrow4" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/LeftArrows"]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0.06, 0, -0.425)
+mesh = SubResource("QuadMesh_hsuvc")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lac6y")
+
+[node name="LeftArrow5" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/LeftArrows"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0.08, 0, -0.54)
+mesh = SubResource("QuadMesh_hsuvc")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lac6y")
+
+[node name="RightArrows" type="Node3D" parent="Inputs/CommandManager/MoveCommands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
+
+[node name="ArrowStick" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/RightArrows"]
+transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.49691e-08, 0.022, -0.358, -0.046)
+mesh = SubResource("BoxMesh_fjyjx")
+skeleton = NodePath("../RightArrow")
+
+[node name="RightArrow" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/RightArrows"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_hsuvc")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_sovnq")
+
+[node name="LeftArrow2" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/RightArrows"]
+transform = Transform3D(-3.0598e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.0598e-08, 0.02, 0, 0.175)
+mesh = SubResource("QuadMesh_hsuvc")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_sovnq")
+
+[node name="LeftArrow3" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/RightArrows"]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0.04, 0, 0.3)
+mesh = SubResource("QuadMesh_hsuvc")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_sovnq")
+
+[node name="LeftArrow4" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/RightArrows"]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0.06, 0, 0.425)
+mesh = SubResource("QuadMesh_hsuvc")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_sovnq")
+
+[node name="LeftArrow5" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/RightArrows"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0.08, 0, 0.54)
+mesh = SubResource("QuadMesh_hsuvc")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_sovnq")
+
+[node name="Commands" type="Node3D" parent="Inputs/CommandManager"]
+
+[node name="AttackCommands" type="Node3D" parent="Inputs/CommandManager/Commands"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.7, -0.2, 0)
 visible = false
 
-[node name="AttackCommand1" type="MeshInstance3D" parent="Inputs/CommandManager/AttackCommands"]
+[node name="AttackCommand1" type="MeshInstance3D" parent="Inputs/CommandManager/Commands/AttackCommands"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 mesh = SubResource("QuadMesh_hsuvc")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_616r3")
 
-[node name="AttackCommand2" type="MeshInstance3D" parent="Inputs/CommandManager/AttackCommands"]
+[node name="AttackCommand2" type="MeshInstance3D" parent="Inputs/CommandManager/Commands/AttackCommands"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00999999)
 visible = false
 mesh = SubResource("QuadMesh_hsuvc")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_616r3")
 
-[node name="AttackCommand3" type="MeshInstance3D" parent="Inputs/CommandManager/AttackCommands"]
+[node name="AttackCommand3" type="MeshInstance3D" parent="Inputs/CommandManager/Commands/AttackCommands"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01)
 visible = false
 mesh = SubResource("QuadMesh_hsuvc")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_616r3")
 
-[node name="AttackCommand" type="Node3D" parent="Inputs/CommandManager"]
+[node name="AttackCommand" type="Node3D" parent="Inputs/CommandManager/Commands"]
 
-[node name="AttackPin" type="StaticBody3D" parent="Inputs/CommandManager/AttackCommand"]
+[node name="AttackPin" type="StaticBody3D" parent="Inputs/CommandManager/Commands/AttackCommand"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.7, -0.2, 0)
 
-[node name="AttackSoftPin" type="RigidBody3D" parent="Inputs/CommandManager/AttackCommand"]
+[node name="AttackSoftPin" type="RigidBody3D" parent="Inputs/CommandManager/Commands/AttackCommand"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.7, -0.2, 0)
 
-[node name="PinJoint3D2" type="PinJoint3D" parent="Inputs/CommandManager/AttackCommand/AttackSoftPin"]
+[node name="PinJoint3D2" type="PinJoint3D" parent="Inputs/CommandManager/Commands/AttackCommand/AttackSoftPin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0, 0)
 node_a = NodePath("../../AttackPin")
 node_b = NodePath("..")
@@ -468,34 +563,34 @@ params/bias = 0.01
 params/damping = 0.01
 params/impulse_clamp = 0.05
 
-[node name="AttackBody" type="RigidBody3D" parent="Inputs/CommandManager/AttackCommand"]
+[node name="AttackBody" type="RigidBody3D" parent="Inputs/CommandManager/Commands/AttackCommand"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.7, -0.2, 0)
 
-[node name="BattleCommand1" type="MeshInstance3D" parent="Inputs/CommandManager/AttackCommand/AttackBody"]
+[node name="BattleCommand1" type="MeshInstance3D" parent="Inputs/CommandManager/Commands/AttackCommand/AttackBody"]
 mesh = SubResource("QuadMesh_hsuvc")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_4jyps")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Inputs/CommandManager/AttackCommand/AttackBody/BattleCommand1"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Inputs/CommandManager/Commands/AttackCommand/AttackBody/BattleCommand1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11388, -0.016963)
 mesh = SubResource("CylinderMesh_f7w2i")
 
-[node name="PinJoint3D" type="PinJoint3D" parent="Inputs/CommandManager/AttackCommand/AttackBody"]
+[node name="PinJoint3D" type="PinJoint3D" parent="Inputs/CommandManager/Commands/AttackCommand/AttackBody"]
 node_a = NodePath("../../AttackSoftPin")
 node_b = NodePath("..")
 params/bias = 0.01
 params/damping = 0.01
 params/impulse_clamp = 0.05
 
-[node name="GuardCommand" type="Node3D" parent="Inputs/CommandManager"]
+[node name="GuardCommand" type="Node3D" parent="Inputs/CommandManager/Commands"]
 
-[node name="GuardPin" type="StaticBody3D" parent="Inputs/CommandManager/GuardCommand"]
+[node name="GuardPin" type="StaticBody3D" parent="Inputs/CommandManager/Commands/GuardCommand"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.3, 0, 0.7)
 
-[node name="GuardSoftPin" type="RigidBody3D" parent="Inputs/CommandManager/GuardCommand"]
+[node name="GuardSoftPin" type="RigidBody3D" parent="Inputs/CommandManager/Commands/GuardCommand"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.3, 0, 0.7)
 
-[node name="PinJoint3D2" type="PinJoint3D" parent="Inputs/CommandManager/GuardCommand/GuardSoftPin"]
+[node name="PinJoint3D2" type="PinJoint3D" parent="Inputs/CommandManager/Commands/GuardCommand/GuardSoftPin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0, 0)
 node_a = NodePath("../../GuardPin")
 node_b = NodePath("..")
@@ -503,34 +598,34 @@ params/bias = 0.01
 params/damping = 0.01
 params/impulse_clamp = 0.05
 
-[node name="GuardBody" type="RigidBody3D" parent="Inputs/CommandManager/GuardCommand"]
+[node name="GuardBody" type="RigidBody3D" parent="Inputs/CommandManager/Commands/GuardCommand"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.3, 0, 0.7)
 
-[node name="BattleCommand2" type="MeshInstance3D" parent="Inputs/CommandManager/GuardCommand/GuardBody"]
+[node name="BattleCommand2" type="MeshInstance3D" parent="Inputs/CommandManager/Commands/GuardCommand/GuardBody"]
 mesh = SubResource("QuadMesh_hsuvc")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_nvjwk")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Inputs/CommandManager/GuardCommand/GuardBody/BattleCommand2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Inputs/CommandManager/Commands/GuardCommand/GuardBody/BattleCommand2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11388, -0.016963)
 mesh = SubResource("CylinderMesh_f7w2i")
 
-[node name="PinJoint3D" type="PinJoint3D" parent="Inputs/CommandManager/GuardCommand/GuardBody"]
+[node name="PinJoint3D" type="PinJoint3D" parent="Inputs/CommandManager/Commands/GuardCommand/GuardBody"]
 node_a = NodePath("../../GuardSoftPin")
 node_b = NodePath("..")
 params/bias = 0.01
 params/damping = 0.01
 params/impulse_clamp = 0.05
 
-[node name="RechargeCommand" type="Node3D" parent="Inputs/CommandManager"]
+[node name="RechargeCommand" type="Node3D" parent="Inputs/CommandManager/Commands"]
 
-[node name="RechargePin" type="StaticBody3D" parent="Inputs/CommandManager/RechargeCommand"]
+[node name="RechargePin" type="StaticBody3D" parent="Inputs/CommandManager/Commands/RechargeCommand"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.4, 0.3, 0.5)
 
-[node name="RechargeSoftPin" type="RigidBody3D" parent="Inputs/CommandManager/RechargeCommand"]
+[node name="RechargeSoftPin" type="RigidBody3D" parent="Inputs/CommandManager/Commands/RechargeCommand"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.4, 0.3, 0.5)
 
-[node name="PinJoint3D2" type="PinJoint3D" parent="Inputs/CommandManager/RechargeCommand/RechargeSoftPin"]
+[node name="PinJoint3D2" type="PinJoint3D" parent="Inputs/CommandManager/Commands/RechargeCommand/RechargeSoftPin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0, 0)
 node_a = NodePath("../../RechargePin")
 node_b = NodePath("..")
@@ -538,34 +633,34 @@ params/bias = 0.01
 params/damping = 0.01
 params/impulse_clamp = 0.05
 
-[node name="RechargeBody" type="RigidBody3D" parent="Inputs/CommandManager/RechargeCommand"]
+[node name="RechargeBody" type="RigidBody3D" parent="Inputs/CommandManager/Commands/RechargeCommand"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.4, 0.3, 0.5)
 
-[node name="BattleCommand3" type="MeshInstance3D" parent="Inputs/CommandManager/RechargeCommand/RechargeBody"]
+[node name="BattleCommand3" type="MeshInstance3D" parent="Inputs/CommandManager/Commands/RechargeCommand/RechargeBody"]
 mesh = SubResource("QuadMesh_hsuvc")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_uu8ky")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Inputs/CommandManager/RechargeCommand/RechargeBody/BattleCommand3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Inputs/CommandManager/Commands/RechargeCommand/RechargeBody/BattleCommand3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11388, -0.016963)
 mesh = SubResource("CylinderMesh_f7w2i")
 
-[node name="PinJoint3D" type="PinJoint3D" parent="Inputs/CommandManager/RechargeCommand/RechargeBody"]
+[node name="PinJoint3D" type="PinJoint3D" parent="Inputs/CommandManager/Commands/RechargeCommand/RechargeBody"]
 node_a = NodePath("../../RechargeSoftPin")
 node_b = NodePath("..")
 params/bias = 0.01
 params/damping = 0.01
 params/impulse_clamp = 0.1
 
-[node name="SwitchCommand" type="Node3D" parent="Inputs/CommandManager"]
+[node name="SwitchCommand" type="Node3D" parent="Inputs/CommandManager/Commands"]
 
-[node name="SwitchPin" type="StaticBody3D" parent="Inputs/CommandManager/SwitchCommand"]
+[node name="SwitchPin" type="StaticBody3D" parent="Inputs/CommandManager/Commands/SwitchCommand"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.4, 0.3, -0.5)
 
-[node name="SwitchSoftPin" type="RigidBody3D" parent="Inputs/CommandManager/SwitchCommand"]
+[node name="SwitchSoftPin" type="RigidBody3D" parent="Inputs/CommandManager/Commands/SwitchCommand"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.4, 0.3, -0.5)
 
-[node name="PinJoint3D2" type="PinJoint3D" parent="Inputs/CommandManager/SwitchCommand/SwitchSoftPin"]
+[node name="PinJoint3D2" type="PinJoint3D" parent="Inputs/CommandManager/Commands/SwitchCommand/SwitchSoftPin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0, 0)
 node_a = NodePath("../../SwitchPin")
 node_b = NodePath("..")
@@ -573,34 +668,34 @@ params/bias = 0.01
 params/damping = 0.01
 params/impulse_clamp = 0.05
 
-[node name="SwitchBody" type="RigidBody3D" parent="Inputs/CommandManager/SwitchCommand"]
+[node name="SwitchBody" type="RigidBody3D" parent="Inputs/CommandManager/Commands/SwitchCommand"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.4, 0.3, -0.5)
 
-[node name="BattleCommand4" type="MeshInstance3D" parent="Inputs/CommandManager/SwitchCommand/SwitchBody"]
+[node name="BattleCommand4" type="MeshInstance3D" parent="Inputs/CommandManager/Commands/SwitchCommand/SwitchBody"]
 mesh = SubResource("QuadMesh_hsuvc")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_egloi")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Inputs/CommandManager/SwitchCommand/SwitchBody/BattleCommand4"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Inputs/CommandManager/Commands/SwitchCommand/SwitchBody/BattleCommand4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11388, -0.016963)
 mesh = SubResource("CylinderMesh_f7w2i")
 
-[node name="PinJoint3D" type="PinJoint3D" parent="Inputs/CommandManager/SwitchCommand/SwitchBody"]
+[node name="PinJoint3D" type="PinJoint3D" parent="Inputs/CommandManager/Commands/SwitchCommand/SwitchBody"]
 node_a = NodePath("../../SwitchSoftPin")
 node_b = NodePath("..")
 params/bias = 0.01
 params/damping = 0.01
 params/impulse_clamp = 0.05
 
-[node name="DashCommand" type="Node3D" parent="Inputs/CommandManager"]
+[node name="DashCommand" type="Node3D" parent="Inputs/CommandManager/Commands"]
 
-[node name="DashPin" type="StaticBody3D" parent="Inputs/CommandManager/DashCommand"]
+[node name="DashPin" type="StaticBody3D" parent="Inputs/CommandManager/Commands/DashCommand"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.3, 0, -0.7)
 
-[node name="DashSoftPin" type="RigidBody3D" parent="Inputs/CommandManager/DashCommand"]
+[node name="DashSoftPin" type="RigidBody3D" parent="Inputs/CommandManager/Commands/DashCommand"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.3, 0, -0.7)
 
-[node name="PinJoint3D2" type="PinJoint3D" parent="Inputs/CommandManager/DashCommand/DashSoftPin"]
+[node name="PinJoint3D2" type="PinJoint3D" parent="Inputs/CommandManager/Commands/DashCommand/DashSoftPin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0, 0)
 node_a = NodePath("../../DashPin")
 node_b = NodePath("..")
@@ -608,19 +703,19 @@ params/bias = 0.01
 params/damping = 0.01
 params/impulse_clamp = 0.05
 
-[node name="DashBody" type="RigidBody3D" parent="Inputs/CommandManager/DashCommand"]
+[node name="DashBody" type="RigidBody3D" parent="Inputs/CommandManager/Commands/DashCommand"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.3, 0, -0.7)
 
-[node name="BattleCommand5" type="MeshInstance3D" parent="Inputs/CommandManager/DashCommand/DashBody"]
+[node name="BattleCommand5" type="MeshInstance3D" parent="Inputs/CommandManager/Commands/DashCommand/DashBody"]
 mesh = SubResource("QuadMesh_hsuvc")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_w27b4")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Inputs/CommandManager/DashCommand/DashBody/BattleCommand5"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Inputs/CommandManager/Commands/DashCommand/DashBody/BattleCommand5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11388, -0.016963)
 mesh = SubResource("CylinderMesh_f7w2i")
 
-[node name="PinJoint3D" type="PinJoint3D" parent="Inputs/CommandManager/DashCommand/DashBody"]
+[node name="PinJoint3D" type="PinJoint3D" parent="Inputs/CommandManager/Commands/DashCommand/DashBody"]
 node_a = NodePath("../../DashSoftPin")
 node_b = NodePath("..")
 params/bias = 0.01
@@ -1674,6 +1769,7 @@ script = ExtResource("16_frhkl")
 [node name="CameraManager" type="Node3D" parent="CaptureSystem/Inputs" node_paths=PackedStringArray("captureSystem", "captureCam", "centerRay", "cardinalRays", "colliderArea")]
 script = ExtResource("16_7i3oi")
 captureSystem = NodePath("../..")
+disabled = true
 lowBound = Vector3(0, -0.1, -2.5)
 highBound = Vector3(0, 2.5, 2.5)
 camSpeed = 5.0

@@ -45,7 +45,7 @@ func ChangeDistance(amount:int):
 	if combatDistance == 0 and amount < 0:
 		return
 	combatDistance = clampi(combatDistance + amount, 0, maxDistance)
-	print("New Distance: ", combatDistance)
+	#print("New Distance: ", combatDistance)
 	
 	AnimatePosition(combatDistance)
 
@@ -56,7 +56,7 @@ func MoveFaeble(amount:int, player:bool):
 	if combatDistance == 0 and amount < 0:
 		return
 	combatDistance = clampi(combatDistance + amount, 0, maxDistance)
-	print("New Distance: ", combatDistance)
+	#print("New Distance: ", combatDistance)
 	await AnimateSingle(combatDistance, player)
 	await get_tree().create_timer(0.1).timeout
 	await AnimatePosition(combatDistance)
@@ -82,12 +82,12 @@ func ChangeFaeble(faeble:Faeble, player:bool):
 func ChangePositions(targetDistance:int): #Directly set positions for battlers along the stage line.
 	var midpoint:Vector3 = Vector3(leftBound.x, leftBound.y, 0)
 	var factor:float = float(maxDistance - targetDistance) / float(maxDistance)
-	print("Lerp Factor: ", factor)
+	#print("Lerp Factor: ", factor)
 	var newplayerpos = leftBound.lerp(midpoint - Vector3(0,0,centerBuffer), factor)
-	prints(leftBound.z, newplayerpos.z)
+	#prints(leftBound.z, newplayerpos.z)
 	playerObject.position = newplayerpos
 	var newenemypos = rightBound.lerp(midpoint + Vector3(0,0,centerBuffer), factor)
-	prints(rightBound.z, newenemypos.z)
+	#prints(rightBound.z, newenemypos.z)
 	enemyObject.position = newenemypos
 	combatDistance = targetDistance
 
@@ -106,7 +106,7 @@ func AnimatePosition(targetDistance:int): #Sequence animation and tweens for sim
 	#prints(rightBound, newenemypos)
 	#enemyObject.position = newenemypos
 	await playertween.finished and enemytween.finished
-	print("Movement Complete!")
+	#print("Movement Complete!")
 
 func AnimateSingle(targetDistance:int, player:bool): 
 	#Sequence animation and tweens for simultaneous battler movement.
@@ -127,4 +127,4 @@ func AnimateSingle(targetDistance:int, player:bool):
 	#prints(rightBound, newenemypos)
 	#enemyObject.position = newenemypos
 	await tween.finished
-	print("Movement Complete!")
+	#print("Movement Complete!")

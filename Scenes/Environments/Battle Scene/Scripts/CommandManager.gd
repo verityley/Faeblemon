@@ -7,11 +7,15 @@ class_name CommandManager
 var selectedCommand:int
 
 #Setup Variables
+@export var commandAnchor:Node3D
+@export var moveAnchor:Node3D
 @export var commandObjects:Array[Node3D]
 @export var attackObjects:Array[Node3D]
 @export var commandPositions:Array[Vector3]
 @export var attackPositions:Array[Vector3]
 @export var rotateTime:float = 0.5
+@export var retractHeight:float = 2
+@export var lowerHeight:float = 0
 
 enum Actions{
 	Attack1=1,
@@ -28,7 +32,17 @@ enum Actions{
 
 #Setup Functions
 func _ready():
-	pass
+	await RaiseMenu(true)
+	await get_tree().create_timer(6.0).timeout
+	MoveMenu(battleSystem.fieldManager.playerObject.position)
+	await RaiseMenu(false, battleSystem.playerFaeble.commandOffset)
+	await RotateMenu(5)
+	await get_tree().create_timer(1.0).timeout
+	await RaiseMenu(true)
+	await get_tree().create_timer(0.2).timeout
+	MoveMenu(battleSystem.fieldManager.enemyObject.position)
+	await RaiseMenu(false, battleSystem.enemyFaeble.commandOffset)
+	await RotateMenu(-2)
 
 #Process Functions
 
@@ -40,16 +54,21 @@ func _ready():
 func MoveMenu(target:Vector3):
 	position = Vector3(position.x,position.y,target.z)
 
-func RaiseMenu(retract:bool):
+func RaiseMenu(retract:bool, offset:float = 0):
 	var tween = get_tree().create_tween()
+	var tween2 = get_tree().create_tween()
 	var target:Vector3
+	var target2:Vector3
 	if retract:
-		target = position + Vector3(0,3,0)
+		target = Vector3(0,retractHeight + offset,0)
+		target2 = moveAnchor.position - Vector3(0,0.5,0)
 	else:
-		target = position - Vector3(0,3,0)
+		target = Vector3(0,lowerHeight + offset,0)
+		target2 = moveAnchor.position + Vector3(0,0.5,0)
 		show()
-	tween.tween_property(self, "position", target, rotateTime)
-	await tween.finished
+	tween.tween_property(commandAnchor, "position", target, rotateTime)
+	tween2.tween_property(moveAnchor, "position", target2, rotateTime)
+	await tween.finished and tween2.finished
 	if retract:
 		hide()
 

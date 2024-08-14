@@ -36,6 +36,7 @@ battlerScale = Vector3(2, 2, 2)
 worldScale = 0.0
 UIScale = 0.0
 groundOffset = Vector3(-0.035, 0.923229, -0.0245328)
+commandOffset = 0.35
 minQuality = 1
 maxQuality = 20
 brawn = 20
@@ -50,6 +51,9 @@ roomToGrow = Array[int]([0, 0, 0, 0, 0, 0])
 prefPrimary = "Brawn"
 prefSecondary = "Vigor"
 HPCap = 40
+powerBonus = 1
+manaBonus = 0
+resolveBonus = 0
 skillPool = {
 ExtResource("8_xg4bp"): 1,
 ExtResource("9_34kut"): 1,

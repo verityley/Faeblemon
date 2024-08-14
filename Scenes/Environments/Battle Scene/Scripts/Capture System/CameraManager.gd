@@ -2,7 +2,7 @@ extends Node3D
 class_name CapCameraManager
 
 @export var captureSystem:Node3D
-var disabled:bool
+@export var disabled:bool
 
 #External Variables
 var faebleSeen:bool #Is the Faeble within the Area Check?
