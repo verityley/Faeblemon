@@ -60,9 +60,7 @@ enum Attributes{
 }
 
 enum Actions{
-	Attack1=1,
-	Attack2,
-	Attack3,
+	Attack=1,
 	Guard,
 	Recharge,
 	Dash,
@@ -150,8 +148,13 @@ func BattleInit():
 	fieldManager.ChangeFaeble(playerFaeble,true)
 	fieldManager.ChangeFaeble(enemyFaeble,false)
 	fieldManager.ChangePositions(fieldManager.maxDistance)
-	camera_3d.StartupSequence()
-	
+	await camera_3d.StartupSequence() #ALSO TEMP
+	await fieldManager.ChangeDistance(-5)
+	#TEMP BELOW HERE
+	#await get_tree().create_timer(1.0).timeout
+	#AwaitInput(true, 4, -3)
+	#await get_tree().create_timer(0.1).timeout
+	#AwaitInput(false, 4, 2)
 
 #Process Functions
 
@@ -211,7 +214,8 @@ func DamageCalc(attack:Skill, player:bool) -> int: #Returns Outgoing Damage
 		damage -= lowDiffBonus
 	elif defenderStat >= attackerStat + highThreshold:
 		damage -= highDiffBonus
-	prints("Post Stats Damage:", damage, "Attacker Stat:", attackerStat, "Defender Stat:", defenderStat)
+	prints("Post Stats Damage:", damage,
+	"Attacker Stat:", attackerStat, "Defender Stat:", defenderStat)
 	
 	var matchupMod:int = CheckMatchups(defender.faebleEntry, attack.skillType)
 	prints("Matchup Changing by:", matchupMod)
@@ -257,13 +261,16 @@ func CheckMatchups(target:Faeble, attackingType:School) -> int: #Returns multipl
 			damageAdjustment += secondType.typeMatchups[attackingType]
 			#print(secondType.name)
 	
-	if signatureType != null: #If the signature school of this monster equals the attacking type, add a step towards resistance
+	if signatureType != null:
+	#If the signature school of this monster equals the attacking type, add a step of resistance
 		if attackingType == signatureType:
 			damageAdjustment -= 1
 	
-	if attackingType.name == "Weird" and currentPhase != null: #Increment Weird if any planar phase is present
+	if attackingType.name == "Weird" and currentPhase != null:
+	#Increment Weird if any planar phase is present
 		damageAdjustment += 1
-	elif attackingType.name != "Weird" and currentPhase != null: #If a planar status is present, check for relevency and multiplier/additive adjustment
+	elif attackingType.name != "Weird" and currentPhase != null:
+	#If a planar status is present, check for relevency and multiplier/additive adjustment
 		if currentPhase.adjustAdditive == true: #If additive, apply to Adjustment
 			if currentPhase.typeList.has(attackingType) or currentPhase.allTypes == true:
 				damageAdjustment += currentPhase.addPosi
@@ -286,7 +293,7 @@ func CheckMatchups(target:Faeble, attackingType:School) -> int: #Returns multipl
 
 
 #State Machine
-func AwaitInput(host:bool, action:int, movement:int=0, extras:Array=[]):
+func AwaitInput(host:bool, action:int, movement:int=0, extras:Array[int]=[]):
 	if vsMulti:
 		if host:
 			playerSent = true
@@ -315,17 +322,29 @@ func AwaitInput(host:bool, action:int, movement:int=0, extras:Array=[]):
 		ProcessRound()
 
 func ProcessRound():
+	print("Beginning Round Action")
 	if simulMove:
-		await TurnMovement(playerMovement, true)
-		await TurnMovement(enemyMovement, false)
+		pStamina -= abs(playerMovement)
+		eStamina -= abs(enemyMovement)
+		prints("PMove:",playerMovement,"EMove:",enemyMovement)
+		var movement:int = playerMovement + enemyMovement
+		displayManager.ChangeActions(pStamina, true)
+		displayManager.ChangeActions(eStamina, false)
+		print("Total Movement: ", movement)
+		#displayManager.ChangeCurrent(displayManager.Resources.Resolve, movement, player, true)
+		await fieldManager.ChangeDistance(movement)
 	await QueueActions()
 	for i in range(actionOrder.size()):
 		if !simulMove:
 			if actionUser[i]:
+				print(playerMovement)
 				await TurnMovement(playerMovement, true)
 			else:
+				print(enemyMovement)
 				await TurnMovement(enemyMovement, false)
+		await get_tree().create_timer(1.0).timeout
 		await TurnAction(actionOrder[i], actionUser[i])
+		await get_tree().create_timer(2.0).timeout
 
 func QueueActions():
 	var RNG = RandomNumberGenerator.new()
@@ -379,8 +398,9 @@ func TurnMovement(movement:int, player:bool):
 		else:
 			stamina = eStamina
 		displayManager.ChangeActions(stamina - abs(movement),player)
-		displayManager.ChangeCurrent(displayManager.Resources.Resolve, movement, player, true)
-		await fieldManager.MoveFaeble(fieldManager.combatDistance + movement, player)
+		#displayManager.ChangeCurrent(displayManager.Resources.Resolve, movement, player, true)
+		await fieldManager.MoveFaeble(movement, player)
+		#await fieldManager.ChangeDistance(movement)
 		if player:
 			pStamina = stamina - abs(movement)
 		else:
@@ -388,21 +408,12 @@ func TurnMovement(movement:int, player:bool):
 
 func TurnAction(action:int, player:bool):
 	match action:
-		Actions.Attack1:
+		Actions.Attack:
 			if player:
+				#TEMP, Change to attack selection
 				await AttackAction(playerFaeble.assignedSkills[0], player)
 			else:
 				await AttackAction(enemyFaeble.assignedSkills[0], player)
-		Actions.Attack2:
-			if player:
-				await AttackAction(playerFaeble.assignedSkills[1], player)
-			else:
-				await AttackAction(enemyFaeble.assignedSkills[1], player)
-		Actions.Attack3:
-			if player:
-				await AttackAction(playerFaeble.assignedSkills[2], player)
-			else:
-				await AttackAction(enemyFaeble.assignedSkills[2], player)
 		Actions.Guard:
 			await GuardAction(player)
 		Actions.Recharge:

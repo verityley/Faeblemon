@@ -4,7 +4,7 @@ class_name CommandManager
 @export var battleSystem:BattleSystem
 
 #External Variables
-var selectedCommand:int
+var selectedCommand:int = 1
 
 #Setup Variables
 @export var commandAnchor:Node3D
@@ -16,43 +16,116 @@ var selectedCommand:int
 @export var rotateTime:float = 0.5
 @export var retractHeight:float = 2
 @export var lowerHeight:float = 0
+@export var menuBounds:float = 1.75
 
 enum Actions{
-	Attack1=1,
-	Attack2,
-	Attack3,
+	Attack=1,
 	Guard,
 	Recharge,
-	Dash,
-	Switch
+	Switch,
+	Dash
 }
 
 #Internal Variables
-
+var pickedCommand:int
+var commandIndex:Array[int] = [1,2,3,4,5]
+var selectedIndex:int
+var moving:bool = false
 
 #Setup Functions
 func _ready():
-	await RaiseMenu(true)
+	RaiseMenu(true)
 	await get_tree().create_timer(6.0).timeout
 	MoveMenu(battleSystem.fieldManager.playerObject.position)
 	await RaiseMenu(false, battleSystem.playerFaeble.commandOffset)
-	await RotateMenu(5)
-	await get_tree().create_timer(1.0).timeout
-	await RaiseMenu(true)
-	await get_tree().create_timer(0.2).timeout
-	MoveMenu(battleSystem.fieldManager.enemyObject.position)
-	await RaiseMenu(false, battleSystem.enemyFaeble.commandOffset)
-	await RotateMenu(-2)
+	#await RotateMenu(5)
+	#await get_tree().create_timer(1.0).timeout
+	#await RaiseMenu(true)
+	#await get_tree().create_timer(0.2).timeout
+	#MoveMenu(battleSystem.fieldManager.enemyObject.position)
+	#await RaiseMenu(false, battleSystem.enemyFaeble.commandOffset)
+	#await RotateMenu(-2)
+	pass
 
 #Process Functions
+func _input(event):
+	if pickedCommand != 0 and !moving:
+		if event.is_action_pressed("LeftMouse"):
+			SelectCommand(pickedCommand)
 
+
+func TargetCommand(selected:bool, command:int=0):
+	if selected == false:
+		pickedCommand = 0
+		#print("No Command")
+		return
+	pickedCommand = command
+	#print("Command: ", command)
+
+func TargetMovement(direction:int):
+	pass
+
+func SelectCommand(command:int):
+	if command == selectedCommand:
+		print("Command Confirmed!")
+		print(Actions.keys()[command-1])
+		pass #Send signal to Battle System
+	else:
+		moving = true
+		#print("Command Selected! ", command)
+		await RotateToFront(command)
+		selectedCommand = command
+		print(Actions.keys()[command-1])
+		moving = false
+		pass #Rotate picked command to front
 
 #Data-Handling Functions
+func ResetIndex():
+	#await get_tree().create_timer(rotationTime+0.03)
+	var index = 1
+	
+	for i in range(commandIndex.size()):
+		commandIndex[i] = index
+		if index >= 5:
+			index = 1
+		else:
+			index += 1
+
+func IndexReorder(currentFront:int):
+	var index = currentFront
+	
+	for i in range(commandIndex.size()):
+		commandIndex[i] = index
+		if index >= 5:
+			index = 1
+		else:
+			index += 1
+	
+	#prints("After:",commandIndex)
+
+func RotateToFront(command:int): #clockwise positions, starting 0 at noon
+	var index = commandIndex.find(command)
+	#prints(target, index)
+	#prints("Before:",commandIndex)
+	match index:
+		0:
+			print("Already At Front.")
+		1:
+			await RotateMenu(-1)
+		2:
+			await RotateMenu(-2)
+		3:
+			await RotateMenu(2)
+		4:
+			await RotateMenu(1)
+	IndexReorder(command)
+
 
 
 #Tangible Action Functions
 func MoveMenu(target:Vector3):
-	position = Vector3(position.x,position.y,target.z)
+	var targetZ:float = clampf(target.z, -menuBounds, menuBounds)
+	position = Vector3(position.x,position.y,targetZ)
 
 func RaiseMenu(retract:bool, offset:float = 0):
 	var tween = get_tree().create_tween()

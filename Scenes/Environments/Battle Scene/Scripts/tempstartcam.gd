@@ -12,7 +12,6 @@ extends Camera3D
 @export var lightbox:Node
 @onready var enemy_box_offset = $"../../../Outputs/DisplayManager/EnemyBoxOffset"
 @onready var player_box_offset = $"../../../Outputs/DisplayManager/PlayerBoxOffset"
-@onready var field_manager = $"../../../Outputs/FieldManager"
 
 
 
@@ -55,7 +54,7 @@ func StartupSequence():
 	highlights.show()
 	lightbox.hide()
 	#await field_manager.MoveFaeble(-field_manager.maxDistance/2, false)
-	await field_manager.ChangeDistance(-field_manager.maxDistance/2)
+	#await field_manager.ChangeDistance(-field_manager.maxDistance/2)
 	
 
 

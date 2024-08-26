@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://7k1hrsxmr3ri"
+path="res://.godot/imported/DistanceMarker.obj-ce5a351a440262ecc87049f30c763a32.mesh"
+
+[deps]
+
+files=["res://.godot/imported/DistanceMarker.obj-ce5a351a440262ecc87049f30c763a32.mesh"]
+
+source_file="res://Scenes/Environments/Battle Scene/Assets/Models/DistanceMarker.obj"
+dest_files=["res://.godot/imported/DistanceMarker.obj-ce5a351a440262ecc87049f30c763a32.mesh", "res://.godot/imported/DistanceMarker.obj-ce5a351a440262ecc87049f30c763a32.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(0.4, 0.4, 0.4)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

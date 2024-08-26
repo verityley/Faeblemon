@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://bhp03qdbwqg24"]
+[gd_scene load_steps=99 format=3 uid="uid://bhp03qdbwqg24"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Battle Scene/Scripts/BattleSystem.gd" id="1_pdhdj"]
 [ext_resource type="Resource" uid="uid://c35sr7lc0bckf" path="res://Database/Faebles/030Ratincture.tres" id="2_3s01x"]
@@ -40,6 +40,9 @@
 [ext_resource type="Texture2D" uid="uid://bohhb4wc75a5e" path="res://Global Assets/Graphics/Monster Graphics/Koin.png" id="20_bbost"]
 [ext_resource type="Resource" uid="uid://boyn4gyre1a4m" path="res://Database/Behaviors/Paths/BasicPeekLR.tres" id="21_d3826"]
 [ext_resource type="Resource" uid="uid://bjybb6ln67ya5" path="res://Database/Behaviors/Paths/BasicBackForth.tres" id="21_p64w0"]
+[ext_resource type="ArrayMesh" uid="uid://cvlu4w8mgvonn" path="res://Scenes/Environments/Battle Scene/Assets/Models/DistanceMeter.obj" id="27_0c4q1"]
+[ext_resource type="ArrayMesh" uid="uid://7k1hrsxmr3ri" path="res://Scenes/Environments/Battle Scene/Assets/Models/DistanceMarker.obj" id="28_f53oy"]
+[ext_resource type="Texture2D" uid="uid://d31nk550txsfd" path="res://Scenes/Environments/Battle Scene/Assets/DistanceDial.png" id="29_aduwc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fjyjx"]
 size = Vector3(0.05, 1, 0.025)
@@ -66,6 +69,10 @@ albedo_texture = ExtResource("8_ctgb7")
 [sub_resource type="CylinderMesh" id="CylinderMesh_f7w2i"]
 top_radius = 0.01
 bottom_radius = 0.01
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1yja4"]
+height = 0.1
+radius = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nvjwk"]
 transparency = 4
@@ -420,6 +427,7 @@ _surfaces = [{
 script = ExtResource("1_pdhdj")
 testFaeble1 = ExtResource("2_3s01x")
 testFaeble2 = ExtResource("2_suu8y")
+vsMulti = true
 commandManager = NodePath("Inputs/CommandManager")
 multiplayerManager = NodePath("Inputs/MultiplayerManager")
 AIManager = NodePath("Inputs/AIManager")
@@ -439,7 +447,7 @@ commandAnchor = NodePath("Commands")
 moveAnchor = NodePath("MoveCommands")
 commandObjects = [NodePath("Commands/AttackCommand/AttackPin"), NodePath("Commands/GuardCommand/GuardPin"), NodePath("Commands/RechargeCommand/RechargePin"), NodePath("Commands/SwitchCommand/SwitchPin"), NodePath("Commands/DashCommand/DashPin")]
 attackObjects = [NodePath("Commands/AttackCommands/AttackCommand1"), NodePath("Commands/AttackCommands/AttackCommand2"), NodePath("Commands/AttackCommands/AttackCommand3")]
-commandPositions = Array[Vector3]([Vector3(-0.7, -0.2, 0), Vector3(-0.3, 0, 0.7), Vector3(0.4, 0.3, 0.5), Vector3(0.4, 0.3, -0.5), Vector3(-0.3, 0, -0.7)])
+commandPositions = Array[Vector3]([Vector3(-0.7, -0.2, 0), Vector3(-0.3, 0, 0.7), Vector3(0.4, 0.5, 0.5), Vector3(0.4, 0.5, -0.5), Vector3(-0.3, 0, -0.7)])
 attackPositions = Array[Vector3]([Vector3(0, 0, 0), Vector3(0.35, -0.55, -0.01), Vector3(-0.35, -0.55, -0.01)])
 
 [node name="MoveCommands" type="Node3D" parent="Inputs/CommandManager"]
@@ -477,12 +485,6 @@ mesh = SubResource("QuadMesh_hsuvc")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_lac6y")
 
-[node name="LeftArrow5" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/LeftArrows"]
-transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0.08, 0, -0.54)
-mesh = SubResource("QuadMesh_hsuvc")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_lac6y")
-
 [node name="RightArrows" type="Node3D" parent="Inputs/CommandManager/MoveCommands"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
 
@@ -511,12 +513,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_sovnq")
 
 [node name="LeftArrow4" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/RightArrows"]
 transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0.06, 0, 0.425)
-mesh = SubResource("QuadMesh_hsuvc")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_sovnq")
-
-[node name="LeftArrow5" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/RightArrows"]
-transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0.08, 0, 0.54)
 mesh = SubResource("QuadMesh_hsuvc")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_sovnq")
@@ -582,6 +578,15 @@ params/bias = 0.01
 params/damping = 0.01
 params/impulse_clamp = 0.05
 
+[node name="Clickbox" type="Area3D" parent="Inputs/CommandManager/Commands/AttackCommand/AttackBody"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Inputs/CommandManager/Commands/AttackCommand/AttackBody/Clickbox"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_1yja4")
+
 [node name="GuardCommand" type="Node3D" parent="Inputs/CommandManager/Commands"]
 
 [node name="GuardPin" type="StaticBody3D" parent="Inputs/CommandManager/Commands/GuardCommand"]
@@ -617,13 +622,22 @@ params/bias = 0.01
 params/damping = 0.01
 params/impulse_clamp = 0.05
 
+[node name="Clickbox" type="Area3D" parent="Inputs/CommandManager/Commands/GuardCommand/GuardBody"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Inputs/CommandManager/Commands/GuardCommand/GuardBody/Clickbox"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_1yja4")
+
 [node name="RechargeCommand" type="Node3D" parent="Inputs/CommandManager/Commands"]
 
 [node name="RechargePin" type="StaticBody3D" parent="Inputs/CommandManager/Commands/RechargeCommand"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.4, 0.3, 0.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.4, 0.5, 0.5)
 
 [node name="RechargeSoftPin" type="RigidBody3D" parent="Inputs/CommandManager/Commands/RechargeCommand"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.4, 0.3, 0.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.4, 0.5, 0.5)
 
 [node name="PinJoint3D2" type="PinJoint3D" parent="Inputs/CommandManager/Commands/RechargeCommand/RechargeSoftPin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0, 0)
@@ -634,7 +648,7 @@ params/damping = 0.01
 params/impulse_clamp = 0.05
 
 [node name="RechargeBody" type="RigidBody3D" parent="Inputs/CommandManager/Commands/RechargeCommand"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.4, 0.3, 0.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.4, 0.5, 0.5)
 
 [node name="BattleCommand3" type="MeshInstance3D" parent="Inputs/CommandManager/Commands/RechargeCommand/RechargeBody"]
 mesh = SubResource("QuadMesh_hsuvc")
@@ -652,13 +666,22 @@ params/bias = 0.01
 params/damping = 0.01
 params/impulse_clamp = 0.1
 
+[node name="Clickbox" type="Area3D" parent="Inputs/CommandManager/Commands/RechargeCommand/RechargeBody"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Inputs/CommandManager/Commands/RechargeCommand/RechargeBody/Clickbox"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_1yja4")
+
 [node name="SwitchCommand" type="Node3D" parent="Inputs/CommandManager/Commands"]
 
 [node name="SwitchPin" type="StaticBody3D" parent="Inputs/CommandManager/Commands/SwitchCommand"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.4, 0.3, -0.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.4, 0.5, -0.5)
 
 [node name="SwitchSoftPin" type="RigidBody3D" parent="Inputs/CommandManager/Commands/SwitchCommand"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.4, 0.3, -0.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.4, 0.5, -0.5)
 
 [node name="PinJoint3D2" type="PinJoint3D" parent="Inputs/CommandManager/Commands/SwitchCommand/SwitchSoftPin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0, 0)
@@ -669,7 +692,7 @@ params/damping = 0.01
 params/impulse_clamp = 0.05
 
 [node name="SwitchBody" type="RigidBody3D" parent="Inputs/CommandManager/Commands/SwitchCommand"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.4, 0.3, -0.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.4, 0.5, -0.5)
 
 [node name="BattleCommand4" type="MeshInstance3D" parent="Inputs/CommandManager/Commands/SwitchCommand/SwitchBody"]
 mesh = SubResource("QuadMesh_hsuvc")
@@ -686,6 +709,15 @@ node_b = NodePath("..")
 params/bias = 0.01
 params/damping = 0.01
 params/impulse_clamp = 0.05
+
+[node name="Clickbox" type="Area3D" parent="Inputs/CommandManager/Commands/SwitchCommand/SwitchBody"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Inputs/CommandManager/Commands/SwitchCommand/SwitchBody/Clickbox"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_1yja4")
 
 [node name="DashCommand" type="Node3D" parent="Inputs/CommandManager/Commands"]
 
@@ -721,6 +753,15 @@ node_b = NodePath("..")
 params/bias = 0.01
 params/damping = 0.01
 params/impulse_clamp = 0.05
+
+[node name="Clickbox" type="Area3D" parent="Inputs/CommandManager/Commands/DashCommand/DashBody"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Inputs/CommandManager/Commands/DashCommand/DashBody/Clickbox"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_1yja4")
 
 [node name="MultiplayerManager" type="Node3D" parent="Inputs"]
 
@@ -1673,14 +1714,14 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.047
 visible = false
 mesh = SubResource("QuadMesh_d0h7h")
 
-[node name="FieldManager" type="Node3D" parent="Outputs" node_paths=PackedStringArray("battleManager", "playerObject", "enemyObject")]
+[node name="FieldManager" type="Node3D" parent="Outputs" node_paths=PackedStringArray("battleManager", "playerObject", "enemyObject", "distanceObject")]
 script = ExtResource("2_yxjww")
 battleManager = NodePath("../..")
 playerObject = NodePath("PlayerBattler")
 enemyObject = NodePath("EnemyBattler")
+distanceObject = NodePath("DistanceMeter")
 leftBound = Vector3(-1.65, -0.5, -2)
 rightBound = Vector3(-1.65, -0.5, 1.85)
-maxDistance = 8
 centerBuffer = 0.5
 movetime = 0.2
 
@@ -1730,6 +1771,28 @@ mesh = SubResource("BoxMesh_34ph3")
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, -0.035, 0.5, 0.065)
 visible = false
 texture = ExtResource("3_civxg")
+
+[node name="DistanceMeter" type="MeshInstance3D" parent="Outputs/FieldManager"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.51356, 2.227, 0)
+mesh = ExtResource("27_0c4q1")
+skeleton = NodePath("../../..")
+
+[node name="DistanceMarker" type="MeshInstance3D" parent="Outputs/FieldManager/DistanceMeter"]
+mesh = ExtResource("28_f53oy")
+skeleton = NodePath("../../../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Outputs/FieldManager/DistanceMeter/DistanceMarker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.527321, 0.0795538, 0)
+visible = false
+light_color = Color(0, 0.407843, 0, 1)
+light_energy = 0.05
+omni_range = 0.3
+omni_attenuation = 2.92817
+
+[node name="DistanceDial" type="Sprite3D" parent="Outputs/FieldManager/DistanceMeter"]
+transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 0, 0, 0)
+shaded = true
+texture = ExtResource("29_aduwc")
 
 [node name="MessageManager" type="Node3D" parent="Outputs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.52319, -0.949942, 0)
@@ -2064,3 +2127,14 @@ skeleton = NodePath("../..")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
 environment = SubResource("Environment_txdwu")
+
+[connection signal="mouse_entered" from="Inputs/CommandManager/Commands/AttackCommand/AttackBody/Clickbox" to="Inputs/CommandManager" method="TargetCommand" binds= [true, 1]]
+[connection signal="mouse_exited" from="Inputs/CommandManager/Commands/AttackCommand/AttackBody/Clickbox" to="Inputs/CommandManager" method="TargetCommand" binds= [false]]
+[connection signal="mouse_entered" from="Inputs/CommandManager/Commands/GuardCommand/GuardBody/Clickbox" to="Inputs/CommandManager" method="TargetCommand" binds= [true, 2]]
+[connection signal="mouse_exited" from="Inputs/CommandManager/Commands/GuardCommand/GuardBody/Clickbox" to="Inputs/CommandManager" method="TargetCommand" binds= [false]]
+[connection signal="mouse_entered" from="Inputs/CommandManager/Commands/RechargeCommand/RechargeBody/Clickbox" to="Inputs/CommandManager" method="TargetCommand" binds= [true, 3]]
+[connection signal="mouse_exited" from="Inputs/CommandManager/Commands/RechargeCommand/RechargeBody/Clickbox" to="Inputs/CommandManager" method="TargetCommand" binds= [false]]
+[connection signal="mouse_entered" from="Inputs/CommandManager/Commands/SwitchCommand/SwitchBody/Clickbox" to="Inputs/CommandManager" method="TargetCommand" binds= [true, 4]]
+[connection signal="mouse_exited" from="Inputs/CommandManager/Commands/SwitchCommand/SwitchBody/Clickbox" to="Inputs/CommandManager" method="TargetCommand" binds= [false]]
+[connection signal="mouse_entered" from="Inputs/CommandManager/Commands/DashCommand/DashBody/Clickbox" to="Inputs/CommandManager" method="TargetCommand" binds= [true, 5]]
+[connection signal="mouse_exited" from="Inputs/CommandManager/Commands/DashCommand/DashBody/Clickbox" to="Inputs/CommandManager" method="TargetCommand" binds= [false]]
