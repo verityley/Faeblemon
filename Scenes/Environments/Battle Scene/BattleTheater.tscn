@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://bhp03qdbwqg24"]
+[gd_scene load_steps=101 format=3 uid="uid://bhp03qdbwqg24"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Battle Scene/Scripts/BattleSystem.gd" id="1_pdhdj"]
 [ext_resource type="Resource" uid="uid://c35sr7lc0bckf" path="res://Database/Faebles/030Ratincture.tres" id="2_3s01x"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scenes/Environments/Battle Scene/Scripts/CommandManager.gd" id="4_1f14f"]
 [ext_resource type="Texture2D" uid="uid://cdsyyxcgwde5d" path="res://Scenes/Environments/Battle Scene/Assets/BattleCommand.png" id="4_2bx4k"]
 [ext_resource type="Texture2D" uid="uid://bnkwbpfeb6e75" path="res://Scenes/Environments/Battle Scene/Assets/MoveLeftGreen.png" id="4_yesga"]
+[ext_resource type="Script" path="res://Scenes/Environments/Battle Scene/Scripts/MoveCommands.gd" id="5_6vpvy"]
 [ext_resource type="Texture2D" uid="uid://b3amsm7jpbm3q" path="res://Scenes/Environments/Battle Scene/Assets/MoveRightGreen.png" id="5_367c3"]
 [ext_resource type="Script" path="res://Scenes/Environments/Battle Scene/Scripts/DisplayManager.gd" id="6_nigti"]
 [ext_resource type="ArrayMesh" uid="uid://cddx5cwaofco2" path="res://Scenes/Environments/Battle Scene/Assets/Models/StatusPlate.obj" id="6_oplxk"]
@@ -44,15 +45,18 @@
 [ext_resource type="ArrayMesh" uid="uid://7k1hrsxmr3ri" path="res://Scenes/Environments/Battle Scene/Assets/Models/DistanceMarker.obj" id="28_f53oy"]
 [ext_resource type="Texture2D" uid="uid://d31nk550txsfd" path="res://Scenes/Environments/Battle Scene/Assets/DistanceDial.png" id="29_aduwc"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_fjyjx"]
-size = Vector3(0.05, 1, 0.025)
-
 [sub_resource type="QuadMesh" id="QuadMesh_hsuvc"]
 size = Vector2(0.7, 0.7)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lac6y"]
 transparency = 4
 albedo_texture = ExtResource("4_yesga")
+
+[sub_resource type="BoxMesh" id="BoxMesh_fjyjx"]
+size = Vector3(0.05, 1, 0.025)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bxum3"]
+size = Vector3(0.10083, 0.52417, 0.757751)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sovnq"]
 transparency = 4
@@ -450,16 +454,15 @@ attackObjects = [NodePath("Commands/AttackCommands/AttackCommand1"), NodePath("C
 commandPositions = Array[Vector3]([Vector3(-0.7, -0.2, 0), Vector3(-0.3, 0, 0.7), Vector3(0.4, 0.5, 0.5), Vector3(0.4, 0.5, -0.5), Vector3(-0.3, 0, -0.7)])
 attackPositions = Array[Vector3]([Vector3(0, 0, 0), Vector3(0.35, -0.55, -0.01), Vector3(-0.35, -0.55, -0.01)])
 
-[node name="MoveCommands" type="Node3D" parent="Inputs/CommandManager"]
+[node name="MoveCommands" type="Node3D" parent="Inputs/CommandManager" node_paths=PackedStringArray("battleSystem", "arrowObjects")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.225, 0)
+script = ExtResource("5_6vpvy")
+battleSystem = NodePath("../../..")
+arrowPositions = Array[Vector3]([Vector3(0.06, 0, -0.425), Vector3(0.04, 0, -0.3), Vector3(0.02, 0, -0.175), Vector3(0, 0, 0), Vector3(0.02, 0, 0.175), Vector3(0.04, 0, 0.3), Vector3(0.06, 0, 0.425)])
+arrowObjects = [NodePath("LeftArrows/LeftArrow4"), NodePath("LeftArrows/LeftArrow3"), NodePath("LeftArrows/LeftArrow2"), NodePath("."), NodePath("RightArrows/RightArrow2"), NodePath("RightArrows/RightArrow3"), NodePath("RightArrows/RightArrow4")]
 
 [node name="LeftArrows" type="Node3D" parent="Inputs/CommandManager/MoveCommands"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4)
-
-[node name="ArrowStick" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/LeftArrows"]
-transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.49691e-08, 0.0219445, -0.358009, 0.0461892)
-mesh = SubResource("BoxMesh_fjyjx")
-skeleton = NodePath("../LeftArrow")
 
 [node name="LeftArrow" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/LeftArrows"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
@@ -468,30 +471,39 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_lac6y")
 
 [node name="LeftArrow2" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/LeftArrows"]
-transform = Transform3D(-3.0598e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.0598e-08, 0.02, 0, -0.175)
+transform = Transform3D(-3.0598e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.0598e-08, 0, 0, 0)
+visible = false
 mesh = SubResource("QuadMesh_hsuvc")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_lac6y")
 
 [node name="LeftArrow3" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/LeftArrows"]
-transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0.04, 0, -0.3)
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0.02, 0, -0.175)
+visible = false
 mesh = SubResource("QuadMesh_hsuvc")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_lac6y")
 
 [node name="LeftArrow4" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/LeftArrows"]
-transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0.06, 0, -0.425)
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0.04, 0, -0.3)
+visible = false
 mesh = SubResource("QuadMesh_hsuvc")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_lac6y")
 
+[node name="ArrowStick" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/LeftArrows"]
+transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.49691e-08, 0.0219445, -0.358009, 0.0461892)
+mesh = SubResource("BoxMesh_fjyjx")
+skeleton = NodePath("../LeftArrow")
+
+[node name="Clickbox" type="Area3D" parent="Inputs/CommandManager/MoveCommands/LeftArrows"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Inputs/CommandManager/MoveCommands/LeftArrows/Clickbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0313721, 0.0157471, -0.121124)
+shape = SubResource("BoxShape3D_bxum3")
+
 [node name="RightArrows" type="Node3D" parent="Inputs/CommandManager/MoveCommands"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
-
-[node name="ArrowStick" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/RightArrows"]
-transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.49691e-08, 0.022, -0.358, -0.046)
-mesh = SubResource("BoxMesh_fjyjx")
-skeleton = NodePath("../RightArrow")
 
 [node name="RightArrow" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/RightArrows"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
@@ -499,23 +511,37 @@ mesh = SubResource("QuadMesh_hsuvc")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_sovnq")
 
-[node name="LeftArrow2" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/RightArrows"]
-transform = Transform3D(-3.0598e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.0598e-08, 0.02, 0, 0.175)
+[node name="RightArrow2" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/RightArrows"]
+transform = Transform3D(-3.0598e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.0598e-08, 0, 0, 0)
+visible = false
 mesh = SubResource("QuadMesh_hsuvc")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_sovnq")
 
-[node name="LeftArrow3" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/RightArrows"]
-transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0.04, 0, 0.3)
+[node name="RightArrow3" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/RightArrows"]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0.02, 0, 0.175)
+visible = false
 mesh = SubResource("QuadMesh_hsuvc")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_sovnq")
 
-[node name="LeftArrow4" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/RightArrows"]
-transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0.06, 0, 0.425)
+[node name="RightArrow4" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/RightArrows"]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0.04, 0, 0.3)
+visible = false
 mesh = SubResource("QuadMesh_hsuvc")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_sovnq")
+
+[node name="ArrowStick" type="MeshInstance3D" parent="Inputs/CommandManager/MoveCommands/RightArrows"]
+transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.49691e-08, 0.022, -0.358, -0.046)
+mesh = SubResource("BoxMesh_fjyjx")
+skeleton = NodePath("../RightArrow")
+
+[node name="Clickbox" type="Area3D" parent="Inputs/CommandManager/MoveCommands/RightArrows"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Inputs/CommandManager/MoveCommands/RightArrows/Clickbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.031, 0.016, 0.169426)
+shape = SubResource("BoxShape3D_bxum3")
 
 [node name="Commands" type="Node3D" parent="Inputs/CommandManager"]
 
@@ -2128,6 +2154,10 @@ skeleton = NodePath("../..")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
 environment = SubResource("Environment_txdwu")
 
+[connection signal="mouse_entered" from="Inputs/CommandManager/MoveCommands/LeftArrows/Clickbox" to="Inputs/CommandManager/MoveCommands" method="TargetMovement" binds= [true, -1]]
+[connection signal="mouse_exited" from="Inputs/CommandManager/MoveCommands/LeftArrows/Clickbox" to="Inputs/CommandManager/MoveCommands" method="TargetMovement" binds= [false]]
+[connection signal="mouse_entered" from="Inputs/CommandManager/MoveCommands/RightArrows/Clickbox" to="Inputs/CommandManager/MoveCommands" method="TargetMovement" binds= [true, 1]]
+[connection signal="mouse_exited" from="Inputs/CommandManager/MoveCommands/RightArrows/Clickbox" to="Inputs/CommandManager/MoveCommands" method="TargetMovement" binds= [false]]
 [connection signal="mouse_entered" from="Inputs/CommandManager/Commands/AttackCommand/AttackBody/Clickbox" to="Inputs/CommandManager" method="TargetCommand" binds= [true, 1]]
 [connection signal="mouse_exited" from="Inputs/CommandManager/Commands/AttackCommand/AttackBody/Clickbox" to="Inputs/CommandManager" method="TargetCommand" binds= [false]]
 [connection signal="mouse_entered" from="Inputs/CommandManager/Commands/GuardCommand/GuardBody/Clickbox" to="Inputs/CommandManager" method="TargetCommand" binds= [true, 2]]
