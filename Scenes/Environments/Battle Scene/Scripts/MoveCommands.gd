@@ -86,6 +86,18 @@ func ArrowIndexing(direction:int):
 		await MoveArrow(current, arrow, true)
 
 #Tangible Action Functions
+func ResetArrows():
+	print("Range: ",abs(intendedMovement))
+	for i in range(abs(intendedMovement)):
+		if intendedMovement > 0:
+			print("Resetting Arrow")
+			ArrowIndexing(-1)
+			await battleSystem.fieldManager.RotateMarker(-1)
+		else:
+			print("Resetting Arrow")
+			ArrowIndexing(1)
+			await battleSystem.fieldManager.RotateMarker(1)
+
 func MoveArrow(fromIndex:int, toIndex:int, hide:bool):
 	var tween = get_tree().create_tween()
 	arrowObjects[fromIndex].show()

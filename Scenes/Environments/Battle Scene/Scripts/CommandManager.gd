@@ -69,6 +69,11 @@ func SelectCommand(command:int):
 	if command == selectedCommand:
 		print("Command Confirmed!")
 		print(Actions.keys()[command-1])
+		await ResetMenu()
+		battleSystem.AwaitInput(true, command, -moveAnchor.intendedMovement)
+		battleSystem.AwaitInput(false, command, -moveAnchor.intendedMovement)
+		moveAnchor.intendedMovement = 0
+		selectedCommand = 0
 		pass #Send signal to Battle System
 	else:
 		moving = true
@@ -123,6 +128,12 @@ func RotateToFront(command:int): #clockwise positions, starting 0 at noon
 
 
 #Tangible Action Functions
+func ResetMenu():
+	await moveAnchor.ResetArrows()
+	await RaiseMenu(true)
+	await RotateToFront(Actions.Attack)
+	ResetIndex()
+
 func MoveMenu(target:Vector3):
 	var targetZ:float = clampf(target.z, -menuBounds, menuBounds)
 	position = Vector3(position.x,position.y,targetZ)

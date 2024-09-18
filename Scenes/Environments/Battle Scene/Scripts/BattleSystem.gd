@@ -15,7 +15,7 @@ var currentPhase:PlanarPhase
 
 #Setup Variables
 @export_category("Managers")
-@export var commandManager:Node3D
+@export var commandManager:CommandManager
 @export var multiplayerManager:Node3D
 @export var AIManager:Node3D
 @export var displayManager:DisplayManager
@@ -342,9 +342,23 @@ func ProcessRound():
 			else:
 				print(enemyMovement)
 				await TurnMovement(enemyMovement, false)
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(0.2).timeout
 		await TurnAction(actionOrder[i], actionUser[i])
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(0.5).timeout
+	ResetRound()
+
+func ResetRound():
+	actionOrder.clear()
+	actionUser.clear()
+	playerSent = false
+	playerAction = 0
+	playerMovement = 0
+	playerExtras.clear()
+	enemySent = false
+	enemyAction = 0
+	enemyMovement = 0
+	enemyExtras.clear()
+	await commandManager.RaiseMenu(false, playerFaeble.commandOffset)
 
 func QueueActions():
 	var RNG = RandomNumberGenerator.new()
