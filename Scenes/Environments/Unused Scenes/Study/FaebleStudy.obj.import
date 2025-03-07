@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://rtpcpjv13uwt"
+path="res://.godot/imported/FaebleStudy.obj-1e250efce962c4f42bac6c3504faa2d1.mesh"
+
+[deps]
+
+files=["res://.godot/imported/FaebleStudy.obj-1e250efce962c4f42bac6c3504faa2d1.mesh"]
+
+source_file="res://Scenes/Environments/Unused Scenes/Study/FaebleStudy.obj"
+dest_files=["res://.godot/imported/FaebleStudy.obj-1e250efce962c4f42bac6c3504faa2d1.mesh", "res://.godot/imported/FaebleStudy.obj-1e250efce962c4f42bac6c3504faa2d1.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

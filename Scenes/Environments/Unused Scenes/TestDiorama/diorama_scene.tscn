@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfb4uws0lufhy"]
+
+[ext_resource type="PackedScene" uid="uid://crabo5djoamoj" path="res://Scenes/Player/DioramaPlayer.tscn" id="1_w1o6u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q0aci"]
+size = Vector3(1, 10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q53ak"]
+size = Vector3(20, 10, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_85y8i"]
+size = Vector3(20, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0vxqs"]
+size = Vector3(20, 1, 10)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0jt04"]
+size = Vector2(20, 10)
+
+[node name="DioramaScene" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="VFX" type="Node3D" parent="Environment"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment/VFX"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 10)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Environment/VFX"]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 0, 15, 5)
+light_energy = 0.5
+
+[node name="Collision" type="Node3D" parent="Environment"]
+
+[node name="Boundaries" type="StaticBody3D" parent="Environment/Collision"]
+input_ray_pickable = false
+
+[node name="LeftBound" type="CollisionShape3D" parent="Environment/Collision/Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 5.5, 0)
+shape = SubResource("BoxShape3D_q0aci")
+
+[node name="RightBound" type="CollisionShape3D" parent="Environment/Collision/Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 5.5, 0)
+shape = SubResource("BoxShape3D_q0aci")
+
+[node name="BackBound" type="CollisionShape3D" parent="Environment/Collision/Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, -5.5)
+shape = SubResource("BoxShape3D_q53ak")
+
+[node name="FrontBound" type="CollisionShape3D" parent="Environment/Collision/Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 5.5)
+shape = SubResource("BoxShape3D_q53ak")
+
+[node name="GroundBound" type="CollisionShape3D" parent="Environment/Collision/Boundaries"]
+shape = SubResource("BoxShape3D_85y8i")
+
+[node name="TopBound" type="CollisionShape3D" parent="Environment/Collision/Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0)
+shape = SubResource("BoxShape3D_85y8i")
+
+[node name="Scene" type="Node3D" parent="Environment"]
+
+[node name="Ground" type="MeshInstance3D" parent="Environment/Scene"]
+mesh = SubResource("BoxMesh_0vxqs")
+
+[node name="Sky" type="MeshInstance3D" parent="Environment/Scene"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5.5, -5)
+mesh = SubResource("PlaneMesh_0jt04")
+
+[node name="Interactables" type="Node3D" parent="Environment"]
+
+[node name="DioramaPlayer" parent="." instance=ExtResource("1_w1o6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.64506, 0)

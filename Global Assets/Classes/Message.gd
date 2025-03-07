@@ -9,7 +9,7 @@ class_name Message
 @export var messageSpeed:float #Delay between each letter
 @export var messageMute:bool #Message ignores the Speaker sound fx
 @export var messageInstant:bool #Message ignores the per-letter text delay
-@export var messageRecord:bool = true #Message is recorded to dialogue history/notebook
+#@export var messageRecord:bool = true #Message is recorded to dialogue history/notebook
 @export var messageSkip:bool #This tells the conversation ordering to skip over this message
 
 #@export_category("Textbox FX")

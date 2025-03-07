@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cbqje633haawy"
+path="res://.godot/imported/StatusPlate.obj-fb8288b4e3021a09b56ca938ceae6640.mesh"
+
+[deps]
+
+files=["res://.godot/imported/StatusPlate.obj-fb8288b4e3021a09b56ca938ceae6640.mesh"]
+
+source_file="res://Scenes/Environments/Unused Scenes/Main Scene/Assets/Models/StatusPlate.obj"
+dest_files=["res://.godot/imported/StatusPlate.obj-fb8288b4e3021a09b56ca938ceae6640.mesh", "res://.godot/imported/StatusPlate.obj-fb8288b4e3021a09b56ca938ceae6640.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

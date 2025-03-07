@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Speaker" load_steps=3 format=3 uid="uid://bxntiemesdgnj"]
+
+[ext_resource type="Script" path="res://Global Assets/Classes/Speaker.gd" id="1_0ekw1"]
+[ext_resource type="Texture2D" uid="uid://4jfbhr1nfjxl" path="res://Scenes/Environments/World Scenes/Test Environment/Assets/VerBust.png" id="2_clo0s"]
+
+[resource]
+script = ExtResource("1_0ekw1")
+speakerName = "Verity"
+speakerBust = ExtResource("2_clo0s")
+speakerEmotes = {}

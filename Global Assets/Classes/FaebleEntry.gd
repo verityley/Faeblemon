@@ -82,4 +82,3 @@ var learnedSkills:Array[Skill] #These are all the skills they know by their leve
 @export_multiline var description:String #Look into parsing string and revealing bits by level
 @export_multiline var tags:Array[String]
 @export_multiline var rumors:Array[String]
-

@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Faeble" load_steps=21 format=3 uid="uid://doqntayychfst"]
+[gd_resource type="Resource" script_class="Faeble" load_steps=23 format=3 uid="uid://doqntayychfst"]
 
 [ext_resource type="Script" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_sh00x"]
 [ext_resource type="Resource" uid="uid://087ema067pet" path="res://Database/Schools/Blessing.tres" id="1_si7do"]
 [ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="2_awjyy"]
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="3_gdxfd"]
 [ext_resource type="Resource" uid="uid://cvhcgyhumqrql" path="res://Database/Domains/Primal.tres" id="3_sduox"]
+[ext_resource type="Script" path="res://Global Assets/Classes/Feat.gd" id="4_3jsj3"]
 [ext_resource type="Texture2D" uid="uid://b5ol4hh2opcgk" path="res://Global Assets/Graphics/Monster Graphics/Icons/RatonicIcon.png" id="4_7wnju"]
 [ext_resource type="Resource" uid="uid://c4ju0ee2lda3j" path="res://Database/Domains/Haunting.tres" id="6_n6djw"]
 [ext_resource type="Resource" uid="uid://cl8db7w0h0fb2" path="res://Database/Schools/Alchemy.tres" id="7_gcrby"]
@@ -36,6 +38,7 @@ battlerScale = Vector3(1.5, 1.5, 1.5)
 worldScale = 0.0
 UIScale = 0.0
 groundOffset = Vector3(0, 0.1, 0)
+commandOffset = 0.0
 minQuality = 2
 maxQuality = 20
 brawn = 8
@@ -43,12 +46,16 @@ vigor = 16
 wit = 8
 ambition = 16
 grace = 12
-resolve = 20
 heart = 15
 profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
+statImprovements = Array[int]([0, 0, 0, 0, 0, 0])
+roomToGrow = Array[int]([0, 0, 0, 0, 0, 0])
 prefPrimary = "Vigor"
 prefSecondary = "Ambition"
 HPCap = 60
+powerBonus = 1
+manaBonus = 0
+resolveBonus = 0
 skillPool = {
 ExtResource("8_jcan8"): 1,
 ExtResource("9_8iorj"): 1,
@@ -63,19 +70,19 @@ ExtResource("17_l4cxd"): 17,
 ExtResource("18_v88kj"): 18,
 ExtResource("19_2joly"): 19
 }
-assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null])
-feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
-traitBig = false
-traitTall = false
-traitSmall = false
-traitJumping = false
-traitFlying = false
-traitPhasing = false
+assignedSkills = Array[ExtResource("3_gdxfd")]([null, null, null])
+feats = Array[ExtResource("4_3jsj3")]([])
+customResource = 0
+customName = ""
+centerPosition = Vector3(0, 0, 0)
+colliderShape = PackedVector2Array()
+idealZoom = 0.0
 canEvolve = false
 evoLevel = 0
 evoBranch = false
 currentHP = 0
-currentEnergy = 0
+currentMana = 0
 fainted = false
 description = ""
-rumors = ""
+tags = Array[String]([])
+rumors = Array[String]([])

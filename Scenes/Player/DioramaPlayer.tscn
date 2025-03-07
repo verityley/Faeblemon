@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://crabo5djoamoj"]
+
+[ext_resource type="Texture2D" uid="uid://cmq32un2xwhha" path="res://Global Assets/Graphics/Monster Graphics/PlayerChar.png" id="1_2xuiv"]
+[ext_resource type="Script" path="res://Scenes/Player/Scripts/PlayerManager.gd" id="1_pbyid"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gc7ec"]
+height = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o5iau"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_2xuiv")
+texture_filter = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_ed7oj"]
+lightmap_size_hint = Vector2i(12, 17)
+material = SubResource("StandardMaterial3D_o5iau")
+size = Vector2(1, 1.5)
+
+[node name="DioramaPlayer" type="CharacterBody3D"]
+script = ExtResource("1_pbyid")
+
+[node name="Player Bound" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_gc7ec")
+
+[node name="Player Sprite" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_ed7oj")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2, 5)

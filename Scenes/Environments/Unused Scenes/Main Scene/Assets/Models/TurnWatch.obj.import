@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://rr80jys4ychb"
+path="res://.godot/imported/TurnWatch.obj-778c83e7de12e3a6ecbab3e74dd4da14.mesh"
+
+[deps]
+
+files=["res://.godot/imported/TurnWatch.obj-778c83e7de12e3a6ecbab3e74dd4da14.mesh"]
+
+source_file="res://Scenes/Environments/Unused Scenes/Main Scene/Assets/Models/TurnWatch.obj"
+dest_files=["res://.godot/imported/TurnWatch.obj-778c83e7de12e3a6ecbab3e74dd4da14.mesh", "res://.godot/imported/TurnWatch.obj-778c83e7de12e3a6ecbab3e74dd4da14.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

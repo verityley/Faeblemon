@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="Faeble" load_steps=19 format=3 uid="uid://rij6snba6q0t"]
+[gd_resource type="Resource" script_class="Faeble" load_steps=21 format=3 uid="uid://rij6snba6q0t"]
 
 [ext_resource type="Script" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_3560i"]
 [ext_resource type="Resource" uid="uid://cy460pjjcakrm" path="res://Database/Schools/Curse.tres" id="1_irpsw"]
 [ext_resource type="Resource" uid="uid://cvhcgyhumqrql" path="res://Database/Domains/Primal.tres" id="2_ewhh8"]
 [ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Mundane.tres" id="2_kjjpv"]
 [ext_resource type="Texture2D" uid="uid://bpkh8xekg4032" path="res://Global Assets/Graphics/Monster Graphics/Icons/SqwyrmIcon.png" id="3_37i8b"]
+[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="3_ngsoi"]
+[ext_resource type="Script" path="res://Global Assets/Classes/Feat.gd" id="4_0sm8c"]
 [ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="5_f8cj3"]
 [ext_resource type="Texture2D" uid="uid://brxgkrgviam1r" path="res://Global Assets/Graphics/Monster Graphics/Sqwyrm.png" id="6_o8abd"]
 [ext_resource type="Resource" uid="uid://cthckxb4gbqy1" path="res://Database/Skills/Tier 1 (Trash)/thmp_Slash.tres" id="7_df8h3"]
@@ -33,6 +35,7 @@ battlerScale = Vector3(1.3, 1.3, 1.3)
 worldScale = 0.0
 UIScale = 0.0
 groundOffset = Vector3(0, -0.1, 0)
+commandOffset = 0.0
 minQuality = 2
 maxQuality = 20
 brawn = 10
@@ -40,12 +43,16 @@ vigor = 6
 wit = 5
 ambition = 3
 grace = 10
-resolve = 5
 heart = 7
 profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
+statImprovements = Array[int]([0, 0, 0, 0, 0, 0])
+roomToGrow = Array[int]([0, 0, 0, 0, 0, 0])
 prefPrimary = "Brawn"
 prefSecondary = "Grace"
 HPCap = 60
+powerBonus = 1
+manaBonus = 0
+resolveBonus = 0
 skillPool = {
 ExtResource("7_df8h3"): 1,
 ExtResource("8_0xm70"): 1,
@@ -59,19 +66,19 @@ ExtResource("15_lgf8l"): 15,
 ExtResource("16_4s68r"): 17,
 ExtResource("17_x7uis"): 19
 }
-assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null])
-feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
-traitBig = false
-traitTall = false
-traitSmall = false
-traitJumping = false
-traitFlying = false
-traitPhasing = false
+assignedSkills = Array[ExtResource("3_ngsoi")]([null, null, null])
+feats = Array[ExtResource("4_0sm8c")]([])
+customResource = 0
+customName = ""
+centerPosition = Vector3(0, 0, 0)
+colliderShape = PackedVector2Array()
+idealZoom = 0.0
 canEvolve = false
 evoLevel = 0
 evoBranch = false
 currentHP = 0
-currentEnergy = 0
+currentMana = 0
 fainted = false
 description = ""
-rumors = ""
+tags = Array[String]([])
+rumors = Array[String]([])

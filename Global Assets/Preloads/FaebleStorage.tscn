@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://fu2qyp7su26t"]
+[gd_scene load_steps=28 format=3 uid="uid://fu2qyp7su26t"]
 
 [ext_resource type="Script" path="res://Global Assets/Preloads/FaebleStorage.gd" id="1_th8ns"]
 [ext_resource type="Resource" uid="uid://rij6snba6q0t" path="res://Database/Faebles/003Sqwyrm.tres" id="2_fnisy"]
@@ -26,6 +26,7 @@
 [ext_resource type="Resource" uid="uid://coinvel76rro6" path="res://Database/Faebles/093Violasp.tres" id="8_g1mnq"]
 [ext_resource type="Resource" uid="uid://dy0hv60ybwnkq" path="res://Database/Faebles/078Baasher.tres" id="8_i5gdt"]
 [ext_resource type="Resource" uid="uid://efq1xl3capar" path="res://Database/Faebles/112Gobbloth.tres" id="26_u8tlh"]
+[ext_resource type="Script" path="res://Global Assets/Classes/FaebleEntry.gd" id="27_gpp2x"]
 
 [node name="FaebleStorage" type="Node"]
 script = ExtResource("1_th8ns")
@@ -56,5 +57,5 @@ codex = {
 "111 - Slobble": ExtResource("5_kcuvj"),
 "112 - Gobbloth": ExtResource("26_u8tlh")
 }
-playerParty = Array[Resource("res://Global Assets/Classes/FaebleEntry.gd")]([ExtResource("4_6mawc"), null, null, null, null, null])
-enemyParty = Array[Resource("res://Global Assets/Classes/FaebleEntry.gd")]([ExtResource("5_81ur4"), null, null, null, null, null])
+playerParty = Array[ExtResource("27_gpp2x")]([ExtResource("4_6mawc"), null, null, null, null, null])
+enemyParty = Array[ExtResource("27_gpp2x")]([ExtResource("5_81ur4"), null, null, null, null, null])

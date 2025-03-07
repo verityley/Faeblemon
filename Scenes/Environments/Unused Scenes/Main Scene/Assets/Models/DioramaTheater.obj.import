@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://0m58sifa65sx"
+path="res://.godot/imported/DioramaTheater.obj-eaef1ce679faa9d90c87de1c6a2d3ffd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/DioramaTheater.obj-eaef1ce679faa9d90c87de1c6a2d3ffd.mesh"]
+
+source_file="res://Scenes/Environments/Unused Scenes/Main Scene/Assets/Models/DioramaTheater.obj"
+dest_files=["res://.godot/imported/DioramaTheater.obj-eaef1ce679faa9d90c87de1c6a2d3ffd.mesh", "res://.godot/imported/DioramaTheater.obj-eaef1ce679faa9d90c87de1c6a2d3ffd.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

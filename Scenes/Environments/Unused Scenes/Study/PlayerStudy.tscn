@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkqk74nhipfxi"]
+
+[ext_resource type="ArrayMesh" uid="uid://rtpcpjv13uwt" path="res://Scenes/Environments/Unused Scenes/Study/FaebleStudy.obj" id="1_t6ggw"]
+[ext_resource type="Texture2D" uid="uid://bqtn72gigxxhy" path="res://Scenes/Environments/Unused Scenes/Study/VerBust.png" id="2_mk7sv"]
+[ext_resource type="Texture2D" uid="uid://o8pghkkhyq84" path="res://Scenes/Environments/Unused Scenes/Study/PlayerChar.png" id="3_crm74"]
+[ext_resource type="PackedScene" uid="uid://gkuup4yoe8gb" path="res://Scenes/UI/DialogueSystem/ChatterNode.tscn" id="4_rpjnh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d6tab"]
+
+[sub_resource type="Environment" id="Environment_w5ehh"]
+ambient_light_color = Color(0.756863, 0.537255, 0, 1)
+
+[node name="PlayerStudy" type="Node3D"]
+
+[node name="FaebleStudy" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_d6tab")
+mesh = ExtResource("1_t6ggw")
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.654055, 0.756447, 0, -0.756447, 0.654055, 0, 1.88593, -1.40791)
+fov = 30.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.997314, 0.0732382, 0, -0.0732382, 0.997314, 0, 1.44482, -1.0469)
+fov = 30.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w5ehh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.919115, 0.39399, 0, -0.39399, 0.919115, 4.04258, 1.01753, -2.80991)
+
+[node name="CharStandin2" type="Sprite3D" parent="."]
+transform = Transform3D(0.045, 0, 0, 0, 0.045, 0, 0, 0, 0.045, 0.55, 1.35, -2.747)
+texture = ExtResource("2_mk7sv")
+
+[node name="CharStandin1" type="Sprite3D" parent="."]
+transform = Transform3D(0.045, 0, 0, 0, 0.045, 0, 0, 0, 0.045, -0.55, 1.35, -2.747)
+flip_h = true
+texture = ExtResource("2_mk7sv")
+
+[node name="PlayerStandin" type="Sprite3D" parent="."]
+transform = Transform3D(0.003, 0, 0, 0, 0.003, 0, 0, 0, 0.003, -0.145305, 1.17594, -2.22761)
+billboard = 1
+texture = ExtResource("3_crm74")
+
+[node name="ChatterNode" parent="." instance=ExtResource("4_rpjnh")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.140417, 1.31775, -2.2239)
