@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b8ayleqarkx1i"]
 
-[ext_resource type="Script" path="res://Global Assets/Preloads/SwitchDatabase.gd" id="1_msofk"]
+[ext_resource type="Script" uid="uid://3cob8ovb6ecl" path="res://Global Assets/Preloads/SwitchDatabase.gd" id="1_msofk"]
 
 [node name="SwitchDatabase" type="Node"]
 script = ExtResource("1_msofk")

@@ -16,7 +16,10 @@ dest_files=["res://.godot/imported/FaebleStudyBookless.obj-048cbe6cb2e51b5524447
 [params]
 
 generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
 scale_mesh=Vector3(10, 10, 10)
 offset_mesh=Vector3(0, 0, 0)
-optimize_mesh=true
 force_disable_mesh_compression=false

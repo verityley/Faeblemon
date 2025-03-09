@@ -1,52 +1,28 @@
 extends Node
 
-@export_category("Global Switches")
-@export var switch001:bool #Name Variables 
-@export var switch002:bool
-@export var switch003:bool
-@export var switch004:bool
+#signal put_name_here(parameter:type, paremeter2:type)
+#EventBus.connect("put_name_here", AttachedFunction)
+#EventBus.emit_signal("put_name_here", parameter1, parameter2)
 
-@export_category("Gameplay Switches")
-@export var switch005:bool
-@export var switch006:bool
-@export var switch007:bool
-@export var switch008:bool
+#signal switchGlobal(key:String, value:bool)
+#EventBus.connect("switchGlobal", AttachedFunction)
+#EventBus.emit_signal("put_name_here", parameter1, parameter2)
 
-@export_category("Event Switches")
-@export var switch009:bool
-@export var switch010:bool
-@export var switch011:bool
-@export var switch012:bool
+@export var globalSwitches:Dictionary[String,bool]
 
-@export_category("System Switches")
-@export var switch013:bool
-@export var switch014:bool
-@export var switch015:bool
-@export var switch016:bool
+@export var gameSwitches:Dictionary[String,bool]
 
-@export_category("Global Variables")
-@export var var001:int
-@export var var002:int
-@export var var003:int
-@export var var004:int
+@export var eventSwitches:Dictionary[String,bool]
 
-@export_category("Gameplay Variables")
-@export var var005:int
-@export var var006:int
-@export var var007:int
-@export var var008:int
+@export var systemSwitches:Dictionary[String,bool]
 
-@export_category("Event Variables")
-@export var var009:int
-@export var var010:int
-@export var var011:int
-@export var var012:int
+@export var globalVars:Dictionary[String,int]
 
-@export_category("System Variables")
-@export var var013:int
-@export var var014:int
-@export var var015:int
-@export var var016:int
+@export var gameVars:Dictionary[String,int]
+
+@export var eventVars:Dictionary[String,int]
+
+@export var systemVars:Dictionary[String,int]
 
 
 #signal put_name_here(parameter:type, paremeter2:type)

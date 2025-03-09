@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="School" load_steps=3 format=3 uid="uid://crdybp6i852y4"]
 
 [ext_resource type="Texture2D" uid="uid://dx0xk5t1r0s3v" path="res://Global Assets/Graphics/Type Graphics/School Plates/CovenNameplate.png" id="1_317f1"]
-[ext_resource type="Script" path="res://Global Assets/Classes/School.gd" id="2_anl63"]
+[ext_resource type="Script" uid="uid://xm767eoimr05" path="res://Global Assets/Classes/School.gd" id="2_anl63"]
 
 [resource]
 script = ExtResource("2_anl63")

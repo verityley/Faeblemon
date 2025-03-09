@@ -1,12 +1,14 @@
 [gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://ddhwur25vn5bj"]
 
-[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_hv2yq"]
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Skill.gd" id="1_hv2yq"]
 
 [resource]
 script = ExtResource("1_hv2yq")
 skillName = ""
 skillCost = 0
 skillNature = ""
+skillDamage = 0
+witchSkill = false
 commandDifficulty = 0
 commandTiming = 0
 moveDescription = ""
@@ -16,5 +18,7 @@ rangeMin = 0
 rangeMax = 10
 canPierce = true
 canArc = true
+canBurst = false
+burstRange = 0
 targetAlly = true
 targetAll = false

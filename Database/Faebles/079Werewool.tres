@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Faeble" load_steps=21 format=3 uid="uid://c4cqfm1l7qjs4"]
+[gd_resource type="Resource" script_class="Faeble" load_steps=23 format=3 uid="uid://c4cqfm1l7qjs4"]
 
 [ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Mundane.tres" id="1_d605k"]
-[ext_resource type="Script" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_scma3"]
+[ext_resource type="Script" uid="uid://cl11ae273swpi" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_scma3"]
 [ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Lunar.tres" id="2_r2mtg"]
 [ext_resource type="Resource" uid="uid://d32tt0oqhs4pt" path="res://Database/Domains/Profane.tres" id="3_iuahu"]
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Skill.gd" id="3_os7cm"]
+[ext_resource type="Script" uid="uid://bst1aj7yglpus" path="res://Global Assets/Classes/Feat.gd" id="4_cf185"]
 [ext_resource type="Texture2D" uid="uid://bdue06m3kc64d" path="res://Global Assets/Graphics/Monster Graphics/Werewool.png" id="4_h6p2l"]
 [ext_resource type="Texture2D" uid="uid://cdkuk8aiuwea6" path="res://Global Assets/Graphics/Monster Graphics/Icons/WerewoolIcon.png" id="4_jd46q"]
 [ext_resource type="Resource" uid="uid://cmi3i261g3njv" path="res://Database/Domains/Cryptid.tres" id="6_mkvlr"]
@@ -68,8 +70,8 @@ ExtResource("17_0u65l"): 17,
 ExtResource("18_as48g"): 18,
 ExtResource("19_rsoia"): 19
 }
-assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null])
-feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
+assignedSkills = Array[ExtResource("3_os7cm")]([null, null, null])
+feats = Array[ExtResource("4_cf185")]([])
 customResource = 0
 customName = ""
 centerPosition = Vector3(0, 0, 0)

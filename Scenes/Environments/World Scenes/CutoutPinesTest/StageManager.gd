@@ -37,7 +37,7 @@ func LayerRetexture():
 		texture = layer.get_surface_override_material(0)
 		texture.albedo_texture = stageResource.layerTextures[i]
 		layer.set_surface_override_material(0, texture)
-		print("Assigning FrontLayer: ",i)
+		#print("Assigning FrontLayer: ",i)
 		i+=1
 	
 	for layer in activeLayers:
@@ -45,7 +45,7 @@ func LayerRetexture():
 		texture = layer.get_surface_override_material(0)
 		texture.albedo_texture = stageResource.layerTextures[i]
 		layer.set_surface_override_material(0, texture)
-		print("Assigning ActiveLayer: ",i)
+		#print("Assigning ActiveLayer: ",i)
 		i+=1
 	
 	for layer in backLayers:
@@ -53,7 +53,7 @@ func LayerRetexture():
 		texture = layer.get_surface_override_material(0)
 		texture.albedo_texture = stageResource.layerTextures[i]
 		layer.set_surface_override_material(0, texture)
-		print("Assigning BackLayer: ",i)
+		#print("Assigning BackLayer: ",i)
 		i+=1
 
 func LayerReposition():
@@ -65,7 +65,7 @@ func LayerReposition():
 		tween.tween_property(layer, "position", target, 0.2)
 		#await tween.finished
 		#layer.position = target
-		print("Positioning FrontLayer: ",i)
+		#print("Positioning FrontLayer: ",i)
 		newOrder.append(layer)
 		i+=1
 	frontLayers = newOrder.duplicate()
@@ -76,7 +76,7 @@ func LayerReposition():
 		tween.tween_property(layer, "position", target, 0.2)
 		#await tween.finished
 		#layer.position = target
-		print("Positioning ActiveLayer: ",i)
+		#print("Positioning ActiveLayer: ",i)
 		newOrder.append(layer)
 		i+=1
 	activeLayers = newOrder.duplicate()
@@ -87,7 +87,7 @@ func LayerReposition():
 		tween.tween_property(layer, "position", target, 0.2)
 		#await tween.finished
 		#layer.position = target
-		print("Positioning BackLayer: ",i)
+		#print("Positioning BackLayer: ",i)
 		newOrder.append(layer)
 		i+=1
 	backLayers = newOrder.duplicate()

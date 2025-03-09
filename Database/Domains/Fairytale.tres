@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Domain" load_steps=16 format=3 uid="uid://bldym4cl8lnh7"]
 
 [ext_resource type="Texture2D" uid="uid://bc7usdjypsh0a" path="res://Global Assets/Graphics/Type Graphics/Domain Plates/FairytaleNameplate.png" id="1_3p6lw"]
-[ext_resource type="Script" path="res://Global Assets/Classes/Domain.gd" id="2_kmk6y"]
+[ext_resource type="Script" uid="uid://cmgfaldorlllm" path="res://Global Assets/Classes/Domain.gd" id="2_kmk6y"]
 [ext_resource type="Resource" uid="uid://cl8db7w0h0fb2" path="res://Database/Schools/Alchemy.tres" id="3_ld6r2"]
 [ext_resource type="Resource" uid="uid://087ema067pet" path="res://Database/Schools/Blessing.tres" id="4_ysiv8"]
 [ext_resource type="Resource" uid="uid://crdybp6i852y4" path="res://Database/Schools/Coven.tres" id="5_1tvou"]

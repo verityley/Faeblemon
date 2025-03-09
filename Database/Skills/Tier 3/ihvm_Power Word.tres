@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://dj60rfml3arcd"]
 
-[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_6vbe1"]
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Skill.gd" id="1_6vbe1"]
 [ext_resource type="Resource" uid="uid://crdybp6i852y4" path="res://Database/Schools/Coven.tres" id="2_fymtg"]
 
 [resource]

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Skill" load_steps=5 format=3 uid="uid://c32bf0gyun7y"]
 
 [ext_resource type="Texture2D" uid="uid://jlm135j3noks" path="res://Global Assets/Graphics/Skill Graphics/attackCircleBase.png" id="1_bqvc8"]
-[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_eayhy"]
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Skill.gd" id="1_eayhy"]
 [ext_resource type="Texture2D" uid="uid://cflyw4x8o3iur" path="res://Global Assets/Graphics/Skill Graphics/attackCircleOption.png" id="2_f5xvy"]
 [ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Mundane.tres" id="4_aku44"]
 

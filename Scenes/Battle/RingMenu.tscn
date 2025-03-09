@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://3h5g5dp2wlp7"]
 
-[ext_resource type="Script" path="res://MagicCircleMenu.gd" id="1_d54ur"]
+[ext_resource type="Script" uid="uid://cjrkn5kx2awut" path="res://MagicCircleMenu.gd" id="1_d54ur"]
 [ext_resource type="Texture2D" uid="uid://cca623b2a817h" path="res://Scenes/Battle/Assets/circleMenu.png" id="1_mk3wl"]
 [ext_resource type="Resource" uid="uid://dv8g1bdy5qvqx" path="res://Database/Skills/Debug Skills/FairyStrike.tres" id="2_d0vq4"]
 [ext_resource type="Texture2D" uid="uid://cye56x2h3wyf3" path="res://Scenes/Battle/Assets/circleOptionsSpriteFull.png" id="3_hynpo"]

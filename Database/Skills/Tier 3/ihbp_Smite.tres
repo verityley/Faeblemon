@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://plgsfhmbfipy"]
 
-[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_s3u6b"]
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Skill.gd" id="1_s3u6b"]
 [ext_resource type="Resource" uid="uid://087ema067pet" path="res://Database/Schools/Blessing.tres" id="2_ey7i4"]
 
 [resource]

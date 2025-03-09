@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Skill" load_steps=4 format=3 uid="uid://bh2iaf16ugog4"]
 
 [ext_resource type="Texture2D" uid="uid://drop2rgebxuua" path="res://Global Assets/Graphics/Skill Graphics/bugBite.png" id="1_guq00"]
-[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_o6da4"]
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Skill.gd" id="1_o6da4"]
 [ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="4_4hg77"]
 
 [resource]

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="School" load_steps=3 format=3 uid="uid://de8kbqj72dt47"]
 
 [ext_resource type="Texture2D" uid="uid://dmyeck4xon2qc" path="res://Global Assets/Graphics/Type Graphics/School Plates/HearthNameplate.png" id="1_mwp5n"]
-[ext_resource type="Script" path="res://Global Assets/Classes/School.gd" id="2_jqspu"]
+[ext_resource type="Script" uid="uid://xm767eoimr05" path="res://Global Assets/Classes/School.gd" id="2_jqspu"]
 
 [resource]
 script = ExtResource("2_jqspu")

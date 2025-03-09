@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Faeble" load_steps=20 format=3 uid="uid://cfijjfl0vkrtr"]
+[gd_resource type="Resource" script_class="Faeble" load_steps=22 format=3 uid="uid://cfijjfl0vkrtr"]
 
-[ext_resource type="Script" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_l5fth"]
+[ext_resource type="Script" uid="uid://cl11ae273swpi" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_l5fth"]
 [ext_resource type="Resource" uid="uid://cl8db7w0h0fb2" path="res://Database/Schools/Alchemy.tres" id="1_nw66k"]
 [ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Lunar.tres" id="2_lnldq"]
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Skill.gd" id="3_56o83"]
 [ext_resource type="Resource" uid="uid://bkek55add4qy3" path="res://Database/Domains/Sacred.tres" id="3_eifp0"]
+[ext_resource type="Script" uid="uid://bst1aj7yglpus" path="res://Global Assets/Classes/Feat.gd" id="4_2cmpg"]
 [ext_resource type="Texture2D" uid="uid://ddeabrety2hww" path="res://Global Assets/Graphics/Monster Graphics/Icons/KoinIcon.png" id="4_x6sxl"]
 [ext_resource type="Resource" uid="uid://dvn0i2tiim6q8" path="res://Database/Schools/Geo.tres" id="6_plngh"]
 [ext_resource type="Texture2D" uid="uid://bohhb4wc75a5e" path="res://Global Assets/Graphics/Monster Graphics/Koin.png" id="7_10xfl"]
@@ -34,8 +36,7 @@ battlerScale = Vector3(0.8, 0.8, 0.8)
 worldScale = 0.0
 UIScale = 0.0
 groundOffset = Vector3(-0.035, 0.568175, -0.0082196)
-centerPosition = Vector3(-0.043, 0.578121, 0.0127718)
-colliderShape = PackedVector2Array(-0.318015, -0.10366, -0.0860794, -0.292557, 0.0071733, -0.263864, 0.155421, -0.0606208, 0.313233, -0.0199723, 0.37301, 0.207181, 0.162594, 0.388904, -0.210416, 0.367384, -0.382575, 0.147404)
+commandOffset = 0.0
 minQuality = 2
 maxQuality = 20
 brawn = 8
@@ -43,12 +44,16 @@ vigor = 16
 wit = 8
 ambition = 16
 grace = 16
-resolve = 8
 heart = 12
 profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
+statImprovements = Array[int]([0, 0, 0, 0, 0, 0])
+roomToGrow = Array[int]([0, 0, 0, 0, 0, 0])
 prefPrimary = "Vigor"
 prefSecondary = "Grace"
 HPCap = 60
+powerBonus = 1
+manaBonus = 0
+resolveBonus = 0
 skillPool = {
 ExtResource("7_lophc"): 1,
 ExtResource("8_uq70k"): 1,
@@ -63,13 +68,19 @@ ExtResource("16_o6vxv"): 17,
 ExtResource("17_4pjg6"): 18,
 ExtResource("18_ckktq"): 19
 }
-assignedSkills = Array[Resource("res://Global Assets/Classes/Skill.gd")]([null, null, null])
-feats = Array[Resource("res://Global Assets/Classes/Feat.gd")]([])
+assignedSkills = Array[ExtResource("3_56o83")]([null, null, null])
+feats = Array[ExtResource("4_2cmpg")]([])
+customResource = 0
+customName = ""
+centerPosition = Vector3(-0.043, 0.578121, 0.0127718)
+colliderShape = PackedVector2Array(-0.318015, -0.10366, -0.0860794, -0.292557, 0.0071733, -0.263864, 0.155421, -0.0606208, 0.313233, -0.0199723, 0.37301, 0.207181, 0.162594, 0.388904, -0.210416, 0.367384, -0.382575, 0.147404)
+idealZoom = 0.0
 canEvolve = false
 evoLevel = 0
 evoBranch = false
 currentHP = 0
-currentEnergy = 0
+currentMana = 0
 fainted = false
 description = ""
+tags = Array[String]([])
 rumors = Array[String]([])

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://mqq6g13wywjw"]
 
-[ext_resource type="Script" path="res://Scenes/Debug/BattleSimSelector.gd" id="1_87tfu"]
+[ext_resource type="Script" uid="uid://ivclb2px1hp0" path="res://Scenes/Debug/BattleSimSelector.gd" id="1_87tfu"]
 [ext_resource type="Texture2D" uid="uid://n42t1hcagi6l" path="res://Global Assets/Graphics/Type Graphics/School Plates/AlchemyNameplate.png" id="2_nckyo"]
 [ext_resource type="Texture2D" uid="uid://cqal6qlsn6lgn" path="res://Global Assets/Graphics/Monster Graphics/aconidFront.png" id="3_2sxr3"]
 

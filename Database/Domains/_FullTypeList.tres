@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Domain" load_steps=15 format=3 uid="uid://bb3bakhvovnjf"]
 
-[ext_resource type="Script" path="res://Global Assets/Classes/Domain.gd" id="2_21xia"]
+[ext_resource type="Script" uid="uid://cmgfaldorlllm" path="res://Global Assets/Classes/Domain.gd" id="2_21xia"]
 [ext_resource type="Resource" uid="uid://cl8db7w0h0fb2" path="res://Database/Schools/Alchemy.tres" id="2_ce7k2"]
 [ext_resource type="Resource" uid="uid://087ema067pet" path="res://Database/Schools/Blessing.tres" id="3_iwct7"]
 [ext_resource type="Resource" uid="uid://crdybp6i852y4" path="res://Database/Schools/Coven.tres" id="4_qm1h5"]

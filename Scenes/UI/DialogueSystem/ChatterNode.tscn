@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://gkuup4yoe8gb"]
 
-[ext_resource type="Script" path="res://DialogueSystem.gd" id="1_dvo2l"]
+[ext_resource type="Script" uid="uid://wllfphw5q6vh" path="res://DialogueSystem.gd" id="1_dvo2l"]
 [ext_resource type="PackedScene" uid="uid://t3w14st2owpg" path="res://Scenes/UI/DialogueSystem/TextBubble.tscn" id="2_cpn63"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0yoq2"]

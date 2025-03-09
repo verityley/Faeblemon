@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Domain" load_steps=13 format=3 uid="uid://0uk44s22mt84"]
 
-[ext_resource type="Script" path="res://Global Assets/Classes/Domain.gd" id="1_flib2"]
+[ext_resource type="Script" uid="uid://cmgfaldorlllm" path="res://Global Assets/Classes/Domain.gd" id="1_flib2"]
 [ext_resource type="Resource" uid="uid://wo31up2dxi0g" path="res://Database/Domains/Construct.tres" id="2_hnxj7"]
 [ext_resource type="Resource" uid="uid://cmi3i261g3njv" path="res://Database/Domains/Cryptid.tres" id="3_0pyw3"]
 [ext_resource type="Resource" uid="uid://dx6ef6t5q3ruc" path="res://Database/Domains/Draconic.tres" id="4_l4cos"]

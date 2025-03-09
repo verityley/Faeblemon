@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Message" load_steps=3 format=3 uid="uid://d88s6jmc53xs"]
 
-[ext_resource type="Script" path="res://Global Assets/Classes/Message.gd" id="1_3qiwm"]
+[ext_resource type="Script" uid="uid://cnfvsc68h8k77" path="res://Global Assets/Classes/Message.gd" id="1_3qiwm"]
 [ext_resource type="Resource" uid="uid://bxntiemesdgnj" path="res://Database/Dialogue/Speakers/TestSpeaker.tres" id="1_ewp5j"]
 
 [resource]
@@ -14,10 +14,10 @@ messageInstant = false
 messageSkip = false
 choice = false
 choiceTemplate = {
-"ChoiceID": 1,
-"ChoiceLabel": "Text to Display",
-"Conversation": "Replace with Convo Resource",
-"Message": "Replace with Message Resource"
+&"ChoiceID": 1,
+&"ChoiceLabel": "Text to Display",
+&"Conversation": "Replace with Convo Resource",
+&"Message": "Replace with Message Resource"
 }
 choiceOutcomes = {}
 rumor = false

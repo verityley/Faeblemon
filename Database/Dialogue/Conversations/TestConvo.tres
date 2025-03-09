@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Conversation" load_steps=9 format=3 uid="uid://b2rugb3868th"]
 
 [ext_resource type="Resource" uid="uid://d88s6jmc53xs" path="res://Database/Dialogue/Conversations/Messages/HelloWorld.tres" id="1_v4gg1"]
-[ext_resource type="Script" path="res://Global Assets/Classes/Conversation.gd" id="2_4crlg"]
+[ext_resource type="Script" uid="uid://b3cqedygux3bn" path="res://Global Assets/Classes/Conversation.gd" id="2_4crlg"]
 [ext_resource type="Resource" uid="uid://co7raduu3bphd" path="res://Database/Dialogue/Conversations/Messages/TestConvo/TestConvo1A.tres" id="2_8rq7v"]
 [ext_resource type="Resource" uid="uid://horf0bm8hrdj" path="res://Database/Dialogue/Conversations/Messages/TestConvo/TestConvo2A.tres" id="3_8r4yv"]
-[ext_resource type="Script" path="res://Global Assets/Classes/Speaker.gd" id="3_mawx0"]
+[ext_resource type="Script" uid="uid://cbhw5iefrjgcg" path="res://Global Assets/Classes/Speaker.gd" id="3_mawx0"]
 [ext_resource type="Resource" uid="uid://i0neopki1k2v" path="res://Database/Dialogue/Conversations/Messages/TestConvo/TestConvo3A.tres" id="4_hhg2f"]
 [ext_resource type="Resource" uid="uid://bxntiemesdgnj" path="res://Database/Dialogue/Speakers/TestSpeaker.tres" id="4_kklq7"]
 [ext_resource type="Resource" uid="uid://bjnklpaai3714" path="res://Database/Dialogue/Conversations/Messages/TestConvo/TestConvo4A.tres" id="5_ojik1"]
@@ -37,10 +37,10 @@ messageFlow = Array[Dictionary]([{
 "Message": ExtResource("5_ojik1")
 }])
 flowTemplate = {
-"Branch": ["2A", "2B", "2C"],
-"GoToLabel": "Replace with target message label",
-"HasBranch": false,
-"Label": "1A",
-"Message": ExtResource("1_v4gg1")
+&"Branch": ["2A", "2B", "2C"],
+&"GoToLabel": "Replace with target message label",
+&"HasBranch": false,
+&"Label": "1A",
+&"Message": ExtResource("1_v4gg1")
 }
 speakersPresent = Array[ExtResource("3_mawx0")]([ExtResource("4_kklq7")])

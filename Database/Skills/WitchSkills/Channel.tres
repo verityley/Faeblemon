@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Channel" load_steps=4 format=3 uid="uid://coyq2vgk2qsyv"]
 
-[ext_resource type="Script" path="res://Global Assets/Classes/Skill Classes/Channel.gd" id="1_i0rm0"]
+[ext_resource type="Script" uid="uid://crrn3fqtm4ev6" path="res://Global Assets/Classes/Skill Classes/Channel.gd" id="1_i0rm0"]
 [ext_resource type="Texture2D" uid="uid://57no20asw0be" path="res://Global Assets/Graphics/Skill Graphics/attackDetailsBase.png" id="1_oql7s"]
 [ext_resource type="Resource" uid="uid://6sqrvld48ww6" path="res://Database/Schools/Weird.tres" id="4_5jeix"]
 

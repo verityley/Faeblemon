@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://chiyv4ilvbf25"]
 
-[ext_resource type="Script" path="res://Global Assets/Classes/Skill.gd" id="1_3jeul"]
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Skill.gd" id="1_3jeul"]
 [ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="2_7w0vw"]
 
 [resource]
