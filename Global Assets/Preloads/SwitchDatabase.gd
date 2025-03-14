@@ -16,13 +16,13 @@ extends Node
 
 @export var systemSwitches:Dictionary[String,bool]
 
-@export var globalVars:Dictionary[String,int]
+@export var globalTallies:Dictionary[String,int]
 
-@export var gameVars:Dictionary[String,int]
+@export var gameTallies:Dictionary[String,int]
 
-@export var eventVars:Dictionary[String,int]
+@export var eventTallies:Dictionary[String,int]
 
-@export var systemVars:Dictionary[String,int]
+@export var systemTallies:Dictionary[String,int]
 
 
 #signal put_name_here(parameter:type, paremeter2:type)

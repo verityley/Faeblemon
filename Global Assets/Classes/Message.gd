@@ -11,6 +11,7 @@ class_name Message
 @export var messageInstant:bool #Message ignores the per-letter text delay
 #@export var messageRecord:bool = true #Message is recorded to dialogue history/notebook
 @export var messageSkip:bool #This tells the conversation ordering to skip over this message
+#Message skip is used when a message has been seen once before, such as in a looping choice branch
 
 #@export_category("Textbox FX")
 #@export var fxShake:bool
@@ -19,18 +20,13 @@ class_name Message
 #@export var fxGrow:bool
 #@export var fxShrink:bool
 
-@export_category("Choice Parameters")
-@export var choice:bool #Whether or not message has attached choices
-@export var choiceTemplate:Dictionary = {
-	"ChoiceID" = 1,
-	"ChoiceLabel" = "Text to Display",
-	"Message" = "Replace with Message Resource",
-	"Conversation" = "Replace with Convo Resource"
-}
-@export var choiceOutcomes:Dictionary
-#Selecting a choice skips to a matching message within the selected conversation
+@export_category("Conversation Parameters")
+@export var targetMessage:Message #If empty, end conversation
+@export var hasChoices:bool = false
+@export var choiceTargets:Array[Message]
+@export var choiceText:Array[String]
 
-@export_category("Rumor Parameters")
-@export var rumor:bool #Whether or not message is a possible rumor
-@export var rumorTags:Dictionary
-@export var insight:bool
+@export var switchLabel:String #If has label, dialogue system does a switch database lookup
+@export var switchValue:bool
+@export var tallyLabel:String
+@export var tallyValue:int

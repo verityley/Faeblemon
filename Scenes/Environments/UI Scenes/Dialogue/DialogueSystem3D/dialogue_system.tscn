@@ -29,7 +29,7 @@ albedo_texture = ExtResource("2_m8nl7")
 
 [node name="DialogueSystem" type="Node3D" node_paths=PackedStringArray("anchors", "speechBubbles")]
 script = ExtResource("1_2unn5")
-scrollTime = 0.5
+scrollTime = 0.3
 typingTime = 1.0
 anchors = [NodePath("InterviewAnchors/NewMessageAnchor/BubbleAnchor"), NodePath("InterviewAnchors/MessageAnchor/BubbleAnchor"), NodePath("InterviewAnchors/MessageAnchor2/BubbleAnchor"), NodePath("InterviewAnchors/MessageAnchor3/BubbleAnchor"), NodePath("InterviewAnchors/MessageAnchor4/BubbleAnchor"), NodePath("InterviewAnchors/DeleteMessageAnchor/BubbleAnchor")]
 speechBubbles = [NodePath("SpeechBubbles/SpeechBubble"), NodePath("SpeechBubbles/SpeechBubble2"), NodePath("SpeechBubbles/SpeechBubble3"), NodePath("SpeechBubbles/SpeechBubble4"), NodePath("SpeechBubbles/SpeechBubble5"), NodePath("SpeechBubbles/SpeechBubble6")]
