@@ -1,0 +1,201 @@
+[gd_scene load_steps=17 format=3 uid="uid://dn2t6wyr6r8sb"]
+
+[ext_resource type="Script" uid="uid://bc487ee1h6ei8" path="res://Scenes/Environments/UI Scenes/Ritual Circle/CastingSystem.gd" id="1_85j7m"]
+[ext_resource type="Texture2D" uid="uid://cuuxqesaheup5" path="res://Scenes/Environments/UI Scenes/Ritual Circle/Assets/circleMenu.png" id="2_h065q"]
+[ext_resource type="Texture2D" uid="uid://c63kmx0o04y4r" path="res://Global Assets/Graphics/UI Graphics/BattleCommand.png" id="3_0hbd7"]
+[ext_resource type="Texture2D" uid="uid://bvlilfxcql73i" path="res://Global Assets/Graphics/UI Graphics/CurrentIndicator.png" id="4_763i8"]
+[ext_resource type="Texture2D" uid="uid://ywc5jfawydfi" path="res://Global Assets/Graphics/UI Graphics/MoveLeft.png" id="5_8gx70"]
+[ext_resource type="Texture2D" uid="uid://bgwxebnltxpjy" path="res://Global Assets/Graphics/UI Graphics/MoveRight.png" id="6_3ull2"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_0hbd7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_763i8"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("2_h065q")
+emission = Color(0.462745, 1, 1, 1)
+emission_energy_multiplier = 0.2
+emission_on_uv2 = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_2ts57"]
+size = Vector2(30, 8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gx70"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("4_763i8")
+
+[sub_resource type="QuadMesh" id="QuadMesh_763i8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ts57"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("3_0hbd7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vg2xw"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("5_8gx70")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjcpg"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("6_3ull2")
+
+[sub_resource type="QuadMesh" id="QuadMesh_8gx70"]
+size = Vector2(16, 9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ull2"]
+transparency = 1
+disable_ambient_light = true
+albedo_color = Color(0.0941176, 0.0941176, 0.0941176, 0.835294)
+metallic_specular = 0.0
+
+[node name="RitualCircle" type="Node3D"]
+script = ExtResource("1_85j7m")
+
+[node name="CastingCircle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.33869, 0.1)
+
+[node name="SymbolCircleMesh" type="MeshInstance3D" parent="CastingCircle"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -1.75, -0.1)
+mesh = SubResource("QuadMesh_0hbd7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_763i8")
+
+[node name="NodeCircleMesh" type="MeshInstance3D" parent="CastingCircle"]
+transform = Transform3D(6.5, 0, 0, 0, 6.5, 0, 0, 0, 6.5, 0, 0, 0)
+mesh = SubResource("QuadMesh_0hbd7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_763i8")
+
+[node name="CancelButton" type="Node3D" parent="."]
+
+[node name="ButtonMesh" type="MeshInstance3D" parent="CancelButton"]
+skeleton = NodePath("../..")
+
+[node name="CastButton" type="Node3D" parent="."]
+
+[node name="ButtonMesh" type="MeshInstance3D" parent="CastButton"]
+skeleton = NodePath("../..")
+
+[node name="ComponentList" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+
+[node name="ComponentsBox" type="MeshInstance3D" parent="ComponentList"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.4, -0.02)
+mesh = SubResource("QuadMesh_2ts57")
+surface_material_override/0 = SubResource("StandardMaterial3D_8gx70")
+
+[node name="Component" type="MeshInstance3D" parent="ComponentList/ComponentsBox"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10.5, 1.5, -0.02)
+mesh = SubResource("QuadMesh_763i8")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ts57")
+
+[node name="Component2" type="MeshInstance3D" parent="ComponentList/ComponentsBox"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -7.5, 1.5, -0.02)
+mesh = SubResource("QuadMesh_763i8")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ts57")
+
+[node name="Component3" type="MeshInstance3D" parent="ComponentList/ComponentsBox"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -4.5, 1.5, -0.02)
+mesh = SubResource("QuadMesh_763i8")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ts57")
+
+[node name="Component4" type="MeshInstance3D" parent="ComponentList/ComponentsBox"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.5, 1.5, -0.02)
+mesh = SubResource("QuadMesh_763i8")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ts57")
+
+[node name="Component5" type="MeshInstance3D" parent="ComponentList/ComponentsBox"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.5, 1.5, -0.02)
+mesh = SubResource("QuadMesh_763i8")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ts57")
+
+[node name="Component6" type="MeshInstance3D" parent="ComponentList/ComponentsBox"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 10.5, 1.5, -0.02)
+mesh = SubResource("QuadMesh_763i8")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ts57")
+
+[node name="Component7" type="MeshInstance3D" parent="ComponentList/ComponentsBox"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 7.5, 1.5, -0.02)
+mesh = SubResource("QuadMesh_763i8")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ts57")
+
+[node name="Component8" type="MeshInstance3D" parent="ComponentList/ComponentsBox"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.5, 1.5, -0.02)
+mesh = SubResource("QuadMesh_763i8")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ts57")
+
+[node name="Component9" type="MeshInstance3D" parent="ComponentList/ComponentsBox"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10.5, -1.5, -0.02)
+mesh = SubResource("QuadMesh_763i8")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ts57")
+
+[node name="Component10" type="MeshInstance3D" parent="ComponentList/ComponentsBox"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -7.5, -1.5, -0.02)
+mesh = SubResource("QuadMesh_763i8")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ts57")
+
+[node name="Component11" type="MeshInstance3D" parent="ComponentList/ComponentsBox"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -4.5, -1.5, -0.02)
+mesh = SubResource("QuadMesh_763i8")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ts57")
+
+[node name="Component12" type="MeshInstance3D" parent="ComponentList/ComponentsBox"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.5, -1.5, -0.02)
+mesh = SubResource("QuadMesh_763i8")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ts57")
+
+[node name="Component13" type="MeshInstance3D" parent="ComponentList/ComponentsBox"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.5, -1.5, -0.02)
+mesh = SubResource("QuadMesh_763i8")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ts57")
+
+[node name="Component14" type="MeshInstance3D" parent="ComponentList/ComponentsBox"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 10.5, -1.5, -0.02)
+mesh = SubResource("QuadMesh_763i8")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ts57")
+
+[node name="Component15" type="MeshInstance3D" parent="ComponentList/ComponentsBox"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 7.5, -1.5, -0.02)
+mesh = SubResource("QuadMesh_763i8")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ts57")
+
+[node name="Component16" type="MeshInstance3D" parent="ComponentList/ComponentsBox"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.5, -1.5, -0.02)
+mesh = SubResource("QuadMesh_763i8")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ts57")
+
+[node name="LeftArrowMesh" type="MeshInstance3D" parent="ComponentList"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -5.25, -0.35, 0)
+mesh = SubResource("QuadMesh_763i8")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_vg2xw")
+
+[node name="RightArrowMesh" type="MeshInstance3D" parent="ComponentList"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 5.25, -0.35, 0)
+mesh = SubResource("QuadMesh_763i8")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_bjcpg")
+
+[node name="FadeBG" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("QuadMesh_8gx70")
+surface_material_override/0 = SubResource("StandardMaterial3D_3ull2")

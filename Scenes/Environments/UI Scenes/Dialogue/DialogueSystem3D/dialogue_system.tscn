@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c0257e6y177n7"]
+[gd_scene load_steps=17 format=3 uid="uid://c0257e6y177n7"]
 
 [ext_resource type="Script" uid="uid://byxpoivq5jjl1" path="res://Scenes/Environments/UI Scenes/Dialogue/DialogueSystem3D/Scripts/DialogueSystem.gd" id="1_2unn5"]
 [ext_resource type="Script" uid="uid://cnfvsc68h8k77" path="res://Global Assets/Classes/Message.gd" id="2_b7dqs"]
@@ -26,6 +26,15 @@ size = Vector2(2.5, 4)
 transparency = 4
 cull_mode = 2
 albedo_texture = ExtResource("2_m8nl7")
+
+[sub_resource type="QuadMesh" id="QuadMesh_q3ahq"]
+size = Vector2(16, 9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sohr5"]
+transparency = 1
+disable_ambient_light = true
+albedo_color = Color(0.0941176, 0.0941176, 0.0941176, 0.835294)
+metallic_specular = 0.0
 
 [node name="DialogueSystem" type="Node3D" node_paths=PackedStringArray("anchors", "speechBubbles")]
 script = ExtResource("1_2unn5")
@@ -304,6 +313,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_udh34")
 transform = Transform3D(-0.833333, 0, -7.28523e-08, 0, 0.833333, 0, 7.28523e-08, 0, -0.833333, 0, -0.5, -2.5)
 layers = 32
 light_energy = 3.0
+light_cull_mask = 4294966304
 spot_angle_attenuation = 0.0693483
 
 [node name="PlayerBust" type="MeshInstance3D" parent="SpeakerManager"]
@@ -318,14 +328,23 @@ surface_material_override/0 = SubResource("StandardMaterial3D_udh34")
 transform = Transform3D(0.833333, 0, 0, 0, 0.833333, 0, 0, 0, 0.833333, 0, -0.5, 2.5)
 layers = 32
 light_energy = 3.0
+light_cull_mask = 4294966304
 spot_angle_attenuation = 0.0693483
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 16)
+layers = 32
 light_energy = 80.0
+light_cull_mask = 4294966304
 shadow_enabled = true
 shadow_blur = 3.0
 spot_range = 17.0
 spot_attenuation = 0.85
 spot_angle = 30.0
 spot_angle_attenuation = 0.0883886
+
+[node name="FadeBG" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+visible = false
+mesh = SubResource("QuadMesh_q3ahq")
+surface_material_override/0 = SubResource("StandardMaterial3D_sohr5")

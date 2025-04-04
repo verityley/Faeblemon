@@ -1,0 +1,196 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3jcwsr4k6fpi"]
+
+[ext_resource type="Texture2D" uid="uid://c63kmx0o04y4r" path="res://Global Assets/Graphics/UI Graphics/BattleCommand.png" id="1_cx1wg"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_3xo1m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gv0t8"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_cx1wg")
+
+[sub_resource type="QuadMesh" id="QuadMesh_cx1wg"]
+size = Vector2(16, 9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3xo1m"]
+transparency = 1
+disable_ambient_light = true
+albedo_color = Color(0.0941176, 0.0941176, 0.0941176, 0.835294)
+metallic_specular = 0.0
+
+[node name="QuickMenu" type="Node3D"]
+
+[node name="DayClock" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="ButtonMesh" type="MeshInstance3D" parent="DayClock"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+mesh = SubResource("QuadMesh_3xo1m")
+surface_material_override/0 = SubResource("StandardMaterial3D_gv0t8")
+
+[node name="Label3D" type="Label3D" parent="DayClock/ButtonMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+pixel_size = 0.006
+shaded = true
+render_priority = 2
+outline_render_priority = 1
+modulate = Color(0.120299, 0.0730803, 0.036252, 1)
+outline_modulate = Color(0.121569, 0.0745098, 0.0352941, 1)
+text = "Time"
+font_size = 55
+outline_size = 0
+line_spacing = -15.0
+autowrap_mode = 2
+width = 600.0
+
+[node name="QuickButtons" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="BoardButton" type="Node3D" parent="QuickButtons"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+
+[node name="ButtonMesh" type="MeshInstance3D" parent="QuickButtons/BoardButton"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("QuadMesh_3xo1m")
+surface_material_override/0 = SubResource("StandardMaterial3D_gv0t8")
+
+[node name="Label3D" type="Label3D" parent="QuickButtons/BoardButton/ButtonMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+pixel_size = 0.006
+shaded = true
+render_priority = 2
+outline_render_priority = 1
+modulate = Color(0.120299, 0.0730803, 0.036252, 1)
+outline_modulate = Color(0.121569, 0.0745098, 0.0352941, 1)
+text = "Rumor
+Board"
+font_size = 40
+outline_size = 0
+line_spacing = -15.0
+autowrap_mode = 2
+width = 600.0
+
+[node name="PartyButton" type="Node3D" parent="QuickButtons"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0)
+
+[node name="ButtonMesh" type="MeshInstance3D" parent="QuickButtons/PartyButton"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("QuadMesh_3xo1m")
+surface_material_override/0 = SubResource("StandardMaterial3D_gv0t8")
+
+[node name="Label3D" type="Label3D" parent="QuickButtons/PartyButton/ButtonMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+pixel_size = 0.006
+shaded = true
+render_priority = 2
+outline_render_priority = 1
+modulate = Color(0.120299, 0.0730803, 0.036252, 1)
+outline_modulate = Color(0.121569, 0.0745098, 0.0352941, 1)
+text = "Party"
+font_size = 40
+outline_size = 0
+line_spacing = -15.0
+autowrap_mode = 2
+width = 600.0
+
+[node name="CodexButton" type="Node3D" parent="QuickButtons"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)
+
+[node name="ButtonMesh" type="MeshInstance3D" parent="QuickButtons/CodexButton"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("QuadMesh_3xo1m")
+surface_material_override/0 = SubResource("StandardMaterial3D_gv0t8")
+
+[node name="Label3D" type="Label3D" parent="QuickButtons/CodexButton/ButtonMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+pixel_size = 0.006
+shaded = true
+render_priority = 2
+outline_render_priority = 1
+modulate = Color(0.120299, 0.0730803, 0.036252, 1)
+outline_modulate = Color(0.121569, 0.0745098, 0.0352941, 1)
+text = "Codex"
+font_size = 40
+outline_size = 0
+line_spacing = -15.0
+autowrap_mode = 2
+width = 600.0
+
+[node name="MapButton" type="Node3D" parent="QuickButtons"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="ButtonMesh" type="MeshInstance3D" parent="QuickButtons/MapButton"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("QuadMesh_3xo1m")
+surface_material_override/0 = SubResource("StandardMaterial3D_gv0t8")
+
+[node name="Label3D" type="Label3D" parent="QuickButtons/MapButton/ButtonMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+pixel_size = 0.006
+shaded = true
+render_priority = 2
+outline_render_priority = 1
+modulate = Color(0.120299, 0.0730803, 0.036252, 1)
+outline_modulate = Color(0.121569, 0.0745098, 0.0352941, 1)
+text = "City
+Map"
+font_size = 40
+outline_size = 0
+line_spacing = -15.0
+autowrap_mode = 2
+width = 600.0
+
+[node name="ContextButtons" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+
+[node name="TalkButton" type="Node3D" parent="ContextButtons"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25, 0, 0)
+
+[node name="ButtonMesh" type="MeshInstance3D" parent="ContextButtons/TalkButton"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+mesh = SubResource("QuadMesh_3xo1m")
+surface_material_override/0 = SubResource("StandardMaterial3D_gv0t8")
+
+[node name="Label3D" type="Label3D" parent="ContextButtons/TalkButton/ButtonMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+pixel_size = 0.006
+shaded = true
+render_priority = 2
+outline_render_priority = 1
+modulate = Color(0.120299, 0.0730803, 0.036252, 1)
+outline_modulate = Color(0.121569, 0.0745098, 0.0352941, 1)
+text = "Talk"
+font_size = 55
+outline_size = 0
+line_spacing = -15.0
+autowrap_mode = 2
+width = 600.0
+
+[node name="CastButton" type="Node3D" parent="ContextButtons"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 0, 0)
+
+[node name="ButtonMesh" type="MeshInstance3D" parent="ContextButtons/CastButton"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+mesh = SubResource("QuadMesh_3xo1m")
+surface_material_override/0 = SubResource("StandardMaterial3D_gv0t8")
+
+[node name="Label3D" type="Label3D" parent="ContextButtons/CastButton/ButtonMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+pixel_size = 0.006
+shaded = true
+render_priority = 2
+outline_render_priority = 1
+modulate = Color(0.120299, 0.0730803, 0.036252, 1)
+outline_modulate = Color(0.121569, 0.0745098, 0.0352941, 1)
+text = "Cast"
+font_size = 55
+outline_size = 0
+line_spacing = -15.0
+autowrap_mode = 2
+width = 600.0
+
+[node name="FadeBG" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+visible = false
+mesh = SubResource("QuadMesh_cx1wg")
+surface_material_override/0 = SubResource("StandardMaterial3D_3xo1m")

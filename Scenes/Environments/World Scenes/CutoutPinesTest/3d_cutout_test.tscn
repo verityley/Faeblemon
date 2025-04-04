@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://b0g3rlf06g1j8"]
+[gd_scene load_steps=41 format=3 uid="uid://b0g3rlf06g1j8"]
 
 [ext_resource type="Script" uid="uid://gkqfrna25mf8" path="res://Scenes/Environments/World Scenes/CutoutPinesTest/StageManager.gd" id="1_5h1sf"]
 [ext_resource type="Resource" uid="uid://c7ryb60u0r4wk" path="res://Scenes/Environments/World Scenes/CutoutPinesTest/PineForest.tres" id="2_3r1db"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://bqw6wrt7upoq4" path="res://Global Assets/Graphics/Monster Graphics/Basidusa.png" id="13_1s4x4"]
 [ext_resource type="Texture2D" uid="uid://bggyleai1wado" path="res://Global Assets/Graphics/Monster Graphics/Arachalyx.png" id="14_fml8q"]
 [ext_resource type="PackedScene" uid="uid://c0257e6y177n7" path="res://Scenes/Environments/UI Scenes/Dialogue/DialogueSystem3D/dialogue_system.tscn" id="17_mr83u"]
+[ext_resource type="PackedScene" uid="uid://dn2t6wyr6r8sb" path="res://Scenes/Environments/UI Scenes/Ritual Circle/RitualCircle.tscn" id="18_it8jx"]
+[ext_resource type="PackedScene" uid="uid://c3jcwsr4k6fpi" path="res://Scenes/Environments/UI Scenes/Menu Overlay/QuickMenu.tscn" id="18_yr3hg"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_74sc4"]
 size = Vector2(16, 9)
@@ -125,6 +127,7 @@ stageResource = ExtResource("2_3r1db")
 frontLayers = [NodePath("Cutouts/FrontDeco1"), NodePath("Cutouts/FrontDeco2"), NodePath("Cutouts/Front3"), NodePath("Cutouts/Front4")]
 activeLayers = [NodePath("Cutouts/Active5"), NodePath("Cutouts/Active6"), NodePath("Cutouts/Active7"), NodePath("Cutouts/Active8"), NodePath("Cutouts/Active9"), NodePath("Cutouts/Active10"), NodePath("Cutouts/Active11"), NodePath("Cutouts/Active12"), NodePath("Cutouts/Active13"), NodePath("Cutouts/Active14"), NodePath("Cutouts/Active15")]
 backLayers = [NodePath("Cutouts/BackDeco16"), NodePath("Cutouts/BackDeco17"), NodePath("Cutouts/Back18"), NodePath("Cutouts/Back19")]
+layerChangeSpeed = 0.2
 
 [node name="Cutouts" type="Node3D" parent="."]
 
@@ -291,5 +294,13 @@ spot_angle = 30.0
 
 [node name="DialogueSystem" parent="." instance=ExtResource("17_mr83u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 3)
+visible = false
+
+[node name="QuickMenu" parent="." instance=ExtResource("18_yr3hg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="RitualCircle" parent="." instance=ExtResource("18_it8jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+visible = false
 
 [editable path="DialogueSystem"]
