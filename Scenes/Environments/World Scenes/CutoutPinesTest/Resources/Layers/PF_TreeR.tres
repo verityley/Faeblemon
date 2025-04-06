@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="StageLayer" load_steps=3 format=3 uid="uid://cc13g76jwngbi"]
+
+[ext_resource type="Texture2D" uid="uid://od1gcoy3ghkp" path="res://Scenes/Environments/World Scenes/CutoutPinesTest/Assets/FrontR.png" id="1_p3yky"]
+[ext_resource type="Script" uid="uid://ds1uqvqstbkc5" path="res://Global Assets/Classes/Layer.gd" id="2_ygkn4"]
+
+[resource]
+resource_name = "PF_TreeR"
+script = ExtResource("2_ygkn4")
+layerTexture = ExtResource("1_p3yky")
+playerAnchor = Vector3(-3, -2.75, -0.1)
+enemyAnchor = Vector3(2.25, -3, -0.1)
+gatherSpots = Array[Vector3]([])
+propSpots = Array[Vector3]([])
+metadata/_custom_type_script = "uid://ds1uqvqstbkc5"

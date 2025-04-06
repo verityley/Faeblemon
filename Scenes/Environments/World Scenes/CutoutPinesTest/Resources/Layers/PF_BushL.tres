@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StageLayer" load_steps=3 format=3 uid="uid://cpmr0v2qmhma6"]
+
+[ext_resource type="Texture2D" uid="uid://c5lwnfjt36q35" path="res://Scenes/Environments/World Scenes/CutoutPinesTest/Assets/MiddleSmallDecoL.png" id="1_pb07w"]
+[ext_resource type="Script" uid="uid://ds1uqvqstbkc5" path="res://Global Assets/Classes/Layer.gd" id="2_oqkjk"]
+
+[resource]
+script = ExtResource("2_oqkjk")
+layerTexture = ExtResource("1_pb07w")
+playerAnchor = Vector3(-3, -2.75, -0.1)
+enemyAnchor = Vector3(2.4, -2.4, -0.15)
+gatherSpots = Array[Vector3]([])
+propSpots = Array[Vector3]([])
+metadata/_custom_type_script = "uid://ds1uqvqstbkc5"

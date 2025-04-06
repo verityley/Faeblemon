@@ -21,9 +21,10 @@ var scrolling:bool = false
 var typing:bool = false
 
 func _ready():
-	InitializeAnchors()
-	await get_tree().create_timer(2.0).timeout
-	await NewMessage(conversation[0])
+	pass
+	#InitializeAnchors()
+	#await get_tree().create_timer(2.0).timeout
+	#await NewMessage(conversation[0])
 	#await NewMessage(conversation[1])
 	#await NewMessage(conversation[2])
 	#await NewMessage(conversation[3])

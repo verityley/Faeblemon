@@ -1,7 +1,7 @@
 [gd_scene load_steps=41 format=3 uid="uid://b0g3rlf06g1j8"]
 
 [ext_resource type="Script" uid="uid://gkqfrna25mf8" path="res://Scenes/Environments/World Scenes/CutoutPinesTest/StageManager.gd" id="1_5h1sf"]
-[ext_resource type="Resource" uid="uid://c7ryb60u0r4wk" path="res://Scenes/Environments/World Scenes/CutoutPinesTest/PineForest.tres" id="2_3r1db"]
+[ext_resource type="Resource" uid="uid://c7ryb60u0r4wk" path="res://Scenes/Environments/World Scenes/CutoutPinesTest/Resources/PineForest.tres" id="2_3r1db"]
 [ext_resource type="Texture2D" uid="uid://c4udwyw0qkx7n" path="res://Scenes/Environments/World Scenes/CutoutPinesTest/Assets/MiddleL.png" id="3_jhqu5"]
 [ext_resource type="Texture2D" uid="uid://b1yvjqp318bci" path="res://Scenes/Environments/World Scenes/CutoutPinesTest/Assets/MiddleR.png" id="4_1f1t5"]
 [ext_resource type="Texture2D" uid="uid://bwow6qp1qrw3p" path="res://Scenes/Environments/World Scenes/CutoutPinesTest/Assets/FrontL.png" id="5_gw6si"]
@@ -58,14 +58,6 @@ transparency = 4
 cull_mode = 2
 albedo_texture = ExtResource("5_m08g2")
 
-[sub_resource type="QuadMesh" id="QuadMesh_bivt7"]
-lightmap_size_hint = Vector2i(12, 17)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_px1bs"]
-transparency = 4
-cull_mode = 2
-albedo_texture = ExtResource("13_1s4x4")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwwyl"]
 transparency = 4
 cull_mode = 2
@@ -85,11 +77,6 @@ albedo_texture = ExtResource("3_jhqu5")
 transparency = 4
 cull_mode = 2
 albedo_texture = ExtResource("4_1f1t5")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_35d1w"]
-transparency = 4
-cull_mode = 2
-albedo_texture = ExtResource("14_fml8q")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kw5jt"]
 transparency = 4
@@ -121,13 +108,29 @@ transparency = 4
 cull_mode = 2
 albedo_texture = ExtResource("12_0vnqd")
 
-[node name="3D Cutout Test" type="Node3D" node_paths=PackedStringArray("frontLayers", "activeLayers", "backLayers")]
+[sub_resource type="QuadMesh" id="QuadMesh_bivt7"]
+lightmap_size_hint = Vector2i(12, 17)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_px1bs"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("13_1s4x4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_35d1w"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("14_fml8q")
+
+[node name="Stage Manager" type="Node3D" node_paths=PackedStringArray("frontLayers", "activeLayers", "backLayers", "playerFaeble", "enemyFaeble")]
 script = ExtResource("1_5h1sf")
 stageResource = ExtResource("2_3r1db")
 frontLayers = [NodePath("Cutouts/FrontDeco1"), NodePath("Cutouts/FrontDeco2"), NodePath("Cutouts/Front3"), NodePath("Cutouts/Front4")]
 activeLayers = [NodePath("Cutouts/Active5"), NodePath("Cutouts/Active6"), NodePath("Cutouts/Active7"), NodePath("Cutouts/Active8"), NodePath("Cutouts/Active9"), NodePath("Cutouts/Active10"), NodePath("Cutouts/Active11"), NodePath("Cutouts/Active12"), NodePath("Cutouts/Active13"), NodePath("Cutouts/Active14"), NodePath("Cutouts/Active15")]
 backLayers = [NodePath("Cutouts/BackDeco16"), NodePath("Cutouts/BackDeco17"), NodePath("Cutouts/Back18"), NodePath("Cutouts/Back19")]
-layerChangeSpeed = 0.2
+playerFaeble = NodePath("PlayerFaeble")
+enemyFaeble = NodePath("EnemyFaeble")
+layerChangeSpeed = 0.4
+faebleMoveSpeed = 0.4
 
 [node name="Cutouts" type="Node3D" parent="."]
 
@@ -172,12 +175,6 @@ mesh = SubResource("QuadMesh_74sc4")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_cxyy7")
 
-[node name="FaebleMesh" type="MeshInstance3D" parent="Cutouts/Active7"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 2.284, -1.771, 0)
-mesh = SubResource("QuadMesh_bivt7")
-skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_px1bs")
-
 [node name="Active8" type="MeshInstance3D" parent="Cutouts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 mesh = SubResource("QuadMesh_74sc4")
@@ -214,12 +211,6 @@ mesh = SubResource("QuadMesh_74sc4")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_4r6rk")
 
-[node name="FaebleMesh2" type="MeshInstance3D" parent="Cutouts/Active13"]
-transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -2.943, -2.162, 0)
-mesh = SubResource("QuadMesh_bivt7")
-skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_35d1w")
-
 [node name="Active14" type="MeshInstance3D" parent="Cutouts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
 mesh = SubResource("QuadMesh_74sc4")
@@ -255,6 +246,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
 mesh = SubResource("QuadMesh_74sc4")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_xmdp1")
+
+[node name="EnemyFaeble" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, -2.75, -0.1)
+
+[node name="FaebleMesh" type="MeshInstance3D" parent="EnemyFaeble"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+mesh = SubResource("QuadMesh_bivt7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px1bs")
+
+[node name="PlayerFaeble" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, -2.4, 0)
+
+[node name="FaebleMesh2" type="MeshInstance3D" parent="PlayerFaeble"]
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, 0, 0, 0)
+mesh = SubResource("QuadMesh_bivt7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_35d1w")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.41756)
@@ -298,6 +307,7 @@ visible = false
 
 [node name="QuickMenu" parent="." instance=ExtResource("18_yr3hg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+visible = false
 
 [node name="RitualCircle" parent="." instance=ExtResource("18_it8jx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)

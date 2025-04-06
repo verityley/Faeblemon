@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StageLayer" load_steps=3 format=3 uid="uid://cdhbdn5hk6p4i"]
+
+[ext_resource type="Texture2D" uid="uid://b1yvjqp318bci" path="res://Scenes/Environments/World Scenes/CutoutPinesTest/Assets/MiddleR.png" id="1_3mnan"]
+[ext_resource type="Script" uid="uid://ds1uqvqstbkc5" path="res://Global Assets/Classes/Layer.gd" id="2_yxcn8"]
+
+[resource]
+script = ExtResource("2_yxcn8")
+layerTexture = ExtResource("1_3mnan")
+playerAnchor = Vector3(-2.4, -2.4, 0)
+enemyAnchor = Vector3(2.75, -2.75, -0.1)
+gatherSpots = Array[Vector3]([])
+propSpots = Array[Vector3]([])
+metadata/_custom_type_script = "uid://ds1uqvqstbkc5"
