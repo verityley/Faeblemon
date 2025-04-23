@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Message" load_steps=5 format=3 uid="uid://ck2bihiaa0xmd"]
+
+[ext_resource type="Script" uid="uid://cnfvsc68h8k77" path="res://Global Assets/Classes/Message.gd" id="1_2k2qj"]
+[ext_resource type="Resource" uid="uid://dh18kxi2ab3i5" path="res://Database/Dialogue/Conversations/TestChoiceConvo/Messages/TestChoice3A.tres" id="2_f1pcp"]
+[ext_resource type="Resource" uid="uid://b58wn6h7kflk5" path="res://Database/Dialogue/Conversations/TestChoiceConvo/Messages/TestChoice3B.tres" id="3_jrwbo"]
+[ext_resource type="Resource" uid="uid://bxntiemesdgnj" path="res://Database/Dialogue/Speakers/TestSpeaker.tres" id="4_pveha"]
+
+[resource]
+script = ExtResource("1_2k2qj")
+messageID = "Test2A"
+messageText = "Do you know what that means?"
+messageSpeaker = ExtResource("4_pveha")
+messageSpeed = 5.0
+messageMute = false
+messageInstant = false
+messageSkip = false
+hasChoices = true
+choiceTargets = Array[ExtResource("1_2k2qj")]([ExtResource("2_f1pcp"), ExtResource("3_jrwbo")])
+choiceText = Array[String](["Yes, I do.", "No, tell me!"])
+switchLabel = ""
+switchValue = false
+tallyLabel = ""
+tallyValue = 0

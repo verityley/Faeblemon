@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Message" load_steps=4 format=3 uid="uid://cqjxnbupsfj21"]
+
+[ext_resource type="Script" uid="uid://cnfvsc68h8k77" path="res://Global Assets/Classes/Message.gd" id="1_7f662"]
+[ext_resource type="Resource" uid="uid://bxntiemesdgnj" path="res://Database/Dialogue/Speakers/TestSpeaker.tres" id="2_1if5h"]
+[ext_resource type="Resource" uid="uid://ck2bihiaa0xmd" path="res://Database/Dialogue/Conversations/TestChoiceConvo/Messages/TestChoice2A.tres" id="3_trl6o"]
+
+[resource]
+script = ExtResource("1_7f662")
+messageID = ""
+messageText = "This is a test conversation."
+messageSpeaker = ExtResource("2_1if5h")
+messageSpeed = 1.0
+messageMute = false
+messageInstant = false
+messageSkip = false
+targetMessage = ExtResource("3_trl6o")
+hasChoices = false
+choiceTargets = Array[ExtResource("1_7f662")]([])
+choiceText = Array[String]([])
+switchLabel = ""
+switchValue = false
+tallyLabel = ""
+tallyValue = 0

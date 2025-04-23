@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Message" load_steps=4 format=3 uid="uid://d88s6jmc53xs"]
+
+[ext_resource type="Script" uid="uid://cnfvsc68h8k77" path="res://Global Assets/Classes/Message.gd" id="1_3qiwm"]
+[ext_resource type="Resource" uid="uid://bxntiemesdgnj" path="res://Database/Dialogue/Speakers/TestSpeaker.tres" id="1_ewp5j"]
+[ext_resource type="Resource" uid="uid://co7raduu3bphd" path="res://Database/Dialogue/Conversations/TestConvo/Messages/TestConvo1A.tres" id="3_lneel"]
+
+[resource]
+script = ExtResource("1_3qiwm")
+messageID = ""
+messageText = "Hello world!"
+messageSpeaker = ExtResource("1_ewp5j")
+messageSpeed = 5.0
+messageMute = false
+messageInstant = false
+messageSkip = false
+targetMessage = ExtResource("3_lneel")
+hasChoices = false
+choiceTargets = Array[ExtResource("1_3qiwm")]([])
+choiceText = Array[String]([])
+switchLabel = ""
+switchValue = false
+tallyLabel = ""
+tallyValue = 0

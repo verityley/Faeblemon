@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Stage" load_steps=14 format=3 uid="uid://t3tbhgayygw"]
+
+[ext_resource type="Script" uid="uid://ddwiku72pt2uk" path="res://Global Assets/Classes/Stage.gd" id="1_12q4v"]
+[ext_resource type="Script" uid="uid://cl11ae273swpi" path="res://Global Assets/Classes/FaebleEntry.gd" id="2_0ujj2"]
+[ext_resource type="Texture2D" uid="uid://c4udwyw0qkx7n" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleL.png" id="3_m2t2x"]
+[ext_resource type="Texture2D" uid="uid://bwow6qp1qrw3p" path="res://Scenes/Environments/World Scenes/Forest/Assets/FrontL.png" id="5_0wka6"]
+[ext_resource type="Texture2D" uid="uid://b1yvjqp318bci" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleR.png" id="6_b4wcc"]
+[ext_resource type="Texture2D" uid="uid://dq0st6vsmusld" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleLargeDecoR.png" id="7_gg84m"]
+[ext_resource type="Texture2D" uid="uid://rsklskjod1lq" path="res://Scenes/Environments/World Scenes/Forest/Assets/BackDecoR.png" id="7_wr15g"]
+[ext_resource type="Texture2D" uid="uid://dfmjqud1wdo68" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleSmallDecoR.png" id="8_21rht"]
+[ext_resource type="Texture2D" uid="uid://cnj8lj53pij0l" path="res://Scenes/Environments/World Scenes/Forest/Assets/BackDecoL.png" id="9_6f1kn"]
+[ext_resource type="Texture2D" uid="uid://cgnjjvbdbarj" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleLargeL.png" id="10_edly7"]
+[ext_resource type="Texture2D" uid="uid://dc775xn1o4ruy" path="res://Scenes/Environments/World Scenes/Forest/Assets/BackR.png" id="11_terey"]
+[ext_resource type="Texture2D" uid="uid://c5lwnfjt36q35" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleSmallDecoL.png" id="11_xspfa"]
+[ext_resource type="Texture2D" uid="uid://1dy8ehv02fo0" path="res://Scenes/Environments/World Scenes/Forest/Assets/BackL.png" id="12_l65rw"]
+
+[resource]
+resource_name = "Stage: Deep Forest"
+script = ExtResource("1_12q4v")
+stageName = "Deep Forest"
+stageLayers = Array[Texture2D]([ExtResource("3_m2t2x"), ExtResource("10_edly7"), ExtResource("7_gg84m"), ExtResource("7_wr15g"), ExtResource("6_b4wcc"), ExtResource("5_0wka6"), ExtResource("8_21rht"), ExtResource("9_6f1kn"), ExtResource("11_xspfa"), ExtResource("7_gg84m"), ExtResource("10_edly7"), ExtResource("11_terey"), ExtResource("12_l65rw")])
+stageLighting = {
+"Color": Color(0.830807, 0.479906, 0.320557, 1),
+"Energy": 30.0
+}
+componentPool = {}
+componentPositions = Array[Vector3]([])
+propSet = Dictionary[Texture2D, float]({})
+propPositions = Array[Vector3]([])
+spawnPool = Dictionary[ExtResource("2_0ujj2"), int]({})
+metadata/_custom_type_script = "uid://ddwiku72pt2uk"

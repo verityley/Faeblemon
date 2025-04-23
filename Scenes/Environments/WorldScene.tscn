@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://vfr2we8x3m4y"]
+
+[ext_resource type="PackedScene" uid="uid://bok3gqa86lbq0" path="res://Scenes/Environments/World Stage/LayerManager.tscn" id="1_tkw34"]
+[ext_resource type="PackedScene" uid="uid://c3jcwsr4k6fpi" path="res://Scenes/Environments/Menu Overlay/QuickMenu.tscn" id="2_lmfaa"]
+[ext_resource type="PackedScene" uid="uid://c0257e6y177n7" path="res://Scenes/Environments/Dialogue System/DialogueSystem.tscn" id="3_lmfaa"]
+
+[node name="WorldScene" type="Node3D"]
+
+[node name="LayerManager" parent="." instance=ExtResource("1_tkw34")]
+
+[node name="QuickMenu" parent="." instance=ExtResource("2_lmfaa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.1)
+visible = false
+
+[node name="DialogueSystem" parent="." instance=ExtResource("3_lmfaa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0.5)
+visible = false

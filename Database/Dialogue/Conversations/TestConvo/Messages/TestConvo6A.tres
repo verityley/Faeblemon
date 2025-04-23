@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Message" load_steps=3 format=3 uid="uid://cyf3ifdkqrl8g"]
+
+[ext_resource type="Script" uid="uid://cnfvsc68h8k77" path="res://Global Assets/Classes/Message.gd" id="1_qvqeh"]
+[ext_resource type="Resource" uid="uid://bxntiemesdgnj" path="res://Database/Dialogue/Speakers/TestSpeaker.tres" id="2_wuq05"]
+
+[resource]
+script = ExtResource("1_qvqeh")
+messageID = "Test4A"
+messageText = "Well, guess I'll see you the next time you playtest this conversation! Bye for now!"
+messageSpeaker = ExtResource("2_wuq05")
+messageSpeed = 3.0
+messageMute = false
+messageInstant = false
+messageSkip = false
+hasChoices = false
+choiceTargets = Array[ExtResource("1_qvqeh")]([])
+choiceText = Array[String]([])
+switchLabel = ""
+switchValue = false
+tallyLabel = ""
+tallyValue = 0

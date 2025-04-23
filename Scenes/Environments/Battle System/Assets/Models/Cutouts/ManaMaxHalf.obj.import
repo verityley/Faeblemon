@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://o2y772y3s4e3"
+path="res://.godot/imported/ManaMaxHalf.obj-a3a3a2afd45734622af20a21fcedfaaa.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ManaMaxHalf.obj-a3a3a2afd45734622af20a21fcedfaaa.mesh"]
+
+source_file="res://Scenes/Environments/Battle System/Assets/Models/Cutouts/ManaMaxHalf.obj"
+dest_files=["res://.godot/imported/ManaMaxHalf.obj-a3a3a2afd45734622af20a21fcedfaaa.mesh", "res://.godot/imported/ManaMaxHalf.obj-a3a3a2afd45734622af20a21fcedfaaa.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(0.2, 0.2, 0.2)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

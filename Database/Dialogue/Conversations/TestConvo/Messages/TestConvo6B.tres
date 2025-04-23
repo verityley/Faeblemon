@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Message" load_steps=3 format=3 uid="uid://b1j8e1nlmcqo0"]
+
+[ext_resource type="Script" uid="uid://cnfvsc68h8k77" path="res://Global Assets/Classes/Message.gd" id="1_8ps8v"]
+[ext_resource type="Resource" uid="uid://bxntiemesdgnj" path="res://Database/Dialogue/Speakers/TestSpeaker.tres" id="2_7tp3g"]
+
+[resource]
+script = ExtResource("1_8ps8v")
+messageID = "Test4A"
+messageText = "That's a shame. Too bad I can't have recursive/repeating conversations yet. Bye~!"
+messageSpeaker = ExtResource("2_7tp3g")
+messageSpeed = 3.0
+messageMute = false
+messageInstant = false
+messageSkip = false
+hasChoices = false
+choiceTargets = Array[ExtResource("1_8ps8v")]([])
+choiceText = Array[String]([])
+switchLabel = ""
+switchValue = false
+tallyLabel = ""
+tallyValue = 0

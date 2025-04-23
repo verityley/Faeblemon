@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://mq6ja37r647r"
+path="res://.godot/imported/ShieldCutout.obj-f1edf85d29a1c24ba8dfd76ff8aecf09.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ShieldCutout.obj-f1edf85d29a1c24ba8dfd76ff8aecf09.mesh"]
+
+source_file="res://Scenes/Environments/Battle System/Assets/Models/Cutouts/ShieldCutout.obj"
+dest_files=["res://.godot/imported/ShieldCutout.obj-f1edf85d29a1c24ba8dfd76ff8aecf09.mesh", "res://.godot/imported/ShieldCutout.obj-f1edf85d29a1c24ba8dfd76ff8aecf09.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(0.2, 0.2, 0.2)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
