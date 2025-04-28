@@ -25,13 +25,13 @@ func LoadScene(stage:Stage, transition:int):
 	if transition == Transitions.None:
 		LayerRetexture()
 		ChangeLighting(0.01)
-		LayerSpacing(2,1)
+		LayerSpacing(2, 1.5)
 	if transition == Transitions.Accordion:
 		LayerSpacing(0, 0)
 		ChangeLighting(1.0)
 		await get_tree().create_timer(1.0).timeout
 		LayerRetexture()
-		LayerSpacing(2, 1)
+		LayerSpacing(2, 1.5)
 
 
 func LayerSpacing(start:float, spacing:float):

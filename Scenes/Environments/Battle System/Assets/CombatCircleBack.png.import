@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0w3u0kq5ab6j"
-path.s3tc="res://.godot/imported/StatusBox.png-227151bdac520af38920543a7e12875b.s3tc.ctex"
+uid="uid://c8exqnhism3nw"
+path.s3tc="res://.godot/imported/CombatCircleBack.png-ce73f1f50ee50b2e4cdb1284b5bdc917.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Scenes/Battle/Assets/StatusBox.png"
-dest_files=["res://.godot/imported/StatusBox.png-227151bdac520af38920543a7e12875b.s3tc.ctex"]
+source_file="res://Scenes/Environments/Battle System/Assets/CombatCircleBack.png"
+dest_files=["res://.godot/imported/CombatCircleBack.png-ce73f1f50ee50b2e4cdb1284b5bdc917.s3tc.ctex"]
 
 [params]
 

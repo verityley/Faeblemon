@@ -38,15 +38,6 @@ transparency = 4
 cull_mode = 2
 albedo_texture = ExtResource("5_ftvb5")
 
-[sub_resource type="QuadMesh" id="QuadMesh_xn15w"]
-lightmap_size_hint = Vector2i(12, 17)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhbrx"]
-transparency = 4
-cull_mode = 2
-albedo_texture = ExtResource("6_f5tt7")
-detail_albedo = ExtResource("6_f5tt7")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ot4m8"]
 transparency = 4
 cull_mode = 2
@@ -66,11 +57,6 @@ albedo_texture = ExtResource("8_vr2uw")
 transparency = 4
 cull_mode = 2
 albedo_texture = ExtResource("5_ftvb5")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6hv8"]
-transparency = 4
-cull_mode = 2
-albedo_texture = ExtResource("9_nv16o")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y324f"]
 transparency = 4
@@ -96,6 +82,20 @@ albedo_texture = ExtResource("13_togyl")
 transparency = 4
 cull_mode = 2
 albedo_texture = ExtResource("14_g3u40")
+
+[sub_resource type="QuadMesh" id="QuadMesh_xn15w"]
+lightmap_size_hint = Vector2i(12, 17)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhbrx"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("6_f5tt7")
+detail_albedo = ExtResource("6_f5tt7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6hv8"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("9_nv16o")
 
 [node name="LayerManager" type="Node3D" node_paths=PackedStringArray("stageLayers", "FXManager")]
 script = ExtResource("1_yyegc")
@@ -136,15 +136,6 @@ mesh = SubResource("QuadMesh_nyfsb")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_eh88h")
 
-[node name="PlayerFaeble" type="Node3D" parent="Cutouts/Player 1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -0.1)
-
-[node name="FaebleMesh2" type="MeshInstance3D" parent="Cutouts/Player 1/PlayerFaeble"]
-transform = Transform3D(-4, 0, -6.03983e-07, 0, 4, 0, 6.03983e-07, 0, -4, -1.37198, 0, 0)
-mesh = SubResource("QuadMesh_xn15w")
-skeleton = NodePath("../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_bhbrx")
-
 [node name="Player 2" type="Node3D" parent="Cutouts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2)
 
@@ -176,15 +167,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, -5)
 mesh = SubResource("QuadMesh_nyfsb")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_s0drs")
-
-[node name="EnemyFaeble" type="Node3D" parent="Cutouts/Enemy 1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1.75, -0.1)
-
-[node name="FaebleMesh" type="MeshInstance3D" parent="Cutouts/Enemy 1/EnemyFaeble"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
-mesh = SubResource("QuadMesh_xn15w")
-skeleton = NodePath("../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_x6hv8")
 
 [node name="Enemy 2" type="Node3D" parent="Cutouts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -6)
@@ -261,5 +243,26 @@ spot_angle = 30.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+visible = false
 current = true
 fov = 30.0
+
+[node name="PlayerFaeble" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -0.1)
+visible = false
+
+[node name="FaebleMesh2" type="MeshInstance3D" parent="PlayerFaeble"]
+transform = Transform3D(-4, 0, -6.03983e-07, 0, 4, 0, 6.03983e-07, 0, -4, -1.37198, 0, 0)
+mesh = SubResource("QuadMesh_xn15w")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhbrx")
+
+[node name="EnemyFaeble" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1.75, -0.1)
+visible = false
+
+[node name="FaebleMesh" type="MeshInstance3D" parent="EnemyFaeble"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+mesh = SubResource("QuadMesh_xn15w")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_x6hv8")

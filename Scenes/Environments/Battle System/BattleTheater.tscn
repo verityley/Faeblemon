@@ -1,6 +1,6 @@
 [gd_scene load_steps=110 format=4 uid="uid://bhp03qdbwqg24"]
 
-[ext_resource type="Script" uid="uid://vqp1ar8cbduk" path="res://Scenes/Environments/Battle System/Scripts/BattleSystem.gd" id="1_pdhdj"]
+[ext_resource type="Script" uid="uid://vqp1ar8cbduk" path="res://Scenes/Environments/Battle System/Scripts/BattleSystemOLD.gd" id="1_pdhdj"]
 [ext_resource type="Resource" uid="uid://c35sr7lc0bckf" path="res://Database/Faebles/030Ratincture.tres" id="2_3s01x"]
 [ext_resource type="Resource" uid="uid://c4cqfm1l7qjs4" path="res://Database/Faebles/079Werewool.tres" id="2_suu8y"]
 [ext_resource type="Script" uid="uid://3wp4xx4ii6hw" path="res://Scenes/Environments/Battle System/Scripts/FieldManager.gd" id="2_yxjww"]
