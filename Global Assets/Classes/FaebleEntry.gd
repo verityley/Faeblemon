@@ -13,6 +13,7 @@ class_name Faeble
 
 @export_category("Visual Parameters")
 @export var sprite:CompressedTexture2D
+@export var backSprite:CompressedTexture2D
 @export var shinySprite:CompressedTexture2D
 @export var UISprite:Texture2D
 @export var icon:CompressedTexture2D
@@ -20,6 +21,7 @@ class_name Faeble
 @export var worldScale:float #Scale used in world or city scenes
 @export var UIScale:float #Scale used in UI elements
 @export var groundOffset:Vector3 #How far to offset from center
+@export var UICenter:Vector3 #Where to center the UI display upon the sprite
 @export var commandOffset:float
 
 
@@ -77,6 +79,8 @@ var learnedSkills:Array[Skill] #These are all the skills they know by their leve
 @export var currentMana:int #This determines how many after-battle heals a faeble has left.
 #@export var currentResolve:int #Shouldnt need to be used I think? since resets every battle
 @export var fainted:bool
+@export var currentStatus:int
+@export var currentBuildup:int
 
 @export_category("Description")
 @export_multiline var description:String #Look into parsing string and revealing bits by level

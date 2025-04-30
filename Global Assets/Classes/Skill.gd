@@ -1,10 +1,16 @@
 extends Resource
 class_name Skill
 
-@export var skillName:String
-@export var skillType:School
-@export var skillCost:int #1 to 10
-@export var skillNature:String #Physical, Magical, etc. Determines stat used.
+@export var name:String
+@export var school:School
+@export var cost:int #1 to 10
+@export var magical:bool #if true, use magic stat
+@export var priority:int
+@export var armor:int
+@export var damageTier:int
+@export var statusType:String
+@export var statusTier:int
+
 @export var skillDamage:int #If this is zero, check for special effects
 @export var witchSkill:bool #If true, this skill is cast from a witch
 @export var commandDifficulty:int #This is a measure of how difficult the minigame should scale
@@ -33,14 +39,14 @@ func Target(battleManager:BattleManager, user:Battler):
 
 func Execute(battleManager:BattleManager, user:Battler, target:Battler):
 	print("Error! Attack has no function. If basic damaging attack, insert ref to DamageCalc")
-	user.ChangeEnergy(-skillCost)
+	user.ChangeEnergy(-cost)
 	var damageTally:int
 	if skillDamage > 0:
 		damageTally = battleManager.DamageCalc(user, target, self)
 	damageTally = -clampi(damageTally, 0, 99)
 	var superFX:bool
 	var weakFX:bool
-	var matchupMod:int = battleManager.CheckMatchups(target.faebleEntry, skillType)
+	var matchupMod:int = battleManager.CheckMatchups(target.faebleEntry, school)
 	if matchupMod > 0:
 		superFX = true
 		weakFX = false

@@ -1,4 +1,5 @@
 extends Node3D
+class_name StageSystem
 
 @export var stageResource:Stage
 @export var stageLayers:Array[Node3D]
@@ -13,11 +14,7 @@ enum Transitions {
 }
 
 func _ready():
-	await LoadScene(preload("res://Scenes/Environments/World Scenes/Forest/Resources/DeepForest.tres"), Transitions.Accordion)
-	await get_tree().create_timer(2.0).timeout
-	await LoadScene(preload("res://Scenes/Environments/World Scenes/Forest/Resources/SparseForest.tres"), Transitions.Accordion)
-	var spawn = stageResource.faebleGrabBag()
-	prints("A wild",spawn.name,"appeared!")
+	pass
 
 
 func LoadScene(stage:Stage, transition:int):

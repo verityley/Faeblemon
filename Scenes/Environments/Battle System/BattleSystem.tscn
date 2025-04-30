@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b3q66tf15lqrx"]
+[gd_scene load_steps=20 format=3 uid="uid://b3q66tf15lqrx"]
 
 [ext_resource type="PackedScene" uid="uid://bok3gqa86lbq0" path="res://Scenes/Environments/World Stage/LayerManager.tscn" id="1_lxtgt"]
 [ext_resource type="Script" uid="uid://bhn5x1qc1v88q" path="res://Scenes/Environments/Battle System/BattleSystem.gd" id="1_tvdob"]
@@ -6,10 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bggyleai1wado" path="res://Global Assets/Graphics/Monster Graphics/Arachalyx.png" id="2_v2ywi"]
 [ext_resource type="Texture2D" uid="uid://bqw6wrt7upoq4" path="res://Global Assets/Graphics/Monster Graphics/Basidusa.png" id="3_k8hxf"]
 [ext_resource type="Texture2D" uid="uid://cpsxhd42h2dfo" path="res://Global Assets/Graphics/UI Graphics/HeartContainerFills.png" id="3_o6qe0"]
-[ext_resource type="Texture2D" uid="uid://cextwcebdq3sp" path="res://Global Assets/Graphics/UI Graphics/EnergyContainerFills.png" id="4_kotnh"]
 [ext_resource type="Texture2D" uid="uid://c0w3u0kq5ab6j" path="res://Scenes/Battle/Assets/StatusBox.png" id="4_v2ywi"]
-[ext_resource type="Texture2D" uid="uid://ctdbe6mqj1ar1" path="res://Scenes/Battle/Assets/AttackCommand.png" id="5_ncyfr"]
-[ext_resource type="Texture2D" uid="uid://c874jgwsucl7l" path="res://Scenes/Battle/Assets/SpellCommand.png" id="6_o6qe0"]
 [ext_resource type="Texture2D" uid="uid://ct0e68qlj3on8" path="res://Scenes/Environments/Battle System/Assets/CombatCircleBase.png" id="11_2q0bd"]
 [ext_resource type="Script" uid="uid://dlfd5473qrppi" path="res://Scenes/Environments/Battle System/combat_circletest.gd" id="11_utcnj"]
 [ext_resource type="Texture2D" uid="uid://c8exqnhism3nw" path="res://Scenes/Environments/Battle System/Assets/CombatCircleBack.png" id="12_3j22u"]
@@ -38,19 +35,6 @@ transparency = 4
 cull_mode = 2
 albedo_texture = ExtResource("4_v2ywi")
 
-[sub_resource type="QuadMesh" id="QuadMesh_kotnh"]
-lightmap_size_hint = Vector2i(12, 17)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dodw6"]
-transparency = 4
-cull_mode = 2
-albedo_texture = ExtResource("5_ncyfr")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvdob"]
-transparency = 4
-cull_mode = 2
-albedo_texture = ExtResource("6_o6qe0")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3j22u"]
 transparency = 4
 cull_mode = 2
@@ -69,977 +53,242 @@ cull_mode = 2
 albedo_texture = ExtResource("13_8u1dv")
 detail_albedo = ExtResource("2_v2ywi")
 
-[node name="BattleSystem" type="Node3D"]
+[node name="BattleSystem" type="Node3D" node_paths=PackedStringArray("playerBattler", "enemyBattler", "pHPDisplay", "eHPDisplay")]
 script = ExtResource("1_tvdob")
+playerPoint = Vector3(-1.5, -1, 0)
+enemyPoint = Vector3(1.5, -1, 0)
+playerBattler = NodePath("PlayerFaeble")
+enemyBattler = NodePath("EnemyFaeble")
+pHPDisplay = NodePath("pHPDisplay")
+eHPDisplay = NodePath("eHPDisplay")
+stageIncrease = 4
+lowThreshold = 2
+highThreshold = 5
 
 [node name="LayerManager" parent="." instance=ExtResource("1_lxtgt")]
 visible = false
 
+[node name="pHPDisplay" type="Node3D" parent="."]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, -1.5, -2, -1.5)
+
+[node name="Node3D" type="Node3D" parent="pHPDisplay"]
+transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Node3D2" type="Node3D" parent="pHPDisplay"]
+transform = Transform3D(1, -1.49012e-07, 0, 1.49012e-07, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Node3D2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Node3D3" type="Node3D" parent="pHPDisplay"]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Node3D3"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Node3D4" type="Node3D" parent="pHPDisplay"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Node3D4"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Node3D5" type="Node3D" parent="pHPDisplay"]
+transform = Transform3D(0.707107, 0.707106, 0, -0.707106, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Node3D5"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Node3D6" type="Node3D" parent="pHPDisplay"]
+transform = Transform3D(0.920709, -0.390249, 0, 0.390249, 0.920709, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Node3D6"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Node3D7" type="Node3D" parent="pHPDisplay"]
+transform = Transform3D(0.990341, -0.138655, 0, 0.138655, 0.990341, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Node3D7"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Node3D8" type="Node3D" parent="pHPDisplay"]
+transform = Transform3D(0.992482, 0.122389, 0, -0.122389, 0.992482, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Node3D8"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Node3D9" type="Node3D" parent="pHPDisplay"]
+transform = Transform3D(0.926988, 0.375092, 0, -0.375092, 0.926988, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Node3D9"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Node3D10" type="Node3D" parent="pHPDisplay"]
+transform = Transform3D(0.79832, 0.602233, 0, -0.602233, 0.79832, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Node3D10"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="eHPDisplay" type="Node3D" parent="."]
+transform = Transform3D(-0.866025, 0.5, -8.74228e-08, 0.5, 0.866025, 0, 7.57103e-08, -4.37114e-08, -1, 1.5, -1, -5.5)
+
+[node name="Node3D" type="Node3D" parent="eHPDisplay"]
+transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Node3D2" type="Node3D" parent="eHPDisplay"]
+transform = Transform3D(1, -1.49012e-07, 0, 1.49012e-07, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Node3D2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Node3D3" type="Node3D" parent="eHPDisplay"]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Node3D3"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Node3D4" type="Node3D" parent="eHPDisplay"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Node3D4"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Node3D5" type="Node3D" parent="eHPDisplay"]
+transform = Transform3D(0.707107, 0.707106, 0, -0.707106, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Node3D5"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Node3D6" type="Node3D" parent="eHPDisplay"]
+transform = Transform3D(0.920709, -0.390249, 0, 0.390249, 0.920709, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Node3D6"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Node3D7" type="Node3D" parent="eHPDisplay"]
+transform = Transform3D(0.990341, -0.138655, 0, 0.138655, 0.990341, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Node3D7"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Node3D8" type="Node3D" parent="eHPDisplay"]
+transform = Transform3D(0.992482, 0.122389, 0, -0.122389, 0.992482, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Node3D8"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Node3D9" type="Node3D" parent="eHPDisplay"]
+transform = Transform3D(0.926988, 0.375092, 0, -0.375092, 0.926988, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Node3D9"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Node3D10" type="Node3D" parent="eHPDisplay"]
+transform = Transform3D(0.79832, 0.602233, 0, -0.602233, 0.79832, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Node3D10"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
 [node name="PlayerFaeble" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -2, -1.5)
 
-[node name="FaebleMesh2" type="MeshInstance3D" parent="PlayerFaeble"]
-transform = Transform3D(-4, 0, -6.03983e-07, 0, 4, 0, 6.03983e-07, 0, -4, -1.37198, 0, 0)
+[node name="FaebleMesh" type="MeshInstance3D" parent="PlayerFaeble"]
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_o6qe0")
-
-[node name="Hearts" type="Node3D" parent="PlayerFaeble"]
-transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 0.36262, -0.195967, 1)
-visible = false
-
-[node name="Node3D" type="Node3D" parent="PlayerFaeble/Hearts"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts/Node3D"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D2" type="Node3D" parent="PlayerFaeble/Hearts"]
-transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, -1.5, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts/Node3D2"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D3" type="Node3D" parent="PlayerFaeble/Hearts"]
-transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -1.5, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts/Node3D3"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D4" type="Node3D" parent="PlayerFaeble/Hearts"]
-transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -1.5, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts/Node3D4"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D5" type="Node3D" parent="PlayerFaeble/Hearts"]
-transform = Transform3D(0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0, 1, -1.5, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts/Node3D5"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D6" type="Node3D" parent="PlayerFaeble/Hearts"]
-transform = Transform3D(0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0, 1, -1.5, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts/Node3D6"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D7" type="Node3D" parent="PlayerFaeble/Hearts"]
-transform = Transform3D(-5.96046e-08, 1, 0, -1, -5.96046e-08, 0, 0, 0, 1, -1.5, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts/Node3D7"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D8" type="Node3D" parent="PlayerFaeble/Hearts"]
-transform = Transform3D(-0.258819, 0.965926, 0, -0.965926, -0.258819, 0, 0, 0, 1, -1.5, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts/Node3D8"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D9" type="Node3D" parent="PlayerFaeble/Hearts"]
-transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, -1.5, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts/Node3D9"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D10" type="Node3D" parent="PlayerFaeble/Hearts"]
-transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, -1.5, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts/Node3D10"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Hearts2" type="Node3D" parent="PlayerFaeble"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36571, 0.138626, 0)
-visible = false
-
-[node name="Node3D" type="Node3D" parent="PlayerFaeble/Hearts2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts2/Node3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D2" type="Node3D" parent="PlayerFaeble/Hearts2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts2/Node3D2"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D3" type="Node3D" parent="PlayerFaeble/Hearts2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts2/Node3D3"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D4" type="Node3D" parent="PlayerFaeble/Hearts2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts2/Node3D4"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D5" type="Node3D" parent="PlayerFaeble/Hearts2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts2/Node3D5"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D6" type="Node3D" parent="PlayerFaeble/Hearts2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 1.6, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts2/Node3D6"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D7" type="Node3D" parent="PlayerFaeble/Hearts2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.6, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts2/Node3D7"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D8" type="Node3D" parent="PlayerFaeble/Hearts2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.6, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts2/Node3D8"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D9" type="Node3D" parent="PlayerFaeble/Hearts2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.6, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts2/Node3D9"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D10" type="Node3D" parent="PlayerFaeble/Hearts2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1.6, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts2/Node3D10"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Hearts3" type="Node3D" parent="PlayerFaeble"]
-transform = Transform3D(0.866026, -0.5, 0, 0.5, 0.866026, 0, 0, 0, 1, -1.366, 0.2, 0.2)
-visible = false
-
-[node name="Node3D" type="Node3D" parent="PlayerFaeble/Hearts3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts3/Node3D"]
-transform = Transform3D(1.93185, 0.517638, 0, -0.517638, 1.93185, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D2" type="Node3D" parent="PlayerFaeble/Hearts3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts3/Node3D2"]
-transform = Transform3D(1.93185, 0.517638, 0, -0.517638, 1.93185, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D3" type="Node3D" parent="PlayerFaeble/Hearts3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts3/Node3D3"]
-transform = Transform3D(1.93185, 0.517638, 0, -0.517638, 1.93185, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D4" type="Node3D" parent="PlayerFaeble/Hearts3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts3/Node3D4"]
-transform = Transform3D(1.93185, 0.517638, 0, -0.517638, 1.93185, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D5" type="Node3D" parent="PlayerFaeble/Hearts3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts3/Node3D5"]
-transform = Transform3D(1.93185, 0.517638, 0, -0.517638, 1.93185, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D6" type="Node3D" parent="PlayerFaeble/Hearts3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 1.6, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts3/Node3D6"]
-transform = Transform3D(1.93185, 0.517638, 0, -0.517638, 1.93185, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D7" type="Node3D" parent="PlayerFaeble/Hearts3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.6, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts3/Node3D7"]
-transform = Transform3D(1.93185, 0.517638, 0, -0.517638, 1.93185, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D8" type="Node3D" parent="PlayerFaeble/Hearts3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.6, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts3/Node3D8"]
-transform = Transform3D(1.93185, 0.517638, 0, -0.517638, 1.93185, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D9" type="Node3D" parent="PlayerFaeble/Hearts3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.6, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts3/Node3D9"]
-transform = Transform3D(1.93185, 0.517638, 0, -0.517638, 1.93185, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D10" type="Node3D" parent="PlayerFaeble/Hearts3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1.6, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts3/Node3D10"]
-transform = Transform3D(1.93185, 0.517638, 0, -0.517638, 1.93185, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Hearts4" type="Node3D" parent="PlayerFaeble"]
-transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, -0.921455, 0.264436, 0.110127)
-
-[node name="Node3D" type="Node3D" parent="PlayerFaeble/Hearts4"]
-transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts4/Node3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D2" type="Node3D" parent="PlayerFaeble/Hearts4"]
-transform = Transform3D(1, -1.49012e-07, 0, 1.49012e-07, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts4/Node3D2"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D3" type="Node3D" parent="PlayerFaeble/Hearts4"]
-transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts4/Node3D3"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D4" type="Node3D" parent="PlayerFaeble/Hearts4"]
-transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts4/Node3D4"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D5" type="Node3D" parent="PlayerFaeble/Hearts4"]
-transform = Transform3D(0.707107, 0.707106, 0, -0.707106, 0.707107, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts4/Node3D5"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D6" type="Node3D" parent="PlayerFaeble/Hearts4"]
-transform = Transform3D(0.920709, -0.390249, 0, 0.390249, 0.920709, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts4/Node3D6"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D7" type="Node3D" parent="PlayerFaeble/Hearts4"]
-transform = Transform3D(0.990341, -0.138655, 0, 0.138655, 0.990341, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts4/Node3D7"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D8" type="Node3D" parent="PlayerFaeble/Hearts4"]
-transform = Transform3D(0.992482, 0.122389, 0, -0.122389, 0.992482, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts4/Node3D8"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D9" type="Node3D" parent="PlayerFaeble/Hearts4"]
-transform = Transform3D(0.926988, 0.375092, 0, -0.375092, 0.926988, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts4/Node3D9"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D10" type="Node3D" parent="PlayerFaeble/Hearts4"]
-transform = Transform3D(0.79832, 0.602233, 0, -0.602233, 0.79832, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="PlayerFaeble/Hearts4/Node3D10"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Mana" type="Node3D" parent="PlayerFaeble"]
-transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, -1.1001, 0.195967, 1)
-visible = false
-
-[node name="Node3D" type="Node3D" parent="PlayerFaeble/Mana"]
-transform = Transform3D(0.927184, -0.374607, 0, 0.374607, 0.927184, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="EnergyFill" type="Sprite3D" parent="PlayerFaeble/Mana/Node3D"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2.5, 0, 0)
-render_priority = 1
-texture = ExtResource("4_kotnh")
-hframes = 5
-frame = 2
-
-[node name="Node3D2" type="Node3D" parent="PlayerFaeble/Mana"]
-transform = Transform3D(0.992546, -0.121869, 0, 0.121869, 0.992546, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="EnergyFill" type="Sprite3D" parent="PlayerFaeble/Mana/Node3D2"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2.5, 0, 0)
-render_priority = 1
-texture = ExtResource("4_kotnh")
-hframes = 5
-frame = 2
-
-[node name="Node3D3" type="Node3D" parent="PlayerFaeble/Mana"]
-transform = Transform3D(0.990268, 0.139173, 0, -0.139173, 0.990268, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="EnergyFill" type="Sprite3D" parent="PlayerFaeble/Mana/Node3D3"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2.5, 0, 0)
-render_priority = 1
-texture = ExtResource("4_kotnh")
-hframes = 5
-frame = 2
-
-[node name="Node3D4" type="Node3D" parent="PlayerFaeble/Mana"]
-transform = Transform3D(0.920505, 0.390731, 0, -0.390731, 0.920505, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="EnergyFill" type="Sprite3D" parent="PlayerFaeble/Mana/Node3D4"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2.5, 0, 0)
-render_priority = 1
-texture = ExtResource("4_kotnh")
-hframes = 5
-frame = 2
-
-[node name="Node3D5" type="Node3D" parent="PlayerFaeble/Mana"]
-transform = Transform3D(0.788011, 0.615662, 0, -0.615662, 0.788011, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="EnergyFill" type="Sprite3D" parent="PlayerFaeble/Mana/Node3D5"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2.5, 0, 0)
-render_priority = 1
-texture = ExtResource("4_kotnh")
-hframes = 5
-frame = 2
-
-[node name="Node3D6" type="Node3D" parent="PlayerFaeble/Mana"]
-transform = Transform3D(0.601815, 0.798636, 0, -0.798636, 0.601815, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="EnergyFill" type="Sprite3D" parent="PlayerFaeble/Mana/Node3D6"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2.5, 0, 0)
-render_priority = 1
-texture = ExtResource("4_kotnh")
-hframes = 5
-frame = 2
-
-[node name="Node3D7" type="Node3D" parent="PlayerFaeble/Mana"]
-transform = Transform3D(0.374607, 0.927184, 0, -0.927184, 0.374607, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="EnergyFill" type="Sprite3D" parent="PlayerFaeble/Mana/Node3D7"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2.5, 0, 0)
-render_priority = 1
-texture = ExtResource("4_kotnh")
-hframes = 5
-frame = 2
-
-[node name="Node3D8" type="Node3D" parent="PlayerFaeble/Mana"]
-transform = Transform3D(0.121869, 0.992546, 0, -0.992546, 0.121869, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="EnergyFill" type="Sprite3D" parent="PlayerFaeble/Mana/Node3D8"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2.5, 0, 0)
-render_priority = 1
-texture = ExtResource("4_kotnh")
-hframes = 5
-frame = 2
-
-[node name="Node3D9" type="Node3D" parent="PlayerFaeble/Mana"]
-transform = Transform3D(-0.139173, 0.990268, 0, -0.990268, -0.139173, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="EnergyFill" type="Sprite3D" parent="PlayerFaeble/Mana/Node3D9"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2.5, 0, 0)
-render_priority = 1
-texture = ExtResource("4_kotnh")
-hframes = 5
-frame = 2
-
-[node name="Node3D10" type="Node3D" parent="PlayerFaeble/Mana"]
-transform = Transform3D(-0.390731, 0.920505, 0, -0.920505, -0.390731, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="EnergyFill" type="Sprite3D" parent="PlayerFaeble/Mana/Node3D10"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2.5, 0, 0)
-render_priority = 1
-texture = ExtResource("4_kotnh")
-hframes = 5
-frame = 2
-
-[node name="Mana2" type="Node3D" parent="PlayerFaeble"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 0.196, 0.2)
-
-[node name="Node3D" type="Node3D" parent="PlayerFaeble/Mana2"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.54461, 0.650643, 0)
-
-[node name="EnergyFill" type="Sprite3D" parent="PlayerFaeble/Mana2/Node3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-modulate = Color(0.337255, 0.776471, 0, 1)
-render_priority = 1
-texture = ExtResource("4_kotnh")
-hframes = 5
-frame = 2
 
 [node name="EnemyFaeble" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1, -5.5)
 
 [node name="FaebleMesh" type="MeshInstance3D" parent="EnemyFaeble"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_kotnh")
-
-[node name="Hearts" type="Node3D" parent="EnemyFaeble"]
-transform = Transform3D(-0.965926, -0.258819, -8.44439e-08, -0.258819, 0.965926, -2.26267e-08, 8.74228e-08, 0, -1, -0.965834, 0.371732, 0)
-visible = false
-
-[node name="Node3D" type="Node3D" parent="EnemyFaeble/Hearts"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts/Node3D"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D2" type="Node3D" parent="EnemyFaeble/Hearts"]
-transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, -1.5, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts/Node3D2"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D3" type="Node3D" parent="EnemyFaeble/Hearts"]
-transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -1.5, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts/Node3D3"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D4" type="Node3D" parent="EnemyFaeble/Hearts"]
-transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -1.5, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts/Node3D4"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D5" type="Node3D" parent="EnemyFaeble/Hearts"]
-transform = Transform3D(0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0, 1, -1.5, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts/Node3D5"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D6" type="Node3D" parent="EnemyFaeble/Hearts"]
-transform = Transform3D(0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0, 1, -1.5, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts/Node3D6"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D7" type="Node3D" parent="EnemyFaeble/Hearts"]
-transform = Transform3D(-5.96046e-08, 1, 0, -1, -5.96046e-08, 0, 0, 0, 1, -1.5, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts/Node3D7"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D8" type="Node3D" parent="EnemyFaeble/Hearts"]
-transform = Transform3D(-0.258819, 0.965926, 0, -0.965926, -0.258819, 0, 0, 0, 1, -1.5, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts/Node3D8"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D9" type="Node3D" parent="EnemyFaeble/Hearts"]
-transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, -1.5, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts/Node3D9"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D10" type="Node3D" parent="EnemyFaeble/Hearts"]
-transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, -1.5, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts/Node3D10"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Mana" type="Node3D" parent="EnemyFaeble"]
-transform = Transform3D(-0.965926, -0.258819, -8.44439e-08, -0.258819, 0.965926, -2.26267e-08, 8.74228e-08, 0, -1, 0.500957, 0.689405, 0)
-visible = false
-
-[node name="Node3D" type="Node3D" parent="EnemyFaeble/Mana"]
-transform = Transform3D(0.927184, -0.374607, 0, 0.374607, 0.927184, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="EnergyFill" type="Sprite3D" parent="EnemyFaeble/Mana/Node3D"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2.5, 0, 0)
-render_priority = 1
-texture = ExtResource("4_kotnh")
-hframes = 5
-frame = 2
-
-[node name="Node3D2" type="Node3D" parent="EnemyFaeble/Mana"]
-transform = Transform3D(0.992546, -0.121869, 0, 0.121869, 0.992546, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="EnergyFill" type="Sprite3D" parent="EnemyFaeble/Mana/Node3D2"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2.5, 0, 0)
-render_priority = 1
-texture = ExtResource("4_kotnh")
-hframes = 5
-frame = 2
-
-[node name="Node3D3" type="Node3D" parent="EnemyFaeble/Mana"]
-transform = Transform3D(0.990268, 0.139173, 0, -0.139173, 0.990268, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="EnergyFill" type="Sprite3D" parent="EnemyFaeble/Mana/Node3D3"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2.5, 0, 0)
-render_priority = 1
-texture = ExtResource("4_kotnh")
-hframes = 5
-frame = 2
-
-[node name="Node3D4" type="Node3D" parent="EnemyFaeble/Mana"]
-transform = Transform3D(0.920505, 0.390731, 0, -0.390731, 0.920505, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="EnergyFill" type="Sprite3D" parent="EnemyFaeble/Mana/Node3D4"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2.5, 0, 0)
-render_priority = 1
-texture = ExtResource("4_kotnh")
-hframes = 5
-frame = 2
-
-[node name="Node3D5" type="Node3D" parent="EnemyFaeble/Mana"]
-transform = Transform3D(0.788011, 0.615662, 0, -0.615662, 0.788011, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="EnergyFill" type="Sprite3D" parent="EnemyFaeble/Mana/Node3D5"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2.5, 0, 0)
-render_priority = 1
-texture = ExtResource("4_kotnh")
-hframes = 5
-frame = 2
-
-[node name="Node3D6" type="Node3D" parent="EnemyFaeble/Mana"]
-transform = Transform3D(0.601815, 0.798636, 0, -0.798636, 0.601815, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="EnergyFill" type="Sprite3D" parent="EnemyFaeble/Mana/Node3D6"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2.5, 0, 0)
-render_priority = 1
-texture = ExtResource("4_kotnh")
-hframes = 5
-frame = 2
-
-[node name="Node3D7" type="Node3D" parent="EnemyFaeble/Mana"]
-transform = Transform3D(0.374607, 0.927184, 0, -0.927184, 0.374607, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="EnergyFill" type="Sprite3D" parent="EnemyFaeble/Mana/Node3D7"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2.5, 0, 0)
-render_priority = 1
-texture = ExtResource("4_kotnh")
-hframes = 5
-frame = 2
-
-[node name="Node3D8" type="Node3D" parent="EnemyFaeble/Mana"]
-transform = Transform3D(0.121869, 0.992546, 0, -0.992546, 0.121869, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="EnergyFill" type="Sprite3D" parent="EnemyFaeble/Mana/Node3D8"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2.5, 0, 0)
-render_priority = 1
-texture = ExtResource("4_kotnh")
-hframes = 5
-frame = 2
-
-[node name="Node3D9" type="Node3D" parent="EnemyFaeble/Mana"]
-transform = Transform3D(-0.139173, 0.990268, 0, -0.990268, -0.139173, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="EnergyFill" type="Sprite3D" parent="EnemyFaeble/Mana/Node3D9"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2.5, 0, 0)
-render_priority = 1
-texture = ExtResource("4_kotnh")
-hframes = 5
-frame = 2
-
-[node name="Node3D10" type="Node3D" parent="EnemyFaeble/Mana"]
-transform = Transform3D(-0.390731, 0.920505, 0, -0.920505, -0.390731, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="EnergyFill" type="Sprite3D" parent="EnemyFaeble/Mana/Node3D10"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -2.5, 0, 0)
-render_priority = 1
-texture = ExtResource("4_kotnh")
-hframes = 5
-frame = 2
-
-[node name="Hearts3" type="Node3D" parent="EnemyFaeble"]
-transform = Transform3D(-0.866026, 0.5, -8.74228e-08, 0.5, 0.866026, 0, 7.57104e-08, -4.37114e-08, -1, 0.331, 0.2, 0.2)
-visible = false
-
-[node name="Node3D" type="Node3D" parent="EnemyFaeble/Hearts3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts3/Node3D"]
-transform = Transform3D(1.93185, 0.517638, 0, -0.517638, 1.93185, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D2" type="Node3D" parent="EnemyFaeble/Hearts3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts3/Node3D2"]
-transform = Transform3D(1.93185, 0.517638, 0, -0.517638, 1.93185, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D3" type="Node3D" parent="EnemyFaeble/Hearts3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts3/Node3D3"]
-transform = Transform3D(1.93185, 0.517638, 0, -0.517638, 1.93185, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D4" type="Node3D" parent="EnemyFaeble/Hearts3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts3/Node3D4"]
-transform = Transform3D(1.93185, 0.517638, 0, -0.517638, 1.93185, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D5" type="Node3D" parent="EnemyFaeble/Hearts3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts3/Node3D5"]
-transform = Transform3D(1.93185, 0.517638, 0, -0.517638, 1.93185, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D6" type="Node3D" parent="EnemyFaeble/Hearts3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 1.6, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts3/Node3D6"]
-transform = Transform3D(1.93185, 0.517638, 0, -0.517638, 1.93185, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D7" type="Node3D" parent="EnemyFaeble/Hearts3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.6, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts3/Node3D7"]
-transform = Transform3D(1.93185, 0.517638, 0, -0.517638, 1.93185, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D8" type="Node3D" parent="EnemyFaeble/Hearts3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.6, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts3/Node3D8"]
-transform = Transform3D(1.93185, 0.517638, 0, -0.517638, 1.93185, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D9" type="Node3D" parent="EnemyFaeble/Hearts3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.6, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts3/Node3D9"]
-transform = Transform3D(1.93185, 0.517638, 0, -0.517638, 1.93185, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D10" type="Node3D" parent="EnemyFaeble/Hearts3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1.6, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts3/Node3D10"]
-transform = Transform3D(1.93185, 0.517638, 0, -0.517638, 1.93185, 0, 0, 0, 2, 0, 0, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Hearts4" type="Node3D" parent="EnemyFaeble"]
-transform = Transform3D(-0.866025, 0.5, -8.44439e-08, 0.5, 0.866025, -2.26267e-08, 6.18172e-08, -6.18172e-08, -1, 0, 0.264, 0.11)
-
-[node name="Node3D" type="Node3D" parent="EnemyFaeble/Hearts4"]
-transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts4/Node3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D2" type="Node3D" parent="EnemyFaeble/Hearts4"]
-transform = Transform3D(1, -1.49012e-07, 0, 1.49012e-07, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts4/Node3D2"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D3" type="Node3D" parent="EnemyFaeble/Hearts4"]
-transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts4/Node3D3"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D4" type="Node3D" parent="EnemyFaeble/Hearts4"]
-transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts4/Node3D4"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D5" type="Node3D" parent="EnemyFaeble/Hearts4"]
-transform = Transform3D(0.707107, 0.707106, 0, -0.707106, 0.707107, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts4/Node3D5"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D6" type="Node3D" parent="EnemyFaeble/Hearts4"]
-transform = Transform3D(0.920709, -0.390249, 0, 0.390249, 0.920709, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts4/Node3D6"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D7" type="Node3D" parent="EnemyFaeble/Hearts4"]
-transform = Transform3D(0.990341, -0.138655, 0, 0.138655, 0.990341, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts4/Node3D7"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D8" type="Node3D" parent="EnemyFaeble/Hearts4"]
-transform = Transform3D(0.992482, 0.122389, 0, -0.122389, 0.992482, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts4/Node3D8"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D9" type="Node3D" parent="EnemyFaeble/Hearts4"]
-transform = Transform3D(0.926988, 0.375092, 0, -0.375092, 0.926988, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts4/Node3D9"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D10" type="Node3D" parent="EnemyFaeble/Hearts4"]
-transform = Transform3D(0.79832, 0.602233, 0, -0.602233, 0.79832, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="EnemyFaeble/Hearts4/Node3D10"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
 
 [node name="PlayerUI" type="Node3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.5, 2, 2.7)
@@ -1062,26 +311,6 @@ cast_shadow = 0
 mesh = SubResource("QuadMesh_k8hxf")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ncyfr")
-
-[node name="Command" type="Node3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -5, -1, 2.7)
-visible = false
-
-[node name="FaebleMesh" type="MeshInstance3D" parent="Command"]
-cast_shadow = 0
-mesh = SubResource("QuadMesh_kotnh")
-skeleton = NodePath("../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_dodw6")
-
-[node name="Command2" type="Node3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3.5, -2, 2.7)
-visible = false
-
-[node name="FaebleMesh" type="MeshInstance3D" parent="Command2"]
-cast_shadow = 0
-mesh = SubResource("QuadMesh_kotnh")
-skeleton = NodePath("../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_tvdob")
 
 [node name="UIManager" type="Node3D" parent="."]
 

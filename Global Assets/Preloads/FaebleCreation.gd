@@ -6,7 +6,7 @@ extends Node
 
 @export var healthRatio:int = 2 #Health per point of HRT
 @export var initStatRatio:float = 0.6 #How much stats should be reduced by to build up towards
-@export var pointsPerLevel:int = 4
+@export var pointsPerLevel:int = 1
 
 @export var rewardRatio:Vector2i = Vector2i(4,2) #Health:Energy
 @export var heartRatio:Vector2i = Vector2i(2,1) #Heart:Reward

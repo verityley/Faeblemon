@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://vfr2we8x3m4y"]
+[gd_scene load_steps=6 format=3 uid="uid://vfr2we8x3m4y"]
 
+[ext_resource type="Script" uid="uid://d040k3w2av06f" path="res://Scenes/Environments/world_sceneTEST.gd" id="1_lqij8"]
 [ext_resource type="PackedScene" uid="uid://bok3gqa86lbq0" path="res://Scenes/Environments/World Stage/LayerManager.tscn" id="1_tkw34"]
 [ext_resource type="PackedScene" uid="uid://c3jcwsr4k6fpi" path="res://Scenes/Environments/Menu Overlay/QuickMenu.tscn" id="2_lmfaa"]
 [ext_resource type="PackedScene" uid="uid://c0257e6y177n7" path="res://Scenes/Environments/Dialogue System/DialogueSystem.tscn" id="3_lmfaa"]
 [ext_resource type="PackedScene" uid="uid://b3q66tf15lqrx" path="res://Scenes/Environments/Battle System/BattleSystem.tscn" id="4_8etdo"]
 
-[node name="WorldScene" type="Node3D"]
+[node name="WorldScene" type="Node3D" node_paths=PackedStringArray("stageSystem", "battleSystem")]
+script = ExtResource("1_lqij8")
+stageSystem = NodePath("LayerManager")
+battleSystem = NodePath("BattleSystem")
 
 [node name="LayerManager" parent="." instance=ExtResource("1_tkw34")]
 

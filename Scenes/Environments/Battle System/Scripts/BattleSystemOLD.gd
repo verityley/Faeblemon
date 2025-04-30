@@ -1,5 +1,4 @@
 extends Node3D
-class_name BattleSystem
 
 @export var testFaeble1:Faeble
 @export var testFaeble2:Faeble
