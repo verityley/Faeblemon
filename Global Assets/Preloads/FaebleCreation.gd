@@ -4,8 +4,10 @@ extends Node
 @export var shinyOdds:int = 1000
 @export var altSchoolOdds:int = 500
 
+@export var startingHP:int = 10
+
 @export var healthRatio:int = 2 #Health per point of HRT
-@export var initStatRatio:float = 0.6 #How much stats should be reduced by to build up towards
+@export var initStatRatio:float = 0.9 #How much stats should be reduced by to build up towards
 @export var pointsPerLevel:int = 1
 
 @export var rewardRatio:Vector2i = Vector2i(4,2) #Health:Energy
@@ -172,8 +174,8 @@ func CreateFaeble(faebleEntry:Faeble, initLevel:int) -> Faeble:
 	print("Ambition:", instance.ambition)
 	print("Grace:", instance.grace)
 	print("Heart:", instance.heart)
-	instance.maxHP = (instance.heart*healthRatio)
-	instance.maxHP = clampi(instance.maxHP, 1, instance.HPCap)
+	instance.maxHP = (instance.heart*healthRatio) +  startingHP
+	instance.maxHP = clampi(instance.maxHP, startingHP, instance.HPCap)
 	instance.currentHP = instance.maxHP
 	instance.maxMana = float(instance.brawn + instance.wit) / 2
 	instance.currentMana = instance.maxMana

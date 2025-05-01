@@ -1,12 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://b3q66tf15lqrx"]
+[gd_scene load_steps=24 format=3 uid="uid://b3q66tf15lqrx"]
 
 [ext_resource type="PackedScene" uid="uid://bok3gqa86lbq0" path="res://Scenes/Environments/World Stage/LayerManager.tscn" id="1_lxtgt"]
 [ext_resource type="Script" uid="uid://bhn5x1qc1v88q" path="res://Scenes/Environments/Battle System/BattleSystem.gd" id="1_tvdob"]
-[ext_resource type="Texture2D" uid="uid://brxgkrgviam1r" path="res://Global Assets/Graphics/Monster Graphics/Sqwyrm.png" id="2_dodw6"]
 [ext_resource type="Texture2D" uid="uid://bggyleai1wado" path="res://Global Assets/Graphics/Monster Graphics/Arachalyx.png" id="2_v2ywi"]
 [ext_resource type="Texture2D" uid="uid://bqw6wrt7upoq4" path="res://Global Assets/Graphics/Monster Graphics/Basidusa.png" id="3_k8hxf"]
 [ext_resource type="Texture2D" uid="uid://cpsxhd42h2dfo" path="res://Global Assets/Graphics/UI Graphics/HeartContainerFills.png" id="3_o6qe0"]
+[ext_resource type="Texture2D" uid="uid://b453k3m6wcbfo" path="res://Global Assets/Graphics/UI Graphics/HeartContainers.png" id="3_utcnj"]
+[ext_resource type="Texture2D" uid="uid://bik83etyy05sr" path="res://Global Assets/Graphics/Dialogue Graphics/WitchBackSprite.png" id="4_2q0bd"]
 [ext_resource type="Texture2D" uid="uid://c0w3u0kq5ab6j" path="res://Scenes/Battle/Assets/StatusBox.png" id="4_v2ywi"]
+[ext_resource type="Texture2D" uid="uid://b6byvcbsfq3rb" path="res://Global Assets/Graphics/Monster Graphics/SqwrymMoarSketchy.png" id="6_3j22u"]
+[ext_resource type="Script" uid="uid://casfhivwhjo6p" path="res://Scenes/Environments/Battle System/BattleUIManager.gd" id="10_45ym3"]
 [ext_resource type="Texture2D" uid="uid://ct0e68qlj3on8" path="res://Scenes/Environments/Battle System/Assets/CombatCircleBase.png" id="11_2q0bd"]
 [ext_resource type="Script" uid="uid://dlfd5473qrppi" path="res://Scenes/Environments/Battle System/combat_circletest.gd" id="11_utcnj"]
 [ext_resource type="Texture2D" uid="uid://c8exqnhism3nw" path="res://Scenes/Environments/Battle System/Assets/CombatCircleBack.png" id="12_3j22u"]
@@ -18,7 +21,13 @@ lightmap_size_hint = Vector2i(12, 17)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6qe0"]
 transparency = 4
 cull_mode = 2
-albedo_texture = ExtResource("2_dodw6")
+albedo_texture = ExtResource("4_2q0bd")
+detail_albedo = ExtResource("2_v2ywi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_45ym3"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("6_3j22u")
 detail_albedo = ExtResource("2_v2ywi")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kotnh"]
@@ -71,208 +80,356 @@ visible = false
 [node name="pHPDisplay" type="Node3D" parent="."]
 transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, -1.5, -2, -1.5)
 
-[node name="Node3D" type="Node3D" parent="pHPDisplay"]
-transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Node3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D2" type="Node3D" parent="pHPDisplay"]
-transform = Transform3D(1, -1.49012e-07, 0, 1.49012e-07, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Node3D2"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D3" type="Node3D" parent="pHPDisplay"]
-transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Node3D3"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D4" type="Node3D" parent="pHPDisplay"]
-transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Node3D4"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D5" type="Node3D" parent="pHPDisplay"]
-transform = Transform3D(0.707107, 0.707106, 0, -0.707106, 0.707107, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Node3D5"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D6" type="Node3D" parent="pHPDisplay"]
+[node name="Heart" type="Node3D" parent="pHPDisplay"]
 transform = Transform3D(0.920709, -0.390249, 0, 0.390249, 0.920709, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Node3D6"]
+[node name="HeartContainer" type="Sprite3D" parent="pHPDisplay/Heart"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+render_priority = 2
+texture = ExtResource("3_utcnj")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Heart"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
 frame = 4
 
-[node name="Node3D7" type="Node3D" parent="pHPDisplay"]
+[node name="Heart2" type="Node3D" parent="pHPDisplay"]
+transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="pHPDisplay/Heart2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 2
+texture = ExtResource("3_utcnj")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Heart2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Heart3" type="Node3D" parent="pHPDisplay"]
 transform = Transform3D(0.990341, -0.138655, 0, 0.138655, 0.990341, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Node3D7"]
+[node name="HeartContainer" type="Sprite3D" parent="pHPDisplay/Heart3"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+render_priority = 2
+texture = ExtResource("3_utcnj")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Heart3"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
 frame = 4
 
-[node name="Node3D8" type="Node3D" parent="pHPDisplay"]
+[node name="Heart4" type="Node3D" parent="pHPDisplay"]
+transform = Transform3D(1, -1.49012e-07, 0, 1.49012e-07, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="pHPDisplay/Heart4"]
+transform = Transform3D(2, 5.96046e-08, 0, -5.96046e-08, 2, 0, 0, 0, 2, 2.38419e-07, 2, 0)
+render_priority = 2
+texture = ExtResource("3_utcnj")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Heart4"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Heart5" type="Node3D" parent="pHPDisplay"]
 transform = Transform3D(0.992482, 0.122389, 0, -0.122389, 0.992482, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Node3D8"]
+[node name="HeartContainer" type="Sprite3D" parent="pHPDisplay/Heart5"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+render_priority = 2
+texture = ExtResource("3_utcnj")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Heart5"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
 frame = 4
 
-[node name="Node3D9" type="Node3D" parent="pHPDisplay"]
+[node name="Heart6" type="Node3D" parent="pHPDisplay"]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="pHPDisplay/Heart6"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.19209e-07, 2, 0)
+render_priority = 2
+texture = ExtResource("3_utcnj")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Heart6"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Heart7" type="Node3D" parent="pHPDisplay"]
 transform = Transform3D(0.926988, 0.375092, 0, -0.375092, 0.926988, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Node3D9"]
+[node name="HeartContainer" type="Sprite3D" parent="pHPDisplay/Heart7"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+render_priority = 2
+texture = ExtResource("3_utcnj")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Heart7"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
 frame = 4
 
-[node name="Node3D10" type="Node3D" parent="pHPDisplay"]
+[node name="Heart8" type="Node3D" parent="pHPDisplay"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="pHPDisplay/Heart8"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 2
+texture = ExtResource("3_utcnj")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Heart8"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Heart9" type="Node3D" parent="pHPDisplay"]
 transform = Transform3D(0.79832, 0.602233, 0, -0.602233, 0.79832, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Node3D10"]
+[node name="HeartContainer" type="Sprite3D" parent="pHPDisplay/Heart9"]
+transform = Transform3D(2, -1.49012e-08, 0, 1.49012e-08, 2, 0, 0, 0, 2, 0, 2.3, 0)
+render_priority = 2
+texture = ExtResource("3_utcnj")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Heart9"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Heart10" type="Node3D" parent="pHPDisplay"]
+transform = Transform3D(0.707107, 0.707106, 0, -0.707106, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="pHPDisplay/Heart10"]
+transform = Transform3D(2, 2.98023e-08, 0, -2.98023e-08, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 2
+texture = ExtResource("3_utcnj")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Heart10"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
 frame = 4
 
 [node name="eHPDisplay" type="Node3D" parent="."]
-transform = Transform3D(-0.866025, 0.5, -8.74228e-08, 0.5, 0.866025, 0, 7.57103e-08, -4.37114e-08, -1, 1.5, -1, -5.5)
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, -1.5, -2, -1.5)
 
-[node name="Node3D" type="Node3D" parent="eHPDisplay"]
-transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Node3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D2" type="Node3D" parent="eHPDisplay"]
-transform = Transform3D(1, -1.49012e-07, 0, 1.49012e-07, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Node3D2"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D3" type="Node3D" parent="eHPDisplay"]
-transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Node3D3"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D4" type="Node3D" parent="eHPDisplay"]
-transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Node3D4"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D5" type="Node3D" parent="eHPDisplay"]
-transform = Transform3D(0.707107, 0.707106, 0, -0.707106, 0.707107, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Node3D5"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
-render_priority = 1
-texture = ExtResource("3_o6qe0")
-hframes = 7
-frame = 4
-
-[node name="Node3D6" type="Node3D" parent="eHPDisplay"]
+[node name="Heart" type="Node3D" parent="eHPDisplay"]
 transform = Transform3D(0.920709, -0.390249, 0, 0.390249, 0.920709, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Node3D6"]
+[node name="HeartContainer" type="Sprite3D" parent="eHPDisplay/Heart"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+render_priority = 2
+texture = ExtResource("3_utcnj")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Heart"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
 frame = 4
 
-[node name="Node3D7" type="Node3D" parent="eHPDisplay"]
+[node name="Heart2" type="Node3D" parent="eHPDisplay"]
+transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="eHPDisplay/Heart2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 2
+texture = ExtResource("3_utcnj")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Heart2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Heart3" type="Node3D" parent="eHPDisplay"]
 transform = Transform3D(0.990341, -0.138655, 0, 0.138655, 0.990341, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Node3D7"]
+[node name="HeartContainer" type="Sprite3D" parent="eHPDisplay/Heart3"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+render_priority = 2
+texture = ExtResource("3_utcnj")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Heart3"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
 frame = 4
 
-[node name="Node3D8" type="Node3D" parent="eHPDisplay"]
+[node name="Heart4" type="Node3D" parent="eHPDisplay"]
+transform = Transform3D(1, -1.49012e-07, 0, 1.49012e-07, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="eHPDisplay/Heart4"]
+transform = Transform3D(2, 5.96046e-08, 0, -5.96046e-08, 2, 0, 0, 0, 2, 2.38419e-07, 2, 0)
+render_priority = 2
+texture = ExtResource("3_utcnj")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Heart4"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Heart5" type="Node3D" parent="eHPDisplay"]
 transform = Transform3D(0.992482, 0.122389, 0, -0.122389, 0.992482, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Node3D8"]
+[node name="HeartContainer" type="Sprite3D" parent="eHPDisplay/Heart5"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+render_priority = 2
+texture = ExtResource("3_utcnj")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Heart5"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
 frame = 4
 
-[node name="Node3D9" type="Node3D" parent="eHPDisplay"]
+[node name="Heart6" type="Node3D" parent="eHPDisplay"]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="eHPDisplay/Heart6"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.19209e-07, 2, 0)
+render_priority = 2
+texture = ExtResource("3_utcnj")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Heart6"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Heart7" type="Node3D" parent="eHPDisplay"]
 transform = Transform3D(0.926988, 0.375092, 0, -0.375092, 0.926988, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Node3D9"]
+[node name="HeartContainer" type="Sprite3D" parent="eHPDisplay/Heart7"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+render_priority = 2
+texture = ExtResource("3_utcnj")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Heart7"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
 frame = 4
 
-[node name="Node3D10" type="Node3D" parent="eHPDisplay"]
+[node name="Heart8" type="Node3D" parent="eHPDisplay"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="eHPDisplay/Heart8"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 2
+texture = ExtResource("3_utcnj")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Heart8"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="Heart9" type="Node3D" parent="eHPDisplay"]
 transform = Transform3D(0.79832, 0.602233, 0, -0.602233, 0.79832, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Node3D10"]
+[node name="HeartContainer" type="Sprite3D" parent="eHPDisplay/Heart9"]
+transform = Transform3D(2, -1.49012e-08, 0, 1.49012e-08, 2, 0, 0, 0, 2, 0, 2.3, 0)
+render_priority = 2
+texture = ExtResource("3_utcnj")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Heart9"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
 frame = 4
+
+[node name="Heart10" type="Node3D" parent="eHPDisplay"]
+transform = Transform3D(0.707107, 0.707106, 0, -0.707106, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="eHPDisplay/Heart10"]
+transform = Transform3D(2, 2.98023e-08, 0, -2.98023e-08, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 2
+texture = ExtResource("3_utcnj")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Heart10"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+render_priority = 1
+texture = ExtResource("3_o6qe0")
+hframes = 7
+frame = 4
+
+[node name="WitchSprite" type="Node3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -4, -1.5, -1.5)
+
+[node name="WitchMesh" type="MeshInstance3D" parent="WitchSprite"]
+mesh = SubResource("QuadMesh_ncyfr")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_o6qe0")
 
 [node name="PlayerFaeble" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -2, -1.5)
@@ -280,7 +437,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -2, -1.5)
 [node name="FaebleMesh" type="MeshInstance3D" parent="PlayerFaeble"]
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_o6qe0")
+surface_material_override/0 = SubResource("StandardMaterial3D_45ym3")
 
 [node name="EnemyFaeble" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1, -5.5)
@@ -313,6 +470,7 @@ skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ncyfr")
 
 [node name="UIManager" type="Node3D" parent="."]
+script = ExtResource("10_45ym3")
 
 [node name="CombatCircle" type="Node3D" parent="UIManager"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 4.7929, -2.30945, 2.7572)

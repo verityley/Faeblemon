@@ -33,6 +33,8 @@ var layerOffset:float = 0.5
 @export var highThreshold:int
 @export var levelBonus:float = 0.5
 
+
+
 enum Status{
 	Clear=0,
 	Decay, #Tick damage, and reduces Vigor
@@ -84,6 +86,11 @@ var eStatus:int #Enum of statuses
 var eStance:int #Enum of stances
 var eStages:Array[int] = [0,0,0,0,0]
 
+var pContainers:Array[Node3D]
+var eContainers:Array[Node3D]
+var pFills:Array[Sprite3D]
+var eFills:Array[Sprite3D]
+
 
 func BattleSetup(stageSystem:StageSystem):
 	playerBattler.reparent(stageSystem.stageLayers[playerLayer])
@@ -96,6 +103,14 @@ func BattleSetup(stageSystem:StageSystem):
 	eHPDisplay.reparent(stageSystem.stageLayers[enemyLayer])
 	eHPDisplay.position = enemyBattler.position
 	eHPDisplay.rotation.y = deg_to_rad(180)
+	
+	for heart in pHPDisplay.get_children():
+		pContainers.append(heart.get_child(0))
+		pFills.append(heart.get_child(1))
+	
+	for heart in eHPDisplay.get_children():
+		eContainers.append(heart.get_child(0))
+		eFills.append(heart.get_child(1))
 
 
 func WildBattle():
@@ -297,3 +312,130 @@ func CheckMatchups(target:Faeble, attackingType:School) -> int: #Returns multipl
 	
 	mod = damageAdjustment * damageMultiplier
 	return mod
+
+
+
+
+
+
+
+func MaxHealthReset(maxHP:int, player:bool):
+	#Determine how many containers vs pips are needed
+	var containers:int = ceili(float(maxHP)/4)
+	var extraContainers:int
+	var healthContainers:Array
+	var healthFills:Array
+	
+	if player:
+		healthContainers = pContainers
+		healthFills = pFills
+	else:
+		healthContainers = eContainers
+		healthFills = eFills
+	
+	if containers > 10:
+		extraContainers = ceili(float(maxHP - 40)/2)
+		containers = 10
+	
+	for i in range(healthContainers.size()):
+		healthContainers[i].frame = 0
+		healthFills[i].frame = 0
+		healthContainers[i].hide()
+		healthFills[i].hide()
+	
+	var lastHeart
+	var lastFill
+	for h in containers:
+		var heart:Sprite3D = healthContainers[h]
+		var fill:Sprite3D = healthFills[h]
+		healthContainers[h].show()
+		healthFills[h].show()
+		heart.frame = 4
+		fill.frame = 4
+		lastHeart = heart
+		lastFill = fill
+	
+	if extraContainers > 0:
+		for e in range(extraContainers):
+			healthContainers[e].show()
+			healthFills[e].show()
+			healthContainers[e].frame = 6
+			healthFills[e].frame = 6
+			lastHeart = healthContainers[e]
+			lastFill = healthFills[e]
+	
+	if extraContainers <= 0:
+		var leftover:int = containers*4 - maxHP
+		if leftover != 0:
+			lastHeart.frame = 4 - leftover
+			lastFill.frame = 4 - leftover
+		prints("Containers:", containers, "Extras:", extraContainers, "Leftover Extra:", leftover)
+	else:
+		var leftover:int = ((containers*4) + (extraContainers*2)) - maxHP
+		prints("Containers:", containers, "Extras:", extraContainers, "Leftover Extra:", leftover)
+		if leftover != 0:
+			lastHeart.frame = 5
+			lastFill.frame = 5
+	
+	
+	pass #Include handling for hitting 0, going over max, etc
+
+
+func SetHealthDisplay(maxHP:int, curHP:int, player:bool):
+	#Determine how many containers vs pips are needed
+	var containers:int = ceili(float(curHP)/4)
+	var maxContainers:int = ceili(float(maxHP)/4)
+	var extraContainers:int
+	var maxExtras:int
+	var healthContainers:Array
+	var healthFills:Array
+	#prints(containers, ceili(float(maxHealthPips)/4))
+	
+	if player:
+		healthContainers = pContainers
+		healthFills = pFills
+	else:
+		healthContainers = eContainers
+		healthFills = eFills
+	
+	if maxContainers > 10 and containers > 10:
+		extraContainers = ceili(float(curHP - 40)/2)
+		maxExtras = ceili(float(maxHP - 40)/2)
+		#print(extraContainers)
+		#print(maxExtras)
+		containers = 10
+		maxContainers = 10
+	
+	if containers <= 10 and maxContainers > 10:
+		maxContainers = 10
+	
+	prints("Total Health:", maxHP, "Current Health:", curHP)
+	#print(maxContainers)
+	var lastFill
+	for i in maxContainers:
+		healthFills[i].frame = 0
+	
+	for h in containers:
+		healthFills[h].frame = 4
+		lastFill = healthFills[h]
+	
+	#for j in maxExtras:
+	#	healthFills[j].frame = 4
+	
+	if extraContainers > 0:
+		for e in range(extraContainers):
+			healthFills[e].frame = 6
+			lastFill = healthFills[e]
+	
+	if extraContainers <= 0:
+		var leftover:int = curHP % 4
+		print("Leftover: ", leftover)
+		if leftover != 0:
+			lastFill.frame = leftover
+	else:
+		var leftover:int = curHP % 2
+		print("Leftover Extra: ", leftover)
+		if leftover != 0:
+			lastFill.frame = 4 + leftover
+	#print(leftover)
+	pass #Include handling for hitting 0, going over max, etc
