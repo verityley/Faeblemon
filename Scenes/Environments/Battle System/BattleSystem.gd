@@ -38,10 +38,10 @@ var layerOffset:float = 0.5
 enum Status{
 	Clear=0,
 	Decay, #Tick damage, and reduces Vigor
-	Charm, #Prevents moving away from source, and reduces Brawn
-	Fear, #Prevents moving towards the source, and reduces Wit
-	Silence, #Reduces maximum attack range (never below minimum), and reduces Ambition
-	Slow #Halves stamina gain, and reduces Grace
+	Daze, #Prevents Rush Stance, and reduces Brawn
+	Fear, #Prevents Brace Stance, and reduces Wit
+	Silence, #Prevents Channel Stance, and reduces Ambition
+	Slow #Prevents Stance Change, and reduces Grace
 }
 
 enum Attributes{
@@ -58,6 +58,13 @@ enum Stances{
 	Rush, #Forward stance, +1 Priority
 	Brace, #Defensive stance, +1 Armor
 	Focus #Chanelling stance, -1 Cost, -1 Priority
+}
+
+enum Mana{
+	Primordial=1,
+	Enchantment,
+	Arcane,
+	Wild
 }
 
 #External Variables

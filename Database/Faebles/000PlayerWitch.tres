@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="Leader" load_steps=5 format=3 uid="uid://cx83gg5jmqkxy"]
+[gd_resource type="Resource" script_class="Leader" load_steps=4 format=3 uid="uid://cx83gg5jmqkxy"]
 
 [ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Skill.gd" id="1_0oj6d"]
-[ext_resource type="Resource" uid="uid://coyq2vgk2qsyv" path="res://Database/Skills/WitchSkills/Channel.tres" id="1_deetd"]
 [ext_resource type="Script" uid="uid://fcro22va7s6c" path="res://Global Assets/Classes/Leader.gd" id="2_6i8iu"]
 [ext_resource type="Script" uid="uid://bst1aj7yglpus" path="res://Global Assets/Classes/Feat.gd" id="3_8q4tj"]
 
@@ -33,7 +32,7 @@ powerBonus = 1
 manaBonus = 0
 resolveBonus = 0
 skillPool = {}
-assignedSkills = Array[ExtResource("1_0oj6d")]([ExtResource("1_deetd"), null, null])
+assignedSkills = Array[ExtResource("1_0oj6d")]([])
 feats = Array[ExtResource("3_8q4tj")]([])
 customResource = 0
 customName = ""

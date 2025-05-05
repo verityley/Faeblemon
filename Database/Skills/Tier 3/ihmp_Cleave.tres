@@ -1,15 +1,18 @@
-[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://cb8r46toquk1g"]
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://cb8r46toquk1g"]
 
 [ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Skill.gd" id="1_cdgl6"]
-[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Mundane.tres" id="2_0i2xm"]
 
 [resource]
 resource_name = "ihmp_Cleave"
 script = ExtResource("1_cdgl6")
-skillName = "Cleave"
-skillType = ExtResource("2_0i2xm")
-skillCost = 6
-skillNature = "Physical"
+name = ""
+cost = 0
+magical = false
+priority = 0
+armor = 0
+damageTier = 0
+statusType = ""
+statusTier = 0
 skillDamage = 10
 witchSkill = false
 commandDifficulty = 0
