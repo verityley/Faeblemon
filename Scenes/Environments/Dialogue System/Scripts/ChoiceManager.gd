@@ -22,6 +22,7 @@ var tempRotations:Array[Vector3]
 
 
 func _ready():
+	EventBus.connect("TargetChoice",TargetChoice)
 	InitializeAnchors()
 	#await get_tree().create_timer(2.0).timeout
 	ClearChoices()
