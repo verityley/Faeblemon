@@ -8,10 +8,10 @@
 [ext_resource type="Resource" uid="uid://dvn0i2tiim6q8" path="res://Database/Schools/Geo.tres" id="6_pw0rb"]
 [ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="7_yv56j"]
 [ext_resource type="Resource" uid="uid://de8kbqj72dt47" path="res://Database/Schools/Hearth.tres" id="8_ppkqe"]
-[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Lunar.tres" id="9_1g4rj"]
-[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Mundane.tres" id="10_7hl01"]
+[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Rime.tres" id="9_1g4rj"]
+[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Kinetic.tres" id="10_7hl01"]
 [ext_resource type="Resource" uid="uid://bit2tuyhefdhg" path="res://Database/Schools/Pact.tres" id="11_yv0v7"]
-[ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Performance.tres" id="12_35xjm"]
+[ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Charm.tres" id="12_35xjm"]
 [ext_resource type="Resource" uid="uid://c10g7loedmtw7" path="res://Database/Schools/Storm.tres" id="13_ouhqu"]
 [ext_resource type="Resource" uid="uid://6sqrvld48ww6" path="res://Database/Schools/Weird.tres" id="14_5o5vc"]
 

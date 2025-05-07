@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Faeble" load_steps=21 format=3 uid="uid://cvppt440vx0if"]
 
-[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Lunar.tres" id="1_1gpbr"]
+[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Rime.tres" id="1_1gpbr"]
 [ext_resource type="Script" uid="uid://cl11ae273swpi" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_oquen"]
 [ext_resource type="Resource" uid="uid://087ema067pet" path="res://Database/Schools/Blessing.tres" id="2_tidy2"]
 [ext_resource type="Resource" uid="uid://bkek55add4qy3" path="res://Database/Domains/Sacred.tres" id="3_341xk"]

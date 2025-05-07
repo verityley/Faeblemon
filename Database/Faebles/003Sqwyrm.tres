@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cl11ae273swpi" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_3560i"]
 [ext_resource type="Resource" uid="uid://cy460pjjcakrm" path="res://Database/Schools/Curse.tres" id="1_irpsw"]
 [ext_resource type="Resource" uid="uid://cvhcgyhumqrql" path="res://Database/Domains/Primal.tres" id="2_ewhh8"]
-[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Mundane.tres" id="2_kjjpv"]
+[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Kinetic.tres" id="2_kjjpv"]
 [ext_resource type="Texture2D" uid="uid://bpkh8xekg4032" path="res://Global Assets/Graphics/Monster Graphics/Icons/SqwyrmIcon.png" id="3_37i8b"]
 [ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Skill.gd" id="3_ngsoi"]
 [ext_resource type="Script" uid="uid://bst1aj7yglpus" path="res://Global Assets/Classes/Feat.gd" id="4_0sm8c"]

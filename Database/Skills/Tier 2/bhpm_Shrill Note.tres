@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://odafm32tg4fb"]
 
 [ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Skill.gd" id="1_js4cu"]
-[ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Performance.tres" id="2_sycwt"]
+[ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Charm.tres" id="2_sycwt"]
 
 [resource]
 script = ExtResource("1_js4cu")

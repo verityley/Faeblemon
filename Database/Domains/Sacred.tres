@@ -9,10 +9,10 @@
 [ext_resource type="Resource" uid="uid://dvn0i2tiim6q8" path="res://Database/Schools/Geo.tres" id="7_f3xhn"]
 [ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="8_f2i42"]
 [ext_resource type="Resource" uid="uid://de8kbqj72dt47" path="res://Database/Schools/Hearth.tres" id="9_0g57r"]
-[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Lunar.tres" id="10_d8mhk"]
-[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Mundane.tres" id="11_qshl1"]
+[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Rime.tres" id="10_ygytr"]
+[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Kinetic.tres" id="11_qwi3g"]
 [ext_resource type="Resource" uid="uid://bit2tuyhefdhg" path="res://Database/Schools/Pact.tres" id="12_oshcc"]
-[ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Performance.tres" id="13_ig2ag"]
+[ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Charm.tres" id="13_lm2vq"]
 [ext_resource type="Resource" uid="uid://c10g7loedmtw7" path="res://Database/Schools/Storm.tres" id="14_spriu"]
 [ext_resource type="Resource" uid="uid://6sqrvld48ww6" path="res://Database/Schools/Weird.tres" id="15_mhxgi"]
 
@@ -20,19 +20,19 @@
 script = ExtResource("2_7aped")
 name = "Sacred"
 typeMatchups = {
-ExtResource("3_fplsd"): 1,
+ExtResource("3_fplsd"): -1,
 ExtResource("4_cqldi"): -1,
-ExtResource("5_t0tf7"): 0,
-ExtResource("6_lsfs5"): 1,
+ExtResource("5_t0tf7"): 1,
+ExtResource("6_lsfs5"): 0,
 ExtResource("7_f3xhn"): 0,
 ExtResource("8_f2i42"): 0,
 ExtResource("9_0g57r"): 0,
-ExtResource("10_d8mhk"): -1,
-ExtResource("11_qshl1"): 0,
+ExtResource("10_ygytr"): 0,
+ExtResource("11_qwi3g"): 0,
 ExtResource("12_oshcc"): 1,
-ExtResource("13_ig2ag"): 0,
+ExtResource("13_lm2vq"): -1,
 ExtResource("14_spriu"): 0,
-ExtResource("15_mhxgi"): 0
+ExtResource("15_mhxgi"): 1
 }
 typeIndex = 5
 nameplate = ExtResource("1_0nl2n")

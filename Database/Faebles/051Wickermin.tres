@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://bst1aj7yglpus" path="res://Global Assets/Classes/Feat.gd" id="4_kpd3p"]
 [ext_resource type="Texture2D" uid="uid://c6wf14fvpy7nl" path="res://Global Assets/Graphics/Monster Graphics/Icons/WickerminIcon.png" id="4_o6bh8"]
 [ext_resource type="Resource" uid="uid://bldym4cl8lnh7" path="res://Database/Domains/Fairytale.tres" id="6_fqxql"]
-[ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Performance.tres" id="7_psu1q"]
+[ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Charm.tres" id="7_psu1q"]
 [ext_resource type="Texture2D" uid="uid://bp16wld817luf" path="res://Global Assets/Graphics/Monster Graphics/Wickermin.png" id="8_55e5c"]
 [ext_resource type="Resource" uid="uid://c4sissiwwyyvn" path="res://Database/Skills/Tier 1 (Trash)/thpp_Tempotap.tres" id="8_bkqem"]
 [ext_resource type="Resource" uid="uid://cb56nrnvv4pyq" path="res://Database/Skills/Tier 1 (Trash)/thhp_Scorch.tres" id="9_mldml"]

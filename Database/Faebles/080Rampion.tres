@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Faeble" load_steps=23 format=3 uid="uid://dpd3txufvfbpk"]
 
-[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Mundane.tres" id="1_fr1af"]
+[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Kinetic.tres" id="1_fr1af"]
 [ext_resource type="Script" uid="uid://cl11ae273swpi" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_xmhrt"]
-[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Lunar.tres" id="2_geh1w"]
+[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Rime.tres" id="2_geh1w"]
 [ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Skill.gd" id="3_72mb7"]
 [ext_resource type="Resource" uid="uid://d32tt0oqhs4pt" path="res://Database/Domains/Profane.tres" id="3_xd8hg"]
 [ext_resource type="Texture2D" uid="uid://dgxi6ek2w0jsg" path="res://Global Assets/Graphics/Monster Graphics/Icons/RampionIcon.png" id="4_3ucr0"]

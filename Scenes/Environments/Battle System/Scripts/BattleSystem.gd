@@ -57,7 +57,7 @@ enum Stances{
 	Neutral=0,
 	Rush, #Forward stance, +1 Priority
 	Brace, #Defensive stance, +1 Armor
-	Focus #Chanelling stance, -1 Cost, -1 Priority
+	Channel #Chanelling stance, +1 Wild Mana, -1 Priority
 }
 
 enum Mana{
@@ -138,6 +138,19 @@ func BattleCleanup():
 	#hide()
 	#queue_free()
 
+
+func BattleStart(playerFaeble:Faeble, enemyFaeble:Faeble, playerWitch:Witch, enemyWitch:Witch):
+	ChangeBattler(playerFaeble, true)
+	ChangeBattler(enemyFaeble, false)
+	MaxHealthReset(playerFaeble.maxHP,true)
+	MaxHealthReset(enemyFaeble.maxHP,false)
+	SetHealthDisplay(playerFaeble.maxHP, playerFaeble.maxHP,true)
+	SetHealthDisplay(enemyFaeble.maxHP, enemyFaeble.maxHP,false)
+
+func RoundStart():
+	pass
+
+
 func ChangeBattler(entry:Faeble, player:bool):
 	var texture:Material
 	if player:
@@ -187,12 +200,12 @@ func SpeedCalc(playerAttack:Skill, enemyAttack:Skill) -> bool:
 	
 	if pStance == Stances.Rush:
 		pPriority += 1
-	elif pStance == Stances.Focus:
+	elif pStance == Stances.Channel:
 		pPriority -= 1
 	
 	if eStance == Stances.Rush:
 		ePriority += 1
-	elif eStance == Stances.Focus:
+	elif eStance == Stances.Channel:
 		ePriority -= 1
 	
 	if pPriority > ePriority:
@@ -319,10 +332,6 @@ func CheckMatchups(target:Faeble, attackingType:School) -> int: #Returns multipl
 	
 	mod = damageAdjustment * damageMultiplier
 	return mod
-
-
-
-
 
 
 

@@ -1,6 +1,5 @@
-[gd_scene load_steps=56 format=3 uid="uid://b3q66tf15lqrx"]
+[gd_scene load_steps=55 format=3 uid="uid://b3q66tf15lqrx"]
 
-[ext_resource type="PackedScene" uid="uid://bok3gqa86lbq0" path="res://Scenes/Environments/World Stage/LayerManager.tscn" id="1_lxtgt"]
 [ext_resource type="Script" uid="uid://bhn5x1qc1v88q" path="res://Scenes/Environments/Battle System/Scripts/BattleSystem.gd" id="1_tvdob"]
 [ext_resource type="Texture2D" uid="uid://bggyleai1wado" path="res://Global Assets/Graphics/Monster Graphics/Arachalyx.png" id="2_v2ywi"]
 [ext_resource type="Texture2D" uid="uid://bqw6wrt7upoq4" path="res://Global Assets/Graphics/Monster Graphics/Basidusa.png" id="3_k8hxf"]
@@ -10,12 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://b6byvcbsfq3rb" path="res://Global Assets/Graphics/Monster Graphics/SqwrymMoarSketchy.png" id="6_3j22u"]
 [ext_resource type="Script" uid="uid://casfhivwhjo6p" path="res://Scenes/Environments/Battle System/Scripts/BattleUIManager.gd" id="10_45ym3"]
 [ext_resource type="Texture2D" uid="uid://8lnupgncgpp8" path="res://Scenes/Environments/Battle System/Assets/ManaCharge.png" id="11_45ym3"]
-[ext_resource type="Script" uid="uid://dlfd5473qrppi" path="res://Scenes/Environments/Battle System/Scripts/combat_circletest.gd" id="11_utcnj"]
 [ext_resource type="Texture2D" uid="uid://cite8hirfwrvo" path="res://Scenes/Environments/Battle System/Assets/ManaEnchantment.png" id="12_dengi"]
 [ext_resource type="Texture2D" uid="uid://byhctygn81j4i" path="res://Scenes/Environments/Battle System/Assets/ManaArcane.png" id="12_uehyu"]
 [ext_resource type="Texture2D" uid="uid://cklyod6kgyhfd" path="res://Scenes/Environments/Battle System/Assets/CombatCircleNEW.png" id="12_utcnj"]
 [ext_resource type="Texture2D" uid="uid://bdmoxrolchvgf" path="res://Scenes/Environments/Battle System/Assets/CombatManaSelector.png" id="13_utcnj"]
 [ext_resource type="Texture2D" uid="uid://i24h310u1uq0" path="res://Scenes/Environments/Battle System/Assets/ManaPrimordial.png" id="14_f64hp"]
+[ext_resource type="Script" uid="uid://c4egmjop8sevh" path="res://Scenes/Environments/Battle System/Scripts/ManaButton.gd" id="17_4upqs"]
 [ext_resource type="Texture2D" uid="uid://cu31e04wq3vuv" path="res://Scenes/Environments/Battle System/Assets/BackButton.png" id="17_qv6fs"]
 [ext_resource type="Texture2D" uid="uid://bvqb1bmsr6p7b" path="res://Scenes/Environments/Battle System/Assets/SpellBases/SpellHearth.png" id="17_uurif"]
 [ext_resource type="Texture2D" uid="uid://bglab8wtnwgc5" path="res://Scenes/Environments/Battle System/Assets/SpellBases/SpellRime.png" id="18_f64hp"]
@@ -91,14 +90,14 @@ cull_mode = 2
 albedo_texture = ExtResource("13_utcnj")
 detail_albedo = ExtResource("2_v2ywi")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s5qaa"]
+height = 0.1
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_inqmx"]
 transparency = 4
 cull_mode = 2
 albedo_texture = ExtResource("17_qv6fs")
 detail_albedo = ExtResource("2_v2ywi")
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_s5qaa"]
-height = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwtxt"]
 transparency = 4
@@ -183,9 +182,6 @@ eHPDisplay = NodePath("eHPDisplay")
 stageIncrease = 4
 lowThreshold = 2
 highThreshold = 5
-
-[node name="LayerManager" parent="." instance=ExtResource("1_lxtgt")]
-visible = false
 
 [node name="pHPDisplay" type="Node3D" parent="."]
 transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, -1.5, -2, -1.5)
@@ -557,7 +553,43 @@ mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_kotnh")
 
-[node name="UIManager" type="Node3D" parent="." node_paths=PackedStringArray("commandHeaders", "menuCommands", "tacticsCommands", "cantripCommands", "spellCommands", "backButton")]
+[node name="ManaPool" type="Node3D" parent="."]
+transform = Transform3D(-1.09278e-07, -2.5, 0, 2.5, -1.09278e-07, 0, 0, 0, 2.5, 0, -2.5, 3)
+visible = false
+
+[node name="PoolBase" type="MeshInstance3D" parent="ManaPool"]
+mesh = SubResource("QuadMesh_uehyu")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_uurif")
+
+[node name="ManaPip" type="MeshInstance3D" parent="ManaPool"]
+transform = Transform3D(-1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 0, 0, 0, 0.3, 0, 0.3, 0.02)
+mesh = SubResource("QuadMesh_ncyfr")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_qv6fs")
+
+[node name="ManaPip2" type="MeshInstance3D" parent="ManaPool"]
+transform = Transform3D(-1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 0, 0, 0, 0.3, 0, 0, 0.02)
+mesh = SubResource("QuadMesh_ncyfr")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_dengi")
+
+[node name="ManaPip3" type="MeshInstance3D" parent="ManaPool"]
+transform = Transform3D(-1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 0, 0, 0, 0.3, 0, -0.3, 0.02)
+mesh = SubResource("QuadMesh_ncyfr")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_4rsar")
+
+[node name="EnemyPool" type="Node3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.5, 1, -6)
+visible = false
+
+[node name="CircleBase" type="MeshInstance3D" parent="EnemyPool"]
+mesh = SubResource("QuadMesh_uehyu")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_uurif")
+
+[node name="CommandsManager" type="Node3D" parent="." node_paths=PackedStringArray("commandHeaders", "menuCommands", "tacticsCommands", "cantripCommands", "spellCommands", "backButton", "manaSelectors", "CircleMenu")]
 script = ExtResource("10_45ym3")
 commandHeaders = [NodePath("CombatCircle/Commands/MainCommands"), NodePath("CombatCircle/Commands/Tactics"), NodePath("CombatCircle/Commands/Cantrips"), NodePath("CombatCircle/Commands/Spells")]
 menuCommands = [NodePath("CombatCircle/Commands/MainCommands/CommandBubble/CircleBack"), NodePath("CombatCircle/Commands/MainCommands/CommandBubble2/CircleBack"), NodePath("CombatCircle/Commands/MainCommands/CommandBubble3/CircleBack")]
@@ -565,72 +597,91 @@ tacticsCommands = [NodePath("CombatCircle/Commands/Tactics/CommandBubble/CircleB
 cantripCommands = [NodePath("CombatCircle/Commands/Cantrips/CommandBubble/CircleBack"), NodePath("CombatCircle/Commands/Cantrips/CommandBubble2/CircleBack"), NodePath("CombatCircle/Commands/Cantrips/CommandBubble3/CircleBack")]
 spellCommands = [NodePath("CombatCircle/Commands/Spells/CommandBubble/CircleBack"), NodePath("CombatCircle/Commands/Spells/CommandBubble2/CircleBack"), NodePath("CombatCircle/Commands/Spells/CommandBubble3/CircleBack")]
 backButton = NodePath("CombatCircle/Back/BackButton")
+manaSelectors = [NodePath("CombatCircle/Back/ManaSelector/Primordial/ManaPip3"), NodePath("CombatCircle/Back/ManaSelector/Enchantment/ManaPip"), NodePath("CombatCircle/Back/ManaSelector/Ethereal/ManaPip2")]
 scrollTime = 0.1
+turnTime = 1.0
+CircleMenu = NodePath("CombatCircle")
 
-[node name="ManaPool" type="Node3D" parent="UIManager"]
-transform = Transform3D(-1.09278e-07, -2.5, 0, 2.5, -1.09278e-07, 0, 0, 0, 2.5, 0, -2.5, 3)
-visible = false
-
-[node name="PoolBase" type="MeshInstance3D" parent="UIManager/ManaPool"]
-mesh = SubResource("QuadMesh_uehyu")
-skeleton = NodePath("../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_uurif")
-
-[node name="ManaPip" type="MeshInstance3D" parent="UIManager/ManaPool"]
-transform = Transform3D(-1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 0, 0, 0, 0.3, 0, 0.3, 0.02)
-mesh = SubResource("QuadMesh_ncyfr")
-skeleton = NodePath("../../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_qv6fs")
-
-[node name="ManaPip2" type="MeshInstance3D" parent="UIManager/ManaPool"]
-transform = Transform3D(-1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 0, 0, 0, 0.3, 0, 0, 0.02)
-mesh = SubResource("QuadMesh_ncyfr")
-skeleton = NodePath("../../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_dengi")
-
-[node name="ManaPip3" type="MeshInstance3D" parent="UIManager/ManaPool"]
-transform = Transform3D(-1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 0, 0, 0, 0.3, 0, -0.3, 0.02)
-mesh = SubResource("QuadMesh_ncyfr")
-skeleton = NodePath("../../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_4rsar")
-
-[node name="EnemyPool" type="Node3D" parent="UIManager"]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.5, 1, -6)
-visible = false
-
-[node name="CircleBase" type="MeshInstance3D" parent="UIManager/EnemyPool"]
-mesh = SubResource("QuadMesh_uehyu")
-skeleton = NodePath("../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_uurif")
-
-[node name="CombatCircle" type="Node3D" parent="UIManager"]
+[node name="CombatCircle" type="Node3D" parent="CommandsManager"]
 transform = Transform3D(0.989949, -0.989949, 0, 0.989949, 0.989949, 0, 0, 0, 1.4, 4.75, -2.25, 3)
-script = ExtResource("11_utcnj")
 
-[node name="Base" type="Node3D" parent="UIManager/CombatCircle"]
+[node name="Base" type="Node3D" parent="CommandsManager/CombatCircle"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
-[node name="CircleBase" type="MeshInstance3D" parent="UIManager/CombatCircle/Base"]
+[node name="CircleBase" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Base"]
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_3j22u")
 
-[node name="Back" type="Node3D" parent="UIManager/CombatCircle"]
+[node name="Back" type="Node3D" parent="CommandsManager/CombatCircle"]
 transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, 0, -0.3, -0.05)
 
-[node name="ManaSelector" type="MeshInstance3D" parent="UIManager/CombatCircle/Back"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0.45, 0)
+[node name="ManaSelector" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Back"]
+transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, 0.45, 0)
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_8u1dv")
 
-[node name="BackButton" type="MeshInstance3D" parent="UIManager/CombatCircle/Back"]
+[node name="Primordial" type="Node3D" parent="CommandsManager/CombatCircle/Back/ManaSelector"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, -0.01)
+
+[node name="ManaPip3" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Back/ManaSelector/Primordial"]
+transform = Transform3D(-0.45, 3.93403e-08, 0, -3.93403e-08, -0.45, 0, 0, 0, 0.45, 0, 0.25, 0.05)
+mesh = SubResource("QuadMesh_ncyfr")
+skeleton = NodePath("../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_4rsar")
+
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Back/ManaSelector/Primordial/ManaPip3"]
+script = ExtResource("17_4upqs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Back/ManaSelector/Primordial/ManaPip3/Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_s5qaa")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="Enchantment" type="Node3D" parent="CommandsManager/CombatCircle/Back/ManaSelector"]
+transform = Transform3D(-0.5, 0.866026, 0, -0.866026, -0.5, 0, 0, 0, 1, 0, 0, -0.01)
+
+[node name="ManaPip" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Back/ManaSelector/Enchantment"]
+transform = Transform3D(-0.45, 3.93403e-08, 0, -3.93403e-08, -0.45, 0, 0, 0, 0.45, 0, 0.25, 0.05)
+mesh = SubResource("QuadMesh_ncyfr")
+skeleton = NodePath("../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_qv6fs")
+
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Back/ManaSelector/Enchantment/ManaPip"]
+script = ExtResource("17_4upqs")
+choice = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Back/ManaSelector/Enchantment/ManaPip/Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_s5qaa")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="Ethereal" type="Node3D" parent="CommandsManager/CombatCircle/Back/ManaSelector"]
+transform = Transform3D(-0.5, -0.866025, 0, 0.866025, -0.5, 0, 0, 0, 1, 0, 0, -0.01)
+
+[node name="ManaPip2" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Back/ManaSelector/Ethereal"]
+transform = Transform3D(-0.45, 3.93403e-08, 0, -3.93403e-08, -0.45, 0, 0, 0, 0.45, 0, 0.25, 0.05)
+mesh = SubResource("QuadMesh_ncyfr")
+skeleton = NodePath("../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_dengi")
+
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Back/ManaSelector/Ethereal/ManaPip2"]
+script = ExtResource("17_4upqs")
+choice = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Back/ManaSelector/Ethereal/ManaPip2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_s5qaa")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="BackButton" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Back"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, -0.45, 0)
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_inqmx")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="UIManager/CombatCircle/Back/BackButton"]
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Back/BackButton"]
 transform = Transform3D(0.75188, -5.96046e-08, 0, 5.96046e-08, 0.75188, 0, 0, 0, 0.75188, 0, 0, 0.00999999)
 visible = false
 light_color = Color(0, 0.615179, 0.616283, 1)
@@ -639,39 +690,31 @@ light_specular = 16.0
 omni_range = 1.1
 omni_attenuation = -5.0
 
-[node name="Area3D" type="Area3D" parent="UIManager/CombatCircle/Back/BackButton"]
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Back/BackButton"]
 script = ExtResource("19_fotmf")
 choice = 4
 stage = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UIManager/CombatCircle/Back/BackButton/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Back/BackButton/Area3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_s5qaa")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="UIManager/CombatCircle/Back"]
-transform = Transform3D(0.701754, -2.98023e-08, 0, 2.98023e-08, 0.701754, 0, 0, 0, 0.701754, 0, 0, 0.0468345)
-visible = false
-light_color = Color(0.384314, 1, 1, 1)
-light_energy = 50.0
-omni_range = 1.0
-omni_attenuation = -5.0
-
-[node name="Commands" type="Node3D" parent="UIManager/CombatCircle"]
+[node name="Commands" type="Node3D" parent="CommandsManager/CombatCircle"]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0.05)
 
-[node name="MainCommands" type="Node3D" parent="UIManager/CombatCircle/Commands"]
+[node name="MainCommands" type="Node3D" parent="CommandsManager/CombatCircle/Commands"]
 
-[node name="CommandBubble" type="Node3D" parent="UIManager/CombatCircle/Commands/MainCommands"]
+[node name="CommandBubble" type="Node3D" parent="CommandsManager/CombatCircle/Commands/MainCommands"]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="CircleBack" type="MeshInstance3D" parent="UIManager/CombatCircle/Commands/MainCommands/CommandBubble"]
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble"]
 transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_hwtxt")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="UIManager/CombatCircle/Commands/MainCommands/CommandBubble/CircleBack"]
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble/CircleBack"]
 transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
 visible = false
 light_color = Color(0, 0.615179, 0.616283, 1)
@@ -680,23 +723,23 @@ light_specular = 16.0
 omni_range = 1.1
 omni_attenuation = -5.0
 
-[node name="Area3D" type="Area3D" parent="UIManager/CombatCircle/Commands/MainCommands/CommandBubble/CircleBack"]
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble/CircleBack"]
 script = ExtResource("19_fotmf")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UIManager/CombatCircle/Commands/MainCommands/CommandBubble/CircleBack/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble/CircleBack/Area3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_s5qaa")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
-[node name="CommandBubble2" type="Node3D" parent="UIManager/CombatCircle/Commands/MainCommands"]
+[node name="CommandBubble2" type="Node3D" parent="CommandsManager/CombatCircle/Commands/MainCommands"]
 
-[node name="CircleBack" type="MeshInstance3D" parent="UIManager/CombatCircle/Commands/MainCommands/CommandBubble2"]
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble2"]
 transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_enu1q")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="UIManager/CombatCircle/Commands/MainCommands/CommandBubble2/CircleBack"]
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble2/CircleBack"]
 transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
 visible = false
 light_color = Color(0, 0.615179, 0.616283, 1)
@@ -705,25 +748,25 @@ light_specular = 16.0
 omni_range = 1.1
 omni_attenuation = -5.0
 
-[node name="Area3D" type="Area3D" parent="UIManager/CombatCircle/Commands/MainCommands/CommandBubble2/CircleBack"]
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble2/CircleBack"]
 script = ExtResource("19_fotmf")
 choice = 1
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UIManager/CombatCircle/Commands/MainCommands/CommandBubble2/CircleBack/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble2/CircleBack/Area3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_s5qaa")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
-[node name="CommandBubble3" type="Node3D" parent="UIManager/CombatCircle/Commands/MainCommands"]
+[node name="CommandBubble3" type="Node3D" parent="CommandsManager/CombatCircle/Commands/MainCommands"]
 transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="CircleBack" type="MeshInstance3D" parent="UIManager/CombatCircle/Commands/MainCommands/CommandBubble3"]
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble3"]
 transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_rw1bq")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="UIManager/CombatCircle/Commands/MainCommands/CommandBubble3/CircleBack"]
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble3/CircleBack"]
 transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
 visible = false
 light_color = Color(0, 0.615179, 0.616283, 1)
@@ -732,29 +775,29 @@ light_specular = 16.0
 omni_range = 1.1
 omni_attenuation = -5.0
 
-[node name="Area3D" type="Area3D" parent="UIManager/CombatCircle/Commands/MainCommands/CommandBubble3/CircleBack"]
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble3/CircleBack"]
 script = ExtResource("19_fotmf")
 choice = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UIManager/CombatCircle/Commands/MainCommands/CommandBubble3/CircleBack/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble3/CircleBack/Area3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_s5qaa")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
-[node name="Tactics" type="Node3D" parent="UIManager/CombatCircle/Commands"]
+[node name="Tactics" type="Node3D" parent="CommandsManager/CombatCircle/Commands"]
 transform = Transform3D(-1, 8.9407e-08, 0, -8.9407e-08, -1, 0, 0, 0, 1, 0, 0, 0)
 visible = false
 
-[node name="CommandBubble" type="Node3D" parent="UIManager/CombatCircle/Commands/Tactics"]
+[node name="CommandBubble" type="Node3D" parent="CommandsManager/CombatCircle/Commands/Tactics"]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="CircleBack" type="MeshInstance3D" parent="UIManager/CombatCircle/Commands/Tactics/CommandBubble"]
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble"]
 transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_43vse")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="UIManager/CombatCircle/Commands/Tactics/CommandBubble/CircleBack"]
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble/CircleBack"]
 transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
 visible = false
 light_color = Color(0, 0.615179, 0.616283, 1)
@@ -763,24 +806,24 @@ light_specular = 16.0
 omni_range = 1.1
 omni_attenuation = -5.0
 
-[node name="Area3D" type="Area3D" parent="UIManager/CombatCircle/Commands/Tactics/CommandBubble/CircleBack"]
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble/CircleBack"]
 script = ExtResource("19_fotmf")
 stage = 1
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UIManager/CombatCircle/Commands/Tactics/CommandBubble/CircleBack/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble/CircleBack/Area3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_s5qaa")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
-[node name="CommandBubble2" type="Node3D" parent="UIManager/CombatCircle/Commands/Tactics"]
+[node name="CommandBubble2" type="Node3D" parent="CommandsManager/CombatCircle/Commands/Tactics"]
 
-[node name="CircleBack" type="MeshInstance3D" parent="UIManager/CombatCircle/Commands/Tactics/CommandBubble2"]
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble2"]
 transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_phbsg")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="UIManager/CombatCircle/Commands/Tactics/CommandBubble2/CircleBack"]
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble2/CircleBack"]
 transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
 visible = false
 light_color = Color(0, 0.615179, 0.616283, 1)
@@ -789,26 +832,26 @@ light_specular = 16.0
 omni_range = 1.1
 omni_attenuation = -5.0
 
-[node name="Area3D" type="Area3D" parent="UIManager/CombatCircle/Commands/Tactics/CommandBubble2/CircleBack"]
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble2/CircleBack"]
 script = ExtResource("19_fotmf")
 choice = 1
 stage = 1
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UIManager/CombatCircle/Commands/Tactics/CommandBubble2/CircleBack/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble2/CircleBack/Area3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_s5qaa")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
-[node name="CommandBubble3" type="Node3D" parent="UIManager/CombatCircle/Commands/Tactics"]
+[node name="CommandBubble3" type="Node3D" parent="CommandsManager/CombatCircle/Commands/Tactics"]
 transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="CircleBack" type="MeshInstance3D" parent="UIManager/CombatCircle/Commands/Tactics/CommandBubble3"]
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble3"]
 transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ifc4b")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="UIManager/CombatCircle/Commands/Tactics/CommandBubble3/CircleBack"]
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble3/CircleBack"]
 transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
 visible = false
 light_color = Color(0, 0.615179, 0.616283, 1)
@@ -817,30 +860,30 @@ light_specular = 16.0
 omni_range = 1.1
 omni_attenuation = -5.0
 
-[node name="Area3D" type="Area3D" parent="UIManager/CombatCircle/Commands/Tactics/CommandBubble3/CircleBack"]
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble3/CircleBack"]
 script = ExtResource("19_fotmf")
 choice = 2
 stage = 1
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UIManager/CombatCircle/Commands/Tactics/CommandBubble3/CircleBack/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble3/CircleBack/Area3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_s5qaa")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
-[node name="Cantrips" type="Node3D" parent="UIManager/CombatCircle/Commands"]
+[node name="Cantrips" type="Node3D" parent="CommandsManager/CombatCircle/Commands"]
 transform = Transform3D(-1, 8.9407e-08, 0, -8.9407e-08, -1, 0, 0, 0, 1, 0, 0, 0)
 visible = false
 
-[node name="CommandBubble" type="Node3D" parent="UIManager/CombatCircle/Commands/Cantrips"]
+[node name="CommandBubble" type="Node3D" parent="CommandsManager/CombatCircle/Commands/Cantrips"]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="CircleBack" type="MeshInstance3D" parent="UIManager/CombatCircle/Commands/Cantrips/CommandBubble"]
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble"]
 transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_2j72f")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="UIManager/CombatCircle/Commands/Cantrips/CommandBubble/CircleBack"]
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble/CircleBack"]
 transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
 visible = false
 light_color = Color(0, 0.615179, 0.616283, 1)
@@ -849,24 +892,24 @@ light_specular = 16.0
 omni_range = 1.1
 omni_attenuation = -5.0
 
-[node name="Area3D" type="Area3D" parent="UIManager/CombatCircle/Commands/Cantrips/CommandBubble/CircleBack"]
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble/CircleBack"]
 script = ExtResource("19_fotmf")
 stage = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UIManager/CombatCircle/Commands/Cantrips/CommandBubble/CircleBack/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble/CircleBack/Area3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_s5qaa")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
-[node name="CommandBubble2" type="Node3D" parent="UIManager/CombatCircle/Commands/Cantrips"]
+[node name="CommandBubble2" type="Node3D" parent="CommandsManager/CombatCircle/Commands/Cantrips"]
 
-[node name="CircleBack" type="MeshInstance3D" parent="UIManager/CombatCircle/Commands/Cantrips/CommandBubble2"]
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble2"]
 transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_c088n")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="UIManager/CombatCircle/Commands/Cantrips/CommandBubble2/CircleBack"]
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble2/CircleBack"]
 transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
 visible = false
 light_color = Color(0, 0.615179, 0.616283, 1)
@@ -875,26 +918,26 @@ light_specular = 16.0
 omni_range = 1.1
 omni_attenuation = -5.0
 
-[node name="Area3D" type="Area3D" parent="UIManager/CombatCircle/Commands/Cantrips/CommandBubble2/CircleBack"]
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble2/CircleBack"]
 script = ExtResource("19_fotmf")
 choice = 1
 stage = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UIManager/CombatCircle/Commands/Cantrips/CommandBubble2/CircleBack/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble2/CircleBack/Area3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_s5qaa")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
-[node name="CommandBubble3" type="Node3D" parent="UIManager/CombatCircle/Commands/Cantrips"]
+[node name="CommandBubble3" type="Node3D" parent="CommandsManager/CombatCircle/Commands/Cantrips"]
 transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="CircleBack" type="MeshInstance3D" parent="UIManager/CombatCircle/Commands/Cantrips/CommandBubble3"]
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble3"]
 transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_mu6f8")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="UIManager/CombatCircle/Commands/Cantrips/CommandBubble3/CircleBack"]
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble3/CircleBack"]
 transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
 visible = false
 light_color = Color(0, 0.615179, 0.616283, 1)
@@ -903,30 +946,30 @@ light_specular = 16.0
 omni_range = 1.1
 omni_attenuation = -5.0
 
-[node name="Area3D" type="Area3D" parent="UIManager/CombatCircle/Commands/Cantrips/CommandBubble3/CircleBack"]
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble3/CircleBack"]
 script = ExtResource("19_fotmf")
 choice = 2
 stage = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UIManager/CombatCircle/Commands/Cantrips/CommandBubble3/CircleBack/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble3/CircleBack/Area3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_s5qaa")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
-[node name="Spells" type="Node3D" parent="UIManager/CombatCircle/Commands"]
+[node name="Spells" type="Node3D" parent="CommandsManager/CombatCircle/Commands"]
 transform = Transform3D(-1, 8.9407e-08, 0, -8.9407e-08, -1, 0, 0, 0, 1, 0, 0, 0)
 visible = false
 
-[node name="CommandBubble" type="Node3D" parent="UIManager/CombatCircle/Commands/Spells"]
+[node name="CommandBubble" type="Node3D" parent="CommandsManager/CombatCircle/Commands/Spells"]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="CircleBack" type="MeshInstance3D" parent="UIManager/CombatCircle/Commands/Spells/CommandBubble"]
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble"]
 transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_apu4v")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="UIManager/CombatCircle/Commands/Spells/CommandBubble/CircleBack"]
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble/CircleBack"]
 transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
 visible = false
 light_color = Color(0, 0.615179, 0.616283, 1)
@@ -935,24 +978,24 @@ light_specular = 16.0
 omni_range = 1.1
 omni_attenuation = -5.0
 
-[node name="Area3D" type="Area3D" parent="UIManager/CombatCircle/Commands/Spells/CommandBubble/CircleBack"]
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble/CircleBack"]
 script = ExtResource("19_fotmf")
 stage = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UIManager/CombatCircle/Commands/Spells/CommandBubble/CircleBack/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble/CircleBack/Area3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_s5qaa")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
-[node name="CommandBubble2" type="Node3D" parent="UIManager/CombatCircle/Commands/Spells"]
+[node name="CommandBubble2" type="Node3D" parent="CommandsManager/CombatCircle/Commands/Spells"]
 
-[node name="CircleBack" type="MeshInstance3D" parent="UIManager/CombatCircle/Commands/Spells/CommandBubble2"]
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble2"]
 transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_s5p2j")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="UIManager/CombatCircle/Commands/Spells/CommandBubble2/CircleBack"]
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble2/CircleBack"]
 transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
 visible = false
 light_color = Color(0, 0.615179, 0.616283, 1)
@@ -961,26 +1004,26 @@ light_specular = 16.0
 omni_range = 1.1
 omni_attenuation = -5.0
 
-[node name="Area3D" type="Area3D" parent="UIManager/CombatCircle/Commands/Spells/CommandBubble2/CircleBack"]
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble2/CircleBack"]
 script = ExtResource("19_fotmf")
 choice = 1
 stage = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UIManager/CombatCircle/Commands/Spells/CommandBubble2/CircleBack/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble2/CircleBack/Area3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_s5qaa")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
-[node name="CommandBubble3" type="Node3D" parent="UIManager/CombatCircle/Commands/Spells"]
+[node name="CommandBubble3" type="Node3D" parent="CommandsManager/CombatCircle/Commands/Spells"]
 transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="CircleBack" type="MeshInstance3D" parent="UIManager/CombatCircle/Commands/Spells/CommandBubble3"]
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble3"]
 transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_m26vm")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="UIManager/CombatCircle/Commands/Spells/CommandBubble3/CircleBack"]
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble3/CircleBack"]
 transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
 visible = false
 light_color = Color(0, 0.615179, 0.616283, 1)
@@ -989,40 +1032,40 @@ light_specular = 16.0
 omni_range = 1.1
 omni_attenuation = -5.0
 
-[node name="Area3D" type="Area3D" parent="UIManager/CombatCircle/Commands/Spells/CommandBubble3/CircleBack"]
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble3/CircleBack"]
 script = ExtResource("19_fotmf")
 choice = 2
 stage = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UIManager/CombatCircle/Commands/Spells/CommandBubble3/CircleBack/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble3/CircleBack/Area3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_s5qaa")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
-[node name="ManaPool" type="Node3D" parent="UIManager/CombatCircle"]
+[node name="ManaPool" type="Node3D" parent="CommandsManager/CombatCircle"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0.02)
 
-[node name="Node3D" type="Node3D" parent="UIManager/CombatCircle/ManaPool"]
+[node name="Node3D" type="Node3D" parent="CommandsManager/CombatCircle/ManaPool"]
 transform = Transform3D(0.798636, -0.601815, 0, 0.601815, 0.798636, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="ManaPip" type="MeshInstance3D" parent="UIManager/CombatCircle/ManaPool/Node3D"]
+[node name="ManaPip" type="MeshInstance3D" parent="CommandsManager/CombatCircle/ManaPool/Node3D"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.48, 0)
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qv6fs")
 
-[node name="Node3D2" type="Node3D" parent="UIManager/CombatCircle/ManaPool"]
+[node name="Node3D2" type="Node3D" parent="CommandsManager/CombatCircle/ManaPool"]
 
-[node name="ManaPip2" type="MeshInstance3D" parent="UIManager/CombatCircle/ManaPool/Node3D2"]
+[node name="ManaPip2" type="MeshInstance3D" parent="CommandsManager/CombatCircle/ManaPool/Node3D2"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.575, 0)
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dengi")
 
-[node name="Node3D3" type="Node3D" parent="UIManager/CombatCircle/ManaPool"]
+[node name="Node3D3" type="Node3D" parent="CommandsManager/CombatCircle/ManaPool"]
 transform = Transform3D(0.798635, 0.601815, 0, -0.601815, 0.798635, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="ManaPip3" type="MeshInstance3D" parent="UIManager/CombatCircle/ManaPool/Node3D3"]
+[node name="ManaPip3" type="MeshInstance3D" parent="CommandsManager/CombatCircle/ManaPool/Node3D3"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.48, 0)
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../../../..")

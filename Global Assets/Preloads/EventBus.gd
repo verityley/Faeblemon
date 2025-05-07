@@ -14,10 +14,11 @@ extends Node
 
 #Battle Signals
 signal TargetBattle(selected:bool, choice:int, stage:int)
+signal TargetMana(selected:bool, choice:int)
 
 #Menu Signals
 signal TargetMenu
-signal TargetChoice
+signal TargetChoice(selected:bool, choice:int)
 #signal open menu
 #signal menu1, 2, 3, etc (Party, bag, journal, etc)
 #signal close all

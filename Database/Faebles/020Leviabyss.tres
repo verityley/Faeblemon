@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c58wm7c8gc4lh" path="res://Global Assets/Graphics/Monster Graphics/Icons/LeviabyssIcon.png" id="4_by6o6"]
 [ext_resource type="Script" uid="uid://bst1aj7yglpus" path="res://Global Assets/Classes/Feat.gd" id="4_ju25m"]
 [ext_resource type="Resource" uid="uid://dx6ef6t5q3ruc" path="res://Database/Domains/Draconic.tres" id="6_s1krs"]
-[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Lunar.tres" id="7_siow8"]
+[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Rime.tres" id="7_siow8"]
 [ext_resource type="Texture2D" uid="uid://dvqg3j34whm58" path="res://Global Assets/Graphics/Monster Graphics/Leviabyss.png" id="8_v0c7n"]
 [ext_resource type="Resource" uid="uid://c0566law7lytr" path="res://Database/Skills/Tier 1 (Trash)/thlp_Frostbite.tres" id="8_w6r1b"]
 [ext_resource type="Resource" uid="uid://ds384wffe563u" path="res://Database/Skills/Tier 1 (Trash)/thgm_Rockfall.tres" id="9_pcrv1"]

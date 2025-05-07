@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://bst1aj7yglpus" path="res://Global Assets/Classes/Feat.gd" id="4_lmds3"]
 [ext_resource type="Texture2D" uid="uid://c3gsbcjhop45q" path="res://Global Assets/Graphics/Monster Graphics/Icons/HarleafIcon.png" id="4_uf6n1"]
 [ext_resource type="Resource" uid="uid://bldym4cl8lnh7" path="res://Database/Domains/Fairytale.tres" id="6_dj3vp"]
-[ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Performance.tres" id="7_c21ba"]
+[ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Charm.tres" id="7_c21ba"]
 [ext_resource type="Texture2D" uid="uid://b7rtg0ax6w50c" path="res://Global Assets/Graphics/Monster Graphics/Harleaf.png" id="8_qehci"]
 [ext_resource type="Resource" uid="uid://c4sissiwwyyvn" path="res://Database/Skills/Tier 1 (Trash)/thpp_Tempotap.tres" id="8_u0jvw"]
 [ext_resource type="Resource" uid="uid://cb56nrnvv4pyq" path="res://Database/Skills/Tier 1 (Trash)/thhp_Scorch.tres" id="9_wlpty"]

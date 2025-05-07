@@ -9,10 +9,10 @@
 [ext_resource type="Resource" uid="uid://dvn0i2tiim6q8" path="res://Database/Schools/Geo.tres" id="7_si31j"]
 [ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="8_yrsfw"]
 [ext_resource type="Resource" uid="uid://de8kbqj72dt47" path="res://Database/Schools/Hearth.tres" id="9_8mrje"]
-[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Lunar.tres" id="10_e1ddf"]
-[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Mundane.tres" id="11_3fn6m"]
+[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Rime.tres" id="10_68c8v"]
+[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Kinetic.tres" id="11_6vk2a"]
 [ext_resource type="Resource" uid="uid://bit2tuyhefdhg" path="res://Database/Schools/Pact.tres" id="12_68p8n"]
-[ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Performance.tres" id="13_jll8w"]
+[ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Charm.tres" id="13_2rvbw"]
 [ext_resource type="Resource" uid="uid://c10g7loedmtw7" path="res://Database/Schools/Storm.tres" id="14_errxr"]
 [ext_resource type="Resource" uid="uid://6sqrvld48ww6" path="res://Database/Schools/Weird.tres" id="15_wby3g"]
 
@@ -20,17 +20,17 @@
 script = ExtResource("2_f4fsj")
 name = "Eldritch"
 typeMatchups = {
-ExtResource("3_3yqpl"): 0,
-ExtResource("4_wos1e"): 1,
-ExtResource("5_o77s3"): 1,
+ExtResource("3_3yqpl"): 1,
+ExtResource("4_wos1e"): 0,
+ExtResource("5_o77s3"): -1,
 ExtResource("6_emrc7"): 0,
-ExtResource("7_si31j"): 0,
-ExtResource("8_yrsfw"): 1,
+ExtResource("7_si31j"): 1,
+ExtResource("8_yrsfw"): 0,
 ExtResource("9_8mrje"): 0,
-ExtResource("10_e1ddf"): -1,
-ExtResource("11_3fn6m"): 1,
-ExtResource("12_68p8n"): 1,
-ExtResource("13_jll8w"): 0,
+ExtResource("10_68c8v"): 0,
+ExtResource("11_6vk2a"): -1,
+ExtResource("12_68p8n"): -1,
+ExtResource("13_2rvbw"): 0,
 ExtResource("14_errxr"): 0,
 ExtResource("15_wby3g"): 1
 }

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="School" load_steps=3 format=3 uid="uid://qsa5frtrqsay"]
+
+[ext_resource type="Texture2D" uid="uid://wtrwrgbxw62s" path="res://Global Assets/Graphics/Type Graphics/School Plates/LunarNameplate.png" id="1_nwsk0"]
+[ext_resource type="Script" uid="uid://xm767eoimr05" path="res://Global Assets/Classes/School.gd" id="2_p0brd"]
+
+[resource]
+script = ExtResource("2_p0brd")
+name = "Rime"
+nameShort = "Rime"
+typeIndex = 1
+nameplate = ExtResource("1_nwsk0")
+typeColor = Color(0.105882, 0.192157, 0.870588, 1)
