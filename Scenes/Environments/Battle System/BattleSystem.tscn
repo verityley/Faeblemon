@@ -1,12 +1,16 @@
-[gd_scene load_steps=55 format=3 uid="uid://b3q66tf15lqrx"]
+[gd_scene load_steps=61 format=3 uid="uid://b3q66tf15lqrx"]
 
 [ext_resource type="Script" uid="uid://bhn5x1qc1v88q" path="res://Scenes/Environments/Battle System/Scripts/BattleSystem.gd" id="1_tvdob"]
+[ext_resource type="Script" uid="uid://cw0xpw01j1oeg" path="res://Scenes/Environments/Battle System/Scripts/HealthManager.gd" id="2_l1ntt"]
 [ext_resource type="Texture2D" uid="uid://bggyleai1wado" path="res://Global Assets/Graphics/Monster Graphics/Arachalyx.png" id="2_v2ywi"]
 [ext_resource type="Texture2D" uid="uid://bqw6wrt7upoq4" path="res://Global Assets/Graphics/Monster Graphics/Basidusa.png" id="3_k8hxf"]
 [ext_resource type="Texture2D" uid="uid://cpsxhd42h2dfo" path="res://Global Assets/Graphics/UI Graphics/HeartContainerFills.png" id="3_o6qe0"]
 [ext_resource type="Texture2D" uid="uid://b453k3m6wcbfo" path="res://Global Assets/Graphics/UI Graphics/HeartContainers.png" id="3_utcnj"]
 [ext_resource type="Texture2D" uid="uid://bik83etyy05sr" path="res://Global Assets/Graphics/Dialogue Graphics/WitchBackSprite.png" id="4_2q0bd"]
 [ext_resource type="Texture2D" uid="uid://b6byvcbsfq3rb" path="res://Global Assets/Graphics/Monster Graphics/SqwrymMoarSketchy.png" id="6_3j22u"]
+[ext_resource type="Script" uid="uid://xbsr0y5jm1yn" path="res://Scenes/Environments/Battle System/Scripts/ManaManager.gd" id="6_fotmf"]
+[ext_resource type="Texture2D" uid="uid://dufgvd4kdsf17" path="res://Scenes/Environments/Battle System/Assets/ManaSpritesheet.png" id="7_4upqs"]
+[ext_resource type="Texture2D" uid="uid://xh1cjpn0rcbh" path="res://Scenes/Environments/Dialogue System/Assets/VerBust.png" id="8_r12ca"]
 [ext_resource type="Script" uid="uid://casfhivwhjo6p" path="res://Scenes/Environments/Battle System/Scripts/BattleUIManager.gd" id="10_45ym3"]
 [ext_resource type="Texture2D" uid="uid://8lnupgncgpp8" path="res://Scenes/Environments/Battle System/Assets/ManaCharge.png" id="11_45ym3"]
 [ext_resource type="Texture2D" uid="uid://cite8hirfwrvo" path="res://Scenes/Environments/Battle System/Assets/ManaEnchantment.png" id="12_dengi"]
@@ -39,6 +43,16 @@ cull_mode = 2
 albedo_texture = ExtResource("4_2q0bd")
 detail_albedo = ExtResource("2_v2ywi")
 
+[sub_resource type="QuadMesh" id="QuadMesh_l1ntt"]
+lightmap_size_hint = Vector2i(12, 17)
+size = Vector2(0.65, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3jra"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("8_r12ca")
+detail_albedo = ExtResource("2_v2ywi")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_45ym3"]
 transparency = 4
 cull_mode = 2
@@ -60,24 +74,6 @@ cull_mode = 2
 albedo_texture = ExtResource("11_45ym3")
 detail_albedo = ExtResource("2_v2ywi")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qv6fs"]
-transparency = 4
-cull_mode = 2
-albedo_texture = ExtResource("12_dengi")
-detail_albedo = ExtResource("2_v2ywi")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dengi"]
-transparency = 4
-cull_mode = 2
-albedo_texture = ExtResource("12_uehyu")
-detail_albedo = ExtResource("2_v2ywi")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4rsar"]
-transparency = 4
-cull_mode = 2
-albedo_texture = ExtResource("14_f64hp")
-detail_albedo = ExtResource("2_v2ywi")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3j22u"]
 transparency = 4
 cull_mode = 2
@@ -90,14 +86,14 @@ cull_mode = 2
 albedo_texture = ExtResource("13_utcnj")
 detail_albedo = ExtResource("2_v2ywi")
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_s5qaa"]
-height = 0.1
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_inqmx"]
 transparency = 4
 cull_mode = 2
 albedo_texture = ExtResource("17_qv6fs")
 detail_albedo = ExtResource("2_v2ywi")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s5qaa"]
+height = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwtxt"]
 transparency = 4
@@ -171,26 +167,53 @@ cull_mode = 2
 albedo_texture = ExtResource("23_bo64n")
 detail_albedo = ExtResource("2_v2ywi")
 
-[node name="BattleSystem" type="Node3D" node_paths=PackedStringArray("playerBattler", "enemyBattler", "pHPDisplay", "eHPDisplay")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4rsar"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("14_f64hp")
+detail_albedo = ExtResource("2_v2ywi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qv6fs"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("12_dengi")
+detail_albedo = ExtResource("2_v2ywi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dengi"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("12_uehyu")
+detail_albedo = ExtResource("2_v2ywi")
+
+[node name="BattleSystem" type="Node3D" node_paths=PackedStringArray("commandsManager", "playerBattler", "enemyBattler", "pWitchBattler", "eWitchBattler", "pHPDisplay", "eHPDisplay", "pManaDisplay", "eManaDisplay")]
 script = ExtResource("1_tvdob")
-playerPoint = Vector3(-1.5, -1, 0)
-enemyPoint = Vector3(1.5, -1, 0)
+commandsManager = NodePath("CommandsManager")
+playerLayer = 3
+pWitchLayer = 1
+playerPoint = Vector3(-2.5, -1.5, 0)
+enemyPoint = Vector3(1, -1.25, 0)
 playerBattler = NodePath("PlayerFaeble")
 enemyBattler = NodePath("EnemyFaeble")
+pWitchBattler = NodePath("PlayerWitch")
+eWitchBattler = NodePath("EnemyWitch")
 pHPDisplay = NodePath("pHPDisplay")
 eHPDisplay = NodePath("eHPDisplay")
+pManaDisplay = NodePath("PlayerWitch/ManaPool")
+eManaDisplay = NodePath("EnemyWitch/ManaPool")
 stageIncrease = 4
 lowThreshold = 2
 highThreshold = 5
 
 [node name="pHPDisplay" type="Node3D" parent="."]
 transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, -1.5, -2, -1.5)
+script = ExtResource("2_l1ntt")
 
 [node name="Heart" type="Node3D" parent="pHPDisplay"]
 transform = Transform3D(0.920709, -0.390249, 0, 0.390249, 0.920709, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="HeartContainer" type="Sprite3D" parent="pHPDisplay/Heart"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
 render_priority = 2
 texture = ExtResource("3_utcnj")
 hframes = 7
@@ -198,6 +221,7 @@ frame = 4
 
 [node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Heart"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
@@ -208,6 +232,7 @@ transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 
 
 [node name="HeartContainer" type="Sprite3D" parent="pHPDisplay/Heart2"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
 render_priority = 2
 texture = ExtResource("3_utcnj")
 hframes = 7
@@ -215,6 +240,7 @@ frame = 4
 
 [node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Heart2"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
@@ -225,6 +251,7 @@ transform = Transform3D(0.990341, -0.138655, 0, 0.138655, 0.990341, 0, 0, 0, 1, 
 
 [node name="HeartContainer" type="Sprite3D" parent="pHPDisplay/Heart3"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
 render_priority = 2
 texture = ExtResource("3_utcnj")
 hframes = 7
@@ -232,6 +259,7 @@ frame = 4
 
 [node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Heart3"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
@@ -242,6 +270,7 @@ transform = Transform3D(1, -1.49012e-07, 0, 1.49012e-07, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="HeartContainer" type="Sprite3D" parent="pHPDisplay/Heart4"]
 transform = Transform3D(2, 5.96046e-08, 0, -5.96046e-08, 2, 0, 0, 0, 2, 2.38419e-07, 2, 0)
+no_depth_test = true
 render_priority = 2
 texture = ExtResource("3_utcnj")
 hframes = 7
@@ -249,6 +278,7 @@ frame = 4
 
 [node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Heart4"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
@@ -259,6 +289,7 @@ transform = Transform3D(0.992482, 0.122389, 0, -0.122389, 0.992482, 0, 0, 0, 1, 
 
 [node name="HeartContainer" type="Sprite3D" parent="pHPDisplay/Heart5"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
 render_priority = 2
 texture = ExtResource("3_utcnj")
 hframes = 7
@@ -266,6 +297,7 @@ frame = 4
 
 [node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Heart5"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
@@ -276,6 +308,7 @@ transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 
 
 [node name="HeartContainer" type="Sprite3D" parent="pHPDisplay/Heart6"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.19209e-07, 2, 0)
+no_depth_test = true
 render_priority = 2
 texture = ExtResource("3_utcnj")
 hframes = 7
@@ -283,6 +316,7 @@ frame = 4
 
 [node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Heart6"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
@@ -293,6 +327,7 @@ transform = Transform3D(0.926988, 0.375092, 0, -0.375092, 0.926988, 0, 0, 0, 1, 
 
 [node name="HeartContainer" type="Sprite3D" parent="pHPDisplay/Heart7"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
 render_priority = 2
 texture = ExtResource("3_utcnj")
 hframes = 7
@@ -300,6 +335,7 @@ frame = 4
 
 [node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Heart7"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
@@ -310,6 +346,7 @@ transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="HeartContainer" type="Sprite3D" parent="pHPDisplay/Heart8"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
 render_priority = 2
 texture = ExtResource("3_utcnj")
 hframes = 7
@@ -317,6 +354,7 @@ frame = 4
 
 [node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Heart8"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
@@ -327,6 +365,7 @@ transform = Transform3D(0.79832, 0.602233, 0, -0.602233, 0.79832, 0, 0, 0, 1, 0,
 
 [node name="HeartContainer" type="Sprite3D" parent="pHPDisplay/Heart9"]
 transform = Transform3D(2, -1.49012e-08, 0, 1.49012e-08, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
 render_priority = 2
 texture = ExtResource("3_utcnj")
 hframes = 7
@@ -334,6 +373,7 @@ frame = 4
 
 [node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Heart9"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
@@ -344,6 +384,7 @@ transform = Transform3D(0.707107, 0.707106, 0, -0.707106, 0.707107, 0, 0, 0, 1, 
 
 [node name="HeartContainer" type="Sprite3D" parent="pHPDisplay/Heart10"]
 transform = Transform3D(2, 2.98023e-08, 0, -2.98023e-08, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
 render_priority = 2
 texture = ExtResource("3_utcnj")
 hframes = 7
@@ -351,6 +392,7 @@ frame = 4
 
 [node name="HeartFill" type="Sprite3D" parent="pHPDisplay/Heart10"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
@@ -358,12 +400,14 @@ frame = 4
 
 [node name="eHPDisplay" type="Node3D" parent="."]
 transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, -1.5, -2, -1.5)
+script = ExtResource("2_l1ntt")
 
 [node name="Heart" type="Node3D" parent="eHPDisplay"]
 transform = Transform3D(0.920709, -0.390249, 0, 0.390249, 0.920709, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="HeartContainer" type="Sprite3D" parent="eHPDisplay/Heart"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
 render_priority = 2
 texture = ExtResource("3_utcnj")
 hframes = 7
@@ -371,6 +415,7 @@ frame = 4
 
 [node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Heart"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
@@ -381,6 +426,7 @@ transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 
 
 [node name="HeartContainer" type="Sprite3D" parent="eHPDisplay/Heart2"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
 render_priority = 2
 texture = ExtResource("3_utcnj")
 hframes = 7
@@ -388,6 +434,7 @@ frame = 4
 
 [node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Heart2"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
@@ -398,6 +445,7 @@ transform = Transform3D(0.990341, -0.138655, 0, 0.138655, 0.990341, 0, 0, 0, 1, 
 
 [node name="HeartContainer" type="Sprite3D" parent="eHPDisplay/Heart3"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
 render_priority = 2
 texture = ExtResource("3_utcnj")
 hframes = 7
@@ -405,6 +453,7 @@ frame = 4
 
 [node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Heart3"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
@@ -415,6 +464,7 @@ transform = Transform3D(1, -1.49012e-07, 0, 1.49012e-07, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="HeartContainer" type="Sprite3D" parent="eHPDisplay/Heart4"]
 transform = Transform3D(2, 5.96046e-08, 0, -5.96046e-08, 2, 0, 0, 0, 2, 2.38419e-07, 2, 0)
+no_depth_test = true
 render_priority = 2
 texture = ExtResource("3_utcnj")
 hframes = 7
@@ -422,6 +472,7 @@ frame = 4
 
 [node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Heart4"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
@@ -432,6 +483,7 @@ transform = Transform3D(0.992482, 0.122389, 0, -0.122389, 0.992482, 0, 0, 0, 1, 
 
 [node name="HeartContainer" type="Sprite3D" parent="eHPDisplay/Heart5"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
 render_priority = 2
 texture = ExtResource("3_utcnj")
 hframes = 7
@@ -439,6 +491,7 @@ frame = 4
 
 [node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Heart5"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
@@ -449,6 +502,7 @@ transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 
 
 [node name="HeartContainer" type="Sprite3D" parent="eHPDisplay/Heart6"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.19209e-07, 2, 0)
+no_depth_test = true
 render_priority = 2
 texture = ExtResource("3_utcnj")
 hframes = 7
@@ -456,6 +510,7 @@ frame = 4
 
 [node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Heart6"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
@@ -466,6 +521,7 @@ transform = Transform3D(0.926988, 0.375092, 0, -0.375092, 0.926988, 0, 0, 0, 1, 
 
 [node name="HeartContainer" type="Sprite3D" parent="eHPDisplay/Heart7"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
 render_priority = 2
 texture = ExtResource("3_utcnj")
 hframes = 7
@@ -473,6 +529,7 @@ frame = 4
 
 [node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Heart7"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
@@ -483,6 +540,7 @@ transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="HeartContainer" type="Sprite3D" parent="eHPDisplay/Heart8"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
 render_priority = 2
 texture = ExtResource("3_utcnj")
 hframes = 7
@@ -490,6 +548,7 @@ frame = 4
 
 [node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Heart8"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
@@ -500,6 +559,7 @@ transform = Transform3D(0.79832, 0.602233, 0, -0.602233, 0.79832, 0, 0, 0, 1, 0,
 
 [node name="HeartContainer" type="Sprite3D" parent="eHPDisplay/Heart9"]
 transform = Transform3D(2, -1.49012e-08, 0, 1.49012e-08, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
 render_priority = 2
 texture = ExtResource("3_utcnj")
 hframes = 7
@@ -507,6 +567,7 @@ frame = 4
 
 [node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Heart9"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
@@ -517,6 +578,7 @@ transform = Transform3D(0.707107, 0.707106, 0, -0.707106, 0.707107, 0, 0, 0, 1, 
 
 [node name="HeartContainer" type="Sprite3D" parent="eHPDisplay/Heart10"]
 transform = Transform3D(2, 2.98023e-08, 0, -2.98023e-08, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
 render_priority = 2
 texture = ExtResource("3_utcnj")
 hframes = 7
@@ -524,18 +586,111 @@ frame = 4
 
 [node name="HeartFill" type="Sprite3D" parent="eHPDisplay/Heart10"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
 render_priority = 1
 texture = ExtResource("3_o6qe0")
 hframes = 7
 frame = 4
 
-[node name="WitchSprite" type="Node3D" parent="."]
+[node name="PlayerWitch" type="Node3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -4, -1.5, -1.5)
 
-[node name="WitchMesh" type="MeshInstance3D" parent="WitchSprite"]
+[node name="WitchMesh" type="MeshInstance3D" parent="PlayerWitch"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_o6qe0")
+
+[node name="ManaPool" type="Node3D" parent="PlayerWitch" node_paths=PackedStringArray("manaBubbles")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.3, 0)
+script = ExtResource("6_fotmf")
+manaBubbles = [NodePath("Mana1"), NodePath("Mana2"), NodePath("Mana3")]
+anchorRotations = Array[float]([90.0, 60.0, 30.0, 0.0, -30.0])
+scrollTime = 0.3
+
+[node name="Mana1" type="Node3D" parent="PlayerWitch/ManaPool"]
+transform = Transform3D(0.5, -0.866026, 0, 0.866026, 0.5, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="ManaPip" type="Sprite3D" parent="PlayerWitch/ManaPool/Mana1"]
+transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.12, 2.38419e-07, 2, 0)
+no_depth_test = true
+texture_filter = 1
+render_priority = 1
+texture = ExtResource("7_4upqs")
+hframes = 4
+
+[node name="Mana2" type="Node3D" parent="PlayerWitch/ManaPool"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="ManaPip" type="Sprite3D" parent="PlayerWitch/ManaPool/Mana2"]
+transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.12, 2.38419e-07, 2, 0)
+no_depth_test = true
+texture_filter = 1
+render_priority = 1
+texture = ExtResource("7_4upqs")
+hframes = 4
+frame = 1
+
+[node name="Mana3" type="Node3D" parent="PlayerWitch/ManaPool"]
+
+[node name="ManaPip" type="Sprite3D" parent="PlayerWitch/ManaPool/Mana3"]
+transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.12, 2.38419e-07, 2, 0)
+no_depth_test = true
+texture_filter = 1
+render_priority = 1
+texture = ExtResource("7_4upqs")
+hframes = 4
+frame = 2
+
+[node name="EnemyWitch" type="Node3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 4, 0.077, -8.756)
+
+[node name="WitchMesh" type="MeshInstance3D" parent="EnemyWitch"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+mesh = SubResource("QuadMesh_l1ntt")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_o3jra")
+
+[node name="ManaPool" type="Node3D" parent="EnemyWitch" node_paths=PackedStringArray("manaBubbles")]
+transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 0, 0.3, 0)
+script = ExtResource("6_fotmf")
+manaBubbles = [NodePath("Mana1"), NodePath("Mana2"), NodePath("Mana3")]
+anchorRotations = Array[float]([90.0, 60.0, 30.0, 0.0, -30.0])
+scrollTime = 0.3
+
+[node name="Mana1" type="Node3D" parent="EnemyWitch/ManaPool"]
+transform = Transform3D(0.5, -0.866026, 0, 0.866026, 0.5, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="ManaPip" type="Sprite3D" parent="EnemyWitch/ManaPool/Mana1"]
+transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.12, 2.38419e-07, 2, 0)
+no_depth_test = true
+texture_filter = 1
+render_priority = 1
+texture = ExtResource("7_4upqs")
+hframes = 4
+
+[node name="Mana2" type="Node3D" parent="EnemyWitch/ManaPool"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="ManaPip" type="Sprite3D" parent="EnemyWitch/ManaPool/Mana2"]
+transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.12, 2.38419e-07, 2, 0)
+no_depth_test = true
+texture_filter = 1
+render_priority = 1
+texture = ExtResource("7_4upqs")
+hframes = 4
+frame = 1
+
+[node name="Mana3" type="Node3D" parent="EnemyWitch/ManaPool"]
+
+[node name="ManaPip" type="Sprite3D" parent="EnemyWitch/ManaPool/Mana3"]
+transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.12, 2.38419e-07, 2, 0)
+no_depth_test = true
+texture_filter = 1
+render_priority = 1
+texture = ExtResource("7_4upqs")
+hframes = 4
+frame = 2
 
 [node name="PlayerFaeble" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -2, -1.5)
@@ -553,33 +708,6 @@ mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_kotnh")
 
-[node name="ManaPool" type="Node3D" parent="."]
-transform = Transform3D(-1.09278e-07, -2.5, 0, 2.5, -1.09278e-07, 0, 0, 0, 2.5, 0, -2.5, 3)
-visible = false
-
-[node name="PoolBase" type="MeshInstance3D" parent="ManaPool"]
-mesh = SubResource("QuadMesh_uehyu")
-skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_uurif")
-
-[node name="ManaPip" type="MeshInstance3D" parent="ManaPool"]
-transform = Transform3D(-1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 0, 0, 0, 0.3, 0, 0.3, 0.02)
-mesh = SubResource("QuadMesh_ncyfr")
-skeleton = NodePath("../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_qv6fs")
-
-[node name="ManaPip2" type="MeshInstance3D" parent="ManaPool"]
-transform = Transform3D(-1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 0, 0, 0, 0.3, 0, 0, 0.02)
-mesh = SubResource("QuadMesh_ncyfr")
-skeleton = NodePath("../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_dengi")
-
-[node name="ManaPip3" type="MeshInstance3D" parent="ManaPool"]
-transform = Transform3D(-1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 0, 0, 0, 0.3, 0, -0.3, 0.02)
-mesh = SubResource("QuadMesh_ncyfr")
-skeleton = NodePath("../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_4rsar")
-
 [node name="EnemyPool" type="Node3D" parent="."]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.5, 1, -6)
 visible = false
@@ -590,6 +718,7 @@ skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_uurif")
 
 [node name="CommandsManager" type="Node3D" parent="." node_paths=PackedStringArray("commandHeaders", "menuCommands", "tacticsCommands", "cantripCommands", "spellCommands", "backButton", "manaSelectors", "CircleMenu")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 8, -5.5, 3)
 script = ExtResource("10_45ym3")
 commandHeaders = [NodePath("CombatCircle/Commands/MainCommands"), NodePath("CombatCircle/Commands/Tactics"), NodePath("CombatCircle/Commands/Cantrips"), NodePath("CombatCircle/Commands/Spells")]
 menuCommands = [NodePath("CombatCircle/Commands/MainCommands/CommandBubble/CircleBack"), NodePath("CombatCircle/Commands/MainCommands/CommandBubble2/CircleBack"), NodePath("CombatCircle/Commands/MainCommands/CommandBubble3/CircleBack")]
@@ -597,13 +726,13 @@ tacticsCommands = [NodePath("CombatCircle/Commands/Tactics/CommandBubble/CircleB
 cantripCommands = [NodePath("CombatCircle/Commands/Cantrips/CommandBubble/CircleBack"), NodePath("CombatCircle/Commands/Cantrips/CommandBubble2/CircleBack"), NodePath("CombatCircle/Commands/Cantrips/CommandBubble3/CircleBack")]
 spellCommands = [NodePath("CombatCircle/Commands/Spells/CommandBubble/CircleBack"), NodePath("CombatCircle/Commands/Spells/CommandBubble2/CircleBack"), NodePath("CombatCircle/Commands/Spells/CommandBubble3/CircleBack")]
 backButton = NodePath("CombatCircle/Back/BackButton")
-manaSelectors = [NodePath("CombatCircle/Back/ManaSelector/Primordial/ManaPip3"), NodePath("CombatCircle/Back/ManaSelector/Enchantment/ManaPip"), NodePath("CombatCircle/Back/ManaSelector/Ethereal/ManaPip2")]
+manaSelectors = [NodePath("CombatCircle/ManaPool/Primordial/ManaPip3"), NodePath("CombatCircle/ManaPool/Enchantment/ManaPip"), NodePath("CombatCircle/ManaPool/Ethereal/ManaPip2")]
 scrollTime = 0.1
 turnTime = 1.0
 CircleMenu = NodePath("CombatCircle")
 
 [node name="CombatCircle" type="Node3D" parent="CommandsManager"]
-transform = Transform3D(0.989949, -0.989949, 0, 0.989949, 0.989949, 0, 0, 0, 1.4, 4.75, -2.25, 3)
+transform = Transform3D(0.989949, -0.989949, 0, 0.989949, 0.989949, 0, 0, 0, 1.4, 0, 0, 0)
 
 [node name="Base" type="Node3D" parent="CommandsManager/CombatCircle"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
@@ -617,63 +746,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_3j22u")
 transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, 0, -0.3, -0.05)
 
 [node name="ManaSelector" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Back"]
-transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, 0.45, 0)
+transform = Transform3D(-2, 3.01992e-07, 0, -3.01992e-07, -2, 0, 0, 0, 2, 0, 1, 0)
 mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_8u1dv")
-
-[node name="Primordial" type="Node3D" parent="CommandsManager/CombatCircle/Back/ManaSelector"]
-transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, -0.01)
-
-[node name="ManaPip3" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Back/ManaSelector/Primordial"]
-transform = Transform3D(-0.45, 3.93403e-08, 0, -3.93403e-08, -0.45, 0, 0, 0, 0.45, 0, 0.25, 0.05)
-mesh = SubResource("QuadMesh_ncyfr")
-skeleton = NodePath("../../../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_4rsar")
-
-[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Back/ManaSelector/Primordial/ManaPip3"]
-script = ExtResource("17_4upqs")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Back/ManaSelector/Primordial/ManaPip3/Area3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-shape = SubResource("CylinderShape3D_s5qaa")
-debug_color = Color(0, 0.6, 0.701961, 1)
-
-[node name="Enchantment" type="Node3D" parent="CommandsManager/CombatCircle/Back/ManaSelector"]
-transform = Transform3D(-0.5, 0.866026, 0, -0.866026, -0.5, 0, 0, 0, 1, 0, 0, -0.01)
-
-[node name="ManaPip" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Back/ManaSelector/Enchantment"]
-transform = Transform3D(-0.45, 3.93403e-08, 0, -3.93403e-08, -0.45, 0, 0, 0, 0.45, 0, 0.25, 0.05)
-mesh = SubResource("QuadMesh_ncyfr")
-skeleton = NodePath("../../../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_qv6fs")
-
-[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Back/ManaSelector/Enchantment/ManaPip"]
-script = ExtResource("17_4upqs")
-choice = 1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Back/ManaSelector/Enchantment/ManaPip/Area3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-shape = SubResource("CylinderShape3D_s5qaa")
-debug_color = Color(0, 0.6, 0.701961, 1)
-
-[node name="Ethereal" type="Node3D" parent="CommandsManager/CombatCircle/Back/ManaSelector"]
-transform = Transform3D(-0.5, -0.866025, 0, 0.866025, -0.5, 0, 0, 0, 1, 0, 0, -0.01)
-
-[node name="ManaPip2" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Back/ManaSelector/Ethereal"]
-transform = Transform3D(-0.45, 3.93403e-08, 0, -3.93403e-08, -0.45, 0, 0, 0, 0.45, 0, 0.25, 0.05)
-mesh = SubResource("QuadMesh_ncyfr")
-skeleton = NodePath("../../../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_dengi")
-
-[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Back/ManaSelector/Ethereal/ManaPip2"]
-script = ExtResource("17_4upqs")
-choice = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Back/ManaSelector/Ethereal/ManaPip2/Area3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-shape = SubResource("CylinderShape3D_s5qaa")
-debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="BackButton" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Back"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, -0.45, 0)
@@ -1045,31 +1121,58 @@ debug_color = Color(0, 0.6, 0.701961, 1)
 [node name="ManaPool" type="Node3D" parent="CommandsManager/CombatCircle"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0.02)
 
-[node name="Node3D" type="Node3D" parent="CommandsManager/CombatCircle/ManaPool"]
-transform = Transform3D(0.798636, -0.601815, 0, 0.601815, 0.798636, 0, 0, 0, 1, 0, 0, 0)
+[node name="Primordial" type="Node3D" parent="CommandsManager/CombatCircle/ManaPool"]
+transform = Transform3D(0.239591, -0.180544, 0, 0.180544, 0.239591, 0, 0, 0, 0.3, 0, 0, 0)
 
-[node name="ManaPip" type="MeshInstance3D" parent="CommandsManager/CombatCircle/ManaPool/Node3D"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.48, 0)
+[node name="ManaPip3" type="MeshInstance3D" parent="CommandsManager/CombatCircle/ManaPool/Primordial"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 1.6, 0)
 mesh = SubResource("QuadMesh_ncyfr")
-skeleton = NodePath("../../../../../..")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_4rsar")
+
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/ManaPool/Primordial/ManaPip3"]
+script = ExtResource("17_4upqs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/ManaPool/Primordial/ManaPip3/Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_s5qaa")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="Enchantment" type="Node3D" parent="CommandsManager/CombatCircle/ManaPool"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="ManaPip" type="MeshInstance3D" parent="CommandsManager/CombatCircle/ManaPool/Enchantment"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 1.9, 0)
+mesh = SubResource("QuadMesh_ncyfr")
+skeleton = NodePath("../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qv6fs")
 
-[node name="Node3D2" type="Node3D" parent="CommandsManager/CombatCircle/ManaPool"]
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/ManaPool/Enchantment/ManaPip"]
+script = ExtResource("17_4upqs")
+choice = 1
 
-[node name="ManaPip2" type="MeshInstance3D" parent="CommandsManager/CombatCircle/ManaPool/Node3D2"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.575, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/ManaPool/Enchantment/ManaPip/Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_s5qaa")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="Ethereal" type="Node3D" parent="CommandsManager/CombatCircle/ManaPool"]
+transform = Transform3D(0.239591, 0.180544, 0, -0.180544, 0.239591, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="ManaPip2" type="MeshInstance3D" parent="CommandsManager/CombatCircle/ManaPool/Ethereal"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 1.6, 0)
 mesh = SubResource("QuadMesh_ncyfr")
-skeleton = NodePath("../../../../../..")
+skeleton = NodePath("../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_dengi")
 
-[node name="Node3D3" type="Node3D" parent="CommandsManager/CombatCircle/ManaPool"]
-transform = Transform3D(0.798635, 0.601815, 0, -0.601815, 0.798635, 0, 0, 0, 1, 0, 0, 0)
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/ManaPool/Ethereal/ManaPip2"]
+script = ExtResource("17_4upqs")
+choice = 2
 
-[node name="ManaPip3" type="MeshInstance3D" parent="CommandsManager/CombatCircle/ManaPool/Node3D3"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.48, 0)
-mesh = SubResource("QuadMesh_ncyfr")
-skeleton = NodePath("../../../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_4rsar")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/ManaPool/Ethereal/ManaPip2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_s5qaa")
+debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="FXManager" type="Node3D" parent="."]
 

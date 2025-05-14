@@ -23,7 +23,7 @@
 resource_name = "Stage: Deep Forest"
 script = ExtResource("1_4wqbr")
 stageName = "Sparse Forest"
-stageLayers = Array[Texture2D]([ExtResource("3_6ae6g"), ExtResource("4_0d3pc"), ExtResource("5_nnust"), ExtResource("6_imhhl"), ExtResource("7_rcrs7"), ExtResource("3_6ae6g"), ExtResource("8_k7n0v"), ExtResource("6_imhhl"), ExtResource("9_tsmqp"), ExtResource("10_wk46y"), ExtResource("11_od8nv"), ExtResource("12_gsg8w"), ExtResource("13_kk8j2")])
+stageLayers = Array[Texture2D]([ExtResource("3_6ae6g"), ExtResource("4_0d3pc"), ExtResource("5_nnust"), ExtResource("6_imhhl"), ExtResource("8_k7n0v"), ExtResource("7_rcrs7"), ExtResource("3_6ae6g"), ExtResource("6_imhhl"), ExtResource("9_tsmqp"), ExtResource("10_wk46y"), ExtResource("11_od8nv"), ExtResource("12_gsg8w"), ExtResource("13_kk8j2")])
 stageLighting = {
 "Color": Color(1, 1, 1, 1),
 "Energy": 40.0
@@ -33,10 +33,10 @@ componentPositions = Array[Vector3]([])
 propSet = Dictionary[Texture2D, float]({})
 propPositions = Array[Vector3]([])
 spawnPool = Dictionary[ExtResource("2_g614w"), int]({
-ExtResource("3_imhhl"): 2,
+ExtResource("3_imhhl"): 1,
 ExtResource("4_rcrs7"): 1,
 ExtResource("5_k7n0v"): 5,
-ExtResource("6_tsmqp"): 3,
-ExtResource("7_wk46y"): 1
+ExtResource("6_tsmqp"): 5,
+ExtResource("7_wk46y"): 3
 })
 metadata/_custom_type_script = "uid://ddwiku72pt2uk"

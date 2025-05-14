@@ -1,14 +1,20 @@
 extends Node3D
 class_name BattleSystem
 
+@export var commandsManager:CommandsManager
+
 @export var playerLayer:int = 4
-@export var enemyLayer:int = 7
+@export var enemyLayer:int = 6
+@export var pWitchLayer:int = 2
+@export var eWitchLayer:int = 7
 @export var playerPoint:Vector3
 @export var enemyPoint:Vector3
 var layerOffset:float = 0.5
 
 @export var playerBattler:Node3D
 @export var enemyBattler:Node3D
+@export var pWitchBattler:Node3D
+@export var eWitchBattler:Node3D
 @export var pHPDisplay:Node3D
 @export var eHPDisplay:Node3D
 @export var pManaDisplay:Node3D
@@ -45,19 +51,21 @@ enum Status{
 }
 
 enum Attributes{
-	Brawn=0,
-	Vigor,
-	Wit,
-	Ambition,
-	Grace,
-	Heart
+	Brawn=0, #Physical Attack
+	Vigor, #Physical Defense
+	Wit, #Magical Attack
+	Ambition, #Magical Defense
+	Grace, #Speed
+	Heart, #Health
+	Prowess, #Status Attack
+	Resolve #Status Defense
 }
 
 enum Stances{
 	Neutral=0,
 	Rush, #Forward stance, +1 Priority
 	Brace, #Defensive stance, +1 Armor
-	Channel #Chanelling stance, +1 Wild Mana, -1 Priority
+	Focus #Chanelling stance, +1 Wild Mana, -1 Priority
 }
 
 enum Mana{
@@ -78,7 +86,7 @@ var currentPhase:PlanarPhase
 
 #Internal Variables
 var pHealth:int #Resource that means Not Dead
-var pMana:int #Resource for skills
+var pMana:Array[int] #Resource for skills
 var pArmor:int #Temporary resource that goes away after an attack, soaks damage
 var pBuildup:int #Status buildup amount
 var pStatus:int #Enum of statuses
@@ -86,38 +94,30 @@ var pStance:int #Enum of stances
 var pStages:Array[int] = [0,0,0,0,0]
 
 var eHealth:int #Resource that means Not Dead
-var eMana:int #Resource for skills
+var eMana:Array[int] #Resource for skills
 var eArmor:int #Temporary resource that goes away after an attack, soaks damage
 var eBuildup:int #Status buildup amount
 var eStatus:int #Enum of statuses
 var eStance:int #Enum of stances
 var eStages:Array[int] = [0,0,0,0,0]
 
-var pContainers:Array[Node3D]
-var eContainers:Array[Node3D]
-var pFills:Array[Sprite3D]
-var eFills:Array[Sprite3D]
-
 
 func BattleSetup(stageSystem:StageSystem):
 	playerBattler.reparent(stageSystem.stageLayers[playerLayer])
 	playerBattler.position = playerPoint
 	playerBattler.rotation.y = deg_to_rad(180)
+	pWitchBattler.reparent(stageSystem.stageLayers[pWitchLayer])
+	pWitchBattler.position = playerPoint + Vector3(-2.1,-0.5,0)
 	pHPDisplay.reparent(stageSystem.stageLayers[playerLayer])
 	pHPDisplay.position = playerBattler.position
 	enemyBattler.reparent(stageSystem.stageLayers[enemyLayer])
 	enemyBattler.position = enemyPoint
+	eWitchBattler.reparent(stageSystem.stageLayers[eWitchLayer])
+	eWitchBattler.position = enemyPoint + Vector3(3,-0.25,0)
 	eHPDisplay.reparent(stageSystem.stageLayers[enemyLayer])
 	eHPDisplay.position = enemyBattler.position
 	eHPDisplay.rotation.y = deg_to_rad(180)
 	
-	for heart in pHPDisplay.get_children():
-		pContainers.append(heart.get_child(0))
-		pFills.append(heart.get_child(1))
-	
-	for heart in eHPDisplay.get_children():
-		eContainers.append(heart.get_child(0))
-		eFills.append(heart.get_child(1))
 
 
 func WildBattle():
@@ -139,16 +139,18 @@ func BattleCleanup():
 	#queue_free()
 
 
-func BattleStart(playerFaeble:Faeble, enemyFaeble:Faeble, playerWitch:Witch, enemyWitch:Witch):
-	ChangeBattler(playerFaeble, true)
-	ChangeBattler(enemyFaeble, false)
-	MaxHealthReset(playerFaeble.maxHP,true)
-	MaxHealthReset(enemyFaeble.maxHP,false)
-	SetHealthDisplay(playerFaeble.maxHP, playerFaeble.maxHP,true)
-	SetHealthDisplay(enemyFaeble.maxHP, enemyFaeble.maxHP,false)
+func BattleStart(pFaeble:Faeble, eFaeble:Faeble, pWitch:Witch, eWitch:Witch):
+	playerFaeble = pFaeble
+	enemyFaeble = eFaeble
+	playerWitch = pWitch
+	enemyWitch = eWitch
+	ChangeBattler(pFaeble, true)
+	ChangeBattler(eFaeble, false)
+	await get_tree().create_timer(1.0).timeout
+	RoundStart()
 
 func RoundStart():
-	pass
+	DisplayCommands(true)
 
 
 func ChangeBattler(entry:Faeble, player:bool):
@@ -161,6 +163,8 @@ func ChangeBattler(entry:Faeble, player:bool):
 		playerBattler.position.z += layerOffset
 		playerBattler.scale = entry.battlerScale
 		pHPDisplay.position = playerBattler.position + entry.UICenter
+		pHPDisplay.MaxHealthReset(entry.maxHP)
+		pHPDisplay.SetHealthDisplay(entry.maxHP, entry.currentHP)
 		pHealth = entry.currentHP
 		pStatus = entry.currentStatus
 		pBuildup = entry.currentBuildup
@@ -172,11 +176,18 @@ func ChangeBattler(entry:Faeble, player:bool):
 		enemyBattler.position.z += layerOffset
 		enemyBattler.scale = entry.battlerScale
 		eHPDisplay.position = enemyBattler.position + entry.UICenter
+		eHPDisplay.MaxHealthReset(entry.maxHP)
+		eHPDisplay.SetHealthDisplay(entry.maxHP, entry.currentHP)
 		eHealth = entry.currentHP
 		eStatus = entry.currentStatus
 		eBuildup = entry.currentBuildup
 	
 
+func DefeatBattler(player:bool):
+	pass #Hide health UI, animate death, prompt battler swap
+
+func NextBattler(player:bool):
+	pass #Show health UI, animate entry, process ChangeBattler
 
 func ChangeWitch(witch:Witch, player:bool, layer:Node3D):
 	pass
@@ -200,12 +211,12 @@ func SpeedCalc(playerAttack:Skill, enemyAttack:Skill) -> bool:
 	
 	if pStance == Stances.Rush:
 		pPriority += 1
-	elif pStance == Stances.Channel:
+	elif pStance == Stances.Focus:
 		pPriority -= 1
 	
 	if eStance == Stances.Rush:
 		ePriority += 1
-	elif eStance == Stances.Channel:
+	elif eStance == Stances.Focus:
 		ePriority -= 1
 	
 	if pPriority > ePriority:
@@ -335,123 +346,16 @@ func CheckMatchups(target:Faeble, attackingType:School) -> int: #Returns multipl
 
 
 
-func MaxHealthReset(maxHP:int, player:bool):
-	#Determine how many containers vs pips are needed
-	var containers:int = ceili(float(maxHP)/4)
-	var extraContainers:int
-	var healthContainers:Array
-	var healthFills:Array
-	
-	if player:
-		healthContainers = pContainers
-		healthFills = pFills
+func DisplayCommands(show:bool):
+	var tween = get_tree().create_tween()
+	var target:Vector3
+	if show:
+		target = Vector3(4.75,-2.25,3)
+		commandsManager.show()
 	else:
-		healthContainers = eContainers
-		healthFills = eFills
-	
-	if containers > 10:
-		extraContainers = ceili(float(maxHP - 40)/2)
-		containers = 10
-	
-	for i in range(healthContainers.size()):
-		healthContainers[i].frame = 0
-		healthFills[i].frame = 0
-		healthContainers[i].hide()
-		healthFills[i].hide()
-	
-	var lastHeart
-	var lastFill
-	for h in containers:
-		var heart:Sprite3D = healthContainers[h]
-		var fill:Sprite3D = healthFills[h]
-		healthContainers[h].show()
-		healthFills[h].show()
-		heart.frame = 4
-		fill.frame = 4
-		lastHeart = heart
-		lastFill = fill
-	
-	if extraContainers > 0:
-		for e in range(extraContainers):
-			healthContainers[e].show()
-			healthFills[e].show()
-			healthContainers[e].frame = 6
-			healthFills[e].frame = 6
-			lastHeart = healthContainers[e]
-			lastFill = healthFills[e]
-	
-	if extraContainers <= 0:
-		var leftover:int = containers*4 - maxHP
-		if leftover != 0:
-			lastHeart.frame = 4 - leftover
-			lastFill.frame = 4 - leftover
-		prints("Containers:", containers, "Extras:", extraContainers, "Leftover Extra:", leftover)
-	else:
-		var leftover:int = ((containers*4) + (extraContainers*2)) - maxHP
-		prints("Containers:", containers, "Extras:", extraContainers, "Leftover Extra:", leftover)
-		if leftover != 0:
-			lastHeart.frame = 5
-			lastFill.frame = 5
-	
-	
-	pass #Include handling for hitting 0, going over max, etc
-
-
-func SetHealthDisplay(maxHP:int, curHP:int, player:bool):
-	#Determine how many containers vs pips are needed
-	var containers:int = ceili(float(curHP)/4)
-	var maxContainers:int = ceili(float(maxHP)/4)
-	var extraContainers:int
-	var maxExtras:int
-	var healthContainers:Array
-	var healthFills:Array
-	#prints(containers, ceili(float(maxHealthPips)/4))
-	
-	if player:
-		healthContainers = pContainers
-		healthFills = pFills
-	else:
-		healthContainers = eContainers
-		healthFills = eFills
-	
-	if maxContainers > 10 and containers > 10:
-		extraContainers = ceili(float(curHP - 40)/2)
-		maxExtras = ceili(float(maxHP - 40)/2)
-		#print(extraContainers)
-		#print(maxExtras)
-		containers = 10
-		maxContainers = 10
-	
-	if containers <= 10 and maxContainers > 10:
-		maxContainers = 10
-	
-	prints("Total Health:", maxHP, "Current Health:", curHP)
-	#print(maxContainers)
-	var lastFill
-	for i in maxContainers:
-		healthFills[i].frame = 0
-	
-	for h in containers:
-		healthFills[h].frame = 4
-		lastFill = healthFills[h]
-	
-	#for j in maxExtras:
-	#	healthFills[j].frame = 4
-	
-	if extraContainers > 0:
-		for e in range(extraContainers):
-			healthFills[e].frame = 6
-			lastFill = healthFills[e]
-	
-	if extraContainers <= 0:
-		var leftover:int = curHP % 4
-		print("Leftover: ", leftover)
-		if leftover != 0:
-			lastFill.frame = leftover
-	else:
-		var leftover:int = curHP % 2
-		print("Leftover Extra: ", leftover)
-		if leftover != 0:
-			lastFill.frame = 4 + leftover
-	#print(leftover)
-	pass #Include handling for hitting 0, going over max, etc
+		target = Vector3(8,-5.5,3)
+		commandsManager.ResetCommandMenu()
+	tween.tween_property(commandsManager, "position", target, 0.4)
+	await tween.finished
+	if !show:
+		commandsManager.hide()

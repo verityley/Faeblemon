@@ -1,4 +1,7 @@
 extends Node3D
+class_name CommandsManager
+
+
 
 var selectedMana:int
 var pickedMana:int = -1
@@ -25,7 +28,6 @@ var selecting:bool #true while selection input is resolving
 func _ready():
 	EventBus.connect("TargetBattle",TargetCommand)
 	EventBus.connect("TargetMana",TargetMana)
-	#DO THIS NEXT
 
 
 func _input(event):
@@ -38,12 +40,36 @@ func _input(event):
 			print("Selecting Mana!")
 			SelectMana(pickedMana)
 
+func ResetCommandMenu():
+	match selectedMana:
+		1: TurnMana(true)
+		2: TurnMana(false)
+	menuStage = 0
+	selectedCommand = 0
+	selectedMana = 0
+	pickedCommand = -1
+	pickedMana = -1
+	manaSelectors[0].get_child(0).get_child(0).disabled = false
+	manaSelectors[1].get_child(0).get_child(0).disabled = false
+	manaSelectors[2].get_child(0).get_child(0).disabled = false
+	backButton.get_child(1).get_child(0).disabled = true
+	selecting = false
+	await TurnCommands(true)
+	commandHeaders[1].hide()
+	commandHeaders[2].hide()
+	commandHeaders[3].hide()
+	#TEMP
+	await get_tree().create_timer(2.0).timeout
+	get_parent().DisplayCommands(true)
+
+
+
 func TargetMana(selected:bool, choice:int=-1):
 	if selecting:
 		print("Can't target while selection in process.")
 		if pickedMana != -1:
-			var tween = get_tree().create_tween()
-			tween.tween_property(manaSelectors[choice], "position", Vector3(0,0.25,0.05), scrollTime)
+			var scaleTween = get_tree().create_tween()
+			scaleTween.tween_property(manaSelectors[choice], "scale", Vector3(0.8,0.8,0.8), scrollTime)
 			pickedMana = -1
 		return
 	#print("Signal")
@@ -52,18 +78,18 @@ func TargetMana(selected:bool, choice:int=-1):
 		print("Something went wrong! Invalid choice target!")
 		return
 	var target:Node3D = manaSelectors[choice]
-	var tween = get_tree().create_tween()
-	var tween2 = get_tree().create_tween()
+	var scaleTween = get_tree().create_tween()
+	var scaleTween2 = get_tree().create_tween()
 	if selected == false:
 		if pickedMana != -1:
-			tween.tween_property(target, "position", Vector3(0,0.25,0.05), scrollTime)
+			scaleTween.tween_property(target, "scale", Vector3(0.8,0.8,0.8), scrollTime)
 		pickedMana = -1
 		#print("No Choice")
 		return
 	if pickedMana != -1:
-		tween.tween_property(manaSelectors[selectedMana], "position", Vector3(0,0.25,0.05), scrollTime)
+		scaleTween.tween_property(target, "scale", Vector3(0.8,0.8,0.8), scrollTime)
 		return
-	tween2.tween_property(target, "position", Vector3(0,0.25,0), scrollTime)
+	scaleTween2.tween_property(target, "scale", Vector3(1,1,1), scrollTime)
 	pickedMana = choice
 
 
@@ -192,17 +218,17 @@ func SelectChoice(choice:int, stage:int):
 				selecting = false
 				return
 		1: match choice:
-			0: pass
-			1: pass
-			2: pass
+			0: get_parent().DisplayCommands(false)
+			1: get_parent().DisplayCommands(false)
+			2: get_parent().DisplayCommands(false)
 		2: match choice:
-			0: pass
-			1: pass
-			2: pass
+			0: get_parent().DisplayCommands(false)
+			1: get_parent().DisplayCommands(false)
+			2: get_parent().DisplayCommands(false)
 		3: match choice:
-			0: pass
-			1: pass
-			2: pass
+			0: get_parent().DisplayCommands(false)
+			1: get_parent().DisplayCommands(false)
+			2: get_parent().DisplayCommands(false)
 		
 	
 	#if choice == 2:

@@ -7,6 +7,7 @@ extends Node3D
 func _ready():
 	await stageSystem.LoadScene(stageResource, 1)
 	battleSystem.BattleSetup(stageSystem)
+	battleSystem.DisplayCommands(false)
 	var spawn1:Faeble = FaebleCreation.CreateFaeble(stageResource.faebleGrabBag(),4)
 	var spawn2:Faeble = FaebleCreation.CreateFaeble(stageResource.faebleGrabBag(),4)
 	battleSystem.BattleStart(spawn1,spawn2,null,null)

@@ -37,6 +37,8 @@ var act:int #Increased by research, determines overall faeble unlock progress.
 @export var ambition:int #Defends against spell attacks
 @export var grace:int #Determines turn order
 @export var heart:int #Determines your base starting HP
+@export var prowess:int #Determined by difference of Bwn and Wit, status effect attack stat
+@export var resolve:int #Determined by difference of Vig and Amb, status effect defense stat
 
 @export var profArray:Array[int] = [0, 0, 0, 0, 0, 0]
 @export var statImprovements:Array[int] = [0, 0, 0, 0, 0, 0]
