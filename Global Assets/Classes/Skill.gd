@@ -3,13 +3,16 @@ class_name Skill
 
 @export var name:String
 @export var school:School
-@export var cost:int #1 to 10
+@export var manaType:int
+@export var manaCost:int #1 to 10
 @export var magical:bool #if true, use magic stat
 @export var priority:int
 @export var armor:int
 @export var damageTier:int
 @export var statusType:String
 @export var statusTier:int
+@export var buffStat:int
+@export var buffStages:int
 
 @export var skillDamage:int #If this is zero, check for special effects
 @export var witchSkill:bool #If true, this skill is cast from a witch
@@ -33,20 +36,28 @@ class_name Skill
 @export var targetAlly:bool = false
 @export var targetAll:bool = false
 
+enum Mana{
+	Primordial=1,
+	Enchantment,
+	Arcane,
+	Wild
+}
+
 func Target(battleManager:BattleManager, user:Battler):
 	battleManager.ChangeBoardState("Attacking")
 	battleManager.CheckAttackRange(user, self)
 
-func Execute(battleManager:BattleManager, user:Battler, target:Battler):
+func Execute(battleSystem:BattleSystem, user:StageBattler, target:StageBattler):
 	print("Error! Attack has no function. If basic damaging attack, insert ref to DamageCalc")
-	user.ChangeEnergy(-cost)
+	#user.ChangeEnergy(-cost)
 	var damageTally:int
-	if skillDamage > 0:
-		damageTally = battleManager.DamageCalc(user, target, self)
-	damageTally = -clampi(damageTally, 0, 99)
+	#if mimic school, user sig school used as move school
+	#if skillDamage > 0:
+		#damageTally = battleSystem.DamageCalc(self, player)
+	damageTally = -clampi(damageTally, 0, 60)
 	var superFX:bool
 	var weakFX:bool
-	var matchupMod:int = battleManager.CheckMatchups(target.faebleEntry, school)
+	var matchupMod:int = battleSystem.CheckMatchups(target.faebleEntry, school)
 	if matchupMod > 0:
 		superFX = true
 		weakFX = false
@@ -56,5 +67,5 @@ func Execute(battleManager:BattleManager, user:Battler, target:Battler):
 	else:
 		superFX = false
 		weakFX = false
-	battleManager.DamagePopup(target.positionIndex, -damageTally, superFX, weakFX)
-	target.ChangeHealth(damageTally)
+	#battleSystem.DamagePopup(target.positionIndex, -damageTally, superFX, weakFX)
+	#target.ChangeHealth(damageTally)

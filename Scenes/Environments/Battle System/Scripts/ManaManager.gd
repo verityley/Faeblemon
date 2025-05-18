@@ -1,4 +1,5 @@
 extends Node3D
+class_name ManaManager
 
 @export var manaBubbles:Array[Node3D]
 @export var manaPool:Array[int] = [0,0,0]

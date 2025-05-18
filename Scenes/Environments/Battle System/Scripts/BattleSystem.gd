@@ -1,24 +1,11 @@
 extends Node3D
 class_name BattleSystem
 
+@export var stageSystem:StageSystem
 @export var commandsManager:CommandsManager
 
-@export var playerLayer:int = 4
-@export var enemyLayer:int = 6
-@export var pWitchLayer:int = 2
-@export var eWitchLayer:int = 7
-@export var playerPoint:Vector3
-@export var enemyPoint:Vector3
-var layerOffset:float = 0.5
-
-@export var playerBattler:Node3D
-@export var enemyBattler:Node3D
-@export var pWitchBattler:Node3D
-@export var eWitchBattler:Node3D
-@export var pHPDisplay:Node3D
-@export var eHPDisplay:Node3D
-@export var pManaDisplay:Node3D
-@export var eManaDisplay:Node3D
+@export var playerBattler:StageBattler
+@export var enemyBattler:StageBattler
 
 @export var tierDamage:Array[int] = [4,8,12]
 @export var tierCaps:Array[int] = [2,4,6]
@@ -85,39 +72,12 @@ var currentPhase:PlanarPhase
 @export var vsAI:bool
 
 #Internal Variables
-var pHealth:int #Resource that means Not Dead
-var pMana:Array[int] #Resource for skills
-var pArmor:int #Temporary resource that goes away after an attack, soaks damage
-var pBuildup:int #Status buildup amount
-var pStatus:int #Enum of statuses
-var pStance:int #Enum of stances
-var pStages:Array[int] = [0,0,0,0,0]
-
-var eHealth:int #Resource that means Not Dead
-var eMana:Array[int] #Resource for skills
-var eArmor:int #Temporary resource that goes away after an attack, soaks damage
-var eBuildup:int #Status buildup amount
-var eStatus:int #Enum of statuses
-var eStance:int #Enum of stances
-var eStages:Array[int] = [0,0,0,0,0]
-
-
-func BattleSetup(stageSystem:StageSystem):
-	playerBattler.reparent(stageSystem.stageLayers[playerLayer])
-	playerBattler.position = playerPoint
-	playerBattler.rotation.y = deg_to_rad(180)
-	pWitchBattler.reparent(stageSystem.stageLayers[pWitchLayer])
-	pWitchBattler.position = playerPoint + Vector3(-2.1,-0.5,0)
-	pHPDisplay.reparent(stageSystem.stageLayers[playerLayer])
-	pHPDisplay.position = playerBattler.position
-	enemyBattler.reparent(stageSystem.stageLayers[enemyLayer])
-	enemyBattler.position = enemyPoint
-	eWitchBattler.reparent(stageSystem.stageLayers[eWitchLayer])
-	eWitchBattler.position = enemyPoint + Vector3(3,-0.25,0)
-	eHPDisplay.reparent(stageSystem.stageLayers[enemyLayer])
-	eHPDisplay.position = enemyBattler.position
-	eHPDisplay.rotation.y = deg_to_rad(180)
-	
+var playerSent:bool
+var playerAction:int
+var playerMenuStage:int
+var enemySent:bool
+var enemyAction:int
+var enemyMenuStage:int
 
 
 func WildBattle():
@@ -131,12 +91,7 @@ func StaticBattle():
 
 
 func BattleCleanup():
-	playerBattler.reparent(self)
-	pHPDisplay.reparent(self)
-	enemyBattler.reparent(self)
-	eHPDisplay.reparent(self)
-	#hide()
-	#queue_free()
+	pass
 
 
 func BattleStart(pFaeble:Faeble, eFaeble:Faeble, pWitch:Witch, eWitch:Witch):
@@ -144,8 +99,13 @@ func BattleStart(pFaeble:Faeble, eFaeble:Faeble, pWitch:Witch, eWitch:Witch):
 	enemyFaeble = eFaeble
 	playerWitch = pWitch
 	enemyWitch = eWitch
-	ChangeBattler(pFaeble, true)
-	ChangeBattler(eFaeble, false)
+	playerBattler.BattlerSetup(stageSystem)
+	enemyBattler.BattlerSetup(stageSystem)
+	await get_tree().create_timer(1.0).timeout
+	playerBattler.ChangeBattler(pFaeble)
+	playerBattler.ChangeWitch(pWitch)
+	enemyBattler.ChangeBattler(eFaeble)
+	enemyBattler.ChangeWitch(eWitch)
 	await get_tree().create_timer(1.0).timeout
 	RoundStart()
 
@@ -153,52 +113,147 @@ func RoundStart():
 	DisplayCommands(true)
 
 
-func ChangeBattler(entry:Faeble, player:bool):
-	var texture:Material
-	if player:
-		texture = playerBattler.get_child(0).get_surface_override_material(0)
-		texture.albedo_texture = entry.backSprite
-		playerBattler.get_child(0).set_surface_override_material(0, texture)
-		playerBattler.position = playerPoint + entry.groundOffset
-		playerBattler.position.z += layerOffset
-		playerBattler.scale = entry.battlerScale
-		pHPDisplay.position = playerBattler.position + entry.UICenter
-		pHPDisplay.MaxHealthReset(entry.maxHP)
-		pHPDisplay.SetHealthDisplay(entry.maxHP, entry.currentHP)
-		pHealth = entry.currentHP
-		pStatus = entry.currentStatus
-		pBuildup = entry.currentBuildup
-	else:
-		texture = enemyBattler.get_child(0).get_surface_override_material(0)
-		texture.albedo_texture = entry.sprite
-		enemyBattler.get_child(0).set_surface_override_material(0, texture)
-		enemyBattler.position = enemyPoint + entry.groundOffset
-		enemyBattler.position.z += layerOffset
-		enemyBattler.scale = entry.battlerScale
-		eHPDisplay.position = enemyBattler.position + entry.UICenter
-		eHPDisplay.MaxHealthReset(entry.maxHP)
-		eHPDisplay.SetHealthDisplay(entry.maxHP, entry.currentHP)
-		eHealth = entry.currentHP
-		eStatus = entry.currentStatus
-		eBuildup = entry.currentBuildup
-	
-
 func DefeatBattler(player:bool):
 	pass #Hide health UI, animate death, prompt battler swap
 
 func NextBattler(player:bool):
 	pass #Show health UI, animate entry, process ChangeBattler
 
-func ChangeWitch(witch:Witch, player:bool, layer:Node3D):
-	pass
+func AwaitInput(host:bool, action:int, stage:int):
+	if vsMulti:
+		if host:
+			playerSent = true
+			playerAction = action
+			playerMenuStage = stage
+		else:
+			enemySent = true
+			enemyAction = action
+			enemyMenuStage = stage
+		pass #Wait for action input from both sides
+	elif vsAI:
+		if host:
+			playerSent = true
+			playerAction = action
+			playerMenuStage = stage
+		pass #Send signal to AIManager to decide action
+		enemySent = true
+		enemyAction = action
+		enemyMenuStage = stage
+	
+	if playerSent and enemySent:
+		DisplayCommands(false)
+		ProcessRound()
+
+func ProcessRound():
+	#Stage 1: Tactics, Stage 2: Cantrips, Stage 3: Moves
+	var playerAttack:Skill = null
+	var enemyAttack:Skill = null
+	#Player Inputs
+	match playerMenuStage:
+		1: #Tactics Menu
+			match playerAction:
+				0:
+					pass #Choice 0: Flee
+				1:
+					pass #Choice 1: Switch
+				2:
+					pass #Choice 2:Ritual? Item? Undecided
+		2: #Witch Cantrips
+			playerAttack = playerBattler.witchInstance.cantrips[playerAction]
+		3: #Faeble Skills
+			playerAttack = playerBattler.faebleInstance.assignedSkills[playerAction]
+	
+	match enemyMenuStage:
+		1:
+			match enemyAction:
+				0:
+					pass #Choice 0: Flee
+				1:
+					pass #Choice 1: Switch
+				2:
+					pass #Choice 2:Ritual? Item? Undecided
+		2:
+			enemyAttack = enemyBattler.witchInstance.cantrips[enemyAction]
+		3:
+			enemyAttack = enemyBattler.faebleInstance.assignedSkills[enemyAction]
+	
+	var playerFirst:bool = SpeedCalc(playerAttack,enemyAttack)
+	if playerFirst:
+		if playerAttack != null:
+			await playerAttack.Execute(self, playerBattler, enemyBattler)
+		if enemyAttack != null:
+			await enemyAttack.Execute(self, enemyBattler, playerBattler)
+	else:
+		if enemyAttack != null:
+			await enemyAttack.Execute(self, enemyBattler, playerBattler)
+		if playerAttack != null:
+			await playerAttack.Execute(self, playerBattler, enemyBattler)
+	
+	await get_tree().create_timer(1.0).timeout
+	playerBattler.manaDisplay.AddMana(commandsManager.selectedMana)
+	if playerBattler.stance == Stances.Focus:
+		playerBattler.manaDisplay.AddMana(Mana.Wild)
+	#if weather/planar phase, add mana
+	#if AI call its behavior tree for mana, if wild call environment, if multi call commands input
+	if enemyBattler.stance == Stances.Focus:
+		enemyBattler.manaDisplay.AddMana(Mana.Wild)
+	
+	#TEMP
+	var RNG = RandomNumberGenerator.new()
+	RNG.randomize()
+	var manaRNG:int = RNG.randi_range(1,3)
+	enemyBattler.manaDisplay.AddMana(manaRNG)
+	#END TEMP
+	
+	ResetRound()
+
+
+func ResetRound():
+	playerSent = false
+	playerAction = 0
+	playerMenuStage = 0
+	enemySent = false
+	enemyAction = 0
+	enemyMenuStage = 0
+	RoundStart()
+
+
+func DisplayCommands(show:bool):
+	var tween = get_tree().create_tween()
+	var target:Vector3
+	if show:
+		target = Vector3(4.75,-2.25,3)
+		commandsManager.show()
+	else:
+		target = Vector3(8,-5.5,3)
+		commandsManager.FillOptions(playerBattler.faebleInstance.assignedSkills, playerBattler.witchInstance.cantrips)
+		commandsManager.ResetCommandMenu()
+	tween.tween_property(commandsManager, "position", target, 0.4)
+	await tween.finished
+	if !show:
+		commandsManager.hide()
 
 
 func SpeedCalc(playerAttack:Skill, enemyAttack:Skill) -> bool:
+	if playerAttack == null and enemyAttack != null:
+		return true
+	elif playerAttack != null and enemyAttack == null:
+		return false
+	elif playerAttack == null and enemyAttack == null:
+		var RNG = RandomNumberGenerator.new()
+		RNG.randomize()
+		var coinflip = RNG.randi_range(0, 1)
+		if coinflip:
+			return true
+		else:
+			return false
 	var playerFirst:bool = false
 	var pPriority:int = playerAttack.priority
 	var ePriority:int = enemyAttack.priority
-	var pSpeed:int = playerFaeble.grace + (pStages[Attributes.Grace] * stageIncrease)
-	var eSpeed:int = enemyFaeble.grace + (eStages[Attributes.Grace] * stageIncrease)
+	var pSpeed:int = playerBattler.faebleInstance.grace
+	pSpeed =+  playerBattler.buffStages[Attributes.Grace] * stageIncrease
+	var eSpeed:int = enemyBattler.faebleInstance.grace
+	eSpeed =+  enemyBattler.buffStages[Attributes.Grace] * stageIncrease
 	
 	if pSpeed >= eSpeed + highThreshold:
 		pPriority += 2
@@ -209,15 +264,20 @@ func SpeedCalc(playerAttack:Skill, enemyAttack:Skill) -> bool:
 	elif eSpeed >= pSpeed + highThreshold:
 		ePriority += 2
 	
-	if pStance == Stances.Rush:
+	if playerBattler.stance == Stances.Rush:
 		pPriority += 1
-	elif pStance == Stances.Focus:
+	elif playerBattler.stance == Stances.Focus:
 		pPriority -= 1
 	
-	if eStance == Stances.Rush:
+	if enemyBattler.stance == Stances.Rush:
 		ePriority += 1
-	elif eStance == Stances.Focus:
+	elif enemyBattler.stance == Stances.Focus:
 		ePriority -= 1
+	
+	if playerAttack.witchSkill == true:
+		pPriority = 10 + playerAttack.priority
+	if enemyAttack.witchSkill == true:
+		ePriority = 10 + enemyAttack.priority
 	
 	if pPriority > ePriority:
 		playerFirst = true
@@ -234,27 +294,18 @@ func SpeedCalc(playerAttack:Skill, enemyAttack:Skill) -> bool:
 	return playerFirst
 
 
-func DamageCalc(attack:Skill, player:bool) -> int: #Returns Outgoing Damage
+func DamageCalc(attack:Skill, user:StageBattler, target:StageBattler) -> int: #Returns Outgoing Damage
 	var tier:int = attack.damageTier - 1
 	var damage:int = tierDamage[tier]
+	var moveSchool:School
 	var mod:float = 0
-	var attacker:Faeble
-	var defender:Faeble
+	var attacker:Faeble = user.faebleInstance
+	var defender:Faeble = target.faebleInstance
 	var attackerStat:int
 	var defenderStat:int
-	var attackerStages:Array[int]
-	var defenderStages:Array[int]
+	var attackerStages:Array[int] = user.buffStages.duplicate()
+	var defenderStages:Array[int] = target.buffStages.duplicate()
 	
-	if player:
-		attacker = playerFaeble
-		attackerStages = pStages.duplicate()
-		defender = enemyFaeble
-		defenderStages = eStages.duplicate()
-	else:
-		attacker = enemyFaeble
-		attackerStages = eStages.duplicate()
-		defender = playerFaeble
-		defenderStages = pStages.duplicate()
 		
 	if attack.magical == false:
 		attackerStat = attacker.brawn + (attackerStages[Attributes.Brawn] * stageIncrease)
@@ -263,8 +314,13 @@ func DamageCalc(attack:Skill, player:bool) -> int: #Returns Outgoing Damage
 		attackerStat = attacker.wit + (attackerStages[Attributes.Wit] * stageIncrease)
 		defenderStat = defender.ambition + (defenderStages[Attributes.Ambition] * stageIncrease)
 	
-	if attack.skillType == attacker.faebleEntry.sigSchool:
+	if attack.school == attacker.faebleEntry.sigSchool:
 		mod += schoolTB[tier]
+	
+	if attack.school.name == "Mimic":
+		moveSchool = attacker.sigSchool
+	else:
+		moveSchool = attack.school
 	
 	if attackerStat >= defenderStat + highThreshold:
 		mod += bigStatTB[tier]
@@ -275,15 +331,11 @@ func DamageCalc(attack:Skill, player:bool) -> int: #Returns Outgoing Damage
 	elif defenderStat >= attackerStat + highThreshold:
 		mod -= bigStatTB[tier]
 	
-	var matchupMod:int = CheckMatchups(defender, attack.skillType)
+	var matchupMod:int = CheckMatchups(defender, moveSchool)
 	mod += matchupMod
 	
-	if player:
-		mod -= eArmor
-		eArmor = 0
-	elif !player:
-		mod -= pArmor
-		pArmor = 0
+	mod -= target.armor
+	#user.armor = 0
 	
 	mod = clamp(mod, tierDamage[tier]-tierCaps[tier], tierDamage[tier]+tierCaps[tier])
 	
@@ -343,19 +395,3 @@ func CheckMatchups(target:Faeble, attackingType:School) -> int: #Returns multipl
 	
 	mod = damageAdjustment * damageMultiplier
 	return mod
-
-
-
-func DisplayCommands(show:bool):
-	var tween = get_tree().create_tween()
-	var target:Vector3
-	if show:
-		target = Vector3(4.75,-2.25,3)
-		commandsManager.show()
-	else:
-		target = Vector3(8,-5.5,3)
-		commandsManager.ResetCommandMenu()
-	tween.tween_property(commandsManager, "position", target, 0.4)
-	await tween.finished
-	if !show:
-		commandsManager.hide()

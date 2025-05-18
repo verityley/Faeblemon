@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="School" load_steps=2 format=3 uid="uid://ck345j0vj7u7t"]
+
+[ext_resource type="Script" uid="uid://xm767eoimr05" path="res://Global Assets/Classes/School.gd" id="1_50nkx"]
+
+[resource]
+script = ExtResource("1_50nkx")
+name = "Catalyst"
+nameShort = "Catalyst"
+typeIndex = 13
+typeColor = Color(0, 0, 0, 1)

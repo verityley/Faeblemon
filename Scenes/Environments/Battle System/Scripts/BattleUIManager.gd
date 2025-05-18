@@ -1,7 +1,7 @@
 extends Node3D
 class_name CommandsManager
 
-
+@export var battleSystem:BattleSystem
 
 var selectedMana:int
 var pickedMana:int = -1
@@ -59,10 +59,27 @@ func ResetCommandMenu():
 	commandHeaders[2].hide()
 	commandHeaders[3].hide()
 	#TEMP
-	await get_tree().create_timer(2.0).timeout
-	get_parent().DisplayCommands(true)
 
-
+func FillOptions(faeblePool:Array[Skill], witchPool:Array[Skill]):
+	for i in range(faeblePool.size()):
+		if faeblePool[i] == null:
+			spellCommands[i].hide()
+		else:
+			var texture:Material
+			texture = spellCommands[i].get_surface_override_material(0)
+			texture.albedo_texture = faeblePool[i].moveDisplay
+			spellCommands[i].set_surface_override_material(0, texture)
+			spellCommands[i].show()
+	
+	for i in range(witchPool.size()):
+		if witchPool[i] == null:
+			cantripCommands[i].hide()
+		else:
+			var texture:Material
+			texture = cantripCommands[i].get_surface_override_material(0)
+			texture.albedo_texture = witchPool[i].moveDisplay
+			cantripCommands[i].set_surface_override_material(0, texture)
+			cantripCommands[i].show()
 
 func TargetMana(selected:bool, choice:int=-1):
 	if selecting:
@@ -185,50 +202,18 @@ func SelectChoice(choice:int, stage:int):
 		manaSelectors[1].get_child(0).get_child(0).disabled = false
 		manaSelectors[2].get_child(0).get_child(0).disabled = false
 		return
-	match stage:
-		0: match choice:
-			0:
-				commandHeaders[1].show()
-				manaSelectors[0].get_child(0).get_child(0).disabled = true
-				manaSelectors[1].get_child(0).get_child(0).disabled = true
-				manaSelectors[2].get_child(0).get_child(0).disabled = true
-				await TurnCommands(false)
-				menuStage = 1
-				backButton.get_child(1).get_child(0).disabled = false
-				selecting = false
-				return
-			1:
-				commandHeaders[2].show()
-				manaSelectors[0].get_child(0).get_child(0).disabled = true
-				manaSelectors[1].get_child(0).get_child(0).disabled = true
-				manaSelectors[2].get_child(0).get_child(0).disabled = true
-				await TurnCommands(false)
-				menuStage = 2
-				backButton.get_child(1).get_child(0).disabled = false
-				selecting = false
-				return
-			2:
-				commandHeaders[3].show()
-				manaSelectors[0].get_child(0).get_child(0).disabled = true
-				manaSelectors[1].get_child(0).get_child(0).disabled = true
-				manaSelectors[2].get_child(0).get_child(0).disabled = true
-				await TurnCommands(false)
-				menuStage = 3
-				backButton.get_child(1).get_child(0).disabled = false
-				selecting = false
-				return
-		1: match choice:
-			0: get_parent().DisplayCommands(false)
-			1: get_parent().DisplayCommands(false)
-			2: get_parent().DisplayCommands(false)
-		2: match choice:
-			0: get_parent().DisplayCommands(false)
-			1: get_parent().DisplayCommands(false)
-			2: get_parent().DisplayCommands(false)
-		3: match choice:
-			0: get_parent().DisplayCommands(false)
-			1: get_parent().DisplayCommands(false)
-			2: get_parent().DisplayCommands(false)
+	if stage == 0:
+		commandHeaders[choice+1].show()
+		manaSelectors[0].get_child(0).get_child(0).disabled = true
+		manaSelectors[1].get_child(0).get_child(0).disabled = true
+		manaSelectors[2].get_child(0).get_child(0).disabled = true
+		await TurnCommands(false)
+		menuStage = choice+1
+		backButton.get_child(1).get_child(0).disabled = false
+		selecting = false
+		return
+	else:
+		battleSystem.AwaitInput(true, choice, stage)
 		
 	
 	#if choice == 2:

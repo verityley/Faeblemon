@@ -5,6 +5,7 @@ class_name Witch
 @export var party:Array[Faeble] = [null,null,null,null,null,null]
 @export var sprite:CompressedTexture2D
 @export var portrait:CompressedTexture2D
+@export var cantrips:Array[Skill] = [null,null,null]
 var spellSlot1
 var spellSlot2
 var spellSlot3
