@@ -15,10 +15,7 @@ enum Mana{
 
 func _ready():
 	InitMana()
-	await get_tree().create_timer(3.0).timeout
-	await AddMana(1)
-	await AddMana(2)
-	await AddMana(3)
+
 
 
 

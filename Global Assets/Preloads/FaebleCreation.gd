@@ -193,6 +193,7 @@ func CreateFaeble(faebleEntry:Faeble, initLevel:int) -> Faeble:
 			instance.learnedSkills.append(skill)
 	#Fill out current slots with random skills from learnlist, replace with Most Recent later
 	var highestSkill:int = instance.learnedSkills.size()-1
+	instance.assignedSkills.resize(3)
 	for slot in range(instance.assignedSkills.size()):
 		if highestSkill < 0 or instance.learnedSkills[highestSkill] == null:
 			break

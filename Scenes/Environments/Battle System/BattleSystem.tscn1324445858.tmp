@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://b3q66tf15lqrx"]
+[gd_scene load_steps=54 format=3 uid="uid://b3q66tf15lqrx"]
 
 [ext_resource type="Script" uid="uid://bhn5x1qc1v88q" path="res://Scenes/Environments/Battle System/Scripts/BattleSystem.gd" id="1_tvdob"]
 [ext_resource type="Script" uid="uid://cw0xpw01j1oeg" path="res://Scenes/Environments/Battle System/Scripts/HealthManager.gd" id="2_l1ntt"]
@@ -42,25 +42,6 @@ albedo_texture = ExtResource("6_3j22u")
 detail_albedo = ExtResource("2_v2ywi")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6qe0"]
-transparency = 4
-cull_mode = 2
-albedo_texture = ExtResource("4_2q0bd")
-detail_albedo = ExtResource("2_v2ywi")
-
-[sub_resource type="QuadMesh" id="QuadMesh_4upqs"]
-lightmap_size_hint = Vector2i(12, 17)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r12ca"]
-transparency = 4
-cull_mode = 2
-albedo_texture = ExtResource("6_3j22u")
-detail_albedo = ExtResource("2_v2ywi")
-
-[sub_resource type="QuadMesh" id="QuadMesh_l1ntt"]
-lightmap_size_hint = Vector2i(12, 17)
-size = Vector2(0.6, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3jra"]
 transparency = 4
 cull_mode = 2
 albedo_texture = ExtResource("4_2q0bd")
@@ -182,6 +163,9 @@ script = ExtResource("1_tvdob")
 commandsManager = NodePath("CommandsManager")
 playerBattler = NodePath("PlayerBattler")
 enemyBattler = NodePath("EnemyBattler")
+stageIncrease = 4
+lowThreshold = 2
+highThreshold = 5
 vsAI = true
 
 [node name="PlayerBattler" type="Node3D" parent="." node_paths=PackedStringArray("battleSystem", "faebleObject", "witchObject", "healthDisplay", "manaDisplay")]
@@ -195,7 +179,6 @@ witchPoint = Vector3(-4.6, -2, 0.5)
 witchObject = NodePath("PlayerWitch")
 healthDisplay = NodePath("pHPDisplay")
 manaDisplay = NodePath("pMPDisplay")
-player = true
 
 [node name="PlayerFaeble" type="Node3D" parent="PlayerBattler"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -2, -1.5)
@@ -465,18 +448,18 @@ manaDisplay = NodePath("MPDisplay")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -2, -1.5)
 
 [node name="FaebleMesh" type="MeshInstance3D" parent="EnemyBattler/EnemyFaeble"]
-mesh = SubResource("QuadMesh_4upqs")
+mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_r12ca")
+surface_material_override/0 = SubResource("StandardMaterial3D_45ym3")
 
 [node name="EnemyWitch" type="Node3D" parent="EnemyBattler"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -4, -1.5, -1.5)
 
 [node name="WitchMesh" type="MeshInstance3D" parent="EnemyBattler/EnemyWitch"]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
-mesh = SubResource("QuadMesh_l1ntt")
+mesh = SubResource("QuadMesh_ncyfr")
 skeleton = NodePath("../../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_o3jra")
+surface_material_override/0 = SubResource("StandardMaterial3D_o6qe0")
 
 [node name="HPDisplay" type="Node3D" parent="EnemyBattler"]
 transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, -1.5, -2, -1.5)
@@ -713,10 +696,9 @@ texture = ExtResource("7_4upqs")
 hframes = 4
 frame = 2
 
-[node name="CommandsManager" type="Node3D" parent="." node_paths=PackedStringArray("battleSystem", "commandHeaders", "menuCommands", "tacticsCommands", "cantripCommands", "spellCommands", "backButton", "manaSelectors", "CircleMenu")]
+[node name="CommandsManager" type="Node3D" parent="." node_paths=PackedStringArray("commandHeaders", "menuCommands", "tacticsCommands", "cantripCommands", "spellCommands", "backButton", "manaSelectors", "CircleMenu")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 8, -5.5, 3)
 script = ExtResource("10_45ym3")
-battleSystem = NodePath("..")
 commandHeaders = [NodePath("CombatCircle/Commands/MainCommands"), NodePath("CombatCircle/Commands/Tactics"), NodePath("CombatCircle/Commands/Cantrips"), NodePath("CombatCircle/Commands/Spells")]
 menuCommands = [NodePath("CombatCircle/Commands/MainCommands/CommandBubble/CircleBack"), NodePath("CombatCircle/Commands/MainCommands/CommandBubble2/CircleBack"), NodePath("CombatCircle/Commands/MainCommands/CommandBubble3/CircleBack")]
 tacticsCommands = [NodePath("CombatCircle/Commands/Tactics/CommandBubble/CircleBack"), NodePath("CombatCircle/Commands/Tactics/CommandBubble2/CircleBack"), NodePath("CombatCircle/Commands/Tactics/CommandBubble3/CircleBack")]

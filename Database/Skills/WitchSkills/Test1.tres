@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=4 format=3 uid="uid://bgs8aoc0thf8h"]
+
+[ext_resource type="Texture2D" uid="uid://bnxkks50fg1xo" path="res://Global Assets/Graphics/Skill Graphics/SpellCharm.png" id="1_h87eb"]
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Skill.gd" id="1_p634m"]
+[ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Charm.tres" id="2_8bnnj"]
+
+[resource]
+script = ExtResource("1_p634m")
+name = "Test1"
+school = ExtResource("2_8bnnj")
+manaType = 0
+manaCost = 0
+magical = false
+priority = 0
+armor = 0
+damageTier = 1
+statusType = ""
+statusTier = 0
+buffStat = 0
+buffStages = 0
+skillDamage = 0
+witchSkill = true
+commandDifficulty = 0
+commandTiming = 0
+moveDisplay = ExtResource("1_h87eb")
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 0
+rangeMax = 10
+canPierce = true
+canArc = true
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false
+metadata/_custom_type_script = "uid://bdq6g8fwo7q4j"

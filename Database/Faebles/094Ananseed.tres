@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="Faeble" load_steps=22 format=3 uid="uid://bwsk6gvcequ40"]
+[gd_resource type="Resource" script_class="Faeble" load_steps=22 format=3 uid="uid://bjgo376dt3vew"]
 
-[ext_resource type="Script" uid="uid://cl11ae273swpi" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_axtbf"]
 [ext_resource type="Resource" uid="uid://bit2tuyhefdhg" path="res://Database/Schools/Pact.tres" id="1_o3vbj"]
 [ext_resource type="Resource" uid="uid://cy460pjjcakrm" path="res://Database/Schools/Curse.tres" id="2_3sr6v"]
 [ext_resource type="Resource" uid="uid://bldym4cl8lnh7" path="res://Database/Domains/Fairytale.tres" id="3_lf37e"]
@@ -11,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="6_xt2rn"]
 [ext_resource type="Resource" uid="uid://ct2s36amdushr" path="res://Database/Skills/Tier 1 (Trash)/thgrm_Spore.tres" id="7_7df27"]
 [ext_resource type="Resource" uid="uid://dnuf1iyk0cj0a" path="res://Database/Skills/Tier 1 (Trash)/thmm_Sling.tres" id="8_g12r4"]
+[ext_resource type="Script" uid="uid://cl11ae273swpi" path="res://Global Assets/Classes/FaebleEntry.gd" id="8_p0i24"]
 [ext_resource type="Resource" uid="uid://k5dylssesht7" path="res://Database/Skills/Tier 1 (Trash)/thcm_Hex.tres" id="9_blakm"]
 [ext_resource type="Resource" uid="uid://chiyv4ilvbf25" path="res://Database/Skills/Tier 2/bhgrm_Infestation.tres" id="10_12qi5"]
 [ext_resource type="Resource" uid="uid://7o5gckwo8v0m" path="res://Database/Skills/Tier 2/bhpam_Inkblot.tres" id="11_b0fno"]
@@ -23,7 +23,7 @@
 [ext_resource type="Resource" uid="uid://bco63qbkgqcy1" path="res://Database/Skills/Tier 4/hhpam_.tres" id="18_cepkw"]
 
 [resource]
-script = ExtResource("1_axtbf")
+script = ExtResource("8_p0i24")
 name = "Ananseed"
 ID = 94
 firstDomain = ExtResource("3_lf37e")
@@ -36,7 +36,7 @@ icon = ExtResource("4_8fney")
 battlerScale = Vector3(2.5, 2.5, 2.5)
 worldScale = 0.0
 UIScale = 0.0
-groundOffset = Vector3(0, -1.6, 0)
+groundOffset = Vector3(0, -1, 0)
 UICenter = Vector3(0, 0, 0)
 commandOffset = 0.0
 minQuality = 2
@@ -47,6 +47,8 @@ wit = 6
 ambition = 8
 grace = 4
 heart = 5
+prowess = 0
+resolve = 0
 profArray = Array[int]([0, 0, 0, 0, 0, 0, 0])
 statImprovements = Array[int]([0, 0, 0, 0, 0, 0])
 roomToGrow = Array[int]([0, 0, 0, 0, 0, 0])

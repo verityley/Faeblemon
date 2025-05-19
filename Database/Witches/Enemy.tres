@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Witch" load_steps=7 format=3 uid="uid://denc842hc8jyf"]
+
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Skill.gd" id="1_765ls"]
+[ext_resource type="Resource" uid="uid://bgs8aoc0thf8h" path="res://Database/Skills/WitchSkills/Test1.tres" id="2_fax8a"]
+[ext_resource type="Script" uid="uid://cl11ae273swpi" path="res://Global Assets/Classes/FaebleEntry.gd" id="3_7lcd2"]
+[ext_resource type="Texture2D" uid="uid://u7k5eq2bk184" path="res://Global Assets/Graphics/Dialogue Graphics/VerBust.png" id="4_765ls"]
+[ext_resource type="Texture2D" uid="uid://bik83etyy05sr" path="res://Global Assets/Graphics/Dialogue Graphics/WitchBackSprite.png" id="4_h3gpu"]
+[ext_resource type="Script" uid="uid://d12tvnj5d7tpq" path="res://Global Assets/Classes/Witch.gd" id="5_bkmbk"]
+
+[resource]
+script = ExtResource("5_bkmbk")
+name = "Iris"
+party = Array[ExtResource("3_7lcd2")]([null, null, null, null, null, null])
+backSprite = ExtResource("4_h3gpu")
+battleSprite = ExtResource("4_765ls")
+cantrips = Array[ExtResource("1_765ls")]([ExtResource("2_fax8a"), ExtResource("2_fax8a"), ExtResource("2_fax8a")])
+metadata/_custom_type_script = "uid://d12tvnj5d7tpq"

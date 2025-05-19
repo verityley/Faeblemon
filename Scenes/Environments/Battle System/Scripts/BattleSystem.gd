@@ -75,9 +75,11 @@ var currentPhase:PlanarPhase
 var playerSent:bool
 var playerAction:int
 var playerMenuStage:int
+var playerMana:int
 var enemySent:bool
 var enemyAction:int
 var enemyMenuStage:int
+var enemyMana:int
 
 
 func WildBattle():
@@ -125,6 +127,8 @@ func AwaitInput(host:bool, action:int, stage:int):
 			playerSent = true
 			playerAction = action
 			playerMenuStage = stage
+			#TEMP
+			playerMana = commandsManager.selectedMana+1
 		else:
 			enemySent = true
 			enemyAction = action
@@ -135,6 +139,8 @@ func AwaitInput(host:bool, action:int, stage:int):
 			playerSent = true
 			playerAction = action
 			playerMenuStage = stage
+			#TEMP
+			playerMana = commandsManager.selectedMana+1
 		pass #Send signal to AIManager to decide action
 		enemySent = true
 		enemyAction = action
@@ -190,7 +196,7 @@ func ProcessRound():
 			await playerAttack.Execute(self, playerBattler, enemyBattler)
 	
 	await get_tree().create_timer(1.0).timeout
-	playerBattler.manaDisplay.AddMana(commandsManager.selectedMana)
+	playerBattler.manaDisplay.AddMana(playerMana)
 	if playerBattler.stance == Stances.Focus:
 		playerBattler.manaDisplay.AddMana(Mana.Wild)
 	#if weather/planar phase, add mana
@@ -223,10 +229,10 @@ func DisplayCommands(show:bool):
 	var target:Vector3
 	if show:
 		target = Vector3(4.75,-2.25,3)
+		commandsManager.FillOptions(playerBattler.faebleInstance.assignedSkills, playerBattler.witchInstance.cantrips)
 		commandsManager.show()
 	else:
 		target = Vector3(8,-5.5,3)
-		commandsManager.FillOptions(playerBattler.faebleInstance.assignedSkills, playerBattler.witchInstance.cantrips)
 		commandsManager.ResetCommandMenu()
 	tween.tween_property(commandsManager, "position", target, 0.4)
 	await tween.finished
@@ -306,18 +312,18 @@ func DamageCalc(attack:Skill, user:StageBattler, target:StageBattler) -> int: #R
 	var attackerStages:Array[int] = user.buffStages.duplicate()
 	var defenderStages:Array[int] = target.buffStages.duplicate()
 	
-		
+	mod = damage
 	if attack.magical == false:
 		attackerStat = attacker.brawn + (attackerStages[Attributes.Brawn] * stageIncrease)
 		defenderStat = defender.vigor + (defenderStages[Attributes.Vigor] * stageIncrease)
 	elif attack.magical == true:
 		attackerStat = attacker.wit + (attackerStages[Attributes.Wit] * stageIncrease)
 		defenderStat = defender.ambition + (defenderStages[Attributes.Ambition] * stageIncrease)
-	
-	if attack.school == attacker.faebleEntry.sigSchool:
+	print("Base Damage: ", damage)
+	if attack.school == attacker.sigSchool:
 		mod += schoolTB[tier]
-	
-	if attack.school.name == "Mimic":
+	print("Post-School Mod: ", mod)
+	if attack.school.name == "Catalyst":
 		moveSchool = attacker.sigSchool
 	else:
 		moveSchool = attack.school
@@ -330,26 +336,26 @@ func DamageCalc(attack:Skill, user:StageBattler, target:StageBattler) -> int: #R
 		mod -= smallStatTB[tier]
 	elif defenderStat >= attackerStat + highThreshold:
 		mod -= bigStatTB[tier]
-	
+	print("Post-Stat Mod: ", mod)
 	var matchupMod:int = CheckMatchups(defender, moveSchool)
 	mod += matchupMod
-	
+	print("Post-Matchup Mod: ", mod)
 	mod -= target.armor
 	#user.armor = 0
-	
+	prints("Caps:",tierDamage[tier]-tierCaps[tier], tierDamage[tier]+tierCaps[tier])
 	mod = clamp(mod, tierDamage[tier]-tierCaps[tier], tierDamage[tier]+tierCaps[tier])
-	
+	print("Final Mod: ", mod)
 	
 	if attacker.chapter > defender.chapter:
 		mod += ((attacker.chapter - defender.chapter) * levelBonus)
 	elif attacker.chapter < defender.chapter:
 		mod += ((defender.chapter - attacker.chapter) * levelBonus)
-	
+	print("Post-Level Mod: ", mod)
 	mod = floori(mod)
-	damage += mod
-	damage = clampi(damage, 1, 60)
-	print("Final Damage: ", damage)
-	return damage
+	#damage = mod
+	#damage = clampi(damage, 1, 60)
+	print("Final Damage: ", mod)
+	return mod
 
 
 func CheckMatchups(target:Faeble, attackingType:School) -> int: #Returns multiplier int

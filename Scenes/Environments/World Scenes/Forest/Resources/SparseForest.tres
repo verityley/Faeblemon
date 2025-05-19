@@ -1,17 +1,14 @@
-[gd_resource type="Resource" script_class="Stage" load_steps=19 format=3 uid="uid://4erh8hya8gt4"]
+[gd_resource type="Resource" script_class="Stage" load_steps=16 format=3 uid="uid://4erh8hya8gt4"]
 
 [ext_resource type="Script" uid="uid://ddwiku72pt2uk" path="res://Global Assets/Classes/Stage.gd" id="1_4wqbr"]
-[ext_resource type="Script" uid="uid://cl11ae273swpi" path="res://Global Assets/Classes/FaebleEntry.gd" id="2_g614w"]
+[ext_resource type="Script" uid="uid://cl11ae273swpi" path="res://Global Assets/Classes/FaebleEntry.gd" id="2_ldc1f"]
 [ext_resource type="Texture2D" uid="uid://c4udwyw0qkx7n" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleL.png" id="3_6ae6g"]
-[ext_resource type="Resource" uid="uid://bnxk305sfoqvn" path="res://Database/Faebles/009Bismaida.tres" id="3_imhhl"]
+[ext_resource type="Resource" uid="uid://bjgo376dt3vew" path="res://Database/Faebles/094Ananseed.tres" id="3_w6yky"]
 [ext_resource type="Texture2D" uid="uid://od1gcoy3ghkp" path="res://Scenes/Environments/World Scenes/Forest/Assets/FrontR.png" id="4_0d3pc"]
-[ext_resource type="Resource" uid="uid://co5p0cdtlouq3" path="res://Database/Faebles/010Basidusa.tres" id="4_rcrs7"]
-[ext_resource type="Resource" uid="uid://bwsk6gvcequ40" path="res://Database/Faebles/094Ananseed.tres" id="5_k7n0v"]
+[ext_resource type="Resource" uid="uid://eufk3iycdxhw" path="res://Database/Faebles/095Aconid.tres" id="4_ndl50"]
 [ext_resource type="Texture2D" uid="uid://bwow6qp1qrw3p" path="res://Scenes/Environments/World Scenes/Forest/Assets/FrontL.png" id="5_nnust"]
 [ext_resource type="Texture2D" uid="uid://b1yvjqp318bci" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleR.png" id="6_imhhl"]
-[ext_resource type="Resource" uid="uid://eufk3iycdxhw" path="res://Database/Faebles/095Aconid.tres" id="6_tsmqp"]
 [ext_resource type="Texture2D" uid="uid://c5lwnfjt36q35" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleSmallDecoL.png" id="7_rcrs7"]
-[ext_resource type="Resource" uid="uid://7hnia3pyi1xp" path="res://Database/Faebles/096Arachalyx.tres" id="7_wk46y"]
 [ext_resource type="Texture2D" uid="uid://dfmjqud1wdo68" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleSmallDecoR.png" id="8_k7n0v"]
 [ext_resource type="Texture2D" uid="uid://cgnjjvbdbarj" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleLargeL.png" id="9_tsmqp"]
 [ext_resource type="Texture2D" uid="uid://cnj8lj53pij0l" path="res://Scenes/Environments/World Scenes/Forest/Assets/BackDecoL.png" id="10_wk46y"]
@@ -32,11 +29,8 @@ componentPool = {}
 componentPositions = Array[Vector3]([])
 propSet = Dictionary[Texture2D, float]({})
 propPositions = Array[Vector3]([])
-spawnPool = Dictionary[ExtResource("2_g614w"), int]({
-ExtResource("3_imhhl"): 1,
-ExtResource("4_rcrs7"): 1,
-ExtResource("5_k7n0v"): 5,
-ExtResource("6_tsmqp"): 5,
-ExtResource("7_wk46y"): 3
+spawnPool = Dictionary[ExtResource("2_ldc1f"), int]({
+ExtResource("3_w6yky"): 4,
+ExtResource("4_ndl50"): 2
 })
 metadata/_custom_type_script = "uid://ddwiku72pt2uk"

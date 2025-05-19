@@ -43,21 +43,16 @@ enum Mana{
 	Wild
 }
 
-func Target(battleManager:BattleManager, user:Battler):
-	battleManager.ChangeBoardState("Attacking")
-	battleManager.CheckAttackRange(user, self)
-
 func Execute(battleSystem:BattleSystem, user:StageBattler, target:StageBattler):
 	print("Error! Attack has no function. If basic damaging attack, insert ref to DamageCalc")
 	#user.ChangeEnergy(-cost)
 	var damageTally:int
 	#if mimic school, user sig school used as move school
 	#if skillDamage > 0:
-		#damageTally = battleSystem.DamageCalc(self, player)
-	damageTally = -clampi(damageTally, 0, 60)
+	damageTally = battleSystem.DamageCalc(self, user, target)
 	var superFX:bool
 	var weakFX:bool
-	var matchupMod:int = battleSystem.CheckMatchups(target.faebleEntry, school)
+	var matchupMod:int = battleSystem.CheckMatchups(target.faebleInstance, school)
 	if matchupMod > 0:
 		superFX = true
 		weakFX = false
@@ -68,4 +63,4 @@ func Execute(battleSystem:BattleSystem, user:StageBattler, target:StageBattler):
 		superFX = false
 		weakFX = false
 	#battleSystem.DamagePopup(target.positionIndex, -damageTally, superFX, weakFX)
-	#target.ChangeHealth(damageTally)
+	target.ChangeHealth(damageTally)
