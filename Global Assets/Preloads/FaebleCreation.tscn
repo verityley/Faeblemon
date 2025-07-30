@@ -1,0 +1,13 @@
+[gd_scene load_steps=8 format=3 uid="uid://bv4v74hds2cdg"]
+
+[ext_resource type="Script" uid="uid://dsk4djqjx1w3i" path="res://Global Assets/Preloads/FaebleCreation.gd" id="1_dg7l1"]
+[ext_resource type="Script" uid="uid://ctstg4vvnv8cb" path="res://Global Assets/Classes/Title.gd" id="2_oosft"]
+[ext_resource type="Resource" uid="uid://cquj7ginm5n8q" path="res://Database/Titles/GA_Wanderer.tres" id="3_5r7vo"]
+[ext_resource type="Resource" uid="uid://bpr2615fq4lqv" path="res://Database/Titles/GB_Rogue.tres" id="4_m3fcy"]
+[ext_resource type="Resource" uid="uid://c0wk3qw7nxpid" path="res://Database/Titles/GH_Featherlight.tres" id="5_nul83"]
+[ext_resource type="Resource" uid="uid://cmemja5p4mxm4" path="res://Database/Titles/GV_Ranger.tres" id="6_pnk0y"]
+[ext_resource type="Resource" uid="uid://bwt3t0jy0b530" path="res://Database/Titles/GW_Swashbuckler.tres" id="7_5i7g8"]
+
+[node name="FaebleCreation" type="Node"]
+script = ExtResource("1_dg7l1")
+titlePool = Array[ExtResource("2_oosft")]([ExtResource("3_5r7vo"), ExtResource("4_m3fcy"), ExtResource("5_nul83"), ExtResource("6_pnk0y"), ExtResource("7_5i7g8")])

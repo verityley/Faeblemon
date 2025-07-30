@@ -1,6 +1,6 @@
 [gd_scene load_steps=32 format=3 uid="uid://bok3gqa86lbq0"]
 
-[ext_resource type="Script" uid="uid://1h2vveh7l76v" path="res://Scenes/Environments/World Stage/LayerManager.gd" id="1_yyegc"]
+[ext_resource type="Script" uid="uid://1h2vveh7l76v" path="res://Scenes/Environments/Investigation Scenes/LayerManager.gd" id="1_yyegc"]
 [ext_resource type="Texture2D" uid="uid://c4udwyw0qkx7n" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleL.png" id="2_k42q8"]
 [ext_resource type="Texture2D" uid="uid://od1gcoy3ghkp" path="res://Scenes/Environments/World Scenes/Forest/Assets/FrontR.png" id="3_medno"]
 [ext_resource type="Texture2D" uid="uid://bwow6qp1qrw3p" path="res://Scenes/Environments/World Scenes/Forest/Assets/FrontL.png" id="4_684e3"]
@@ -215,7 +215,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.41756)
 light_energy = 0.3
 shadow_enabled = true
 shadow_opacity = 0.4
-shadow_blur = 4.0
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="FXManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.41756)
@@ -228,7 +227,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 16)
 visible = false
 light_energy = 40.0
 shadow_enabled = true
-shadow_blur = 3.0
 spot_range = 30.0
 spot_angle = 30.0
 
@@ -237,7 +235,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 16)
 light_energy = 40.0
 light_cull_mask = 4294967263
 shadow_enabled = true
-shadow_blur = 3.0
 spot_range = 45.0
 spot_angle = 30.0
 

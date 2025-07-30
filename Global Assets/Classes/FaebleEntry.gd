@@ -15,6 +15,10 @@ class_name Faeble
 @export var sprite:CompressedTexture2D
 @export var backSprite:CompressedTexture2D
 @export var shinySprite:CompressedTexture2D
+@export var altPalette1:CompressedTexture2D
+@export var altPalette1Back:CompressedTexture2D
+@export var altPalette2:CompressedTexture2D
+@export var altPalette2Back:CompressedTexture2D
 @export var UISprite:Texture2D
 @export var icon:CompressedTexture2D
 @export var battlerScale:Vector3 #Scale used in battle scenes 0.5 - 1.8
@@ -37,17 +41,19 @@ var act:int #Increased by research, determines overall faeble unlock progress.
 @export var ambition:int #Defends against spell attacks
 @export var grace:int #Determines turn order
 @export var heart:int #Determines your base starting HP
+@export var baseStats:Array[int]
 @export var prowess:int #Determined by difference of Bwn and Wit, status effect attack stat
 @export var resolve:int #Determined by difference of Vig and Amb, status effect defense stat
 
 @export var profArray:Array[int] = [0, 0, 0, 0, 0, 0]
 @export var statImprovements:Array[int] = [0, 0, 0, 0, 0, 0]
 @export var roomToGrow:Array[int] = [0, 0, 0, 0, 0, 0]
-@export var prefPrimary:String #Used for wild ASIs
-@export var prefSecondary:String
+@export_enum("Brawn","Vigor","Wit","Ambition","Grace","Heart") var prefPrimary:int #Used for wild ASIs
+@export_enum("Brawn","Vigor","Wit","Ambition","Grace","Heart") var prefSecondary:int
+@export var title:Title
 
 @export_category("Combat Parameters")
-@export var HPCap:int = 40
+@export var HPCap:int = 50
 var maxHP:int = 1
 var maxMana:int = 1
 var maxResolve:int = 1

@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://yi7jwqjnb6vh"]
+
+[ext_resource type="Script" uid="uid://dr5it17v6b7rj" path="res://Scenes/Environments/World Scenes/PlayerCharacter.gd" id="1_vks46"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_c3wwh"]
+vertices = PackedVector3Array(-3.7, 0.35, 1.7, -3.25, 0.35, 1.7, -3.1, 0.35, 0.8, -3.7, 0.35, -1.75, -0.85, 0.35, 0.8, -0.7, 0.35, 1.7, 0.8, 0.35, 1.7, 0.8, 0.35, -0.0999999, 2.75, 0.35, -0.25, 1.1, 0.35, -1.75, 2.75, 0.35, -3.7, 1.25, 0.35, -3.7)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 7), PackedInt32Array(11, 10, 9), PackedInt32Array(9, 10, 8), PackedInt32Array(7, 4, 9), PackedInt32Array(9, 4, 2), PackedInt32Array(9, 2, 3)]
+geometry_parsed_geometry_type = 1
+cell_size = 0.15
+cell_height = 0.05
+agent_radius = 0.3
+
+[sub_resource type="QuadMesh" id="QuadMesh_vks46"]
+size = Vector2(0.6, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nh8oq"]
+cull_mode = 2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_13ge2"]
+radius = 0.3
+height = 1.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vr060"]
+size = Vector2(10, 10)
+
+[sub_resource type="QuadMesh" id="QuadMesh_h6ofv"]
+size = Vector2(5, 2)
+
+[node name="OverworldScene" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_c3wwh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+depth = 0.5
+polygon = PackedVector2Array(-4, 2, -4, 1, -4, -2, 1, -2, 1, -4, 3, -4, 3, -2, 3, 0, 1, 0, 1, 1, 1, 2, -1, 2, -1, 1, -3, 1, -3, 2)
+
+[node name="PlayerCharacter" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.899633, 0)
+script = ExtResource("1_vks46")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerCharacter"]
+mesh = SubResource("QuadMesh_vks46")
+surface_material_override/0 = SubResource("StandardMaterial3D_nh8oq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="PlayerCharacter"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCharacter"]
+shape = SubResource("CapsuleShape3D_13ge2")
+
+[node name="Camera3D" type="Camera3D" parent="PlayerCharacter"]
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 1, 3)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.232837, 0)
+mesh = SubResource("PlaneMesh_vr060")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70959, 1.26839, -2.36508)
+mesh = SubResource("QuadMesh_h6ofv")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.61041, 1.26839, 0.380402)
+mesh = SubResource("QuadMesh_h6ofv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.913268, -0.216409, -0.34512, 0.407358, 0.485175, 0.773734, 0, -0.847215, 0.531251, -7.60281, 0, 0.917436)
