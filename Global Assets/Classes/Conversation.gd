@@ -4,7 +4,7 @@ class_name Conversation
 @export var messageFlow:Array[Dictionary]
 @export var flowTemplate:Dictionary = { #Message Flow Template
 	"Label" = "1A",
-	"Message" = preload("res://Database/Dialogue/Conversations/Messages/HelloWorld.tres"),
+	"Message" = null, #preload("res://Database/Dialogue/Conversations/Messages/HelloWorld.tres"),
 	"GoToLabel" = "Replace with target message label",
 	"HasBranch" = false,
 	"Branch" = ["2A","2B","2C"]

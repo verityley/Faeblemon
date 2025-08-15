@@ -97,11 +97,12 @@ transparency = 4
 cull_mode = 2
 albedo_texture = ExtResource("9_nv16o")
 
-[node name="LayerManager" type="Node3D" node_paths=PackedStringArray("stageLayers", "FXManager")]
+[node name="LayerManager" type="Node3D" node_paths=PackedStringArray("stageLayers", "FXManager", "stageCamera")]
 script = ExtResource("1_yyegc")
 stageLayers = [NodePath("Cutouts/Overlay"), NodePath("Cutouts/UI 1"), NodePath("Cutouts/UI 2"), NodePath("Cutouts/Player 1"), NodePath("Cutouts/Player 2"), NodePath("Cutouts/Spacer 1"), NodePath("Cutouts/Spacer 2"), NodePath("Cutouts/Enemy 1"), NodePath("Cutouts/Enemy 2"), NodePath("Cutouts/Background 1"), NodePath("Cutouts/Background 2"), NodePath("Cutouts/Back Plate 1"), NodePath("Cutouts/Back Plate 2")]
 layerDepths = Array[float]([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
 FXManager = NodePath("FXManager")
+stageCamera = NodePath("StageCam")
 
 [node name="Cutouts" type="Node3D" parent="."]
 
@@ -238,12 +239,6 @@ shadow_enabled = true
 spot_range = 45.0
 spot_angle = 30.0
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
-visible = false
-current = true
-fov = 30.0
-
 [node name="PlayerFaeble" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -0.1)
 visible = false
@@ -263,3 +258,7 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 mesh = SubResource("QuadMesh_xn15w")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_x6hv8")
+
+[node name="StageCam" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+fov = 30.0

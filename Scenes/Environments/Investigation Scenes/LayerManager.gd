@@ -7,6 +7,7 @@ class_name StageSystem
 @export var layerCount:int = 13
 @export var layerSpeed:float = 0.2
 @export var FXManager:Node3D
+@export var stageCamera:Camera3D
 
 enum Transitions {
 	None=0,
@@ -21,6 +22,7 @@ func LoadScene(stage:Stage, transition:int):
 	stageResource = stage
 	if transition == Transitions.None:
 		LayerRetexture()
+		await get_tree().create_timer(0.5).timeout
 		ChangeLighting(0.01)
 		LayerSpacing(2, 1.5)
 	if transition == Transitions.Accordion:

@@ -1,70 +1,660 @@
-[gd_scene load_steps=8 format=3 uid="uid://yi7jwqjnb6vh"]
+[gd_scene load_steps=24 format=3 uid="uid://yi7jwqjnb6vh"]
 
 [ext_resource type="Script" uid="uid://dr5it17v6b7rj" path="res://Scenes/Environments/World Scenes/PlayerCharacter.gd" id="1_vks46"]
+[ext_resource type="Texture2D" uid="uid://gmn7ufxe7b6d" path="res://Scenes/Player/Assets/PlayerChar.png" id="2_nh8oq"]
+[ext_resource type="Texture2D" uid="uid://c4udwyw0qkx7n" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleL.png" id="3_0xlwl"]
+[ext_resource type="Script" uid="uid://lqd8qaukhmi8" path="res://Scenes/Environments/World Scenes/NPCController.gd" id="3_2oeb1"]
+[ext_resource type="Texture2D" uid="uid://od1gcoy3ghkp" path="res://Scenes/Environments/World Scenes/Forest/Assets/FrontR.png" id="4_375et"]
+[ext_resource type="Texture2D" uid="uid://bwow6qp1qrw3p" path="res://Scenes/Environments/World Scenes/Forest/Assets/FrontL.png" id="5_2oeb1"]
+[ext_resource type="Texture2D" uid="uid://b1yvjqp318bci" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleR.png" id="6_8iwd7"]
+[ext_resource type="Script" uid="uid://6h5gle8emjg" path="res://Scenes/Environments/World Scenes/OverworldLayer.gd" id="7_375et"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_c3wwh"]
-vertices = PackedVector3Array(-3.7, 0.35, 1.7, -3.25, 0.35, 1.7, -3.1, 0.35, 0.8, -3.7, 0.35, -1.75, -0.85, 0.35, 0.8, -0.7, 0.35, 1.7, 0.8, 0.35, 1.7, 0.8, 0.35, -0.0999999, 2.75, 0.35, -0.25, 1.1, 0.35, -1.75, 2.75, 0.35, -3.7, 1.25, 0.35, -3.7)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 7), PackedInt32Array(11, 10, 9), PackedInt32Array(9, 10, 8), PackedInt32Array(7, 4, 9), PackedInt32Array(9, 4, 2), PackedInt32Array(9, 2, 3)]
+vertices = PackedVector3Array(-5.65164, 0.553925, -1.32606, -3.65164, 0.553925, -1.32606, -3.45164, 0.553925, -2.12606, -3.45164, 0.553925, -3.52606, -3.65164, 0.553925, -4.72606, -5.65164, 0.553925, -4.72606, 3.54836, 0.553925, -2.12606, 3.54836, 0.553925, -3.52606, -3.45164, 0.553925, -0.326063, -5.85164, 0.553925, -0.326063, -5.65164, 0.553925, 1.07394, -3.45164, 0.553925, 0.873937, -12.6516, 0.553925, -0.326063, -12.6516, 0.553925, 0.873937, -5.85164, 0.553925, 2.67394, -12.4516, 0.553925, 2.67394, -12.4516, 0.553925, 3.87394, -3.65164, 0.553925, 3.87394, 9.94836, 0.553925, 0.873937, 9.94836, 0.553925, -0.326063, 2.74836, -1.94607, 6.87394, 4.34836, -1.94607, 6.67394, 4.34836, -1.94607, 5.27394, 2.74836, -1.94607, 5.07394, 0.54836, -1.94607, 6.67394, 0.54836, -1.94607, 5.27394, -6.45164, -1.94607, 5.27394, -6.45164, -1.94607, 6.67394, 2.94836, -1.94607, 2.27394, 2.74836, -1.94607, 0.873937, 0.74836, -1.94607, 0.873937, 2.94836, -1.94607, 3.47394, 0.74836, -1.94607, 8.07394, -6.05164, -1.94607, 8.27394, -6.05164, -1.94607, 9.67394, 2.74836, -1.94607, 9.67394, 9.94836, -1.94607, 3.47394, 9.94836, -1.94607, 2.27394, 16.3484, -1.94607, 6.67394, 16.3484, -1.94607, 5.27394)
+polygons = [PackedInt32Array(2, 1, 3), PackedInt32Array(3, 1, 4), PackedInt32Array(4, 1, 0), PackedInt32Array(4, 0, 5), PackedInt32Array(3, 7, 2), PackedInt32Array(2, 7, 6), PackedInt32Array(8, 11, 1), PackedInt32Array(1, 11, 0), PackedInt32Array(0, 11, 9), PackedInt32Array(9, 11, 10), PackedInt32Array(12, 9, 13), PackedInt32Array(13, 9, 10), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 17), PackedInt32Array(8, 19, 11), PackedInt32Array(11, 19, 18), PackedInt32Array(10, 11, 14), PackedInt32Array(14, 11, 17), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 23), PackedInt32Array(23, 20, 24), PackedInt32Array(24, 27, 25), PackedInt32Array(25, 27, 26), PackedInt32Array(30, 29, 28), PackedInt32Array(31, 23, 28), PackedInt32Array(28, 23, 30), PackedInt32Array(30, 23, 25), PackedInt32Array(25, 23, 24), PackedInt32Array(33, 32, 34), PackedInt32Array(34, 32, 35), PackedInt32Array(28, 37, 31), PackedInt32Array(31, 37, 36), PackedInt32Array(24, 20, 32), PackedInt32Array(32, 20, 35), PackedInt32Array(22, 39, 21), PackedInt32Array(21, 39, 38)]
 geometry_parsed_geometry_type = 1
-cell_size = 0.15
-cell_height = 0.05
-agent_radius = 0.3
+cell_size = 0.2
+agent_radius = 0.2
+agent_max_slope = 30.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_375et"]
+size = Vector3(23, 0.2, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xlwl"]
+size = Vector3(7, 0.2, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2oeb1"]
+size = Vector3(2.2, 0.2, 9)
 
 [sub_resource type="QuadMesh" id="QuadMesh_vks46"]
-size = Vector2(0.6, 1)
+size = Vector2(0.6, 0.8)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nh8oq"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 cull_mode = 2
+albedo_texture = ExtResource("2_nh8oq")
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_13ge2"]
-radius = 0.3
-height = 1.0
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2oeb1"]
+radius = 0.2
+height = 0.8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8iwd7"]
+size = Vector3(1, 1, 3)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vr060"]
 size = Vector2(10, 10)
 
-[sub_resource type="QuadMesh" id="QuadMesh_h6ofv"]
-size = Vector2(5, 2)
+[sub_resource type="QuadMesh" id="QuadMesh_ccn2q"]
+size = Vector2(16, 9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y8yol"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("3_0xlwl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ctbq"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("4_375et")
+
+[sub_resource type="QuadMesh" id="QuadMesh_i1xfm"]
+size = Vector2(16, 9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cdilw"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("5_2oeb1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jppel"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("6_8iwd7")
 
 [node name="OverworldScene" type="Node3D"]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_c3wwh")
 
+[node name="StaticBody3D2" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.57184, -2.49267, 5.74696)
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53591, 0.146595, 0.250079)
+shape = SubResource("BoxShape3D_375et")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1557, 0.146595, 3.25008)
+shape = SubResource("BoxShape3D_0xlwl")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11721, 0.146595, -2.86157)
+shape = SubResource("BoxShape3D_0xlwl")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.80274, 0.146595, -0.426063)
+shape = SubResource("BoxShape3D_2oeb1")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 0)
+collision_layer = 3
 
-[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="NavigationRegion3D/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-depth = 0.5
-polygon = PackedVector2Array(-4, 2, -4, 1, -4, -2, 1, -2, 1, -4, 3, -4, 3, -2, 3, 0, 1, 0, 1, 1, 1, 2, -1, 2, -1, 1, -3, 1, -3, 2)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.85164, 0.146595, 0.250079)
+shape = SubResource("BoxShape3D_375et")
 
-[node name="PlayerCharacter" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.899633, 0)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4714, 0.146595, 3.25008)
+shape = SubResource("BoxShape3D_0xlwl")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.43294, 0.146595, -2.86157)
+shape = SubResource("BoxShape3D_0xlwl")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.11847, 0.146595, -0.426063)
+shape = SubResource("BoxShape3D_2oeb1")
+
+[node name="PlayerCharacter" type="Node3D" parent="." node_paths=PackedStringArray("navAgent", "charSprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.33, 0.7, 0.508)
 script = ExtResource("1_vks46")
+stepDistance = 1.0
+stepSpeed = 3.0
+navAgent = NodePath("NavigationAgent3D")
+charSprite = NodePath("MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerCharacter"]
 mesh = SubResource("QuadMesh_vks46")
 surface_material_override/0 = SubResource("StandardMaterial3D_nh8oq")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="PlayerCharacter"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCharacter"]
-shape = SubResource("CapsuleShape3D_13ge2")
+path_desired_distance = 0.5
+target_desired_distance = 0.5
+path_height_offset = 0.25
+radius = 0.3
+debug_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="PlayerCharacter"]
-transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 1, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 1.75)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.232837, 0)
+[node name="SpotLight3D2" type="SpotLight3D" parent="PlayerCharacter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7)
+light_energy = 10.0
+light_cull_mask = 4294967263
+shadow_enabled = true
+spot_range = 15.0
+spot_angle = 30.0
+
+[node name="Area3D" type="Area3D" parent="PlayerCharacter"]
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCharacter/Area3D"]
+shape = SubResource("CapsuleShape3D_2oeb1")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.41468, 0.69941, 2.41542)
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_8iwd7")
+
+[node name="NPC" type="Node3D" parent="." node_paths=PackedStringArray("navAgent", "charSprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.458331, 0.9, -3.01081)
+script = ExtResource("3_2oeb1")
+stepSpeed = 2.0
+stopThreshold = 0.1
+navAgent = NodePath("NavigationAgent3D")
+charSprite = NodePath("MeshInstance3D")
+moving = true
+moveTarget = Vector3(9.40452, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NPC"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.123054, 0)
+mesh = SubResource("QuadMesh_vks46")
+surface_material_override/0 = SubResource("StandardMaterial3D_nh8oq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NPC"]
+path_desired_distance = 0.5
+target_desired_distance = 0.5
+path_height_offset = 0.25
+radius = 0.3
+debug_enabled = true
+
+[node name="NPC2" type="Node3D" parent="." node_paths=PackedStringArray("navAgent", "charSprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.29302, 0.9, 3.20221)
+script = ExtResource("3_2oeb1")
+stepSpeed = 2.0
+stopThreshold = 0.1
+navAgent = NodePath("NavigationAgent3D")
+charSprite = NodePath("MeshInstance3D")
+moving = true
+moveTarget = Vector3(-0.458331, 0.9, -3.01081)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NPC2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.123054, 0)
+mesh = SubResource("QuadMesh_vks46")
+surface_material_override/0 = SubResource("StandardMaterial3D_nh8oq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NPC2"]
+path_desired_distance = 0.5
+target_desired_distance = 0.5
+path_height_offset = 0.25
+radius = 0.3
+debug_enabled = true
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.3, -9, 0.232837, 2.51701)
 mesh = SubResource("PlaneMesh_vr060")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70959, 1.26839, -2.36508)
-mesh = SubResource("QuadMesh_h6ofv")
+[node name="FrontDeco1" type="MeshInstance3D" parent="MeshInstance3D8" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, 0.248007)
+mesh = SubResource("QuadMesh_ccn2q")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_y8yol")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.61041, 1.26839, 0.380402)
-mesh = SubResource("QuadMesh_h6ofv")
+[node name="FrontDeco2" type="MeshInstance3D" parent="MeshInstance3D8" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -0.724032)
+mesh = SubResource("QuadMesh_ccn2q")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ctbq")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.913268, -0.216409, -0.34512, 0.407358, 0.485175, 0.773734, 0, -0.847215, 0.531251, -7.60281, 0, 0.917436)
+[node name="FrontDeco3" type="MeshInstance3D" parent="MeshInstance3D8" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -1.56438)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_cdilw")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco4" type="MeshInstance3D" parent="MeshInstance3D8" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -2.63255)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jppel")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco6" type="MeshInstance3D" parent="MeshInstance3D8" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, 5.77076)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jppel")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.3, 0.146379, 0.232837, -3.64564)
+mesh = SubResource("PlaneMesh_vr060")
+
+[node name="FrontDeco1" type="MeshInstance3D" parent="MeshInstance3D9" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, 0.248007)
+mesh = SubResource("QuadMesh_ccn2q")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_y8yol")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco2" type="MeshInstance3D" parent="MeshInstance3D9" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -0.724032)
+mesh = SubResource("QuadMesh_ccn2q")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ctbq")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco3" type="MeshInstance3D" parent="MeshInstance3D9" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -1.56438)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_cdilw")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco4" type="MeshInstance3D" parent="MeshInstance3D9" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -2.63255)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jppel")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco6" type="MeshInstance3D" parent="MeshInstance3D9" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, 5.77076)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jppel")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.3, 0.146379, 0.232837, -0.544697)
+mesh = SubResource("PlaneMesh_vr060")
+
+[node name="FrontDeco1" type="MeshInstance3D" parent="MeshInstance3D10" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, 0.248007)
+mesh = SubResource("QuadMesh_ccn2q")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_y8yol")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco2" type="MeshInstance3D" parent="MeshInstance3D10" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -0.724032)
+mesh = SubResource("QuadMesh_ccn2q")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ctbq")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco3" type="MeshInstance3D" parent="MeshInstance3D10" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -1.56438)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_cdilw")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco4" type="MeshInstance3D" parent="MeshInstance3D10" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -2.63255)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jppel")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco6" type="MeshInstance3D" parent="MeshInstance3D10" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, 5.77076)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jppel")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.3, 6.6707, 0.232837, -0.496408)
+mesh = SubResource("PlaneMesh_vr060")
+
+[node name="FrontDeco1" type="MeshInstance3D" parent="MeshInstance3D11" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, 0.248007)
+mesh = SubResource("QuadMesh_ccn2q")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_y8yol")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco2" type="MeshInstance3D" parent="MeshInstance3D11" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -0.724032)
+mesh = SubResource("QuadMesh_ccn2q")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ctbq")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco3" type="MeshInstance3D" parent="MeshInstance3D11" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -1.56438)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_cdilw")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco4" type="MeshInstance3D" parent="MeshInstance3D11" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -2.63255)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jppel")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco6" type="MeshInstance3D" parent="MeshInstance3D11" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, 5.77076)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jppel")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.3, -9.29987, 0.232837, -0.439687)
+mesh = SubResource("PlaneMesh_vr060")
+
+[node name="FrontDeco1" type="MeshInstance3D" parent="MeshInstance3D12" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, 0.248007)
+mesh = SubResource("QuadMesh_ccn2q")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_y8yol")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco2" type="MeshInstance3D" parent="MeshInstance3D12" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -0.724032)
+mesh = SubResource("QuadMesh_ccn2q")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ctbq")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco3" type="MeshInstance3D" parent="MeshInstance3D12" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -1.56438)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_cdilw")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco4" type="MeshInstance3D" parent="MeshInstance3D12" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -2.63255)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jppel")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco6" type="MeshInstance3D" parent="MeshInstance3D12" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, 5.77076)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jppel")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.271722, 0, 0, 0, 1, 0, 0, 0, 0.910514, -4.64008, 0.232837, -0.484988)
+mesh = SubResource("PlaneMesh_vr060")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.3, -2.61243, -2.25983, 8.26397)
+mesh = SubResource("PlaneMesh_vr060")
+
+[node name="FrontDeco1" type="MeshInstance3D" parent="MeshInstance3D13" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, 0.248007)
+mesh = SubResource("QuadMesh_ccn2q")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_y8yol")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco2" type="MeshInstance3D" parent="MeshInstance3D13" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -0.724032)
+mesh = SubResource("QuadMesh_ccn2q")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ctbq")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco3" type="MeshInstance3D" parent="MeshInstance3D13" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -1.56438)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_cdilw")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco4" type="MeshInstance3D" parent="MeshInstance3D13" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -2.63255)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jppel")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco6" type="MeshInstance3D" parent="MeshInstance3D13" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, 5.77076)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jppel")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.3, 6.53395, -2.25983, 2.10132)
+mesh = SubResource("PlaneMesh_vr060")
+
+[node name="FrontDeco1" type="MeshInstance3D" parent="MeshInstance3D14" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, 0.248007)
+mesh = SubResource("QuadMesh_ccn2q")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_y8yol")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco2" type="MeshInstance3D" parent="MeshInstance3D14" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -0.724032)
+mesh = SubResource("QuadMesh_ccn2q")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ctbq")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco3" type="MeshInstance3D" parent="MeshInstance3D14" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -1.56438)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_cdilw")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco4" type="MeshInstance3D" parent="MeshInstance3D14" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -2.63255)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jppel")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco6" type="MeshInstance3D" parent="MeshInstance3D14" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, 5.77076)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jppel")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.3, 6.53395, -2.25983, 5.20226)
+mesh = SubResource("PlaneMesh_vr060")
+
+[node name="FrontDeco1" type="MeshInstance3D" parent="MeshInstance3D15" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, 0.248007)
+mesh = SubResource("QuadMesh_ccn2q")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_y8yol")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco2" type="MeshInstance3D" parent="MeshInstance3D15" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -0.724032)
+mesh = SubResource("QuadMesh_ccn2q")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ctbq")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco3" type="MeshInstance3D" parent="MeshInstance3D15" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -1.56438)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_cdilw")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco4" type="MeshInstance3D" parent="MeshInstance3D15" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -2.63255)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jppel")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco6" type="MeshInstance3D" parent="MeshInstance3D15" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, 5.77076)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jppel")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.3, 13.0582, -2.25983, 5.25055)
+mesh = SubResource("PlaneMesh_vr060")
+
+[node name="FrontDeco1" type="MeshInstance3D" parent="MeshInstance3D16" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, 0.248007)
+mesh = SubResource("QuadMesh_ccn2q")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_y8yol")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco2" type="MeshInstance3D" parent="MeshInstance3D16" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -0.724032)
+mesh = SubResource("QuadMesh_ccn2q")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ctbq")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco3" type="MeshInstance3D" parent="MeshInstance3D16" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -1.56438)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_cdilw")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco4" type="MeshInstance3D" parent="MeshInstance3D16" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -2.63255)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jppel")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco6" type="MeshInstance3D" parent="MeshInstance3D16" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, 5.77076)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jppel")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.3, -2.91229, -2.25983, 5.30727)
+mesh = SubResource("PlaneMesh_vr060")
+
+[node name="FrontDeco1" type="MeshInstance3D" parent="MeshInstance3D17" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, 0.248007)
+mesh = SubResource("QuadMesh_ccn2q")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_y8yol")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco2" type="MeshInstance3D" parent="MeshInstance3D17" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -0.724032)
+mesh = SubResource("QuadMesh_ccn2q")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ctbq")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco3" type="MeshInstance3D" parent="MeshInstance3D17" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -1.56438)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_cdilw")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco4" type="MeshInstance3D" parent="MeshInstance3D17" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, -2.63255)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jppel")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="FrontDeco6" type="MeshInstance3D" parent="MeshInstance3D17" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.6, 0, 1.28761, 5.77076)
+mesh = SubResource("QuadMesh_i1xfm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jppel")
+script = ExtResource("7_375et")
+player = NodePath("../../PlayerCharacter")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.271722, 0, 0, 0, 1, 0, 0, 0, 0.910514, 1.7475, -2.25983, 5.26197)
+mesh = SubResource("PlaneMesh_vr060")
+
+[node name="ProxyTarget" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.861523, -1.93401, 2.41542)
+
+[connection signal="area_entered" from="Area3D" to="PlayerCharacter" method="EnterStairs" binds= [Vector3(-3.26512, 0.69941, 2.41542), Vector3(0.861523, -1.93401, 2.41542)]]

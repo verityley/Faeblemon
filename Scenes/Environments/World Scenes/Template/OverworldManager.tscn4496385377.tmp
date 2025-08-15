@@ -1,0 +1,3263 @@
+[gd_scene load_steps=74 format=3 uid="uid://bcu2q5rcwh42l"]
+
+[ext_resource type="Script" uid="uid://dr5it17v6b7rj" path="res://Scenes/Environments/World Scenes/PlayerCharacter.gd" id="1_4duw5"]
+[ext_resource type="Script" uid="uid://cflmaoffnjo2p" path="res://Scenes/Environments/World Scenes/Template/OverworldManager.gd" id="1_irke8"]
+[ext_resource type="Script" uid="uid://d0ptbwb3i3m2" path="res://Scenes/Environments/World Scenes/Template/Scripts/MapBlock.gd" id="1_t5aum"]
+[ext_resource type="Script" uid="uid://wvks83pa45wm" path="res://Scenes/Environments/World Scenes/Template/Scripts/StreetSection.gd" id="2_1ydtu"]
+[ext_resource type="Texture2D" uid="uid://gmn7ufxe7b6d" path="res://Scenes/Player/Assets/PlayerChar.png" id="2_bsmh5"]
+[ext_resource type="Script" uid="uid://dllav6wustq5b" path="res://Scenes/Environments/World Scenes/Template/InvestigationTrigger.gd" id="4_ia5te"]
+[ext_resource type="Resource" uid="uid://4erh8hya8gt4" path="res://Scenes/Environments/World Scenes/Forest/Resources/SparseForest.tres" id="5_v5pia"]
+[ext_resource type="Script" uid="uid://dglyiulvu4p4u" path="res://Scenes/Environments/World Scenes/Template/PlayerCamera.gd" id="6_ia5te"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_4duw5"]
+vertices = PackedVector3Array(2.8, 8.81527, -5.6, 5.3, 8.81527, -5.6, 5.3, 8.81527, -7.7, 2.8, 8.81527, -7.7, 2.6, 8.81527, -4.7, 1.8, 8.81527, -4.7, 1.8, 8.81527, -2.3, 6.3, 8.81527, -2.3, 6.3, 8.81527, -4.7, 5.5, 8.81527, -4.7, 5.3, 8.81527, -4.9, 2.8, 8.81527, -4.9, -6.6, 8.81527, -3.3, -5.8, 8.81527, -3.3, -5.8, 8.81527, -4.7, -6.8, 8.81527, -3.1, -15.2, 8.81527, -4.7, -15.2, 8.81527, -2.3, -6.8, 8.81527, -2.3, -3.4, 8.81527, -3.3, -3.2, 8.81527, -3.1, -3.2, 8.81527, -2.3, 7.8, 3.80527, -1.7, 10.2, 3.80527, -1.7, 10.2, 3.80527, -3.7, 7.8, 3.80527, -3.7, 7.6, 3.80527, -0.7, 6.8, 3.80527, -0.7, 6.8, 3.80527, 1.7, 11.2, 3.80527, 1.7, 11.2, 3.80527, -0.7, 10.4, 3.80527, -0.7, 10.2, 3.80527, -0.9, 7.8, 3.80527, -0.9, -7.8, 3.80527, -0.9, -7.8, 3.80527, -1.7, -8.2, 3.80527, -1.7, -8.2, 3.80527, -0.9, 2.5, 3.80527, 1.7, 2.5, 3.80527, -0.7, -7.6, 3.80527, -0.7, -15.2, 3.80527, 1.7, -8.4, 3.80527, -0.7, -15.2, 3.80527, -0.7, 2.8, 3.80527, 1.9, 2.8, 3.80527, 2.6, 5.3, 3.80527, 2.6, 5.3, 3.80527, 1.9, 5.5, 3.80527, 1.7, 23.2, 3.80527, 1.7, 23.2, 3.80527, -0.7, 2.8, 3.80527, 11.4, 5.3, 3.80527, 11.4, 2.6, 3.80527, 12.3, 1.8, 3.80527, 12.3, 1.8, 3.80527, 14.7, 5.3, 3.80527, 12.1, 2.8, 3.80527, 12.1, 6.8, 3.80527, 14.7, 6.8, 3.80527, 12.3, 5.5, 3.80527, 12.3, -6.6, 3.80527, 13.7, -5.8, 3.80527, 13.7, -5.8, 3.80527, 12.3, -6.8, 3.80527, 13.9, -15.2, 3.80527, 12.3, -15.2, 3.80527, 14.7, -6.8, 3.80527, 14.7, -3.4, 3.80527, 13.7, -3.2, 3.80527, 13.9, -3.2, 3.80527, 14.7, 10.4, 3.80527, 14.7, 11.2, 3.80527, 14.7, 11.2, 3.80527, 12.3, 7.6, 3.80527, 14.7, 7.8, 3.80527, 14.9, 10.2, 3.80527, 14.9, 7.8, 3.80527, 16.7, 10.2, 3.80527, 16.7, 23.2, 3.80527, 14.7, 23.2, 3.80527, 12.3)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(6, 5, 4), PackedInt32Array(9, 8, 7), PackedInt32Array(11, 0, 10), PackedInt32Array(10, 0, 1), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 4), PackedInt32Array(4, 9, 6), PackedInt32Array(6, 9, 7), PackedInt32Array(14, 13, 12), PackedInt32Array(12, 15, 14), PackedInt32Array(14, 15, 16), PackedInt32Array(16, 15, 17), PackedInt32Array(15, 18, 17), PackedInt32Array(13, 14, 19), PackedInt32Array(19, 14, 5), PackedInt32Array(6, 21, 20), PackedInt32Array(20, 19, 6), PackedInt32Array(6, 19, 5), PackedInt32Array(25, 24, 22), PackedInt32Array(22, 24, 23), PackedInt32Array(28, 27, 26), PackedInt32Array(31, 30, 29), PackedInt32Array(33, 22, 32), PackedInt32Array(32, 22, 23), PackedInt32Array(32, 31, 33), PackedInt32Array(33, 31, 26), PackedInt32Array(26, 31, 28), PackedInt32Array(28, 31, 29), PackedInt32Array(37, 36, 34), PackedInt32Array(34, 36, 35), PackedInt32Array(39, 38, 40), PackedInt32Array(40, 38, 41), PackedInt32Array(34, 40, 37), PackedInt32Array(37, 40, 42), PackedInt32Array(41, 42, 40), PackedInt32Array(41, 43, 42), PackedInt32Array(47, 46, 44), PackedInt32Array(44, 46, 45), PackedInt32Array(27, 28, 48), PackedInt32Array(38, 39, 44), PackedInt32Array(44, 39, 47), PackedInt32Array(47, 39, 48), PackedInt32Array(48, 39, 27), PackedInt32Array(30, 50, 29), PackedInt32Array(29, 50, 49), PackedInt32Array(45, 46, 51), PackedInt32Array(51, 46, 52), PackedInt32Array(55, 54, 53), PackedInt32Array(57, 51, 56), PackedInt32Array(56, 51, 52), PackedInt32Array(60, 59, 58), PackedInt32Array(56, 60, 57), PackedInt32Array(57, 60, 53), PackedInt32Array(53, 60, 55), PackedInt32Array(55, 60, 58), PackedInt32Array(63, 62, 61), PackedInt32Array(61, 64, 63), PackedInt32Array(63, 64, 65), PackedInt32Array(65, 64, 66), PackedInt32Array(64, 67, 66), PackedInt32Array(62, 63, 68), PackedInt32Array(68, 63, 54), PackedInt32Array(55, 70, 69), PackedInt32Array(69, 68, 55), PackedInt32Array(55, 68, 54), PackedInt32Array(73, 72, 71), PackedInt32Array(74, 58, 59), PackedInt32Array(76, 75, 71), PackedInt32Array(71, 75, 74), PackedInt32Array(71, 74, 59), PackedInt32Array(71, 59, 73), PackedInt32Array(76, 78, 75), PackedInt32Array(75, 78, 77), PackedInt32Array(73, 80, 72), PackedInt32Array(72, 80, 79)]
+geometry_parsed_geometry_type = 1
+cell_size = 0.1
+cell_height = 0.01
+agent_height = 2.0
+agent_radius = 0.3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q6bqc"]
+size = Vector3(5, 0.2, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4duw5"]
+size = Vector3(4.5, 2, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t5aum"]
+size = Vector3(5, 1, 4)
+
+[sub_resource type="QuadMesh" id="QuadMesh_cj687"]
+size = Vector2(5, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4duw5"]
+size = Vector3(5, 5, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_bsmh5"]
+size = Vector2(5, 1.5)
+
+[sub_resource type="QuadMesh" id="QuadMesh_1ydtu"]
+size = Vector2(5, 5)
+
+[sub_resource type="QuadMesh" id="QuadMesh_irke8"]
+size = Vector2(5, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ydtu"]
+size = Vector3(2, 0.2, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ia5te"]
+size = Vector3(2, 1, 3)
+
+[sub_resource type="QuadMesh" id="QuadMesh_7dvxh"]
+size = Vector2(2, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bsmh5"]
+size = Vector3(3, 0.2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1ydtu"]
+size = Vector3(3, 1, 2)
+
+[sub_resource type="QuadMesh" id="QuadMesh_v5pia"]
+size = Vector2(3, 2)
+
+[sub_resource type="QuadMesh" id="QuadMesh_550ke"]
+size = Vector2(1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qq50r"]
+size = Vector3(3, 0.2, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bsmh5"]
+size = Vector3(3, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_irke8"]
+size = Vector3(1, 5, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_qq50r"]
+size = Vector2(1, 4)
+
+[sub_resource type="QuadMesh" id="QuadMesh_r8pb2"]
+size = Vector2(3, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_eyfnt"]
+size = Vector2(5, 5)
+
+[sub_resource type="QuadMesh" id="QuadMesh_27np1"]
+size = Vector2(1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_irke8"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v5pia"]
+size = Vector3(5, 4, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_j5nsx"]
+size = Vector2(5, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_12d3d"]
+size = Vector3(1, 3, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_3lh2q"]
+size = Vector2(1, 2)
+
+[sub_resource type="PrismMesh" id="PrismMesh_s22tr"]
+left_to_right = 1.0
+size = Vector3(3, 3, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_6hend"]
+size = Vector2(4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_db8x4"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_383ph"]
+size = Vector2(5, 5)
+
+[sub_resource type="QuadMesh" id="QuadMesh_db8x4"]
+size = Vector2(1, 5)
+
+[sub_resource type="QuadMesh" id="QuadMesh_4duw5"]
+size = Vector2(5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jshv6"]
+size = Vector3(5, 0.2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7a8ct"]
+size = Vector3(2, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ncrtu"]
+size = Vector3(5, 1, 3)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ggwib"]
+size = Vector2(5, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_douos"]
+size = Vector3(5, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fjuof"]
+size = Vector3(2, 2, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_khbb3"]
+size = Vector2(2, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_cfngh"]
+left_to_right = 0.0
+size = Vector3(2, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ia5te"]
+size = Vector3(4.5, 2, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_550ke"]
+size = Vector3(5, 1, 3)
+
+[sub_resource type="QuadMesh" id="QuadMesh_12d3d"]
+size = Vector2(5, 3)
+
+[sub_resource type="QuadMesh" id="QuadMesh_s22tr"]
+size = Vector2(5, 1.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6hend"]
+size = Vector3(1, 5, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ncrtu"]
+size = Vector3(3, 0.2, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ggwib"]
+size = Vector3(3, 2, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_khbb3"]
+size = Vector3(3, 1, 5)
+
+[sub_resource type="QuadMesh" id="QuadMesh_cfngh"]
+size = Vector2(3, 5)
+
+[sub_resource type="QuadMesh" id="QuadMesh_d31mb"]
+size = Vector2(9, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8vbj"]
+cull_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v5pia"]
+size = Vector3(35, 5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_550ke"]
+size = Vector3(3, 3, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_383ph"]
+size = Vector3(3, 3, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_27np1"]
+size = Vector3(3, 3, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r8pb2"]
+size = Vector3(3, 3, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eyfnt"]
+size = Vector3(3, 3, 0.5)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ia5te"]
+size = Vector2(0.6, 0.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5pia"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("2_bsmh5")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_550ke"]
+radius = 0.15
+height = 0.8
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4duw5"]
+sky_top_color = Color(0.520028, 0.420835, 0.415477, 1)
+
+[sub_resource type="Sky" id="Sky_bsmh5"]
+sky_material = SubResource("ProceduralSkyMaterial_4duw5")
+
+[sub_resource type="Environment" id="Environment_4duw5"]
+background_mode = 2
+background_energy_multiplier = 2.0
+sky = SubResource("Sky_bsmh5")
+ambient_light_source = 3
+ambient_light_color = Color(0.922202, 0.886968, 0.771275, 1)
+reflected_light_source = 2
+ssao_enabled = true
+ssao_radius = 0.3
+ssao_intensity = 8.0
+volumetric_fog_enabled = true
+volumetric_fog_emission = Color(0.329158, 0.329158, 0.329158, 1)
+volumetric_fog_ambient_inject = 0.1
+volumetric_fog_sky_affect = 0.3
+
+[node name="OverworldManager" type="Node3D" node_paths=PackedStringArray("player", "camera", "navmesh", "sceneFX", "investigation")]
+script = ExtResource("1_irke8")
+player = NodePath("PlayerCharacter")
+camera = NodePath("PlayerCamera")
+navmesh = NodePath("SceneNavigation")
+sceneFX = NodePath("SceneFX")
+investigation = NodePath("Investigation")
+
+[node name="SceneNavigation" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.29527, 0)
+navigation_mesh = SubResource("NavigationMesh_4duw5")
+
+[node name="Templates" type="Node3D" parent="SceneNavigation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.29527, 0)
+
+[node name="WallBlock" type="Node3D" parent="SceneNavigation/Templates" node_paths=PackedStringArray("overworldManager", "frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+script = ExtResource("1_t5aum")
+overworldManager = NodePath("../../..")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="SceneNavigation/Templates/WallBlock"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/WallBlock/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="ActiveArea" type="Area3D" parent="SceneNavigation/Templates/WallBlock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/WallBlock/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/WallBlock"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/WallBlock/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="WallVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/WallBlock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.5)
+mesh = SubResource("BoxMesh_4duw5")
+
+[node name="WallTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/WallBlock/WallVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.51)
+mesh = SubResource("QuadMesh_cj687")
+skeleton = NodePath("../../FloorVolume")
+
+[node name="FrontRail" type="MeshInstance3D" parent="SceneNavigation/Templates/WallBlock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_bsmh5")
+
+[node name="FrontAnchor" type="Node3D" parent="SceneNavigation/Templates/WallBlock"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/WallBlock/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.4)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/WallBlock/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.6)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="SceneNavigation/Templates/WallBlock"]
+
+[node name="BackLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/WallBlock/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/WallBlock/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="SceneNavigation/Templates/WallBlock/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.4)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="SceneNavigation/Templates/WallBlock/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="WallExitLeft" type="Node3D" parent="SceneNavigation/Templates" node_paths=PackedStringArray("overworldManager", "frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+script = ExtResource("1_t5aum")
+overworldManager = NodePath("../../..")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="SceneNavigation/Templates/WallExitLeft"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/WallExitLeft/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SceneNavigation/Templates/WallExitLeft/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.4, 0.5)
+shape = SubResource("BoxShape3D_1ydtu")
+
+[node name="ActiveArea" type="Area3D" parent="SceneNavigation/Templates/WallExitLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/WallExitLeft/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitLeft"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitLeft/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="WallVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.5)
+mesh = SubResource("BoxMesh_4duw5")
+
+[node name="WallTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitLeft/WallVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.51)
+mesh = SubResource("QuadMesh_cj687")
+skeleton = NodePath("../../FloorVolume")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 0.5)
+mesh = SubResource("BoxMesh_ia5te")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitLeft/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_7dvxh")
+
+[node name="FrontRail" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_bsmh5")
+
+[node name="FrontAnchor" type="Node3D" parent="SceneNavigation/Templates/WallExitLeft"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitLeft/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.4)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitLeft/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.6)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="SceneNavigation/Templates/WallExitLeft"]
+
+[node name="BackLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitLeft/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitLeft/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitLeft/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.4)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitLeft/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="WallExitRight" type="Node3D" parent="SceneNavigation/Templates" node_paths=PackedStringArray("overworldManager", "frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 0)
+script = ExtResource("1_t5aum")
+overworldManager = NodePath("../../..")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="SceneNavigation/Templates/WallExitRight"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/WallExitRight/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SceneNavigation/Templates/WallExitRight/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.4, 0.5)
+shape = SubResource("BoxShape3D_1ydtu")
+
+[node name="ActiveArea" type="Area3D" parent="SceneNavigation/Templates/WallExitRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/WallExitRight/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitRight"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitRight/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="WallVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.5)
+mesh = SubResource("BoxMesh_4duw5")
+
+[node name="WallTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitRight/WallVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.51)
+mesh = SubResource("QuadMesh_cj687")
+skeleton = NodePath("../../FloorVolume")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 0.5)
+mesh = SubResource("BoxMesh_ia5te")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitRight/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_7dvxh")
+
+[node name="FrontRail" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_bsmh5")
+
+[node name="FrontAnchor" type="Node3D" parent="SceneNavigation/Templates/WallExitRight"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitRight/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.4)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitRight/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.6)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="SceneNavigation/Templates/WallExitRight"]
+
+[node name="BackLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitRight/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitRight/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitRight/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.4)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitRight/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="WallExitDown" type="Node3D" parent="SceneNavigation/Templates" node_paths=PackedStringArray("overworldManager", "frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+script = ExtResource("1_t5aum")
+overworldManager = NodePath("../../..")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="SceneNavigation/Templates/WallExitDown"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/WallExitDown/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SceneNavigation/Templates/WallExitDown/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 3)
+shape = SubResource("BoxShape3D_bsmh5")
+
+[node name="ActiveArea" type="Area3D" parent="SceneNavigation/Templates/WallExitDown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/WallExitDown/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitDown"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitDown/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitDown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+mesh = SubResource("BoxMesh_1ydtu")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitDown/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_v5pia")
+
+[node name="WallVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitDown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.5)
+mesh = SubResource("BoxMesh_4duw5")
+
+[node name="WallTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitDown/WallVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.51)
+mesh = SubResource("QuadMesh_cj687")
+skeleton = NodePath("../../FloorVolume")
+
+[node name="FrontAnchor" type="Node3D" parent="SceneNavigation/Templates/WallExitDown"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitDown/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 2.4)
+mesh = SubResource("QuadMesh_550ke")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitDown/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 2.4)
+mesh = SubResource("QuadMesh_550ke")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer3" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitDown/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 2.6)
+mesh = SubResource("QuadMesh_550ke")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer4" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitDown/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 2.6)
+mesh = SubResource("QuadMesh_550ke")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="SceneNavigation/Templates/WallExitDown"]
+
+[node name="BackLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitDown/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitDown/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitDown/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.4)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitDown/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="WallExitUp" type="Node3D" parent="SceneNavigation/Templates" node_paths=PackedStringArray("overworldManager", "frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+script = ExtResource("1_t5aum")
+overworldManager = NodePath("../../..")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="SceneNavigation/Templates/WallExitUp"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/WallExitUp/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SceneNavigation/Templates/WallExitUp/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -2.5)
+shape = SubResource("BoxShape3D_qq50r")
+
+[node name="ActiveArea" type="Area3D" parent="SceneNavigation/Templates/WallExitUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/WallExitUp/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitUp"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitUp/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="WallVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -2.5)
+mesh = SubResource("BoxMesh_bsmh5")
+
+[node name="WallVolumeL" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitUp/WallVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, 0)
+mesh = SubResource("BoxMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="WallTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitUp/WallVolume/WallVolumeL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.51)
+mesh = SubResource("QuadMesh_qq50r")
+skeleton = NodePath("../../../FloorVolume")
+
+[node name="WallVolumeR" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitUp/WallVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, 0)
+mesh = SubResource("BoxMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="WallTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitUp/WallVolume/WallVolumeR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.51)
+mesh = SubResource("QuadMesh_qq50r")
+skeleton = NodePath("../../../FloorVolume")
+
+[node name="WallTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitUp/WallVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.51)
+mesh = SubResource("QuadMesh_r8pb2")
+skeleton = NodePath("../../FloorVolume")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+mesh = SubResource("BoxMesh_1ydtu")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitUp/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_v5pia")
+
+[node name="FrontRail" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_bsmh5")
+
+[node name="FrontAnchor" type="Node3D" parent="SceneNavigation/Templates/WallExitUp"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitUp/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.4)
+mesh = SubResource("QuadMesh_eyfnt")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitUp/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.6)
+mesh = SubResource("QuadMesh_eyfnt")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="SceneNavigation/Templates/WallExitUp"]
+
+[node name="BackLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitUp/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -1.8)
+mesh = SubResource("QuadMesh_27np1")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitUp/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.5, -1.8)
+mesh = SubResource("QuadMesh_27np1")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitUp/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -1.6)
+mesh = SubResource("QuadMesh_27np1")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="SceneNavigation/Templates/WallExitUp/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.5, -1.6)
+mesh = SubResource("QuadMesh_27np1")
+skeleton = NodePath("../..")
+
+[node name="WallStairsBottom" type="Node3D" parent="SceneNavigation/Templates" node_paths=PackedStringArray("overworldManager", "frontAnchor", "backAnchor", "contextCam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+script = ExtResource("1_t5aum")
+overworldManager = NodePath("../../..")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+contextCam = NodePath("CameraTarget")
+contextHome = Vector3(0, 1, 1)
+contextTarget = Vector3(0, 6.5, -1)
+stairPathway = Array[Vector3]([Vector3(-1.5, 0.5, -1.5), Vector3(1.5, 3.5, -1.5), Vector3(2, 3.5, -2), Vector3(1.5, 3.5, -2.5), Vector3(-0.5, 5.5, -2.5), Vector3(-1, 5.5, -3.5)])
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="SceneNavigation/Templates/WallStairsBottom"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/WallStairsBottom/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SceneNavigation/Templates/WallStairsBottom/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.4, -1.5)
+shape = SubResource("BoxShape3D_irke8")
+
+[node name="ActiveArea" type="Area3D" parent="SceneNavigation/Templates/WallStairsBottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/WallStairsBottom/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/WallStairsBottom"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/WallStairsBottom/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="WallVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/WallStairsBottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -2.5)
+mesh = SubResource("BoxMesh_v5pia")
+
+[node name="WallTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/WallStairsBottom/WallVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.51)
+mesh = SubResource("QuadMesh_j5nsx")
+skeleton = NodePath("../../FloorVolume")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/WallStairsBottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -1.5)
+mesh = SubResource("BoxMesh_12d3d")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/WallStairsBottom/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.51, -0.5)
+mesh = SubResource("QuadMesh_3lh2q")
+
+[node name="StairsVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/WallStairsBottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1.5)
+mesh = SubResource("PrismMesh_s22tr")
+
+[node name="StairRailing" type="MeshInstance3D" parent="SceneNavigation/Templates/WallStairsBottom/StairsVolume"]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.3, 0.4, 0.51)
+visible = false
+mesh = SubResource("QuadMesh_6hend")
+skeleton = NodePath("../../FloorVolume")
+
+[node name="FrontRail" type="MeshInstance3D" parent="SceneNavigation/Templates/WallStairsBottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_bsmh5")
+
+[node name="FrontAnchor" type="Node3D" parent="SceneNavigation/Templates/WallStairsBottom"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/WallStairsBottom/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.4)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/WallStairsBottom/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.6)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="SceneNavigation/Templates/WallStairsBottom"]
+visible = false
+
+[node name="BackLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/WallStairsBottom/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/WallStairsBottom/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="SceneNavigation/Templates/WallStairsBottom/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.4)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="SceneNavigation/Templates/WallStairsBottom/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="StairsTrigger" type="Area3D" parent="SceneNavigation/Templates/WallStairsBottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -1.5)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/WallStairsBottom/StairsTrigger"]
+shape = SubResource("BoxShape3D_db8x4")
+debug_color = Color(0.117647, 1, 0, 1)
+
+[node name="CameraTarget" type="Node3D" parent="SceneNavigation/Templates/WallStairsBottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+
+[node name="MapBlock" type="Node3D" parent="SceneNavigation/Templates" node_paths=PackedStringArray("overworldManager", "frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 13)
+script = ExtResource("1_t5aum")
+overworldManager = NodePath("../../..")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="SceneNavigation/Templates/MapBlock"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapBlock/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="ActiveArea" type="Area3D" parent="SceneNavigation/Templates/MapBlock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapBlock/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapBlock"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/MapBlock/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="FrontRail" type="MeshInstance3D" parent="SceneNavigation/Templates/MapBlock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_bsmh5")
+
+[node name="FrontAnchor" type="Node3D" parent="SceneNavigation/Templates/MapBlock"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/MapBlock/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.4)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/MapBlock/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.6)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="SceneNavigation/Templates/MapBlock"]
+
+[node name="BackLayer" type="MeshInstance3D" parent="SceneNavigation/Templates/MapBlock/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.2)
+mesh = SubResource("QuadMesh_383ph")
+skeleton = NodePath("../..")
+
+[node name="BackLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/MapBlock/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/MapBlock/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="SceneNavigation/Templates/MapBlock/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="SceneNavigation/Templates/MapBlock/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.4)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="MapExitLeft" type="Node3D" parent="SceneNavigation/Templates" node_paths=PackedStringArray("overworldManager", "frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 13)
+script = ExtResource("1_t5aum")
+overworldManager = NodePath("../../..")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="SceneNavigation/Templates/MapExitLeft"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapExitLeft/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SceneNavigation/Templates/MapExitLeft/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.4, 0.5)
+shape = SubResource("BoxShape3D_1ydtu")
+
+[node name="ActiveArea" type="Area3D" parent="SceneNavigation/Templates/MapExitLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapExitLeft/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 0.5)
+mesh = SubResource("BoxMesh_ia5te")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_7dvxh")
+
+[node name="FrontRail" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_bsmh5")
+
+[node name="FrontAnchor" type="Node3D" parent="SceneNavigation/Templates/MapExitLeft"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.4)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.6)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="SceneNavigation/Templates/MapExitLeft"]
+
+[node name="BackLayer" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.2)
+mesh = SubResource("QuadMesh_383ph")
+skeleton = NodePath("../..")
+
+[node name="BackLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.4)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="MapExitRight" type="Node3D" parent="SceneNavigation/Templates" node_paths=PackedStringArray("overworldManager", "frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 13)
+script = ExtResource("1_t5aum")
+overworldManager = NodePath("../../..")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="SceneNavigation/Templates/MapExitRight"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapExitRight/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SceneNavigation/Templates/MapExitRight/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.4, 0.5)
+shape = SubResource("BoxShape3D_1ydtu")
+
+[node name="ActiveArea" type="Area3D" parent="SceneNavigation/Templates/MapExitRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapExitRight/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitRight"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitRight/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 0.5)
+mesh = SubResource("BoxMesh_ia5te")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitRight/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_7dvxh")
+
+[node name="FrontRail" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_bsmh5")
+
+[node name="FrontAnchor" type="Node3D" parent="SceneNavigation/Templates/MapExitRight"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitRight/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.4)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitRight/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.6)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="SceneNavigation/Templates/MapExitRight"]
+
+[node name="BackLayer" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitRight/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.2)
+mesh = SubResource("QuadMesh_383ph")
+skeleton = NodePath("../..")
+
+[node name="BackLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitRight/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitRight/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitRight/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitRight/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.4)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="MapExitUp" type="Node3D" parent="SceneNavigation/Templates" node_paths=PackedStringArray("overworldManager", "frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 13)
+script = ExtResource("1_t5aum")
+overworldManager = NodePath("../../..")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="SceneNavigation/Templates/MapExitUp"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapExitUp/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SceneNavigation/Templates/MapExitUp/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -2.5)
+shape = SubResource("BoxShape3D_qq50r")
+
+[node name="ActiveArea" type="Area3D" parent="SceneNavigation/Templates/MapExitUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapExitUp/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+mesh = SubResource("BoxMesh_1ydtu")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_v5pia")
+
+[node name="FrontRail" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_bsmh5")
+
+[node name="FrontAnchor" type="Node3D" parent="SceneNavigation/Templates/MapExitUp"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.4)
+mesh = SubResource("QuadMesh_eyfnt")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.6)
+mesh = SubResource("QuadMesh_eyfnt")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="SceneNavigation/Templates/MapExitUp"]
+
+[node name="BackLayer" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -2.2)
+mesh = SubResource("QuadMesh_db8x4")
+skeleton = NodePath("../..")
+
+[node name="BackLayer0" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -2.2)
+mesh = SubResource("QuadMesh_db8x4")
+skeleton = NodePath("../..")
+
+[node name="BackLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -2)
+mesh = SubResource("QuadMesh_27np1")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.5, -2)
+mesh = SubResource("QuadMesh_27np1")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -1.8)
+mesh = SubResource("QuadMesh_27np1")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.5, -1.8)
+mesh = SubResource("QuadMesh_27np1")
+skeleton = NodePath("../..")
+
+[node name="MapExitDown" type="Node3D" parent="SceneNavigation/Templates" node_paths=PackedStringArray("overworldManager", "frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 13)
+script = ExtResource("1_t5aum")
+overworldManager = NodePath("../../..")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="SceneNavigation/Templates/MapExitDown"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapExitDown/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SceneNavigation/Templates/MapExitDown/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 3)
+shape = SubResource("BoxShape3D_bsmh5")
+
+[node name="ActiveArea" type="Area3D" parent="SceneNavigation/Templates/MapExitDown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapExitDown/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitDown"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitDown/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitDown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+mesh = SubResource("BoxMesh_1ydtu")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitDown/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_v5pia")
+
+[node name="FrontAnchor" type="Node3D" parent="SceneNavigation/Templates/MapExitDown"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitDown/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 2.4)
+mesh = SubResource("QuadMesh_550ke")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitDown/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 2.4)
+mesh = SubResource("QuadMesh_550ke")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer3" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitDown/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 2.6)
+mesh = SubResource("QuadMesh_550ke")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer4" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitDown/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 2.6)
+mesh = SubResource("QuadMesh_550ke")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="SceneNavigation/Templates/MapExitDown"]
+
+[node name="BackLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitDown/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.2)
+mesh = SubResource("QuadMesh_4duw5")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitDown/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitDown/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitDown/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="MapStairsTop" type="Node3D" parent="SceneNavigation/Templates" node_paths=PackedStringArray("overworldManager", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 13)
+script = ExtResource("1_t5aum")
+overworldManager = NodePath("../../..")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="SceneNavigation/Templates/MapStairsTop"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapStairsTop/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_jshv6")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SceneNavigation/Templates/MapStairsTop/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.4, 1.5)
+shape = SubResource("BoxShape3D_7a8ct")
+
+[node name="ActiveArea" type="Area3D" parent="SceneNavigation/Templates/MapStairsTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapStairsTop/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("BoxMesh_ncrtu")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_ggwib")
+
+[node name="StairBackVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 1)
+mesh = SubResource("BoxMesh_douos")
+skeleton = NodePath("../..")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, 1.5)
+mesh = SubResource("BoxMesh_fjuof")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, 0)
+mesh = SubResource("QuadMesh_khbb3")
+
+[node name="StairsVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 1.5)
+mesh = SubResource("PrismMesh_cfngh")
+
+[node name="StairRailing" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop/StairsVolume"]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.3, 0.4, 0.51)
+visible = false
+mesh = SubResource("QuadMesh_6hend")
+skeleton = NodePath("../../FloorVolume")
+
+[node name="BackAnchor" type="Node3D" parent="SceneNavigation/Templates/MapStairsTop"]
+
+[node name="BackLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.2)
+mesh = SubResource("QuadMesh_4duw5")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="StairsTrigger" type="Area3D" parent="SceneNavigation/Templates/MapStairsTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 1.5)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapStairsTop/StairsTrigger"]
+shape = SubResource("BoxShape3D_db8x4")
+debug_color = Color(0.117647, 1, 0, 1)
+
+[node name="PathHorizontal" type="Node3D" parent="SceneNavigation/Templates" node_paths=PackedStringArray("overworldManager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 13)
+script = ExtResource("1_t5aum")
+overworldManager = NodePath("../../..")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="SceneNavigation/Templates/PathHorizontal"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/PathHorizontal/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="ActiveArea" type="Area3D" parent="SceneNavigation/Templates/PathHorizontal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/PathHorizontal/ActiveArea"]
+shape = SubResource("BoxShape3D_ia5te")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/PathHorizontal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+mesh = SubResource("BoxMesh_550ke")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/PathHorizontal/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_12d3d")
+
+[node name="FrontRail" type="MeshInstance3D" parent="SceneNavigation/Templates/PathHorizontal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_s22tr")
+
+[node name="BackRail" type="MeshInstance3D" parent="SceneNavigation/Templates/PathHorizontal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -1.1)
+mesh = SubResource("QuadMesh_s22tr")
+
+[node name="PathBridge" type="Node3D" parent="SceneNavigation/Templates" node_paths=PackedStringArray("overworldManager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)
+script = ExtResource("1_t5aum")
+overworldManager = NodePath("../../..")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="SceneNavigation/Templates/PathBridge"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/PathBridge/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="ActiveArea" type="Area3D" parent="SceneNavigation/Templates/PathBridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/PathBridge/ActiveArea"]
+shape = SubResource("BoxShape3D_ia5te")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/PathBridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+mesh = SubResource("BoxMesh_550ke")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/PathBridge/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_12d3d")
+
+[node name="WallVolumeL" type="MeshInstance3D" parent="SceneNavigation/Templates/PathBridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -3, 0.5)
+mesh = SubResource("BoxMesh_6hend")
+
+[node name="WallTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/PathBridge/WallVolumeL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.51)
+mesh = SubResource("QuadMesh_qq50r")
+skeleton = NodePath("../../FloorVolume")
+
+[node name="WallVolumeR" type="MeshInstance3D" parent="SceneNavigation/Templates/PathBridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3, 0.5)
+mesh = SubResource("BoxMesh_6hend")
+
+[node name="WallTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/PathBridge/WallVolumeR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.51)
+mesh = SubResource("QuadMesh_qq50r")
+skeleton = NodePath("../../FloorVolume")
+
+[node name="FrontRail" type="MeshInstance3D" parent="SceneNavigation/Templates/PathBridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_s22tr")
+
+[node name="BackRail" type="MeshInstance3D" parent="SceneNavigation/Templates/PathBridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -1.1)
+mesh = SubResource("QuadMesh_s22tr")
+
+[node name="PathVertical" type="Node3D" parent="SceneNavigation/Templates" node_paths=PackedStringArray("overworldManager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 6)
+script = ExtResource("1_t5aum")
+overworldManager = NodePath("../../..")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="SceneNavigation/Templates/PathVertical"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/PathVertical/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_ncrtu")
+
+[node name="ActiveArea" type="Area3D" parent="SceneNavigation/Templates/PathVertical"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/PathVertical/ActiveArea"]
+shape = SubResource("BoxShape3D_ggwib")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/PathVertical"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+mesh = SubResource("BoxMesh_khbb3")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/PathVertical/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cfngh")
+
+[node name="FrontRail" type="MeshInstance3D" parent="SceneNavigation/Templates/PathVertical"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.6, 0.25, 0.5)
+mesh = SubResource("QuadMesh_d31mb")
+surface_material_override/0 = SubResource("StandardMaterial3D_b8vbj")
+
+[node name="BackRail" type="MeshInstance3D" parent="SceneNavigation/Templates/PathVertical"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.6, 0.25, 0.5)
+mesh = SubResource("QuadMesh_d31mb")
+surface_material_override/0 = SubResource("StandardMaterial3D_b8vbj")
+
+[node name="MapBlock2" type="Node3D" parent="SceneNavigation/Templates" node_paths=PackedStringArray("overworldManager", "frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, -4)
+script = ExtResource("1_t5aum")
+overworldManager = NodePath("../../..")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="SceneNavigation/Templates/MapBlock2"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapBlock2/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="ActiveArea" type="Area3D" parent="SceneNavigation/Templates/MapBlock2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapBlock2/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapBlock2"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/MapBlock2/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="FrontRail" type="MeshInstance3D" parent="SceneNavigation/Templates/MapBlock2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_bsmh5")
+
+[node name="FrontAnchor" type="Node3D" parent="SceneNavigation/Templates/MapBlock2"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/MapBlock2/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.4)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/MapBlock2/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.6)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="SceneNavigation/Templates/MapBlock2"]
+
+[node name="BackLayer" type="MeshInstance3D" parent="SceneNavigation/Templates/MapBlock2/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.2)
+mesh = SubResource("QuadMesh_383ph")
+skeleton = NodePath("../..")
+
+[node name="BackLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/MapBlock2/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/MapBlock2/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="SceneNavigation/Templates/MapBlock2/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="SceneNavigation/Templates/MapBlock2/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.4)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="MapExitLeft2" type="Node3D" parent="SceneNavigation/Templates" node_paths=PackedStringArray("overworldManager", "frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 5, -4)
+script = ExtResource("1_t5aum")
+overworldManager = NodePath("../../..")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="SceneNavigation/Templates/MapExitLeft2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapExitLeft2/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SceneNavigation/Templates/MapExitLeft2/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.4, 0.5)
+shape = SubResource("BoxShape3D_1ydtu")
+
+[node name="ActiveArea" type="Area3D" parent="SceneNavigation/Templates/MapExitLeft2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapExitLeft2/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft2"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft2/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 0.5)
+mesh = SubResource("BoxMesh_ia5te")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft2/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_7dvxh")
+
+[node name="FrontRail" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_bsmh5")
+
+[node name="FrontAnchor" type="Node3D" parent="SceneNavigation/Templates/MapExitLeft2"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft2/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.4)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft2/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.6)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="SceneNavigation/Templates/MapExitLeft2"]
+
+[node name="BackLayer" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft2/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.2)
+mesh = SubResource("QuadMesh_383ph")
+skeleton = NodePath("../..")
+
+[node name="BackLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft2/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft2/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft2/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitLeft2/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.4)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="MapExitUp2" type="Node3D" parent="SceneNavigation/Templates" node_paths=PackedStringArray("overworldManager", "frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5, -4)
+script = ExtResource("1_t5aum")
+overworldManager = NodePath("../../..")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="SceneNavigation/Templates/MapExitUp2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapExitUp2/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SceneNavigation/Templates/MapExitUp2/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -2.5)
+shape = SubResource("BoxShape3D_qq50r")
+
+[node name="ActiveArea" type="Area3D" parent="SceneNavigation/Templates/MapExitUp2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapExitUp2/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp2"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp2/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+mesh = SubResource("BoxMesh_1ydtu")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp2/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_v5pia")
+
+[node name="FrontRail" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_bsmh5")
+
+[node name="FrontAnchor" type="Node3D" parent="SceneNavigation/Templates/MapExitUp2"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp2/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.4)
+mesh = SubResource("QuadMesh_eyfnt")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp2/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.6)
+mesh = SubResource("QuadMesh_eyfnt")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="SceneNavigation/Templates/MapExitUp2"]
+
+[node name="BackLayer" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp2/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -2.2)
+mesh = SubResource("QuadMesh_db8x4")
+skeleton = NodePath("../..")
+
+[node name="BackLayer0" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp2/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -2.2)
+mesh = SubResource("QuadMesh_db8x4")
+skeleton = NodePath("../..")
+
+[node name="BackLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp2/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -2)
+mesh = SubResource("QuadMesh_27np1")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp2/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.5, -2)
+mesh = SubResource("QuadMesh_27np1")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp2/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -1.8)
+mesh = SubResource("QuadMesh_27np1")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="SceneNavigation/Templates/MapExitUp2/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.5, -1.8)
+mesh = SubResource("QuadMesh_27np1")
+skeleton = NodePath("../..")
+
+[node name="MapStairsTop2" type="Node3D" parent="SceneNavigation/Templates" node_paths=PackedStringArray("overworldManager", "backAnchor", "contextCam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 5, -4)
+script = ExtResource("1_t5aum")
+overworldManager = NodePath("../../..")
+backAnchor = NodePath("BackAnchor")
+contextCam = NodePath("CameraTarget")
+contextHome = Vector3(0, 1.5, 3)
+contextTarget = Vector3(0, -4, 5)
+stairPathway = Array[Vector3]([Vector3(-0.5, 0.5, 1.5), Vector3(1.5, -1.5, 1.5), Vector3(2, -1.5, 2), Vector3(1.5, -1.5, 2.5), Vector3(-1.5, -4.5, 2.5), Vector3(-2, -4.5, 3.5)])
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="SceneNavigation/Templates/MapStairsTop2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapStairsTop2/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_jshv6")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SceneNavigation/Templates/MapStairsTop2/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.4, 1.5)
+shape = SubResource("BoxShape3D_7a8ct")
+
+[node name="ActiveArea" type="Area3D" parent="SceneNavigation/Templates/MapStairsTop2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapStairsTop2/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("BoxMesh_ncrtu")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop2/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_ggwib")
+
+[node name="StairBackVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop2/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 1)
+mesh = SubResource("BoxMesh_douos")
+skeleton = NodePath("../..")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, 1.5)
+mesh = SubResource("BoxMesh_fjuof")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop2/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, 0)
+mesh = SubResource("QuadMesh_khbb3")
+
+[node name="StairsVolume" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 1.5)
+mesh = SubResource("PrismMesh_cfngh")
+
+[node name="StairRailing" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop2/StairsVolume"]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.3, 0.4, 0.51)
+visible = false
+mesh = SubResource("QuadMesh_6hend")
+skeleton = NodePath("../../FloorVolume")
+
+[node name="BackAnchor" type="Node3D" parent="SceneNavigation/Templates/MapStairsTop2"]
+
+[node name="BackLayer1" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop2/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.2)
+mesh = SubResource("QuadMesh_4duw5")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop2/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop2/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="SceneNavigation/Templates/MapStairsTop2/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="StairsTrigger" type="Area3D" parent="SceneNavigation/Templates/MapStairsTop2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 1.5)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/MapStairsTop2/StairsTrigger"]
+shape = SubResource("BoxShape3D_db8x4")
+debug_color = Color(0.117647, 1, 0, 1)
+
+[node name="CameraTarget" type="Node3D" parent="SceneNavigation/Templates/MapStairsTop2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3)
+
+[node name="StreetOverlay" type="Node3D" parent="."]
+
+[node name="StreetSection" type="Node3D" parent="StreetOverlay" node_paths=PackedStringArray("overworldManager", "MapBlocks", "streetCam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 8.6, -0.5)
+script = ExtResource("2_1ydtu")
+overworldManager = NodePath("../..")
+MapBlocks = [NodePath("../../SceneNavigation/Templates/WallExitLeft"), NodePath("../../SceneNavigation/Templates/WallStairsBottom"), NodePath("../../SceneNavigation/Templates/WallBlock"), NodePath("../../SceneNavigation/Templates/WallExitDown"), NodePath("../../SceneNavigation/Templates/WallExitUp"), NodePath("../../SceneNavigation/Templates/PathBridge"), NodePath("../../SceneNavigation/Templates/WallExitRight")]
+streetCam = NodePath("CameraTarget")
+
+[node name="StreetArea" type="Area3D" parent="StreetOverlay/StreetSection"]
+collision_layer = 0
+collision_mask = 0
+input_ray_pickable = false
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StreetOverlay/StreetSection/StreetArea"]
+shape = SubResource("BoxShape3D_v5pia")
+debug_color = Color(0.70012, 0.321334, 0.930739, 1)
+
+[node name="FrontHideTrigger" type="Area3D" parent="StreetOverlay/StreetSection/StreetArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 3)
+collision_layer = 8
+collision_mask = 8
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StreetOverlay/StreetSection/StreetArea/FrontHideTrigger"]
+shape = SubResource("BoxShape3D_550ke")
+debug_color = Color(0.949342, 2.79158e-06, 0.569221, 1)
+
+[node name="FrontShotTrigger" type="Area3D" parent="StreetOverlay/StreetSection/StreetArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 3.5)
+collision_layer = 8
+collision_mask = 8
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StreetOverlay/StreetSection/StreetArea/FrontShotTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+shape = SubResource("BoxShape3D_383ph")
+debug_color = Color(0.949342, 2.79158e-06, 0.569221, 1)
+
+[node name="CamLockTrigger" type="Area3D" parent="StreetOverlay/StreetSection/StreetArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 3)
+collision_layer = 8
+collision_mask = 8
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StreetOverlay/StreetSection/StreetArea/CamLockTrigger"]
+shape = SubResource("BoxShape3D_27np1")
+debug_color = Color(0.0821501, 0.648471, 5.77569e-07, 1)
+
+[node name="CamLockTrigger2" type="Area3D" parent="StreetOverlay/StreetSection/StreetArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.4, 0)
+collision_layer = 8
+collision_mask = 8
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StreetOverlay/StreetSection/StreetArea/CamLockTrigger2"]
+shape = SubResource("BoxShape3D_27np1")
+debug_color = Color(0.0821501, 0.648471, 5.77569e-07, 1)
+
+[node name="CamUnlockTrigger" type="Area3D" parent="StreetOverlay/StreetSection/StreetArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 3.5)
+collision_layer = 8
+collision_mask = 8
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StreetOverlay/StreetSection/StreetArea/CamUnlockTrigger"]
+shape = SubResource("BoxShape3D_27np1")
+debug_color = Color(0.0821501, 0.648471, 5.77569e-07, 1)
+
+[node name="CamUnlockTrigger2" type="Area3D" parent="StreetOverlay/StreetSection/StreetArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 4.4, -3)
+collision_layer = 8
+collision_mask = 8
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StreetOverlay/StreetSection/StreetArea/CamUnlockTrigger2"]
+shape = SubResource("BoxShape3D_27np1")
+debug_color = Color(0.0821501, 0.648471, 5.77569e-07, 1)
+
+[node name="InvestigationTrigger" type="Area3D" parent="StreetOverlay/StreetSection/StreetArea" node_paths=PackedStringArray("overworld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -3)
+collision_layer = 8
+collision_mask = 8
+input_ray_pickable = false
+monitorable = false
+script = ExtResource("4_ia5te")
+overworld = NodePath("../../../..")
+stage = ExtResource("5_v5pia")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StreetOverlay/StreetSection/StreetArea/InvestigationTrigger"]
+shape = SubResource("BoxShape3D_r8pb2")
+debug_color = Color(0.849256, 0.372803, 7.70092e-07, 1)
+
+[node name="CameraTarget" type="Node3D" parent="StreetOverlay/StreetSection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 2.5)
+
+[node name="StreetSection2" type="Node3D" parent="StreetOverlay" node_paths=PackedStringArray("overworldManager", "MapBlocks", "streetCam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 8.6, 12.5)
+script = ExtResource("2_1ydtu")
+overworldManager = NodePath("../..")
+MapBlocks = [NodePath("../../SceneNavigation/Templates/MapExitLeft"), NodePath("../../SceneNavigation/Templates/MapStairsTop"), NodePath("../../SceneNavigation/Templates/MapBlock"), NodePath("../../SceneNavigation/Templates/MapExitUp"), NodePath("../../SceneNavigation/Templates/MapExitDown"), NodePath("../../SceneNavigation/Templates/PathHorizontal"), NodePath("../../SceneNavigation/Templates/MapExitRight")]
+streetCam = NodePath("CameraTarget")
+
+[node name="StreetArea" type="Area3D" parent="StreetOverlay/StreetSection2"]
+collision_layer = 0
+collision_mask = 0
+input_ray_pickable = false
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StreetOverlay/StreetSection2/StreetArea"]
+shape = SubResource("BoxShape3D_v5pia")
+debug_color = Color(0.70012, 0.321334, 0.930739, 1)
+
+[node name="FrontHideTrigger" type="Area3D" parent="StreetOverlay/StreetSection2/StreetArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.4, 2.5)
+collision_layer = 8
+collision_mask = 8
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StreetOverlay/StreetSection2/StreetArea/FrontHideTrigger"]
+shape = SubResource("BoxShape3D_550ke")
+debug_color = Color(0.949342, 2.79158e-06, 0.569221, 1)
+
+[node name="FrontShowTrigger" type="Area3D" parent="StreetOverlay/StreetSection2/StreetArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.4, 3.5)
+collision_layer = 8
+collision_mask = 8
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StreetOverlay/StreetSection2/StreetArea/FrontShowTrigger"]
+shape = SubResource("BoxShape3D_383ph")
+debug_color = Color(0.949342, 2.79158e-06, 0.569221, 1)
+
+[node name="BackHideTrigger" type="Area3D" parent="StreetOverlay/StreetSection2/StreetArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -3.5)
+collision_layer = 8
+collision_mask = 8
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StreetOverlay/StreetSection2/StreetArea/BackHideTrigger"]
+shape = SubResource("BoxShape3D_eyfnt")
+debug_color = Color(0, 0.62184, 0.545718, 1)
+
+[node name="BackShowTrigger" type="Area3D" parent="StreetOverlay/StreetSection2/StreetArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -2.5)
+collision_layer = 8
+collision_mask = 8
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StreetOverlay/StreetSection2/StreetArea/BackShowTrigger"]
+shape = SubResource("BoxShape3D_eyfnt")
+debug_color = Color(0, 0.62184, 0.545718, 1)
+
+[node name="CamLockTrigger" type="Area3D" parent="StreetOverlay/StreetSection2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -1.5)
+collision_layer = 8
+collision_mask = 8
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StreetOverlay/StreetSection2/CamLockTrigger"]
+shape = SubResource("BoxShape3D_27np1")
+debug_color = Color(0.0821501, 0.648471, 5.77569e-07, 1)
+
+[node name="CamUnlockTrigger" type="Area3D" parent="StreetOverlay/StreetSection2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -2)
+collision_layer = 8
+collision_mask = 8
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StreetOverlay/StreetSection2/CamUnlockTrigger"]
+shape = SubResource("BoxShape3D_27np1")
+debug_color = Color(0.0821501, 0.648471, 5.77569e-07, 1)
+
+[node name="CameraTarget" type="Node3D" parent="StreetOverlay/StreetSection2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 2.5)
+
+[node name="PlayerCharacter" type="Node3D" parent="." node_paths=PackedStringArray("navAgent", "charSprite", "playerCam")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 4, 7, 0)
+script = ExtResource("1_4duw5")
+stepDistance = 1.0
+stepSpeed = 3.0
+height = 0.2
+navAgent = NodePath("NavigationAgent3D")
+charSprite = NodePath("MeshInstance3D")
+playerCam = NodePath("CameraTarget")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerCharacter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("QuadMesh_ia5te")
+surface_material_override/0 = SubResource("StandardMaterial3D_v5pia")
+
+[node name="Area3D" type="Area3D" parent="PlayerCharacter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+collision_layer = 11
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCharacter/Area3D"]
+shape = SubResource("CapsuleShape3D_550ke")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="PlayerCharacter"]
+path_desired_distance = 0.5
+target_desired_distance = 0.5
+radius = 0.3
+debug_enabled = true
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="PlayerCharacter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7)
+visible = false
+light_energy = 10.0
+light_cull_mask = 4294967263
+shadow_enabled = true
+spot_range = 15.0
+spot_angle = 30.0
+
+[node name="CameraTarget" type="Node3D" parent="PlayerCharacter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="PlayerCamera" type="Camera3D" parent="." node_paths=PackedStringArray("camTarget")]
+transform = Transform3D(1, 0, 0, 0, 0.996195, -0.0871557, 0, 0.0871557, 0.996195, 4, 7.75, 3)
+environment = SubResource("Environment_4duw5")
+fov = 60.0
+script = ExtResource("6_ia5te")
+camTarget = NodePath("../PlayerCharacter/CameraTarget")
+camSpeed = 0.15
+
+[node name="ScheduleSystem" type="Node3D" parent="."]
+
+[node name="NPCController" type="Node3D" parent="ScheduleSystem"]
+
+[node name="RumorNetwork" type="Node3D" parent="."]
+
+[node name="SceneFX" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SceneFX"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0)
+light_energy = 0.5
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SceneFX"]
+environment = SubResource("Environment_4duw5")
+
+[node name="Templates" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.29527, 0)
+visible = false
+
+[node name="WallBlock" type="Node3D" parent="Templates" node_paths=PackedStringArray("frontAnchor", "backAnchor")]
+script = ExtResource("1_t5aum")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="Templates/WallBlock"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/WallBlock/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="ActiveArea" type="Area3D" parent="Templates/WallBlock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/WallBlock/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="Templates/WallBlock"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="Templates/WallBlock/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="WallVolume" type="MeshInstance3D" parent="Templates/WallBlock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.5)
+mesh = SubResource("BoxMesh_4duw5")
+
+[node name="WallTexture" type="MeshInstance3D" parent="Templates/WallBlock/WallVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.51)
+mesh = SubResource("QuadMesh_cj687")
+skeleton = NodePath("../../FloorVolume")
+
+[node name="FrontRail" type="MeshInstance3D" parent="Templates/WallBlock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_bsmh5")
+
+[node name="FrontAnchor" type="Node3D" parent="Templates/WallBlock"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="Templates/WallBlock/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.4)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="Templates/WallBlock/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.6)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="Templates/WallBlock"]
+
+[node name="BackLayer1" type="MeshInstance3D" parent="Templates/WallBlock/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="Templates/WallBlock/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="Templates/WallBlock/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.4)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="Templates/WallBlock/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="WallExitLeft" type="Node3D" parent="Templates" node_paths=PackedStringArray("frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+script = ExtResource("1_t5aum")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="Templates/WallExitLeft"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/WallExitLeft/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Templates/WallExitLeft/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.4, 0.5)
+shape = SubResource("BoxShape3D_1ydtu")
+
+[node name="ActiveArea" type="Area3D" parent="Templates/WallExitLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/WallExitLeft/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="Templates/WallExitLeft"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="Templates/WallExitLeft/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="WallVolume" type="MeshInstance3D" parent="Templates/WallExitLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.5)
+mesh = SubResource("BoxMesh_4duw5")
+
+[node name="WallTexture" type="MeshInstance3D" parent="Templates/WallExitLeft/WallVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.51)
+mesh = SubResource("QuadMesh_cj687")
+skeleton = NodePath("../../FloorVolume")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="Templates/WallExitLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 0.5)
+mesh = SubResource("BoxMesh_ia5te")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="Templates/WallExitLeft/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_7dvxh")
+
+[node name="FrontRail" type="MeshInstance3D" parent="Templates/WallExitLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_bsmh5")
+
+[node name="FrontAnchor" type="Node3D" parent="Templates/WallExitLeft"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="Templates/WallExitLeft/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.4)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="Templates/WallExitLeft/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.6)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="Templates/WallExitLeft"]
+
+[node name="BackLayer1" type="MeshInstance3D" parent="Templates/WallExitLeft/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="Templates/WallExitLeft/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="Templates/WallExitLeft/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.4)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="Templates/WallExitLeft/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="WallExitRight" type="Node3D" parent="Templates" node_paths=PackedStringArray("frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 0)
+script = ExtResource("1_t5aum")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="Templates/WallExitRight"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/WallExitRight/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Templates/WallExitRight/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.4, 0.5)
+shape = SubResource("BoxShape3D_1ydtu")
+
+[node name="ActiveArea" type="Area3D" parent="Templates/WallExitRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/WallExitRight/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="Templates/WallExitRight"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="Templates/WallExitRight/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="WallVolume" type="MeshInstance3D" parent="Templates/WallExitRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.5)
+mesh = SubResource("BoxMesh_4duw5")
+
+[node name="WallTexture" type="MeshInstance3D" parent="Templates/WallExitRight/WallVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.51)
+mesh = SubResource("QuadMesh_cj687")
+skeleton = NodePath("../../FloorVolume")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="Templates/WallExitRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 0.5)
+mesh = SubResource("BoxMesh_ia5te")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="Templates/WallExitRight/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_7dvxh")
+
+[node name="FrontRail" type="MeshInstance3D" parent="Templates/WallExitRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_bsmh5")
+
+[node name="FrontAnchor" type="Node3D" parent="Templates/WallExitRight"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="Templates/WallExitRight/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.4)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="Templates/WallExitRight/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.6)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="Templates/WallExitRight"]
+
+[node name="BackLayer1" type="MeshInstance3D" parent="Templates/WallExitRight/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="Templates/WallExitRight/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="Templates/WallExitRight/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.4)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="Templates/WallExitRight/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="WallExitDown" type="Node3D" parent="Templates" node_paths=PackedStringArray("frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+script = ExtResource("1_t5aum")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="Templates/WallExitDown"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/WallExitDown/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Templates/WallExitDown/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 3)
+shape = SubResource("BoxShape3D_bsmh5")
+
+[node name="ActiveArea" type="Area3D" parent="Templates/WallExitDown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/WallExitDown/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="Templates/WallExitDown"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="Templates/WallExitDown/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="Templates/WallExitDown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+mesh = SubResource("BoxMesh_1ydtu")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="Templates/WallExitDown/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_v5pia")
+
+[node name="WallVolume" type="MeshInstance3D" parent="Templates/WallExitDown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.5)
+mesh = SubResource("BoxMesh_4duw5")
+
+[node name="WallTexture" type="MeshInstance3D" parent="Templates/WallExitDown/WallVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.51)
+mesh = SubResource("QuadMesh_cj687")
+skeleton = NodePath("../../FloorVolume")
+
+[node name="FrontAnchor" type="Node3D" parent="Templates/WallExitDown"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="Templates/WallExitDown/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 2.4)
+mesh = SubResource("QuadMesh_550ke")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="Templates/WallExitDown/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 2.4)
+mesh = SubResource("QuadMesh_550ke")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer3" type="MeshInstance3D" parent="Templates/WallExitDown/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 2.6)
+mesh = SubResource("QuadMesh_550ke")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer4" type="MeshInstance3D" parent="Templates/WallExitDown/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 2.6)
+mesh = SubResource("QuadMesh_550ke")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="Templates/WallExitDown"]
+
+[node name="BackLayer1" type="MeshInstance3D" parent="Templates/WallExitDown/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="Templates/WallExitDown/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="Templates/WallExitDown/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.4)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="Templates/WallExitDown/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="WallExitUp" type="Node3D" parent="Templates" node_paths=PackedStringArray("frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+script = ExtResource("1_t5aum")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="Templates/WallExitUp"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/WallExitUp/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Templates/WallExitUp/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -2.5)
+shape = SubResource("BoxShape3D_qq50r")
+
+[node name="ActiveArea" type="Area3D" parent="Templates/WallExitUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/WallExitUp/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="Templates/WallExitUp"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="Templates/WallExitUp/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="WallVolume" type="MeshInstance3D" parent="Templates/WallExitUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -2.5)
+mesh = SubResource("BoxMesh_bsmh5")
+
+[node name="WallVolumeL" type="MeshInstance3D" parent="Templates/WallExitUp/WallVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, 0)
+mesh = SubResource("BoxMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="WallTexture" type="MeshInstance3D" parent="Templates/WallExitUp/WallVolume/WallVolumeL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.51)
+mesh = SubResource("QuadMesh_qq50r")
+skeleton = NodePath("../../../FloorVolume")
+
+[node name="WallVolumeR" type="MeshInstance3D" parent="Templates/WallExitUp/WallVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, 0)
+mesh = SubResource("BoxMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="WallTexture" type="MeshInstance3D" parent="Templates/WallExitUp/WallVolume/WallVolumeR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.51)
+mesh = SubResource("QuadMesh_qq50r")
+skeleton = NodePath("../../../FloorVolume")
+
+[node name="WallTexture" type="MeshInstance3D" parent="Templates/WallExitUp/WallVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.51)
+mesh = SubResource("QuadMesh_r8pb2")
+skeleton = NodePath("../../FloorVolume")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="Templates/WallExitUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+mesh = SubResource("BoxMesh_1ydtu")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="Templates/WallExitUp/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_v5pia")
+
+[node name="FrontRail" type="MeshInstance3D" parent="Templates/WallExitUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_bsmh5")
+
+[node name="FrontAnchor" type="Node3D" parent="Templates/WallExitUp"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="Templates/WallExitUp/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.4)
+mesh = SubResource("QuadMesh_eyfnt")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="Templates/WallExitUp/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.6)
+mesh = SubResource("QuadMesh_eyfnt")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="Templates/WallExitUp"]
+
+[node name="BackLayer1" type="MeshInstance3D" parent="Templates/WallExitUp/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -1.8)
+mesh = SubResource("QuadMesh_27np1")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="Templates/WallExitUp/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.5, -1.8)
+mesh = SubResource("QuadMesh_27np1")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="Templates/WallExitUp/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -1.6)
+mesh = SubResource("QuadMesh_27np1")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="Templates/WallExitUp/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.5, -1.6)
+mesh = SubResource("QuadMesh_27np1")
+skeleton = NodePath("../..")
+
+[node name="WallStairsBottom" type="Node3D" parent="Templates" node_paths=PackedStringArray("frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
+script = ExtResource("1_t5aum")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="Templates/WallStairsBottom"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/WallStairsBottom/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Templates/WallStairsBottom/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.4, -1.5)
+shape = SubResource("BoxShape3D_irke8")
+
+[node name="ActiveArea" type="Area3D" parent="Templates/WallStairsBottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/WallStairsBottom/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="Templates/WallStairsBottom"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="Templates/WallStairsBottom/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="WallVolume" type="MeshInstance3D" parent="Templates/WallStairsBottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -2.5)
+mesh = SubResource("BoxMesh_v5pia")
+
+[node name="WallTexture" type="MeshInstance3D" parent="Templates/WallStairsBottom/WallVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.51)
+mesh = SubResource("QuadMesh_j5nsx")
+skeleton = NodePath("../../FloorVolume")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="Templates/WallStairsBottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -1.5)
+mesh = SubResource("BoxMesh_12d3d")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="Templates/WallStairsBottom/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.51, -0.5)
+mesh = SubResource("QuadMesh_3lh2q")
+
+[node name="StairsVolume" type="MeshInstance3D" parent="Templates/WallStairsBottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1.5)
+mesh = SubResource("PrismMesh_s22tr")
+
+[node name="StairRailing" type="MeshInstance3D" parent="Templates/WallStairsBottom/StairsVolume"]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.3, 0.4, 0.51)
+visible = false
+mesh = SubResource("QuadMesh_6hend")
+skeleton = NodePath("../../FloorVolume")
+
+[node name="FrontRail" type="MeshInstance3D" parent="Templates/WallStairsBottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_bsmh5")
+
+[node name="FrontAnchor" type="Node3D" parent="Templates/WallStairsBottom"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="Templates/WallStairsBottom/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.4)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="Templates/WallStairsBottom/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.6)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="Templates/WallStairsBottom"]
+visible = false
+
+[node name="BackLayer1" type="MeshInstance3D" parent="Templates/WallStairsBottom/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="Templates/WallStairsBottom/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="Templates/WallStairsBottom/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.4)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="Templates/WallStairsBottom/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="MapBlock" type="Node3D" parent="Templates" node_paths=PackedStringArray("frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+script = ExtResource("1_t5aum")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="Templates/MapBlock"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/MapBlock/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="ActiveArea" type="Area3D" parent="Templates/MapBlock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/MapBlock/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="Templates/MapBlock"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="Templates/MapBlock/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="FrontRail" type="MeshInstance3D" parent="Templates/MapBlock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_bsmh5")
+
+[node name="FrontAnchor" type="Node3D" parent="Templates/MapBlock"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="Templates/MapBlock/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.4)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="Templates/MapBlock/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.6)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="Templates/MapBlock"]
+
+[node name="BackLayer" type="MeshInstance3D" parent="Templates/MapBlock/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.2)
+mesh = SubResource("QuadMesh_383ph")
+skeleton = NodePath("../..")
+
+[node name="BackLayer1" type="MeshInstance3D" parent="Templates/MapBlock/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="Templates/MapBlock/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="Templates/MapBlock/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="Templates/MapBlock/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.4)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="MapExitLeft" type="Node3D" parent="Templates" node_paths=PackedStringArray("frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 9)
+script = ExtResource("1_t5aum")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="Templates/MapExitLeft"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/MapExitLeft/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Templates/MapExitLeft/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.4, 0.5)
+shape = SubResource("BoxShape3D_1ydtu")
+
+[node name="ActiveArea" type="Area3D" parent="Templates/MapExitLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/MapExitLeft/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="Templates/MapExitLeft"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="Templates/MapExitLeft/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="Templates/MapExitLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 0.5)
+mesh = SubResource("BoxMesh_ia5te")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="Templates/MapExitLeft/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_7dvxh")
+
+[node name="FrontRail" type="MeshInstance3D" parent="Templates/MapExitLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_bsmh5")
+
+[node name="FrontAnchor" type="Node3D" parent="Templates/MapExitLeft"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="Templates/MapExitLeft/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.4)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="Templates/MapExitLeft/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.6)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="Templates/MapExitLeft"]
+
+[node name="BackLayer" type="MeshInstance3D" parent="Templates/MapExitLeft/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.2)
+mesh = SubResource("QuadMesh_383ph")
+skeleton = NodePath("../..")
+
+[node name="BackLayer1" type="MeshInstance3D" parent="Templates/MapExitLeft/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="Templates/MapExitLeft/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="Templates/MapExitLeft/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="Templates/MapExitLeft/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.4)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="MapExitRight" type="Node3D" parent="Templates" node_paths=PackedStringArray("frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 9)
+script = ExtResource("1_t5aum")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="Templates/MapExitRight"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/MapExitRight/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Templates/MapExitRight/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.4, 0.5)
+shape = SubResource("BoxShape3D_1ydtu")
+
+[node name="ActiveArea" type="Area3D" parent="Templates/MapExitRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/MapExitRight/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="Templates/MapExitRight"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="Templates/MapExitRight/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="Templates/MapExitRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 0.5)
+mesh = SubResource("BoxMesh_ia5te")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="Templates/MapExitRight/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_7dvxh")
+
+[node name="FrontRail" type="MeshInstance3D" parent="Templates/MapExitRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_bsmh5")
+
+[node name="FrontAnchor" type="Node3D" parent="Templates/MapExitRight"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="Templates/MapExitRight/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.4)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="Templates/MapExitRight/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.6)
+mesh = SubResource("QuadMesh_1ydtu")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="Templates/MapExitRight"]
+
+[node name="BackLayer" type="MeshInstance3D" parent="Templates/MapExitRight/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.2)
+mesh = SubResource("QuadMesh_383ph")
+skeleton = NodePath("../..")
+
+[node name="BackLayer1" type="MeshInstance3D" parent="Templates/MapExitRight/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="Templates/MapExitRight/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="Templates/MapExitRight/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="Templates/MapExitRight/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.4)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="MapExitUp" type="Node3D" parent="Templates" node_paths=PackedStringArray("frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 9)
+script = ExtResource("1_t5aum")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="Templates/MapExitUp"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/MapExitUp/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Templates/MapExitUp/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -2.5)
+shape = SubResource("BoxShape3D_qq50r")
+
+[node name="ActiveArea" type="Area3D" parent="Templates/MapExitUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/MapExitUp/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="Templates/MapExitUp"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="Templates/MapExitUp/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="Templates/MapExitUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+mesh = SubResource("BoxMesh_1ydtu")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="Templates/MapExitUp/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_v5pia")
+
+[node name="FrontRail" type="MeshInstance3D" parent="Templates/MapExitUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_bsmh5")
+
+[node name="FrontAnchor" type="Node3D" parent="Templates/MapExitUp"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="Templates/MapExitUp/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.4)
+mesh = SubResource("QuadMesh_eyfnt")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="Templates/MapExitUp/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.6)
+mesh = SubResource("QuadMesh_eyfnt")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="Templates/MapExitUp"]
+
+[node name="BackLayer" type="MeshInstance3D" parent="Templates/MapExitUp/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -2.2)
+mesh = SubResource("QuadMesh_db8x4")
+skeleton = NodePath("../..")
+
+[node name="BackLayer0" type="MeshInstance3D" parent="Templates/MapExitUp/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -2.2)
+mesh = SubResource("QuadMesh_db8x4")
+skeleton = NodePath("../..")
+
+[node name="BackLayer1" type="MeshInstance3D" parent="Templates/MapExitUp/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -2)
+mesh = SubResource("QuadMesh_27np1")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="Templates/MapExitUp/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.5, -2)
+mesh = SubResource("QuadMesh_27np1")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="Templates/MapExitUp/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -1.8)
+mesh = SubResource("QuadMesh_27np1")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="Templates/MapExitUp/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.5, -1.8)
+mesh = SubResource("QuadMesh_27np1")
+skeleton = NodePath("../..")
+
+[node name="MapExitDown" type="Node3D" parent="Templates" node_paths=PackedStringArray("frontAnchor", "backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 9)
+script = ExtResource("1_t5aum")
+frontAnchor = NodePath("FrontAnchor")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="Templates/MapExitDown"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/MapExitDown/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Templates/MapExitDown/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 3)
+shape = SubResource("BoxShape3D_bsmh5")
+
+[node name="ActiveArea" type="Area3D" parent="Templates/MapExitDown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/MapExitDown/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="Templates/MapExitDown"]
+mesh = SubResource("BoxMesh_t5aum")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="Templates/MapExitDown/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cj687")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="Templates/MapExitDown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+mesh = SubResource("BoxMesh_1ydtu")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="Templates/MapExitDown/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_v5pia")
+
+[node name="FrontAnchor" type="Node3D" parent="Templates/MapExitDown"]
+
+[node name="FrontLayer1" type="MeshInstance3D" parent="Templates/MapExitDown/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 2.4)
+mesh = SubResource("QuadMesh_550ke")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer2" type="MeshInstance3D" parent="Templates/MapExitDown/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 2.4)
+mesh = SubResource("QuadMesh_550ke")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer3" type="MeshInstance3D" parent="Templates/MapExitDown/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 2.6)
+mesh = SubResource("QuadMesh_550ke")
+skeleton = NodePath("../..")
+
+[node name="FrontLayer4" type="MeshInstance3D" parent="Templates/MapExitDown/FrontAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 2.6)
+mesh = SubResource("QuadMesh_550ke")
+skeleton = NodePath("../..")
+
+[node name="BackAnchor" type="Node3D" parent="Templates/MapExitDown"]
+
+[node name="BackLayer1" type="MeshInstance3D" parent="Templates/MapExitDown/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.2)
+mesh = SubResource("QuadMesh_4duw5")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="Templates/MapExitDown/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="Templates/MapExitDown/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="Templates/MapExitDown/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="MapStairsTop" type="Node3D" parent="Templates" node_paths=PackedStringArray("backAnchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 9)
+script = ExtResource("1_t5aum")
+backAnchor = NodePath("BackAnchor")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="Templates/MapStairsTop"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/MapStairsTop/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_jshv6")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Templates/MapStairsTop/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.4, 1.5)
+shape = SubResource("BoxShape3D_7a8ct")
+
+[node name="ActiveArea" type="Area3D" parent="Templates/MapStairsTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/MapStairsTop/ActiveArea"]
+shape = SubResource("BoxShape3D_4duw5")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="Templates/MapStairsTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("BoxMesh_ncrtu")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="Templates/MapStairsTop/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_ggwib")
+
+[node name="StairBackVolume" type="MeshInstance3D" parent="Templates/MapStairsTop/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 1)
+mesh = SubResource("BoxMesh_douos")
+skeleton = NodePath("../..")
+
+[node name="ExitVolume" type="MeshInstance3D" parent="Templates/MapStairsTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, 1.5)
+mesh = SubResource("BoxMesh_fjuof")
+
+[node name="ExitTexture" type="MeshInstance3D" parent="Templates/MapStairsTop/ExitVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, 0)
+mesh = SubResource("QuadMesh_khbb3")
+
+[node name="StairsVolume" type="MeshInstance3D" parent="Templates/MapStairsTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 1.5)
+mesh = SubResource("PrismMesh_cfngh")
+
+[node name="StairRailing" type="MeshInstance3D" parent="Templates/MapStairsTop/StairsVolume"]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.3, 0.4, 0.51)
+visible = false
+mesh = SubResource("QuadMesh_6hend")
+skeleton = NodePath("../../FloorVolume")
+
+[node name="BackAnchor" type="Node3D" parent="Templates/MapStairsTop"]
+
+[node name="BackLayer1" type="MeshInstance3D" parent="Templates/MapStairsTop/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.2)
+mesh = SubResource("QuadMesh_4duw5")
+skeleton = NodePath("../..")
+
+[node name="BackLayer2" type="MeshInstance3D" parent="Templates/MapStairsTop/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer3" type="MeshInstance3D" parent="Templates/MapStairsTop/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.8)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="BackLayer4" type="MeshInstance3D" parent="Templates/MapStairsTop/BackAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -1.6)
+mesh = SubResource("QuadMesh_irke8")
+skeleton = NodePath("../..")
+
+[node name="PathHorizontal" type="Node3D" parent="Templates"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 16)
+script = ExtResource("1_t5aum")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="Templates/PathHorizontal"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/PathHorizontal/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="ActiveArea" type="Area3D" parent="Templates/PathHorizontal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/PathHorizontal/ActiveArea"]
+shape = SubResource("BoxShape3D_ia5te")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="Templates/PathHorizontal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+mesh = SubResource("BoxMesh_550ke")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="Templates/PathHorizontal/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_12d3d")
+
+[node name="FrontRail" type="MeshInstance3D" parent="Templates/PathHorizontal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_s22tr")
+
+[node name="BackRail" type="MeshInstance3D" parent="Templates/PathHorizontal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -1.1)
+mesh = SubResource("QuadMesh_s22tr")
+
+[node name="PathBridge" type="Node3D" parent="Templates"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 16)
+script = ExtResource("1_t5aum")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="Templates/PathBridge"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/PathBridge/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_q6bqc")
+
+[node name="ActiveArea" type="Area3D" parent="Templates/PathBridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/PathBridge/ActiveArea"]
+shape = SubResource("BoxShape3D_ia5te")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="Templates/PathBridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+mesh = SubResource("BoxMesh_550ke")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="Templates/PathBridge/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_12d3d")
+
+[node name="WallVolumeL" type="MeshInstance3D" parent="Templates/PathBridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -3, 0.5)
+mesh = SubResource("BoxMesh_6hend")
+
+[node name="WallTexture" type="MeshInstance3D" parent="Templates/PathBridge/WallVolumeL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.51)
+mesh = SubResource("QuadMesh_qq50r")
+skeleton = NodePath("../../FloorVolume")
+
+[node name="WallVolumeR" type="MeshInstance3D" parent="Templates/PathBridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3, 0.5)
+mesh = SubResource("BoxMesh_6hend")
+
+[node name="WallTexture" type="MeshInstance3D" parent="Templates/PathBridge/WallVolumeR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.51)
+mesh = SubResource("QuadMesh_qq50r")
+skeleton = NodePath("../../FloorVolume")
+
+[node name="FrontRail" type="MeshInstance3D" parent="Templates/PathBridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.1)
+mesh = SubResource("QuadMesh_s22tr")
+
+[node name="BackRail" type="MeshInstance3D" parent="Templates/PathBridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -1.1)
+mesh = SubResource("QuadMesh_s22tr")
+
+[node name="PathVertical" type="Node3D" parent="Templates"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 16)
+script = ExtResource("1_t5aum")
+
+[node name="MapBlockPathing" type="StaticBody3D" parent="Templates/PathVertical"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/PathVertical/MapBlockPathing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
+shape = SubResource("BoxShape3D_ncrtu")
+
+[node name="ActiveArea" type="Area3D" parent="Templates/PathVertical"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Templates/PathVertical/ActiveArea"]
+shape = SubResource("BoxShape3D_ggwib")
+
+[node name="FloorVolume" type="MeshInstance3D" parent="Templates/PathVertical"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+mesh = SubResource("BoxMesh_khbb3")
+
+[node name="FloorTexture" type="MeshInstance3D" parent="Templates/PathVertical/FloorVolume"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.51, 0)
+mesh = SubResource("QuadMesh_cfngh")
+
+[node name="FrontRail" type="MeshInstance3D" parent="Templates/PathVertical"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.6, 0.25, 0.5)
+mesh = SubResource("QuadMesh_d31mb")
+surface_material_override/0 = SubResource("StandardMaterial3D_b8vbj")
+
+[node name="BackRail" type="MeshInstance3D" parent="Templates/PathVertical"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.6, 0.25, 0.5)
+mesh = SubResource("QuadMesh_d31mb")
+surface_material_override/0 = SubResource("StandardMaterial3D_b8vbj")
+
+[node name="Investigation" type="Node3D" parent="."]
+
+[connection signal="area_entered" from="SceneNavigation/Templates/WallStairsBottom/StairsTrigger" to="SceneNavigation/Templates/WallStairsBottom" method="StairEntry"]
+[connection signal="area_entered" from="SceneNavigation/Templates/MapStairsTop/StairsTrigger" to="SceneNavigation/Templates/WallStairsBottom" method="StairEntry"]
+[connection signal="area_entered" from="SceneNavigation/Templates/MapStairsTop/StairsTrigger" to="SceneNavigation/Templates/MapStairsTop" method="StairEntry"]
+[connection signal="area_entered" from="SceneNavigation/Templates/MapStairsTop2/StairsTrigger" to="SceneNavigation/Templates/MapStairsTop2" method="StairEntry"]
+[connection signal="area_entered" from="StreetOverlay/StreetSection/StreetArea/FrontHideTrigger" to="StreetOverlay/StreetSection" method="AllFront" binds= [false]]
+[connection signal="area_entered" from="StreetOverlay/StreetSection/StreetArea/FrontShotTrigger" to="StreetOverlay/StreetSection" method="AllFront" binds= [true]]
+[connection signal="area_entered" from="StreetOverlay/StreetSection/StreetArea/CamLockTrigger" to="StreetOverlay/StreetSection" method="CameraLock"]
+[connection signal="area_entered" from="StreetOverlay/StreetSection/StreetArea/CamLockTrigger2" to="StreetOverlay/StreetSection" method="CameraLock"]
+[connection signal="area_entered" from="StreetOverlay/StreetSection/StreetArea/CamUnlockTrigger" to="StreetOverlay/StreetSection" method="CameraUnlock"]
+[connection signal="area_entered" from="StreetOverlay/StreetSection/StreetArea/CamUnlockTrigger2" to="StreetOverlay/StreetSection" method="CameraUnlock"]
+[connection signal="area_entered" from="StreetOverlay/StreetSection2/StreetArea/FrontHideTrigger" to="StreetOverlay/StreetSection2" method="AllFront" binds= [false]]
+[connection signal="area_entered" from="StreetOverlay/StreetSection2/StreetArea/FrontShowTrigger" to="StreetOverlay/StreetSection2" method="AllFront" binds= [true]]
+[connection signal="area_entered" from="StreetOverlay/StreetSection2/StreetArea/BackHideTrigger" to="StreetOverlay/StreetSection2" method="AllBack" binds= [false]]
+[connection signal="area_entered" from="StreetOverlay/StreetSection2/StreetArea/BackShowTrigger" to="StreetOverlay/StreetSection2" method="AllBack" binds= [true]]
+[connection signal="area_entered" from="StreetOverlay/StreetSection2/CamLockTrigger" to="StreetOverlay/StreetSection2" method="CameraLock"]
+[connection signal="area_entered" from="StreetOverlay/StreetSection2/CamUnlockTrigger" to="StreetOverlay/StreetSection2" method="CameraUnlock"]

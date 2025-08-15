@@ -100,6 +100,10 @@ ScrollDown={
 [layer_names]
 
 3d_render/layer_6="Dialogue"
+3d_physics/layer_1="Main Collision"
+3d_physics/layer_2="Movement"
+3d_physics/layer_3="Information"
+3d_physics/layer_4="Scene Layers"
 
 [rendering]
 
