@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://cflmaoffnjo2p" path="res://Scenes/Environments/World Scenes/Template/OverworldManager.gd" id="1_irke8"]
 [ext_resource type="Script" uid="uid://d0ptbwb3i3m2" path="res://Scenes/Environments/World Scenes/Template/Scripts/MapBlock.gd" id="1_t5aum"]
 [ext_resource type="Script" uid="uid://wvks83pa45wm" path="res://Scenes/Environments/World Scenes/Template/Scripts/StreetSection.gd" id="2_1ydtu"]
-[ext_resource type="Texture2D" uid="uid://gmn7ufxe7b6d" path="res://Scenes/Player/Assets/PlayerChar.png" id="2_bsmh5"]
 [ext_resource type="Script" uid="uid://dllav6wustq5b" path="res://Scenes/Environments/World Scenes/Template/InvestigationTrigger.gd" id="4_ia5te"]
 [ext_resource type="Resource" uid="uid://4erh8hya8gt4" path="res://Scenes/Environments/World Scenes/Forest/Resources/SparseForest.tres" id="5_v5pia"]
 [ext_resource type="Script" uid="uid://dglyiulvu4p4u" path="res://Scenes/Environments/World Scenes/Template/PlayerCamera.gd" id="6_ia5te"]
+[ext_resource type="Texture2D" uid="uid://gmn7ufxe7b6d" path="res://Scenes/Player/Assets/PlayerChar.png" id="7_v5pia"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_4duw5"]
 vertices = PackedVector3Array(2.8, 8.81527, -5.6, 5.3, 8.81527, -5.6, 5.3, 8.81527, -7.7, 2.8, 8.81527, -7.7, 2.6, 8.81527, -4.7, 1.8, 8.81527, -4.7, 1.8, 8.81527, -2.3, 6.3, 8.81527, -2.3, 6.3, 8.81527, -4.7, 5.5, 8.81527, -4.7, 5.3, 8.81527, -4.9, 2.8, 8.81527, -4.9, -6.6, 8.81527, -3.3, -5.8, 8.81527, -3.3, -5.8, 8.81527, -4.7, -6.8, 8.81527, -3.1, -15.2, 8.81527, -4.7, -15.2, 8.81527, -2.3, -6.8, 8.81527, -2.3, -3.4, 8.81527, -3.3, -3.2, 8.81527, -3.1, -3.2, 8.81527, -2.3, 7.8, 3.80527, -1.7, 10.2, 3.80527, -1.7, 10.2, 3.80527, -3.7, 7.8, 3.80527, -3.7, 7.6, 3.80527, -0.7, 6.8, 3.80527, -0.7, 6.8, 3.80527, 1.7, 11.2, 3.80527, 1.7, 11.2, 3.80527, -0.7, 10.4, 3.80527, -0.7, 10.2, 3.80527, -0.9, 7.8, 3.80527, -0.9, -7.8, 3.80527, -0.9, -7.8, 3.80527, -1.7, -8.2, 3.80527, -1.7, -8.2, 3.80527, -0.9, 2.5, 3.80527, 1.7, 2.5, 3.80527, -0.7, -7.6, 3.80527, -0.7, -15.2, 3.80527, 1.7, -8.4, 3.80527, -0.7, -15.2, 3.80527, -0.7, 2.8, 3.80527, 1.9, 2.8, 3.80527, 2.6, 5.3, 3.80527, 2.6, 5.3, 3.80527, 1.9, 5.5, 3.80527, 1.7, 23.2, 3.80527, 1.7, 23.2, 3.80527, -0.7, 2.8, 3.80527, 11.4, 5.3, 3.80527, 11.4, 2.6, 3.80527, 12.3, 1.8, 3.80527, 12.3, 1.8, 3.80527, 14.7, 5.3, 3.80527, 12.1, 2.8, 3.80527, 12.1, 6.8, 3.80527, 14.7, 6.8, 3.80527, 12.3, 5.5, 3.80527, 12.3, -6.6, 3.80527, 13.7, -5.8, 3.80527, 13.7, -5.8, 3.80527, 12.3, -6.8, 3.80527, 13.9, -15.2, 3.80527, 12.3, -15.2, 3.80527, 14.7, -6.8, 3.80527, 14.7, -3.4, 3.80527, 13.7, -3.2, 3.80527, 13.9, -3.2, 3.80527, 14.7, 10.4, 3.80527, 14.7, 11.2, 3.80527, 14.7, 11.2, 3.80527, 12.3, 7.6, 3.80527, 14.7, 7.8, 3.80527, 14.9, 10.2, 3.80527, 14.9, 7.8, 3.80527, 16.7, 10.2, 3.80527, 16.7, 23.2, 3.80527, 14.7, 23.2, 3.80527, 12.3)
@@ -201,7 +201,7 @@ transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 cull_mode = 2
-albedo_texture = ExtResource("2_bsmh5")
+albedo_texture = ExtResource("7_v5pia")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_550ke"]
 radius = 0.15
@@ -2003,10 +2003,10 @@ stepDistance = 1.0
 stepSpeed = 3.0
 height = 0.2
 navAgent = NodePath("NavigationAgent3D")
-charSprite = NodePath("MeshInstance3D")
+charSprite = NodePath("PlayerSprite")
 playerCam = NodePath("CameraTarget")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerCharacter"]
+[node name="PlayerSprite" type="MeshInstance3D" parent="PlayerCharacter"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 mesh = SubResource("QuadMesh_ia5te")
 surface_material_override/0 = SubResource("StandardMaterial3D_v5pia")
@@ -2039,12 +2039,13 @@ spot_angle = 30.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 
 [node name="PlayerCamera" type="Camera3D" parent="." node_paths=PackedStringArray("camTarget")]
-transform = Transform3D(1, 0, 0, 0, 0.996195, -0.0871557, 0, 0.0871557, 0.996195, 4, 7.75, 3)
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871558, 0, -0.0871558, 0.996195, 4, 7.75, 3)
 environment = SubResource("Environment_4duw5")
 fov = 60.0
 script = ExtResource("6_ia5te")
 camTarget = NodePath("../PlayerCharacter/CameraTarget")
 camSpeed = 0.15
+camOffset = Vector3(0, 1.25, 3)
 
 [node name="ScheduleSystem" type="Node3D" parent="."]
 
