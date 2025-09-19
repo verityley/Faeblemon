@@ -1,4 +1,5 @@
 extends Node3D
+class_name MapBlock
 @export var overworldManager:OverworldManager
 
 @export var frontAnchor:Node3D
@@ -14,6 +15,8 @@ extends Node3D
 var threshold #Placeholder, replace with spawn info
 var blocked:bool #if barrier is deactivated or not, reset every day
 var barrier #Placeholder, replace with threshold obstacle info
+
+var currentNPCs:Array[NPC]
 
 func _ready() -> void:
 	SlideFront(false)
@@ -54,8 +57,10 @@ func StairEntry(_body):
 	var player = overworldManager.player
 	if player.forceMoving == true:
 		return
+	for npc:NPC in currentNPCs:
+		npc.EndPassby()
 	contextCam.position = contextHome
-	overworldManager.camera.camTarget = contextCam
+	overworldManager.camera.tempTarget = contextCam
 	var camTween = get_tree().create_tween()
 	camTween.tween_property(contextCam, "position", contextTarget, 4.0)
 	player.forceMoving = true
@@ -76,7 +81,7 @@ func StairEntry(_body):
 	contextCam.position = contextTarget
 	player.forceMoving = false
 	player.inputDir.x = 0
-	#overworldManager.camera.camTarget = player
+	overworldManager.camera.tempTarget = null
 	contextCam.position = contextHome
 	pass #signal connection to stair trigger zone, include some kind of disable for the exit point collider
 #Also needs to work for both top stair and bottom stair entry, top has "landings" and bottom has inclines
@@ -88,6 +93,26 @@ func ThresholdEntry(scene): #replace scene with relevant investigation scene lin
 func DistrictEntry(scene):
 	pass #similar to above, but switch out to other overworld scene, call signal up to overworld manager
 
-func ChatterEntry(dialogue):
+func PassbyEntry(body:Area3D=null, enter:bool=true):
+	var enterChar:Node3D = body.get_parent_node_3d().get_parent_node_3d()
+	if enterChar is not NPC:
+		enterChar = body.get_parent_node_3d()
+	if enterChar == overworldManager.player:
+		if enter:
+			for npc:NPC in currentNPCs:
+				print("Sending Passby Signal")
+				EventBus.emit_signal("PassbyNPC", npc)
+				await get_tree().create_timer(0.1).timeout
+		else:
+			for npc:NPC in currentNPCs:
+				print("Sending Cancel Signal")
+				EventBus.emit_signal("CancelEvents", npc)
+				await get_tree().create_timer(0.1).timeout
+	else:
+		if enter:
+			#print("Adding NPC to Block")
+			currentNPCs.append(enterChar)
+		else:
+			currentNPCs.erase(enterChar)
 	pass #if NPC/crowd is present and Sighting message assigned, display bubble when trigger zone entered
 	#overworld manager itself will have system for message assignment

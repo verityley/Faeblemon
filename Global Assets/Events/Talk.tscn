@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dorrmi3lqc4t8"]
+
+[ext_resource type="Script" uid="uid://tvs1rjpfy5h5" path="res://Global Assets/Events/Scripts/TalkEvent.gd" id="1_bqrs5"]
+
+[node name="Talk" type="Node"]
+script = ExtResource("1_bqrs5")

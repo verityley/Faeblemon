@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://douy58b7splvw"]
+
+[ext_resource type="Script" uid="uid://dxapkry0sq765" path="res://Global Assets/Events/Scripts/BattleEvent.gd" id="1_6uicp"]
+
+[node name="Battle" type="Node"]
+script = ExtResource("1_6uicp")

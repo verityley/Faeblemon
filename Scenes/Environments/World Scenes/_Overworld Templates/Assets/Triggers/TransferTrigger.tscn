@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://b4ifiplgmrpnu"]
+
+[node name="TransferTrigger" type="Node3D"]

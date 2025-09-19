@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cnuw0ycx7er11"]
+
+[node name="MapBlock" type="Node3D"]

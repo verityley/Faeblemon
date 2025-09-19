@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d31jiapjiua64"]
+
+[ext_resource type="Script" uid="uid://b5te1hrigcmq8" path="res://Global Assets/Events/Scripts/InterviewEvent.gd" id="1_46foh"]
+
+[node name="Interview" type="Node"]
+script = ExtResource("1_46foh")

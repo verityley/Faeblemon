@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cx71ldohdx331"]
+
+[ext_resource type="Script" uid="uid://5sqvbt0qr3at" path="res://Scenes/NPC/Scripts/Gossipable.gd" id="1_qpxh7"]
+[ext_resource type="Script" uid="uid://dpxrdytky4qn2" path="res://Scenes/NPC/Scripts/GossipSystem.gd" id="1_vdorh"]
+[ext_resource type="PackedScene" uid="uid://cdvql8c8yek5u" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Assets/ChatterBubble.tscn" id="2_qpxh7"]
+
+[node name="Gossipable" type="Node3D" node_paths=PackedStringArray("dialogueSystem")]
+script = ExtResource("1_qpxh7")
+dialogueSystem = NodePath("GossipSystem")
+
+[node name="GossipSystem" type="Node3D" parent="." node_paths=PackedStringArray("anchors", "speechBubble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+script = ExtResource("1_vdorh")
+scrollTime = 0.2
+anchors = [NodePath("ChatAnchors/BubbleAnchor"), NodePath("ChatAnchors/BubbleAnchor2")]
+speechBubble = NodePath("ChatterBubble")
+
+[node name="ChatAnchors" type="Node3D" parent="GossipSystem"]
+
+[node name="BubbleAnchor" type="Node3D" parent="GossipSystem/ChatAnchors"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -0.075)
+
+[node name="BubbleAnchor2" type="Node3D" parent="GossipSystem/ChatAnchors"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 1.5, -0.1)
+
+[node name="ChatterBubble" parent="GossipSystem" instance=ExtResource("2_qpxh7")]
+visible = false
+skeleton = NodePath("../../..")

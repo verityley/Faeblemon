@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhhihg8mkhcdv"]
+
+[ext_resource type="Script" uid="uid://0jhc2avr70g6" path="res://Scenes/NPC/Scripts/Talkable.gd" id="1_cnxim"]
+[ext_resource type="Script" uid="uid://djg2bftsi5mjw" path="res://Scenes/NPC/Scripts/ChatterSystem.gd" id="2_760ve"]
+[ext_resource type="PackedScene" uid="uid://cdvql8c8yek5u" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Assets/ChatterBubble.tscn" id="3_vt62a"]
+
+[node name="Talkable" type="Node3D" node_paths=PackedStringArray("dialogueSystem")]
+script = ExtResource("1_cnxim")
+dialogueSystem = NodePath("ChatterSystem")
+
+[node name="ChatterSystem" type="Node3D" parent="." node_paths=PackedStringArray("anchors", "speechBubbles")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+script = ExtResource("2_760ve")
+scrollTime = 0.2
+typingTime = 0.5
+anchors = [NodePath("ChatAnchors/BubbleAnchor"), NodePath("ChatAnchors/BubbleAnchor2"), NodePath("ChatAnchors/BubbleAnchor3"), NodePath("ChatAnchors/BubbleAnchor4")]
+speechBubbles = [NodePath("SpeechBubbles/ChatterBubble"), NodePath("SpeechBubbles/ChatterBubble2"), NodePath("SpeechBubbles/ChatterBubble3"), NodePath("SpeechBubbles/ChatterBubble4")]
+
+[node name="ChatAnchors" type="Node3D" parent="ChatterSystem"]
+
+[node name="BubbleAnchor" type="Node3D" parent="ChatterSystem/ChatAnchors"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -0.075)
+
+[node name="BubbleAnchor2" type="Node3D" parent="ChatterSystem/ChatAnchors"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 1.5, -0.1)
+
+[node name="BubbleAnchor3" type="Node3D" parent="ChatterSystem/ChatAnchors"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 2, -0.2)
+
+[node name="BubbleAnchor4" type="Node3D" parent="ChatterSystem/ChatAnchors"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 2.2, -0.3)
+
+[node name="SpeechBubbles" type="Node3D" parent="ChatterSystem"]
+
+[node name="ChatterBubble" parent="ChatterSystem/SpeechBubbles" instance=ExtResource("3_vt62a")]
+visible = false
+
+[node name="ChatterBubble2" parent="ChatterSystem/SpeechBubbles" instance=ExtResource("3_vt62a")]
+visible = false
+
+[node name="ChatterBubble3" parent="ChatterSystem/SpeechBubbles" instance=ExtResource("3_vt62a")]
+visible = false
+
+[node name="ChatterBubble4" parent="ChatterSystem/SpeechBubbles" instance=ExtResource("3_vt62a")]
+visible = false

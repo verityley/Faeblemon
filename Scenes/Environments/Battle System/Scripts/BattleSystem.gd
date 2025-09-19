@@ -27,7 +27,6 @@ class_name BattleSystem
 @export var levelBonus:float = 0.5
 
 
-
 enum Status{
 	Clear=0,
 	Decay, #Tick damage, and reduces Vigor

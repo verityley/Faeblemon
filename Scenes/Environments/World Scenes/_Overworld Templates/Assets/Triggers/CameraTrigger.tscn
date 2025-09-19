@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bdsxvfkoud23"]
+
+[node name="CameraTrigger" type="Node3D"]

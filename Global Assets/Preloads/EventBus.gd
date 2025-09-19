@@ -9,7 +9,19 @@ extends Node
 #signal pause
 #signal save
 
+#NPC Signals
+signal MoveNPC(npc:NPC, event:Event, location:Vector3)
+signal InteractNPC(npc:NPC)
+signal PassbyNPC(npc:NPC)
+signal BattleNPC(npc:NPC, event:Event, team:Array[Faeble], stage:Stage)
+signal GossipNPC(npc:NPC, event:Event, message:Message)
+signal TalkNPC(npc:NPC, event:Event, message:Message)
+signal InterviewNPC(npc:NPC, event:Event, message:Message, speaker:Speaker, stage:Stage)
+signal CancelEvents(npc:NPC)
+
+
 #Overworld Signals
+signal LockAll(locked:bool)
 
 
 #Battle Signals

@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://yi7jwqjnb6vh"]
 
-[ext_resource type="Script" uid="uid://dr5it17v6b7rj" path="res://Scenes/Environments/World Scenes/PlayerCharacter.gd" id="1_vks46"]
+[ext_resource type="Script" uid="uid://dr5it17v6b7rj" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/PlayerCharacter.gd" id="1_vks46"]
 [ext_resource type="Texture2D" uid="uid://gmn7ufxe7b6d" path="res://Scenes/Player/Assets/PlayerChar.png" id="2_nh8oq"]
 [ext_resource type="Texture2D" uid="uid://c4udwyw0qkx7n" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleL.png" id="3_0xlwl"]
 [ext_resource type="Script" uid="uid://lqd8qaukhmi8" path="res://Scenes/Environments/World Scenes/NPCController.gd" id="3_2oeb1"]

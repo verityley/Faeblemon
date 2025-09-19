@@ -1,5 +1,7 @@
 extends Node3D
+class_name Player
 
+@export var overworldManager:OverworldManager
 
 @export var stepDistance:float = 0.5
 @export var stepSpeed:float = 2.5
@@ -10,15 +12,26 @@ var inputDir:Vector3
 
 @export var navAgent:NavigationAgent3D
 @export var charSprite:MeshInstance3D
-@export var playerCam:Node3D
+@export var interactPopup:Node3D
+
+var interactTarget:NPC
 
 var forceMoving:bool = false
 var lockdown:bool = false
 
+func _ready():
+	overworldManager.player = self
+
+func _input(event: InputEvent):
+	if Input.is_action_just_pressed("Interact") and interactTarget != null:
+		InitiateInteract()
+
 func _physics_process(delta: float):
-	if lockdown:
+	if lockdown: #In overlay scene, such as an investigation, or during interaction
 		return
-	if !forceMoving:
+	if interactTarget == null: #Redundancy check
+		overworldManager.camera.tempTarget = null
+	if !forceMoving: #Being moved through some other process, direct write to input for flipping/animation
 		inputDir = Vector3(Input.get_axis("MoveLeft","MoveRight"), 0, Input.get_axis("MoveUp","MoveDown"))
 	if inputDir.x > 0 and charSprite.rotation.y != 0:
 		#print("Turning Right")
@@ -54,3 +67,37 @@ func EnterStairs(body, start:Vector3, end:Vector3):
 	navAgent.target_position = end
 	forceMoving = false
 	
+
+func InitiateInteract():
+	lockdown = true
+	var tween = get_tree().create_tween()
+	tween.tween_property(interactPopup, "position:y", 0.5, 0.2)
+	await tween.finished
+	interactPopup.hide()
+	#overworldManager.camera.tempTarget = interactTarget
+	#DO THING HERE. Send signal/call to targetted body
+	EventBus.emit_signal("InteractNPC", interactTarget)
+	#interactTarget.Interact()
+	#TEMP
+
+func EndInteract():
+	#overworldManager.camera.tempTarget = null
+	if interactTarget != null:
+		var tween = get_tree().create_tween()
+		interactPopup.show()
+		tween.tween_property(interactPopup, "position:y", 1.0, 0.2)
+		await tween.finished
+	lockdown = false
+
+func EnterInteraction(body:Area3D=null):
+	var tween = get_tree().create_tween()
+	interactPopup.show()
+	tween.tween_property(interactPopup, "position:y", 1.0, 0.2)
+	interactTarget = body.get_parent().hostNPC
+
+func LeaveInteraction(body):
+	var tween = get_tree().create_tween()
+	tween.tween_property(interactPopup, "position:y", 0.5, 0.2)
+	await tween.finished
+	interactPopup.hide()
+	interactTarget = null

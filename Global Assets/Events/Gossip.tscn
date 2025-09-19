@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7sb7r8r5rb61"]
+
+[ext_resource type="Script" uid="uid://ovqusc7nsskp" path="res://Global Assets/Events/Scripts/GossipEvent.gd" id="1_3le6t"]
+
+[node name="Gossip" type="Node"]
+script = ExtResource("1_3le6t")

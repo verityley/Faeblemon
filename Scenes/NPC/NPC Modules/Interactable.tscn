@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://qvajkyj4hife"]
+
+[ext_resource type="Script" uid="uid://v2dqgwt8v4k5" path="res://Scenes/NPC/Scripts/Interactable.gd" id="1_wkubk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jnu6a"]
+radius = 0.15
+height = 0.8
+
+[node name="Interactable" type="Node3D" node_paths=PackedStringArray("tempCamTarget")]
+script = ExtResource("1_wkubk")
+tempCamTarget = NodePath("InteractCam")
+
+[node name="Events" type="Node" parent="."]
+
+[node name="Targetbox" type="Area3D" parent="."]
+collision_layer = 48
+collision_mask = 16
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Targetbox"]
+shape = SubResource("CapsuleShape3D_jnu6a")
+
+[node name="InteractCam" type="Node3D" parent="."]

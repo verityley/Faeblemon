@@ -10,12 +10,50 @@ class_name OverworldManager
 @export var sceneFX:Node3D
 @export var investigation:Node3D
 
+var allNPCs:Array[NPC]
 
 func LoadOverworld(oScene:OverworldManager, destination:Vector3):
 	pass
 
 func LoadInvestigation(stage:Stage):
 	player.lockdown = true
+	for npc in allNPCs:
+		npc.lockdown = true
+		npc.hide()
+	navmesh.enabled = false
+	player.hide()
+	navmesh.hide()
+	sceneFX.hide()
+	var iScene = load("res://Scenes/Environments/Investigation Scenes/LayerManager.tscn").instantiate()
+	investigation.add_child(iScene)
+	iScene.stageCamera.make_current()
+	iScene.layerSpeed = 0.01
+	iScene.LayerSpacing(0, 0)
+	iScene.layerSpeed = 0.2
+	iScene.LoadScene(stage, iScene.Transitions.None)
+
+func NewBattle(team:Array[Faeble], stage:Stage):
+	player.lockdown = true
+	for npc in allNPCs:
+		npc.lockdown = true
+		npc.hide()
+	navmesh.enabled = false
+	player.hide()
+	navmesh.hide()
+	sceneFX.hide()
+	var iScene = load("res://Scenes/Environments/Investigation Scenes/LayerManager.tscn").instantiate()
+	investigation.add_child(iScene)
+	iScene.stageCamera.make_current()
+	iScene.layerSpeed = 0.01
+	iScene.LayerSpacing(0, 0)
+	iScene.layerSpeed = 0.2
+	iScene.LoadScene(stage, iScene.Transitions.None)
+
+func NewInterview(conversation:Message, speaker:Speaker, stage:Stage):
+	player.lockdown = true
+	for npc in allNPCs:
+		npc.lockdown = true
+		npc.hide()
 	navmesh.enabled = false
 	player.hide()
 	navmesh.hide()
@@ -33,6 +71,9 @@ func UnloadInvestigation():
 		child.queue_free()
 	camera.make_current()
 	player.lockdown = false
+	for npc in allNPCs:
+		npc.lockdown = false
+		npc.show()
 	navmesh.enabled = true
 	player.show()
 	navmesh.show()

@@ -27,4 +27,4 @@ func CameraLock(_body=null):
 
 func CameraUnlock(_body=null):
 	camLock = false
-	overworldManager.camera.camTarget = overworldManager.player.playerCam
+	overworldManager.camera.camTarget = overworldManager.player

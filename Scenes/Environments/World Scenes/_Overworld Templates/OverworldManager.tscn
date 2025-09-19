@@ -1,13 +1,23 @@
-[gd_scene load_steps=74 format=3 uid="uid://bcu2q5rcwh42l"]
+[gd_scene load_steps=91 format=3 uid="uid://bcu2q5rcwh42l"]
 
-[ext_resource type="Script" uid="uid://dr5it17v6b7rj" path="res://Scenes/Environments/World Scenes/PlayerCharacter.gd" id="1_4duw5"]
-[ext_resource type="Script" uid="uid://cflmaoffnjo2p" path="res://Scenes/Environments/World Scenes/Template/OverworldManager.gd" id="1_irke8"]
-[ext_resource type="Script" uid="uid://d0ptbwb3i3m2" path="res://Scenes/Environments/World Scenes/Template/Scripts/MapBlock.gd" id="1_t5aum"]
-[ext_resource type="Script" uid="uid://wvks83pa45wm" path="res://Scenes/Environments/World Scenes/Template/Scripts/StreetSection.gd" id="2_1ydtu"]
-[ext_resource type="Script" uid="uid://dllav6wustq5b" path="res://Scenes/Environments/World Scenes/Template/InvestigationTrigger.gd" id="4_ia5te"]
+[ext_resource type="Script" uid="uid://dr5it17v6b7rj" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/PlayerCharacter.gd" id="1_4duw5"]
+[ext_resource type="Script" uid="uid://cflmaoffnjo2p" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/OverworldManager.gd" id="1_irke8"]
+[ext_resource type="Script" uid="uid://d0ptbwb3i3m2" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/MapBlock.gd" id="1_t5aum"]
+[ext_resource type="Script" uid="uid://wvks83pa45wm" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/StreetSection.gd" id="2_1ydtu"]
+[ext_resource type="Script" uid="uid://dllav6wustq5b" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/InvestigationTrigger.gd" id="4_ia5te"]
 [ext_resource type="Resource" uid="uid://4erh8hya8gt4" path="res://Scenes/Environments/World Scenes/Forest/Resources/SparseForest.tres" id="5_v5pia"]
-[ext_resource type="Script" uid="uid://dglyiulvu4p4u" path="res://Scenes/Environments/World Scenes/Template/PlayerCamera.gd" id="6_ia5te"]
+[ext_resource type="Texture2D" uid="uid://cqal6qlsn6lgn" path="res://Global Assets/Graphics/Monster Graphics/aconidFront.png" id="6_383ph"]
+[ext_resource type="Script" uid="uid://dglyiulvu4p4u" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/PlayerCamera.gd" id="6_ia5te"]
+[ext_resource type="Script" uid="uid://cdmm0ud1e26by" path="res://Scenes/NPC/Scripts/NPCManager.gd" id="6_wwg0e"]
 [ext_resource type="Texture2D" uid="uid://gmn7ufxe7b6d" path="res://Scenes/Player/Assets/PlayerChar.png" id="7_v5pia"]
+[ext_resource type="Script" uid="uid://cnfvsc68h8k77" path="res://Global Assets/Classes/Message.gd" id="8_27np1"]
+[ext_resource type="Texture2D" uid="uid://32tavb0f6wpy" path="res://Scenes/Environments/Battle System/Assets/InfoCommand.png" id="8_550ke"]
+[ext_resource type="PackedScene" uid="uid://0sy8a80icq0g" path="res://Scenes/NPC/NPC Modules/Passable.tscn" id="8_ektq3"]
+[ext_resource type="PackedScene" uid="uid://qvajkyj4hife" path="res://Scenes/NPC/NPC Modules/Interactable.tscn" id="11_wwg0e"]
+[ext_resource type="PackedScene" uid="uid://dorrmi3lqc4t8" path="res://Global Assets/Events/Talk.tscn" id="12_ektq3"]
+[ext_resource type="PackedScene" uid="uid://dhhihg8mkhcdv" path="res://Scenes/NPC/NPC Modules/Talkable.tscn" id="12_idacp"]
+[ext_resource type="PackedScene" uid="uid://cx71ldohdx331" path="res://Scenes/NPC/NPC Modules/Gossipable.tscn" id="13_idacp"]
+[ext_resource type="PackedScene" uid="uid://b7sb7r8r5rb61" path="res://Global Assets/Events/Gossip.tscn" id="13_jd6ia"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_4duw5"]
 vertices = PackedVector3Array(2.8, 8.81527, -5.6, 5.3, 8.81527, -5.6, 5.3, 8.81527, -7.7, 2.8, 8.81527, -7.7, 2.6, 8.81527, -4.7, 1.8, 8.81527, -4.7, 1.8, 8.81527, -2.3, 6.3, 8.81527, -2.3, 6.3, 8.81527, -4.7, 5.5, 8.81527, -4.7, 5.3, 8.81527, -4.9, 2.8, 8.81527, -4.9, -6.6, 8.81527, -3.3, -5.8, 8.81527, -3.3, -5.8, 8.81527, -4.7, -6.8, 8.81527, -3.1, -15.2, 8.81527, -4.7, -15.2, 8.81527, -2.3, -6.8, 8.81527, -2.3, -3.4, 8.81527, -3.3, -3.2, 8.81527, -3.1, -3.2, 8.81527, -2.3, 7.8, 3.80527, -1.7, 10.2, 3.80527, -1.7, 10.2, 3.80527, -3.7, 7.8, 3.80527, -3.7, 7.6, 3.80527, -0.7, 6.8, 3.80527, -0.7, 6.8, 3.80527, 1.7, 11.2, 3.80527, 1.7, 11.2, 3.80527, -0.7, 10.4, 3.80527, -0.7, 10.2, 3.80527, -0.9, 7.8, 3.80527, -0.9, -7.8, 3.80527, -0.9, -7.8, 3.80527, -1.7, -8.2, 3.80527, -1.7, -8.2, 3.80527, -0.9, 2.5, 3.80527, 1.7, 2.5, 3.80527, -0.7, -7.6, 3.80527, -0.7, -15.2, 3.80527, 1.7, -8.4, 3.80527, -0.7, -15.2, 3.80527, -0.7, 2.8, 3.80527, 1.9, 2.8, 3.80527, 2.6, 5.3, 3.80527, 2.6, 5.3, 3.80527, 1.9, 5.5, 3.80527, 1.7, 23.2, 3.80527, 1.7, 23.2, 3.80527, -0.7, 2.8, 3.80527, 11.4, 5.3, 3.80527, 11.4, 2.6, 3.80527, 12.3, 1.8, 3.80527, 12.3, 1.8, 3.80527, 14.7, 5.3, 3.80527, 12.1, 2.8, 3.80527, 12.1, 6.8, 3.80527, 14.7, 6.8, 3.80527, 12.3, 5.5, 3.80527, 12.3, -6.6, 3.80527, 13.7, -5.8, 3.80527, 13.7, -5.8, 3.80527, 12.3, -6.8, 3.80527, 13.9, -15.2, 3.80527, 12.3, -15.2, 3.80527, 14.7, -6.8, 3.80527, 14.7, -3.4, 3.80527, 13.7, -3.2, 3.80527, 13.9, -3.2, 3.80527, 14.7, 10.4, 3.80527, 14.7, 11.2, 3.80527, 14.7, 11.2, 3.80527, 12.3, 7.6, 3.80527, 14.7, 7.8, 3.80527, 14.9, 10.2, 3.80527, 14.9, 7.8, 3.80527, 16.7, 10.2, 3.80527, 16.7, 23.2, 3.80527, 14.7, 23.2, 3.80527, 12.3)
@@ -196,6 +206,65 @@ size = Vector3(3, 3, 0.5)
 [sub_resource type="QuadMesh" id="QuadMesh_ia5te"]
 size = Vector2(0.6, 0.8)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eyfnt"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("6_383ph")
+
+[sub_resource type="Resource" id="Resource_2hd2c"]
+script = ExtResource("8_27np1")
+messageID = ""
+messageText = "Hey hello hiya!"
+messageSpeed = 0.0
+messageMute = false
+messageInstant = false
+messageSkip = false
+hasChoices = false
+choiceTargets = Array[ExtResource("8_27np1")]([])
+choiceText = Array[String]([])
+switchLabel = ""
+switchValue = false
+tallyLabel = ""
+tallyValue = 0
+metadata/_custom_type_script = "uid://cnfvsc68h8k77"
+
+[sub_resource type="Resource" id="Resource_q5glc"]
+script = ExtResource("8_27np1")
+messageID = ""
+messageText = "I can't believe it works!"
+messageSpeed = 1.0
+messageMute = false
+messageInstant = false
+messageSkip = false
+hasChoices = false
+choiceTargets = Array[ExtResource("8_27np1")]([])
+choiceText = Array[String]([])
+switchLabel = ""
+switchValue = false
+tallyLabel = ""
+tallyValue = 0
+metadata/_custom_type_script = "uid://cnfvsc68h8k77"
+
+[sub_resource type="Resource" id="Resource_wwyrj"]
+script = ExtResource("8_27np1")
+messageID = ""
+messageText = "Hello World! Event system is a go!"
+messageSpeed = 1.5
+messageMute = false
+messageInstant = false
+messageSkip = false
+targetMessage = SubResource("Resource_q5glc")
+hasChoices = false
+choiceTargets = Array[ExtResource("8_27np1")]([])
+choiceText = Array[String]([])
+switchLabel = ""
+switchValue = false
+tallyLabel = ""
+tallyValue = 0
+metadata/_custom_type_script = "uid://cnfvsc68h8k77"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5pia"]
 transparency = 2
 alpha_scissor_threshold = 0.5
@@ -206,6 +275,20 @@ albedo_texture = ExtResource("7_v5pia")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_550ke"]
 radius = 0.15
 height = 0.8
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_383ph"]
+height = 1.0
+radius = 0.75
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qq50r"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("8_550ke")
+
+[sub_resource type="QuadMesh" id="QuadMesh_jshv6"]
+material = SubResource("StandardMaterial3D_qq50r")
+size = Vector2(0.25, 0.25)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4duw5"]
 sky_top_color = Color(0.520028, 0.420835, 0.415477, 1)
@@ -259,10 +342,10 @@ shape = SubResource("BoxShape3D_q6bqc")
 
 [node name="ActiveArea" type="Area3D" parent="SceneNavigation/Templates/WallBlock"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
-collision_layer = 4
-collision_mask = 4
+collision_layer = 32
+collision_mask = 32
 input_ray_pickable = false
-monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SceneNavigation/Templates/WallBlock/ActiveArea"]
 shape = SubResource("BoxShape3D_4duw5")
@@ -1881,17 +1964,6 @@ monitorable = false
 shape = SubResource("BoxShape3D_27np1")
 debug_color = Color(0.0821501, 0.648471, 5.77569e-07, 1)
 
-[node name="CamUnlockTrigger2" type="Area3D" parent="StreetOverlay/StreetSection/StreetArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 4.4, -3)
-collision_layer = 8
-collision_mask = 8
-input_ray_pickable = false
-monitorable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StreetOverlay/StreetSection/StreetArea/CamUnlockTrigger2"]
-shape = SubResource("BoxShape3D_27np1")
-debug_color = Color(0.0821501, 0.648471, 5.77569e-07, 1)
-
 [node name="InvestigationTrigger" type="Area3D" parent="StreetOverlay/StreetSection/StreetArea" node_paths=PackedStringArray("overworld")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -3)
 collision_layer = 8
@@ -1996,28 +2068,122 @@ debug_color = Color(0.0821501, 0.648471, 5.77569e-07, 1)
 [node name="CameraTarget" type="Node3D" parent="StreetOverlay/StreetSection2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 2.5)
 
-[node name="PlayerCharacter" type="Node3D" parent="." node_paths=PackedStringArray("navAgent", "charSprite", "playerCam")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 4, 7, 0)
+[node name="TestNPC3" type="Node3D" parent="." node_paths=PackedStringArray("overworld", "charSprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0952702, 7.07622, -0.75)
+script = ExtResource("6_wwg0e")
+overworld = NodePath("..")
+charSprite = NodePath("NPCSprite")
+
+[node name="NPCSprite" type="MeshInstance3D" parent="TestNPC3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("QuadMesh_ia5te")
+skeleton = NodePath("../../PlayerCharacter")
+surface_material_override/0 = SubResource("StandardMaterial3D_eyfnt")
+
+[node name="Passable" parent="TestNPC3" instance=ExtResource("8_ektq3")]
+
+[node name="Gossip" parent="TestNPC3/Passable/Events" index="0" instance=ExtResource("13_jd6ia")]
+message = SubResource("Resource_2hd2c")
+startDelay = 0.2
+
+[node name="Interactable" parent="TestNPC3" node_paths=PackedStringArray("overworld") instance=ExtResource("11_wwg0e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+overworld = NodePath("../..")
+
+[node name="Talk" parent="TestNPC3/Interactable/Events" index="0" instance=ExtResource("12_ektq3")]
+message = SubResource("Resource_wwyrj")
+startDelay = 0.5
+
+[node name="Talkable" parent="TestNPC3" instance=ExtResource("12_idacp")]
+
+[node name="Gossipable" parent="TestNPC3" instance=ExtResource("13_idacp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+
+[node name="TestNPC4" type="Node3D" parent="." node_paths=PackedStringArray("overworld", "charSprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12608, 7.07622, 0.563588)
+script = ExtResource("6_wwg0e")
+overworld = NodePath("..")
+charSprite = NodePath("NPCSprite")
+
+[node name="NPCSprite" type="MeshInstance3D" parent="TestNPC4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("QuadMesh_ia5te")
+skeleton = NodePath("../../PlayerCharacter")
+surface_material_override/0 = SubResource("StandardMaterial3D_eyfnt")
+
+[node name="Passable" parent="TestNPC4" instance=ExtResource("8_ektq3")]
+
+[node name="Gossip" parent="TestNPC4/Passable/Events" index="0" instance=ExtResource("13_jd6ia")]
+message = SubResource("Resource_2hd2c")
+startDelay = 0.2
+
+[node name="Interactable" parent="TestNPC4" node_paths=PackedStringArray("overworld") instance=ExtResource("11_wwg0e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+overworld = NodePath("../..")
+
+[node name="Talk" parent="TestNPC4/Interactable/Events" index="0" instance=ExtResource("12_ektq3")]
+message = SubResource("Resource_wwyrj")
+startDelay = 0.5
+
+[node name="Talkable" parent="TestNPC4" instance=ExtResource("12_idacp")]
+
+[node name="Gossipable" parent="TestNPC4" instance=ExtResource("13_idacp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+
+[node name="TestNPC5" type="Node3D" parent="." node_paths=PackedStringArray("overworld", "charSprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23234, 7.07622, 1.0374)
+script = ExtResource("6_wwg0e")
+overworld = NodePath("..")
+charSprite = NodePath("NPCSprite")
+
+[node name="NPCSprite" type="MeshInstance3D" parent="TestNPC5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("QuadMesh_ia5te")
+skeleton = NodePath("../../PlayerCharacter")
+surface_material_override/0 = SubResource("StandardMaterial3D_eyfnt")
+
+[node name="Passable" parent="TestNPC5" instance=ExtResource("8_ektq3")]
+
+[node name="Gossip" parent="TestNPC5/Passable/Events" index="0" instance=ExtResource("13_jd6ia")]
+message = SubResource("Resource_2hd2c")
+startDelay = 0.2
+
+[node name="Interactable" parent="TestNPC5" node_paths=PackedStringArray("overworld") instance=ExtResource("11_wwg0e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+overworld = NodePath("../..")
+
+[node name="Talk" parent="TestNPC5/Interactable/Events" index="0" instance=ExtResource("12_ektq3")]
+message = SubResource("Resource_wwyrj")
+startDelay = 0.5
+
+[node name="Talkable" parent="TestNPC5" instance=ExtResource("12_idacp")]
+
+[node name="Gossipable" parent="TestNPC5" instance=ExtResource("13_idacp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+
+[node name="PlayerCharacter" type="Node3D" parent="." node_paths=PackedStringArray("overworldManager", "navAgent", "charSprite", "interactPopup")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 4, 7, 5.10366)
 script = ExtResource("1_4duw5")
+overworldManager = NodePath("..")
 stepDistance = 1.0
 stepSpeed = 3.0
 height = 0.2
 navAgent = NodePath("NavigationAgent3D")
 charSprite = NodePath("PlayerSprite")
-playerCam = NodePath("CameraTarget")
+interactPopup = NodePath("InteractSprite")
 
 [node name="PlayerSprite" type="MeshInstance3D" parent="PlayerCharacter"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 mesh = SubResource("QuadMesh_ia5te")
 surface_material_override/0 = SubResource("StandardMaterial3D_v5pia")
 
-[node name="Area3D" type="Area3D" parent="PlayerCharacter"]
+[node name="Targetbox" type="Area3D" parent="PlayerCharacter"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
-collision_layer = 11
+collision_layer = 43
 input_ray_pickable = false
 monitoring = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCharacter/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCharacter/Targetbox"]
 shape = SubResource("CapsuleShape3D_550ke")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="PlayerCharacter"]
@@ -2037,6 +2203,23 @@ spot_angle = 30.0
 
 [node name="CameraTarget" type="Node3D" parent="PlayerCharacter"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="InteractionArea" type="Area3D" parent="PlayerCharacter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+collision_layer = 16
+collision_mask = 16
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCharacter/InteractionArea"]
+shape = SubResource("CylinderShape3D_383ph")
+debug_color = Color(1.49205e-06, 0.633141, 0.443766, 0.42)
+
+[node name="InteractSprite" type="MeshInstance3D" parent="PlayerCharacter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.05)
+visible = false
+mesh = SubResource("QuadMesh_jshv6")
+skeleton = NodePath("")
 
 [node name="PlayerCamera" type="Camera3D" parent="." node_paths=PackedStringArray("camTarget")]
 transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871558, 0, -0.0871558, 0.996195, 4, 7.75, 3)
@@ -3243,6 +3426,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_b8vbj")
 
 [node name="Investigation" type="Node3D" parent="."]
 
+[connection signal="area_entered" from="SceneNavigation/Templates/WallBlock/ActiveArea" to="SceneNavigation/Templates/WallBlock" method="PassbyEntry"]
+[connection signal="area_exited" from="SceneNavigation/Templates/WallBlock/ActiveArea" to="SceneNavigation/Templates/WallBlock" method="PassbyEntry" binds= [false]]
+[connection signal="area_entered" from="SceneNavigation/Templates/WallExitLeft/ActiveArea" to="SceneNavigation/Templates/WallExitLeft" method="PassbyEntry"]
+[connection signal="area_exited" from="SceneNavigation/Templates/WallExitLeft/ActiveArea" to="SceneNavigation/Templates/WallExitLeft" method="PassbyEntry" binds= [false]]
 [connection signal="area_entered" from="SceneNavigation/Templates/WallStairsBottom/StairsTrigger" to="SceneNavigation/Templates/WallStairsBottom" method="StairEntry"]
 [connection signal="area_entered" from="SceneNavigation/Templates/MapStairsTop/StairsTrigger" to="SceneNavigation/Templates/WallStairsBottom" method="StairEntry"]
 [connection signal="area_entered" from="SceneNavigation/Templates/MapStairsTop/StairsTrigger" to="SceneNavigation/Templates/MapStairsTop" method="StairEntry"]
@@ -3252,7 +3439,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_b8vbj")
 [connection signal="area_entered" from="StreetOverlay/StreetSection/StreetArea/CamLockTrigger" to="StreetOverlay/StreetSection" method="CameraLock"]
 [connection signal="area_entered" from="StreetOverlay/StreetSection/StreetArea/CamLockTrigger2" to="StreetOverlay/StreetSection" method="CameraLock"]
 [connection signal="area_entered" from="StreetOverlay/StreetSection/StreetArea/CamUnlockTrigger" to="StreetOverlay/StreetSection" method="CameraUnlock"]
-[connection signal="area_entered" from="StreetOverlay/StreetSection/StreetArea/CamUnlockTrigger2" to="StreetOverlay/StreetSection" method="CameraUnlock"]
 [connection signal="area_entered" from="StreetOverlay/StreetSection/StreetArea/InvestigationTrigger" to="StreetOverlay/StreetSection/StreetArea/InvestigationTrigger" method="LoadIScene"]
 [connection signal="area_entered" from="StreetOverlay/StreetSection2/StreetArea/FrontHideTrigger" to="StreetOverlay/StreetSection2" method="AllFront" binds= [false]]
 [connection signal="area_entered" from="StreetOverlay/StreetSection2/StreetArea/FrontShowTrigger" to="StreetOverlay/StreetSection2" method="AllFront" binds= [true]]
@@ -3260,3 +3446,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_b8vbj")
 [connection signal="area_entered" from="StreetOverlay/StreetSection2/StreetArea/BackShowTrigger" to="StreetOverlay/StreetSection2" method="AllBack" binds= [true]]
 [connection signal="area_entered" from="StreetOverlay/StreetSection2/CamLockTrigger" to="StreetOverlay/StreetSection2" method="CameraLock"]
 [connection signal="area_entered" from="StreetOverlay/StreetSection2/CamUnlockTrigger" to="StreetOverlay/StreetSection2" method="CameraUnlock"]
+[connection signal="area_entered" from="PlayerCharacter/InteractionArea" to="PlayerCharacter" method="EnterInteraction"]
+[connection signal="area_exited" from="PlayerCharacter/InteractionArea" to="PlayerCharacter" method="LeaveInteraction"]
+
+[editable path="TestNPC3/Passable"]
+[editable path="TestNPC3/Interactable"]
+[editable path="TestNPC4/Passable"]
+[editable path="TestNPC4/Interactable"]
+[editable path="TestNPC5/Passable"]
+[editable path="TestNPC5/Interactable"]

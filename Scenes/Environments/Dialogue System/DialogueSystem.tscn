@@ -1,14 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://c0257e6y177n7"]
+[gd_scene load_steps=16 format=3 uid="uid://c0257e6y177n7"]
 
 [ext_resource type="Script" uid="uid://byxpoivq5jjl1" path="res://Scenes/Environments/Dialogue System/Scripts/DialogueSystem.gd" id="1_2unn5"]
 [ext_resource type="Script" uid="uid://cnfvsc68h8k77" path="res://Global Assets/Classes/Message.gd" id="2_b7dqs"]
 [ext_resource type="Resource" uid="uid://cqjxnbupsfj21" path="res://Database/Dialogue/Conversations/TestChoiceConvo/Messages/TestChoice1A.tres" id="3_nt2l8"]
-[ext_resource type="Resource" uid="uid://co7raduu3bphd" path="res://Database/Dialogue/Conversations/TestConvo/Messages/TestConvo1A.tres" id="3_q3ahq"]
 [ext_resource type="PackedScene" uid="uid://ii5vtlsoq22g" path="res://Scenes/Environments/Dialogue System/SpeechBubble.tscn" id="4_byvbx"]
-[ext_resource type="Resource" uid="uid://horf0bm8hrdj" path="res://Database/Dialogue/Conversations/TestConvo/Messages/TestConvo2A.tres" id="4_sohr5"]
 [ext_resource type="Texture2D" uid="uid://dv7qc8k3f8gf3" path="res://Scenes/Environments/Dialogue System/Assets/SmallBubble.png" id="5_ds87g"]
-[ext_resource type="Resource" uid="uid://i0neopki1k2v" path="res://Database/Dialogue/Conversations/TestConvo/Messages/TestConvo3A.tres" id="5_f60tu"]
-[ext_resource type="Resource" uid="uid://bjnklpaai3714" path="res://Database/Dialogue/Conversations/TestConvo/Messages/TestConvo4A.tres" id="6_cklo4"]
 [ext_resource type="Script" uid="uid://bvyukuohb2i8b" path="res://Scenes/Environments/Dialogue System/Scripts/ChoiceManager.gd" id="9_52qto"]
 [ext_resource type="Texture2D" uid="uid://xh1cjpn0rcbh" path="res://Scenes/Environments/Dialogue System/Assets/VerBust.png" id="10_q3ahq"]
 [ext_resource type="Script" uid="uid://c4yfsclha6iss" path="res://Scenes/Environments/Dialogue System/Scripts/DialogueButton.gd" id="11_nt2l8"]
@@ -48,7 +44,7 @@ scrollTime = 0.3
 typingTime = 1.0
 anchors = [NodePath("InterviewAnchors/NewMessageAnchor/BubbleAnchor"), NodePath("InterviewAnchors/MessageAnchor/BubbleAnchor"), NodePath("InterviewAnchors/MessageAnchor2/BubbleAnchor"), NodePath("InterviewAnchors/MessageAnchor3/BubbleAnchor"), NodePath("InterviewAnchors/MessageAnchor4/BubbleAnchor"), NodePath("InterviewAnchors/DeleteMessageAnchor/BubbleAnchor")]
 speechBubbles = [NodePath("SpeechBubbles/SpeechBubble"), NodePath("SpeechBubbles/SpeechBubble2"), NodePath("SpeechBubbles/SpeechBubble3"), NodePath("SpeechBubbles/SpeechBubble4"), NodePath("SpeechBubbles/SpeechBubble5"), NodePath("SpeechBubbles/SpeechBubble6")]
-conversation = Array[ExtResource("2_b7dqs")]([ExtResource("3_nt2l8"), ExtResource("3_q3ahq"), ExtResource("4_sohr5"), ExtResource("5_f60tu"), ExtResource("6_cklo4")])
+conversation = Array[ExtResource("2_b7dqs")]([ExtResource("3_nt2l8")])
 
 [node name="InterviewAnchors" type="Node3D" parent="."]
 

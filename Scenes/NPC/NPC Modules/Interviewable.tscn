@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwxi2qlta8rfl"]
+
+[ext_resource type="Script" uid="uid://1dakk82tjh83" path="res://Scenes/NPC/Scripts/Interviewable.gd" id="1_0q06d"]
+
+[node name="Interviewable" type="Node"]
+script = ExtResource("1_0q06d")
+
+[node name="PreInterview" type="Node" parent="."]
+
+[node name="PostInterview" type="Node" parent="."]

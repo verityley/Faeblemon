@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1fibtxf521s3"]
+
+[ext_resource type="Script" uid="uid://qnetcd4opowv" path="res://Scenes/NPC/Scripts/Battleable.gd" id="1_3jhcf"]
+
+[node name="Battleable" type="Node"]
+script = ExtResource("1_3jhcf")
+
+[node name="PreBattle" type="Node" parent="."]
+
+[node name="PostBattle" type="Node" parent="."]
+
+[node name="Victory" type="Node" parent="PostBattle"]
+
+[node name="Defeat" type="Node" parent="PostBattle"]

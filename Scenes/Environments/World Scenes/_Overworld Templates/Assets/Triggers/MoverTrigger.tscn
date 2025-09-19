@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dfod11te3a8il"]
+
+[node name="MoverTrigger" type="Node3D"]
