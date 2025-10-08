@@ -75,3 +75,14 @@ enum Events{
 	Switch,
 	Tally
 }
+
+enum ZoneTypes{
+	Null=0,
+	Near,
+	Far,
+	Onstreet,
+	Upstreet,
+	Downstreet,
+	Uphill,
+	Downhill
+}

@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var overworld:OverworldManager
+#@export var overworld:OverworldManager
 @onready var hostNPC:NPC = get_parent()
 @onready var events: Node = $Events
 

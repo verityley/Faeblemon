@@ -13,8 +13,9 @@ func Gossip(npc:NPC, event:Event, message:Message):
 		return
 	print("Received Gossip Signal")
 	event.CompleteEvent()
-	if hostNPC.rumor != null:
-		message = hostNPC.rumor
+	if message == null:
+		print("Error! No message or rumor present.")
+		return
 	dialogueSystem.NewMessage(message)
 
 func Cancel(npc:NPC):
