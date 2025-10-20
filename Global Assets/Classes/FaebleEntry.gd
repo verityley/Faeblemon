@@ -90,7 +90,9 @@ var learnedSkills:Array[Skill] #These are all the skills they know by their leve
 @export var currentStatus:int
 @export var currentBuildup:int
 
-@export_category("Description")
+@export_category("Description and Tracking")
 @export_multiline var description:String #Look into parsing string and revealing bits by level
-@export_multiline var tags:Array[String]
-@export_multiline var rumors:Array[String]
+@export_multiline var storyChapters:Array[String]
+#@export var tags:Array[Enums.FaebleTags]
+@export_multiline var trackDescriptions:Array[String]
+@export var trackSprites:Array[CompressedTexture2D]

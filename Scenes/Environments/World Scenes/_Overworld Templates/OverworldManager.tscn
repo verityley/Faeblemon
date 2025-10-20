@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://bcu2q5rcwh42l"]
+[gd_scene load_steps=108 format=3 uid="uid://bcu2q5rcwh42l"]
 
 [ext_resource type="Script" uid="uid://dr5it17v6b7rj" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/PlayerCharacter.gd" id="1_4duw5"]
 [ext_resource type="Script" uid="uid://cflmaoffnjo2p" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/OverworldManager.gd" id="1_irke8"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://b7sb7r8r5rb61" path="res://Global Assets/Events/Gossip.tscn" id="13_jd6ia"]
 [ext_resource type="Script" uid="uid://c1iuwp6awnsbq" path="res://Scenes/Environments/World Scenes/_Overworld Templates/RumorSystem.gd" id="17_wwyrj"]
 [ext_resource type="Script" uid="uid://b3aosymillvia" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Threshold.gd" id="19_jd6ia"]
+[ext_resource type="Resource" uid="uid://bjgo376dt3vew" path="res://Database/Faebles/094Ananseed.tres" id="19_pxmyk"]
 [ext_resource type="Script" uid="uid://cw01dxa3jywdw" path="res://Scenes/Environments/World Scenes/_Overworld Templates/RumorZone.gd" id="20_q5glc"]
 [ext_resource type="Texture2D" uid="uid://x5uqtrwjlqpp" path="res://Global Assets/Graphics/UI Graphics/DamageIcon.png" id="22_2hd2c"]
 
@@ -343,16 +344,88 @@ tallyLabel = ""
 tallyValue = 0
 metadata/_custom_type_script = "uid://cnfvsc68h8k77"
 
+[sub_resource type="Resource" id="Resource_2w4ur"]
+script = ExtResource("8_27np1")
+messageID = ""
+messageText = "I remember it was beneath a bridge..."
+messageSpeed = 0.0
+messageMute = false
+messageInstant = false
+messageSkip = false
+hasChoices = false
+choiceTargets = Array[ExtResource("8_27np1")]([])
+choiceText = Array[String]([])
+switchLabel = ""
+switchValue = false
+tallyLabel = ""
+tallyValue = 0
+metadata/_custom_type_script = "uid://cnfvsc68h8k77"
+
+[sub_resource type="Resource" id="Resource_x38m7"]
+script = ExtResource("8_27np1")
+messageID = ""
+messageText = "I passed by some Ananseed when I saw it!"
+messageSpeed = 0.0
+messageMute = false
+messageInstant = false
+messageSkip = false
+hasChoices = false
+choiceTargets = Array[ExtResource("8_27np1")]([])
+choiceText = Array[String]([])
+switchLabel = ""
+switchValue = false
+tallyLabel = ""
+tallyValue = 0
+metadata/_custom_type_script = "uid://cnfvsc68h8k77"
+
+[sub_resource type="Resource" id="Resource_qu6qa"]
+script = ExtResource("8_27np1")
+messageID = ""
+messageText = "It was just down the road from the stairs..."
+messageSpeed = 0.0
+messageMute = false
+messageInstant = false
+messageSkip = false
+hasChoices = false
+choiceTargets = Array[ExtResource("8_27np1")]([])
+choiceText = Array[String]([])
+switchLabel = ""
+switchValue = false
+tallyLabel = ""
+tallyValue = 0
+metadata/_custom_type_script = "uid://cnfvsc68h8k77"
+
+[sub_resource type="Resource" id="Resource_pgqmq"]
+script = ExtResource("8_27np1")
+messageID = ""
+messageText = "I think I saw it near where you started!"
+messageSpeed = 0.0
+messageMute = false
+messageInstant = false
+messageSkip = false
+hasChoices = false
+choiceTargets = Array[ExtResource("8_27np1")]([])
+choiceText = Array[String]([])
+switchLabel = ""
+switchValue = false
+tallyLabel = ""
+tallyValue = 0
+metadata/_custom_type_script = "uid://cnfvsc68h8k77"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_r8pb2"]
 size = Vector3(3, 3, 0.5)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_jd6ia"]
-height = 3.0
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pxmyk"]
+height = 16.0
 radius = 15.0
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_q5glc"]
-height = 3.0
-radius = 50.0
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ay3o8"]
+height = 32.0
+radius = 30.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2w4ur"]
+height = 32.0
+radius = 60.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxmyk"]
 transparency = 2
@@ -2286,24 +2359,26 @@ camOffset = Vector3(0, 1.25, 3)
 
 [node name="NPCController" type="Node3D" parent="ScheduleSystem"]
 
-[node name="RumorSystem" type="Node3D" parent="." node_paths=PackedStringArray("telltales", "thresholds")]
+[node name="RumorSystem" type="Node3D" parent="." node_paths=PackedStringArray("allTelltales", "allTracks", "allThresholds")]
 script = ExtResource("17_wwyrj")
 zoneMessages = Dictionary[int, ExtResource("8_27np1")]({
 1: SubResource("Resource_pxmyk"),
 2: SubResource("Resource_ay3o8")
 })
-telltales = [NodePath("Telltales/Telltale"), NodePath("Telltales/Telltale2"), NodePath("Telltales/Telltale3"), NodePath("Telltales/Telltale4"), NodePath("Telltales/Telltale5")]
-thresholds = [NodePath("Threshold")]
+allTelltales = [NodePath("Telltales/Telltale"), NodePath("Telltales/Telltale2"), NodePath("Telltales/Telltale3"), NodePath("Telltales/Telltale4"), NodePath("Telltales/Telltale5")]
+allTracks = [NodePath("Tracks/Track"), NodePath("Tracks/Track2")]
+allThresholds = [NodePath("Threshold")]
 
-[node name="Threshold" type="Node3D" parent="RumorSystem" node_paths=PackedStringArray("rumorSystem", "rumorZones")]
+[node name="Threshold" type="Node3D" parent="RumorSystem" node_paths=PackedStringArray("rumorZones")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 8, -3)
 script = ExtResource("19_jd6ia")
-rumorSystem = NodePath("..")
+faeblePresent = ExtResource("19_pxmyk")
 rumorZones = {
-1: NodePath("Rumor Zone"),
-2: NodePath("Rumor Zone2"),
-3: null
+1: NodePath("CloseZone"),
+2: NodePath("MidZone"),
+3: NodePath("FarZone")
 }
+landmarks = Array[ExtResource("8_27np1")]([SubResource("Resource_2w4ur"), SubResource("Resource_x38m7"), SubResource("Resource_qu6qa"), SubResource("Resource_pgqmq")])
 
 [node name="Barrier" type="Node3D" parent="RumorSystem/Threshold"]
 
@@ -2321,7 +2396,7 @@ stage = ExtResource("5_v5pia")
 shape = SubResource("BoxShape3D_r8pb2")
 debug_color = Color(0.849256, 0.372803, 7.70092e-07, 1)
 
-[node name="Rumor Zone" type="Area3D" parent="RumorSystem/Threshold" node_paths=PackedStringArray("rumorSystem")]
+[node name="CloseZone" type="Area3D" parent="RumorSystem/Threshold" node_paths=PackedStringArray("rumorSystem")]
 collision_layer = 32
 collision_mask = 32
 monitorable = false
@@ -2329,10 +2404,10 @@ script = ExtResource("20_q5glc")
 rumorSystem = NodePath("../..")
 zoneType = 1
 
-[node name="Close Radius" type="CollisionShape3D" parent="RumorSystem/Threshold/Rumor Zone"]
-shape = SubResource("CylinderShape3D_jd6ia")
+[node name="Close Radius" type="CollisionShape3D" parent="RumorSystem/Threshold/CloseZone"]
+shape = SubResource("CylinderShape3D_pxmyk")
 
-[node name="Rumor Zone2" type="Area3D" parent="RumorSystem/Threshold" node_paths=PackedStringArray("rumorSystem")]
+[node name="MidZone" type="Area3D" parent="RumorSystem/Threshold" node_paths=PackedStringArray("rumorSystem")]
 collision_layer = 32
 collision_mask = 32
 monitorable = false
@@ -2340,8 +2415,19 @@ script = ExtResource("20_q5glc")
 rumorSystem = NodePath("../..")
 zoneType = 2
 
-[node name="Far Radius" type="CollisionShape3D" parent="RumorSystem/Threshold/Rumor Zone2"]
-shape = SubResource("CylinderShape3D_q5glc")
+[node name="Middle Radius" type="CollisionShape3D" parent="RumorSystem/Threshold/MidZone"]
+shape = SubResource("CylinderShape3D_ay3o8")
+
+[node name="FarZone" type="Area3D" parent="RumorSystem/Threshold" node_paths=PackedStringArray("rumorSystem")]
+collision_layer = 32
+collision_mask = 32
+monitorable = false
+script = ExtResource("20_q5glc")
+rumorSystem = NodePath("../..")
+zoneType = 3
+
+[node name="Far Radius" type="CollisionShape3D" parent="RumorSystem/Threshold/FarZone"]
+shape = SubResource("CylinderShape3D_2w4ur")
 
 [node name="Telltales" type="Node3D" parent="RumorSystem"]
 
@@ -2491,7 +2577,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.27586, 7.07622, -0.078259)
 script = ExtResource("6_wwg0e")
 overworld = NodePath("../../..")
-NPCName = "Telltale"
+NPCName = "Tracks"
+stepSpeed = 0.0
 charSprite = NodePath("NPCSprite")
 
 [node name="NPCSprite" type="MeshInstance3D" parent="RumorSystem/Tracks/Track"]
@@ -2505,6 +2592,27 @@ overworld = NodePath("../../../..")
 startDelay = 0.2
 
 [node name="Gossipable" parent="RumorSystem/Tracks/Track" instance=ExtResource("13_idacp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+
+[node name="Track2" type="Node3D" parent="RumorSystem/Tracks" node_paths=PackedStringArray("overworld", "charSprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9126, 7.07622, 12.8595)
+script = ExtResource("6_wwg0e")
+overworld = NodePath("../../..")
+NPCName = "Tracks"
+stepSpeed = 0.0
+charSprite = NodePath("NPCSprite")
+
+[node name="NPCSprite" type="MeshInstance3D" parent="RumorSystem/Tracks/Track2"]
+mesh = SubResource("QuadMesh_ia5te")
+surface_material_override/0 = SubResource("StandardMaterial3D_ay3o8")
+
+[node name="Interactable" parent="RumorSystem/Tracks/Track2" node_paths=PackedStringArray("overworld") instance=ExtResource("11_wwg0e")]
+overworld = NodePath("../../../..")
+
+[node name="Gossip" parent="RumorSystem/Tracks/Track2/Interactable/Events" index="0" instance=ExtResource("13_jd6ia")]
+startDelay = 0.2
+
+[node name="Gossipable" parent="RumorSystem/Tracks/Track2" instance=ExtResource("13_idacp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
 
 [node name="SceneFX" type="Node3D" parent="."]
@@ -3743,10 +3851,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_b8vbj")
 [connection signal="area_entered" from="PlayerCharacter/InteractionArea" to="PlayerCharacter" method="EnterInteraction"]
 [connection signal="area_exited" from="PlayerCharacter/InteractionArea" to="PlayerCharacter" method="LeaveInteraction"]
 [connection signal="area_entered" from="RumorSystem/Threshold/InvestigationTrigger" to="RumorSystem/Threshold/InvestigationTrigger" method="LoadIScene"]
-[connection signal="area_entered" from="RumorSystem/Threshold/Rumor Zone" to="RumorSystem/Threshold/Rumor Zone" method="NPCTally"]
-[connection signal="area_exited" from="RumorSystem/Threshold/Rumor Zone" to="RumorSystem/Threshold/Rumor Zone" method="NPCTally" binds= [false]]
-[connection signal="area_entered" from="RumorSystem/Threshold/Rumor Zone2" to="RumorSystem/Threshold/Rumor Zone2" method="NPCTally"]
-[connection signal="area_exited" from="RumorSystem/Threshold/Rumor Zone2" to="RumorSystem/Threshold/Rumor Zone2" method="NPCTally" binds= [false]]
+[connection signal="area_entered" from="RumorSystem/Threshold/CloseZone" to="RumorSystem/Threshold/CloseZone" method="NPCTally"]
+[connection signal="area_exited" from="RumorSystem/Threshold/CloseZone" to="RumorSystem/Threshold/CloseZone" method="NPCTally" binds= [false]]
+[connection signal="area_entered" from="RumorSystem/Threshold/MidZone" to="RumorSystem/Threshold/MidZone" method="NPCTally"]
+[connection signal="area_exited" from="RumorSystem/Threshold/MidZone" to="RumorSystem/Threshold/MidZone" method="NPCTally" binds= [false]]
+[connection signal="area_entered" from="RumorSystem/Threshold/FarZone" to="RumorSystem/Threshold/FarZone" method="NPCTally"]
+[connection signal="area_exited" from="RumorSystem/Threshold/FarZone" to="RumorSystem/Threshold/FarZone" method="NPCTally" binds= [false]]
 
 [editable path="TestNPC3/Passable"]
 [editable path="TestNPC3/Interactable"]
@@ -3760,3 +3870,4 @@ surface_material_override/0 = SubResource("StandardMaterial3D_b8vbj")
 [editable path="RumorSystem/Telltales/Telltale4/Passable"]
 [editable path="RumorSystem/Telltales/Telltale5/Passable"]
 [editable path="RumorSystem/Tracks/Track/Interactable"]
+[editable path="RumorSystem/Tracks/Track2/Interactable"]

@@ -58,6 +58,16 @@ enum Behaviors{
 	Aggressive
 }
 
+enum FaebleTags{
+	Test=-1,
+	Big,
+	Small,
+	Short,
+	Tall,
+	Long,
+	Wide
+}
+
 enum Transitions {
 	None=0,
 	Accordion
@@ -79,10 +89,11 @@ enum Events{
 enum ZoneTypes{
 	Null=0,
 	Near,
+	Mid,
 	Far,
 	Onstreet,
 	Upstreet,
 	Downstreet,
 	Uphill,
-	Downhill
+	Downhill,
 }
