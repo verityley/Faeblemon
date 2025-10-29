@@ -4,7 +4,7 @@ extends Event
 @export var targetNPC:NPC
 
 func InvokeEvent(target:NPC):
-	print("Sending Gossip Signal")
+	#print("Sending Gossip Signal")
 	if targetNPC != null:
 		target = targetNPC
 	if target.rumor != null:

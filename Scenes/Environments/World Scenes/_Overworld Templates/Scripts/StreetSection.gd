@@ -11,12 +11,12 @@ func _physics_process(delta: float) -> void:
 		streetCam.global_position.x = overworldManager.player.global_position.x
 
 func AllFront(body, show:bool=false):
-	print("Street Trigger Entry")
+	#print("Street Trigger Entry")
 	for block in MapBlocks:
 		block.SlideFront(show)
 
 func AllBack(body, show:bool=false):
-	print("Street Trigger Entry")
+	#print("Street Trigger Entry")
 	for block in MapBlocks:
 		block.SlideBack(show)
 

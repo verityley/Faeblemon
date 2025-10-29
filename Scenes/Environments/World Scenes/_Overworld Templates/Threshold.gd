@@ -22,6 +22,7 @@ func AssignRumor(area:int, rumor:Message=null, tracks:bool=false, excludeArea:in
 		for landmark in tempMarks:
 			if usedLandmarks.has(landmark) == false:
 				rumor = landmark
+				print("Assigning Landmark rumor: ", rumor)
 				usedLandmarks.append(landmark)
 				break
 		if rumor == null:

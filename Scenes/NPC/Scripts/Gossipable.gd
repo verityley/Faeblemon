@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func Gossip(npc:NPC, event:Event, message:Message):
 	if npc != hostNPC:
-		print("Not for me!")
+		#print("Not for me!")
 		return
 	print("Received Gossip Signal")
 	event.CompleteEvent()
@@ -20,7 +20,7 @@ func Gossip(npc:NPC, event:Event, message:Message):
 
 func Cancel(npc:NPC):
 	if npc != hostNPC:
-		print("Not for me!")
+		#print("Not for me!")
 		return
 	print("Canceling Current Gossip")
 	dialogueSystem.ClearMessage()

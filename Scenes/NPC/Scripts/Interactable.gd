@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func Interact(npc:NPC):
 	if npc != hostNPC:
-		print("Not for me!")
+		#print("Not for me!")
 		return
 	print("Received Interaction Signal")
 	hostNPC.lockdown = true

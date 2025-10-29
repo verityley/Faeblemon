@@ -9,11 +9,16 @@ class_name OverworldManager
 @export var navmesh:NavigationRegion3D
 @export var sceneFX:Node3D
 @export var investigation:Node3D
+@export var rumorSystem:RumorSystem
 
 var allNPCs:Array[NPC]
 
 func LoadOverworld(oScene:OverworldManager, destination:Vector3):
 	pass
+
+func CreateNPC(NPCType:NPC, location=null):
+	if location == null:
+		location = NavigationServer3D.region_get_random_point(navmesh,0,true)
 
 func LoadInvestigation(stage:Stage):
 	player.lockdown = true
