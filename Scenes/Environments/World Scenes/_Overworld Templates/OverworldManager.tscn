@@ -1,9 +1,11 @@
-[gd_scene load_steps=95 format=3 uid="uid://bcu2q5rcwh42l"]
+[gd_scene load_steps=111 format=3 uid="uid://bcu2q5rcwh42l"]
 
 [ext_resource type="Script" uid="uid://dr5it17v6b7rj" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/PlayerCharacter.gd" id="1_4duw5"]
 [ext_resource type="Script" uid="uid://cflmaoffnjo2p" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/OverworldManager.gd" id="1_irke8"]
 [ext_resource type="Script" uid="uid://d0ptbwb3i3m2" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/MapBlock.gd" id="1_t5aum"]
 [ext_resource type="Script" uid="uid://wvks83pa45wm" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/StreetSection.gd" id="2_1ydtu"]
+[ext_resource type="Script" uid="uid://dllav6wustq5b" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/InvestigationTrigger.gd" id="4_ia5te"]
+[ext_resource type="Resource" uid="uid://4erh8hya8gt4" path="res://Scenes/Environments/World Scenes/Forest/Resources/SparseForest.tres" id="5_v5pia"]
 [ext_resource type="Texture2D" uid="uid://cqal6qlsn6lgn" path="res://Global Assets/Graphics/Monster Graphics/aconidFront.png" id="6_383ph"]
 [ext_resource type="Script" uid="uid://dglyiulvu4p4u" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/PlayerCamera.gd" id="6_ia5te"]
 [ext_resource type="Script" uid="uid://cdmm0ud1e26by" path="res://Scenes/NPC/Scripts/NPCManager.gd" id="6_wwg0e"]
@@ -17,7 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://cx71ldohdx331" path="res://Scenes/NPC/NPC Modules/Gossipable.tscn" id="13_idacp"]
 [ext_resource type="PackedScene" uid="uid://b7sb7r8r5rb61" path="res://Global Assets/Events/Gossip.tscn" id="13_jd6ia"]
 [ext_resource type="Script" uid="uid://c1iuwp6awnsbq" path="res://Scenes/Environments/World Scenes/_Overworld Templates/RumorSystem.gd" id="17_wwyrj"]
-[ext_resource type="Script" uid="uid://csw3n6fywf82d" path="res://Global Assets/Classes/Questline.gd" id="18_ektq3"]
+[ext_resource type="Script" uid="uid://b3aosymillvia" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Threshold.gd" id="19_jd6ia"]
+[ext_resource type="Resource" uid="uid://bjgo376dt3vew" path="res://Database/Faebles/094Ananseed.tres" id="19_pxmyk"]
+[ext_resource type="Script" uid="uid://cw01dxa3jywdw" path="res://Scenes/Environments/World Scenes/_Overworld Templates/RumorZone.gd" id="20_q5glc"]
+[ext_resource type="Texture2D" uid="uid://x5uqtrwjlqpp" path="res://Global Assets/Graphics/UI Graphics/DamageIcon.png" id="22_2hd2c"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_4duw5"]
 vertices = PackedVector3Array(2.8, 8.81527, -5.6, 5.3, 8.81527, -5.6, 5.3, 8.81527, -7.7, 2.8, 8.81527, -7.7, 2.6, 8.81527, -4.7, 1.8, 8.81527, -4.7, 1.8, 8.81527, -2.3, 6.3, 8.81527, -2.3, 6.3, 8.81527, -4.7, 5.5, 8.81527, -4.7, 5.3, 8.81527, -4.9, 2.8, 8.81527, -4.9, -6.6, 8.81527, -3.3, -5.8, 8.81527, -3.3, -5.8, 8.81527, -4.7, -6.8, 8.81527, -3.1, -15.2, 8.81527, -4.7, -15.2, 8.81527, -2.3, -6.8, 8.81527, -2.3, -3.4, 8.81527, -3.3, -3.2, 8.81527, -3.1, -3.2, 8.81527, -2.3, 7.8, 3.80527, -1.7, 10.2, 3.80527, -1.7, 10.2, 3.80527, -3.7, 7.8, 3.80527, -3.7, 7.6, 3.80527, -0.7, 6.8, 3.80527, -0.7, 6.8, 3.80527, 1.7, 11.2, 3.80527, 1.7, 11.2, 3.80527, -0.7, 10.4, 3.80527, -0.7, 10.2, 3.80527, -0.9, 7.8, 3.80527, -0.9, -7.8, 3.80527, -0.9, -7.8, 3.80527, -1.7, -8.2, 3.80527, -1.7, -8.2, 3.80527, -0.9, 2.5, 3.80527, 1.7, 2.5, 3.80527, -0.7, -7.6, 3.80527, -0.7, -15.2, 3.80527, 1.7, -8.4, 3.80527, -0.7, -15.2, 3.80527, -0.7, 2.8, 3.80527, 1.9, 2.8, 3.80527, 2.6, 5.3, 3.80527, 2.6, 5.3, 3.80527, 1.9, 5.5, 3.80527, 1.7, 23.2, 3.80527, 1.7, 23.2, 3.80527, -0.7, 2.8, 3.80527, 11.4, 5.3, 3.80527, 11.4, 2.6, 3.80527, 12.3, 1.8, 3.80527, 12.3, 1.8, 3.80527, 14.7, 5.3, 3.80527, 12.1, 2.8, 3.80527, 12.1, 6.8, 3.80527, 14.7, 6.8, 3.80527, 12.3, 5.5, 3.80527, 12.3, -6.6, 3.80527, 13.7, -5.8, 3.80527, 13.7, -5.8, 3.80527, 12.3, -6.8, 3.80527, 13.9, -15.2, 3.80527, 12.3, -15.2, 3.80527, 14.7, -6.8, 3.80527, 14.7, -3.4, 3.80527, 13.7, -3.2, 3.80527, 13.9, -3.2, 3.80527, 14.7, 10.4, 3.80527, 14.7, 11.2, 3.80527, 14.7, 11.2, 3.80527, 12.3, 7.6, 3.80527, 14.7, 7.8, 3.80527, 14.9, 10.2, 3.80527, 14.9, 7.8, 3.80527, 16.7, 10.2, 3.80527, 16.7, 23.2, 3.80527, 14.7, 23.2, 3.80527, 12.3)
@@ -389,6 +394,109 @@ switchValue = false
 tallyLabel = ""
 tallyValue = 0
 metadata/_custom_type_script = "uid://cnfvsc68h8k77"
+
+[sub_resource type="Resource" id="Resource_2w4ur"]
+script = ExtResource("8_27np1")
+messageID = ""
+messageText = "I remember it was beneath a bridge..."
+messageSpeed = 0.0
+messageMute = false
+messageInstant = false
+messageSkip = false
+hasChoices = false
+choiceTargets = Array[ExtResource("8_27np1")]([])
+choiceText = Array[String]([])
+switchLabel = ""
+switchValue = false
+tallyLabel = ""
+tallyValue = 0
+metadata/_custom_type_script = "uid://cnfvsc68h8k77"
+
+[sub_resource type="Resource" id="Resource_x38m7"]
+script = ExtResource("8_27np1")
+messageID = ""
+messageText = "I passed by some Ananseed when I saw it!"
+messageSpeed = 0.0
+messageMute = false
+messageInstant = false
+messageSkip = false
+hasChoices = false
+choiceTargets = Array[ExtResource("8_27np1")]([])
+choiceText = Array[String]([])
+switchLabel = ""
+switchValue = false
+tallyLabel = ""
+tallyValue = 0
+metadata/_custom_type_script = "uid://cnfvsc68h8k77"
+
+[sub_resource type="Resource" id="Resource_qu6qa"]
+script = ExtResource("8_27np1")
+messageID = ""
+messageText = "It was just down the road from the stairs..."
+messageSpeed = 0.0
+messageMute = false
+messageInstant = false
+messageSkip = false
+hasChoices = false
+choiceTargets = Array[ExtResource("8_27np1")]([])
+choiceText = Array[String]([])
+switchLabel = ""
+switchValue = false
+tallyLabel = ""
+tallyValue = 0
+metadata/_custom_type_script = "uid://cnfvsc68h8k77"
+
+[sub_resource type="Resource" id="Resource_pgqmq"]
+script = ExtResource("8_27np1")
+messageID = ""
+messageText = "I think I saw it near where you started!"
+messageSpeed = 0.0
+messageMute = false
+messageInstant = false
+messageSkip = false
+hasChoices = false
+choiceTargets = Array[ExtResource("8_27np1")]([])
+choiceText = Array[String]([])
+switchLabel = ""
+switchValue = false
+tallyLabel = ""
+tallyValue = 0
+metadata/_custom_type_script = "uid://cnfvsc68h8k77"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r8pb2"]
+size = Vector3(3, 3, 0.5)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pxmyk"]
+height = 16.0
+radius = 15.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ay3o8"]
+height = 32.0
+radius = 30.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2w4ur"]
+height = 32.0
+radius = 60.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxmyk"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("7_v5pia")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jnu6a"]
+radius = 0.15
+height = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ay3o8"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("22_2hd2c")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ia5te"]
 size = Vector3(4.5, 2, 3)
@@ -2302,21 +2410,7 @@ camOffset = Vector3(0, 1.25, 3)
 
 [node name="NPCController" type="Node3D" parent="ScheduleSystem"]
 
-[node name="RumorSystem" type="Node3D" parent="." node_paths=PackedStringArray("allTelltales", "allTracks", "allThresholds")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.50961, 0, 0)
-script = ExtResource("17_wwyrj")
-zoneMessages = Dictionary[int, ExtResource("8_27np1")]({
-1: SubResource("Resource_pxmyk"),
-2: SubResource("Resource_ay3o8")
-})
-trackingPrefaces = Dictionary[int, ExtResource("8_27np1")]({
-1: SubResource("Resource_kws5b"),
-2: SubResource("Resource_ji5s3"),
-3: SubResource("Resource_x6pto")
-})
-allTelltales = [null, null, null, null, null]
-allTracks = [null, null]
-allThresholds = [null]
+[node name="RumorSystem" type="Node3D" parent="."]
 
 [node name="Threshold" type="Node3D" parent="RumorSystem"]
 
@@ -3516,25 +3610,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_b8vbj")
 
 [node name="Investigation" type="Node3D" parent="."]
 
-[node name="QuestTemplate" type="Node3D" parent="."]
-script = ExtResource("18_ektq3")
-
-[node name="SequenceBlock" type="Node3D" parent="QuestTemplate"]
-
-[node name="KeyNPCs" type="Node3D" parent="QuestTemplate/SequenceBlock"]
-
-[node name="WorldAdditions" type="Node3D" parent="QuestTemplate/SequenceBlock"]
-
-[node name="TriggerZones" type="Node3D" parent="QuestTemplate/SequenceBlock"]
-
-[node name="SequenceBlock2" type="Node3D" parent="QuestTemplate"]
-
-[node name="KeyNPCs" type="Node3D" parent="QuestTemplate/SequenceBlock2"]
-
-[node name="WorldAdditions" type="Node3D" parent="QuestTemplate/SequenceBlock2"]
-
-[node name="TriggerZones" type="Node3D" parent="QuestTemplate/SequenceBlock2"]
-
 [connection signal="area_entered" from="SceneNavigation/Templates/WallBlock/ActiveArea" to="SceneNavigation/Templates/WallBlock" method="PassbyEntry"]
 [connection signal="area_exited" from="SceneNavigation/Templates/WallBlock/ActiveArea" to="SceneNavigation/Templates/WallBlock" method="PassbyEntry" binds= [false]]
 [connection signal="area_entered" from="SceneNavigation/Templates/WallExitLeft/ActiveArea" to="SceneNavigation/Templates/WallExitLeft" method="PassbyEntry"]
@@ -3580,6 +3655,13 @@ script = ExtResource("18_ektq3")
 [connection signal="area_entered" from="StreetOverlay/StreetSection2/CamUnlockTrigger" to="StreetOverlay/StreetSection2" method="CameraUnlock"]
 [connection signal="area_entered" from="PlayerCharacter/InteractionArea" to="PlayerCharacter" method="EnterInteraction"]
 [connection signal="area_exited" from="PlayerCharacter/InteractionArea" to="PlayerCharacter" method="LeaveInteraction"]
+[connection signal="area_entered" from="RumorSystem/Threshold/InvestigationTrigger" to="RumorSystem/Threshold/InvestigationTrigger" method="LoadIScene"]
+[connection signal="area_entered" from="RumorSystem/Threshold/CloseZone" to="RumorSystem/Threshold/CloseZone" method="NPCTally"]
+[connection signal="area_exited" from="RumorSystem/Threshold/CloseZone" to="RumorSystem/Threshold/CloseZone" method="NPCTally" binds= [false]]
+[connection signal="area_entered" from="RumorSystem/Threshold/MidZone" to="RumorSystem/Threshold/MidZone" method="NPCTally"]
+[connection signal="area_exited" from="RumorSystem/Threshold/MidZone" to="RumorSystem/Threshold/MidZone" method="NPCTally" binds= [false]]
+[connection signal="area_entered" from="RumorSystem/Threshold/FarZone" to="RumorSystem/Threshold/FarZone" method="NPCTally"]
+[connection signal="area_exited" from="RumorSystem/Threshold/FarZone" to="RumorSystem/Threshold/FarZone" method="NPCTally" binds= [false]]
 
 [editable path="TestNPC3/Passable"]
 [editable path="TestNPC3/Interactable"]
@@ -3587,3 +3669,10 @@ script = ExtResource("18_ektq3")
 [editable path="TestNPC4/Interactable"]
 [editable path="TestNPC5/Passable"]
 [editable path="TestNPC5/Interactable"]
+[editable path="RumorSystem/Telltales/Telltale/Passable"]
+[editable path="RumorSystem/Telltales/Telltale2/Passable"]
+[editable path="RumorSystem/Telltales/Telltale3/Passable"]
+[editable path="RumorSystem/Telltales/Telltale4/Passable"]
+[editable path="RumorSystem/Telltales/Telltale5/Passable"]
+[editable path="RumorSystem/Tracks/Track/Interactable"]
+[editable path="RumorSystem/Tracks/Track2/Interactable"]

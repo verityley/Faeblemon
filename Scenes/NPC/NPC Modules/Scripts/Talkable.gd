@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func Talk(npc:NPC, event:Event, message:Message):
 	if npc != hostNPC:
-		#print("Not for me!")
+		print("Not for me!")
 		return
 	print("Received Talk Signal")
 	dialogueSystem.talking = true
