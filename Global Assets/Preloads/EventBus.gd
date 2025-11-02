@@ -18,6 +18,7 @@ signal GossipNPC(npc:NPC, event:Event, message:Message)
 signal TalkNPC(npc:NPC, event:Event, message:Message)
 signal InterviewNPC(npc:NPC, event:Event, message:Message, speaker:Speaker, stage:Stage)
 signal CancelEvents(npc:NPC)
+signal ProgressQuest(quest:Questline)
 
 
 #Overworld Signals
