@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://bcu2q5rcwh42l"]
+[gd_scene load_steps=108 format=3 uid="uid://bcu2q5rcwh42l"]
 
 [ext_resource type="Script" uid="uid://dr5it17v6b7rj" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/PlayerCharacter.gd" id="1_4duw5"]
 [ext_resource type="Script" uid="uid://cflmaoffnjo2p" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/OverworldManager.gd" id="1_irke8"]
@@ -331,57 +331,6 @@ metadata/_custom_type_script = "uid://cnfvsc68h8k77"
 script = ExtResource("8_27np1")
 messageID = ""
 messageText = "The Faeble was pretty far from here."
-messageSpeed = 0.0
-messageMute = false
-messageInstant = false
-messageSkip = false
-hasChoices = false
-choiceTargets = Array[ExtResource("8_27np1")]([])
-choiceText = Array[String]([])
-switchLabel = ""
-switchValue = false
-tallyLabel = ""
-tallyValue = 0
-metadata/_custom_type_script = "uid://cnfvsc68h8k77"
-
-[sub_resource type="Resource" id="Resource_kws5b"]
-script = ExtResource("8_27np1")
-messageID = ""
-messageText = "The tracks are fresh!"
-messageSpeed = 0.0
-messageMute = false
-messageInstant = false
-messageSkip = false
-hasChoices = false
-choiceTargets = Array[ExtResource("8_27np1")]([])
-choiceText = Array[String]([])
-switchLabel = ""
-switchValue = false
-tallyLabel = ""
-tallyValue = 0
-metadata/_custom_type_script = "uid://cnfvsc68h8k77"
-
-[sub_resource type="Resource" id="Resource_ji5s3"]
-script = ExtResource("8_27np1")
-messageID = ""
-messageText = "A set of tracks."
-messageSpeed = 0.0
-messageMute = false
-messageInstant = false
-messageSkip = false
-hasChoices = false
-choiceTargets = Array[ExtResource("8_27np1")]([])
-choiceText = Array[String]([])
-switchLabel = ""
-switchValue = false
-tallyLabel = ""
-tallyValue = 0
-metadata/_custom_type_script = "uid://cnfvsc68h8k77"
-
-[sub_resource type="Resource" id="Resource_x6pto"]
-script = ExtResource("8_27np1")
-messageID = ""
-messageText = "The tracks have faded..."
 messageSpeed = 0.0
 messageMute = false
 messageInstant = false
@@ -2415,11 +2364,6 @@ script = ExtResource("17_wwyrj")
 zoneMessages = Dictionary[int, ExtResource("8_27np1")]({
 1: SubResource("Resource_pxmyk"),
 2: SubResource("Resource_ay3o8")
-})
-trackingPrefaces = Dictionary[int, ExtResource("8_27np1")]({
-1: SubResource("Resource_kws5b"),
-2: SubResource("Resource_ji5s3"),
-3: SubResource("Resource_x6pto")
 })
 allTelltales = [NodePath("Telltales/Telltale"), NodePath("Telltales/Telltale2"), NodePath("Telltales/Telltale3"), NodePath("Telltales/Telltale4"), NodePath("Telltales/Telltale5")]
 allTracks = [NodePath("Tracks/Track"), NodePath("Tracks/Track2")]
