@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5swfsa1geh3s"]
+
+[ext_resource type="Script" uid="uid://csw3n6fywf82d" path="res://Scenes/Quests/Scripts/Questline.gd" id="1_w3566"]
+
+[node name="QuestTemplate" type="Node3D"]
+script = ExtResource("1_w3566")
+
+[node name="SequenceBlock" type="Node3D" parent="."]
+
+[node name="KeyNPCs" type="Node3D" parent="SequenceBlock"]
+
+[node name="WorldAdditions" type="Node3D" parent="SequenceBlock"]
+
+[node name="TriggerZones" type="Node3D" parent="SequenceBlock"]
+
+[node name="SequenceBlock2" type="Node3D" parent="."]
+
+[node name="KeyNPCs" type="Node3D" parent="SequenceBlock2"]
+
+[node name="WorldAdditions" type="Node3D" parent="SequenceBlock2"]
+
+[node name="TriggerZones" type="Node3D" parent="SequenceBlock2"]
