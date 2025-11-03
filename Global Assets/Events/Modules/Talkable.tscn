@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dhhihg8mkhcdv"]
 
-[ext_resource type="Script" uid="uid://0jhc2avr70g6" path="res://Scenes/NPC/NPC Modules/Scripts/Talkable.gd" id="1_cnxim"]
+[ext_resource type="Script" uid="uid://0jhc2avr70g6" path="res://Global Assets/Events/Modules/Scripts/Talkable.gd" id="1_cnxim"]
 [ext_resource type="Script" uid="uid://djg2bftsi5mjw" path="res://Scenes/NPC/Scripts/ChatterSystem.gd" id="2_760ve"]
 [ext_resource type="PackedScene" uid="uid://cdvql8c8yek5u" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Assets/ChatterBubble.tscn" id="3_vt62a"]
 

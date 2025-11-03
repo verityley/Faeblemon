@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://bcu2q5rcwh42l"]
+[gd_scene load_steps=112 format=3 uid="uid://bcu2q5rcwh42l"]
 
 [ext_resource type="Script" uid="uid://dr5it17v6b7rj" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/PlayerCharacter.gd" id="1_4duw5"]
 [ext_resource type="Script" uid="uid://cflmaoffnjo2p" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/OverworldManager.gd" id="1_irke8"]
@@ -12,22 +12,22 @@
 [ext_resource type="Texture2D" uid="uid://gmn7ufxe7b6d" path="res://Scenes/Player/Assets/PlayerChar.png" id="7_v5pia"]
 [ext_resource type="Script" uid="uid://cnfvsc68h8k77" path="res://Global Assets/Classes/Message.gd" id="8_27np1"]
 [ext_resource type="Texture2D" uid="uid://32tavb0f6wpy" path="res://Scenes/Environments/Battle System/Assets/InfoCommand.png" id="8_550ke"]
-[ext_resource type="PackedScene" uid="uid://0sy8a80icq0g" path="res://Scenes/NPC/NPC Modules/Passable.tscn" id="8_ektq3"]
-[ext_resource type="PackedScene" uid="uid://qvajkyj4hife" path="res://Scenes/NPC/NPC Modules/Interactable.tscn" id="11_wwg0e"]
+[ext_resource type="PackedScene" uid="uid://0sy8a80icq0g" path="res://Global Assets/Events/Modules/Passable.tscn" id="8_ektq3"]
+[ext_resource type="PackedScene" uid="uid://qvajkyj4hife" path="res://Global Assets/Events/Modules/Interactable.tscn" id="11_wwg0e"]
 [ext_resource type="PackedScene" uid="uid://dorrmi3lqc4t8" path="res://Global Assets/Events/Talk.tscn" id="12_ektq3"]
-[ext_resource type="PackedScene" uid="uid://dhhihg8mkhcdv" path="res://Scenes/NPC/NPC Modules/Talkable.tscn" id="12_idacp"]
-[ext_resource type="PackedScene" uid="uid://cx71ldohdx331" path="res://Scenes/NPC/NPC Modules/Gossipable.tscn" id="13_idacp"]
+[ext_resource type="PackedScene" uid="uid://dhhihg8mkhcdv" path="res://Global Assets/Events/Modules/Talkable.tscn" id="12_idacp"]
+[ext_resource type="PackedScene" uid="uid://cx71ldohdx331" path="res://Global Assets/Events/Modules/Gossipable.tscn" id="13_idacp"]
 [ext_resource type="PackedScene" uid="uid://b7sb7r8r5rb61" path="res://Global Assets/Events/Gossip.tscn" id="13_jd6ia"]
-[ext_resource type="Script" uid="uid://c1iuwp6awnsbq" path="res://Scenes/Environments/World Scenes/_Overworld Templates/RumorSystem.gd" id="17_wwyrj"]
-[ext_resource type="Script" uid="uid://b3aosymillvia" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Threshold.gd" id="19_jd6ia"]
+[ext_resource type="Script" uid="uid://c1iuwp6awnsbq" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/RumorSystem.gd" id="17_wwyrj"]
+[ext_resource type="Script" uid="uid://b3aosymillvia" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/Threshold.gd" id="19_jd6ia"]
 [ext_resource type="Resource" uid="uid://bjgo376dt3vew" path="res://Database/Faebles/094Ananseed.tres" id="19_pxmyk"]
-[ext_resource type="Script" uid="uid://cw01dxa3jywdw" path="res://Scenes/Environments/World Scenes/_Overworld Templates/RumorZone.gd" id="20_q5glc"]
+[ext_resource type="Script" uid="uid://cw01dxa3jywdw" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Scripts/RumorZone.gd" id="20_q5glc"]
 [ext_resource type="Texture2D" uid="uid://x5uqtrwjlqpp" path="res://Global Assets/Graphics/UI Graphics/DamageIcon.png" id="22_2hd2c"]
 [ext_resource type="PackedScene" uid="uid://c5swfsa1geh3s" path="res://Scenes/Quests/QuestTemplate.tscn" id="24_ay3o8"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_4duw5"]
-vertices = PackedVector3Array(2.8, 8.81527, -5.6, 5.3, 8.81527, -5.6, 5.3, 8.81527, -7.7, 2.8, 8.81527, -7.7, 2.6, 8.81527, -4.7, 1.8, 8.81527, -4.7, 1.8, 8.81527, -2.3, 6.3, 8.81527, -2.3, 6.3, 8.81527, -4.7, 5.5, 8.81527, -4.7, 5.3, 8.81527, -4.9, 2.8, 8.81527, -4.9, -6.6, 8.81527, -3.3, -5.8, 8.81527, -3.3, -5.8, 8.81527, -4.7, -6.8, 8.81527, -3.1, -15.2, 8.81527, -4.7, -15.2, 8.81527, -2.3, -6.8, 8.81527, -2.3, -3.4, 8.81527, -3.3, -3.2, 8.81527, -3.1, -3.2, 8.81527, -2.3, 7.8, 3.80527, -1.7, 10.2, 3.80527, -1.7, 10.2, 3.80527, -3.7, 7.8, 3.80527, -3.7, 7.6, 3.80527, -0.7, 6.8, 3.80527, -0.7, 6.8, 3.80527, 1.7, 11.2, 3.80527, 1.7, 11.2, 3.80527, -0.7, 10.4, 3.80527, -0.7, 10.2, 3.80527, -0.9, 7.8, 3.80527, -0.9, -7.8, 3.80527, -0.9, -7.8, 3.80527, -1.7, -8.2, 3.80527, -1.7, -8.2, 3.80527, -0.9, 2.5, 3.80527, 1.7, 2.5, 3.80527, -0.7, -7.6, 3.80527, -0.7, -15.2, 3.80527, 1.7, -8.4, 3.80527, -0.7, -15.2, 3.80527, -0.7, 2.8, 3.80527, 1.9, 2.8, 3.80527, 2.6, 5.3, 3.80527, 2.6, 5.3, 3.80527, 1.9, 5.5, 3.80527, 1.7, 23.2, 3.80527, 1.7, 23.2, 3.80527, -0.7, 2.8, 3.80527, 11.4, 5.3, 3.80527, 11.4, 2.6, 3.80527, 12.3, 1.8, 3.80527, 12.3, 1.8, 3.80527, 14.7, 5.3, 3.80527, 12.1, 2.8, 3.80527, 12.1, 6.8, 3.80527, 14.7, 6.8, 3.80527, 12.3, 5.5, 3.80527, 12.3, -6.6, 3.80527, 13.7, -5.8, 3.80527, 13.7, -5.8, 3.80527, 12.3, -6.8, 3.80527, 13.9, -15.2, 3.80527, 12.3, -15.2, 3.80527, 14.7, -6.8, 3.80527, 14.7, -3.4, 3.80527, 13.7, -3.2, 3.80527, 13.9, -3.2, 3.80527, 14.7, 10.4, 3.80527, 14.7, 11.2, 3.80527, 14.7, 11.2, 3.80527, 12.3, 7.6, 3.80527, 14.7, 7.8, 3.80527, 14.9, 10.2, 3.80527, 14.9, 7.8, 3.80527, 16.7, 10.2, 3.80527, 16.7, 23.2, 3.80527, 14.7, 23.2, 3.80527, 12.3)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(6, 5, 4), PackedInt32Array(9, 8, 7), PackedInt32Array(11, 0, 10), PackedInt32Array(10, 0, 1), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 4), PackedInt32Array(4, 9, 6), PackedInt32Array(6, 9, 7), PackedInt32Array(14, 13, 12), PackedInt32Array(12, 15, 14), PackedInt32Array(14, 15, 16), PackedInt32Array(16, 15, 17), PackedInt32Array(15, 18, 17), PackedInt32Array(13, 14, 19), PackedInt32Array(19, 14, 5), PackedInt32Array(6, 21, 20), PackedInt32Array(20, 19, 6), PackedInt32Array(6, 19, 5), PackedInt32Array(25, 24, 22), PackedInt32Array(22, 24, 23), PackedInt32Array(28, 27, 26), PackedInt32Array(31, 30, 29), PackedInt32Array(33, 22, 32), PackedInt32Array(32, 22, 23), PackedInt32Array(32, 31, 33), PackedInt32Array(33, 31, 26), PackedInt32Array(26, 31, 28), PackedInt32Array(28, 31, 29), PackedInt32Array(37, 36, 34), PackedInt32Array(34, 36, 35), PackedInt32Array(39, 38, 40), PackedInt32Array(40, 38, 41), PackedInt32Array(34, 40, 37), PackedInt32Array(37, 40, 42), PackedInt32Array(41, 42, 40), PackedInt32Array(41, 43, 42), PackedInt32Array(47, 46, 44), PackedInt32Array(44, 46, 45), PackedInt32Array(27, 28, 48), PackedInt32Array(38, 39, 44), PackedInt32Array(44, 39, 47), PackedInt32Array(47, 39, 48), PackedInt32Array(48, 39, 27), PackedInt32Array(30, 50, 29), PackedInt32Array(29, 50, 49), PackedInt32Array(45, 46, 51), PackedInt32Array(51, 46, 52), PackedInt32Array(55, 54, 53), PackedInt32Array(57, 51, 56), PackedInt32Array(56, 51, 52), PackedInt32Array(60, 59, 58), PackedInt32Array(56, 60, 57), PackedInt32Array(57, 60, 53), PackedInt32Array(53, 60, 55), PackedInt32Array(55, 60, 58), PackedInt32Array(63, 62, 61), PackedInt32Array(61, 64, 63), PackedInt32Array(63, 64, 65), PackedInt32Array(65, 64, 66), PackedInt32Array(64, 67, 66), PackedInt32Array(62, 63, 68), PackedInt32Array(68, 63, 54), PackedInt32Array(55, 70, 69), PackedInt32Array(69, 68, 55), PackedInt32Array(55, 68, 54), PackedInt32Array(73, 72, 71), PackedInt32Array(74, 58, 59), PackedInt32Array(76, 75, 71), PackedInt32Array(71, 75, 74), PackedInt32Array(71, 74, 59), PackedInt32Array(71, 59, 73), PackedInt32Array(76, 78, 75), PackedInt32Array(75, 78, 77), PackedInt32Array(73, 80, 72), PackedInt32Array(72, 80, 79)]
+vertices = PackedVector3Array(2.8, 8.81527, -5.6, 5.3, 8.81527, -5.6, 5.3, 8.81527, -7.7, 2.8, 8.81527, -7.7, 2.6, 8.81527, -4.7, 1.8, 8.81527, -4.7, 1.8, 8.81527, -2.3, 6.3, 8.81527, -2.3, 6.3, 8.81527, -4.7, 5.5, 8.81527, -4.7, 5.3, 8.81527, -4.9, 2.8, 8.81527, -4.9, -6.6, 8.81527, -3.3, -5.8, 8.81527, -3.3, -5.8, 8.81527, -4.7, -6.8, 8.81527, -3.1, -15.2, 8.81527, -4.7, -15.2, 8.81527, -2.3, -6.8, 8.81527, -2.3, -3.4, 8.81527, -3.3, -3.2, 8.81527, -3.1, -3.2, 8.81527, -2.3, 7.8, 3.80527, -3.7, 7.8, 3.80527, -1.5, 10.2, 3.80527, -1.5, 10.2, 3.80527, -3.7, -7.8, 3.80527, -0.9, -7.8, 3.80527, -1.7, -8.2, 3.80527, -1.7, -8.2, 3.80527, -0.9, 2.5, 3.80527, 1.7, 2.5, 3.80527, -0.7, -7.6, 3.80527, -0.7, -15.2, 3.80527, 1.7, -8.4, 3.80527, -0.7, -15.2, 3.80527, -0.7, 5.5, 3.80527, 1.7, 6.3, 3.80527, 1.7, 6.3, 3.80527, -0.7, 2.8, 3.80527, 1.9, 2.8, 3.80527, 2.6, 5.3, 3.80527, 2.6, 5.3, 3.80527, 1.9, 7.4, 3.80527, -0.5, 7.3, 3.80527, -0.7, 23.2, 3.80527, 1.7, 23.2, 3.80527, -0.7, 10.6, 3.80527, -0.5, 10.7, 3.80527, -0.7, 2.8, 3.80527, 11.4, 5.3, 3.80527, 11.4, 2.6, 3.80527, 12.3, 1.8, 3.80527, 12.3, 1.8, 3.80527, 14.7, 5.3, 3.80527, 12.1, 2.8, 3.80527, 12.1, 6.8, 3.80527, 14.7, 6.8, 3.80527, 12.3, 5.5, 3.80527, 12.3, -6.6, 3.80527, 13.7, -5.8, 3.80527, 13.7, -5.8, 3.80527, 12.3, -6.8, 3.80527, 13.9, -15.2, 3.80527, 12.3, -15.2, 3.80527, 14.7, -6.8, 3.80527, 14.7, -3.4, 3.80527, 13.7, -3.2, 3.80527, 13.9, -3.2, 3.80527, 14.7, 10.4, 3.80527, 14.7, 11.2, 3.80527, 14.7, 11.2, 3.80527, 12.3, 7.6, 3.80527, 14.7, 7.8, 3.80527, 14.9, 10.2, 3.80527, 14.9, 7.8, 3.80527, 16.7, 10.2, 3.80527, 16.7, 23.2, 3.80527, 14.7, 23.2, 3.80527, 12.3)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(6, 5, 4), PackedInt32Array(9, 8, 7), PackedInt32Array(11, 0, 10), PackedInt32Array(10, 0, 1), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 4), PackedInt32Array(4, 9, 6), PackedInt32Array(6, 9, 7), PackedInt32Array(14, 13, 12), PackedInt32Array(12, 15, 14), PackedInt32Array(14, 15, 16), PackedInt32Array(16, 15, 17), PackedInt32Array(15, 18, 17), PackedInt32Array(13, 14, 19), PackedInt32Array(19, 14, 5), PackedInt32Array(6, 21, 20), PackedInt32Array(20, 19, 6), PackedInt32Array(6, 19, 5), PackedInt32Array(25, 24, 22), PackedInt32Array(22, 24, 23), PackedInt32Array(29, 28, 26), PackedInt32Array(26, 28, 27), PackedInt32Array(31, 30, 32), PackedInt32Array(32, 30, 33), PackedInt32Array(26, 32, 29), PackedInt32Array(29, 32, 34), PackedInt32Array(33, 34, 32), PackedInt32Array(33, 35, 34), PackedInt32Array(38, 37, 36), PackedInt32Array(42, 41, 39), PackedInt32Array(39, 41, 40), PackedInt32Array(30, 31, 39), PackedInt32Array(39, 31, 42), PackedInt32Array(42, 31, 36), PackedInt32Array(36, 31, 38), PackedInt32Array(44, 43, 38), PackedInt32Array(38, 43, 37), PackedInt32Array(46, 45, 47), PackedInt32Array(47, 45, 37), PackedInt32Array(37, 43, 47), PackedInt32Array(46, 47, 48), PackedInt32Array(40, 41, 49), PackedInt32Array(49, 41, 50), PackedInt32Array(53, 52, 51), PackedInt32Array(55, 49, 54), PackedInt32Array(54, 49, 50), PackedInt32Array(58, 57, 56), PackedInt32Array(54, 58, 55), PackedInt32Array(55, 58, 51), PackedInt32Array(51, 58, 53), PackedInt32Array(53, 58, 56), PackedInt32Array(61, 60, 59), PackedInt32Array(59, 62, 61), PackedInt32Array(61, 62, 63), PackedInt32Array(63, 62, 64), PackedInt32Array(62, 65, 64), PackedInt32Array(60, 61, 66), PackedInt32Array(66, 61, 52), PackedInt32Array(53, 68, 67), PackedInt32Array(67, 66, 53), PackedInt32Array(53, 66, 52), PackedInt32Array(71, 70, 69), PackedInt32Array(72, 56, 57), PackedInt32Array(74, 73, 69), PackedInt32Array(69, 73, 72), PackedInt32Array(69, 72, 57), PackedInt32Array(69, 57, 71), PackedInt32Array(74, 76, 73), PackedInt32Array(73, 76, 75), PackedInt32Array(71, 78, 70), PackedInt32Array(70, 78, 77)]
 geometry_parsed_geometry_type = 1
 cell_size = 0.1
 cell_height = 0.01
@@ -332,6 +332,57 @@ metadata/_custom_type_script = "uid://cnfvsc68h8k77"
 script = ExtResource("8_27np1")
 messageID = ""
 messageText = "The Faeble was pretty far from here."
+messageSpeed = 0.0
+messageMute = false
+messageInstant = false
+messageSkip = false
+hasChoices = false
+choiceTargets = Array[ExtResource("8_27np1")]([])
+choiceText = Array[String]([])
+switchLabel = ""
+switchValue = false
+tallyLabel = ""
+tallyValue = 0
+metadata/_custom_type_script = "uid://cnfvsc68h8k77"
+
+[sub_resource type="Resource" id="Resource_kws5b"]
+script = ExtResource("8_27np1")
+messageID = ""
+messageText = "Fresh tracks!"
+messageSpeed = 0.0
+messageMute = false
+messageInstant = false
+messageSkip = false
+hasChoices = false
+choiceTargets = Array[ExtResource("8_27np1")]([])
+choiceText = Array[String]([])
+switchLabel = ""
+switchValue = false
+tallyLabel = ""
+tallyValue = 0
+metadata/_custom_type_script = "uid://cnfvsc68h8k77"
+
+[sub_resource type="Resource" id="Resource_ji5s3"]
+script = ExtResource("8_27np1")
+messageID = ""
+messageText = "Some tracks."
+messageSpeed = 0.0
+messageMute = false
+messageInstant = false
+messageSkip = false
+hasChoices = false
+choiceTargets = Array[ExtResource("8_27np1")]([])
+choiceText = Array[String]([])
+switchLabel = ""
+switchValue = false
+tallyLabel = ""
+tallyValue = 0
+metadata/_custom_type_script = "uid://cnfvsc68h8k77"
+
+[sub_resource type="Resource" id="Resource_x6pto"]
+script = ExtResource("8_27np1")
+messageID = ""
+messageText = "Faded tracks..."
 messageSpeed = 0.0
 messageMute = false
 messageInstant = false
@@ -2194,10 +2245,11 @@ debug_color = Color(0.0821501, 0.648471, 5.77569e-07, 1)
 [node name="CameraTarget" type="Node3D" parent="StreetOverlay/StreetSection2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 2.5)
 
-[node name="TestNPC3" type="Node3D" parent="." node_paths=PackedStringArray("overworld", "charSprite")]
+[node name="TestNPC3" type="Node3D" parent="." node_paths=PackedStringArray("overworld", "navAgent", "charSprite")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0952702, 7.07622, -0.75)
 script = ExtResource("6_wwg0e")
 overworld = NodePath("..")
+navAgent = NodePath("NavigationAgent3D")
 charSprite = NodePath("NPCSprite")
 
 [node name="NPCSprite" type="MeshInstance3D" parent="TestNPC3"]
@@ -2225,10 +2277,17 @@ startDelay = 0.5
 [node name="Gossipable" parent="TestNPC3" instance=ExtResource("13_idacp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
 
-[node name="TestNPC4" type="Node3D" parent="." node_paths=PackedStringArray("overworld", "charSprite")]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="TestNPC3"]
+path_desired_distance = 0.5
+target_desired_distance = 0.5
+radius = 0.3
+debug_enabled = true
+
+[node name="TestNPC4" type="Node3D" parent="." node_paths=PackedStringArray("overworld", "navAgent", "charSprite")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12608, 7.07622, 0.563588)
 script = ExtResource("6_wwg0e")
 overworld = NodePath("..")
+navAgent = NodePath("NavigationAgent3D")
 charSprite = NodePath("NPCSprite")
 
 [node name="NPCSprite" type="MeshInstance3D" parent="TestNPC4"]
@@ -2256,10 +2315,17 @@ startDelay = 0.5
 [node name="Gossipable" parent="TestNPC4" instance=ExtResource("13_idacp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
 
-[node name="TestNPC5" type="Node3D" parent="." node_paths=PackedStringArray("overworld", "charSprite")]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="TestNPC4"]
+path_desired_distance = 0.5
+target_desired_distance = 0.5
+radius = 0.3
+debug_enabled = true
+
+[node name="TestNPC5" type="Node3D" parent="." node_paths=PackedStringArray("overworld", "navAgent", "charSprite")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23234, 7.07622, 1.0374)
 script = ExtResource("6_wwg0e")
 overworld = NodePath("..")
+navAgent = NodePath("NavigationAgent3D")
 charSprite = NodePath("NPCSprite")
 
 [node name="NPCSprite" type="MeshInstance3D" parent="TestNPC5"]
@@ -2286,6 +2352,12 @@ startDelay = 0.5
 
 [node name="Gossipable" parent="TestNPC5" instance=ExtResource("13_idacp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="TestNPC5"]
+path_desired_distance = 0.5
+target_desired_distance = 0.5
+radius = 0.3
+debug_enabled = true
 
 [node name="PlayerCharacter" type="Node3D" parent="." node_paths=PackedStringArray("overworldManager", "navAgent", "charSprite", "interactPopup")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 4, 7, 5.10366)
@@ -2366,6 +2438,11 @@ zoneMessages = Dictionary[int, ExtResource("8_27np1")]({
 1: SubResource("Resource_pxmyk"),
 2: SubResource("Resource_ay3o8")
 })
+trackingPrefaces = Dictionary[int, ExtResource("8_27np1")]({
+1: SubResource("Resource_kws5b"),
+2: SubResource("Resource_ji5s3"),
+3: SubResource("Resource_x6pto")
+})
 allTelltales = [NodePath("Telltales/Telltale"), NodePath("Telltales/Telltale2"), NodePath("Telltales/Telltale3"), NodePath("Telltales/Telltale4"), NodePath("Telltales/Telltale5")]
 allTracks = [NodePath("Tracks/Track"), NodePath("Tracks/Track2")]
 allThresholds = [NodePath("Threshold")]
@@ -2380,8 +2457,6 @@ rumorZones = {
 3: NodePath("FarZone")
 }
 landmarks = Array[ExtResource("8_27np1")]([SubResource("Resource_2w4ur"), SubResource("Resource_x38m7"), SubResource("Resource_qu6qa"), SubResource("Resource_pgqmq")])
-
-[node name="Barrier" type="Node3D" parent="RumorSystem/Threshold"]
 
 [node name="InvestigationTrigger" type="Area3D" parent="RumorSystem/Threshold" node_paths=PackedStringArray("overworld")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -0.5)
@@ -2429,6 +2504,8 @@ zoneType = 3
 
 [node name="Far Radius" type="CollisionShape3D" parent="RumorSystem/Threshold/FarZone"]
 shape = SubResource("CylinderShape3D_2w4ur")
+
+[node name="Barrier" type="Node3D" parent="RumorSystem/Threshold"]
 
 [node name="Telltales" type="Node3D" parent="RumorSystem"]
 

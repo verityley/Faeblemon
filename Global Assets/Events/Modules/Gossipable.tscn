@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cx71ldohdx331"]
 
-[ext_resource type="Script" uid="uid://5sqvbt0qr3at" path="res://Scenes/NPC/NPC Modules/Scripts/Gossipable.gd" id="1_qpxh7"]
+[ext_resource type="Script" uid="uid://5sqvbt0qr3at" path="res://Global Assets/Events/Modules/Scripts/Gossipable.gd" id="1_qpxh7"]
 [ext_resource type="Script" uid="uid://dpxrdytky4qn2" path="res://Scenes/NPC/Scripts/GossipSystem.gd" id="1_vdorh"]
 [ext_resource type="PackedScene" uid="uid://cdvql8c8yek5u" path="res://Scenes/Environments/World Scenes/_Overworld Templates/Assets/ChatterBubble.tscn" id="2_qpxh7"]
 

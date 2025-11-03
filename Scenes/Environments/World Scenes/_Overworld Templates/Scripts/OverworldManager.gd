@@ -12,8 +12,17 @@ class_name OverworldManager
 
 var allNPCs:Array[NPC]
 
+func SceneSequencer():
+	pass #Send signals/function calls to all nested systems in order
+
+func SpawnNPC():
+	pass #Intake given NPC and reroute to a random or closest location on navmesh
+
 func LoadOverworld(oScene:OverworldManager, destination:Vector3):
-	pass
+	pass #Swap out map meshes and relevant quests
+
+func LoadQuest(quest:Questline):
+	pass #Additive load a given quest
 
 func LoadInvestigation(stage:Stage):
 	player.lockdown = true

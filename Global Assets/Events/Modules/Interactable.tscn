@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://qvajkyj4hife"]
 
-[ext_resource type="Script" uid="uid://v2dqgwt8v4k5" path="res://Scenes/NPC/NPC Modules/Scripts/Interactable.gd" id="1_wkubk"]
+[ext_resource type="Script" uid="uid://v2dqgwt8v4k5" path="res://Global Assets/Events/Modules/Scripts/Interactable.gd" id="1_wkubk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ay3o8"]
 radius = 0.15

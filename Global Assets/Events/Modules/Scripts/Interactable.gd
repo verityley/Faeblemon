@@ -11,9 +11,9 @@ func _ready() -> void:
 
 func Interact(npc:NPC):
 	if npc != hostNPC:
-		print("Not for me!")
+		#print("Not for me!")
 		return
-	print("Received Interaction Signal")
+	#print("Received Interaction Signal")
 	hostNPC.lockdown = true
 	EventBus.emit_signal("CancelEvents", hostNPC)
 	if tempCamTarget != null:

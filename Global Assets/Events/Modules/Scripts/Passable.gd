@@ -10,9 +10,9 @@ func _ready() -> void:
 
 func Passby(npc:NPC):
 	if npc != hostNPC:
-		print("Not for me!")
+		#print("Not for me!")
 		return
-	print("Received Passby Signal")
+	#print("Received Passby Signal")
 	#EventBus.emit_signal("CancelEvents", hostNPC)
 	for event:Event in events.get_children():
 		event.InvokeEvent(hostNPC)

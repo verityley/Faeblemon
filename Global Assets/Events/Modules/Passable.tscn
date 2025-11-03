@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://0sy8a80icq0g"]
 
-[ext_resource type="Script" uid="uid://brja2ro7c1508" path="res://Scenes/NPC/NPC Modules/Scripts/Passable.gd" id="1_m4kj0"]
+[ext_resource type="Script" uid="uid://brja2ro7c1508" path="res://Global Assets/Events/Modules/Scripts/Passable.gd" id="1_m4kj0"]
 
 [node name="Passable" type="Node3D"]
 script = ExtResource("1_m4kj0")

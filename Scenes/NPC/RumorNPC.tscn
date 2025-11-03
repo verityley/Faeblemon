@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cdmm0ud1e26by" path="res://Scenes/NPC/Scripts/NPCManager.gd" id="1_5nbw6"]
 [ext_resource type="Texture2D" uid="uid://cqal6qlsn6lgn" path="res://Global Assets/Graphics/Monster Graphics/aconidFront.png" id="2_f5kbn"]
-[ext_resource type="PackedScene" uid="uid://0sy8a80icq0g" path="res://Scenes/NPC/NPC Modules/Passable.tscn" id="3_lgfne"]
-[ext_resource type="PackedScene" uid="uid://qvajkyj4hife" path="res://Scenes/NPC/NPC Modules/Interactable.tscn" id="4_l166i"]
-[ext_resource type="PackedScene" uid="uid://dhhihg8mkhcdv" path="res://Scenes/NPC/NPC Modules/Talkable.tscn" id="5_lcpyq"]
-[ext_resource type="PackedScene" uid="uid://cx71ldohdx331" path="res://Scenes/NPC/NPC Modules/Gossipable.tscn" id="6_2j5ts"]
+[ext_resource type="PackedScene" uid="uid://0sy8a80icq0g" path="res://Global Assets/Events/Modules/Passable.tscn" id="3_lgfne"]
+[ext_resource type="PackedScene" uid="uid://qvajkyj4hife" path="res://Global Assets/Events/Modules/Interactable.tscn" id="4_l166i"]
+[ext_resource type="PackedScene" uid="uid://dhhihg8mkhcdv" path="res://Global Assets/Events/Modules/Talkable.tscn" id="5_lcpyq"]
+[ext_resource type="PackedScene" uid="uid://cx71ldohdx331" path="res://Global Assets/Events/Modules/Gossipable.tscn" id="6_2j5ts"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_k3s0q"]
 size = Vector2(0.6, 0.8)
@@ -17,9 +17,8 @@ alpha_antialiasing_mode = 0
 cull_mode = 2
 albedo_texture = ExtResource("2_f5kbn")
 
-[node name="RumorNPC" type="Node3D" node_paths=PackedStringArray("overworld", "charSprite")]
+[node name="RumorNPC" type="Node3D" node_paths=PackedStringArray("charSprite")]
 script = ExtResource("1_5nbw6")
-overworld = NodePath("")
 charSprite = NodePath("NPCSprite")
 
 [node name="NPCSprite" type="MeshInstance3D" parent="."]
@@ -30,9 +29,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_j2j2j")
 
 [node name="Passable" parent="." instance=ExtResource("3_lgfne")]
 
-[node name="Interactable" parent="." node_paths=PackedStringArray("overworld") instance=ExtResource("4_l166i")]
+[node name="Interactable" parent="." instance=ExtResource("4_l166i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
-overworld = NodePath("")
 
 [node name="Talkable" parent="." instance=ExtResource("5_lcpyq")]
 
