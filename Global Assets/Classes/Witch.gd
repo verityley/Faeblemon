@@ -8,9 +8,14 @@ class_name Witch
 @export var battleSprite:CompressedTexture2D
 @export var portrait:CompressedTexture2D
 @export var cantrips:Array[Skill] = [null,null,null]
+@export var learnedSpells:Array[Skill]
+@export var assignedSpells:Array[Skill] = [null,null,null]
 var spellSlot1
 var spellSlot2
 var spellSlot3
+@export var learnedThemes:Array[SkillTheme]
+@export var assignedThemes:Array[SkillTheme] = [null,null,null]
+
 
 #AI NPC Only
 var personality #Similar to Faeble personalities, used for determining AI behavior trees

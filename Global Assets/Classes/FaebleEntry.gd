@@ -81,6 +81,7 @@ var learnedSkills:Array[Skill] #These are all the skills they know by their leve
 @export var currentStatus:Enums.Status
 @export var currentBuildup:int
 @export var currentBuildupTarget:Enums.Status
+@export var setTheme:SkillTheme
 
 @export_category("Description and Tracking")
 @export_multiline var description:String #Look into parsing string and revealing bits by level

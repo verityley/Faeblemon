@@ -2,6 +2,9 @@ extends Node
 class_name BattlerData
 
 @export var instance:Faeble
+@export var witchInstance:Witch
+
+@export var faebleTeam:Array[Faeble]
 
 var health:int #Resource that means Not Dead
 var priority:int #Temporary declaration of turn order tier
@@ -14,11 +17,14 @@ var buffStages:Array[int] = [0,0,0,0,0]
 var damageBoost:int
 var protected:bool = false #Use to prevent all damage and skip damage calc step
 var safeguarded:bool = false #Use to prevent all status buildup and skip status calc step
+var switching:bool = false #If true, change battler to currentFaeble when triggered
 
 var currentMove:Skill
 var currentSpell:Skill
 var currentTheme:SkillTheme
 var currentTactic:int #Enum of menu tactics option
+var currentTarget:BattlerData
+var currentFaeble:Faeble
 
 func ChangeBattler(entry:Faeble):
 	if instance != null:
@@ -26,6 +32,9 @@ func ChangeBattler(entry:Faeble):
 		instance.currentStatus = status
 		instance.currentBuildup = buildup
 		instance.currentBuildupTarget = buildupTarget
+	var targetSlot:int = faebleTeam.find(entry)
+	faebleTeam[0] = entry
+	faebleTeam[targetSlot] = instance
 	ResetBattler(true)
 	instance = entry
 	health = entry.currentHP
@@ -43,6 +52,11 @@ func ResetBattler(fullReset:bool=false):
 	currentSpell = null
 	currentTheme = null
 	currentTactic = 0
+	currentFaeble = null
+	currentTarget = null
+	protected = false
+	safeguarded = false
+	switching = false
 	#Battler Change/End Reset
 	if fullReset:
 		buffStages = [0,0,0,0,0]

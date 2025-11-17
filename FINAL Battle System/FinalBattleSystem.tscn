@@ -1,10 +1,162 @@
-[gd_scene load_steps=2 format=3 uid="uid://bg4sqtv1ar47b"]
+[gd_scene load_steps=4 format=3 uid="uid://bg4sqtv1ar47b"]
 
 [ext_resource type="Script" uid="uid://ctt5kecxyih04" path="res://FINAL Battle System/final_BattleSystem.gd" id="1_l6cxh"]
+[ext_resource type="Script" uid="uid://cll3fbvmr0tb0" path="res://FINAL Battle System/test_ui.gd" id="2_6062a"]
+[ext_resource type="Script" uid="uid://b05kidrw0em1e" path="res://FINAL Battle System/BattlerData.gd" id="2_j0p5m"]
 
 [node name="FinalBattleSystem" type="Node"]
 script = ExtResource("1_l6cxh")
 
+[node name="Battler_Player" type="Node" parent="."]
+script = ExtResource("2_j0p5m")
+
+[node name="Battler_Enemy" type="Node" parent="."]
+script = ExtResource("2_j0p5m")
+
 [node name="PlayerMenuManager" type="Node" parent="."]
 
 [node name="NPCActionManager" type="Node" parent="."]
+
+[node name="TestUI" type="Control" parent="." node_paths=PackedStringArray("battleSystem")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_6062a")
+battleSystem = NodePath("..")
+
+[node name="StateLabel" type="Label" parent="TestUI"]
+layout_mode = 1
+offset_left = 832.0
+offset_top = 15.0
+offset_right = 1143.0
+offset_bottom = 82.0
+theme_override_font_sizes/font_size = 48
+text = "Current State"
+
+[node name="Button" type="Button" parent="TestUI"]
+layout_mode = 0
+offset_left = 866.0
+offset_top = 89.0
+offset_right = 1106.0
+offset_bottom = 189.0
+theme_override_font_sizes/font_size = 32
+text = "Progress Steps"
+
+[node name="MenuCommands" type="Control" parent="TestUI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AttackButton" type="Button" parent="TestUI/MenuCommands"]
+offset_left = 1292.0
+offset_top = 1014.71
+offset_right = 1532.0
+offset_bottom = 1114.71
+rotation = -0.785397
+theme_override_font_sizes/font_size = 32
+text = "Attack"
+
+[node name="AvailableAttacks" type="Control" parent="TestUI/MenuCommands/AttackButton"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Attack1" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableAttacks"]
+offset_left = 2.99367
+offset_top = -130.273
+offset_right = 242.994
+offset_bottom = -30.273
+theme_override_font_sizes/font_size = 32
+text = "Attack Name"
+
+[node name="Attack2" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableAttacks"]
+offset_left = 268.994
+offset_top = -130.273
+offset_right = 508.994
+offset_bottom = -30.273
+theme_override_font_sizes/font_size = 32
+text = "Attack Name"
+
+[node name="Attack3" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableAttacks"]
+offset_left = 532.994
+offset_top = -130.273
+offset_right = 772.994
+offset_bottom = -30.273
+theme_override_font_sizes/font_size = 32
+text = "Attack Name"
+
+[node name="BackButton" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableAttacks"]
+offset_left = 271.321
+offset_top = 126.073
+offset_right = 511.321
+offset_bottom = 226.073
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
+[node name="AvailableThemes" type="Control" parent="TestUI/MenuCommands/AttackButton"]
+anchors_preset = 0
+offset_left = -135.266
+offset_top = -126.364
+offset_right = -95.2658
+offset_bottom = -86.3637
+
+[node name="Theme1" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableThemes"]
+offset_left = 2.99367
+offset_top = -130.273
+offset_right = 242.994
+offset_bottom = -30.273
+theme_override_font_sizes/font_size = 32
+text = "Theme Name"
+
+[node name="Theme2" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableThemes"]
+offset_left = 268.994
+offset_top = -130.273
+offset_right = 508.994
+offset_bottom = -30.273
+theme_override_font_sizes/font_size = 32
+text = "Theme Name"
+
+[node name="Theme3" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableThemes"]
+offset_left = 532.994
+offset_top = -130.273
+offset_right = 772.994
+offset_bottom = -30.273
+theme_override_font_sizes/font_size = 32
+text = "Theme Name"
+
+[node name="ThemeFaeble" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableThemes"]
+offset_left = 800.445
+offset_top = -130.109
+offset_right = 1040.44
+offset_bottom = -30.1086
+theme_override_font_sizes/font_size = 32
+text = "Theme Name"
+
+[node name="BackButton" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableThemes"]
+offset_left = 408.001
+offset_top = 251.022
+offset_right = 648.001
+offset_bottom = 351.022
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
+[node name="SpellsButton" type="Button" parent="TestUI/MenuCommands"]
+offset_left = 1481.0
+offset_top = 821.705
+offset_right = 1721.0
+offset_bottom = 921.705
+rotation = -0.785397
+theme_override_font_sizes/font_size = 32
+text = "Spells"
+
+[node name="TacticsButton" type="Button" parent="TestUI/MenuCommands"]
+offset_left = 1664.0
+offset_top = 636.705
+offset_right = 1904.0
+offset_bottom = 736.705
+rotation = -0.785397
+theme_override_font_sizes/font_size = 32
+text = "Tactics"
+
+[connection signal="button_down" from="TestUI/Button" to="." method="_on_button_button_down"]
