@@ -22,6 +22,7 @@ EventBus="*res://Global Assets/Preloads/EventBus.gd"
 FaebleStorage="*res://Global Assets/Preloads/FaebleStorage.tscn"
 SwitchDatabase="*res://Global Assets/Preloads/SwitchDatabase.tscn"
 Enums="*res://Global Assets/Preloads/EnumDatabase.gd"
+BattleCalcs="*res://Global Assets/Preloads/BattleCalculator.gd"
 
 [display]
 

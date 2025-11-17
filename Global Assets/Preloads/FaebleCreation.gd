@@ -4,7 +4,8 @@ extends Node
 @export var shinyOdds:int = 1000
 @export var altSchoolOdds:int = 500
 
-@export var startingHP:int = 10
+@export var startingHP:int = 8
+@export var HPCap:int = 60
 @export var healthRatio:int = 2 #Health per point of HRT
 
 @export var titlePool:Array[Title]
@@ -17,14 +18,6 @@ extends Node
 @export var heartRatio:Vector2i = Vector2i(2,1) #Heart:Reward
 @export var energyRatio:Vector2i = Vector2i(1,1) #Wit/Brawn:Reward
 
-enum Stats{
-	Brawn=0,
-	Vigor,
-	Wit,
-	Ambition,
-	Grace,
-	Heart
-}
 
 func _ready():
 	#CreateFaeble(preload("res://Database/Faebles/001Awoolf.tres"), 8)
@@ -59,45 +52,45 @@ func CreateFaeble(faebleEntry:Faeble, REMOVED) -> Faeble:
 			print("Alt School 2!")
 			instance.sigSchool = instance.altSigSchool2
 	
-	instance.brawn = instance.baseStats[Stats.Brawn]
-	if instance.title.positiveStat == Stats.Brawn:
+	instance.brawn = instance.baseStats[Enums.Stats.Brawn]
+	if instance.title.positiveStat == Enums.Stats.Brawn:
 		instance.brawn += instance.title.titleBonus
-	elif instance.title.negativeStat == Stats.Brawn:
+	elif instance.title.negativeStat == Enums.Stats.Brawn:
 		instance.brawn -= instance.title.titleBonus
 	instance.brawn = clampi(instance.brawn, instance.minQuality, instance.maxQuality)
 	
-	instance.vigor = instance.baseStats[Stats.Vigor]
-	if instance.title.positiveStat == Stats.Vigor:
+	instance.vigor = instance.baseStats[Enums.Stats.Vigor]
+	if instance.title.positiveStat == Enums.Stats.Vigor:
 		instance.vigor += instance.title.titleBonus
-	elif instance.title.negativeStat == Stats.Brawn:
+	elif instance.title.negativeStat == Enums.Stats.Vigor:
 		instance.vigor -= instance.title.titleBonus
 	instance.vigor = clampi(instance.vigor, instance.minQuality, instance.maxQuality)
 	
-	instance.wit = instance.baseStats[Stats.Wit]
-	if instance.title.positiveStat == Stats.Wit:
+	instance.wit = instance.baseStats[Enums.Stats.Wit]
+	if instance.title.positiveStat == Enums.Stats.Wit:
 		instance.wit += instance.title.titleBonus
-	elif instance.title.negativeStat == Stats.Brawn:
+	elif instance.title.negativeStat == Enums.Stats.Wit:
 		instance.wit -= instance.title.titleBonus
 	instance.wit = clampi(instance.wit, instance.minQuality, instance.maxQuality)
 	
-	instance.ambition = instance.baseStats[Stats.Ambition]
-	if instance.title.positiveStat == Stats.Ambition:
+	instance.ambition = instance.baseStats[Enums.Stats.Ambition]
+	if instance.title.positiveStat == Enums.Stats.Ambition:
 		instance.ambition += instance.title.titleBonus
-	elif instance.title.negativeStat == Stats.Brawn:
+	elif instance.title.negativeStat == Enums.Stats.Ambition:
 		instance.ambition -= instance.title.titleBonus
 	instance.ambition = clampi(instance.ambition, instance.minQuality, instance.maxQuality)
 	
-	instance.grace = instance.baseStats[Stats.Grace]
-	if instance.title.positiveStat == Stats.Grace:
+	instance.grace = instance.baseStats[Enums.Stats.Grace]
+	if instance.title.positiveStat == Enums.Stats.Grace:
 		instance.grace += instance.title.titleBonus
-	elif instance.title.negativeStat == Stats.Brawn:
+	elif instance.title.negativeStat == Enums.Stats.Grace:
 		instance.grace -= instance.title.titleBonus
 	instance.grace = clampi(instance.grace, instance.minQuality, instance.maxQuality)
 	
-	instance.heart = instance.baseStats[Stats.Heart]
-	if instance.title.positiveStat == Stats.Heart:
+	instance.heart = instance.baseStats[Enums.Stats.Heart]
+	if instance.title.positiveStat == Enums.Stats.Heart:
 		instance.heart += instance.title.titleBonus
-	elif instance.title.negativeStat == Stats.Brawn:
+	elif instance.title.negativeStat == Enums.Stats.Heart:
 		instance.heart -= instance.title.titleBonus
 	instance.heart = clampi(instance.heart, instance.minQuality, instance.maxQuality)
 	
@@ -109,15 +102,15 @@ func CreateFaeble(faebleEntry:Faeble, REMOVED) -> Faeble:
 	print("Heart:", instance.heart)
 	var difference:int
 	difference = absi(instance.brawn - instance.wit)
-	instance.prowess = ceili((instance.brawn + instance.wit)/2) + (difference - statusDifBonus)
+	instance.prowess = ceili((instance.brawn + instance.wit)/2) + (statusDifBonus - difference)
 	instance.prowess = clampi(instance.prowess, instance.minQuality, instance.maxQuality)
 	print("Prowess:", instance.prowess)
 	difference = absi(instance.vigor - instance.ambition)
-	instance.resolve = ceili((instance.vigor + instance.ambition)/2) + (difference - statusDifBonus)
+	instance.resolve = ceili((instance.vigor + instance.ambition)/2) + (statusDifBonus - difference)
 	instance.resolve = clampi(instance.resolve, instance.minQuality, instance.maxQuality)
 	print("Resolve:", instance.resolve)
 	instance.maxHP = (instance.heart*healthRatio) +  startingHP
-	instance.maxHP = clampi(instance.maxHP, startingHP, instance.HPCap)
+	instance.maxHP = clampi(instance.maxHP, startingHP, HPCap)
 	instance.currentHP = instance.maxHP
 	print("Max HP:", instance.maxHP)
 	

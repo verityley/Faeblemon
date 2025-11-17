@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg4sqtv1ar47b"]
+
+[ext_resource type="Script" uid="uid://ctt5kecxyih04" path="res://FINAL Battle System/final_BattleSystem.gd" id="1_l6cxh"]
+
+[node name="FinalBattleSystem" type="Node"]
+script = ExtResource("1_l6cxh")
+
+[node name="PlayerMenuManager" type="Node" parent="."]
+
+[node name="NPCActionManager" type="Node" parent="."]

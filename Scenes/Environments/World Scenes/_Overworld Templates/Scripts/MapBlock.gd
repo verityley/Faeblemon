@@ -100,12 +100,12 @@ func PassbyEntry(body:Area3D=null, enter:bool=true):
 	if enterChar == overworldManager.player:
 		if enter:
 			for npc:NPC in currentNPCs:
-				print("Sending Passby Signal")
+				#print("Sending Passby Signal")
 				EventBus.emit_signal("PassbyNPC", npc)
 				await get_tree().create_timer(0.1).timeout
 		else:
 			for npc:NPC in currentNPCs:
-				print("Sending Cancel Signal")
+				#print("Sending Cancel Signal")
 				EventBus.emit_signal("CancelEvents", npc)
 				await get_tree().create_timer(0.1).timeout
 	else:

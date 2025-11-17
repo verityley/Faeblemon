@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bbm1re0qc44rv"]
+
+[ext_resource type="Texture2D" uid="uid://cf7vritybrw40" path="res://Global Assets/Graphics/Scene Graphics/Backwalls/Benches.png" id="1_2s27j"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_2s27j")

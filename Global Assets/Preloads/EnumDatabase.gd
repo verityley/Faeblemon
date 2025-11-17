@@ -17,7 +17,7 @@ enum Domains{
 enum Schools{
 	Catalyst=0,
 	Hearth,
-	Rime,
+	Deep,
 	Storm,
 	Geo,
 	Grove,
@@ -42,13 +42,28 @@ enum Attributes{
 	Resolve #Status Defense
 }
 
+enum BuffableAttrs{
+	None=-1,
+	Brawn, #Physical Attack
+	Vigor, #Physical Defense
+	Wit, #Magical Attack
+	Ambition, #Magical Defense
+	Grace #Speed
+}
+
 enum Status{
 	Clear=0,
-	Decay, #Tick damage, and reduces Vigor
-	Daze, #Prevents Rush Stance, and reduces Brawn
-	Fear, #Prevents Brace Stance, and reduces Wit
-	Silence, #Prevents Channel Stance, and reduces Ambition
-	Slow #Prevents Stance Change, and reduces Grace
+	Decay, #Tick damage, and reduces Vigor at half
+	Break, #Removes Guard from moves, and reduces Brawn at half
+	Fixate, #Can only use Faeble's inherent Theme, and reduces Wit at half
+	Silence, #Prevents Witch Spell usage, and reduces Ambition at half
+	Slow #Removes Priority from moves, and reduces Grace at half
+}
+
+enum Ranges{
+	Melee=0,
+	Near,
+	Far
 }
 
 enum Behaviors{

@@ -26,6 +26,8 @@ signal LockAll(locked:bool)
 
 
 #Battle Signals
+signal BattleMessage(message:Message)
+signal BattlePopup(message:Message, player:bool)
 signal TargetBattle(selected:bool, choice:int, stage:int)
 signal TargetMana(selected:bool, choice:int)
 
