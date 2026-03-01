@@ -24,7 +24,7 @@ func _ready():
 	
 	pass
 
-func CreateFaeble(faebleEntry:Faeble, REMOVED) -> Faeble:
+func CreateFaeble(faebleEntry:Faeble) -> Faeble:
 	var instance:Faeble = faebleEntry.duplicate()
 	var learnList:Dictionary = faebleEntry.skillPool.duplicate()
 	
@@ -36,7 +36,7 @@ func CreateFaeble(faebleEntry:Faeble, REMOVED) -> Faeble:
 	var schoolRoll:int = RNG.randi_range(0, altSchoolOdds)
 	
 	instance.title = titlePool[titleRoll]
-	print("Title: ", instance.title.titleName)
+	
 	
 	#enable shiny filter on sprite and double effect of title
 	if breakRoll == limitBreakOdds:
@@ -52,54 +52,64 @@ func CreateFaeble(faebleEntry:Faeble, REMOVED) -> Faeble:
 			print("Alt School 2!")
 			instance.sigSchool = instance.altSigSchool2
 	
-	instance.brawn = instance.baseStats[Enums.Stats.Brawn]
-	if instance.title.positiveStat == Enums.Stats.Brawn:
+	instance.baseStats.append(instance.brawn)
+	instance.baseStats.append(instance.vigor)
+	instance.baseStats.append(instance.wit)
+	instance.baseStats.append(instance.ambition)
+	instance.baseStats.append(instance.grace)
+	instance.baseStats.append(instance.heart)
+	
+	instance.brawn = instance.baseStats[Enums.Attributes.Brawn]
+	if instance.title.positiveStat == Enums.Attributes.Brawn:
 		instance.brawn += instance.title.titleBonus
-	elif instance.title.negativeStat == Enums.Stats.Brawn:
+	elif instance.title.negativeStat == Enums.Attributes.Brawn:
 		instance.brawn -= instance.title.titleBonus
 	instance.brawn = clampi(instance.brawn, instance.minQuality, instance.maxQuality)
 	
-	instance.vigor = instance.baseStats[Enums.Stats.Vigor]
-	if instance.title.positiveStat == Enums.Stats.Vigor:
+	instance.vigor = instance.baseStats[Enums.Attributes.Vigor]
+	if instance.title.positiveStat == Enums.Attributes.Vigor:
 		instance.vigor += instance.title.titleBonus
-	elif instance.title.negativeStat == Enums.Stats.Vigor:
+	elif instance.title.negativeStat == Enums.Attributes.Vigor:
 		instance.vigor -= instance.title.titleBonus
 	instance.vigor = clampi(instance.vigor, instance.minQuality, instance.maxQuality)
 	
-	instance.wit = instance.baseStats[Enums.Stats.Wit]
-	if instance.title.positiveStat == Enums.Stats.Wit:
+	instance.wit = instance.baseStats[Enums.Attributes.Wit]
+	if instance.title.positiveStat == Enums.Attributes.Wit:
 		instance.wit += instance.title.titleBonus
-	elif instance.title.negativeStat == Enums.Stats.Wit:
+	elif instance.title.negativeStat == Enums.Attributes.Wit:
 		instance.wit -= instance.title.titleBonus
 	instance.wit = clampi(instance.wit, instance.minQuality, instance.maxQuality)
 	
-	instance.ambition = instance.baseStats[Enums.Stats.Ambition]
-	if instance.title.positiveStat == Enums.Stats.Ambition:
+	instance.ambition = instance.baseStats[Enums.Attributes.Ambition]
+	if instance.title.positiveStat == Enums.Attributes.Ambition:
 		instance.ambition += instance.title.titleBonus
-	elif instance.title.negativeStat == Enums.Stats.Ambition:
+	elif instance.title.negativeStat == Enums.Attributes.Ambition:
 		instance.ambition -= instance.title.titleBonus
 	instance.ambition = clampi(instance.ambition, instance.minQuality, instance.maxQuality)
 	
-	instance.grace = instance.baseStats[Enums.Stats.Grace]
-	if instance.title.positiveStat == Enums.Stats.Grace:
+	instance.grace = instance.baseStats[Enums.Attributes.Grace]
+	if instance.title.positiveStat == Enums.Attributes.Grace:
 		instance.grace += instance.title.titleBonus
-	elif instance.title.negativeStat == Enums.Stats.Grace:
+	elif instance.title.negativeStat == Enums.Attributes.Grace:
 		instance.grace -= instance.title.titleBonus
 	instance.grace = clampi(instance.grace, instance.minQuality, instance.maxQuality)
 	
-	instance.heart = instance.baseStats[Enums.Stats.Heart]
-	if instance.title.positiveStat == Enums.Stats.Heart:
+	instance.heart = instance.baseStats[Enums.Attributes.Heart]
+	if instance.title.positiveStat == Enums.Attributes.Heart:
 		instance.heart += instance.title.titleBonus
-	elif instance.title.negativeStat == Enums.Stats.Heart:
+	elif instance.title.negativeStat == Enums.Attributes.Heart:
 		instance.heart -= instance.title.titleBonus
 	instance.heart = clampi(instance.heart, instance.minQuality, instance.maxQuality)
 	
+	print("Faeble Name: ", instance.name)
+	print("Title: ", instance.title.titleName)
 	print("Brawn:", instance.brawn)
 	print("Vigor:", instance.vigor)
 	print("Wit:", instance.wit)
 	print("Ambition:", instance.ambition)
 	print("Grace:", instance.grace)
 	print("Heart:", instance.heart)
+	
 	var difference:int
 	difference = absi(instance.brawn - instance.wit)
 	instance.prowess = ceili((instance.brawn + instance.wit)/2) + (statusDifBonus - difference)
@@ -319,7 +329,7 @@ func CreateEncounter(enemyFaebles:Array[Faeble], levelGoal:int, _enemyWitch):
 		if faeble == null:
 			continue
 		level += clampi(level+1, 1, levelGoal)
-		CreateFaeble(faeble, level)
+		CreateFaeble(faeble)
 	var index:int = 0
 	for faeble in FaebleStorage.enemyParty:
 		if faeble == null:
@@ -327,7 +337,7 @@ func CreateEncounter(enemyFaebles:Array[Faeble], levelGoal:int, _enemyWitch):
 			continue
 		level += clampi(level+1, 1, levelGoal)
 		print("Creating party instance of ", faeble.name)
-		var faebleInstance = FaebleCreation.CreateFaeble(faeble, 4)
+		var faebleInstance = FaebleCreation.CreateFaeble(faeble)
 		FaebleStorage.enemyParty[index] = faebleInstance
 		index += 1 
 

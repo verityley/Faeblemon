@@ -112,3 +112,9 @@ enum ZoneTypes{
 	Uphill,
 	Downhill,
 }
+
+
+enum BattleMessages{
+	Error=-1,
+	
+}

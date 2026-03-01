@@ -31,7 +31,7 @@ func ExecuteSkill(system:BattleSystemFINAL, user:BattlerData, target:BattlerData
 	pass
 
 func AfterSkill(system:BattleSystemFINAL, user:BattlerData, target:BattlerData):
-	if buffStages > 0:
+	if buffStages != 0:
 		user.buffStages[buffStat] = clampi(user.buffStages[buffStat]+buffStages,-BattleCalcs.maxStages,BattleCalcs.maxStages)
 
 

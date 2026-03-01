@@ -12,6 +12,10 @@ var currentOrder:Array[BattlerData]
 
 @export var currentStep:BattleSteps
 
+@export_category("Debug")
+@export var player:Witch
+@export var enemy:Witch
+
 enum BattleSteps {
 	Startup=0,
 	ActionSelect,
@@ -34,6 +38,34 @@ enum MenuActions {
 	Tactics
 }
 
+func _ready():
+	var i:int = 0
+	for faeble in player.party:
+		if faeble != null:
+			player.party[i] = FaebleCreation.CreateFaeble(faeble)
+		i += 1
+	i = 0
+	for faeble in enemy.party:
+		if faeble != null:
+			enemy.party[i] = FaebleCreation.CreateFaeble(faeble)
+		i += 1
+	SetupBattle(player, enemy)
+
+func SetupBattle(pWitch:Witch, eWitch:Witch):
+	playerBattler.witchInstance = pWitch
+	enemyBattler.witchInstance = eWitch
+	for p in pWitch.party:
+		if p != null:
+			playerBattler.faebleTeam.append(p.duplicate())
+	playerBattler.ChangeBattler(playerBattler.faebleTeam[0])
+	for e in eWitch.party:
+		if e != null:
+			enemyBattler.faebleTeam.append(e.duplicate())
+	enemyBattler.ChangeBattler(enemyBattler.faebleTeam[0])
+	EventBus.emit_signal("BattleStateChanged", currentStep)
+	currentStep = BattleSteps.Startup
+	RoundStep()
+
 func ProcessSkill(skill:Skill, user:BattlerData, target:BattlerData):
 	pass
 	#if target is same as self, skip attack process and go to self-buff stage increases/heals/shields
@@ -46,7 +78,7 @@ func ProcessSkill(skill:Skill, user:BattlerData, target:BattlerData):
 	#world state handling
 	#handle switch outs
 
-func AwaitSelection(battler:BattlerData, action:MenuActions, option:int=-1, detail:int=-1):
+func Selection(battler:BattlerData, action:MenuActions, option:int=-1, detail:int=-1):
 	if action == MenuActions.Back:
 		return
 	
@@ -69,16 +101,16 @@ func AwaitSelection(battler:BattlerData, action:MenuActions, option:int=-1, deta
 			battler.currentSpell = battler.witchInstance.assignedSpells[option] #Assign Spell
 			if detail != -1: #If no detail, no extra Faeble target
 				battler.currentTarget = battler
-				battler.currentFaeble = battler.faebleTeam[detail]
+				battler.currentFaeble = battler.faebleTeam[detail] #I sort of get what this was? but really needs work
 			else: #Determine other default target
-				if battler == playerBattler: battler.currentTarget = enemyBattler
-				elif battler == enemyBattler: battler.currentTarget = playerBattler
+				battler.currentTarget = battler
 			RoundStep()
 		
 		MenuActions.Tactics:
 			battler.currentTactic = option
 			if option == 0: #Switch
 				battler.currentFaeble = battler.faebleTeam[detail]
+				battler.switching = true
 			elif option == 1: #Flee
 				pass
 			RoundStep()
@@ -195,4 +227,5 @@ func _on_button_button_down() -> void: #TEMP
 	if currentStep >= 12:
 		currentStep = 0
 	EventBus.emit_signal("BattleStateChanged", currentStep)
+	RoundStep()
 	pass # Replace with function body.

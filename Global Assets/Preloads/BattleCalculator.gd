@@ -10,8 +10,8 @@ extends Node
 
 @export var statusDecrease:float = 0.5
 
-@export var guardTiers:Array[int] = [3,7,11,15,19,24]
-@export var guardReduction:Array[int] = [1,2,3,4,5,6]
+@export var guardTiers:Array[int] = [3,7,11,15,19,24] #Defensive stat needed to gain next guard reduction
+@export var guardReduction:Array[int] = [1,2,3,4,5,6] #Guard reduction reduces tier cap for damage
 @export var doubleGuardBonus:int = 1 #how many defense tiers you raise for double guarding
 
 @export var tierDamage:Array[int] = [4,8,12]
@@ -135,6 +135,12 @@ func StatusCalc(user:BattlerData, target:BattlerData) -> int:
 	#Tier Cap clamping
 	buildup = clamp(buildup, tierStatus[tier]-tierStatusCaps[tier], tierStatus[tier]+tierStatusCaps[tier])
 	buildup = floori(buildup + user.currentTheme.buildupBoost)
+	
+	#Over-Half Buildup Reset
+	if target.buildupTarget != statusType:
+		if target.buildup >= target.currentFaeble.heart/2: #Half of Heart stat might be TEMP
+			buildup = 0
+	
 	return buildup
 
 func MatchupCalc(target:Faeble, attackingType:School) -> int: #Returns multiplier int
@@ -168,12 +174,14 @@ func SpeedCalc(playerBattler:BattlerData, enemyBattler:BattlerData) -> Array[int
 	var speedDif:int
 	var pSpeed:int = playerBattler.instance.grace
 	pSpeed +=  playerBattler.buffStages[Enums.Attributes.Grace] * PSI
-	if playerBattler.status == Enums.Status.Slow:
-		pSpeed = ceili(pSpeed * statusDecrease)
+	if playerBattler.buildupTarget == Enums.Status.Slow:
+		if playerBattler.buildup >= playerBattler.currentFaeble.heart/2:#Half of Heart stat might be TEMP
+			pSpeed = ceili(pSpeed * statusDecrease)
 	var eSpeed:int = enemyBattler.instance.grace
 	eSpeed +=  enemyBattler.buffStages[Enums.Attributes.Grace] * PSI
-	if enemyBattler.status == Enums.Status.Slow:
-		eSpeed = ceili(eSpeed * statusDecrease)
+	if enemyBattler.buildupTarget == Enums.Status.Slow:
+		if enemyBattler.buildup >= enemyBattler.currentFaeble.heart/2:#Half of Heart stat might be TEMP
+			eSpeed = ceili(eSpeed * statusDecrease)
 	if pSpeed >= eSpeed + HT: speedDif=2
 	elif pSpeed >= eSpeed + LT: speedDif=1
 	elif eSpeed >= pSpeed + LT: speedDif=-1
@@ -232,6 +240,8 @@ func ArmorCalc(user:BattlerData) -> Array[int]:
 	var i:int = 0
 	var pGuard:int
 	var mGuard:int
+	if user.currentMove == null:
+		return [pGuard, mGuard]
 	if user.status == Enums.Status.Break:
 		return [0,0]
 	for tier in guardTiers:

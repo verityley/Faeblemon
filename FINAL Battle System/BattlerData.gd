@@ -24,7 +24,7 @@ var currentSpell:Skill
 var currentTheme:SkillTheme
 var currentTactic:int #Enum of menu tactics option
 var currentTarget:BattlerData
-var currentFaeble:Faeble
+var currentFaeble:Faeble #used for party targeting(?)
 
 func ChangeBattler(entry:Faeble):
 	if instance != null:
@@ -32,9 +32,9 @@ func ChangeBattler(entry:Faeble):
 		instance.currentStatus = status
 		instance.currentBuildup = buildup
 		instance.currentBuildupTarget = buildupTarget
-	var targetSlot:int = faebleTeam.find(entry)
-	faebleTeam[0] = entry
-	faebleTeam[targetSlot] = instance
+		var targetSlot:int = faebleTeam.find(entry)
+		faebleTeam[0] = entry
+		faebleTeam[targetSlot] = instance
 	ResetBattler(true)
 	instance = entry
 	health = entry.currentHP
@@ -64,3 +64,14 @@ func ResetBattler(fullReset:bool=false):
 		buildup = 0
 		buildupTarget = 0
 		health = 0
+
+func ClearBattler():
+	if instance != null:
+		instance.currentHP = health
+		instance.currentStatus = status
+		instance.currentBuildup = buildup
+		instance.currentBuildupTarget = buildupTarget
+	ResetBattler(true)
+	instance = null
+	witchInstance = null
+	faebleTeam.clear()

@@ -8,21 +8,25 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Faeblemon"
 run/main_scene="res://Scenes/Debug/DebugTeamSelector.tscn"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-FaebleCreation="*res://Global Assets/Preloads/FaebleCreation.gd"
 EventBus="*res://Global Assets/Preloads/EventBus.gd"
 FaebleStorage="*res://Global Assets/Preloads/FaebleStorage.tscn"
 SwitchDatabase="*res://Global Assets/Preloads/SwitchDatabase.tscn"
 Enums="*res://Global Assets/Preloads/EnumDatabase.gd"
 BattleCalcs="*res://Global Assets/Preloads/BattleCalculator.gd"
+FaebleCreation="*uid://bv4v74hds2cdg"
 
 [display]
 
