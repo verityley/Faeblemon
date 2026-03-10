@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SpellTheme" format=3 uid="uid://drf8u1qvxp5de"]
+
+[ext_resource type="Script" uid="uid://ck02m48d6hwnc" path="res://Global Assets/Classes/Theme.gd" id="1_6y33s"]
+
+[resource]
+script = ExtResource("1_6y33s")
+name = "Silken"
+priority = 1
+buildupBoost = 2
+metadata/_custom_type_script = "uid://ck02m48d6hwnc"

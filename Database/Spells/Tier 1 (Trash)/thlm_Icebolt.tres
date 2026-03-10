@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://dgqsx6v7sfmhf"]
+
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Spell.gd" id="1_1iee8"]
+[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Deep.tres" id="2_1ofir"]
+
+[resource]
+script = ExtResource("1_1iee8")
+skillName = "Icebolt"
+skillType = ExtResource("2_1ofir")
+skillCost = 2
+skillNature = "Magical"
+skillDamage = 3
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 3
+rangeMax = 4
+canPierce = false
+canArc = false
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

@@ -57,13 +57,36 @@ enum Status{
 	Break, #Removes Guard from moves, and reduces Brawn at half
 	Fixate, #Can only use Faeble's inherent Theme, and reduces Wit at half
 	Silence, #Prevents Witch Spell usage, and reduces Ambition at half
-	Slow #Removes Priority from moves, and reduces Grace at half
+	Slow, #Removes Priority from moves, and reduces Grace at half
+	Catalyze #Not a status effect on its own, it is a buildup wildcard that adds to any
 }
 
 enum Ranges{
 	Melee=0,
 	Near,
 	Far
+}
+
+enum BattleSteps{
+	Startup=0,
+	ActionSelect,
+	RoundStart,
+	BeforeAll,
+	BeforeFirst,
+	DuringFirst,
+	AfterFirst,
+	BeforeSecond,
+	DuringSecond,
+	AfterSecond,
+	AfterAll,
+	Recycle
+}
+
+enum Tactics{
+	None=-1,
+	Switch,
+	Move,
+	Flee
 }
 
 enum Behaviors{

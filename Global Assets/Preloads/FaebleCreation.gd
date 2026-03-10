@@ -3,10 +3,13 @@ extends Node
 @export var limitBreakOdds:int = 800 #These are all "1 out of X", not the percent chance.
 @export var shinyOdds:int = 1000
 @export var altSchoolOdds:int = 500
+@export var altThemeOdds:int = 500
 
 @export var startingHP:int = 8
+@export var startingBuildup:int = 2
 @export var HPCap:int = 60
 @export var healthRatio:int = 2 #Health per point of HRT
+@export var buildupRatio:int = 2 #Divisor to HRT to determine max buildup
 
 @export var titlePool:Array[Title]
 
@@ -26,7 +29,7 @@ func _ready():
 
 func CreateFaeble(faebleEntry:Faeble) -> Faeble:
 	var instance:Faeble = faebleEntry.duplicate()
-	var learnList:Dictionary = faebleEntry.skillPool.duplicate()
+	#var learnList:Dictionary = faebleEntry.spellPool.duplicate()
 	
 	var RNG = RandomNumberGenerator.new()
 	RNG.randomize()
@@ -34,6 +37,7 @@ func CreateFaeble(faebleEntry:Faeble) -> Faeble:
 	var titleRoll:int = RNG.randi_range(0, titlePool.size()-1)
 	var breakRoll:int = RNG.randi_range(0, limitBreakOdds)
 	var schoolRoll:int = RNG.randi_range(0, altSchoolOdds)
+	var themeRoll:int = RNG.randi_range(0, altSchoolOdds)
 	
 	instance.title = titlePool[titleRoll]
 	
@@ -42,15 +46,18 @@ func CreateFaeble(faebleEntry:Faeble) -> Faeble:
 	if breakRoll == limitBreakOdds:
 		print("Limit Break!")
 		instance.maxQuality += 2
+		instance.titleBonus = 3
 	
 	#Swap out sig school for one of two alt schools, if chances succeed
 	if schoolRoll == altSchoolOdds:
-		if RNG.randi_range(0,1) == 0:
-			print("Alt School 1!")
-			instance.sigSchool = instance.altSigSchool1
-		else:
-			print("Alt School 2!")
-			instance.sigSchool = instance.altSigSchool2
+		print("Alt School!")
+		instance.affinity = instance.altAffinity
+	
+	if themeRoll == altThemeOdds:
+		print("Alt School!")
+		instance.setTheme = instance.altTheme
+	else:
+		instance.setTheme = instance.theme
 	
 	instance.baseStats.append(instance.brawn)
 	instance.baseStats.append(instance.vigor)
@@ -61,48 +68,48 @@ func CreateFaeble(faebleEntry:Faeble) -> Faeble:
 	
 	instance.brawn = instance.baseStats[Enums.Attributes.Brawn]
 	if instance.title.positiveStat == Enums.Attributes.Brawn:
-		instance.brawn += instance.title.titleBonus
+		instance.brawn += instance.titleBonus
 	elif instance.title.negativeStat == Enums.Attributes.Brawn:
-		instance.brawn -= instance.title.titleBonus
+		instance.brawn -= instance.titleBonus
 	instance.brawn = clampi(instance.brawn, instance.minQuality, instance.maxQuality)
 	
 	instance.vigor = instance.baseStats[Enums.Attributes.Vigor]
 	if instance.title.positiveStat == Enums.Attributes.Vigor:
-		instance.vigor += instance.title.titleBonus
+		instance.vigor += instance.titleBonus
 	elif instance.title.negativeStat == Enums.Attributes.Vigor:
-		instance.vigor -= instance.title.titleBonus
+		instance.vigor -= instance.titleBonus
 	instance.vigor = clampi(instance.vigor, instance.minQuality, instance.maxQuality)
 	
 	instance.wit = instance.baseStats[Enums.Attributes.Wit]
 	if instance.title.positiveStat == Enums.Attributes.Wit:
-		instance.wit += instance.title.titleBonus
+		instance.wit += instance.titleBonus
 	elif instance.title.negativeStat == Enums.Attributes.Wit:
-		instance.wit -= instance.title.titleBonus
+		instance.wit -= instance.titleBonus
 	instance.wit = clampi(instance.wit, instance.minQuality, instance.maxQuality)
 	
 	instance.ambition = instance.baseStats[Enums.Attributes.Ambition]
 	if instance.title.positiveStat == Enums.Attributes.Ambition:
-		instance.ambition += instance.title.titleBonus
+		instance.ambition += instance.titleBonus
 	elif instance.title.negativeStat == Enums.Attributes.Ambition:
-		instance.ambition -= instance.title.titleBonus
+		instance.ambition -= instance.titleBonus
 	instance.ambition = clampi(instance.ambition, instance.minQuality, instance.maxQuality)
 	
 	instance.grace = instance.baseStats[Enums.Attributes.Grace]
 	if instance.title.positiveStat == Enums.Attributes.Grace:
-		instance.grace += instance.title.titleBonus
+		instance.grace += instance.titleBonus
 	elif instance.title.negativeStat == Enums.Attributes.Grace:
-		instance.grace -= instance.title.titleBonus
+		instance.grace -= instance.titleBonus
 	instance.grace = clampi(instance.grace, instance.minQuality, instance.maxQuality)
 	
 	instance.heart = instance.baseStats[Enums.Attributes.Heart]
 	if instance.title.positiveStat == Enums.Attributes.Heart:
-		instance.heart += instance.title.titleBonus
+		instance.heart += instance.titleBonus
 	elif instance.title.negativeStat == Enums.Attributes.Heart:
-		instance.heart -= instance.title.titleBonus
+		instance.heart -= instance.titleBonus
 	instance.heart = clampi(instance.heart, instance.minQuality, instance.maxQuality)
 	
 	print("Faeble Name: ", instance.name)
-	print("Title: ", instance.title.titleName)
+	print("Title: ", instance.title.name)
 	print("Brawn:", instance.brawn)
 	print("Vigor:", instance.vigor)
 	print("Wit:", instance.wit)
@@ -123,7 +130,8 @@ func CreateFaeble(faebleEntry:Faeble) -> Faeble:
 	instance.maxHP = clampi(instance.maxHP, startingHP, HPCap)
 	instance.currentHP = instance.maxHP
 	print("Max HP:", instance.maxHP)
-	
+	instance.maxBuildup = (instance.heart / buildupRatio) + startingBuildup
+	print("Max Buildup:", instance.maxBuildup)
 	return instance
 
 #Old Function, rebuilding

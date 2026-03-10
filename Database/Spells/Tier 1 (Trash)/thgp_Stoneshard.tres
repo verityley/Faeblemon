@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://luxxoojs0rwt"]
+
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Spell.gd" id="1_082qb"]
+[ext_resource type="Resource" uid="uid://dvn0i2tiim6q8" path="res://Database/Schools/Geo.tres" id="2_7uofb"]
+
+[resource]
+script = ExtResource("1_082qb")
+skillName = "Stoneshard"
+skillType = ExtResource("2_7uofb")
+skillCost = 2
+skillNature = "Physical"
+skillDamage = 4
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 1
+rangeMax = 1
+canPierce = false
+canArc = false
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

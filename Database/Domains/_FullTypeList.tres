@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Domain" load_steps=15 format=3 uid="uid://bb3bakhvovnjf"]
+[gd_resource type="Resource" script_class="Domain" format=3 uid="uid://bb3bakhvovnjf"]
 
 [ext_resource type="Script" uid="uid://cmgfaldorlllm" path="res://Global Assets/Classes/Domain.gd" id="2_21xia"]
 [ext_resource type="Resource" uid="uid://cl8db7w0h0fb2" path="res://Database/Schools/Alchemy.tres" id="2_ce7k2"]
@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://dvn0i2tiim6q8" path="res://Database/Schools/Geo.tres" id="6_pw0rb"]
 [ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="7_yv56j"]
 [ext_resource type="Resource" uid="uid://de8kbqj72dt47" path="res://Database/Schools/Hearth.tres" id="8_ppkqe"]
-[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Rime.tres" id="9_1g4rj"]
+[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Deep.tres" id="9_1g4rj"]
 [ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Kinetic.tres" id="10_7hl01"]
 [ext_resource type="Resource" uid="uid://bit2tuyhefdhg" path="res://Database/Schools/Pact.tres" id="11_yv0v7"]
 [ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Charm.tres" id="12_35xjm"]

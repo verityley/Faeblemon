@@ -15,14 +15,15 @@ var buildupTarget:Enums.Status #Last hit status target, can't change if over hal
 var status:Enums.Status #Enum of statuses
 var buffStages:Array[int] = [0,0,0,0,0]
 var damageBoost:int
+var damageTaken:int #Damage taken during this turn
 var protected:bool = false #Use to prevent all damage and skip damage calc step
 var safeguarded:bool = false #Use to prevent all status buildup and skip status calc step
 var switching:bool = false #If true, change battler to currentFaeble when triggered
 
-var currentMove:Skill
-var currentSpell:Skill
-var currentTheme:SkillTheme
-var currentTactic:int #Enum of menu tactics option
+var currentSpell:Spell
+var currentWitchSpell:Spell
+var currentTheme:SpellTheme
+var currentTactic:Enums.Tactics #Enum of menu tactics option
 var currentTarget:BattlerData
 var currentFaeble:Faeble #used for party targeting(?)
 
@@ -38,6 +39,7 @@ func ChangeBattler(entry:Faeble):
 	ResetBattler(true)
 	instance = entry
 	health = entry.currentHP
+	EventBus.emit_signal("HealthChanged", self)
 	status = entry.currentStatus
 	buildup = instance.currentBuildup
 	buildupTarget = instance.currentBuildupTarget
@@ -48,21 +50,22 @@ func ResetBattler(fullReset:bool=false):
 	mGuard = 0
 	priority = 0
 	damageBoost = 0
-	currentMove = null
 	currentSpell = null
+	currentWitchSpell = null
 	currentTheme = null
-	currentTactic = 0
+	currentTactic = Enums.Tactics.None
 	currentFaeble = null
 	currentTarget = null
 	protected = false
 	safeguarded = false
 	switching = false
+	damageTaken = 0
 	#Battler Change/End Reset
 	if fullReset:
 		buffStages = [0,0,0,0,0]
-		status = 0
+		status = Enums.Status.Clear
 		buildup = 0
-		buildupTarget = 0
+		buildupTarget = Enums.Status.Clear
 		health = 0
 
 func ClearBattler():

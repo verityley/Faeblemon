@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://dxt7rgqllyloj"]
+
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Spell.gd" id="1_snu02"]
+[ext_resource type="Resource" uid="uid://cl8db7w0h0fb2" path="res://Database/Schools/Alchemy.tres" id="2_ooiij"]
+
+[resource]
+script = ExtResource("1_snu02")
+skillName = "Gravity"
+skillType = ExtResource("2_ooiij")
+skillCost = 9
+skillNature = "Magical"
+skillDamage = 10
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 1
+rangeMax = 5
+canPierce = true
+canArc = true
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

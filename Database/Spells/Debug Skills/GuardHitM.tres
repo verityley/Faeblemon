@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Spell" format=3 uid="uid://da0yo4avcb5n5"]
+
+[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Deep.tres" id="1_lorwh"]
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Spell.gd" id="2_2jhxc"]
+
+[resource]
+script = ExtResource("2_2jhxc")
+name = "Wave"
+school = ExtResource("1_lorwh")
+magical = true
+pGuarding = true
+rangeBands = Array[bool]([true, false, false])
+damageTier = 1

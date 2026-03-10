@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Domain" load_steps=16 format=3 uid="uid://bldym4cl8lnh7"]
+[gd_resource type="Resource" script_class="Domain" format=3 uid="uid://bldym4cl8lnh7"]
 
 [ext_resource type="Texture2D" uid="uid://bc7usdjypsh0a" path="res://Global Assets/Graphics/Type Graphics/Domain Plates/FairytaleNameplate.png" id="1_3p6lw"]
 [ext_resource type="Script" uid="uid://cmgfaldorlllm" path="res://Global Assets/Classes/Domain.gd" id="2_kmk6y"]
@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://dvn0i2tiim6q8" path="res://Database/Schools/Geo.tres" id="7_iqups"]
 [ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="8_ixwv1"]
 [ext_resource type="Resource" uid="uid://de8kbqj72dt47" path="res://Database/Schools/Hearth.tres" id="9_hcotm"]
-[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Rime.tres" id="10_gl0iu"]
+[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Deep.tres" id="10_gl0iu"]
 [ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Kinetic.tres" id="11_fanlh"]
 [ext_resource type="Resource" uid="uid://bit2tuyhefdhg" path="res://Database/Schools/Pact.tres" id="12_t5d00"]
 [ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Charm.tres" id="13_xkrtk"]

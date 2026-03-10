@@ -8,8 +8,10 @@ class_name Faeble
 @export var secondDomain:Domain
 @export var affinity:School
 @export var altAffinity:School
-@export var theme:SkillTheme
-@export var altTheme:SkillTheme
+@export var theme:SpellTheme
+@export var altTheme:SpellTheme
+@export var titleBonus:int = 2
+@export var attunement:Spell #must be a Witch skill
 
 @export_category("Visual Parameters")
 @export var sprite:CompressedTexture2D
@@ -29,8 +31,8 @@ class_name Faeble
 
 
 @export_category("Base Stats")
-var chapter:int = 1 #Increased by battle, bonding, etc. Determines ASIs within listed stats as max.
-var act:int #Increased by evolution or quests, determines overall faeble move tiers.
+@export var chapter:int = 1 #Increased by battle, bonding, etc. Determines ASIs within listed stats as max.
+@export var act:int #Increased by evolution or quests, determines overall faeble move tiers.
 @export var minQuality:int = 1
 @export var maxQuality:int = 20 #Stage increases can exceed, but only temporary, Parables up to 22
 @export var brawn:int #Used for physical attacks
@@ -51,11 +53,11 @@ var act:int #Increased by evolution or quests, determines overall faeble move ti
 @export var title:Title
 
 @export_category("Combat Parameters")
-var maxHP:int = 10
-var maxBuildup:int = 2
-@export var skillPool:Dictionary
-@export var assignedSkills:Array[Skill] = [null, null, null]
-var learnedSkills:Array[Skill] #These are all the skills they know by their level, or with Scrolls
+@export var maxHP:int = 10
+@export var maxBuildup:int = 2
+#var spellPool:Dictionary
+@export var assignedSpells:Array[Spell] = [null, null, null]
+@export var learnedSpells:Array[Spell] #These are all the skills they know by their level, or with Scrolls
 @export var feats:Array[Feat]
 @export var customResource:int #Used for faebles with unique mechanics to their moves
 @export var customName:String #Name of custom resource
@@ -81,7 +83,7 @@ var learnedSkills:Array[Skill] #These are all the skills they know by their leve
 @export var currentStatus:Enums.Status
 @export var currentBuildup:int
 @export var currentBuildupTarget:Enums.Status
-@export var setTheme:SkillTheme
+@export var setTheme:SpellTheme
 
 @export_category("Description and Tracking")
 @export_multiline var description:String #Look into parsing string and revealing bits by level

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://bxe0c4xde0ijr"]
+
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Spell.gd" id="1_un4pr"]
+[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Deep.tres" id="2_vlnv5"]
+
+[resource]
+script = ExtResource("1_un4pr")
+skillName = "Moonbeam"
+skillType = ExtResource("2_vlnv5")
+skillCost = 8
+skillNature = "Magical"
+skillDamage = 10
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 3
+rangeMax = 6
+canPierce = true
+canArc = true
+canBurst = true
+burstRange = 1
+targetAlly = false
+targetAll = false

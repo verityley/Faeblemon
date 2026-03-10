@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Spell" format=3 uid="uid://cba8kh4jyh2ks"]
+
+[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Kinetic.tres" id="1_88xbj"]
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Spell.gd" id="1_e186e"]
+
+[resource]
+script = ExtResource("1_e186e")
+name = "Pop"
+school = ExtResource("1_88xbj")
+magical = true
+rangeBands = Array[bool]([false, true, true])
+damageTier = 1
+recoilPercent = -0.25

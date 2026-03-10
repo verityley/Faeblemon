@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://cyytlvmn20iox"]
+
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Spell.gd" id="1_nie1w"]
+[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Deep.tres" id="2_tn2cg"]
+
+[resource]
+script = ExtResource("1_nie1w")
+skillName = "Starlight"
+skillType = ExtResource("2_tn2cg")
+skillCost = 4
+skillNature = "Magical"
+skillDamage = 6
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 3
+rangeMax = 5
+canPierce = false
+canArc = true
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

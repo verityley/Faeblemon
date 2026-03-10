@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="School" load_steps=3 format=3 uid="uid://cy460pjjcakrm"]
+[gd_resource type="Resource" script_class="School" format=3 uid="uid://cy460pjjcakrm"]
 
 [ext_resource type="Texture2D" uid="uid://uhfd55weako7" path="res://Global Assets/Graphics/Type Graphics/School Plates/CurseNameplate.png" id="1_20siu"]
 [ext_resource type="Script" uid="uid://xm767eoimr05" path="res://Global Assets/Classes/School.gd" id="2_jyb4s"]
@@ -7,6 +7,6 @@
 script = ExtResource("2_jyb4s")
 name = "Curse"
 nameShort = "Curse"
-typeIndex = 6
+typeIndex = 7
 nameplate = ExtResource("1_20siu")
 typeColor = Color(0.262745, 0.141176, 0.282353, 1)

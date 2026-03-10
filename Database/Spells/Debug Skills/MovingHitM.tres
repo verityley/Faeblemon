@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Spell" format=3 uid="uid://drvdcos208o8u"]
+
+[ext_resource type="Resource" uid="uid://c10g7loedmtw7" path="res://Database/Schools/Storm.tres" id="1_ebr2n"]
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Spell.gd" id="2_3vwdu"]
+
+[resource]
+script = ExtResource("2_3vwdu")
+name = "Woosh"
+school = ExtResource("1_ebr2n")
+magical = true
+rangeBands = Array[bool]([false, true, false])
+damageTier = 1
+movement = 1

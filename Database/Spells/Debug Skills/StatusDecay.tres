@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Spell" format=3 uid="uid://kwo71ocdw2up"]
+
+[ext_resource type="Resource" uid="uid://cy460pjjcakrm" path="res://Database/Schools/Curse.tres" id="1_ophbo"]
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Spell.gd" id="2_3m6uj"]
+
+[resource]
+script = ExtResource("2_3m6uj")
+name = "Envenom"
+school = ExtResource("1_ophbo")
+magical = true
+rangeBands = Array[bool]([true, true, false])
+statusType = 1
+statusTier = 1

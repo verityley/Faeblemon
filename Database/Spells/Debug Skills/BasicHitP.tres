@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Spell" format=3 uid="uid://uprv6nect8d4"]
+
+[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Kinetic.tres" id="1_lbjtk"]
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Spell.gd" id="2_3fb4b"]
+
+[resource]
+script = ExtResource("2_3fb4b")
+name = "Impact"
+school = ExtResource("1_lbjtk")
+rangeBands = Array[bool]([true, true, false])
+damageTier = 2
+recoilPercent = 0.25

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SpellTheme" format=3 uid="uid://wj55t6ec4bx8"]
+
+[ext_resource type="Script" uid="uid://ck02m48d6hwnc" path="res://Global Assets/Classes/Theme.gd" id="1_tf46s"]
+
+[resource]
+script = ExtResource("1_tf46s")
+name = "Bracing"
+priority = -1
+pGuarding = true
+metadata/_custom_type_script = "uid://ck02m48d6hwnc"

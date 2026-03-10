@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="School" load_steps=3 format=3 uid="uid://c10g7loedmtw7"]
+[gd_resource type="Resource" script_class="School" format=3 uid="uid://c10g7loedmtw7"]
 
 [ext_resource type="Texture2D" uid="uid://dbrhjy61a8fx0" path="res://Global Assets/Graphics/Type Graphics/School Plates/StormNameplate.png" id="1_d0ge8"]
 [ext_resource type="Script" uid="uid://xm767eoimr05" path="res://Global Assets/Classes/School.gd" id="2_ay2fr"]
@@ -7,6 +7,6 @@
 script = ExtResource("2_ay2fr")
 name = "Storm"
 nameShort = "Storm"
-typeIndex = 2
+typeIndex = 3
 nameplate = ExtResource("1_d0ge8")
 typeColor = Color(0.137255, 0.247059, 0.254902, 1)

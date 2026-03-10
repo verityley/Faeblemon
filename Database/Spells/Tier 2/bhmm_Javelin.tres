@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://xohm7upjftt8"]
+
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Spell.gd" id="1_eg2xq"]
+[ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Kinetic.tres" id="2_v3rvl"]
+
+[resource]
+script = ExtResource("1_eg2xq")
+skillName = "Javelin"
+skillType = ExtResource("2_v3rvl")
+skillCost = 3
+skillNature = "Magical"
+skillDamage = 5
+witchSkill = false
+commandDifficulty = 0
+commandTiming = 0
+moveDescription = ""
+targetType = ""
+targetScope = ""
+rangeMin = 5
+rangeMax = 6
+canPierce = true
+canArc = false
+canBurst = false
+burstRange = 0
+targetAlly = false
+targetAll = false

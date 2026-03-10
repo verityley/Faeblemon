@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SpellTheme" format=3 uid="uid://c56ytfgsqnixy"]
+
+[ext_resource type="Script" uid="uid://ck02m48d6hwnc" path="res://Global Assets/Classes/Theme.gd" id="1_7roej"]
+
+[resource]
+script = ExtResource("1_7roej")
+name = "Darting"
+pGuarding = true
+movement = -1
+metadata/_custom_type_script = "uid://ck02m48d6hwnc"

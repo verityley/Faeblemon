@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Spell" format=3 uid="uid://b6oo2n376b51f"]
+
+[ext_resource type="Resource" uid="uid://dvn0i2tiim6q8" path="res://Database/Schools/Geo.tres" id="1_4t5m0"]
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Spell.gd" id="2_d40cp"]
+
+[resource]
+script = ExtResource("2_d40cp")
+name = "Crash"
+school = ExtResource("1_4t5m0")
+rangeBands = Array[bool]([true, false, false])
+damageTier = 1
+movement = -1

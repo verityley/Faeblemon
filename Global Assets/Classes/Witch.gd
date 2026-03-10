@@ -7,14 +7,14 @@ class_name Witch
 @export var backSprite:CompressedTexture2D
 @export var battleSprite:CompressedTexture2D
 @export var portrait:CompressedTexture2D
-@export var cantrips:Array[Skill] = [null,null,null]
-@export var learnedSpells:Array[Skill]
-@export var assignedSpells:Array[Skill] = [null,null,null]
+@export var rituals:Array[Spell] = [null,null,null]
+@export var learnedSpells:Array[Spell]
+@export var assignedSpells:Array[Spell] = [null,null,null]
 var spellSlot1
 var spellSlot2
 var spellSlot3
-@export var learnedThemes:Array[SkillTheme]
-@export var assignedThemes:Array[SkillTheme] = [null,null,null]
+@export var learnedThemes:Array[SpellTheme]
+@export var assignedThemes:Array[SpellTheme] = [null,null,null]
 
 
 #AI NPC Only

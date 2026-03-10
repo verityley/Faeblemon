@@ -1,7 +1,7 @@
 extends Resource
-class_name SkillTheme
+class_name SpellTheme
 
-@export var themeName:String
+@export var name:String
 
 @export_category("Universal Factors")
 @export var priority:int
@@ -14,10 +14,10 @@ class_name SkillTheme
 
 @export_category("Unique Factors")
 @export var damageCapMod:int
-@export var buffStat:Enums.BuffableAttrs
+@export var buffStat:Enums.BuffableAttrs = -1
 @export var buffStages:int
-@export var aura:int
-@export var statusEffect:int
+@export var aura:Aura
+@export var statusEffect:Enums.Status
 @export var rangeBands:Array[bool] = [false, false, false]
 @export var rangeReplace:bool = false
 

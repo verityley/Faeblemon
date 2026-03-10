@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SpellTheme" format=3 uid="uid://jswj1a1iu6u6"]
+
+[ext_resource type="Script" uid="uid://ck02m48d6hwnc" path="res://Global Assets/Classes/Theme.gd" id="1_eocmr"]
+
+[resource]
+script = ExtResource("1_eocmr")
+name = "Cautious"
+mGuarding = true
+movement = 1
+metadata/_custom_type_script = "uid://ck02m48d6hwnc"

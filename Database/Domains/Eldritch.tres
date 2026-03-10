@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Domain" load_steps=16 format=3 uid="uid://dfv6h587fxq2k"]
+[gd_resource type="Resource" script_class="Domain" format=3 uid="uid://dfv6h587fxq2k"]
 
 [ext_resource type="Texture2D" uid="uid://dwddgejktbyh6" path="res://Global Assets/Graphics/Type Graphics/Domain Plates/EldritchNameplate.png" id="1_uljou"]
 [ext_resource type="Script" uid="uid://cmgfaldorlllm" path="res://Global Assets/Classes/Domain.gd" id="2_f4fsj"]
@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://dvn0i2tiim6q8" path="res://Database/Schools/Geo.tres" id="7_si31j"]
 [ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="8_yrsfw"]
 [ext_resource type="Resource" uid="uid://de8kbqj72dt47" path="res://Database/Schools/Hearth.tres" id="9_8mrje"]
-[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Rime.tres" id="10_68c8v"]
+[ext_resource type="Resource" uid="uid://qsa5frtrqsay" path="res://Database/Schools/Deep.tres" id="10_68c8v"]
 [ext_resource type="Resource" uid="uid://cu7l37xdqqvxn" path="res://Database/Schools/Kinetic.tres" id="11_6vk2a"]
 [ext_resource type="Resource" uid="uid://bit2tuyhefdhg" path="res://Database/Schools/Pact.tres" id="12_68p8n"]
 [ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Charm.tres" id="13_2rvbw"]
