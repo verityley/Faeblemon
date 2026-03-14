@@ -10,11 +10,12 @@
 [ext_resource type="Script" uid="uid://d12tvnj5d7tpq" path="res://Global Assets/Classes/Witch.gd" id="5_bkmbk"]
 [ext_resource type="Resource" uid="uid://bu2n3l83ehdy7" path="res://Database/Themes/P1Adv.tres" id="5_ytm7x"]
 [ext_resource type="Resource" uid="uid://bjgo376dt3vew" path="res://Database/Faebles/094Ananseed.tres" id="9_ybmth"]
+[ext_resource type="Resource" uid="uid://rij6snba6q0t" path="res://Database/Faebles/003Sqwyrm.tres" id="10_njt1n"]
 
 [resource]
 script = ExtResource("5_bkmbk")
 name = "Myxalia"
-party = Array[ExtResource("3_7lcd2")]([ExtResource("9_ybmth")])
+party = Array[ExtResource("3_7lcd2")]([ExtResource("9_ybmth"), ExtResource("10_njt1n")])
 backSprite = ExtResource("4_h3gpu")
 battleSprite = ExtResource("4_765ls")
 assignedThemes = Array[ExtResource("2_njt1n")]([ExtResource("5_ytm7x"), ExtResource("4_ka7m7"), ExtResource("3_2yv8f")])

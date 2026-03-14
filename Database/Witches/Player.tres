@@ -10,11 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://bik83etyy05sr" path="res://Global Assets/Graphics/Dialogue Graphics/WitchBackSprite.png" id="4_m2dfp"]
 [ext_resource type="Resource" uid="uid://bu2n3l83ehdy7" path="res://Database/Themes/P1Adv.tres" id="5_3yauy"]
 [ext_resource type="Resource" uid="uid://rij6snba6q0t" path="res://Database/Faebles/003Sqwyrm.tres" id="9_ekv8w"]
+[ext_resource type="Resource" uid="uid://bjgo376dt3vew" path="res://Database/Faebles/094Ananseed.tres" id="10_c8ecf"]
 
 [resource]
 script = ExtResource("3_616v1")
 name = "Iris"
-party = Array[ExtResource("2_tmqhi")]([ExtResource("9_ekv8w")])
+party = Array[ExtResource("2_tmqhi")]([ExtResource("9_ekv8w"), ExtResource("10_c8ecf")])
 backSprite = ExtResource("4_m2dfp")
 battleSprite = ExtResource("2_m2dfp")
 assignedThemes = Array[ExtResource("2_bun1k")]([ExtResource("3_c8ecf"), ExtResource("4_jngly"), ExtResource("5_3yauy")])

@@ -82,6 +82,7 @@ enum BattleSteps{
 	Recycle
 }
 
+
 enum Tactics{
 	None=-1,
 	Switch,

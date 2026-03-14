@@ -6,8 +6,14 @@
 [ext_resource type="Resource" uid="uid://n2soqv1dk3si" path="res://Database/Witches/Player.tres" id="2_yql3t"]
 [ext_resource type="Resource" uid="uid://denc842hc8jyf" path="res://Database/Witches/Enemy.tres" id="3_13yjm"]
 [ext_resource type="Script" uid="uid://b2btm3xcbd408" path="res://FINAL Battle System/debug_printer.gd" id="3_v8kot"]
+[ext_resource type="Texture2D" uid="uid://c63kmx0o04y4r" path="res://Global Assets/Graphics/UI Graphics/BattleCommand.png" id="9_15nrw"]
+[ext_resource type="Texture2D" uid="uid://c2l2ic04qladn" path="res://Global Assets/Graphics/Monster Graphics/Icons/BumblebardIcon.png" id="10_anqn3"]
 [ext_resource type="Texture2D" uid="uid://dxihe3743hu8g" path="res://Global Assets/Graphics/Monster Graphics/Ananseed.png" id="11_axbln"]
+[ext_resource type="Texture2D" uid="uid://cbpb8dkape58y" path="res://Global Assets/Graphics/Monster Graphics/Icons/RatinctureIcon.png" id="11_kag5q"]
+[ext_resource type="Texture2D" uid="uid://bpkh8xekg4032" path="res://Global Assets/Graphics/Monster Graphics/Icons/SqwyrmIcon.png" id="12_4eda0"]
 [ext_resource type="Texture2D" uid="uid://brxgkrgviam1r" path="res://Global Assets/Graphics/Monster Graphics/Sqwyrm.png" id="12_npsni"]
+[ext_resource type="Texture2D" uid="uid://c3efbxw0nllib" path="res://Global Assets/Graphics/Monster Graphics/Icons/ScallywotlIcon.png" id="13_4n6f2"]
+[ext_resource type="Texture2D" uid="uid://cc0cm0gukdm87" path="res://Global Assets/Graphics/Monster Graphics/Icons/PubbleIcon.png" id="14_o5j8h"]
 
 [node name="FinalBattleSystem" type="Node" unique_id=386078978 node_paths=PackedStringArray("playerBattler", "enemyBattler")]
 script = ExtResource("1_l6cxh")
@@ -29,13 +35,18 @@ script = ExtResource("2_j0p5m")
 [node name="MessagePrinter" type="Node" parent="." unique_id=695511204]
 script = ExtResource("3_v8kot")
 
-[node name="TestUI" type="Control" parent="." unique_id=435090533 node_paths=PackedStringArray("battleSystem")]
+[node name="TestUI" type="Control" parent="." unique_id=435090533 node_paths=PackedStringArray("battleSystem", "attackTree", "witchTree", "tacticsTree")]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_6062a")
 battleSystem = NodePath("..")
+attackTree = [NodePath("MenuCommands/AttackButton"), NodePath("MenuCommands/AttackButton/AvailableAttacks"), NodePath("MenuCommands/AttackButton/AvailableThemes")]
+witchTree = [NodePath("MenuCommands/SpellsButton"), NodePath("MenuCommands/SpellsButton/AvailableSpells")]
+tacticsTree = [NodePath("MenuCommands/TacticsButton"), NodePath("MenuCommands/TacticsButton/AvailableTactics"), NodePath("PartyDisplay")]
 
 [node name="StateLabel" type="Label" parent="TestUI" unique_id=539237713]
 layout_mode = 1
@@ -77,6 +88,17 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="BackButton" type="Button" parent="TestUI/MenuCommands" unique_id=1031189120]
+visible = false
+layout_mode = 0
+offset_left = 1573.0001
+offset_top = 912.0045
+offset_right = 1813.0001
+offset_bottom = 1012.0045
+rotation = -0.785397
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
 [node name="AttackButton" type="Button" parent="TestUI/MenuCommands" unique_id=1423049149]
 layout_mode = 0
 offset_left = 1292.0
@@ -88,11 +110,12 @@ theme_override_font_sizes/font_size = 32
 text = "Attack"
 
 [node name="AvailableAttacks" type="Control" parent="TestUI/MenuCommands/AttackButton" unique_id=2132627135]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Attack1" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableAttacks" unique_id=1994739951]
+[node name="Option0" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableAttacks" unique_id=1994739951]
 layout_mode = 0
 offset_left = 2.99367
 offset_top = -130.273
@@ -102,7 +125,7 @@ theme_override_font_sizes/font_size = 32
 text = "Attack 1
 "
 
-[node name="Attack2" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableAttacks" unique_id=1954595191]
+[node name="Option1" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableAttacks" unique_id=1954595191]
 layout_mode = 0
 offset_left = 268.994
 offset_top = -130.273
@@ -111,7 +134,7 @@ offset_bottom = -30.273
 theme_override_font_sizes/font_size = 32
 text = "Attack 2"
 
-[node name="Attack3" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableAttacks" unique_id=1332285719]
+[node name="Option2" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableAttacks" unique_id=1332285719]
 layout_mode = 0
 offset_left = 532.994
 offset_top = -130.273
@@ -120,23 +143,15 @@ offset_bottom = -30.273
 theme_override_font_sizes/font_size = 32
 text = "Attack 3"
 
-[node name="BackButton" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableAttacks" unique_id=1031189120]
-layout_mode = 0
-offset_left = 271.321
-offset_top = 126.073
-offset_right = 511.321
-offset_bottom = 226.073
-theme_override_font_sizes/font_size = 32
-text = "Back"
-
 [node name="AvailableThemes" type="Control" parent="TestUI/MenuCommands/AttackButton" unique_id=1200009287]
+visible = false
 anchors_preset = 0
 offset_left = -135.266
 offset_top = -126.364
 offset_right = -95.2658
 offset_bottom = -86.3637
 
-[node name="Theme1" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableThemes" unique_id=765492851]
+[node name="Detail0" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableThemes" unique_id=765492851]
 layout_mode = 0
 offset_left = 2.99367
 offset_top = -130.273
@@ -145,7 +160,7 @@ offset_bottom = -30.273
 theme_override_font_sizes/font_size = 32
 text = "Theme Name"
 
-[node name="Theme2" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableThemes" unique_id=1114260943]
+[node name="Detail1" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableThemes" unique_id=1114260943]
 layout_mode = 0
 offset_left = 268.994
 offset_top = -130.273
@@ -154,7 +169,7 @@ offset_bottom = -30.273
 theme_override_font_sizes/font_size = 32
 text = "Theme Name"
 
-[node name="Theme3" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableThemes" unique_id=417610754]
+[node name="Detail2" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableThemes" unique_id=417610754]
 layout_mode = 0
 offset_left = 532.994
 offset_top = -130.273
@@ -163,7 +178,7 @@ offset_bottom = -30.273
 theme_override_font_sizes/font_size = 32
 text = "Theme Name"
 
-[node name="ThemeFaeble" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableThemes" unique_id=1678867200]
+[node name="Detail3" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableThemes" unique_id=1678867200]
 layout_mode = 0
 offset_left = 800.445
 offset_top = -130.109
@@ -171,15 +186,6 @@ offset_right = 1040.44
 offset_bottom = -30.1086
 theme_override_font_sizes/font_size = 32
 text = "Theme Name"
-
-[node name="BackButton" type="Button" parent="TestUI/MenuCommands/AttackButton/AvailableThemes" unique_id=1305348476]
-layout_mode = 0
-offset_left = 408.001
-offset_top = 251.022
-offset_right = 648.001
-offset_bottom = 351.022
-theme_override_font_sizes/font_size = 32
-text = "Back"
 
 [node name="SpellsButton" type="Button" parent="TestUI/MenuCommands" unique_id=1607700291]
 layout_mode = 0
@@ -191,6 +197,42 @@ rotation = -0.785397
 theme_override_font_sizes/font_size = 32
 text = "Spells"
 
+[node name="AvailableSpells" type="Control" parent="TestUI/MenuCommands/SpellsButton" unique_id=667451572]
+visible = false
+anchors_preset = 0
+offset_left = -268.0
+offset_top = 0.209
+offset_right = -228.0
+offset_bottom = 40.209
+
+[node name="Option0" type="Button" parent="TestUI/MenuCommands/SpellsButton/AvailableSpells" unique_id=1484016418]
+layout_mode = 0
+offset_left = 2.99367
+offset_top = -130.273
+offset_right = 242.994
+offset_bottom = -30.273
+theme_override_font_sizes/font_size = 32
+text = "Spell 1
+"
+
+[node name="Option1" type="Button" parent="TestUI/MenuCommands/SpellsButton/AvailableSpells" unique_id=70146335]
+layout_mode = 0
+offset_left = 268.994
+offset_top = -130.273
+offset_right = 508.994
+offset_bottom = -30.273
+theme_override_font_sizes/font_size = 32
+text = "Spell 2"
+
+[node name="Option2" type="Button" parent="TestUI/MenuCommands/SpellsButton/AvailableSpells" unique_id=1512846873]
+layout_mode = 0
+offset_left = 532.994
+offset_top = -130.273
+offset_right = 772.994
+offset_bottom = -30.273
+theme_override_font_sizes/font_size = 32
+text = "Spell 3"
+
 [node name="TacticsButton" type="Button" parent="TestUI/MenuCommands" unique_id=1264735861]
 layout_mode = 0
 offset_left = 1664.0
@@ -201,6 +243,42 @@ rotation = -0.785397
 theme_override_font_sizes/font_size = 32
 text = "Tactics"
 
+[node name="AvailableTactics" type="Control" parent="TestUI/MenuCommands/TacticsButton" unique_id=1436595467]
+visible = false
+anchors_preset = 0
+offset_left = -532.0
+offset_top = 0.209
+offset_right = -492.0
+offset_bottom = 40.209
+
+[node name="Option0" type="Button" parent="TestUI/MenuCommands/TacticsButton/AvailableTactics" unique_id=662858591]
+layout_mode = 0
+offset_left = 2.99367
+offset_top = -130.273
+offset_right = 242.994
+offset_bottom = -30.273
+theme_override_font_sizes/font_size = 32
+text = "Switch
+"
+
+[node name="Option1" type="Button" parent="TestUI/MenuCommands/TacticsButton/AvailableTactics" unique_id=812031046]
+layout_mode = 0
+offset_left = 268.994
+offset_top = -130.273
+offset_right = 508.994
+offset_bottom = -30.273
+theme_override_font_sizes/font_size = 32
+text = "Move"
+
+[node name="Option2" type="Button" parent="TestUI/MenuCommands/TacticsButton/AvailableTactics" unique_id=1451781347]
+layout_mode = 0
+offset_left = 532.994
+offset_top = -130.273
+offset_right = 772.994
+offset_bottom = -30.273
+theme_override_font_sizes/font_size = 32
+text = "Flee"
+
 [node name="EnemyUI" type="Panel" parent="TestUI" unique_id=1156127043]
 layout_mode = 0
 offset_left = 31.0
@@ -208,7 +286,7 @@ offset_top = 216.0
 offset_right = 974.0
 offset_bottom = 586.0
 
-[node name="TextureRect" type="TextureRect" parent="TestUI/EnemyUI" unique_id=1122132386]
+[node name="EnemySprite" type="TextureRect" parent="TestUI/EnemyUI" unique_id=1122132386]
 layout_mode = 0
 offset_right = 369.0
 offset_bottom = 369.0
@@ -250,7 +328,7 @@ offset_top = 682.0
 offset_right = 974.0
 offset_bottom = 1052.0
 
-[node name="TextureRect" type="TextureRect" parent="TestUI/PlayerUI" unique_id=1985162592]
+[node name="PlayerSprite" type="TextureRect" parent="TestUI/PlayerUI" unique_id=1985162592]
 layout_mode = 0
 offset_right = 369.0
 offset_bottom = 369.0
@@ -285,12 +363,146 @@ offset_bottom = 211.0
 theme_override_font_sizes/font_size = 48
 text = "Status"
 
+[node name="PartyDisplay" type="Control" parent="TestUI" unique_id=1790781829]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="TestUI/PartyDisplay" unique_id=9353455]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Faeble0" type="TextureRect" parent="TestUI/PartyDisplay" unique_id=1362079144]
+layout_mode = 0
+offset_left = 863.0
+offset_top = 41.0
+offset_right = 988.0
+offset_bottom = 166.0
+texture = ExtResource("9_15nrw")
+
+[node name="Button" type="Button" parent="TestUI/PartyDisplay/Faeble0" unique_id=1851221240]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Faeble1" type="TextureRect" parent="TestUI/PartyDisplay" unique_id=1404666700]
+layout_mode = 0
+offset_left = 1169.0
+offset_top = 244.0
+offset_right = 1294.0
+offset_bottom = 369.0
+scale = Vector2(2, 2)
+texture = ExtResource("10_anqn3")
+
+[node name="Button" type="Button" parent="TestUI/PartyDisplay/Faeble1" unique_id=393764176]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Faeble2" type="TextureRect" parent="TestUI/PartyDisplay" unique_id=528848870]
+layout_mode = 0
+offset_left = 1169.0
+offset_top = 569.0
+offset_right = 1294.0
+offset_bottom = 694.0
+scale = Vector2(2, 2)
+texture = ExtResource("11_kag5q")
+
+[node name="Button" type="Button" parent="TestUI/PartyDisplay/Faeble2" unique_id=756353021]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Faeble3" type="TextureRect" parent="TestUI/PartyDisplay" unique_id=543433892]
+layout_mode = 0
+offset_left = 863.0
+offset_top = 778.0
+offset_right = 988.0
+offset_bottom = 903.0
+scale = Vector2(2, 2)
+texture = ExtResource("12_4eda0")
+
+[node name="Button" type="Button" parent="TestUI/PartyDisplay/Faeble3" unique_id=1082316384]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Faeble4" type="TextureRect" parent="TestUI/PartyDisplay" unique_id=1742778298]
+layout_mode = 0
+offset_left = 565.0
+offset_top = 569.0
+offset_right = 690.0
+offset_bottom = 694.0
+scale = Vector2(2, 2)
+texture = ExtResource("13_4n6f2")
+
+[node name="Button" type="Button" parent="TestUI/PartyDisplay/Faeble4" unique_id=516993770]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Faeble5" type="TextureRect" parent="TestUI/PartyDisplay" unique_id=1878443984]
+layout_mode = 0
+offset_left = 569.0
+offset_top = 244.0
+offset_right = 694.0
+offset_bottom = 369.0
+scale = Vector2(2, 2)
+texture = ExtResource("14_o5j8h")
+
+[node name="Button" type="Button" parent="TestUI/PartyDisplay/Faeble5" unique_id=1460633829]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [connection signal="button_down" from="TestUI/Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="TestUI/MenuCommands/BackButton" to="TestUI" method="_on_back_button_button_down"]
 [connection signal="button_down" from="TestUI/MenuCommands/AttackButton" to="TestUI" method="_on_action_button_button_down" binds= [0]]
-[connection signal="button_down" from="TestUI/MenuCommands/AttackButton/AvailableAttacks/Attack1" to="TestUI" method="_on_attack_button_down" binds= [0]]
-[connection signal="button_down" from="TestUI/MenuCommands/AttackButton/AvailableAttacks/Attack2" to="TestUI" method="_on_attack_button_down" binds= [1]]
-[connection signal="button_down" from="TestUI/MenuCommands/AttackButton/AvailableAttacks/Attack3" to="TestUI" method="_on_attack_button_down" binds= [2]]
-[connection signal="button_down" from="TestUI/MenuCommands/AttackButton/AvailableThemes/Theme1" to="TestUI" method="_on_theme_button_down" binds= [0]]
-[connection signal="button_down" from="TestUI/MenuCommands/AttackButton/AvailableThemes/Theme2" to="TestUI" method="_on_theme_button_down" binds= [1]]
-[connection signal="button_down" from="TestUI/MenuCommands/AttackButton/AvailableThemes/Theme3" to="TestUI" method="_on_theme_button_down" binds= [2]]
-[connection signal="button_down" from="TestUI/MenuCommands/AttackButton/AvailableThemes/ThemeFaeble" to="TestUI" method="_on_theme_button_down" binds= [3]]
+[connection signal="button_down" from="TestUI/MenuCommands/AttackButton/AvailableAttacks/Option0" to="TestUI" method="_on_attack_button_down" binds= [0]]
+[connection signal="button_down" from="TestUI/MenuCommands/AttackButton/AvailableAttacks/Option1" to="TestUI" method="_on_attack_button_down" binds= [1]]
+[connection signal="button_down" from="TestUI/MenuCommands/AttackButton/AvailableAttacks/Option2" to="TestUI" method="_on_attack_button_down" binds= [2]]
+[connection signal="button_down" from="TestUI/MenuCommands/AttackButton/AvailableThemes/Detail0" to="TestUI" method="_on_theme_button_down" binds= [0]]
+[connection signal="button_down" from="TestUI/MenuCommands/AttackButton/AvailableThemes/Detail1" to="TestUI" method="_on_theme_button_down" binds= [1]]
+[connection signal="button_down" from="TestUI/MenuCommands/AttackButton/AvailableThemes/Detail2" to="TestUI" method="_on_theme_button_down" binds= [2]]
+[connection signal="button_down" from="TestUI/MenuCommands/AttackButton/AvailableThemes/Detail3" to="TestUI" method="_on_theme_button_down" binds= [3]]
+[connection signal="button_down" from="TestUI/MenuCommands/SpellsButton" to="TestUI" method="_on_action_button_button_down" binds= [1]]
+[connection signal="button_down" from="TestUI/MenuCommands/TacticsButton" to="TestUI" method="_on_action_button_button_down" binds= [2]]
+[connection signal="button_down" from="TestUI/MenuCommands/TacticsButton/AvailableTactics/Option0" to="TestUI" method="_on_switch"]
+[connection signal="button_down" from="TestUI/PartyDisplay/Faeble0/Button" to="TestUI" method="_on_faeble_down" binds= [0]]
+[connection signal="button_down" from="TestUI/PartyDisplay/Faeble1/Button" to="TestUI" method="_on_faeble_down" binds= [1]]
+[connection signal="button_down" from="TestUI/PartyDisplay/Faeble2/Button" to="TestUI" method="_on_faeble_down" binds= [2]]
+[connection signal="button_down" from="TestUI/PartyDisplay/Faeble3/Button" to="TestUI" method="_on_faeble_down" binds= [3]]
+[connection signal="button_down" from="TestUI/PartyDisplay/Faeble4/Button" to="TestUI" method="_on_faeble_down" binds= [4]]
+[connection signal="button_down" from="TestUI/PartyDisplay/Faeble5/Button" to="TestUI" method="_on_faeble_down" binds= [5]]

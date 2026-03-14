@@ -38,11 +38,14 @@ func ChangeBattler(entry:Faeble):
 		faebleTeam[targetSlot] = instance
 	ResetBattler(true)
 	instance = entry
+	EventBus.emit_signal("FaebleSwitched", self)
 	health = entry.currentHP
 	EventBus.emit_signal("HealthChanged", self)
 	status = entry.currentStatus
 	buildup = instance.currentBuildup
 	buildupTarget = instance.currentBuildupTarget
+	EventBus.emit_signal("BuildupChanged", self)
+	EventBus.emit_signal("StatusChanged", self, true)
 
 func ResetBattler(fullReset:bool=false):
 	#End of Turn Reset

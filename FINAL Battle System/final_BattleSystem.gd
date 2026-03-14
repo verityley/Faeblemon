@@ -110,7 +110,9 @@ func Selection(battler:BattlerData, action:MenuActions, option:int=-1, detail:in
 			if option == 0: #Switch
 				battler.currentFaeble = battler.faebleTeam[detail]
 				battler.switching = true
-			elif option == 1: #Flee
+			elif option == 1: #Move
+				pass
+			elif option == 2: #Flee
 				pass
 			RoundStep()
 
@@ -120,6 +122,7 @@ func RoundStep():
 		BattleSteps.Startup:
 			currentStep = BattleSteps.ActionSelect
 			EventBus.emit_signal("BattleStateChanged", currentStep)
+			EventBus.emit_signal("TurnStart")
 			RoundStep()
 			pass #Start of Turn, pre-selection actions, open menu:
 		
@@ -161,6 +164,7 @@ func RoundStep():
 			pass #Pre-Round post-selection actions: Priority + Armor set, Status Effects(exc Decay), Turn Order
 		
 		BattleSteps.BeforeAll:
+			#switches go here
 			if currentAura != null:
 				currentAura.AtBattleStep(currentStep, self)
 			currentStep = BattleSteps.BeforeFirst
@@ -185,7 +189,7 @@ func RoundStep():
 				var attackConditional:bool = user.currentSpell.BeforeSpell(self,user,target)
 				if attackConditional == false:
 					pass #skip attack processing and go to Second steps
-			ChangeDistance(user.currentSpell.movement + user.currentTheme.movement)
+				ChangeDistance(user.currentSpell.movement + user.currentTheme.movement)
 			pass #Pre-attack actions: Attack Announcement, Conditionals, Movement
 			
 			currentStep = BattleSteps.DuringFirst
@@ -216,10 +220,13 @@ func RoundStep():
 				print("Decay Tick Damage: ", damage)
 				EventBus.emit_signal("HealthChanged", user)
 			
+			if user.switching:
+				SwitchOut(user,user.currentFaeble)
+			
 			currentStep = BattleSteps.BeforeSecond
 			EventBus.emit_signal("BattleStateChanged", currentStep)
 			RoundStep()
-			pass #Post-attack processing: Decay/Recoil, Stat Boosts, Heal/Cleanse, World State, Switch-outs
+			pass #Post-attack processing: Decay/Recoil, Stat Boosts, Heal/Cleanse, World State, MoveSwitch-outs
 		
 		BattleSteps.BeforeSecond:
 			var user:BattlerData = currentOrder[1]
@@ -238,7 +245,7 @@ func RoundStep():
 				var attackConditional:bool = user.currentSpell.BeforeSpell(self,user,target)
 				if attackConditional == false:
 					pass #skip attack processing and go to Second steps
-			ChangeDistance(user.currentSpell.movement + user.currentTheme.movement)
+				ChangeDistance(user.currentSpell.movement + user.currentTheme.movement)
 			
 			currentStep = BattleSteps.DuringSecond
 			EventBus.emit_signal("BattleStateChanged", currentStep)
@@ -269,6 +276,9 @@ func RoundStep():
 				print("Decay Tick Damage: ", damage)
 				EventBus.emit_signal("HealthChanged", user)
 			
+			if user.switching:
+				SwitchOut(user,user.currentFaeble)
+			
 			currentStep = BattleSteps.AfterAll
 			EventBus.emit_signal("BattleStateChanged", currentStep)
 			RoundStep()
@@ -293,6 +303,7 @@ func RoundStep():
 			
 			currentStep = BattleSteps.Startup
 			EventBus.emit_signal("BattleStateChanged", currentStep)
+			EventBus.emit_signal("TurnEnd")
 			RoundStep()
 			pass #Reset battle system values for next turn
 

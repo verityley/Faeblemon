@@ -27,6 +27,7 @@ signal LockAll(locked:bool)
 
 #Battle Signals
 signal BattleStart()
+signal BattleSelection(battler:BattlerData, action:int, option:int, detail:int)
 signal BattleStateChanged(state:int)
 signal TurnStart()
 signal TurnEnd()
@@ -41,7 +42,6 @@ signal FaebleMoved(range:Enums.Ranges)
 signal FaebleFainted(target:BattlerData)
 signal FaebleSwitched(target:BattlerData)
 signal AttackAnim(move:Spell)
-signal PlayerInput(show:bool)
 
 signal BattleMessage(message:Message)
 signal BattlePrint(message:String)
