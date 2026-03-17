@@ -19,6 +19,7 @@ var damageTaken:int #Damage taken during this turn
 var protected:bool = false #Use to prevent all damage and skip damage calc step
 var safeguarded:bool = false #Use to prevent all status buildup and skip status calc step
 var switching:bool = false #If true, change battler to currentFaeble when triggered
+var fainted:bool = false
 
 var currentSpell:Spell
 var currentWitchSpell:Spell
@@ -33,6 +34,7 @@ func ChangeBattler(entry:Faeble):
 		instance.currentStatus = status
 		instance.currentBuildup = buildup
 		instance.currentBuildupTarget = buildupTarget
+		instance.fainted = fainted
 		var targetSlot:int = faebleTeam.find(entry)
 		faebleTeam[0] = entry
 		faebleTeam[targetSlot] = instance
@@ -70,6 +72,7 @@ func ResetBattler(fullReset:bool=false):
 		buildup = 0
 		buildupTarget = Enums.Status.Clear
 		health = 0
+		fainted = false
 
 func ClearBattler():
 	if instance != null:

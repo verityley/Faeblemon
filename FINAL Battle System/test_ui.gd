@@ -24,6 +24,11 @@ var action:int = -1
 var option:int = -1
 var detail:int = -1
 
+var deathSwitch:bool = false
+var playerSelect:bool = false
+var enemySelect:bool = false
+var queueSelect:bool = false
+
 func _ready():
 	EventBus.connect("BattleStart",BattleStart)
 	EventBus.connect("TurnStart", TurnStart)
@@ -34,6 +39,7 @@ func _ready():
 	EventBus.connect("FaebleMoved", DistanceChanged)
 	EventBus.connect("FaebleSwitched",FaebleChanged)
 	EventBus.connect("StatusChanged",StatusChanged)
+	EventBus.connect("FaebleFainted",FaebleFainted)
 	playerStatus.add_theme_stylebox_override("fill",playerStatus.get_theme_stylebox("fill").duplicate())
 	enemyStatus.add_theme_stylebox_override("fill",enemyStatus.get_theme_stylebox("fill").duplicate())
 
@@ -120,6 +126,20 @@ func FaebleChanged(target:BattlerData):
 		enemyHealth.max_value = battleSystem.enemyBattler.instance.maxHP
 		enemyStatus.max_value = battleSystem.enemyBattler.instance.maxBuildup
 
+func FaebleFainted(target:BattlerData):
+	deathSwitch = true
+	if target == battleSystem.playerBattler:
+		playerSelect = true
+		tacticsTree[2].show()
+		print("Player Fainted, prompting UI")
+	if target == battleSystem.enemyBattler:
+		enemySelect = true
+		tacticsTree[2].show()
+		print("Enemy Fainted, prompting UI")
+	if playerSelect and enemySelect:
+		queueSelect = true
+		print("Both Fainted, prompting queue")
+
 func DistanceChanged(range:Enums.Ranges):
 	print("Changing Distance!")
 	distance_amount.text = Enums.Ranges.keys()[range]
@@ -185,6 +205,23 @@ func _on_faeble_down(faeble: int) -> void:
 		_on_back_button_button_down()
 	else:
 		detail = faeble
+		if deathSwitch:
+			if playerSelect:
+				battleSystem.SelectBattler(battleSystem.playerBattler,faeble,queueSelect)
+				tacticsTree[2].hide()
+				playerSelect = false
+				if queueSelect:
+					await get_tree().create_timer(0.5).timeout
+					tacticsTree[2].show()
+					queueSelect = false
+				else:
+					deathSwitch = false
+				return
+			if enemySelect:
+				battleSystem.SelectBattler(battleSystem.enemyBattler,faeble)
+				enemySelect = false
+				deathSwitch = false
+				return
 		battleSystem.Selection(battleSystem.playerBattler,action,option,detail)
 		await get_tree().create_timer(0.5).timeout
 		battleSystem.Selection(battleSystem.enemyBattler,action,option,detail)

@@ -11,7 +11,7 @@ var enemySent:bool
 @export var currentOrder:Array[BattlerData]
 @export var currentAura:Aura
 @export var currentStep:BattleSteps
-
+var currentIndex:int = 0
 var auraValue #Use this to track any across-step values like Pact aura damage taken, etc
 
 @export_category("Debug")
@@ -23,13 +23,11 @@ enum BattleSteps {
 	ActionSelect,
 	RoundStart,
 	BeforeAll,
-	BeforeFirst,
-	DuringFirst,
-	AfterFirst,
-	BeforeSecond,
-	DuringSecond,
-	AfterSecond,
+	BeforeAction,
+	DuringAction,
+	AfterAction,
 	AfterAll,
+	Switch,
 	Recycle
 }
 
@@ -167,53 +165,58 @@ func RoundStep():
 			#switches go here
 			if currentAura != null:
 				currentAura.AtBattleStep(currentStep, self)
-			currentStep = BattleSteps.BeforeFirst
+			currentIndex = 0
+			
+			currentStep = BattleSteps.BeforeAction
 			EventBus.emit_signal("BattleStateChanged", currentStep)
 			RoundStep()
 			pass #Post-declaration cleanup, Tactics(switchout/flee)
 		
-		BattleSteps.BeforeFirst:
-			var user:BattlerData = currentOrder[0]
-			var target:BattlerData = currentOrder[0].currentTarget
-			if user.currentTactic != null:
+		BattleSteps.BeforeAction:
+			var user:BattlerData = currentOrder[currentIndex]
+			var target:BattlerData = currentOrder[currentIndex].currentTarget
+			if user.currentTactic != null and user.health > 0:
 				pass #skip to AfterFirst step
-				currentStep = BattleSteps.AfterFirst
+				currentStep = BattleSteps.AfterAction
 				EventBus.emit_signal("BattleStateChanged", currentStep)
 				RoundStep()
-			if user.currentWitchSpell != null:
+			if user.currentWitchSpell != null and user.health > 0:
 				pass #skip to AfterFirst step
-				currentStep = BattleSteps.AfterFirst
+				ChangeDistance(user.currentWitchSpell.movement)
+				currentStep = BattleSteps.AfterAction
 				EventBus.emit_signal("BattleStateChanged", currentStep)
 				RoundStep()
-			if user.currentSpell != null:
+			if user.currentSpell != null and user.health > 0:
 				var attackConditional:bool = user.currentSpell.BeforeSpell(self,user,target)
 				if attackConditional == false:
-					pass #skip attack processing and go to Second steps
+					currentStep = BattleSteps.AfterAction
+					EventBus.emit_signal("BattleStateChanged", currentStep)
+					RoundStep()
 				ChangeDistance(user.currentSpell.movement + user.currentTheme.movement)
 			pass #Pre-attack actions: Attack Announcement, Conditionals, Movement
 			
-			currentStep = BattleSteps.DuringFirst
+			currentStep = BattleSteps.DuringAction
 			EventBus.emit_signal("BattleStateChanged", currentStep)
 			RoundStep()
 		
-		BattleSteps.DuringFirst:
-			var user:BattlerData = currentOrder[0]
-			var target:BattlerData = currentOrder[0].currentTarget
-			if user.currentSpell != null:
+		BattleSteps.DuringAction:
+			var user:BattlerData = currentOrder[currentIndex]
+			var target:BattlerData = currentOrder[currentIndex].currentTarget
+			if user.currentSpell != null and user.health > 0:
 				user.currentSpell.ExecuteSpell(user, target, currentRange)
 			
-			currentStep = BattleSteps.AfterFirst
+			currentStep = BattleSteps.AfterAction
 			EventBus.emit_signal("BattleStateChanged", currentStep)
 			RoundStep()
 			pass #Attack processing: Damage/Status calcs, primary effects, determine death state
 		
-		BattleSteps.AfterFirst:
-			var user:BattlerData = currentOrder[0]
-			var target:BattlerData = currentOrder[0].currentTarget
-			if user.currentSpell != null:
+		BattleSteps.AfterAction:
+			var user:BattlerData = currentOrder[currentIndex]
+			var target:BattlerData = currentOrder[currentIndex].currentTarget
+			if user.currentSpell != null and user.health > 0:
 				user.currentSpell.AfterSpell(user, target)
 			
-			if user.status == Enums.Status.Decay:
+			if user.status == Enums.Status.Decay and user.health > 0:
 				var damage:int = ceili(float(user.instance.maxHP)*BattleCalcs.decayPercent)
 				user.health = clampi(user.health-damage, 0, user.instance.maxHP)
 				user.damageTaken += damage
@@ -221,68 +224,18 @@ func RoundStep():
 				EventBus.emit_signal("HealthChanged", user)
 			
 			if user.switching:
-				SwitchOut(user,user.currentFaeble)
+				user.ChangeBattler(user.currentFaeble)
 			
-			currentStep = BattleSteps.BeforeSecond
-			EventBus.emit_signal("BattleStateChanged", currentStep)
-			RoundStep()
+			if currentIndex < currentOrder.size()-1:
+				currentIndex += 1
+				currentStep = BattleSteps.BeforeAction
+				EventBus.emit_signal("BattleStateChanged", currentStep)
+				RoundStep()
+			else:
+				currentStep = BattleSteps.AfterAll
+				EventBus.emit_signal("BattleStateChanged", currentStep)
+				RoundStep()
 			pass #Post-attack processing: Decay/Recoil, Stat Boosts, Heal/Cleanse, World State, MoveSwitch-outs
-		
-		BattleSteps.BeforeSecond:
-			var user:BattlerData = currentOrder[1]
-			var target:BattlerData = currentOrder[1].currentTarget
-			if user.currentTactic != null:
-				pass #skip to AfterFirst step
-				currentStep = BattleSteps.AfterSecond
-				EventBus.emit_signal("BattleStateChanged", currentStep)
-				RoundStep()
-			if user.currentWitchSpell != null:
-				pass #skip to AfterFirst step
-				currentStep = BattleSteps.AfterSecond
-				EventBus.emit_signal("BattleStateChanged", currentStep)
-				RoundStep()
-			if user.currentSpell != null:
-				var attackConditional:bool = user.currentSpell.BeforeSpell(self,user,target)
-				if attackConditional == false:
-					pass #skip attack processing and go to Second steps
-				ChangeDistance(user.currentSpell.movement + user.currentTheme.movement)
-			
-			currentStep = BattleSteps.DuringSecond
-			EventBus.emit_signal("BattleStateChanged", currentStep)
-			RoundStep()
-			pass #Pre-attack actions: Attack Announcement, Conditionals, Movement
-		
-		BattleSteps.DuringSecond:
-			var user:BattlerData = currentOrder[1]
-			var target:BattlerData = currentOrder[1].currentTarget
-			if user.currentSpell != null:
-				user.currentSpell.ExecuteSpell(user, target, currentRange)
-			
-			currentStep = BattleSteps.AfterSecond
-			EventBus.emit_signal("BattleStateChanged", currentStep)
-			RoundStep()
-			pass #Attack processing: Damage/Status calcs, primary effects, determine death state
-		
-		BattleSteps.AfterSecond:
-			var user:BattlerData = currentOrder[1]
-			var target:BattlerData = currentOrder[1].currentTarget
-			if user.currentSpell != null:
-				user.currentSpell.AfterSpell(user, target)
-			
-			if user.status == Enums.Status.Decay:
-				var damage:int = ceili(float(user.instance.maxHP)*BattleCalcs.decayPercent)
-				user.health = clampi(user.health-damage, 0, user.instance.maxHP)
-				user.damageTaken += damage
-				print("Decay Tick Damage: ", damage)
-				EventBus.emit_signal("HealthChanged", user)
-			
-			if user.switching:
-				SwitchOut(user,user.currentFaeble)
-			
-			currentStep = BattleSteps.AfterAll
-			EventBus.emit_signal("BattleStateChanged", currentStep)
-			RoundStep()
-			pass #Post-attack processing: Decay/Recoil, Stat Boosts, Heal/Cleanse, Aura State, Switch-outs
 		
 		BattleSteps.AfterAll:
 			if currentAura != null:
@@ -290,11 +243,40 @@ func RoundStep():
 			
 			playerBattler.ResetBattler()
 			enemyBattler.ResetBattler()
-			
 			currentStep = BattleSteps.Recycle
+			
+			if playerBattler.health <= 0:
+				playerBattler.fainted = true
+				EventBus.emit_signal("FaebleFainted",playerBattler)
+				currentStep = BattleSteps.Switch
+			await get_tree().create_timer(0.5).timeout
+			if enemyBattler.health <= 0:
+				enemyBattler.fainted = true
+				EventBus.emit_signal("FaebleFainted",enemyBattler)
+				currentStep = BattleSteps.Switch
+			
 			EventBus.emit_signal("BattleStateChanged", currentStep)
 			RoundStep()
 			pass #Soft reset battlers, Check Death States, prompt switch-ins if dead
+		
+		BattleSteps.Switch:
+			prints("Switching!",playerBattler.switching,enemyBattler.switching)
+			if playerBattler.switching or enemyBattler.switching:
+				if playerBattler.switching:
+					playerBattler.ChangeBattler(playerBattler.currentFaeble)
+					playerBattler.switching = false
+					if enemyBattler.switching == false:
+						currentStep = BattleSteps.Recycle
+						EventBus.emit_signal("BattleStateChanged", currentStep)
+						RoundStep()
+				if enemyBattler.switching:
+					enemyBattler.ChangeBattler(enemyBattler.currentFaeble)
+					enemyBattler.switching = false
+					if playerBattler.switching == false:
+						currentStep = BattleSteps.Recycle
+						EventBus.emit_signal("BattleStateChanged", currentStep)
+						RoundStep()
+				
 		
 		BattleSteps.Recycle:
 			currentOrder.clear()
@@ -321,9 +303,12 @@ func ChangeDistance(amount:int):
 	#send move sprite/stage signal TEMP (note for future, use array of bools to check layers up or down)
 	pass
 
-func SwitchOut(battler:BattlerData, targetFaeble:Faeble):
-	battler.ChangeBattler(targetFaeble)
-	#Send visual switchout signals to UI and sprite
+func SelectBattler(battler:BattlerData,detail:int,wait:bool=false):
+	print("Selecting Faeble")
+	battler.currentFaeble = battler.faebleTeam[detail]
+	battler.switching = true
+	if wait == false:
+		RoundStep()
 
 func DefeatBattler(player:bool):
 	pass #Hide health UI, animate death, prompt battler swap
