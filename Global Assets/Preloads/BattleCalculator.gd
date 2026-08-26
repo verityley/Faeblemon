@@ -1,14 +1,15 @@
 extends Node
 
 @export_category("Damage Calculation Values")
-@export var PSI:float = 2.5 #Per Stage Increase
+@export var PSI:float = 4 #Per Stage Increase
 @export var LT:int = 2 #Low Difference Threshold
 @export var HT:int = 4 #High Difference Threshold
 @export var LB:int = 0.5 #Bonus Damage Per Level
+@export var critBonus:float = 2
 @export var grazeDebuff:float = 2.0 #Divisor on miss
-@export var maxStages:int = 2
+@export var maxStages:int = 3
 
-@export var statusDecrease:float = 0.5
+@export var statusDecrease:float = 2
 
 @export var guardTiers:Array[int] = [3,7,11,15,19,24] #Defensive stat needed to gain next guard reduction
 @export var guardReduction:Array[int] = [1,2,3,4,5,6] #Guard reduction reduces tier cap for damage
@@ -38,12 +39,14 @@ func DamageCalc(attack:Spell, user:BattlerData, target:BattlerData, currentRange
 	var attackerStages:Array[int] = user.buffStages.duplicate()
 	var defenderStages:Array[int] = target.buffStages.duplicate()
 	var tier:int = attack.damageTier - 1
+	var theme:SpellTheme = user.currentTheme
 	var results:Dictionary = {
 		"Damage": 0,
 		"MatchupMult": 0, #Positive if effective, negative if weakness
 		"Guarded": false,
 		"Missed": false,
-		"AuraEffect": false
+		"AuraEffect": false,
+		"Crit": false
 	}
 	
 	if tier == -1:
@@ -66,20 +69,20 @@ func DamageCalc(attack:Spell, user:BattlerData, target:BattlerData, currentRange
 	if attack.magical == false:
 		attackerStat = attacker.brawn + ceili(attackerStages[Enums.Attributes.Brawn] * PSI)
 		if user.buildupTarget == Enums.Status.Break and user.buildup >= floori(user.instance.maxBuildup/2):
-			attackerStat = ceili(attackerStat * statusDecrease)
+			attackerStat = ceili(attackerStat / statusDecrease)
 			print("Attacker has Break Status above half, halving Brawn.")
 		defenderStat = defender.vigor + ceili(defenderStages[Enums.Attributes.Vigor] * PSI)
 		if target.buildupTarget == Enums.Status.Decay and target.buildup >= floori(target.instance.maxBuildup/2):
-			defenderStat = ceili(defenderStat * statusDecrease)
+			defenderStat = ceili(defenderStat / statusDecrease)
 			print("Defender has Decay Status above half, halving Vigor.")
 	elif attack.magical == true:
 		attackerStat = attacker.wit + ceili(attackerStages[Enums.Attributes.Wit] * PSI)
 		if user.buildupTarget == Enums.Status.Fixate and user.buildup >= floori(user.instance.maxBuildup/2):
-			attackerStat = ceili(attackerStat * statusDecrease)
+			attackerStat = ceili(attackerStat / statusDecrease)
 			print("Attacker has Fixate Status above half, halving Wit.")
 		defenderStat = defender.ambition + ceili(defenderStages[Enums.Attributes.Ambition] * PSI)
 		if target.buildupTarget == Enums.Status.Silence and target.buildup >= floori(target.instance.maxBuildup/2):
-			defenderStat = ceili(defenderStat * statusDecrease)
+			defenderStat = ceili(defenderStat / statusDecrease)
 			print("Defender has Silence Status above half, halving Ambition.")
 	
 	if attackerStat >= defenderStat + HT:
@@ -110,11 +113,16 @@ func DamageCalc(attack:Spell, user:BattlerData, target:BattlerData, currentRange
 		damage -= tierCaps[tier]
 		print("Attack has Miss Penalty: -",tierCaps[tier],", Damage: ", damage)
 		results["Missed"] = true
+	elif CritCalc(attack,user,aura)[currentRange] == true:
+		damage += critBonus
+		print("Attack has Crit Bonus: +",critBonus,", Damage: ", damage)
+		results["Crit"] = true
 	
 	#Theme Handling
-	if user.currentTheme.damageBoost != 0:
-		damage += user.currentTheme.damageBoost
-		print("Attack has Theme Bonus: +",user.currentTheme.damageBoost,", Damage: ", damage)
+	if theme != null:
+		if theme.damageBoost != 0:
+			damage += theme.damageBoost
+			print("Attack has Theme Bonus: +",theme.damageBoost,", Damage: ", damage)
 	
 	#Aura damage handling
 	if aura != null:
@@ -141,11 +149,12 @@ func DamageCalc(attack:Spell, user:BattlerData, target:BattlerData, currentRange
 		guard = target.pGuard
 	guard = clampi(guard, 0, tierCaps[tier])
 	var minCap:int = tierDamage[tier]-tierCaps[tier]
-	var maxCap:int = tierDamage[tier]+clampi(tierCaps[tier]-guard,minCap,tierCaps[tier])
+	var maxCap:int = tierDamage[tier]+tierCaps[tier]
 	if guard > 0:
-		print("Attack hit Guard, maximum damage capped at: ",maxCap)
-		results["Guarded"] = false
-	damage = clamp(damage, minCap, maxCap)
+		maxCap = tierDamage[tier]#cannot go positive if guarding
+		prints("Attack hit Guard, maximum damage capped at:",maxCap, "Reducing by:",guard)
+		results["Guarded"] = true
+	damage = clamp(damage-guard, minCap, maxCap)
 	
 	#Level Bonus damage declaration
 	if attacker.chapter > defender.chapter:
@@ -153,7 +162,7 @@ func DamageCalc(attack:Spell, user:BattlerData, target:BattlerData, currentRange
 		print("Attack has Level Bonus: +",((attacker.chapter - defender.chapter) * LB),", Damage: ", damage)
 	elif attacker.chapter < defender.chapter:
 		damage += ((defender.chapter - attacker.chapter) * LB)
-		print("Attack has Level Penalty: +",((defender.chapter - attacker.chapter) * LB),", Damage: ", damage)
+		print("Attack has Level Penalty: -",((defender.chapter - attacker.chapter) * LB),", Damage: ", damage)
 	
 	
 	print("Final Damage: ", damage)
@@ -167,6 +176,7 @@ func StatusCalc(attack:Spell, user:BattlerData, target:BattlerData, currentRange
 	var defenderStat:int = defender.resolve
 	var statusType:Enums.Status = attack.statusType
 	var tier:int = attack.statusTier - 1
+	var theme:SpellTheme = user.currentTheme
 	var buildup:float = tierStatus[tier]
 	var results:Dictionary = {
 		"Buildup": 0, #How much status buildup to deal
@@ -209,11 +219,16 @@ func StatusCalc(attack:Spell, user:BattlerData, target:BattlerData, currentRange
 		buildup -= tierStatusCaps[tier]
 		print("Status Attack has Miss Penalty: -",tierStatusCaps[tier],", Buildup: ", buildup)
 		results["Missed"] = true
+	elif CritCalc(attack,user,aura)[currentRange] == true:
+		buildup += critBonus
+		print("Status Attack has Crit Bonus: +",critBonus,", Buildup: ", buildup)
+		results["Crit"] = true
 	
 	#Theme Handling
-	if user.currentTheme.buildupBoost != 0:
-		buildup = floori(buildup + user.currentTheme.buildupBoost)
-		print("Status Attack has Theme Bonus: +",user.currentTheme.buildupBoost,", Buildup: ", buildup)
+	if theme != null:
+		if theme.buildupBoost != 0:
+			buildup = floori(buildup + theme.buildupBoost)
+			print("Status Attack has Theme Bonus: +",theme.buildupBoost,", Buildup: ", buildup)
 	
 	#Aura damage handling
 	if aura != null:
@@ -272,12 +287,38 @@ func RangeCalc(attack:Spell,user:BattlerData,aura:Aura=null) -> Array[bool]:
 		#Range Handling goes here
 	var modRange:Array[bool] = attack.rangeBands.duplicate()
 	var rangeIndex:int = 0
-	for band in user.currentTheme.rangeBands:
-		if band == true:
-			modRange[rangeIndex] = true
-		rangeIndex += 1
-	if user.currentTheme.rangeReplace:
-		modRange = user.currentTheme.rangeBands
+	var theme:SpellTheme = user.currentTheme
+	if theme != null:
+		for band in theme.rangeBands:
+			if band == true:
+				modRange[rangeIndex] = true
+			rangeIndex += 1
+		if theme.rangeReplace:
+			modRange = theme.rangeBands
+	rangeIndex = 0
+	if aura != null:
+		if aura.LinkCheck(user):
+			for band in aura.rangeMod:
+				if aura.additive and band == true:
+					modRange[rangeIndex] = true
+				elif aura.subtractive and band == false:
+					modRange[rangeIndex] = false
+				elif aura.replacement:
+					modRange[rangeIndex] = band
+	return modRange
+
+func CritCalc(attack:Spell,user:BattlerData,aura:Aura=null) -> Array[bool]:
+		#Range Handling goes here
+	var modRange:Array[bool] = attack.critBands.duplicate()
+	var rangeIndex:int = 0
+	var theme:SpellTheme = user.currentTheme
+	if theme != null:
+		for band in theme.critBands:
+			if band == true:
+				modRange[rangeIndex] = true
+			rangeIndex += 1
+		if theme.rangeReplace:
+			modRange = theme.critBands
 	rangeIndex = 0
 	if aura != null:
 		if aura.LinkCheck(user):
@@ -297,13 +338,13 @@ func SpeedCalc(playerBattler:BattlerData, enemyBattler:BattlerData,aura:Aura=nul
 	pSpeed +=  playerBattler.buffStages[Enums.Attributes.Grace] * PSI
 	if playerBattler.buildupTarget == Enums.Status.Slow:
 		if playerBattler.buildup >= playerBattler.instance.maxBuildup/2:#Half of Heart stat might be TEMP
-			pSpeed = ceili(pSpeed * statusDecrease)
+			pSpeed = ceili(pSpeed / statusDecrease)
 			print("Player has Slow Status above half, halving Grace.")
 	var eSpeed:int = enemyBattler.instance.grace
 	eSpeed +=  enemyBattler.buffStages[Enums.Attributes.Grace] * PSI
 	if enemyBattler.buildupTarget == Enums.Status.Slow:
 		if enemyBattler.buildup >= enemyBattler.instance.maxBuildup/2:#Half of Heart stat might be TEMP
-			eSpeed = ceili(eSpeed * statusDecrease)
+			eSpeed = ceili(eSpeed / statusDecrease)
 			print("Enemy has Slow Status above half, halving Grace.")
 	if pSpeed >= eSpeed + HT: speedDif=2
 	elif pSpeed >= eSpeed + LT: speedDif=1
@@ -385,6 +426,7 @@ func ArmorCalc(user:BattlerData,aura:Aura=null) -> Array[int]:
 	var i:int = 0
 	var pGuard:int
 	var mGuard:int
+	var theme:SpellTheme = user.currentTheme
 	if user.currentSpell == null:
 		return [pGuard, mGuard]
 	if user.status == Enums.Status.Break:
@@ -393,10 +435,16 @@ func ArmorCalc(user:BattlerData,aura:Aura=null) -> Array[int]:
 		if user.instance.vigor <= tier:
 			break
 		i += 1
-	if user.currentSpell.pGuarding or user.currentTheme.pGuarding:
+	if user.retreating:
 		pGuard = guardReduction[i]
-	if user.currentSpell.pGuarding and user.currentTheme.pGuarding:
-		pGuard = guardReduction[clampi(i+doubleGuardBonus,0,5)]
+	if theme != null:
+		if user.currentSpell.pGuarding or theme.pGuarding:
+			pGuard = guardReduction[i]
+		if user.currentSpell.pGuarding and theme.pGuarding:
+			pGuard = guardReduction[clampi(i+doubleGuardBonus,0,5)]
+	else:
+		if user.currentSpell.pGuarding:
+			pGuard = guardReduction[i]
 	if aura != null:
 		if aura.pGuarding and aura.LinkCheck(user):
 			if aura.additive: pGuard = guardReduction[clampi(i+doubleGuardBonus,0,5)]
@@ -407,13 +455,21 @@ func ArmorCalc(user:BattlerData,aura:Aura=null) -> Array[int]:
 		if user.instance.ambition <= tier:
 			break
 		i += 1
-	if user.currentSpell.mGuarding or user.currentTheme.mGuarding:
+	if user.advancing:
 		mGuard = guardReduction[i]
-	if user.currentSpell.mGuarding and user.currentTheme.mGuarding:
-		mGuard = guardReduction[clampi(i+doubleGuardBonus,0,5)]
+	if theme != null:
+		if user.currentSpell.mGuarding or theme.mGuarding:
+			mGuard = guardReduction[i]
+		if user.currentSpell.mGuarding and theme.mGuarding:
+			mGuard = guardReduction[clampi(i+doubleGuardBonus,0,5)]
+	else:
+		if user.currentSpell.mGuarding:
+			mGuard = guardReduction[i]
 	if aura != null:
 		if aura.mGuarding and aura.LinkCheck(user):
 			if aura.additive: mGuard = guardReduction[clampi(i+doubleGuardBonus,0,5)]
 			if aura.subtractive: mGuard = guardReduction[clampi(i-doubleGuardBonus,0,5)]
 	i = 0
+	
+	
 	return [pGuard, mGuard]

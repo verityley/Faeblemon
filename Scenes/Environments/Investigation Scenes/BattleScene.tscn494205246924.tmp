@@ -1,0 +1,1095 @@
+[gd_scene format=3 uid="uid://cm1yqnr11f80n"]
+
+[ext_resource type="PackedScene" uid="uid://bok3gqa86lbq0" path="res://Scenes/Environments/Investigation Scenes/LayerManager.tscn" id="1_a3mgy"]
+[ext_resource type="Script" uid="uid://dnbwoy0k7uwsb" path="res://Scenes/Environments/Investigation Scenes/BattleScene.gd" id="1_fjxur"]
+[ext_resource type="Script" uid="uid://cw0xpw01j1oeg" path="res://Scenes/Environments/Battle System/Scripts/HealthManager.gd" id="3_2mptk"]
+[ext_resource type="Texture2D" uid="uid://c2no1yme23kag" path="res://Global Assets/Graphics/Monster Graphics/AnanseedFinal.png" id="3_padu6"]
+[ext_resource type="Script" uid="uid://casfhivwhjo6p" path="res://Scenes/Environments/Battle System/Scripts/BattleUIManager.gd" id="3_xyjc0"]
+[ext_resource type="Texture2D" uid="uid://b453k3m6wcbfo" path="res://Global Assets/Graphics/UI Graphics/HeartContainers.png" id="4_jsrtv"]
+[ext_resource type="Texture2D" uid="uid://cklyod6kgyhfd" path="res://Scenes/Environments/Battle System/Assets/CombatCircleNEW.png" id="4_kiu18"]
+[ext_resource type="Texture2D" uid="uid://bggyleai1wado" path="res://Global Assets/Graphics/Monster Graphics/Arachalyx.png" id="4_padu6"]
+[ext_resource type="Texture2D" uid="uid://cpsxhd42h2dfo" path="res://Global Assets/Graphics/UI Graphics/HeartContainerFills.png" id="5_c070t"]
+[ext_resource type="Texture2D" uid="uid://bik83etyy05sr" path="res://Global Assets/Graphics/Dialogue Graphics/WitchBackSprite.png" id="5_l22fx"]
+[ext_resource type="Texture2D" uid="uid://bdmoxrolchvgf" path="res://Scenes/Environments/Battle System/Assets/CombatManaSelector.png" id="6_4maq2"]
+[ext_resource type="Texture2D" uid="uid://w21cokw3vgbb" path="res://Global Assets/Graphics/Monster Graphics/Galaglyph.png" id="6_padu6"]
+[ext_resource type="Texture2D" uid="uid://cu31e04wq3vuv" path="res://Scenes/Environments/Battle System/Assets/BackButton.png" id="7_joab5"]
+[ext_resource type="Script" uid="uid://cqeofgwuwy4h2" path="res://Scenes/Environments/Battle System/Scripts/CommandButton.gd" id="8_hoc8a"]
+[ext_resource type="Texture2D" uid="uid://dvlhaa1lgd0sm" path="res://Scenes/Environments/Battle System/Assets/CommandButtonTactics.png" id="9_wkxcp"]
+[ext_resource type="Texture2D" uid="uid://tjxspp50nmhj" path="res://Scenes/Environments/Battle System/Assets/CommandButtonSpells.png" id="10_pb3uq"]
+[ext_resource type="Texture2D" uid="uid://c3oaisuymsfk1" path="res://Scenes/Environments/Battle System/Assets/CommandButtonAttack.png" id="11_10y25"]
+[ext_resource type="Texture2D" uid="uid://bqg1np47f1dqv" path="res://Scenes/Environments/Battle System/Assets/CommandDash.png" id="12_3o8ht"]
+[ext_resource type="Texture2D" uid="uid://o3eo3wls2ad" path="res://Scenes/Environments/Battle System/Assets/CommandSwitchColor.png" id="13_swtnh"]
+[ext_resource type="Texture2D" uid="uid://cpw8pxixd3nn8" path="res://Scenes/Environments/Battle System/Assets/CommandGuard.png" id="14_7g7su"]
+[ext_resource type="Texture2D" uid="uid://d2msed6lulxal" path="res://Scenes/Environments/Battle System/Assets/SpellBases/SpellWeird.png" id="15_pwiti"]
+[ext_resource type="Texture2D" uid="uid://1635n5kw05x" path="res://Scenes/Environments/Battle System/Assets/SpellBases/SpellBlessing.png" id="16_yp1ye"]
+[ext_resource type="Texture2D" uid="uid://bvqb1bmsr6p7b" path="res://Scenes/Environments/Battle System/Assets/SpellBases/SpellHearth.png" id="17_b08fk"]
+[ext_resource type="Texture2D" uid="uid://cnqhrn5pkpal8" path="res://Scenes/Environments/Battle System/Assets/SpellBases/SpellGrove.png" id="18_u0yop"]
+[ext_resource type="Texture2D" uid="uid://bglab8wtnwgc5" path="res://Scenes/Environments/Battle System/Assets/SpellBases/SpellRime.png" id="19_ec4rw"]
+[ext_resource type="Texture2D" uid="uid://b7xb3bvk3lprj" path="res://Scenes/Environments/Battle System/Assets/SpellBases/SpellStorm.png" id="20_e7rxq"]
+[ext_resource type="Texture2D" uid="uid://i24h310u1uq0" path="res://Scenes/Environments/Battle System/Assets/ManaPrimordial.png" id="21_jsui5"]
+[ext_resource type="Script" uid="uid://c4egmjop8sevh" path="res://Scenes/Environments/Battle System/Scripts/ManaButton.gd" id="22_ukpt0"]
+[ext_resource type="Texture2D" uid="uid://cite8hirfwrvo" path="res://Scenes/Environments/Battle System/Assets/ManaEnchantment.png" id="23_aigk3"]
+[ext_resource type="Texture2D" uid="uid://byhctygn81j4i" path="res://Scenes/Environments/Battle System/Assets/ManaArcane.png" id="24_dwbfg"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_joab5"]
+lightmap_size_hint = Vector2i(12, 17)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hoc8a"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("4_kiu18")
+detail_albedo = ExtResource("4_padu6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wkxcp"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("6_4maq2")
+detail_albedo = ExtResource("4_padu6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pb3uq"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("7_joab5")
+detail_albedo = ExtResource("4_padu6")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_10y25"]
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3o8ht"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("9_wkxcp")
+detail_albedo = ExtResource("4_padu6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_swtnh"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("10_pb3uq")
+detail_albedo = ExtResource("4_padu6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7g7su"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("11_10y25")
+detail_albedo = ExtResource("4_padu6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pwiti"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("12_3o8ht")
+detail_albedo = ExtResource("4_padu6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yp1ye"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("13_swtnh")
+detail_albedo = ExtResource("4_padu6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b08fk"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("14_7g7su")
+detail_albedo = ExtResource("4_padu6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0yop"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("15_pwiti")
+detail_albedo = ExtResource("4_padu6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ec4rw"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("16_yp1ye")
+detail_albedo = ExtResource("4_padu6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7rxq"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("17_b08fk")
+detail_albedo = ExtResource("4_padu6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsui5"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("18_u0yop")
+detail_albedo = ExtResource("4_padu6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ukpt0"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("19_ec4rw")
+detail_albedo = ExtResource("4_padu6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aigk3"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("20_e7rxq")
+detail_albedo = ExtResource("4_padu6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwbfg"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("21_jsui5")
+detail_albedo = ExtResource("4_padu6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ramue"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("23_aigk3")
+detail_albedo = ExtResource("4_padu6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a283a"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("24_dwbfg")
+detail_albedo = ExtResource("4_padu6")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ns3mv"]
+lightmap_size_hint = Vector2i(12, 17)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2mptk"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("3_padu6")
+detail_albedo = ExtResource("4_padu6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsrtv"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("5_l22fx")
+detail_albedo = ExtResource("4_padu6")
+
+[sub_resource type="QuadMesh" id="QuadMesh_c070t"]
+lightmap_size_hint = Vector2i(12, 17)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1vd0a"]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("6_padu6")
+detail_albedo = ExtResource("4_padu6")
+
+[node name="BattleScene" type="Node3D" unique_id=1148508321 node_paths=PackedStringArray("stageSystem", "actors", "anchorLayers")]
+script = ExtResource("1_fjxur")
+stageSystem = NodePath("LayerManager")
+actors = {
+1: NodePath("pFaebleActor"),
+2: NodePath("pWitchActor"),
+3: NodePath("pUI"),
+4: NodePath("eFaebleActor"),
+5: NodePath("eWitchActor"),
+6: NodePath("eUI"),
+7: NodePath("BattleCam"),
+8: NodePath("CommandsManager")
+}
+anchorLayers = {
+1: NodePath("LayerManager/Cutouts/Player 2"),
+2: NodePath("LayerManager/Cutouts/Player 1"),
+3: NodePath("LayerManager/Cutouts/Player 2"),
+4: NodePath("LayerManager/Cutouts/Enemy 1"),
+5: NodePath("LayerManager/Cutouts/Enemy 2"),
+6: NodePath("LayerManager/Cutouts/Enemy 1"),
+7: NodePath("LayerManager/Cutouts/Player 2"),
+8: NodePath("LayerManager/Cutouts/Player 2")
+}
+anchorLocations = Dictionary[int, Vector3]({
+1: Vector3(-2.5, -1.25, 0.5),
+2: Vector3(-5, -1.5, 0.5),
+3: Vector3(-2.5, -1.25, 0.5),
+4: Vector3(2.5, -1, 0.5),
+5: Vector3(5, -1.5, 0.5),
+6: Vector3(2.5, -1, 0.5),
+7: Vector3(0, 0, 20),
+8: Vector3(5, -2.5, 5)
+})
+
+[node name="CommandsManager" type="Node3D" parent="." unique_id=1270422833 node_paths=PackedStringArray("battleSystem", "commandHeaders", "menuCommands", "tacticsCommands", "cantripCommands", "spellCommands", "backButton", "manaSelectors", "CircleMenu")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 5, -2.5, 3)
+script = ExtResource("3_xyjc0")
+battleSystem = NodePath("")
+commandHeaders = [NodePath("CombatCircle/Commands/MainCommands"), NodePath("CombatCircle/Commands/Tactics"), NodePath("CombatCircle/Commands/Cantrips"), NodePath("CombatCircle/Commands/Spells")]
+menuCommands = [NodePath("CombatCircle/Commands/MainCommands/CommandBubble/CircleBack"), NodePath("CombatCircle/Commands/MainCommands/CommandBubble2/CircleBack"), NodePath("CombatCircle/Commands/MainCommands/CommandBubble3/CircleBack")]
+tacticsCommands = [NodePath("CombatCircle/Commands/Tactics/CommandBubble/CircleBack"), NodePath("CombatCircle/Commands/Tactics/CommandBubble2/CircleBack"), NodePath("CombatCircle/Commands/Tactics/CommandBubble3/CircleBack")]
+cantripCommands = [NodePath("CombatCircle/Commands/Cantrips/CommandBubble/CircleBack"), NodePath("CombatCircle/Commands/Cantrips/CommandBubble2/CircleBack"), NodePath("CombatCircle/Commands/Cantrips/CommandBubble3/CircleBack")]
+spellCommands = [NodePath("CombatCircle/Commands/Spells/CommandBubble/CircleBack"), NodePath("CombatCircle/Commands/Spells/CommandBubble2/CircleBack"), NodePath("CombatCircle/Commands/Spells/CommandBubble3/CircleBack")]
+backButton = NodePath("CombatCircle/Back/BackButton")
+manaSelectors = [NodePath("CombatCircle/ManaPool/Primordial/ManaPip3"), NodePath("CombatCircle/ManaPool/Enchantment/ManaPip"), NodePath("CombatCircle/ManaPool/Ethereal/ManaPip2")]
+scrollTime = 0.1
+turnTime = 1.0
+CircleMenu = NodePath("CombatCircle")
+
+[node name="CombatCircle" type="Node3D" parent="CommandsManager" unique_id=1373603237]
+transform = Transform3D(0.989949, -0.989949, 0, 0.989949, 0.989949, 0, 0, 0, 1.4, 0, 0, 0)
+
+[node name="Base" type="Node3D" parent="CommandsManager/CombatCircle" unique_id=26864960]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="CircleBase" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Base" unique_id=1604337003]
+mesh = SubResource("QuadMesh_joab5")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_hoc8a")
+
+[node name="Back" type="Node3D" parent="CommandsManager/CombatCircle" unique_id=1276710011]
+transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, 0, -0.3, -0.05)
+
+[node name="ManaSelector" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Back" unique_id=1758153036]
+transform = Transform3D(-2, 3.01992e-07, 0, -3.01992e-07, -2, 0, 0, 0, 2, 0, 1, 0)
+mesh = SubResource("QuadMesh_joab5")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wkxcp")
+
+[node name="BackButton" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Back" unique_id=542330618]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, -0.45, 0)
+mesh = SubResource("QuadMesh_joab5")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pb3uq")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Back/BackButton" unique_id=315106378]
+transform = Transform3D(0.75188, -5.96046e-08, 0, 5.96046e-08, 0.75188, 0, 0, 0, 0.75188, 0, 0, 0.00999999)
+visible = false
+light_color = Color(0, 0.615179, 0.616283, 1)
+light_energy = 30.0
+light_specular = 16.0
+omni_range = 1.1
+omni_attenuation = -5.0
+
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Back/BackButton" unique_id=1226714333]
+script = ExtResource("8_hoc8a")
+choice = 4
+stage = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Back/BackButton/Area3D" unique_id=1096246061]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_10y25")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="Commands" type="Node3D" parent="CommandsManager/CombatCircle" unique_id=1192120397]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0.05)
+
+[node name="MainCommands" type="Node3D" parent="CommandsManager/CombatCircle/Commands" unique_id=2124320519]
+
+[node name="CommandBubble" type="Node3D" parent="CommandsManager/CombatCircle/Commands/MainCommands" unique_id=1924924086]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble" unique_id=1106887523]
+transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
+mesh = SubResource("QuadMesh_joab5")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_3o8ht")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble/CircleBack" unique_id=1395434183]
+transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
+visible = false
+light_color = Color(0, 0.615179, 0.616283, 1)
+light_energy = 30.0
+light_specular = 16.0
+omni_range = 1.1
+omni_attenuation = -5.0
+
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble/CircleBack" unique_id=1564144405]
+script = ExtResource("8_hoc8a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble/CircleBack/Area3D" unique_id=2006339342]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_10y25")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CommandBubble2" type="Node3D" parent="CommandsManager/CombatCircle/Commands/MainCommands" unique_id=2096723663]
+
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble2" unique_id=448312370]
+transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
+mesh = SubResource("QuadMesh_joab5")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_swtnh")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble2/CircleBack" unique_id=709411086]
+transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
+visible = false
+light_color = Color(0, 0.615179, 0.616283, 1)
+light_energy = 30.0
+light_specular = 16.0
+omni_range = 1.1
+omni_attenuation = -5.0
+
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble2/CircleBack" unique_id=1608925762]
+script = ExtResource("8_hoc8a")
+choice = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble2/CircleBack/Area3D" unique_id=652420463]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_10y25")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CommandBubble3" type="Node3D" parent="CommandsManager/CombatCircle/Commands/MainCommands" unique_id=996967618]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble3" unique_id=902816165]
+transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
+mesh = SubResource("QuadMesh_joab5")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_7g7su")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble3/CircleBack" unique_id=46289870]
+transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
+visible = false
+light_color = Color(0, 0.615179, 0.616283, 1)
+light_energy = 30.0
+light_specular = 16.0
+omni_range = 1.1
+omni_attenuation = -5.0
+
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble3/CircleBack" unique_id=1185273242]
+script = ExtResource("8_hoc8a")
+choice = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/MainCommands/CommandBubble3/CircleBack/Area3D" unique_id=357819716]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_10y25")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="Tactics" type="Node3D" parent="CommandsManager/CombatCircle/Commands" unique_id=400742006]
+transform = Transform3D(-1, 8.9407e-08, 0, -8.9407e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+
+[node name="CommandBubble" type="Node3D" parent="CommandsManager/CombatCircle/Commands/Tactics" unique_id=1719676467]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble" unique_id=1024462625]
+transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
+mesh = SubResource("QuadMesh_joab5")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pwiti")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble/CircleBack" unique_id=373735648]
+transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
+visible = false
+light_color = Color(0, 0.615179, 0.616283, 1)
+light_energy = 30.0
+light_specular = 16.0
+omni_range = 1.1
+omni_attenuation = -5.0
+
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble/CircleBack" unique_id=1897768567]
+script = ExtResource("8_hoc8a")
+stage = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble/CircleBack/Area3D" unique_id=1271568563]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_10y25")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CommandBubble2" type="Node3D" parent="CommandsManager/CombatCircle/Commands/Tactics" unique_id=107564992]
+
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble2" unique_id=1066814638]
+transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
+mesh = SubResource("QuadMesh_joab5")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_yp1ye")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble2/CircleBack" unique_id=2001420203]
+transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
+visible = false
+light_color = Color(0, 0.615179, 0.616283, 1)
+light_energy = 30.0
+light_specular = 16.0
+omni_range = 1.1
+omni_attenuation = -5.0
+
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble2/CircleBack" unique_id=802927005]
+script = ExtResource("8_hoc8a")
+choice = 1
+stage = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble2/CircleBack/Area3D" unique_id=1231953692]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_10y25")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CommandBubble3" type="Node3D" parent="CommandsManager/CombatCircle/Commands/Tactics" unique_id=2094461521]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble3" unique_id=593050347]
+transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
+mesh = SubResource("QuadMesh_joab5")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_b08fk")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble3/CircleBack" unique_id=99061320]
+transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
+visible = false
+light_color = Color(0, 0.615179, 0.616283, 1)
+light_energy = 30.0
+light_specular = 16.0
+omni_range = 1.1
+omni_attenuation = -5.0
+
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble3/CircleBack" unique_id=1554727917]
+script = ExtResource("8_hoc8a")
+choice = 2
+stage = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/Tactics/CommandBubble3/CircleBack/Area3D" unique_id=567486416]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_10y25")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="Cantrips" type="Node3D" parent="CommandsManager/CombatCircle/Commands" unique_id=61348700]
+transform = Transform3D(-1, 8.9407e-08, 0, -8.9407e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+
+[node name="CommandBubble" type="Node3D" parent="CommandsManager/CombatCircle/Commands/Cantrips" unique_id=214555765]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble" unique_id=52430039]
+transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
+mesh = SubResource("QuadMesh_joab5")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_u0yop")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble/CircleBack" unique_id=1114377581]
+transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
+visible = false
+light_color = Color(0, 0.615179, 0.616283, 1)
+light_energy = 30.0
+light_specular = 16.0
+omni_range = 1.1
+omni_attenuation = -5.0
+
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble/CircleBack" unique_id=1534321197]
+script = ExtResource("8_hoc8a")
+stage = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble/CircleBack/Area3D" unique_id=1820489817]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_10y25")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CommandBubble2" type="Node3D" parent="CommandsManager/CombatCircle/Commands/Cantrips" unique_id=338178939]
+
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble2" unique_id=247470384]
+transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
+mesh = SubResource("QuadMesh_joab5")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ec4rw")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble2/CircleBack" unique_id=993211272]
+transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
+visible = false
+light_color = Color(0, 0.615179, 0.616283, 1)
+light_energy = 30.0
+light_specular = 16.0
+omni_range = 1.1
+omni_attenuation = -5.0
+
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble2/CircleBack" unique_id=999793400]
+script = ExtResource("8_hoc8a")
+choice = 1
+stage = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble2/CircleBack/Area3D" unique_id=583867431]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_10y25")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CommandBubble3" type="Node3D" parent="CommandsManager/CombatCircle/Commands/Cantrips" unique_id=1676539754]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble3" unique_id=711723611]
+transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
+mesh = SubResource("QuadMesh_joab5")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_e7rxq")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble3/CircleBack" unique_id=1006274236]
+transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
+visible = false
+light_color = Color(0, 0.615179, 0.616283, 1)
+light_energy = 30.0
+light_specular = 16.0
+omni_range = 1.1
+omni_attenuation = -5.0
+
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble3/CircleBack" unique_id=803226054]
+script = ExtResource("8_hoc8a")
+choice = 2
+stage = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/Cantrips/CommandBubble3/CircleBack/Area3D" unique_id=196165216]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_10y25")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="Spells" type="Node3D" parent="CommandsManager/CombatCircle/Commands" unique_id=2076053203]
+transform = Transform3D(-1, 8.9407e-08, 0, -8.9407e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+
+[node name="CommandBubble" type="Node3D" parent="CommandsManager/CombatCircle/Commands/Spells" unique_id=472242769]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble" unique_id=1504874782]
+transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
+mesh = SubResource("QuadMesh_joab5")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jsui5")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble/CircleBack" unique_id=2022651695]
+transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
+visible = false
+light_color = Color(0, 0.615179, 0.616283, 1)
+light_energy = 30.0
+light_specular = 16.0
+omni_range = 1.1
+omni_attenuation = -5.0
+
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble/CircleBack" unique_id=1381495440]
+script = ExtResource("8_hoc8a")
+stage = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble/CircleBack/Area3D" unique_id=1700403609]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_10y25")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CommandBubble2" type="Node3D" parent="CommandsManager/CombatCircle/Commands/Spells" unique_id=14737344]
+
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble2" unique_id=817296608]
+transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
+mesh = SubResource("QuadMesh_joab5")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ukpt0")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble2/CircleBack" unique_id=285846817]
+transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
+visible = false
+light_color = Color(0, 0.615179, 0.616283, 1)
+light_energy = 30.0
+light_specular = 16.0
+omni_range = 1.1
+omni_attenuation = -5.0
+
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble2/CircleBack" unique_id=1621872950]
+script = ExtResource("8_hoc8a")
+choice = 1
+stage = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble2/CircleBack/Area3D" unique_id=1208574855]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_10y25")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CommandBubble3" type="Node3D" parent="CommandsManager/CombatCircle/Commands/Spells" unique_id=967334082]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CircleBack" type="MeshInstance3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble3" unique_id=1595560910]
+transform = Transform3D(1, 1.86264e-09, 0, -1.86264e-09, 1, 0, 0, 0, 1, 0, 1.55, 0)
+mesh = SubResource("QuadMesh_joab5")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_aigk3")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble3/CircleBack" unique_id=1291453072]
+transform = Transform3D(0.550964, -2.44248e-08, 0, 2.44248e-08, 0.550964, 0, 0, 0, 0.550964, 0, 0, 0.01)
+visible = false
+light_color = Color(0, 0.615179, 0.616283, 1)
+light_energy = 30.0
+light_specular = 16.0
+omni_range = 1.1
+omni_attenuation = -5.0
+
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble3/CircleBack" unique_id=53812287]
+script = ExtResource("8_hoc8a")
+choice = 2
+stage = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/Commands/Spells/CommandBubble3/CircleBack/Area3D" unique_id=1793481728]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_10y25")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="ManaPool" type="Node3D" parent="CommandsManager/CombatCircle" unique_id=1277342327]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0.02)
+
+[node name="Primordial" type="Node3D" parent="CommandsManager/CombatCircle/ManaPool" unique_id=2104102626]
+transform = Transform3D(0.239591, -0.180544, 0, 0.180544, 0.239591, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="ManaPip3" type="MeshInstance3D" parent="CommandsManager/CombatCircle/ManaPool/Primordial" unique_id=483860563]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 1.6, 0)
+mesh = SubResource("QuadMesh_joab5")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_dwbfg")
+
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/ManaPool/Primordial/ManaPip3" unique_id=199133533]
+script = ExtResource("22_ukpt0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/ManaPool/Primordial/ManaPip3/Area3D" unique_id=615216177]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_10y25")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="Enchantment" type="Node3D" parent="CommandsManager/CombatCircle/ManaPool" unique_id=1736686876]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="ManaPip" type="MeshInstance3D" parent="CommandsManager/CombatCircle/ManaPool/Enchantment" unique_id=168875864]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 1.9, 0)
+mesh = SubResource("QuadMesh_joab5")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ramue")
+
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/ManaPool/Enchantment/ManaPip" unique_id=137797285]
+script = ExtResource("22_ukpt0")
+choice = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/ManaPool/Enchantment/ManaPip/Area3D" unique_id=1741810401]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_10y25")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="Ethereal" type="Node3D" parent="CommandsManager/CombatCircle/ManaPool" unique_id=1377974606]
+transform = Transform3D(0.239591, 0.180544, 0, -0.180544, 0.239591, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="ManaPip2" type="MeshInstance3D" parent="CommandsManager/CombatCircle/ManaPool/Ethereal" unique_id=1068494697]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 1.6, 0)
+mesh = SubResource("QuadMesh_joab5")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_a283a")
+
+[node name="Area3D" type="Area3D" parent="CommandsManager/CombatCircle/ManaPool/Ethereal/ManaPip2" unique_id=470632833]
+script = ExtResource("22_ukpt0")
+choice = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CommandsManager/CombatCircle/ManaPool/Ethereal/ManaPip2/Area3D" unique_id=296670566]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_10y25")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="LayerManager" parent="." unique_id=1461810912 instance=ExtResource("1_a3mgy")]
+
+[node name="BattleCam" type="Camera3D" parent="." unique_id=931248130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+current = true
+fov = 30.0
+
+[node name="pFaebleActor" type="Node3D" parent="." unique_id=1103426066]
+
+[node name="FaebleMesh" type="MeshInstance3D" parent="pFaebleActor" unique_id=861777539]
+transform = Transform3D(-5, 0, -4.371139e-07, 0, 5, 0, 4.371139e-07, 0, -5, 0, 0, 0)
+mesh = SubResource("QuadMesh_ns3mv")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_2mptk")
+
+[node name="pWitchActor" type="Node3D" parent="." unique_id=199841379]
+
+[node name="WitchMesh" type="MeshInstance3D" parent="pWitchActor" unique_id=1952661391]
+transform = Transform3D(4.8, 0, 0, 0, 4.8, 0, 0, 0, 4.8, 0, 0, 0)
+mesh = SubResource("QuadMesh_ns3mv")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jsrtv")
+
+[node name="eFaebleActor" type="Node3D" parent="." unique_id=1336596156]
+
+[node name="FaebleMesh" type="MeshInstance3D" parent="eFaebleActor" unique_id=404271116]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("QuadMesh_c070t")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1vd0a")
+
+[node name="eWitchActor" type="Node3D" parent="." unique_id=1515519199]
+
+[node name="WitchMesh" type="MeshInstance3D" parent="eWitchActor" unique_id=1172913759]
+transform = Transform3D(-4.8, 0, -4.1962934e-07, 0, 4.8, 0, 4.1962934e-07, 0, -4.8, 0, 0, 0)
+mesh = SubResource("QuadMesh_ns3mv")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jsrtv")
+
+[node name="pUI" type="Node3D" parent="." unique_id=605891356]
+
+[node name="pHPDisplay" type="Node3D" parent="pUI" unique_id=2142900851]
+transform = Transform3D(0.8660249, -0.5, 0, 0.5, 0.8660249, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("3_2mptk")
+
+[node name="Heart" type="Node3D" parent="pUI/pHPDisplay" unique_id=1777920341]
+transform = Transform3D(0.920709, -0.390249, 0, 0.390249, 0.920709, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="pUI/pHPDisplay/Heart" unique_id=1838658625]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_jsrtv")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="pUI/pHPDisplay/Heart" unique_id=1069574657]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
+render_priority = 1
+texture = ExtResource("5_c070t")
+hframes = 7
+frame = 4
+
+[node name="Heart2" type="Node3D" parent="pUI/pHPDisplay" unique_id=1494835866]
+transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="pUI/pHPDisplay/Heart2" unique_id=1841893410]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_jsrtv")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="pUI/pHPDisplay/Heart2" unique_id=1071620698]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
+render_priority = 1
+texture = ExtResource("5_c070t")
+hframes = 7
+frame = 4
+
+[node name="Heart3" type="Node3D" parent="pUI/pHPDisplay" unique_id=984207298]
+transform = Transform3D(0.990341, -0.138655, 0, 0.138655, 0.990341, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="pUI/pHPDisplay/Heart3" unique_id=1036504883]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_jsrtv")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="pUI/pHPDisplay/Heart3" unique_id=216529785]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
+render_priority = 1
+texture = ExtResource("5_c070t")
+hframes = 7
+frame = 4
+
+[node name="Heart4" type="Node3D" parent="pUI/pHPDisplay" unique_id=1781746588]
+transform = Transform3D(1, -1.49012e-07, 0, 1.49012e-07, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="pUI/pHPDisplay/Heart4" unique_id=1802490274]
+transform = Transform3D(2, 5.96046e-08, 0, -5.96046e-08, 2, 0, 0, 0, 2, 2.38419e-07, 2, 0)
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_jsrtv")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="pUI/pHPDisplay/Heart4" unique_id=555308932]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
+render_priority = 1
+texture = ExtResource("5_c070t")
+hframes = 7
+frame = 4
+
+[node name="Heart5" type="Node3D" parent="pUI/pHPDisplay" unique_id=526543730]
+transform = Transform3D(0.992482, 0.122389, 0, -0.122389, 0.992482, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="pUI/pHPDisplay/Heart5" unique_id=1252386538]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_jsrtv")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="pUI/pHPDisplay/Heart5" unique_id=479838703]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
+render_priority = 1
+texture = ExtResource("5_c070t")
+hframes = 7
+frame = 4
+
+[node name="Heart6" type="Node3D" parent="pUI/pHPDisplay" unique_id=718949442]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="pUI/pHPDisplay/Heart6" unique_id=1816345880]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.19209e-07, 2, 0)
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_jsrtv")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="pUI/pHPDisplay/Heart6" unique_id=1394762670]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
+render_priority = 1
+texture = ExtResource("5_c070t")
+hframes = 7
+frame = 4
+
+[node name="Heart7" type="Node3D" parent="pUI/pHPDisplay" unique_id=232684701]
+transform = Transform3D(0.926988, 0.375092, 0, -0.375092, 0.926988, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="pUI/pHPDisplay/Heart7" unique_id=1692742464]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_jsrtv")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="pUI/pHPDisplay/Heart7" unique_id=1914258075]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
+render_priority = 1
+texture = ExtResource("5_c070t")
+hframes = 7
+frame = 4
+
+[node name="Heart8" type="Node3D" parent="pUI/pHPDisplay" unique_id=1081886734]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="pUI/pHPDisplay/Heart8" unique_id=1132518818]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_jsrtv")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="pUI/pHPDisplay/Heart8" unique_id=579001896]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
+render_priority = 1
+texture = ExtResource("5_c070t")
+hframes = 7
+frame = 4
+
+[node name="Heart9" type="Node3D" parent="pUI/pHPDisplay" unique_id=2125801483]
+transform = Transform3D(0.79832, 0.602233, 0, -0.602233, 0.79832, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="pUI/pHPDisplay/Heart9" unique_id=314906371]
+transform = Transform3D(2, -1.49012e-08, 0, 1.49012e-08, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_jsrtv")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="pUI/pHPDisplay/Heart9" unique_id=533225918]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
+render_priority = 1
+texture = ExtResource("5_c070t")
+hframes = 7
+frame = 4
+
+[node name="Heart10" type="Node3D" parent="pUI/pHPDisplay" unique_id=162916092]
+transform = Transform3D(0.707107, 0.707106, 0, -0.707106, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="pUI/pHPDisplay/Heart10" unique_id=391596851]
+transform = Transform3D(2, 2.98023e-08, 0, -2.98023e-08, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_jsrtv")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="pUI/pHPDisplay/Heart10" unique_id=12680119]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
+render_priority = 1
+texture = ExtResource("5_c070t")
+hframes = 7
+frame = 4
+
+[node name="eUI" type="Node3D" parent="." unique_id=504438710]
+
+[node name="eHPDisplay" type="Node3D" parent="eUI" unique_id=1286965122]
+transform = Transform3D(0.9999996, 0, 0, 0, 0.9999996, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("3_2mptk")
+
+[node name="Heart" type="Node3D" parent="eUI/eHPDisplay" unique_id=362813540]
+transform = Transform3D(0.920709, -0.390249, 0, 0.390249, 0.920709, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="eUI/eHPDisplay/Heart" unique_id=1644427635]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_jsrtv")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="eUI/eHPDisplay/Heart" unique_id=942441679]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
+render_priority = 1
+texture = ExtResource("5_c070t")
+hframes = 7
+frame = 4
+
+[node name="Heart2" type="Node3D" parent="eUI/eHPDisplay" unique_id=2072669515]
+transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="eUI/eHPDisplay/Heart2" unique_id=834053190]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_jsrtv")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="eUI/eHPDisplay/Heart2" unique_id=286847476]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
+render_priority = 1
+texture = ExtResource("5_c070t")
+hframes = 7
+frame = 4
+
+[node name="Heart3" type="Node3D" parent="eUI/eHPDisplay" unique_id=360882473]
+transform = Transform3D(0.990341, -0.138655, 0, 0.138655, 0.990341, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="eUI/eHPDisplay/Heart3" unique_id=1579482372]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_jsrtv")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="eUI/eHPDisplay/Heart3" unique_id=726190562]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
+render_priority = 1
+texture = ExtResource("5_c070t")
+hframes = 7
+frame = 4
+
+[node name="Heart4" type="Node3D" parent="eUI/eHPDisplay" unique_id=926432742]
+transform = Transform3D(1, -1.49012e-07, 0, 1.49012e-07, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="eUI/eHPDisplay/Heart4" unique_id=713803440]
+transform = Transform3D(2, 5.96046e-08, 0, -5.96046e-08, 2, 0, 0, 0, 2, 2.38419e-07, 2, 0)
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_jsrtv")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="eUI/eHPDisplay/Heart4" unique_id=818712806]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
+render_priority = 1
+texture = ExtResource("5_c070t")
+hframes = 7
+frame = 4
+
+[node name="Heart5" type="Node3D" parent="eUI/eHPDisplay" unique_id=1038579701]
+transform = Transform3D(0.992482, 0.122389, 0, -0.122389, 0.992482, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="eUI/eHPDisplay/Heart5" unique_id=194232219]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_jsrtv")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="eUI/eHPDisplay/Heart5" unique_id=772905722]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
+render_priority = 1
+texture = ExtResource("5_c070t")
+hframes = 7
+frame = 4
+
+[node name="Heart6" type="Node3D" parent="eUI/eHPDisplay" unique_id=70949664]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="eUI/eHPDisplay/Heart6" unique_id=1757910616]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.19209e-07, 2, 0)
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_jsrtv")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="eUI/eHPDisplay/Heart6" unique_id=1668008902]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
+render_priority = 1
+texture = ExtResource("5_c070t")
+hframes = 7
+frame = 4
+
+[node name="Heart7" type="Node3D" parent="eUI/eHPDisplay" unique_id=2106986773]
+transform = Transform3D(0.926988, 0.375092, 0, -0.375092, 0.926988, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="eUI/eHPDisplay/Heart7" unique_id=1947803027]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_jsrtv")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="eUI/eHPDisplay/Heart7" unique_id=693675031]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
+render_priority = 1
+texture = ExtResource("5_c070t")
+hframes = 7
+frame = 4
+
+[node name="Heart8" type="Node3D" parent="eUI/eHPDisplay" unique_id=1596352533]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="eUI/eHPDisplay/Heart8" unique_id=1819338937]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_jsrtv")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="eUI/eHPDisplay/Heart8" unique_id=2103994631]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
+render_priority = 1
+texture = ExtResource("5_c070t")
+hframes = 7
+frame = 4
+
+[node name="Heart9" type="Node3D" parent="eUI/eHPDisplay" unique_id=907638004]
+transform = Transform3D(0.79832, 0.602233, 0, -0.602233, 0.79832, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="eUI/eHPDisplay/Heart9" unique_id=1152117935]
+transform = Transform3D(2, -1.49012e-08, 0, 1.49012e-08, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_jsrtv")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="eUI/eHPDisplay/Heart9" unique_id=1730059762]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.3, 0)
+no_depth_test = true
+render_priority = 1
+texture = ExtResource("5_c070t")
+hframes = 7
+frame = 4
+
+[node name="Heart10" type="Node3D" parent="eUI/eHPDisplay" unique_id=1546703751]
+transform = Transform3D(0.707107, 0.707106, 0, -0.707106, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="eUI/eHPDisplay/Heart10" unique_id=671228076]
+transform = Transform3D(2, 2.98023e-08, 0, -2.98023e-08, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_jsrtv")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="eUI/eHPDisplay/Heart10" unique_id=962749643]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+no_depth_test = true
+render_priority = 1
+texture = ExtResource("5_c070t")
+hframes = 7
+frame = 4
+
+[editable path="LayerManager"]

@@ -1,7 +1,7 @@
 extends Node3D
 class_name CommandsManager
 
-@export var battleSystem:BattleSystem
+@export var battleSystem:BattleSystemFINAL
 
 var selectedMana:int
 var pickedMana:int = -1
@@ -60,7 +60,7 @@ func ResetCommandMenu():
 	commandHeaders[3].hide()
 	#TEMP
 
-func FillOptions(faeblePool:Array[Skill], witchPool:Array[Skill]):
+func FillOptions(faeblePool:Array[Spell], witchPool:Array[Spell]):
 	for i in range(faeblePool.size()):
 		if faeblePool[i] == null:
 			spellCommands[i].hide()

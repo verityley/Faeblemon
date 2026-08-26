@@ -11,3 +11,5 @@ magical = true
 rangeBands = Array[bool]([true, true, false])
 statusType = 1
 statusTier = 1
+buffStat = 4
+buffAmount = 1

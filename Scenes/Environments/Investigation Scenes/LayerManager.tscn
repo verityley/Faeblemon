@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bok3gqa86lbq0"]
+[gd_scene format=3 uid="uid://bok3gqa86lbq0"]
 
 [ext_resource type="Script" uid="uid://1h2vveh7l76v" path="res://Scenes/Environments/Investigation Scenes/LayerManager.gd" id="1_yyegc"]
 [ext_resource type="Texture2D" uid="uid://c4udwyw0qkx7n" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleL.png" id="2_k42q8"]
@@ -6,10 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://bwow6qp1qrw3p" path="res://Scenes/Environments/World Scenes/Forest/Assets/FrontL.png" id="4_684e3"]
 [ext_resource type="Texture2D" uid="uid://b1yvjqp318bci" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleR.png" id="5_ftvb5"]
 [ext_resource type="Texture2D" uid="uid://bggyleai1wado" path="res://Global Assets/Graphics/Monster Graphics/Arachalyx.png" id="6_f5tt7"]
+[ext_resource type="Texture2D" uid="uid://blxmhwv4hm1pr" path="res://Global Assets/Graphics/Scene Graphics/Forest/MiddleL.png" id="7_f04oj"]
 [ext_resource type="Texture2D" uid="uid://c5lwnfjt36q35" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleSmallDecoL.png" id="7_tdev4"]
-[ext_resource type="Texture2D" uid="uid://dfmjqud1wdo68" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleSmallDecoR.png" id="8_vr2uw"]
-[ext_resource type="Texture2D" uid="uid://bqw6wrt7upoq4" path="res://Global Assets/Graphics/Monster Graphics/Basidusa.png" id="9_nv16o"]
-[ext_resource type="Texture2D" uid="uid://cgnjjvbdbarj" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleLargeL.png" id="10_1nn2e"]
+[ext_resource type="Texture2D" uid="uid://0r7kesy832ik" path="res://Global Assets/Graphics/Scene Graphics/Forest/MiddleLargeDecoR.png" id="8_mya05"]
+[ext_resource type="Texture2D" uid="uid://c237np05gqnn4" path="res://Global Assets/Graphics/Scene Graphics/Forest/MiddleR.png" id="9_676cd"]
+[ext_resource type="Texture2D" uid="uid://df11xdgy1o5b6" path="res://Global Assets/Graphics/Scene Graphics/Forest/MiddleLargeL.png" id="10_xp074"]
 [ext_resource type="Texture2D" uid="uid://cnj8lj53pij0l" path="res://Scenes/Environments/World Scenes/Forest/Assets/BackDecoL.png" id="11_bmdfj"]
 [ext_resource type="Texture2D" uid="uid://1dy8ehv02fo0" path="res://Scenes/Environments/World Scenes/Forest/Assets/BackL.png" id="12_v8fhd"]
 [ext_resource type="Texture2D" uid="uid://rsklskjod1lq" path="res://Scenes/Environments/World Scenes/Forest/Assets/BackDecoR.png" id="13_togyl"]
@@ -18,69 +19,113 @@
 [sub_resource type="QuadMesh" id="QuadMesh_nyfsb"]
 size = Vector2(16, 9)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f04oj"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("2_k42q8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mya05"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("2_k42q8")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_benlp"]
-transparency = 4
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 cull_mode = 2
 albedo_texture = ExtResource("2_k42q8")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2vdwb"]
-transparency = 4
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 cull_mode = 2
 albedo_texture = ExtResource("3_medno")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f0grt"]
-transparency = 4
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 cull_mode = 2
 albedo_texture = ExtResource("4_684e3")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eh88h"]
-transparency = 4
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 cull_mode = 2
 albedo_texture = ExtResource("5_ftvb5")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ot4m8"]
-transparency = 4
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 cull_mode = 2
 albedo_texture = ExtResource("7_tdev4")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cg882"]
-transparency = 4
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 cull_mode = 2
-albedo_texture = ExtResource("2_k42q8")
+albedo_texture = ExtResource("7_f04oj")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1nwc5"]
-transparency = 4
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 cull_mode = 2
-albedo_texture = ExtResource("8_vr2uw")
+albedo_texture = ExtResource("8_mya05")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s0drs"]
-transparency = 4
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 cull_mode = 2
-albedo_texture = ExtResource("5_ftvb5")
+albedo_texture = ExtResource("9_676cd")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y324f"]
-transparency = 4
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 cull_mode = 2
-albedo_texture = ExtResource("10_1nn2e")
+albedo_texture = ExtResource("10_xp074")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57osw"]
-transparency = 4
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 cull_mode = 2
+albedo_color = Color(0.48962224, 0.48962224, 0.48962206, 1)
 albedo_texture = ExtResource("11_bmdfj")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cnchu"]
-transparency = 4
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 cull_mode = 2
+albedo_color = Color(0.48962224, 0.48962224, 0.48962218, 1)
 albedo_texture = ExtResource("12_v8fhd")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ny0v"]
-transparency = 4
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 cull_mode = 2
+albedo_color = Color(0.23392546, 0.23392546, 0.23392543, 1)
 albedo_texture = ExtResource("13_togyl")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cqjoc"]
-transparency = 4
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 cull_mode = 2
+albedo_color = Color(0.23392546, 0.23392546, 0.23392543, 1)
 albedo_texture = ExtResource("14_g3u40")
 
 [sub_resource type="QuadMesh" id="QuadMesh_xn15w"]
@@ -92,138 +137,160 @@ cull_mode = 2
 albedo_texture = ExtResource("6_f5tt7")
 detail_albedo = ExtResource("6_f5tt7")
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xpls3"]
+load_path = "res://.godot/imported/Basidusa.png-54155fbf1d1e1f83969a8a5d133d3d80.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6hv8"]
 transparency = 4
 cull_mode = 2
-albedo_texture = ExtResource("9_nv16o")
+albedo_texture = SubResource("CompressedTexture2D_xpls3")
 
-[node name="LayerManager" type="Node3D" node_paths=PackedStringArray("stageLayers", "FXManager", "stageCamera")]
+[node name="LayerManager" type="Node3D" unique_id=1461810912 node_paths=PackedStringArray("stageLayers", "FXManager", "stageCamera")]
 script = ExtResource("1_yyegc")
-stageLayers = [NodePath("Cutouts/Overlay"), NodePath("Cutouts/UI 1"), NodePath("Cutouts/UI 2"), NodePath("Cutouts/Player 1"), NodePath("Cutouts/Player 2"), NodePath("Cutouts/Spacer 1"), NodePath("Cutouts/Spacer 2"), NodePath("Cutouts/Enemy 1"), NodePath("Cutouts/Enemy 2"), NodePath("Cutouts/Background 1"), NodePath("Cutouts/Background 2"), NodePath("Cutouts/Back Plate 1"), NodePath("Cutouts/Back Plate 2")]
-layerDepths = Array[float]([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+stageLayers = [NodePath("Cutouts/Foreground 1"), NodePath("Cutouts/Foreground 2"), NodePath("Cutouts/Overlay"), NodePath("Cutouts/Player 1"), NodePath("Cutouts/Player 2"), NodePath("Cutouts/Spacer 1"), NodePath("Cutouts/Spacer 2"), NodePath("Cutouts/Spacer 3"), NodePath("Cutouts/Spacer 4"), NodePath("Cutouts/Enemy 1"), NodePath("Cutouts/Enemy 2"), NodePath("Cutouts/Background 1"), NodePath("Cutouts/Background 2"), NodePath("Cutouts/Back Plate 1"), NodePath("Cutouts/Back Plate 2")]
+layerDepths = Array[float]([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+layerCount = 15
+parallaxSpeed = 0.6
 FXManager = NodePath("FXManager")
 stageCamera = NodePath("StageCam")
+startPos = 8.0
 
-[node name="Cutouts" type="Node3D" parent="."]
+[node name="Cutouts" type="Node3D" parent="." unique_id=1085603569]
 
-[node name="Overlay" type="Node3D" parent="Cutouts"]
+[node name="Foreground 1" type="Node3D" parent="Cutouts" unique_id=719956107]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="FrontDeco1" type="MeshInstance3D" parent="Cutouts/Foreground 1" unique_id=1885331712]
+mesh = SubResource("QuadMesh_nyfsb")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_f04oj")
+
+[node name="Foreground 2" type="Node3D" parent="Cutouts" unique_id=1551850080]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="FrontDeco1" type="MeshInstance3D" parent="Cutouts/Foreground 2" unique_id=2012956305]
+mesh = SubResource("QuadMesh_nyfsb")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_mya05")
+
+[node name="Overlay" type="Node3D" parent="Cutouts" unique_id=2030000872]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
-[node name="FrontDeco1" type="MeshInstance3D" parent="Cutouts/Overlay"]
+[node name="FrontDeco1" type="MeshInstance3D" parent="Cutouts/Overlay" unique_id=1566769945]
 mesh = SubResource("QuadMesh_nyfsb")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_benlp")
 
-[node name="UI 1" type="Node3D" parent="Cutouts"]
+[node name="Player 1" type="Node3D" parent="Cutouts" unique_id=657858744]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="FrontDeco1" type="MeshInstance3D" parent="Cutouts/UI 1"]
+[node name="FrontDeco1" type="MeshInstance3D" parent="Cutouts/Player 1" unique_id=530525883]
 mesh = SubResource("QuadMesh_nyfsb")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_2vdwb")
 
-[node name="UI 2" type="Node3D" parent="Cutouts"]
+[node name="Player 2" type="Node3D" parent="Cutouts" unique_id=2143573459]
 
-[node name="FrontDeco1" type="MeshInstance3D" parent="Cutouts/UI 2"]
+[node name="FrontDeco1" type="MeshInstance3D" parent="Cutouts/Player 2" unique_id=1168938733]
 mesh = SubResource("QuadMesh_nyfsb")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_f0grt")
 
-[node name="Player 1" type="Node3D" parent="Cutouts"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -1)
+[node name="Spacer 1" type="Node3D" parent="Cutouts" unique_id=1220557022]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
-[node name="FrontDeco2" type="MeshInstance3D" parent="Cutouts/Player 1"]
+[node name="FrontDeco2" type="MeshInstance3D" parent="Cutouts/Spacer 1" unique_id=1794298781]
 mesh = SubResource("QuadMesh_nyfsb")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_eh88h")
 
-[node name="Player 2" type="Node3D" parent="Cutouts"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2)
+[node name="Spacer 2" type="Node3D" parent="Cutouts" unique_id=428484990]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
-[node name="FrontDeco1" type="MeshInstance3D" parent="Cutouts/Player 2"]
+[node name="FrontDeco1" type="MeshInstance3D" parent="Cutouts/Spacer 2" unique_id=1867352658]
 mesh = SubResource("QuadMesh_nyfsb")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ot4m8")
 
-[node name="Spacer 1" type="Node3D" parent="Cutouts"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -3)
+[node name="Spacer 3" type="Node3D" parent="Cutouts" unique_id=290950453]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
-[node name="FrontDeco1" type="MeshInstance3D" parent="Cutouts/Spacer 1"]
+[node name="FrontDeco1" type="MeshInstance3D" parent="Cutouts/Spacer 3" unique_id=25039940]
 mesh = SubResource("QuadMesh_nyfsb")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_cg882")
 
-[node name="Spacer 2" type="Node3D" parent="Cutouts"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
+[node name="Spacer 4" type="Node3D" parent="Cutouts" unique_id=1547836990]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 
-[node name="FrontDeco2" type="MeshInstance3D" parent="Cutouts/Spacer 2"]
+[node name="FrontDeco2" type="MeshInstance3D" parent="Cutouts/Spacer 4" unique_id=251665020]
 mesh = SubResource("QuadMesh_nyfsb")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_1nwc5")
 
-[node name="Enemy 1" type="Node3D" parent="Cutouts"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, -5)
+[node name="Enemy 1" type="Node3D" parent="Cutouts" unique_id=1320829601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 
-[node name="FrontDeco2" type="MeshInstance3D" parent="Cutouts/Enemy 1"]
+[node name="FrontDeco2" type="MeshInstance3D" parent="Cutouts/Enemy 1" unique_id=1815552216]
 mesh = SubResource("QuadMesh_nyfsb")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_s0drs")
 
-[node name="Enemy 2" type="Node3D" parent="Cutouts"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -6)
+[node name="Enemy 2" type="Node3D" parent="Cutouts" unique_id=785897454]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 
-[node name="FrontDeco1" type="MeshInstance3D" parent="Cutouts/Enemy 2"]
+[node name="FrontDeco1" type="MeshInstance3D" parent="Cutouts/Enemy 2" unique_id=1069910592]
 mesh = SubResource("QuadMesh_nyfsb")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_y324f")
 
-[node name="Background 1" type="Node3D" parent="Cutouts"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -7)
+[node name="Background 1" type="Node3D" parent="Cutouts" unique_id=836626071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 
-[node name="FrontDeco2" type="MeshInstance3D" parent="Cutouts/Background 1"]
+[node name="FrontDeco2" type="MeshInstance3D" parent="Cutouts/Background 1" unique_id=486616]
 mesh = SubResource("QuadMesh_nyfsb")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_57osw")
 
-[node name="Background 2" type="Node3D" parent="Cutouts"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -8)
+[node name="Background 2" type="Node3D" parent="Cutouts" unique_id=1300901833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 
-[node name="FrontDeco1" type="MeshInstance3D" parent="Cutouts/Background 2"]
+[node name="FrontDeco1" type="MeshInstance3D" parent="Cutouts/Background 2" unique_id=1298846444]
 mesh = SubResource("QuadMesh_nyfsb")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_cnchu")
 
-[node name="Back Plate 1" type="Node3D" parent="Cutouts"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -9)
+[node name="Back Plate 1" type="Node3D" parent="Cutouts" unique_id=1254787057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
 
-[node name="FrontDeco2" type="MeshInstance3D" parent="Cutouts/Back Plate 1"]
+[node name="FrontDeco2" type="MeshInstance3D" parent="Cutouts/Back Plate 1" unique_id=1189919677]
 mesh = SubResource("QuadMesh_nyfsb")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_1ny0v")
 
-[node name="Back Plate 2" type="Node3D" parent="Cutouts"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -10)
+[node name="Back Plate 2" type="Node3D" parent="Cutouts" unique_id=1639226733]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 
-[node name="FrontDeco1" type="MeshInstance3D" parent="Cutouts/Back Plate 2"]
+[node name="FrontDeco1" type="MeshInstance3D" parent="Cutouts/Back Plate 2" unique_id=919883531]
 mesh = SubResource("QuadMesh_nyfsb")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_cqjoc")
 
-[node name="FXManager" type="Node3D" parent="."]
+[node name="FXManager" type="Node3D" parent="." unique_id=657640823]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="FXManager"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="FXManager" unique_id=1462193148]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.41756)
 light_energy = 0.3
 shadow_enabled = true
 shadow_opacity = 0.4
 
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="FXManager"]
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="FXManager" unique_id=1620252242]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.41756)
 visible = false
 shadow_opacity = 0.4
 shadow_blur = 4.0
 
-[node name="SpotLight3D" type="SpotLight3D" parent="FXManager"]
+[node name="SpotLight3D" type="SpotLight3D" parent="FXManager" unique_id=705521505]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 16)
 visible = false
 light_energy = 40.0
@@ -231,7 +298,7 @@ shadow_enabled = true
 spot_range = 30.0
 spot_angle = 30.0
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="FXManager"]
+[node name="SpotLight3D2" type="SpotLight3D" parent="FXManager" unique_id=2085312088]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 16)
 light_energy = 40.0
 light_cull_mask = 4294967263
@@ -239,26 +306,26 @@ shadow_enabled = true
 spot_range = 45.0
 spot_angle = 30.0
 
-[node name="PlayerFaeble" type="Node3D" parent="."]
+[node name="PlayerFaeble" type="Node3D" parent="." unique_id=791645222]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -0.1)
 visible = false
 
-[node name="FaebleMesh2" type="MeshInstance3D" parent="PlayerFaeble"]
+[node name="FaebleMesh2" type="MeshInstance3D" parent="PlayerFaeble" unique_id=501870274]
 transform = Transform3D(-4, 0, -6.03983e-07, 0, 4, 0, 6.03983e-07, 0, -4, -1.37198, 0, 0)
 mesh = SubResource("QuadMesh_xn15w")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_bhbrx")
 
-[node name="EnemyFaeble" type="Node3D" parent="."]
+[node name="EnemyFaeble" type="Node3D" parent="." unique_id=437618781]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1.75, -0.1)
 visible = false
 
-[node name="FaebleMesh" type="MeshInstance3D" parent="EnemyFaeble"]
+[node name="FaebleMesh" type="MeshInstance3D" parent="EnemyFaeble" unique_id=1335361464]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 mesh = SubResource("QuadMesh_xn15w")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_x6hv8")
 
-[node name="StageCam" type="Camera3D" parent="."]
+[node name="StageCam" type="Camera3D" parent="." unique_id=830863949]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
 fov = 30.0

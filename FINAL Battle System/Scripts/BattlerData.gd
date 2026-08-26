@@ -19,6 +19,9 @@ var damageTaken:int #Damage taken during this turn
 var protected:bool = false #Use to prevent all damage and skip damage calc step
 var safeguarded:bool = false #Use to prevent all status buildup and skip status calc step
 var switching:bool = false #If true, change battler to currentFaeble when triggered
+var advancing:bool = false
+var retreating:bool = false
+var bonded:bool = false #Turns true if personality need met, allows Theme usage
 var fainted:bool = false
 
 var currentSpell:Spell
@@ -40,19 +43,22 @@ func ChangeBattler(entry:Faeble):
 		faebleTeam[targetSlot] = instance
 	ResetBattler(true)
 	instance = entry
-	EventBus.emit_signal("FaebleSwitched", self)
+	
 	health = entry.currentHP
-	EventBus.emit_signal("HealthChanged", self)
+	#EventBus.emit_signal("HealthChanged", self)
 	status = entry.currentStatus
 	buildup = instance.currentBuildup
 	buildupTarget = instance.currentBuildupTarget
-	EventBus.emit_signal("BuildupChanged", self)
-	EventBus.emit_signal("StatusChanged", self, true)
+	EventBus.emit_signal("FaebleSwitched", self)
+	print("Sending Switch Signal")
+	#EventBus.emit_signal("BuildupChanged", self)
+	#EventBus.emit_signal("StatusChanged", self, true)
 
 func ResetBattler(fullReset:bool=false):
 	#End of Turn Reset
 	pGuard = 0
 	mGuard = 0
+	#EventBus.emit_signal("GuardChanged", self)
 	priority = 0
 	damageBoost = 0
 	currentSpell = null
@@ -63,6 +69,8 @@ func ResetBattler(fullReset:bool=false):
 	currentTarget = null
 	protected = false
 	safeguarded = false
+	advancing = false
+	retreating = false
 	switching = false
 	damageTaken = 0
 	#Battler Change/End Reset
@@ -72,6 +80,7 @@ func ResetBattler(fullReset:bool=false):
 		buildup = 0
 		buildupTarget = Enums.Status.Clear
 		health = 0
+		bonded = false
 		fainted = false
 
 func ClearBattler():

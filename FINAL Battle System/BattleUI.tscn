@@ -1,0 +1,365 @@
+[gd_scene format=3 uid="uid://b3i6tyn31ms1c"]
+
+[ext_resource type="Texture2D" uid="uid://cp3stfaoey52v" path="res://Global Assets/Graphics/UI Graphics/FinalUIMockup2.png" id="1_61hxc"]
+[ext_resource type="Texture2D" uid="uid://bl4n5qg3tvxmu" path="res://FINAL Battle System/Assets/Heart.tres" id="2_07f2r"]
+
+[node name="BattleUi" type="Control" unique_id=43536041]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2053175137]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_61hxc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=330215188]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="DistanceMarker" type="Panel" parent="VBoxContainer" unique_id=728746571]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="MainInfo" type="HBoxContainer" parent="VBoxContainer" unique_id=1802823710]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="FaebleTag" type="Panel" parent="VBoxContainer/MainInfo" unique_id=1612739122]
+custom_minimum_size = Vector2(500, 80)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="FaebleInfo" type="HBoxContainer" parent="VBoxContainer/MainInfo/FaebleTag" unique_id=2130055392]
+layout_mode = 0
+offset_right = 557.0
+offset_bottom = 80.0
+
+[node name="Spacer" type="Control" parent="VBoxContainer/MainInfo/FaebleTag/FaebleInfo" unique_id=1582302035]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Nametag" type="Label" parent="VBoxContainer/MainInfo/FaebleTag/FaebleInfo" unique_id=1215855839]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 55
+text = "Faeble Name"
+vertical_alignment = 1
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/MainInfo/FaebleTag/FaebleInfo" unique_id=1223144683]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Leveltag" type="Label" parent="VBoxContainer/MainInfo/FaebleTag/FaebleInfo" unique_id=1527353503]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Ch. XX"
+vertical_alignment = 1
+
+[node name="Spacer3" type="Control" parent="VBoxContainer/MainInfo/FaebleTag/FaebleInfo" unique_id=465298046]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Hearts" type="HBoxContainer" parent="VBoxContainer/MainInfo/FaebleTag" unique_id=53422533]
+custom_minimum_size = Vector2(480, 75)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -480.0
+offset_top = -125.0
+grow_horizontal = 0
+theme_override_constants/separation = -30
+
+[node name="Heart" type="TextureRect" parent="VBoxContainer/MainInfo/FaebleTag/Hearts" unique_id=138838646]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("2_07f2r")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Heart2" type="TextureRect" parent="VBoxContainer/MainInfo/FaebleTag/Hearts" unique_id=491510262]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("2_07f2r")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Heart3" type="TextureRect" parent="VBoxContainer/MainInfo/FaebleTag/Hearts" unique_id=459353522]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("2_07f2r")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Heart4" type="TextureRect" parent="VBoxContainer/MainInfo/FaebleTag/Hearts" unique_id=1190847286]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("2_07f2r")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Heart5" type="TextureRect" parent="VBoxContainer/MainInfo/FaebleTag/Hearts" unique_id=937954443]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("2_07f2r")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Heart6" type="TextureRect" parent="VBoxContainer/MainInfo/FaebleTag/Hearts" unique_id=62539936]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("2_07f2r")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Heart7" type="TextureRect" parent="VBoxContainer/MainInfo/FaebleTag/Hearts" unique_id=1813629532]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("2_07f2r")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Heart8" type="TextureRect" parent="VBoxContainer/MainInfo/FaebleTag/Hearts" unique_id=65209951]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("2_07f2r")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Heart9" type="TextureRect" parent="VBoxContainer/MainInfo/FaebleTag/Hearts" unique_id=90867028]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("2_07f2r")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Heart10" type="TextureRect" parent="VBoxContainer/MainInfo/FaebleTag/Hearts" unique_id=1560966209]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("2_07f2r")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Buttonport" type="PanelContainer" parent="VBoxContainer/MainInfo" unique_id=931688457]
+custom_minimum_size = Vector2(900, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 1
+
+[node name="Buttons" type="HBoxContainer" parent="VBoxContainer/MainInfo/Buttonport" unique_id=1749731604]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Witch" type="Button" parent="VBoxContainer/MainInfo/Buttonport/Buttons" unique_id=306308539]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 70
+text = "Witch
+"
+
+[node name="Faeble" type="Button" parent="VBoxContainer/MainInfo/Buttonport/Buttons" unique_id=1459415725]
+custom_minimum_size = Vector2(300, 150)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 70
+text = "Faeble"
+
+[node name="Tactics" type="Button" parent="VBoxContainer/MainInfo/Buttonport/Buttons" unique_id=1720474680]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 70
+text = "Tactics
+"
+
+[node name="FaebleTag2" type="Panel" parent="VBoxContainer/MainInfo" unique_id=635594315]
+custom_minimum_size = Vector2(500, 80)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainInfo/FaebleTag2" unique_id=1780427321]
+layout_mode = 0
+offset_right = 557.0
+offset_bottom = 80.0
+
+[node name="Spacer" type="Control" parent="VBoxContainer/MainInfo/FaebleTag2/HBoxContainer" unique_id=786780545]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Leveltag" type="Label" parent="VBoxContainer/MainInfo/FaebleTag2/HBoxContainer" unique_id=1265981223]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Ch. XX"
+vertical_alignment = 1
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/MainInfo/FaebleTag2/HBoxContainer" unique_id=695934562]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Nametag" type="Label" parent="VBoxContainer/MainInfo/FaebleTag2/HBoxContainer" unique_id=1384084968]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 55
+text = "Faeble Name"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Spacer3" type="Control" parent="VBoxContainer/MainInfo/FaebleTag2/HBoxContainer" unique_id=963910337]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Hearts" type="HBoxContainer" parent="VBoxContainer/MainInfo/FaebleTag2" unique_id=497658006]
+custom_minimum_size = Vector2(480, 75)
+layout_mode = 1
+offset_left = 480.0
+offset_top = 85.0
+offset_right = 960.0
+offset_bottom = 210.0
+scale = Vector2(-1, 1)
+theme_override_constants/separation = -30
+
+[node name="Heart" type="TextureRect" parent="VBoxContainer/MainInfo/FaebleTag2/Hearts" unique_id=1064689145]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("2_07f2r")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Heart2" type="TextureRect" parent="VBoxContainer/MainInfo/FaebleTag2/Hearts" unique_id=1279295084]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("2_07f2r")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Heart3" type="TextureRect" parent="VBoxContainer/MainInfo/FaebleTag2/Hearts" unique_id=42467626]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("2_07f2r")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Heart4" type="TextureRect" parent="VBoxContainer/MainInfo/FaebleTag2/Hearts" unique_id=2073013375]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("2_07f2r")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Heart5" type="TextureRect" parent="VBoxContainer/MainInfo/FaebleTag2/Hearts" unique_id=2134723706]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("2_07f2r")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Heart6" type="TextureRect" parent="VBoxContainer/MainInfo/FaebleTag2/Hearts" unique_id=1247904201]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("2_07f2r")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Heart7" type="TextureRect" parent="VBoxContainer/MainInfo/FaebleTag2/Hearts" unique_id=1537418373]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("2_07f2r")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Heart8" type="TextureRect" parent="VBoxContainer/MainInfo/FaebleTag2/Hearts" unique_id=2089269798]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("2_07f2r")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Heart9" type="TextureRect" parent="VBoxContainer/MainInfo/FaebleTag2/Hearts" unique_id=691059956]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("2_07f2r")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Heart10" type="TextureRect" parent="VBoxContainer/MainInfo/FaebleTag2/Hearts" unique_id=1915034084]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("2_07f2r")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Spacer" type="Control" parent="VBoxContainer" unique_id=2030427079]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2

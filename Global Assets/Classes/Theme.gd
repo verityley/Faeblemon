@@ -2,6 +2,7 @@ extends Resource
 class_name SpellTheme
 
 @export var name:String
+@export var shortDesc:String
 
 @export_category("Universal Factors")
 @export var priority:int
@@ -19,6 +20,7 @@ class_name SpellTheme
 @export var aura:Aura
 @export var statusEffect:Enums.Status
 @export var rangeBands:Array[bool] = [false, false, false]
+@export var critBands:Array[bool] = [false, false, false]
 @export var rangeReplace:bool = false
 
 

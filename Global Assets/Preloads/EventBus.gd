@@ -26,22 +26,25 @@ signal LockAll(locked:bool)
 
 
 #Battle Signals
+signal NextStep() #Used by Battle System
+#Sent by Battle System
 signal BattleStart()
 signal BattleSelection(battler:BattlerData, action:int, option:int, detail:int)
 signal BattleStateChanged(state:int)
 signal TurnStart()
 signal TurnEnd()
 signal ActionSelected(player:bool)
-signal HealthChanged(target:BattlerData)
-#signal DamageTaken(target:BattlerData, amount:int, effective:bool)
-#signal DamageHealed(target:BattlerData, amount:int)
+signal HealthChanged(target:BattlerData, amount:int)
 signal GuardChanged(target:BattlerData, magical:bool, double:bool)
 signal StatusChanged(target:BattlerData,full:bool)
-signal BuildupChanged(target:BattlerData)
+signal BuildupChanged(target:BattlerData, amount:int, type:Enums.Status)
+signal StageChanged(target:BattlerData, stat:Enums.BuffableAttrs, amount:int)
 signal FaebleMoved(range:Enums.Ranges)
 signal FaebleFainted(target:BattlerData)
 signal FaebleSwitched(target:BattlerData)
+
 signal AttackAnim(move:Spell)
+signal AuraTrigger(aura:Aura)
 
 signal BattleMessage(message:Message)
 signal BattlePrint(message:String)

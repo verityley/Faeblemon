@@ -3,6 +3,7 @@ class_name HealthManager
 
 var healthContainers:Array
 var healthFills:Array
+var healthBacks:Array
 
 
 func _ready():
@@ -13,6 +14,7 @@ func Initialize():
 	for heart in get_children():
 		healthContainers.append(heart.get_child(0))
 		healthFills.append(heart.get_child(1))
+		healthBacks.append(heart.get_child(2))
 
 
 func MaxHealthReset(maxHP:int):
@@ -27,35 +29,46 @@ func MaxHealthReset(maxHP:int):
 	for i in range(healthContainers.size()):
 		healthContainers[i].frame = 0
 		healthFills[i].frame = 0
+		healthBacks[i].frame = 0
 		healthContainers[i].hide()
 		healthFills[i].hide()
+		healthBacks[i].hide()
 	
 	var lastHeart
 	var lastFill
+	var lastBack
 	for h in containers:
 		var heart:Sprite3D = healthContainers[h]
 		var fill:Sprite3D = healthFills[h]
+		var back:Sprite3D = healthBacks[h]
 		healthContainers[h].show()
 		healthFills[h].show()
+		healthBacks[h].show()
 		heart.frame = 4
 		fill.frame = 4
+		back.frame = 4
 		lastHeart = heart
 		lastFill = fill
+		lastBack = back
 	
 	if extraContainers > 0:
 		for e in range(extraContainers):
 			healthContainers[e].show()
 			healthFills[e].show()
+			healthBacks[e].show()
 			healthContainers[e].frame = 6
 			healthFills[e].frame = 6
+			healthBacks[e].frame = 6
 			lastHeart = healthContainers[e]
 			lastFill = healthFills[e]
+			lastBack = healthBacks[e]
 	
 	if extraContainers <= 0:
 		var leftover:int = containers*4 - maxHP
 		if leftover != 0:
 			lastHeart.frame = 4 - leftover
 			lastFill.frame = 4 - leftover
+			lastBack.frame = 4 - leftover
 		prints("Containers:", containers, "Extras:", extraContainers, "Leftover Extra:", leftover)
 	else:
 		var leftover:int = ((containers*4) + (extraContainers*2)) - maxHP
@@ -63,6 +76,7 @@ func MaxHealthReset(maxHP:int):
 		if leftover != 0:
 			lastHeart.frame = 5
 			lastFill.frame = 5
+			lastBack.frame = 5
 	
 	
 	pass #Include handling for hitting 0, going over max, etc

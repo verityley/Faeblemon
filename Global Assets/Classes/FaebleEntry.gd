@@ -27,6 +27,7 @@ class_name Faeble
 @export var groundOffset:Vector3 #How far to offset from center
 @export var UICenter:Vector3 #Where to center the UI display upon the sprite
 @export var commandOffset:float
+@export_range(0.1,3.5,0.1) var height:float = 2.5
 
 
 

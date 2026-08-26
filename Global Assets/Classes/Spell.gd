@@ -7,13 +7,15 @@ class_name Spell
 @export var priority:int
 @export var pGuarding:bool
 @export var mGuarding:bool
+@export var manaProduced:Enums.Inks
 @export var rangeBands:Array[bool] = [false,false,false]
+@export var critBands:Array[bool] = [false,false,false]
 @export_range(0,3) var damageTier:int
 @export var statusType:Enums.Status
 @export_range(0,2) var statusTier:int
 @export var buffStat:Enums.BuffableAttrs = Enums.BuffableAttrs.None
-@export_range(0,2) var buffAmount:int
-@export var buffTarget:bool = false
+@export_range(-2,2) var buffAmount:int
+@export var buffTarget:bool = false #If true, applies buff or debuff to the target
 @export_range(-3,3) var movement:int = 0
 @export var recoil:int = 0 #If negative, treat as healing
 @export var recoilPercent:float = 0.0
@@ -24,6 +26,7 @@ class_name Spell
 @export var moveDisplay:CompressedTexture2D
 @export_multiline var moveDescription:String
 #@export var skillAnim:AnimatedSprite2D
+@export var animTime:float = 1.0
 
 
 func BeforeSpell(system:BattleSystemFINAL, user:BattlerData, target:BattlerData) -> bool:
@@ -36,6 +39,9 @@ func ExecuteSpell(user:BattlerData, target:BattlerData, range:int, aura:Aura = n
 	#if target is empty, skip attack and self-state process and go to world-state change, like auras
 	#if target is different, process as attack, check damage if present, then status if present
 	#damage and buildup handling
+	EventBus.emit_signal("BattlePrint", str(user.instance.name," used ",name,"."))
+	#Insert signal for battle animation
+	EventBus.emit_signal("AttackAnim",self)
 	if damageTier > 0:
 		DefaultDamage(user, target, range, aura)
 	if statusTier > 0:
@@ -58,32 +64,41 @@ func AfterSpell(user:BattlerData, target:BattlerData):
 func DefaultDamage(user:BattlerData, target:BattlerData, range:int, aura:Aura = null):
 	var results:Dictionary = BattleCalcs.DamageCalc(self,user,target,range,aura).duplicate()
 	var damage:int = results["Damage"]
-	#Insert signal for battle animation
-	#Insert signal for super effective hit
-	#Insert signal for missed attack
 	target.health = clampi(target.health-damage, 0, target.instance.maxHP)
 	target.damageTaken += damage
 	prints(target.instance.name,"took",damage,"damage!",target.instance.name,"has",target.health,"remaining.")
-	EventBus.emit_signal("HealthChanged", target)
+	EventBus.emit_signal("HealthChanged", target, damage)
+	#Insert signal for super effective hit
+	if results["MatchupMult"] > 0:
+		EventBus.emit_signal("BattlePrint", "It was effective!")
+	elif results["MatchupMult"] < 0:
+		EventBus.emit_signal("BattlePrint", "It was resisted...")
+	#Insert signal for missed attack
+	if results["Missed"]:
+		EventBus.emit_signal("BattlePrint", "It only grazed the target.")
 
 func DefaultStatus(user:BattlerData, target:BattlerData, range:int, aura:Aura = null):
 	var results:Dictionary = BattleCalcs.StatusCalc(self,user,target,range,aura).duplicate()
 	var buildup:int = results["Buildup"]
-	if target.buildupTarget == statusType or target.buildupTarget == Enums.Status.Clear:
+	var buildupType:Enums.Status
+	if target.buildupTarget == Enums.Status.Clear:
 		target.buildupTarget = statusType
+		buildupType = statusType
 		EventBus.emit_signal("StatusChanged", target, false)
 		target.buildup = clampi(target.buildup+buildup, 0, target.instance.maxBuildup)
+	elif target.buildupTarget == statusType or statusType == Enums.Status.Catalyze:
+		buildupType = statusType
+		target.buildup = clampi(target.buildup+buildup, 0, target.instance.maxBuildup)
 	else:
-		if statusType == Enums.Status.Catalyze:
-			if target.buildupTarget != Enums.Status.Clear:
-				target.buildup = clampi(target.buildup+buildup, 0, target.instance.maxBuildup)
-		elif target.buildup < target.instance.maxBuildup/2:
+		if target.buildup < target.instance.maxBuildup/2:
 			target.buildupTarget = statusType
+			buildupType = statusType
 			EventBus.emit_signal("StatusChanged", target, false)
 			target.buildup = clampi(target.buildup+buildup, 0, target.instance.maxBuildup)
 		elif target.buildup >= floori(target.instance.maxBuildup/2):
+			buildupType = target.buildupTarget
 			target.buildup = clampi(target.buildup+floori(buildup/2), 0, target.instance.maxBuildup)
-	EventBus.emit_signal("BuildupChanged", target)
+	EventBus.emit_signal("BuildupChanged", target, buildup, buildupType)
 	#After buildup processing, check if status is afflicted
 	if target.buildup == target.instance.maxBuildup:
 		target.status = target.buildupTarget
@@ -92,6 +107,7 @@ func DefaultStatus(user:BattlerData, target:BattlerData, range:int, aura:Aura = 
 
 func DefaultBuffs(target:BattlerData):
 	target.buffStages[buffStat] = clampi(target.buffStages[buffStat]+buffAmount,-BattleCalcs.maxStages,BattleCalcs.maxStages)
+	EventBus.emit_signal("StageChanged", target, buffStat, buffAmount)
 	if buffAmount > 0:
 		prints(target.instance.name,"'s'",Enums.BuffableAttrs.keys()[buffStat],"rose by",buffAmount,"stages!")
 	elif buffAmount < 0:
@@ -103,20 +119,20 @@ func DefaultRecoil(user:BattlerData, target:BattlerData):
 		user.health = clampi(user.health-damage, 0, user.instance.maxHP)
 		user.damageTaken += damage
 		prints(user.instance.name,"took",damage,"recoil!")
-		EventBus.emit_signal("HealthChanged", user)
+		EventBus.emit_signal("HealthChanged", user, damage)
 	elif recoilPercent < 0.0:
 		var drain:int = ceili(float(target.damageTaken)*abs(recoilPercent))
 		user.health = clampi(user.health+drain, 0, user.instance.maxHP)
 		user.damageTaken -= drain
 		prints(user.instance.name,"healed for",drain,"!")
-		EventBus.emit_signal("HealthChanged", user)
+		EventBus.emit_signal("HealthChanged", user, drain)
 	if recoil > 0:
 		user.health = clampi(user.health-recoil, 0, user.instance.maxHP)
 		user.damageTaken += recoil
 		prints(user.instance.name,"took",recoil,"recoil!")
-		EventBus.emit_signal("HealthChanged", user)
+		EventBus.emit_signal("HealthChanged", user, recoil)
 	elif recoil < 0:
 		user.health = clampi(user.health-recoil, 0, user.instance.maxHP)
 		user.damageTaken += recoil
 		prints(user.instance.name,"healed for",-recoil,"!")
-		EventBus.emit_signal("HealthChanged", user)
+		EventBus.emit_signal("HealthChanged", user, recoil)

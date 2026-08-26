@@ -8,6 +8,7 @@ script = ExtResource("2_3vwdu")
 name = "Woosh"
 school = ExtResource("1_ebr2n")
 magical = true
+pGuarding = true
 rangeBands = Array[bool]([false, true, false])
 damageTier = 1
 movement = 1

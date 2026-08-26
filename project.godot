@@ -35,6 +35,10 @@ window/size/viewport_height=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+
 [input]
 
 MoveLeft={
@@ -106,6 +110,8 @@ ScrollDown={
 
 [layer_names]
 
+3d_render/layer_1="Game"
+3d_render/layer_3="UI"
 3d_render/layer_6="Dialogue"
 3d_physics/layer_1="Main Collision"
 3d_physics/layer_2="Movement"

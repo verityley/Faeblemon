@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c0257e6y177n7"]
+[gd_scene format=3 uid="uid://c0257e6y177n7"]
 
 [ext_resource type="Script" uid="uid://byxpoivq5jjl1" path="res://Scenes/Environments/Dialogue System/Scripts/DialogueSystem.gd" id="1_2unn5"]
 [ext_resource type="Script" uid="uid://cnfvsc68h8k77" path="res://Global Assets/Classes/Message.gd" id="2_b7dqs"]
@@ -37,7 +37,7 @@ disable_ambient_light = true
 albedo_color = Color(0.0941176, 0.0941176, 0.0941176, 0.835294)
 metallic_specular = 0.0
 
-[node name="DialogueSystem" type="Node3D" node_paths=PackedStringArray("choiceManager", "anchors", "speechBubbles")]
+[node name="DialogueSystem" type="Node3D" unique_id=297087799 node_paths=PackedStringArray("choiceManager", "anchors", "speechBubbles")]
 script = ExtResource("1_2unn5")
 choiceManager = NodePath("ChoiceManager")
 scrollTime = 0.3
@@ -46,152 +46,152 @@ anchors = [NodePath("InterviewAnchors/NewMessageAnchor/BubbleAnchor"), NodePath(
 speechBubbles = [NodePath("SpeechBubbles/SpeechBubble"), NodePath("SpeechBubbles/SpeechBubble2"), NodePath("SpeechBubbles/SpeechBubble3"), NodePath("SpeechBubbles/SpeechBubble4"), NodePath("SpeechBubbles/SpeechBubble5"), NodePath("SpeechBubbles/SpeechBubble6")]
 conversation = Array[ExtResource("2_b7dqs")]([ExtResource("3_nt2l8")])
 
-[node name="InterviewAnchors" type="Node3D" parent="."]
+[node name="InterviewAnchors" type="Node3D" parent="." unique_id=1482469559]
 
-[node name="NewMessageAnchor" type="Node3D" parent="InterviewAnchors"]
+[node name="NewMessageAnchor" type="Node3D" parent="InterviewAnchors" unique_id=1606221383]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -3, 1.2)
 
-[node name="BubbleAnchor" type="Node3D" parent="InterviewAnchors/NewMessageAnchor"]
+[node name="BubbleAnchor" type="Node3D" parent="InterviewAnchors/NewMessageAnchor" unique_id=1368527348]
 transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 4, 0, 0)
 
-[node name="MessageAnchor" type="Node3D" parent="InterviewAnchors"]
+[node name="MessageAnchor" type="Node3D" parent="InterviewAnchors" unique_id=603608384]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1)
 
-[node name="BubbleAnchor" type="Node3D" parent="InterviewAnchors/MessageAnchor"]
+[node name="BubbleAnchor" type="Node3D" parent="InterviewAnchors/MessageAnchor" unique_id=1783876653]
 transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 4, 0, 0)
 
-[node name="MessageAnchor2" type="Node3D" parent="InterviewAnchors"]
+[node name="MessageAnchor2" type="Node3D" parent="InterviewAnchors" unique_id=1320751602]
 transform = Transform3D(0.866026, -0.5, 0, 0.5, 0.866026, 0, 0, 0, 1, -5, 0, 0.8)
 
-[node name="BubbleAnchor" type="Node3D" parent="InterviewAnchors/MessageAnchor2"]
+[node name="BubbleAnchor" type="Node3D" parent="InterviewAnchors/MessageAnchor2" unique_id=1777533720]
 transform = Transform3D(1.06252, 0.284701, 0, -0.284701, 1.06252, 0, 0, 0, 1.1, 4, 0, 0)
 
-[node name="MessageAnchor3" type="Node3D" parent="InterviewAnchors"]
+[node name="MessageAnchor3" type="Node3D" parent="InterviewAnchors" unique_id=728452435]
 transform = Transform3D(0.5, -0.866026, 0, 0.866026, 0.5, 0, 0, 0, 1, -5, 0, 0.6)
 
-[node name="BubbleAnchor" type="Node3D" parent="InterviewAnchors/MessageAnchor3"]
+[node name="BubbleAnchor" type="Node3D" parent="InterviewAnchors/MessageAnchor3" unique_id=204303492]
 transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 4, 0, 0)
 
-[node name="MessageAnchor4" type="Node3D" parent="InterviewAnchors"]
+[node name="MessageAnchor4" type="Node3D" parent="InterviewAnchors" unique_id=1934431211]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -5, 0, 0.4)
 
-[node name="BubbleAnchor" type="Node3D" parent="InterviewAnchors/MessageAnchor4"]
+[node name="BubbleAnchor" type="Node3D" parent="InterviewAnchors/MessageAnchor4" unique_id=2015832555]
 transform = Transform3D(0.636396, 0.636396, 0, -0.636396, 0.636396, 0, 0, 0, 0.9, 4, 0, 0)
 
-[node name="DeleteMessageAnchor" type="Node3D" parent="InterviewAnchors"]
+[node name="DeleteMessageAnchor" type="Node3D" parent="InterviewAnchors" unique_id=1770421173]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -5, 0, 0)
 
-[node name="BubbleAnchor" type="Node3D" parent="InterviewAnchors/DeleteMessageAnchor"]
+[node name="BubbleAnchor" type="Node3D" parent="InterviewAnchors/DeleteMessageAnchor" unique_id=1814151151]
 transform = Transform3D(0.636396, 0.636396, 0, -0.636396, 0.636396, 0, 0, 0, 0.9, 4, 0, 0)
 
-[node name="GroupAnchors" type="Node3D" parent="."]
+[node name="GroupAnchors" type="Node3D" parent="." unique_id=1616875634]
 visible = false
 
-[node name="Char1Anchors" type="Node3D" parent="GroupAnchors"]
+[node name="Char1Anchors" type="Node3D" parent="GroupAnchors" unique_id=1205531216]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -5, -3, 1)
 
-[node name="NewAnchor" type="Node3D" parent="GroupAnchors/Char1Anchors"]
+[node name="NewAnchor" type="Node3D" parent="GroupAnchors/Char1Anchors" unique_id=1053219576]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -0.4)
 
-[node name="BubbleAnchor" type="Node3D" parent="GroupAnchors/Char1Anchors"]
+[node name="BubbleAnchor" type="Node3D" parent="GroupAnchors/Char1Anchors" unique_id=1710209912]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 
-[node name="BubbleAnchor2" type="Node3D" parent="GroupAnchors/Char1Anchors"]
+[node name="BubbleAnchor2" type="Node3D" parent="GroupAnchors/Char1Anchors" unique_id=1556430647]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 8.5, -0.2)
 
-[node name="BubbleAnchor3" type="Node3D" parent="GroupAnchors/Char1Anchors"]
+[node name="BubbleAnchor3" type="Node3D" parent="GroupAnchors/Char1Anchors" unique_id=19029259]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 9.75, -0.4)
 
-[node name="BubbleAnchor4" type="Node3D" parent="GroupAnchors/Char1Anchors"]
+[node name="BubbleAnchor4" type="Node3D" parent="GroupAnchors/Char1Anchors" unique_id=1329690503]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 10.75, -0.6)
 
-[node name="DeleteAnchor" type="Node3D" parent="GroupAnchors/Char1Anchors"]
+[node name="DeleteAnchor" type="Node3D" parent="GroupAnchors/Char1Anchors" unique_id=263157921]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 10.75, -0.8)
 
-[node name="Char2Anchors" type="Node3D" parent="GroupAnchors"]
+[node name="Char2Anchors" type="Node3D" parent="GroupAnchors" unique_id=138748384]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -1.65, -3, 1)
 
-[node name="NewAnchor" type="Node3D" parent="GroupAnchors/Char2Anchors"]
+[node name="NewAnchor" type="Node3D" parent="GroupAnchors/Char2Anchors" unique_id=1764743008]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -0.4)
 
-[node name="BubbleAnchor" type="Node3D" parent="GroupAnchors/Char2Anchors"]
+[node name="BubbleAnchor" type="Node3D" parent="GroupAnchors/Char2Anchors" unique_id=1823297931]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 
-[node name="BubbleAnchor2" type="Node3D" parent="GroupAnchors/Char2Anchors"]
+[node name="BubbleAnchor2" type="Node3D" parent="GroupAnchors/Char2Anchors" unique_id=847889859]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 8.5, -0.2)
 
-[node name="BubbleAnchor3" type="Node3D" parent="GroupAnchors/Char2Anchors"]
+[node name="BubbleAnchor3" type="Node3D" parent="GroupAnchors/Char2Anchors" unique_id=699915618]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 9.75, -0.4)
 
-[node name="BubbleAnchor4" type="Node3D" parent="GroupAnchors/Char2Anchors"]
+[node name="BubbleAnchor4" type="Node3D" parent="GroupAnchors/Char2Anchors" unique_id=2082239390]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 10.75, -0.6)
 
-[node name="DeleteAnchor" type="Node3D" parent="GroupAnchors/Char2Anchors"]
+[node name="DeleteAnchor" type="Node3D" parent="GroupAnchors/Char2Anchors" unique_id=741059791]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 10.75, -0.8)
 
-[node name="Char3Anchors" type="Node3D" parent="GroupAnchors"]
+[node name="Char3Anchors" type="Node3D" parent="GroupAnchors" unique_id=1488178827]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 1.65, -3, 1)
 
-[node name="NewAnchor" type="Node3D" parent="GroupAnchors/Char3Anchors"]
+[node name="NewAnchor" type="Node3D" parent="GroupAnchors/Char3Anchors" unique_id=2024215184]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -0.4)
 
-[node name="BubbleAnchor" type="Node3D" parent="GroupAnchors/Char3Anchors"]
+[node name="BubbleAnchor" type="Node3D" parent="GroupAnchors/Char3Anchors" unique_id=1423264076]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 
-[node name="BubbleAnchor2" type="Node3D" parent="GroupAnchors/Char3Anchors"]
+[node name="BubbleAnchor2" type="Node3D" parent="GroupAnchors/Char3Anchors" unique_id=216615712]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 8.5, -0.2)
 
-[node name="BubbleAnchor3" type="Node3D" parent="GroupAnchors/Char3Anchors"]
+[node name="BubbleAnchor3" type="Node3D" parent="GroupAnchors/Char3Anchors" unique_id=1678091191]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 9.75, -0.4)
 
-[node name="BubbleAnchor4" type="Node3D" parent="GroupAnchors/Char3Anchors"]
+[node name="BubbleAnchor4" type="Node3D" parent="GroupAnchors/Char3Anchors" unique_id=1659203018]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 10.75, -0.6)
 
-[node name="DeleteAnchor" type="Node3D" parent="GroupAnchors/Char3Anchors"]
+[node name="DeleteAnchor" type="Node3D" parent="GroupAnchors/Char3Anchors" unique_id=659943265]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 10.75, -0.8)
 
-[node name="Char4Anchors" type="Node3D" parent="GroupAnchors"]
+[node name="Char4Anchors" type="Node3D" parent="GroupAnchors" unique_id=1359430791]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 5, -3, 1)
 
-[node name="NewAnchor" type="Node3D" parent="GroupAnchors/Char4Anchors"]
+[node name="NewAnchor" type="Node3D" parent="GroupAnchors/Char4Anchors" unique_id=823001365]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -0.4)
 
-[node name="BubbleAnchor" type="Node3D" parent="GroupAnchors/Char4Anchors"]
+[node name="BubbleAnchor" type="Node3D" parent="GroupAnchors/Char4Anchors" unique_id=1668180694]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 
-[node name="BubbleAnchor2" type="Node3D" parent="GroupAnchors/Char4Anchors"]
+[node name="BubbleAnchor2" type="Node3D" parent="GroupAnchors/Char4Anchors" unique_id=241911538]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 8.5, -0.2)
 
-[node name="BubbleAnchor3" type="Node3D" parent="GroupAnchors/Char4Anchors"]
+[node name="BubbleAnchor3" type="Node3D" parent="GroupAnchors/Char4Anchors" unique_id=672836518]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 9.75, -0.4)
 
-[node name="BubbleAnchor4" type="Node3D" parent="GroupAnchors/Char4Anchors"]
+[node name="BubbleAnchor4" type="Node3D" parent="GroupAnchors/Char4Anchors" unique_id=1916394155]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 10.75, -0.6)
 
-[node name="DeleteAnchor" type="Node3D" parent="GroupAnchors/Char4Anchors"]
+[node name="DeleteAnchor" type="Node3D" parent="GroupAnchors/Char4Anchors" unique_id=1144475689]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 10.75, -0.8)
 
-[node name="SpeechBubbles" type="Node3D" parent="."]
+[node name="SpeechBubbles" type="Node3D" parent="." unique_id=722420787]
 
-[node name="SpeechBubble" parent="SpeechBubbles" instance=ExtResource("4_byvbx")]
+[node name="SpeechBubble" parent="SpeechBubbles" unique_id=1622191135 instance=ExtResource("4_byvbx")]
 visible = false
 
-[node name="SpeechBubble2" parent="SpeechBubbles" instance=ExtResource("4_byvbx")]
+[node name="SpeechBubble2" parent="SpeechBubbles" unique_id=449581818 instance=ExtResource("4_byvbx")]
 visible = false
 
-[node name="SpeechBubble3" parent="SpeechBubbles" instance=ExtResource("4_byvbx")]
+[node name="SpeechBubble3" parent="SpeechBubbles" unique_id=1500691839 instance=ExtResource("4_byvbx")]
 visible = false
 
-[node name="SpeechBubble4" parent="SpeechBubbles" instance=ExtResource("4_byvbx")]
+[node name="SpeechBubble4" parent="SpeechBubbles" unique_id=826677893 instance=ExtResource("4_byvbx")]
 visible = false
 
-[node name="SpeechBubble5" parent="SpeechBubbles" instance=ExtResource("4_byvbx")]
+[node name="SpeechBubble5" parent="SpeechBubbles" unique_id=1257774942 instance=ExtResource("4_byvbx")]
 visible = false
 
-[node name="SpeechBubble6" parent="SpeechBubbles" instance=ExtResource("4_byvbx")]
+[node name="SpeechBubble6" parent="SpeechBubbles" unique_id=1896904549 instance=ExtResource("4_byvbx")]
 visible = false
 
-[node name="ChoiceManager" type="Node3D" parent="." node_paths=PackedStringArray("dialogueSystem", "anchors", "speechBubbles", "bubblesGroup")]
+[node name="ChoiceManager" type="Node3D" parent="." unique_id=1899434884 node_paths=PackedStringArray("dialogueSystem", "anchors", "speechBubbles", "bubblesGroup")]
 script = ExtResource("9_52qto")
 dialogueSystem = NodePath("..")
 anchors = [NodePath("ChoiceSource/ChoiceAnchor"), NodePath("Choice1/ChoiceAnchor"), NodePath("Choice2/ChoiceAnchor"), NodePath("Choice3/ChoiceAnchor"), NodePath("Choice4/ChoiceAnchor")]
@@ -199,39 +199,39 @@ speechBubbles = [NodePath("ChoiceBubbles/ChoiceBubble0"), NodePath("ChoiceBubble
 bubblesGroup = NodePath("ChoiceBubbles")
 scrollTime = 0.1
 
-[node name="ChoiceSource" type="Node3D" parent="ChoiceManager"]
+[node name="ChoiceSource" type="Node3D" parent="ChoiceManager" unique_id=952488880]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, 1.1)
 
-[node name="ChoiceAnchor" type="Node3D" parent="ChoiceManager/ChoiceSource"]
+[node name="ChoiceAnchor" type="Node3D" parent="ChoiceManager/ChoiceSource" unique_id=235357934]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="Choice1" type="Node3D" parent="ChoiceManager"]
+[node name="Choice1" type="Node3D" parent="ChoiceManager" unique_id=110339493]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 5, -1, 1)
 
-[node name="ChoiceAnchor" type="Node3D" parent="ChoiceManager/Choice1"]
+[node name="ChoiceAnchor" type="Node3D" parent="ChoiceManager/Choice1" unique_id=1466819664]
 transform = Transform3D(0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="Choice2" type="Node3D" parent="ChoiceManager"]
+[node name="Choice2" type="Node3D" parent="ChoiceManager" unique_id=869462795]
 transform = Transform3D(0.5, -0.866025, 0, 0.866025, 0.5, 0, 0, 0, 1, 5, -1, 0.8)
 
-[node name="ChoiceAnchor" type="Node3D" parent="ChoiceManager/Choice2"]
+[node name="ChoiceAnchor" type="Node3D" parent="ChoiceManager/Choice2" unique_id=2001366230]
 transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 2.5, 0)
 
-[node name="Choice3" type="Node3D" parent="ChoiceManager"]
+[node name="Choice3" type="Node3D" parent="ChoiceManager" unique_id=2101867181]
 transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 5, -1, 0.6)
 
-[node name="ChoiceAnchor" type="Node3D" parent="ChoiceManager/Choice3"]
+[node name="ChoiceAnchor" type="Node3D" parent="ChoiceManager/Choice3" unique_id=1510419315]
 transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 3, 0)
 
-[node name="Choice4" type="Node3D" parent="ChoiceManager"]
+[node name="Choice4" type="Node3D" parent="ChoiceManager" unique_id=2091289303]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, 0.4)
 
-[node name="ChoiceAnchor" type="Node3D" parent="ChoiceManager/Choice4"]
+[node name="ChoiceAnchor" type="Node3D" parent="ChoiceManager/Choice4" unique_id=71192573]
 transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 0, 3.5, 0)
 
-[node name="ChoiceBubbles" type="Node3D" parent="ChoiceManager"]
+[node name="ChoiceBubbles" type="Node3D" parent="ChoiceManager" unique_id=203711258]
 
-[node name="ChoiceBubble0" type="MeshInstance3D" parent="ChoiceManager/ChoiceBubbles"]
+[node name="ChoiceBubble0" type="MeshInstance3D" parent="ChoiceManager/ChoiceBubbles" unique_id=381062810]
 transform = Transform3D(0.707106, -0.707107, 0, 0.707107, 0.707106, 0, 0, 0, 1, 3.26795, -2, 1.1)
 visible = false
 layers = 32
@@ -239,7 +239,7 @@ mesh = SubResource("QuadMesh_hadbc")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_3qd5u")
 
-[node name="Label3D" type="Label3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble0"]
+[node name="Label3D" type="Label3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble0" unique_id=1422497726]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
 layers = 32
 pixel_size = 0.006
@@ -256,14 +256,14 @@ line_spacing = -15.0
 autowrap_mode = 2
 width = 450.0
 
-[node name="ChoiceBubble1" type="MeshInstance3D" parent="ChoiceManager/ChoiceBubbles"]
+[node name="ChoiceBubble1" type="MeshInstance3D" parent="ChoiceManager/ChoiceBubbles" unique_id=1113281694]
 transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 3, -1, 1)
 layers = 32
 mesh = SubResource("QuadMesh_hadbc")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_3qd5u")
 
-[node name="Label3D" type="Label3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble1"]
+[node name="Label3D" type="Label3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble1" unique_id=1324479946]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
 layers = 32
 pixel_size = 0.006
@@ -280,22 +280,22 @@ line_spacing = -15.0
 autowrap_mode = 2
 width = 450.0
 
-[node name="Area3D" type="Area3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble1"]
+[node name="Area3D" type="Area3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble1" unique_id=1508575528]
 script = ExtResource("11_nt2l8")
 bubble = 1
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble1/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble1/Area3D" unique_id=1860471784]
 shape = SubResource("BoxShape3D_nt2l8")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
-[node name="ChoiceBubble2" type="MeshInstance3D" parent="ChoiceManager/ChoiceBubbles"]
+[node name="ChoiceBubble2" type="MeshInstance3D" parent="ChoiceManager/ChoiceBubbles" unique_id=218506940]
 transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 2.83494, 0.25, 0.8)
 layers = 32
 mesh = SubResource("QuadMesh_hadbc")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_3qd5u")
 
-[node name="Label3D" type="Label3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble2"]
+[node name="Label3D" type="Label3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble2" unique_id=1348980451]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
 layers = 32
 pixel_size = 0.006
@@ -312,22 +312,22 @@ line_spacing = -15.0
 autowrap_mode = 2
 width = 450.0
 
-[node name="Area3D" type="Area3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble2"]
+[node name="Area3D" type="Area3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble2" unique_id=1416925737]
 script = ExtResource("11_nt2l8")
 bubble = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble2/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble2/Area3D" unique_id=1303385977]
 shape = SubResource("BoxShape3D_nt2l8")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
-[node name="ChoiceBubble3" type="MeshInstance3D" parent="ChoiceManager/ChoiceBubbles"]
+[node name="ChoiceBubble3" type="MeshInstance3D" parent="ChoiceManager/ChoiceBubbles" unique_id=1073105619]
 transform = Transform3D(0.999999, -4.47035e-08, 0, 4.47035e-08, 0.999999, 0, 0, 0, 1, 3.5, 1.5, 0.6)
 layers = 32
 mesh = SubResource("QuadMesh_hadbc")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_3qd5u")
 
-[node name="Label3D" type="Label3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble3"]
+[node name="Label3D" type="Label3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble3" unique_id=1448216191]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
 layers = 32
 pixel_size = 0.006
@@ -344,22 +344,22 @@ line_spacing = -15.0
 autowrap_mode = 2
 width = 450.0
 
-[node name="Area3D" type="Area3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble3"]
+[node name="Area3D" type="Area3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble3" unique_id=161507249]
 script = ExtResource("11_nt2l8")
 bubble = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble3/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble3/Area3D" unique_id=1841933669]
 shape = SubResource("BoxShape3D_nt2l8")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
-[node name="ChoiceBubble4" type="MeshInstance3D" parent="ChoiceManager/ChoiceBubbles"]
+[node name="ChoiceBubble4" type="MeshInstance3D" parent="ChoiceManager/ChoiceBubbles" unique_id=1207312180]
 transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 5, 2.5, 0.4)
 layers = 32
 mesh = SubResource("QuadMesh_hadbc")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_3qd5u")
 
-[node name="Label3D" type="Label3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble4"]
+[node name="Label3D" type="Label3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble4" unique_id=699704900]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
 layers = 32
 pixel_size = 0.006
@@ -376,45 +376,45 @@ line_spacing = -15.0
 autowrap_mode = 2
 width = 450.0
 
-[node name="Area3D" type="Area3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble4"]
+[node name="Area3D" type="Area3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble4" unique_id=1819632617]
 script = ExtResource("11_nt2l8")
 bubble = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble4/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChoiceManager/ChoiceBubbles/ChoiceBubble4/Area3D" unique_id=1127798526]
 shape = SubResource("BoxShape3D_nt2l8")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
-[node name="SpeakerManager" type="Node3D" parent="."]
+[node name="SpeakerManager" type="Node3D" parent="." unique_id=1970099092]
 
-[node name="CharBust" type="MeshInstance3D" parent="SpeakerManager"]
+[node name="CharBust" type="MeshInstance3D" parent="SpeakerManager" unique_id=276400192]
 transform = Transform3D(-1.2, 0, -1.04907e-07, 0, 1.2, 0, 1.04907e-07, 0, -1.2, -5, 0, 1.2)
 layers = 32
 mesh = SubResource("QuadMesh_5n3vf")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_udh34")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="SpeakerManager/CharBust"]
+[node name="SpotLight3D" type="SpotLight3D" parent="SpeakerManager/CharBust" unique_id=1913379860]
 transform = Transform3D(-0.833333, 0, -7.28523e-08, 0, 0.833333, 0, 7.28523e-08, 0, -0.833333, 0, -0.5, -2.5)
 layers = 32
 light_energy = 3.0
 light_cull_mask = 4294966304
 spot_angle_attenuation = 0.0693483
 
-[node name="PlayerBust" type="MeshInstance3D" parent="SpeakerManager"]
+[node name="PlayerBust" type="MeshInstance3D" parent="SpeakerManager" unique_id=649120180]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 5, 0, 1.2)
 layers = 32
 mesh = SubResource("QuadMesh_5n3vf")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_udh34")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="SpeakerManager/PlayerBust"]
+[node name="SpotLight3D" type="SpotLight3D" parent="SpeakerManager/PlayerBust" unique_id=1121545213]
 transform = Transform3D(0.833333, 0, 0, 0, 0.833333, 0, 0, 0, 0.833333, 0, -0.5, 2.5)
 layers = 32
 light_energy = 3.0
 light_cull_mask = 4294966304
 spot_angle_attenuation = 0.0693483
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=2067393829]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 16)
 layers = 32
 light_energy = 80.0
@@ -426,7 +426,7 @@ spot_attenuation = 0.85
 spot_angle = 30.0
 spot_angle_attenuation = 0.0883886
 
-[node name="FadeBG" type="MeshInstance3D" parent="."]
+[node name="FadeBG" type="MeshInstance3D" parent="." unique_id=675573720]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 visible = false
 mesh = SubResource("QuadMesh_q3ahq")

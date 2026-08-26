@@ -67,6 +67,14 @@ enum Ranges{
 	Far
 }
 
+enum Inks{
+	Any=-1,
+	None=0,
+	Solar,
+	Lunar,
+	Celeste
+}
+
 enum BattleSteps{
 	Startup=0,
 	ActionSelect,
@@ -85,9 +93,9 @@ enum BattleSteps{
 
 enum Tactics{
 	None=-1,
-	Switch,
 	Move,
-	Flee
+	Switch,
+	Forfeit
 }
 
 enum Behaviors{
@@ -110,6 +118,17 @@ enum FaebleTags{
 enum Transitions {
 	None=0,
 	Accordion
+}
+
+enum Actors {
+	pFaeble=1,
+	pWitch,
+	pUI,
+	eFaeble,
+	eWitch,
+	eUI,
+	camera,
+	commands
 }
 
 enum Events{

@@ -11,10 +11,11 @@ var enemySent:bool
 @export var currentOrder:Array[BattlerData]
 @export var currentAura:Aura
 @export var currentStep:BattleSteps
-var currentIndex:int = 0
+@export var currentIndex:int = 0
 var auraValue #Use this to track any across-step values like Pact aura damage taken, etc
 
 @export_category("Debug")
+@export var roundWaits:Array[float]
 @export var playerWitch:Witch
 @export var enemyWitch:Witch
 
@@ -39,6 +40,9 @@ enum MenuActions {
 }
 
 func _ready():
+	EventBus.connect("NextStep",RoundStep)
+
+func PrimeParties():
 	var i:int = 0
 	for faeble in playerWitch.party:
 		if faeble != null:
@@ -49,30 +53,28 @@ func _ready():
 		if faeble != null:
 			enemyWitch.party[i] = FaebleCreation.CreateFaeble(faeble)
 		i += 1
-	SetupBattle(playerWitch, enemyWitch)
-
-func SetupBattle(pWitch:Witch, eWitch:Witch):
-	playerBattler.witchInstance = pWitch
-	enemyBattler.witchInstance = eWitch
-	for p in pWitch.party:
+	playerBattler.witchInstance = playerWitch
+	enemyBattler.witchInstance = enemyWitch
+	for p in playerWitch.party:
 		if p != null:
 			playerBattler.faebleTeam.append(p.duplicate())
-	playerBattler.ChangeBattler(playerBattler.faebleTeam[0])
-	EventBus.emit_signal("FaebleSwitched", playerBattler)
-	for e in eWitch.party:
+	for e in enemyWitch.party:
 		if e != null:
 			enemyBattler.faebleTeam.append(e.duplicate())
+
+
+func SetupBattle():
+	playerBattler.ChangeBattler(playerBattler.faebleTeam[0])
 	enemyBattler.ChangeBattler(enemyBattler.faebleTeam[0])
-	EventBus.emit_signal("FaebleSwitched", enemyBattler)
 	currentRange = Enums.Ranges.Near
 	EventBus.emit_signal("FaebleMoved", currentRange)
 	currentStep = BattleSteps.Startup
 	EventBus.emit_signal("BattleStateChanged", currentStep)
-	EventBus.emit_signal("BattleStart")
-	RoundStep()
+	#RoundStep()
 
 
 func Selection(battler:BattlerData, action:MenuActions, option:int=-1, detail:int=-1):
+	prints("Menu Action:",action,"Option:",option,"Detail:",detail)
 	if action == MenuActions.Back:
 		return
 	
@@ -83,15 +85,18 @@ func Selection(battler:BattlerData, action:MenuActions, option:int=-1, detail:in
 	match action:
 		MenuActions.Attack:
 			battler.currentSpell = battler.instance.assignedSpells[option] #Assign Move
-			if detail == 3: #Assign own Theme if option 4 picked
-				battler.currentTheme = battler.instance.setTheme
-			elif detail != -1: #Otherwise select from Witch Themes
-				battler.currentTheme = battler.witchInstance.assignedThemes[detail]
+			if battler.bonded and detail != -1:
+				if detail == 3: #Assign own Theme if option 4 picked
+					battler.currentTheme = battler.instance.setTheme
+				else: #Otherwise select from Witch Themes
+					battler.currentTheme = battler.witchInstance.assignedThemes[detail]
+			else:
+				battler.currentTheme = null
 			#Determine other default target
 			if battler == playerBattler: battler.currentTarget = enemyBattler
 			elif battler == enemyBattler: battler.currentTarget = playerBattler
 			
-			prints(battler.name,battler.currentSpell.name,battler.currentTheme.name)
+			#prints(battler.name,battler.currentSpell.name,battler.currentTheme.name)
 			RoundStep()
 		
 		MenuActions.Witch:
@@ -105,30 +110,37 @@ func Selection(battler:BattlerData, action:MenuActions, option:int=-1, detail:in
 		
 		MenuActions.Tactics:
 			battler.currentTactic = option
-			if option == 0: #Switch
+			if option == Enums.Tactics.Switch: #Switch
 				battler.currentFaeble = battler.faebleTeam[detail]
 				battler.switching = true
-			elif option == 1: #Move
-				pass
-			elif option == 2: #Flee
+			elif option == Enums.Tactics.Move: #Move
+				if detail == 1:
+					battler.advancing = true
+				elif detail == 2:
+					battler.retreating = true
+			elif option == Enums.Tactics.Forfeit: #Flee
 				pass
 			RoundStep()
 
 func RoundStep():
-	await get_tree().create_timer(0.2).timeout
+	print("Battle State: ",BattleSteps.keys()[currentStep])
+	#await get_tree().create_timer(0.2 + roundWaits[currentStep]).timeout
+	#prints("Next Step! Waited: ", str(0.2 + roundWaits[currentStep]))
 	match currentStep:
 		BattleSteps.Startup:
 			currentStep = BattleSteps.ActionSelect
 			EventBus.emit_signal("BattleStateChanged", currentStep)
-			EventBus.emit_signal("TurnStart")
-			RoundStep()
+			return
+			#EventBus.emit_signal("TurnStart")
+			#RoundStep()
 			pass #Start of Turn, pre-selection actions, open menu:
 		
 		BattleSteps.ActionSelect:
 			if playerSent and enemySent:
 				currentStep = BattleSteps.RoundStart
 				EventBus.emit_signal("BattleStateChanged", currentStep)
-				RoundStep()
+				return
+				#RoundStep()
 			pass #Awaiting selection from both parties, then set actions to battlers
 		
 		BattleSteps.RoundStart:
@@ -152,13 +164,16 @@ func RoundStep():
 			var playerGuards:Array[int] = BattleCalcs.ArmorCalc(playerBattler)
 			playerBattler.pGuard += playerGuards[0]
 			playerBattler.mGuard += playerGuards[1]
+			EventBus.emit_signal("GuardChanged", playerBattler)
 			var enemyGuards:Array[int] = BattleCalcs.ArmorCalc(enemyBattler)
-			enemyBattler.pGuard += playerGuards[0]
-			enemyBattler.mGuard += playerGuards[1]
+			enemyBattler.pGuard += enemyGuards[0]
+			enemyBattler.mGuard += enemyGuards[1]
+			EventBus.emit_signal("GuardChanged", enemyBattler)
 			
 			currentStep = BattleSteps.BeforeAll
 			EventBus.emit_signal("BattleStateChanged", currentStep)
-			RoundStep()
+			return
+			#RoundStep()
 			pass #Pre-Round post-selection actions: Priority + Armor set, Status Effects(exc Decay), Turn Order
 		
 		BattleSteps.BeforeAll:
@@ -169,35 +184,53 @@ func RoundStep():
 			
 			currentStep = BattleSteps.BeforeAction
 			EventBus.emit_signal("BattleStateChanged", currentStep)
-			RoundStep()
+			return
+			#RoundStep()
 			pass #Post-declaration cleanup, Tactics(switchout/flee)
 		
 		BattleSteps.BeforeAction:
 			var user:BattlerData = currentOrder[currentIndex]
 			var target:BattlerData = currentOrder[currentIndex].currentTarget
-			if user.currentTactic != null and user.health > 0:
+			#prints(user.currentTactic, user.currentWitchSpell, user.currentSpell)
+			if user.currentTactic != Enums.Tactics.None and user.health > 0:
+				if user.currentTactic == Enums.Tactics.Move:
+					if user.advancing:
+						ChangeDistance(-1)
+					if user.retreating:
+						ChangeDistance(1)
 				pass #skip to AfterFirst step
 				currentStep = BattleSteps.AfterAction
 				EventBus.emit_signal("BattleStateChanged", currentStep)
-				RoundStep()
-			if user.currentWitchSpell != null and user.health > 0:
+				return
+				#RoundStep()
+			elif user.currentWitchSpell != null and user.health > 0:
 				pass #skip to AfterFirst step
-				ChangeDistance(user.currentWitchSpell.movement)
+				if user.currentWitchSpell.movement != 0:
+					ChangeDistance(user.currentWitchSpell.movement)
 				currentStep = BattleSteps.AfterAction
 				EventBus.emit_signal("BattleStateChanged", currentStep)
-				RoundStep()
-			if user.currentSpell != null and user.health > 0:
+				return
+				#RoundStep()
+			elif user.currentSpell != null and user.health > 0:
 				var attackConditional:bool = user.currentSpell.BeforeSpell(self,user,target)
+				var distanceChange:int = user.currentSpell.movement
+				if user.currentTheme != null:
+					distanceChange += user.currentTheme.movement
+				if distanceChange != 0:
+					ChangeDistance(distanceChange)
+				user.pGuard = 0
+				user.mGuard = 0
+				EventBus.emit_signal("GuardChanged", user)
 				if attackConditional == false:
 					currentStep = BattleSteps.AfterAction
 					EventBus.emit_signal("BattleStateChanged", currentStep)
-					RoundStep()
-				ChangeDistance(user.currentSpell.movement + user.currentTheme.movement)
+					return
+					#RoundStep()
 			pass #Pre-attack actions: Attack Announcement, Conditionals, Movement
-			
 			currentStep = BattleSteps.DuringAction
 			EventBus.emit_signal("BattleStateChanged", currentStep)
-			RoundStep()
+			return
+			#RoundStep()
 		
 		BattleSteps.DuringAction:
 			var user:BattlerData = currentOrder[currentIndex]
@@ -207,7 +240,8 @@ func RoundStep():
 			
 			currentStep = BattleSteps.AfterAction
 			EventBus.emit_signal("BattleStateChanged", currentStep)
-			RoundStep()
+			return
+			#RoundStep()
 			pass #Attack processing: Damage/Status calcs, primary effects, determine death state
 		
 		BattleSteps.AfterAction:
@@ -216,12 +250,7 @@ func RoundStep():
 			if user.currentSpell != null and user.health > 0:
 				user.currentSpell.AfterSpell(user, target)
 			
-			if user.status == Enums.Status.Decay and user.health > 0:
-				var damage:int = ceili(float(user.instance.maxHP)*BattleCalcs.decayPercent)
-				user.health = clampi(user.health-damage, 0, user.instance.maxHP)
-				user.damageTaken += damage
-				print("Decay Tick Damage: ", damage)
-				EventBus.emit_signal("HealthChanged", user)
+			#Remove guard from user that has already acted? Temp, unsure
 			
 			if user.switching:
 				user.ChangeBattler(user.currentFaeble)
@@ -230,16 +259,26 @@ func RoundStep():
 				currentIndex += 1
 				currentStep = BattleSteps.BeforeAction
 				EventBus.emit_signal("BattleStateChanged", currentStep)
-				RoundStep()
+				return
+				#RoundStep()
 			else:
 				currentStep = BattleSteps.AfterAll
 				EventBus.emit_signal("BattleStateChanged", currentStep)
-				RoundStep()
+				return
+				#RoundStep()
 			pass #Post-attack processing: Decay/Recoil, Stat Boosts, Heal/Cleanse, World State, MoveSwitch-outs
 		
 		BattleSteps.AfterAll:
 			if currentAura != null:
 				currentAura.AtBattleStep(currentStep, self)
+			
+			for user in currentOrder:
+				if user.status == Enums.Status.Decay and user.health > 0:
+					var damage:int = ceili(float(user.instance.maxHP)*BattleCalcs.decayPercent)
+					user.health = clampi(user.health-damage, 0, user.instance.maxHP)
+					user.damageTaken += damage
+					print("Decay Tick Damage: ", damage)
+					EventBus.emit_signal("HealthChanged", user, damage)
 			
 			playerBattler.ResetBattler()
 			enemyBattler.ResetBattler()
@@ -256,7 +295,8 @@ func RoundStep():
 				currentStep = BattleSteps.Switch
 			
 			EventBus.emit_signal("BattleStateChanged", currentStep)
-			RoundStep()
+			return
+			#RoundStep()
 			pass #Soft reset battlers, Check Death States, prompt switch-ins if dead
 		
 		BattleSteps.Switch:
@@ -268,25 +308,28 @@ func RoundStep():
 					if enemyBattler.switching == false:
 						currentStep = BattleSteps.Recycle
 						EventBus.emit_signal("BattleStateChanged", currentStep)
-						RoundStep()
+						return
+						#RoundStep()
 				if enemyBattler.switching:
 					enemyBattler.ChangeBattler(enemyBattler.currentFaeble)
 					enemyBattler.switching = false
 					if playerBattler.switching == false:
 						currentStep = BattleSteps.Recycle
 						EventBus.emit_signal("BattleStateChanged", currentStep)
-						RoundStep()
+						return
+						#RoundStep()
 				
 		
 		BattleSteps.Recycle:
 			currentOrder.clear()
 			playerSent = false
 			enemySent = false
-			
+			await get_tree().create_timer(2.0).timeout
 			currentStep = BattleSteps.Startup
 			EventBus.emit_signal("BattleStateChanged", currentStep)
-			EventBus.emit_signal("TurnEnd")
-			RoundStep()
+			return
+			#EventBus.emit_signal("TurnEnd")
+			#RoundStep()
 			pass #Reset battle system values for next turn
 
 func ChangeDistance(amount:int):

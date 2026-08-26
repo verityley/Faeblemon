@@ -7,6 +7,7 @@
 script = ExtResource("2_d40cp")
 name = "Crash"
 school = ExtResource("1_4t5m0")
+mGuarding = true
 rangeBands = Array[bool]([true, false, false])
 damageTier = 1
 movement = -1

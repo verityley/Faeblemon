@@ -1,0 +1,832 @@
+[gd_scene format=3 uid="uid://c6j52xu7hyd8e"]
+
+[ext_resource type="Script" uid="uid://bcwk1eyjil7mg" path="res://FINAL Battle System/Scripts/Battle2DManager.gd" id="1_kmlth"]
+[ext_resource type="Texture2D" uid="uid://cvnhbisiy64o3" path="res://FINAL Battle System/Assets/topPage.png" id="1_ksmql"]
+[ext_resource type="Texture2D" uid="uid://dj6yas6665g3o" path="res://FINAL Battle System/Assets/attackPage.png" id="2_0j07a"]
+[ext_resource type="Texture2D" uid="uid://dnvr2kqckvlpg" path="res://FINAL Battle System/Assets/bookmarkPlaceholder.png" id="2_f6plg"]
+[ext_resource type="Texture2D" uid="uid://c63kmx0o04y4r" path="res://Global Assets/Graphics/UI Graphics/BattleCommand.png" id="3_5oh7k"]
+[ext_resource type="Texture2D" uid="uid://c0wsxcsqt1r5u" path="res://FINAL Battle System/Assets/ThemeMark.png" id="4_2m0vs"]
+[ext_resource type="Script" uid="uid://ba67f1ijj8mgg" path="res://Scenes/Environments/Battle System/Scripts/HealthManager2D.gd" id="5_rc4dg"]
+[ext_resource type="Texture2D" uid="uid://b453k3m6wcbfo" path="res://Global Assets/Graphics/UI Graphics/HeartContainers.png" id="6_kmlth"]
+[ext_resource type="Texture2D" uid="uid://cpsxhd42h2dfo" path="res://Global Assets/Graphics/UI Graphics/HeartContainerFills.png" id="7_2m0vs"]
+[ext_resource type="Texture2D" uid="uid://ddafxge03rqua" path="res://FINAL Battle System/Assets/RangefinderBottom.png" id="10_om46v"]
+[ext_resource type="Texture2D" uid="uid://8ludj0vsujtj" path="res://FINAL Battle System/Assets/RangefinderTop.png" id="11_bssql"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rc4dg"]
+radius = 120.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmlth"]
+size = Vector2(240, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxv7w"]
+size = Vector2(253.33337, 86.66669)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bssql"]
+size = Vector2(78, 228.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2m0vs"]
+size = Vector2(350, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03qa6"]
+size = Vector2(332.5, 109)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_om46v"]
+size = Vector2(353, 105.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kmlth"]
+radius = 120.0
+
+[node name="CommandOverlay" type="Node2D" unique_id=1586958368 node_paths=PackedStringArray("rangefinder", "pElements", "eElements", "commandBook")]
+script = ExtResource("1_kmlth")
+rangefinder = NodePath("Rangefinder")
+pElements = {
+1: NodePath("PlayerBookmark"),
+2: NodePath("PlayerBookmark/NamePanel/Label"),
+3: NodePath("PlayerBookmark/pHPDisplay"),
+4: NodePath("PlayerBookmark/ChapterPanel/Label"),
+5: NodePath("PlayerBookmark/StatusBuildup"),
+6: NodePath("PlayerBookmark/StatusMark")
+}
+eElements = {
+1: NodePath("EnemyStatus"),
+2: NodePath("EnemyStatus/NamePanel/Label"),
+3: NodePath("EnemyStatus/eHPDisplay"),
+4: NodePath("EnemyStatus/ChapterPanel/Label")
+}
+commandBook = NodePath("CommandBook")
+
+[node name="CommandBook" type="Node2D" parent="." unique_id=784461836]
+position = Vector2(960, 840)
+
+[node name="TopMenu" type="Node2D" parent="CommandBook" unique_id=1711350052]
+
+[node name="Sprite2D" type="Sprite2D" parent="CommandBook/TopMenu" unique_id=556507690]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("1_ksmql")
+
+[node name="FightButton" type="Area2D" parent="CommandBook/TopMenu" unique_id=887849591]
+position = Vector2(-126, -52)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CommandBook/TopMenu/FightButton" unique_id=1516438688]
+shape = SubResource("CircleShape2D_rc4dg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CommandBook/TopMenu/FightButton" unique_id=1892370139]
+position = Vector2(-197, -40)
+shape = SubResource("RectangleShape2D_kmlth")
+
+[node name="WitchButton" type="Area2D" parent="CommandBook/TopMenu" unique_id=1141593326]
+position = Vector2(138, 79)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CommandBook/TopMenu/WitchButton" unique_id=1916988179]
+shape = SubResource("CircleShape2D_rc4dg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CommandBook/TopMenu/WitchButton" unique_id=1057850882]
+position = Vector2(195, 40)
+shape = SubResource("RectangleShape2D_kmlth")
+
+[node name="TacticsButton" type="Area2D" parent="CommandBook/TopMenu" unique_id=1481020174]
+position = Vector2(-448, 78)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CommandBook/TopMenu/TacticsButton" unique_id=1658046389]
+shape = SubResource("CircleShape2D_rc4dg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CommandBook/TopMenu/TacticsButton" unique_id=1569635837]
+position = Vector2(181, 47)
+shape = SubResource("RectangleShape2D_kmlth")
+
+[node name="InspectButton" type="Area2D" parent="CommandBook/TopMenu" unique_id=1252076459]
+position = Vector2(449, -49)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CommandBook/TopMenu/InspectButton" unique_id=544814665]
+shape = SubResource("CircleShape2D_rc4dg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CommandBook/TopMenu/InspectButton" unique_id=1740003582]
+position = Vector2(-172, -43)
+shape = SubResource("RectangleShape2D_kmlth")
+
+[node name="AttackMenu" type="Node2D" parent="CommandBook" unique_id=1361811248]
+
+[node name="Book" type="Sprite2D" parent="CommandBook/AttackMenu" unique_id=245665474]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_0j07a")
+
+[node name="Themes" type="Node2D" parent="CommandBook/AttackMenu/Book" unique_id=1365626916]
+visible = false
+position = Vector2(770, 14.444458)
+
+[node name="Theme1" type="Sprite2D" parent="CommandBook/AttackMenu/Book/Themes" unique_id=2114271961]
+position = Vector2(0, -150)
+texture = ExtResource("4_2m0vs")
+
+[node name="ThemeName" type="Label" parent="CommandBook/AttackMenu/Book/Themes/Theme1" unique_id=1563754507]
+offset_left = -134.44446
+offset_top = -50.0
+offset_right = 103.55554
+offset_bottom = 3.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 28
+text = "Theme Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ThemeEffect" type="Label" parent="CommandBook/AttackMenu/Book/Themes/Theme1/ThemeName" unique_id=1425739936]
+layout_mode = 0
+offset_left = 28.888887
+offset_top = 55.55556
+offset_right = 203.88889
+offset_bottom = 89.55556
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 24
+text = "+1 Stat | -1 Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="CommandBook/AttackMenu/Book/Themes/Theme1" unique_id=425311181]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CommandBook/AttackMenu/Book/Themes/Theme1/Area2D" unique_id=609344271]
+position = Vector2(-1.111084, 0)
+shape = SubResource("RectangleShape2D_cxv7w")
+
+[node name="Theme2" type="Sprite2D" parent="CommandBook/AttackMenu/Book/Themes" unique_id=911288658]
+position = Vector2(0, -49.999992)
+texture = ExtResource("4_2m0vs")
+
+[node name="ThemeName" type="Label" parent="CommandBook/AttackMenu/Book/Themes/Theme2" unique_id=810066506]
+offset_left = -134.44446
+offset_top = -50.0
+offset_right = 103.55554
+offset_bottom = 3.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 28
+text = "Theme Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ThemeEffect" type="Label" parent="CommandBook/AttackMenu/Book/Themes/Theme2/ThemeName" unique_id=798606085]
+layout_mode = 0
+offset_left = 28.888887
+offset_top = 55.55556
+offset_right = 203.88889
+offset_bottom = 89.55556
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 24
+text = "+1 Stat | -1 Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="CommandBook/AttackMenu/Book/Themes/Theme2" unique_id=1972625508]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CommandBook/AttackMenu/Book/Themes/Theme2/Area2D" unique_id=1993263402]
+position = Vector2(-1.111084, 0)
+shape = SubResource("RectangleShape2D_cxv7w")
+
+[node name="Theme3" type="Sprite2D" parent="CommandBook/AttackMenu/Book/Themes" unique_id=2018023173]
+position = Vector2(0, 50.000015)
+texture = ExtResource("4_2m0vs")
+
+[node name="ThemeName" type="Label" parent="CommandBook/AttackMenu/Book/Themes/Theme3" unique_id=1112824192]
+offset_left = -134.44446
+offset_top = -50.0
+offset_right = 103.55554
+offset_bottom = 3.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 28
+text = "Theme Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ThemeEffect" type="Label" parent="CommandBook/AttackMenu/Book/Themes/Theme3/ThemeName" unique_id=1900971732]
+layout_mode = 0
+offset_left = 28.888887
+offset_top = 55.55556
+offset_right = 203.88889
+offset_bottom = 89.55556
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 24
+text = "+1 Stat | -1 Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="CommandBook/AttackMenu/Book/Themes/Theme3" unique_id=7615660]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CommandBook/AttackMenu/Book/Themes/Theme3/Area2D" unique_id=94918470]
+position = Vector2(-1.111084, 0)
+shape = SubResource("RectangleShape2D_cxv7w")
+
+[node name="Theme4" type="Sprite2D" parent="CommandBook/AttackMenu/Book/Themes" unique_id=712110485]
+position = Vector2(0, 151.11113)
+texture = ExtResource("4_2m0vs")
+
+[node name="ThemeName" type="Label" parent="CommandBook/AttackMenu/Book/Themes/Theme4" unique_id=1810634276]
+offset_left = -134.44446
+offset_top = -50.0
+offset_right = 103.55554
+offset_bottom = 3.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 28
+text = "Theme Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ThemeEffect" type="Label" parent="CommandBook/AttackMenu/Book/Themes/Theme4/ThemeName" unique_id=1175850301]
+layout_mode = 0
+offset_left = 28.888887
+offset_top = 55.55556
+offset_right = 203.88889
+offset_bottom = 89.55556
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 24
+text = "+1 Stat | -1 Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="CommandBook/AttackMenu/Book/Themes/Theme4" unique_id=586280464]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CommandBook/AttackMenu/Book/Themes/Theme4/Area2D" unique_id=1074094803]
+position = Vector2(-1.111084, 0)
+shape = SubResource("RectangleShape2D_cxv7w")
+
+[node name="BackButton" type="Area2D" parent="CommandBook/AttackMenu" unique_id=1689431040]
+position = Vector2(-540, -93)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CommandBook/AttackMenu/BackButton" unique_id=446429785]
+shape = SubResource("RectangleShape2D_bssql")
+
+[node name="Attack1" type="Area2D" parent="CommandBook/AttackMenu" unique_id=1772062456]
+position = Vector2(-311, -104)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CommandBook/AttackMenu/Attack1" unique_id=685285375]
+shape = SubResource("RectangleShape2D_2m0vs")
+
+[node name="Label" type="Label" parent="CommandBook/AttackMenu/Attack1" unique_id=2004129140]
+offset_left = -118.0
+offset_top = -28.0
+offset_right = 120.0
+offset_bottom = 25.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 36
+text = "Attack Name"
+horizontal_alignment = 1
+
+[node name="Attack2" type="Area2D" parent="CommandBook/AttackMenu" unique_id=95172678]
+position = Vector2(-184, 19)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CommandBook/AttackMenu/Attack2" unique_id=1858925514]
+shape = SubResource("RectangleShape2D_03qa6")
+
+[node name="Label" type="Label" parent="CommandBook/AttackMenu/Attack2" unique_id=1829910185]
+offset_left = -120.0
+offset_top = -28.0
+offset_right = 118.0
+offset_bottom = 25.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 36
+text = "Attack Name"
+horizontal_alignment = 1
+
+[node name="Attack3" type="Area2D" parent="CommandBook/AttackMenu" unique_id=1676313513]
+position = Vector2(-370, 139)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CommandBook/AttackMenu/Attack3" unique_id=1036756661]
+shape = SubResource("RectangleShape2D_om46v")
+
+[node name="Label" type="Label" parent="CommandBook/AttackMenu/Attack3" unique_id=1701955341]
+offset_left = -125.0
+offset_top = -28.0
+offset_right = 113.0
+offset_bottom = 25.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 36
+text = "Attack Name"
+horizontal_alignment = 1
+
+[node name="AttackCircle" type="Sprite2D" parent="CommandBook/AttackMenu" unique_id=235362765]
+visible = false
+position = Vector2(346, 14)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_5oh7k")
+
+[node name="Cast" type="Area2D" parent="CommandBook/AttackMenu/AttackCircle" unique_id=487759039]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CommandBook/AttackMenu/AttackCircle/Cast" unique_id=1572836016]
+shape = SubResource("CircleShape2D_kmlth")
+
+[node name="Label" type="Label" parent="CommandBook/AttackMenu/AttackCircle/Cast" unique_id=744047353]
+offset_left = -118.0
+offset_top = -28.0
+offset_right = 120.0
+offset_bottom = 25.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 36
+text = "Cast Spell!"
+horizontal_alignment = 1
+
+[node name="WitchMenu" type="Node2D" parent="CommandBook" unique_id=1258475850]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="CommandBook/WitchMenu" unique_id=875931451]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_0j07a")
+
+[node name="AttackCircle" type="Sprite2D" parent="CommandBook/WitchMenu" unique_id=1831939181]
+position = Vector2(346, 14)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_5oh7k")
+
+[node name="Attack1" type="Area2D" parent="CommandBook/WitchMenu" unique_id=1124513947]
+position = Vector2(-126, -52)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CommandBook/WitchMenu/Attack1" unique_id=1834556942]
+position = Vector2(-180.5, -49.5)
+shape = SubResource("RectangleShape2D_kmlth")
+
+[node name="Attack2" type="Area2D" parent="CommandBook/WitchMenu" unique_id=2093890935]
+position = Vector2(-448, 78)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CommandBook/WitchMenu/Attack2" unique_id=348639143]
+position = Vector2(267, -60)
+shape = SubResource("RectangleShape2D_03qa6")
+
+[node name="Attack3" type="Area2D" parent="CommandBook/WitchMenu" unique_id=1535884033]
+position = Vector2(138, 79)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CommandBook/WitchMenu/Attack3" unique_id=918262481]
+position = Vector2(-508, 60.25)
+shape = SubResource("RectangleShape2D_om46v")
+
+[node name="BackButton" type="Area2D" parent="CommandBook/WitchMenu" unique_id=1127661243]
+position = Vector2(449, -49)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CommandBook/WitchMenu/BackButton" unique_id=364509937]
+position = Vector2(-984, -49)
+shape = SubResource("RectangleShape2D_bssql")
+
+[node name="TacticsMenu" type="Node2D" parent="CommandBook" unique_id=1280555143]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="CommandBook/TacticsMenu" unique_id=1866710333]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_0j07a")
+
+[node name="AttackCircle" type="Sprite2D" parent="CommandBook/TacticsMenu" unique_id=1923133730]
+position = Vector2(346, 14)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_5oh7k")
+
+[node name="Attack1" type="Area2D" parent="CommandBook/TacticsMenu" unique_id=106843720]
+position = Vector2(-126, -52)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CommandBook/TacticsMenu/Attack1" unique_id=912002681]
+position = Vector2(-180.5, -49.5)
+shape = SubResource("RectangleShape2D_kmlth")
+
+[node name="Attack2" type="Area2D" parent="CommandBook/TacticsMenu" unique_id=495124622]
+position = Vector2(-448, 78)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CommandBook/TacticsMenu/Attack2" unique_id=1838920446]
+position = Vector2(267, -60)
+shape = SubResource("RectangleShape2D_03qa6")
+
+[node name="Attack3" type="Area2D" parent="CommandBook/TacticsMenu" unique_id=1769676356]
+position = Vector2(138, 79)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CommandBook/TacticsMenu/Attack3" unique_id=658488826]
+position = Vector2(-508, 60.25)
+shape = SubResource("RectangleShape2D_om46v")
+
+[node name="BackButton" type="Area2D" parent="CommandBook/TacticsMenu" unique_id=1886469879]
+position = Vector2(449, -49)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CommandBook/TacticsMenu/BackButton" unique_id=1073322878]
+position = Vector2(-984, -49)
+shape = SubResource("RectangleShape2D_bssql")
+
+[node name="PlayerBookmark" type="Node2D" parent="." unique_id=1020721717]
+position = Vector2(179, 260)
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerBookmark" unique_id=1052495015]
+position = Vector2(5, 85)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_f6plg")
+
+[node name="pHPDisplay" type="Node2D" parent="PlayerBookmark" unique_id=1080052100]
+scale = Vector2(0.9999996, 0.9999996)
+script = ExtResource("5_rc4dg")
+
+[node name="Heart" type="Node2D" parent="PlayerBookmark/pHPDisplay" unique_id=2109076343]
+position = Vector2(-107.000046, 166.00008)
+rotation = -1.0471976
+scale = Vector2(1.4, 1.4)
+
+[node name="HeartContainer" type="Sprite2D" parent="PlayerBookmark/pHPDisplay/Heart" unique_id=1351488428]
+texture = ExtResource("6_kmlth")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite2D" parent="PlayerBookmark/pHPDisplay/Heart" unique_id=1061737702]
+texture = ExtResource("7_2m0vs")
+hframes = 7
+frame = 4
+
+[node name="Heart2" type="Node2D" parent="PlayerBookmark/pHPDisplay" unique_id=1055093768]
+position = Vector2(-85.00004, 134.00006)
+rotation = -0.87266463
+scale = Vector2(1.4, 1.4)
+
+[node name="HeartContainer" type="Sprite2D" parent="PlayerBookmark/pHPDisplay/Heart2" unique_id=618156565]
+texture = ExtResource("6_kmlth")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite2D" parent="PlayerBookmark/pHPDisplay/Heart2" unique_id=548838936]
+texture = ExtResource("7_2m0vs")
+hframes = 7
+frame = 4
+
+[node name="Heart3" type="Node2D" parent="PlayerBookmark/pHPDisplay" unique_id=1629262865]
+position = Vector2(-56.000027, 105.00005)
+rotation = -0.7853982
+scale = Vector2(1.4, 1.4)
+
+[node name="HeartContainer" type="Sprite2D" parent="PlayerBookmark/pHPDisplay/Heart3" unique_id=1103148272]
+texture = ExtResource("6_kmlth")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite2D" parent="PlayerBookmark/pHPDisplay/Heart3" unique_id=1827270880]
+texture = ExtResource("7_2m0vs")
+hframes = 7
+frame = 4
+
+[node name="Heart4" type="Node2D" parent="PlayerBookmark/pHPDisplay" unique_id=606203583]
+position = Vector2(-28.000011, 78.00004)
+rotation = -0.9599311
+scale = Vector2(1.4, 1.4)
+
+[node name="HeartContainer" type="Sprite2D" parent="PlayerBookmark/pHPDisplay/Heart4" unique_id=1960041600]
+texture = ExtResource("6_kmlth")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite2D" parent="PlayerBookmark/pHPDisplay/Heart4" unique_id=1685198220]
+texture = ExtResource("7_2m0vs")
+hframes = 7
+frame = 4
+
+[node name="Heart5" type="Node2D" parent="PlayerBookmark/pHPDisplay" unique_id=1566862660]
+position = Vector2(-11.000006, 43.000023)
+rotation = -1.2217305
+scale = Vector2(1.4, 1.4)
+
+[node name="HeartContainer" type="Sprite2D" parent="PlayerBookmark/pHPDisplay/Heart5" unique_id=1838995632]
+texture = ExtResource("6_kmlth")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite2D" parent="PlayerBookmark/pHPDisplay/Heart5" unique_id=1301589894]
+texture = ExtResource("7_2m0vs")
+hframes = 7
+frame = 4
+
+[node name="Heart6" type="Node2D" parent="PlayerBookmark/pHPDisplay" unique_id=1058509752]
+position = Vector2(-53.000023, 236.0001)
+rotation = -1.0471976
+scale = Vector2(1.4, 1.4)
+
+[node name="HeartContainer" type="Sprite2D" parent="PlayerBookmark/pHPDisplay/Heart6" unique_id=780551525]
+texture = ExtResource("6_kmlth")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite2D" parent="PlayerBookmark/pHPDisplay/Heart6" unique_id=1867653907]
+texture = ExtResource("7_2m0vs")
+hframes = 7
+frame = 4
+
+[node name="Heart7" type="Node2D" parent="PlayerBookmark/pHPDisplay" unique_id=674573230]
+position = Vector2(-33.000015, 197.00009)
+rotation = -1.134464
+scale = Vector2(1.4, 1.4)
+
+[node name="HeartContainer" type="Sprite2D" parent="PlayerBookmark/pHPDisplay/Heart7" unique_id=1299874774]
+texture = ExtResource("6_kmlth")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite2D" parent="PlayerBookmark/pHPDisplay/Heart7" unique_id=1977071829]
+texture = ExtResource("7_2m0vs")
+hframes = 7
+frame = 4
+
+[node name="Heart8" type="Node2D" parent="PlayerBookmark/pHPDisplay" unique_id=1021406374]
+position = Vector2(-11.000006, 161.00008)
+rotation = -0.9599311
+scale = Vector2(1.4, 1.4)
+
+[node name="HeartContainer" type="Sprite2D" parent="PlayerBookmark/pHPDisplay/Heart8" unique_id=756807546]
+texture = ExtResource("6_kmlth")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite2D" parent="PlayerBookmark/pHPDisplay/Heart8" unique_id=1365844587]
+texture = ExtResource("7_2m0vs")
+hframes = 7
+frame = 4
+
+[node name="Heart9" type="Node2D" parent="PlayerBookmark/pHPDisplay" unique_id=234777882]
+position = Vector2(13.99999, 126.00006)
+rotation = -0.87266463
+scale = Vector2(1.4, 1.4)
+
+[node name="HeartContainer" type="Sprite2D" parent="PlayerBookmark/pHPDisplay/Heart9" unique_id=1497402202]
+texture = ExtResource("6_kmlth")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite2D" parent="PlayerBookmark/pHPDisplay/Heart9" unique_id=1422109520]
+texture = ExtResource("7_2m0vs")
+hframes = 7
+frame = 4
+
+[node name="Heart10" type="Node2D" parent="PlayerBookmark/pHPDisplay" unique_id=1196012041]
+position = Vector2(25.000011, 87.00004)
+rotation = -1.134464
+scale = Vector2(1.4, 1.4)
+
+[node name="HeartContainer" type="Sprite2D" parent="PlayerBookmark/pHPDisplay/Heart10" unique_id=1733676721]
+texture = ExtResource("6_kmlth")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite2D" parent="PlayerBookmark/pHPDisplay/Heart10" unique_id=530502536]
+texture = ExtResource("7_2m0vs")
+hframes = 7
+frame = 4
+
+[node name="NamePanel" type="Panel" parent="PlayerBookmark" unique_id=583314952]
+offset_left = -119.0
+offset_top = -196.0
+offset_right = 49.0
+offset_bottom = -156.0
+
+[node name="Label" type="Label" parent="PlayerBookmark/NamePanel" unique_id=156679143]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 26
+text = "Faeble Name"
+
+[node name="ChapterPanel" type="Panel" parent="PlayerBookmark" unique_id=2111612416]
+offset_left = -43.0
+offset_top = -127.0
+offset_right = 40.0
+offset_bottom = -87.0
+
+[node name="Label" type="Label" parent="PlayerBookmark/ChapterPanel" unique_id=27448806]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 26
+text = "Ch. XX"
+
+[node name="StatusBuildup" type="ProgressBar" parent="PlayerBookmark" unique_id=1040843918]
+offset_left = 68.0
+offset_top = -119.0
+offset_right = 105.0
+offset_bottom = 78.0
+max_value = 20.0
+step = 1.0
+value = 10.0
+fill_mode = 3
+show_percentage = false
+
+[node name="StatusMark" type="Label" parent="PlayerBookmark" unique_id=1128032738]
+offset_left = 40.0
+offset_top = 100.0
+offset_right = 117.0
+offset_bottom = 123.0
+text = "Status"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemyStatus" type="Node2D" parent="." unique_id=418568587]
+position = Vector2(1704, 431)
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemyStatus" unique_id=1449558043]
+position = Vector2(33, -84)
+scale = Vector2(-0.75, 0.75)
+texture = ExtResource("2_f6plg")
+
+[node name="eHPDisplay" type="Node2D" parent="EnemyStatus" unique_id=1523267172]
+position = Vector2(40, -167)
+scale = Vector2(-1, 1)
+script = ExtResource("5_rc4dg")
+
+[node name="Heart" type="Node2D" parent="EnemyStatus/eHPDisplay" unique_id=1908737229]
+position = Vector2(-107.000046, 166.00008)
+rotation = -1.0471976
+scale = Vector2(1.4, 1.4)
+
+[node name="HeartContainer" type="Sprite2D" parent="EnemyStatus/eHPDisplay/Heart" unique_id=411511485]
+texture = ExtResource("6_kmlth")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite2D" parent="EnemyStatus/eHPDisplay/Heart" unique_id=1311418777]
+texture = ExtResource("7_2m0vs")
+hframes = 7
+frame = 4
+
+[node name="Heart2" type="Node2D" parent="EnemyStatus/eHPDisplay" unique_id=279719586]
+position = Vector2(-85.00004, 134.00006)
+rotation = -0.87266463
+scale = Vector2(1.4, 1.4)
+
+[node name="HeartContainer" type="Sprite2D" parent="EnemyStatus/eHPDisplay/Heart2" unique_id=249614831]
+texture = ExtResource("6_kmlth")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite2D" parent="EnemyStatus/eHPDisplay/Heart2" unique_id=2044736800]
+texture = ExtResource("7_2m0vs")
+hframes = 7
+frame = 4
+
+[node name="Heart3" type="Node2D" parent="EnemyStatus/eHPDisplay" unique_id=1227519536]
+position = Vector2(-56.000027, 105.00005)
+rotation = -0.7853982
+scale = Vector2(1.4, 1.4)
+
+[node name="HeartContainer" type="Sprite2D" parent="EnemyStatus/eHPDisplay/Heart3" unique_id=1126222258]
+texture = ExtResource("6_kmlth")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite2D" parent="EnemyStatus/eHPDisplay/Heart3" unique_id=466990706]
+texture = ExtResource("7_2m0vs")
+hframes = 7
+frame = 4
+
+[node name="Heart4" type="Node2D" parent="EnemyStatus/eHPDisplay" unique_id=1231031117]
+position = Vector2(-28.000011, 78.00004)
+rotation = -0.9599311
+scale = Vector2(1.4, 1.4)
+
+[node name="HeartContainer" type="Sprite2D" parent="EnemyStatus/eHPDisplay/Heart4" unique_id=152324264]
+texture = ExtResource("6_kmlth")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite2D" parent="EnemyStatus/eHPDisplay/Heart4" unique_id=210907265]
+texture = ExtResource("7_2m0vs")
+hframes = 7
+frame = 4
+
+[node name="Heart5" type="Node2D" parent="EnemyStatus/eHPDisplay" unique_id=796014913]
+position = Vector2(-11.000006, 43.000023)
+rotation = -1.2217305
+scale = Vector2(1.4, 1.4)
+
+[node name="HeartContainer" type="Sprite2D" parent="EnemyStatus/eHPDisplay/Heart5" unique_id=719547267]
+texture = ExtResource("6_kmlth")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite2D" parent="EnemyStatus/eHPDisplay/Heart5" unique_id=1584542832]
+texture = ExtResource("7_2m0vs")
+hframes = 7
+frame = 4
+
+[node name="Heart6" type="Node2D" parent="EnemyStatus/eHPDisplay" unique_id=1550663510]
+position = Vector2(-53.000023, 236.0001)
+rotation = -1.0471976
+scale = Vector2(1.4, 1.4)
+
+[node name="HeartContainer" type="Sprite2D" parent="EnemyStatus/eHPDisplay/Heart6" unique_id=1664277189]
+texture = ExtResource("6_kmlth")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite2D" parent="EnemyStatus/eHPDisplay/Heart6" unique_id=60098792]
+texture = ExtResource("7_2m0vs")
+hframes = 7
+frame = 4
+
+[node name="Heart7" type="Node2D" parent="EnemyStatus/eHPDisplay" unique_id=1321573938]
+position = Vector2(-33.000015, 197.00009)
+rotation = -1.134464
+scale = Vector2(1.4, 1.4)
+
+[node name="HeartContainer" type="Sprite2D" parent="EnemyStatus/eHPDisplay/Heart7" unique_id=930851814]
+texture = ExtResource("6_kmlth")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite2D" parent="EnemyStatus/eHPDisplay/Heart7" unique_id=1339472748]
+texture = ExtResource("7_2m0vs")
+hframes = 7
+frame = 4
+
+[node name="Heart8" type="Node2D" parent="EnemyStatus/eHPDisplay" unique_id=1608749501]
+position = Vector2(-11.000006, 161.00008)
+rotation = -0.9599311
+scale = Vector2(1.4, 1.4)
+
+[node name="HeartContainer" type="Sprite2D" parent="EnemyStatus/eHPDisplay/Heart8" unique_id=522052956]
+texture = ExtResource("6_kmlth")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite2D" parent="EnemyStatus/eHPDisplay/Heart8" unique_id=513298130]
+texture = ExtResource("7_2m0vs")
+hframes = 7
+frame = 4
+
+[node name="Heart9" type="Node2D" parent="EnemyStatus/eHPDisplay" unique_id=1442970262]
+position = Vector2(13.99999, 126.00006)
+rotation = -0.87266463
+scale = Vector2(1.4, 1.4)
+
+[node name="HeartContainer" type="Sprite2D" parent="EnemyStatus/eHPDisplay/Heart9" unique_id=911942540]
+texture = ExtResource("6_kmlth")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite2D" parent="EnemyStatus/eHPDisplay/Heart9" unique_id=2020440173]
+texture = ExtResource("7_2m0vs")
+hframes = 7
+frame = 4
+
+[node name="Heart10" type="Node2D" parent="EnemyStatus/eHPDisplay" unique_id=298573055]
+position = Vector2(25.000011, 87.00004)
+rotation = -1.134464
+scale = Vector2(1.4, 1.4)
+
+[node name="HeartContainer" type="Sprite2D" parent="EnemyStatus/eHPDisplay/Heart10" unique_id=98693799]
+texture = ExtResource("6_kmlth")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite2D" parent="EnemyStatus/eHPDisplay/Heart10" unique_id=1368172148]
+texture = ExtResource("7_2m0vs")
+hframes = 7
+frame = 4
+
+[node name="NamePanel" type="Panel" parent="EnemyStatus" unique_id=1385634816]
+offset_left = -11.0
+offset_top = -365.0
+offset_right = 157.0
+offset_bottom = -325.0
+
+[node name="Label" type="Label" parent="EnemyStatus/NamePanel" unique_id=489482923]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 26
+text = "Faeble Name"
+
+[node name="ChapterPanel" type="Panel" parent="EnemyStatus" unique_id=1182223784]
+offset_left = -3.0
+offset_top = -296.0
+offset_right = 80.0
+offset_bottom = -256.0
+
+[node name="Label" type="Label" parent="EnemyStatus/ChapterPanel" unique_id=1251180808]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 26
+text = "Ch. XX"
+
+[node name="Rangefinder" type="Node2D" parent="." unique_id=30619247]
+position = Vector2(1833.0001, 852)
+scale = Vector2(0.9, 0.9)
+
+[node name="Wheel" type="Sprite2D" parent="Rangefinder" unique_id=138028412]
+texture = ExtResource("10_om46v")
+
+[node name="Dial" type="Sprite2D" parent="Rangefinder" unique_id=505085008]
+texture = ExtResource("11_bssql")
+
+[connection signal="input_event" from="CommandBook/TopMenu/FightButton" to="." method="TopMenuButton" binds= [1]]
+[connection signal="input_event" from="CommandBook/AttackMenu/Book/Themes/Theme1/Area2D" to="." method="AttackMenuButton" binds= [-1, 0]]
+[connection signal="input_event" from="CommandBook/AttackMenu/Book/Themes/Theme2/Area2D" to="." method="AttackMenuButton" binds= [-1, 1]]
+[connection signal="input_event" from="CommandBook/AttackMenu/Book/Themes/Theme3/Area2D" to="." method="AttackMenuButton" binds= [-1, 2]]
+[connection signal="input_event" from="CommandBook/AttackMenu/Book/Themes/Theme4/Area2D" to="." method="AttackMenuButton" binds= [-1, 3]]
+[connection signal="input_event" from="CommandBook/AttackMenu/BackButton" to="." method="AttackMenuButton" binds= [0]]
+[connection signal="input_event" from="CommandBook/AttackMenu/Attack1" to="." method="AttackMenuButton" binds= [1]]
+[connection signal="input_event" from="CommandBook/AttackMenu/Attack2" to="." method="AttackMenuButton" binds= [2]]
+[connection signal="input_event" from="CommandBook/AttackMenu/Attack3" to="." method="AttackMenuButton" binds= [3]]
+[connection signal="input_event" from="CommandBook/AttackMenu/AttackCircle/Cast" to="." method="AttackMenuButton" binds= [4]]

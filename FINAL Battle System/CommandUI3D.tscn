@@ -1,0 +1,2882 @@
+[gd_scene format=3 uid="uid://cg52trxowtn5w"]
+
+[ext_resource type="Script" uid="uid://wc1gs6ytwxeo" path="res://FINAL Battle System/Scripts/UIManager.gd" id="1_480hh"]
+[ext_resource type="Texture2D" uid="uid://bmd8yjbes6vbw" path="res://FINAL Battle System/Assets/topPage.png" id="2_480hh"]
+[ext_resource type="Texture2D" uid="uid://dwk187bf4gpqy" path="res://FINAL Battle System/Assets/attackPage.png" id="3_slmih"]
+[ext_resource type="Texture2D" uid="uid://c0wsxcsqt1r5u" path="res://FINAL Battle System/Assets/ThemeMark.png" id="4_8u81x"]
+[ext_resource type="Texture2D" uid="uid://c63kmx0o04y4r" path="res://Global Assets/Graphics/UI Graphics/BattleCommand.png" id="5_axl0h"]
+[ext_resource type="Script" uid="uid://cpud3m4uuri7k" path="res://FINAL Battle System/Scripts/UIElement.gd" id="6_480hh"]
+[ext_resource type="Script" uid="uid://8ltk6fl83bay" path="res://FINAL Battle System/Scripts/Bookmark.gd" id="7_8u81x"]
+[ext_resource type="Texture2D" uid="uid://upop38pypyyl" path="res://FINAL Battle System/Assets/bookmarkBasic.png" id="7_480hh"]
+[ext_resource type="Script" uid="uid://cw0xpw01j1oeg" path="res://FINAL Battle System/Scripts/HealthManager.gd" id="7_e14oo"]
+[ext_resource type="Texture2D" uid="uid://bsljvyogpmixl" path="res://FINAL Battle System/Assets/witchPage.png" id="7_ie5lf"]
+[ext_resource type="Texture2D" uid="uid://c1382ojyg3y4n" path="res://FINAL Battle System/Assets/tacticsPage.png" id="8_4vyji"]
+[ext_resource type="Texture2D" uid="uid://ddafxge03rqua" path="res://FINAL Battle System/Assets/RangefinderBottom.png" id="10_xumtd"]
+[ext_resource type="Texture2D" uid="uid://8ludj0vsujtj" path="res://FINAL Battle System/Assets/RangefinderTop.png" id="11_585yl"]
+[ext_resource type="Texture2D" uid="uid://ce27r67o5y1jl" path="res://FINAL Battle System/Assets/HeartFrames.png" id="11_axl0h"]
+[ext_resource type="Texture2D" uid="uid://bbdw5nnccfmrt" path="res://FINAL Battle System/Assets/HeartFills.png" id="12_ohokk"]
+[ext_resource type="Script" uid="uid://dcnh40jphdajf" path="res://FINAL Battle System/Scripts/StatusManager.gd" id="13_6px8s"]
+[ext_resource type="Texture2D" uid="uid://0saalblnbctx" path="res://FINAL Battle System/Assets/HeartBacks.png" id="13_lbhgl"]
+[ext_resource type="Texture2D" uid="uid://dv7nudlvq35lr" path="res://FINAL Battle System/Assets/StatusFrames.png" id="13_seg87"]
+[ext_resource type="Texture2D" uid="uid://chikthokxfca0" path="res://FINAL Battle System/Assets/StatusFills.png" id="14_6px8s"]
+[ext_resource type="Texture2D" uid="uid://dh58hote55oob" path="res://FINAL Battle System/Assets/StatusBacks.png" id="15_xumtd"]
+[ext_resource type="Script" uid="uid://btorlaiaol5s2" path="res://FINAL Battle System/Scripts/RangeFinder.gd" id="17_6px8s"]
+[ext_resource type="Texture2D" uid="uid://5jpk51tu62ju" path="res://FINAL Battle System/Assets/bookmarkBack.png" id="20_585yl"]
+[ext_resource type="Texture2D" uid="uid://br7ow2hlldf62" path="res://Global Assets/Graphics/Monster Graphics/Ratonic.png" id="21_585yl"]
+[ext_resource type="Texture2D" uid="uid://dstyhxdhbmayn" path="res://FINAL Battle System/Assets/Photos_Z05IHTLLYg.png" id="22_4vyji"]
+[ext_resource type="Texture2D" uid="uid://c4j1x7filgrrx" path="res://Scenes/Environments/Dialogue System/Assets/SpeechBubble.png" id="25_aou6j"]
+[ext_resource type="Texture2D" uid="uid://bgeibqpjfb7oe" path="res://Scenes/Environments/Dialogue System/Assets/YellBubble.png" id="26_6jxk8"]
+[ext_resource type="Texture2D" uid="uid://ctnxk4i1vipq3" path="res://Scenes/Environments/Dialogue System/Assets/LargeBubble.png" id="27_h8dlg"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_e14oo"]
+height = 0.1
+radius = 1.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_480hh"]
+size = Vector3(3, 1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_slmih"]
+size = Vector3(1, 2.5, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8u81x"]
+size = Vector3(3.5, 1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ie5lf"]
+size = Vector3(3.3198242, 1.1669922, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4vyji"]
+size = Vector3(3.0159302, 1.02771, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w7oho"]
+size = Vector3(3.8199043, 1.2429962, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aou6j"]
+size = Vector3(2.855794, 0.9856758, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6jxk8"]
+size = Vector3(1, 2.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_585yl"]
+render_priority = 3
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.78431374)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h2f0b"]
+material = SubResource("StandardMaterial3D_585yl")
+size = Vector2(16, 9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_585yl"]
+size = Vector3(2, 6, 0.5)
+
+[node name="CommandOverlay" type="Node3D" unique_id=634625998 node_paths=PackedStringArray("pElements", "eElements", "dElements", "commandBook", "rangefinder", "partyMenu")]
+script = ExtResource("1_480hh")
+pElements = {
+1: NodePath("PlayerBookmark"),
+2: NodePath("PlayerBookmark/NameLabel"),
+3: NodePath("PlayerBookmark/pHPDisplay"),
+4: NodePath("PlayerBookmark/LevelLabel"),
+5: NodePath("PlayerBookmark/pStatusDisplay"),
+6: NodePath("PlayerBookmark/StatusMark")
+}
+eElements = {
+1: NodePath("EnemyBookmark"),
+2: NodePath("EnemyBookmark/NameLabel"),
+3: NodePath("EnemyBookmark/eHPDisplay"),
+4: NodePath("EnemyBookmark/LevelLabel"),
+5: NodePath("EnemyBookmark/eStatusDisplay"),
+6: NodePath("EnemyBookmark/StatusMark")
+}
+dElements = {
+1: NodePath("SwitchMenu/BackButton/DetailsBookmark"),
+2: NodePath("SwitchMenu/BackButton/DetailsBookmark/NameLabel"),
+3: NodePath("SwitchMenu/BackButton/DetailsBookmark/pHPDisplay"),
+4: NodePath("SwitchMenu/BackButton/DetailsBookmark/LevelLabel"),
+5: NodePath("SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay"),
+6: NodePath("SwitchMenu/BackButton/DetailsBookmark/StatusMark")
+}
+commandBook = NodePath("CommandBook")
+rangefinder = NodePath("Rangefinder")
+partyMenu = NodePath("SwitchMenu")
+
+[node name="CommandBook" type="Node3D" parent="." unique_id=1703425897]
+transform = Transform3D(0.66, 0, 0, 0, 0.66, 0, 0, 0, 0.66, 0, 0.3, 0)
+script = ExtResource("6_480hh")
+shiftSpeed = 1.0
+homeTarget = Vector3(0, 0.3, 0)
+shiftTarget = Vector3(0, -5.5, 0)
+
+[node name="TopMenu" type="Node3D" parent="CommandBook" unique_id=708635645]
+
+[node name="Sprite2D" type="Sprite3D" parent="CommandBook/TopMenu" unique_id=1552318996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+layers = 4
+shaded = true
+texture = ExtResource("2_480hh")
+
+[node name="FightButton" type="Area3D" parent="CommandBook/TopMenu" unique_id=682773046]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4322817, 0.6156797, 0.06796622)
+
+[node name="CollisionShape2D" type="CollisionShape3D" parent="CommandBook/TopMenu/FightButton" unique_id=1794856332]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_e14oo")
+
+[node name="CollisionShape2D2" type="CollisionShape3D" parent="CommandBook/TopMenu/FightButton" unique_id=490513174]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.4, 0)
+shape = SubResource("BoxShape3D_480hh")
+
+[node name="WitchButton" type="Area3D" parent="CommandBook/TopMenu" unique_id=913345791]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.520462, 0.5469879, 0)
+
+[node name="CollisionShape2D" type="CollisionShape3D" parent="CommandBook/TopMenu/WitchButton" unique_id=879830155]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_e14oo")
+
+[node name="CollisionShape2D2" type="CollisionShape3D" parent="CommandBook/TopMenu/WitchButton" unique_id=2114122495]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.48855865, 0)
+shape = SubResource("BoxShape3D_480hh")
+
+[node name="TacticsButton" type="Area3D" parent="CommandBook/TopMenu" unique_id=678444161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.998145, -0.85472155, 0)
+
+[node name="CollisionShape2D" type="CollisionShape3D" parent="CommandBook/TopMenu/TacticsButton" unique_id=701314419]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_e14oo")
+
+[node name="CollisionShape2D2" type="CollisionShape3D" parent="CommandBook/TopMenu/TacticsButton" unique_id=1927792882]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.5, 0)
+shape = SubResource("BoxShape3D_480hh")
+
+[node name="InspectButton" type="Area3D" parent="CommandBook/TopMenu" unique_id=1372928071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.955377, -0.80995226, 0)
+
+[node name="CollisionShape2D" type="CollisionShape3D" parent="CommandBook/TopMenu/InspectButton" unique_id=1407525469]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_e14oo")
+
+[node name="CollisionShape2D2" type="CollisionShape3D" parent="CommandBook/TopMenu/InspectButton" unique_id=908490560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9999998, -0.4858795, 0)
+shape = SubResource("BoxShape3D_480hh")
+
+[node name="AttackMenu" type="Node3D" parent="CommandBook" unique_id=564159452]
+visible = false
+
+[node name="Book" type="Sprite3D" parent="CommandBook/AttackMenu" unique_id=2118533916]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("3_slmih")
+
+[node name="Themes" type="Node3D" parent="CommandBook/AttackMenu/Book" unique_id=1965755219]
+visible = false
+
+[node name="Theme1" type="Sprite3D" parent="CommandBook/AttackMenu/Book/Themes" unique_id=1599111589]
+texture = ExtResource("4_8u81x")
+
+[node name="ThemeName" type="Label3D" parent="CommandBook/AttackMenu/Book/Themes/Theme1" unique_id=520229404]
+text = "Theme Name"
+
+[node name="ThemeEffect" type="Label" parent="CommandBook/AttackMenu/Book/Themes/Theme1/ThemeName" unique_id=1425739936]
+offset_left = 28.888887
+offset_top = 55.55556
+offset_right = 203.88889
+offset_bottom = 89.55556
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 24
+text = "+1 Stat | -1 Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area3D" parent="CommandBook/AttackMenu/Book/Themes/Theme1" unique_id=1210845985]
+
+[node name="CollisionShape2D" type="CollisionShape3D" parent="CommandBook/AttackMenu/Book/Themes/Theme1/Area2D" unique_id=807451650]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.111084, 0, 0)
+
+[node name="Theme2" type="Sprite3D" parent="CommandBook/AttackMenu/Book/Themes" unique_id=1182505971]
+texture = ExtResource("4_8u81x")
+
+[node name="ThemeName" type="Label3D" parent="CommandBook/AttackMenu/Book/Themes/Theme2" unique_id=1749213833]
+text = "Theme Name"
+
+[node name="ThemeEffect" type="Label" parent="CommandBook/AttackMenu/Book/Themes/Theme2/ThemeName" unique_id=798606085]
+offset_left = 28.888887
+offset_top = 55.55556
+offset_right = 203.88889
+offset_bottom = 89.55556
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 24
+text = "+1 Stat | -1 Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area3D" parent="CommandBook/AttackMenu/Book/Themes/Theme2" unique_id=1710511722]
+
+[node name="CollisionShape2D" type="CollisionShape3D" parent="CommandBook/AttackMenu/Book/Themes/Theme2/Area2D" unique_id=1308458600]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.111084, 0, 0)
+
+[node name="Theme3" type="Sprite3D" parent="CommandBook/AttackMenu/Book/Themes" unique_id=1261551238]
+texture = ExtResource("4_8u81x")
+
+[node name="ThemeName" type="Label3D" parent="CommandBook/AttackMenu/Book/Themes/Theme3" unique_id=2064442989]
+text = "Theme Name"
+
+[node name="ThemeEffect" type="Label" parent="CommandBook/AttackMenu/Book/Themes/Theme3/ThemeName" unique_id=1900971732]
+offset_left = 28.888887
+offset_top = 55.55556
+offset_right = 203.88889
+offset_bottom = 89.55556
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 24
+text = "+1 Stat | -1 Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area3D" parent="CommandBook/AttackMenu/Book/Themes/Theme3" unique_id=905166405]
+
+[node name="CollisionShape2D" type="CollisionShape3D" parent="CommandBook/AttackMenu/Book/Themes/Theme3/Area2D" unique_id=1858959414]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.111084, 0, 0)
+
+[node name="Theme4" type="Sprite3D" parent="CommandBook/AttackMenu/Book/Themes" unique_id=1336924371]
+texture = ExtResource("4_8u81x")
+
+[node name="ThemeName" type="Label3D" parent="CommandBook/AttackMenu/Book/Themes/Theme4" unique_id=1112738759]
+text = "Theme Name"
+
+[node name="ThemeEffect" type="Label" parent="CommandBook/AttackMenu/Book/Themes/Theme4/ThemeName" unique_id=1175850301]
+offset_left = 28.888887
+offset_top = 55.55556
+offset_right = 203.88889
+offset_bottom = 89.55556
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 24
+text = "+1 Stat | -1 Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area3D" parent="CommandBook/AttackMenu/Book/Themes/Theme4" unique_id=1285030021]
+
+[node name="CollisionShape2D" type="CollisionShape3D" parent="CommandBook/AttackMenu/Book/Themes/Theme4/Area2D" unique_id=1014845200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.111084, 0, 0)
+
+[node name="BackButton" type="Area3D" parent="CommandBook/AttackMenu" unique_id=2036000942]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.8736483, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape3D" parent="CommandBook/AttackMenu/BackButton" unique_id=847272039]
+shape = SubResource("BoxShape3D_slmih")
+
+[node name="Attack1" type="Area3D" parent="CommandBook/AttackMenu" unique_id=869063247]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.2, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape3D" parent="CommandBook/AttackMenu/Attack1" unique_id=590622512]
+shape = SubResource("BoxShape3D_8u81x")
+
+[node name="Label" type="Label3D" parent="CommandBook/AttackMenu/Attack1" unique_id=1202853757]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+layers = 4
+shaded = true
+render_priority = 3
+outline_render_priority = 2
+text = "Attack Name"
+font_size = 76
+outline_size = 24
+
+[node name="Attack2" type="Area3D" parent="CommandBook/AttackMenu" unique_id=828586157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.2, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape3D" parent="CommandBook/AttackMenu/Attack2" unique_id=881388494]
+shape = SubResource("BoxShape3D_8u81x")
+
+[node name="Label" type="Label3D" parent="CommandBook/AttackMenu/Attack2" unique_id=881019124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+layers = 4
+shaded = true
+render_priority = 3
+outline_render_priority = 2
+text = "Attack Name"
+font_size = 76
+outline_size = 24
+
+[node name="Attack3" type="Area3D" parent="CommandBook/AttackMenu" unique_id=161011871]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1.54, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape3D" parent="CommandBook/AttackMenu/Attack3" unique_id=2100637744]
+shape = SubResource("BoxShape3D_8u81x")
+
+[node name="Label" type="Label3D" parent="CommandBook/AttackMenu/Attack3" unique_id=224994687]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+layers = 4
+shaded = true
+render_priority = 3
+outline_render_priority = 2
+text = "Attack Name"
+font_size = 76
+outline_size = 24
+
+[node name="AttackCircle" type="Sprite3D" parent="CommandBook/AttackMenu" unique_id=446672720]
+transform = Transform3D(1.6000001, 0, 0, 0, 1.6000001, 0, 0, 0, 1.6000001, 3.8, -0.125, 0.05)
+visible = false
+shaded = true
+texture = ExtResource("5_axl0h")
+
+[node name="Cast" type="Area3D" parent="CommandBook/AttackMenu/AttackCircle" unique_id=38153529]
+
+[node name="CollisionShape2D2" type="CollisionShape3D" parent="CommandBook/AttackMenu/AttackCircle/Cast" unique_id=1264185642]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_e14oo")
+
+[node name="Label" type="Label3D" parent="CommandBook/AttackMenu/AttackCircle/Cast" unique_id=19698972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+layers = 4
+shaded = true
+render_priority = 3
+outline_render_priority = 2
+text = "Cast Spell!"
+font_size = 80
+outline_size = 24
+
+[node name="WitchMenu" type="Node3D" parent="CommandBook" unique_id=1139503229]
+visible = false
+
+[node name="Book" type="Sprite3D" parent="CommandBook/WitchMenu" unique_id=1094656773]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("7_ie5lf")
+
+[node name="BackButton" type="Area3D" parent="CommandBook/WitchMenu" unique_id=1175660196]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.8736483, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape3D" parent="CommandBook/WitchMenu/BackButton" unique_id=1749681318]
+shape = SubResource("BoxShape3D_slmih")
+
+[node name="Attack1" type="Area3D" parent="CommandBook/WitchMenu" unique_id=592440914]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5623221, 1.1999999, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape3D" parent="CommandBook/WitchMenu/Attack1" unique_id=1445163882]
+shape = SubResource("BoxShape3D_8u81x")
+
+[node name="Label" type="Label3D" parent="CommandBook/WitchMenu/Attack1" unique_id=463263012]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+layers = 4
+shaded = true
+render_priority = 3
+outline_render_priority = 2
+text = "Attack Name"
+font_size = 76
+outline_size = 24
+
+[node name="Attack2" type="Area3D" parent="CommandBook/WitchMenu" unique_id=1162714099]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1551552, -0.20000002, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape3D" parent="CommandBook/WitchMenu/Attack2" unique_id=229377997]
+shape = SubResource("BoxShape3D_8u81x")
+
+[node name="Label" type="Label3D" parent="CommandBook/WitchMenu/Attack2" unique_id=291472761]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+layers = 4
+shaded = true
+render_priority = 3
+outline_render_priority = 2
+text = "Attack Name"
+font_size = 76
+outline_size = 24
+
+[node name="Attack3" type="Area3D" parent="CommandBook/WitchMenu" unique_id=1892755967]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26125, -1.54, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape3D" parent="CommandBook/WitchMenu/Attack3" unique_id=1523244991]
+shape = SubResource("BoxShape3D_8u81x")
+
+[node name="Label" type="Label3D" parent="CommandBook/WitchMenu/Attack3" unique_id=985534687]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+layers = 4
+shaded = true
+render_priority = 3
+outline_render_priority = 2
+text = "Attack Name"
+font_size = 76
+outline_size = 24
+
+[node name="AttackCircle" type="Sprite3D" parent="CommandBook/WitchMenu" unique_id=269338648]
+transform = Transform3D(1.6000001, 0, 0, 0, 1.6000001, 0, 0, 0, 1.6000001, -3.7016807, -0.125, 0.050000004)
+visible = false
+shaded = true
+texture = ExtResource("5_axl0h")
+
+[node name="Cast" type="Area3D" parent="CommandBook/WitchMenu/AttackCircle" unique_id=1677221040]
+
+[node name="CollisionShape2D2" type="CollisionShape3D" parent="CommandBook/WitchMenu/AttackCircle/Cast" unique_id=1393839163]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_e14oo")
+
+[node name="Label" type="Label3D" parent="CommandBook/WitchMenu/AttackCircle/Cast" unique_id=556798867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+layers = 4
+shaded = true
+render_priority = 3
+outline_render_priority = 2
+text = "Cast Spell!"
+font_size = 80
+outline_size = 24
+
+[node name="TacticsMenu" type="Node3D" parent="CommandBook" unique_id=938558079]
+visible = false
+
+[node name="Sprite2D" type="Sprite3D" parent="CommandBook/TacticsMenu" unique_id=24770604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+layers = 4
+shaded = true
+texture = ExtResource("8_4vyji")
+
+[node name="BackButton" type="Area3D" parent="CommandBook/TacticsMenu" unique_id=64337475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.012802, 0.9353999, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape3D" parent="CommandBook/TacticsMenu/BackButton" unique_id=1077595210]
+shape = SubResource("BoxShape3D_slmih")
+
+[node name="AdvanceButton" type="Area3D" parent="CommandBook/TacticsMenu" unique_id=1976980503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4322817, 0.6156797, 0.06796622)
+
+[node name="CollisionShape2D2" type="CollisionShape3D" parent="CommandBook/TacticsMenu/AdvanceButton" unique_id=488354464]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1421942, -0.10227507, 0)
+shape = SubResource("BoxShape3D_ie5lf")
+
+[node name="RetreatButton" type="Area3D" parent="CommandBook/TacticsMenu" unique_id=884992040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7646883, -0.5711694, 0.06796623)
+
+[node name="CollisionShape2D2" type="CollisionShape3D" parent="CommandBook/TacticsMenu/RetreatButton" unique_id=1034453207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.224256, -0.042155445, 0)
+shape = SubResource("BoxShape3D_4vyji")
+
+[node name="SwitchButton" type="Area3D" parent="CommandBook/TacticsMenu" unique_id=1426979707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8387318, 0.8340024, 0.06796623)
+
+[node name="CollisionShape2D2" type="CollisionShape3D" parent="CommandBook/TacticsMenu/SwitchButton" unique_id=1800594177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13926458, -0.07108796, 0)
+shape = SubResource("BoxShape3D_w7oho")
+
+[node name="ForfeitButton" type="Area3D" parent="CommandBook/TacticsMenu" unique_id=1812182728]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.999835, -1.1400797, 0.06796587)
+
+[node name="CollisionShape2D2" type="CollisionShape3D" parent="CommandBook/TacticsMenu/ForfeitButton" unique_id=1014758341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16884589, -0.045047045, 0)
+shape = SubResource("BoxShape3D_aou6j")
+
+[node name="PlayerBookmark" type="Node3D" parent="." unique_id=376109080 node_paths=PackedStringArray("hpDisplay", "buildupDisplay", "statusLabel")]
+transform = Transform3D(0.525, 0, 0, 0, 0.525, 0, 0, 0, 0.525, -5.5, 3.75, 0)
+script = ExtResource("7_8u81x")
+hpDisplay = NodePath("pHPDisplay")
+buildupDisplay = NodePath("pStatusDisplay")
+statusLabel = NodePath("StatusMark")
+homeTarget = Vector3(-5.5, 3.75, 0)
+shiftTarget = Vector3(-10, 3.75, 0)
+
+[node name="MarkBack" type="Sprite3D" parent="PlayerBookmark" unique_id=1670674229]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, 0)
+layers = 4
+shaded = true
+render_priority = -1
+texture = ExtResource("7_480hh")
+
+[node name="pHPDisplay" type="Node3D" parent="PlayerBookmark" unique_id=1934963389]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.025, -0.3, 0)
+script = ExtResource("7_e14oo")
+
+[node name="Heart" type="Node3D" parent="PlayerBookmark/pHPDisplay" unique_id=1494714249]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.75, 1.2, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart" unique_id=1476907257]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart" unique_id=1334062373]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart" unique_id=1973386623]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart2" type="Node3D" parent="PlayerBookmark/pHPDisplay" unique_id=1510187037]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.25, 0.9, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart2" unique_id=965578939]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart2" unique_id=2025620928]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart2" unique_id=1299981948]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart3" type="Node3D" parent="PlayerBookmark/pHPDisplay" unique_id=489168145]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.75, 0.6, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart3" unique_id=395550903]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart3" unique_id=390268886]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart3" unique_id=2127186519]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart4" type="Node3D" parent="PlayerBookmark/pHPDisplay" unique_id=2058908907]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.25, 0.3, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart4" unique_id=917612607]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart4" unique_id=1665162427]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart4" unique_id=909283279]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart5" type="Node3D" parent="PlayerBookmark/pHPDisplay" unique_id=525657357]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.75, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart5" unique_id=1833823090]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart5" unique_id=1226691359]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart5" unique_id=1510561427]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart6" type="Node3D" parent="PlayerBookmark/pHPDisplay" unique_id=1515253083]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.25, -0.3, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart6" unique_id=1442012930]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart6" unique_id=1526789126]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart6" unique_id=151128813]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart7" type="Node3D" parent="PlayerBookmark/pHPDisplay" unique_id=8597938]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.75, -0.6, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart7" unique_id=1900676601]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart7" unique_id=1522527434]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart7" unique_id=1039434529]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart8" type="Node3D" parent="PlayerBookmark/pHPDisplay" unique_id=779438498]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.25, -0.9, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart8" unique_id=278370715]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart8" unique_id=20050592]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart8" unique_id=487304275]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart9" type="Node3D" parent="PlayerBookmark/pHPDisplay" unique_id=1656782619]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.75, -1.2, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart9" unique_id=818451470]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart9" unique_id=2038525928]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart9" unique_id=1992951008]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart10" type="Node3D" parent="PlayerBookmark/pHPDisplay" unique_id=150514667]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.25, -1.5, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart10" unique_id=1717559324]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart10" unique_id=749618662]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="PlayerBookmark/pHPDisplay/Heart10" unique_id=1772249955]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="pStatusDisplay" type="Node3D" parent="PlayerBookmark" unique_id=1714608165]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 1.125, -1, 0)
+script = ExtResource("13_6px8s")
+
+[node name="Bubble10" type="Node3D" parent="PlayerBookmark/pStatusDisplay" unique_id=1061292798]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.65, -2.1, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble10" unique_id=1429748547]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 3
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble10" unique_id=1081681028]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 2
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble10" unique_id=1073909184]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 1
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble9" type="Node3D" parent="PlayerBookmark/pStatusDisplay" unique_id=1378987862]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.25, -1.7000003, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble9" unique_id=419735687]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble9" unique_id=798124772]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble9" unique_id=151189451]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble8" type="Node3D" parent="PlayerBookmark/pStatusDisplay" unique_id=700602806]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.65, -1.3, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble8" unique_id=16095799]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 3
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble8" unique_id=1589634056]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 2
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble8" unique_id=1631177196]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 1
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble7" type="Node3D" parent="PlayerBookmark/pStatusDisplay" unique_id=874574193]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.25, -0.8999996, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble7" unique_id=1953492207]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble7" unique_id=79769044]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble7" unique_id=1954843836]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble6" type="Node3D" parent="PlayerBookmark/pStatusDisplay" unique_id=582254375]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.65, -0.5, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble6" unique_id=994751699]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 3
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble6" unique_id=851770795]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 2
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble6" unique_id=693306501]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 1
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble5" type="Node3D" parent="PlayerBookmark/pStatusDisplay" unique_id=974115303]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.25, -0.099999905, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble5" unique_id=1191282057]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble5" unique_id=1352080013]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble5" unique_id=1411118563]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble4" type="Node3D" parent="PlayerBookmark/pStatusDisplay" unique_id=1966745021]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.65, 0.3, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble4" unique_id=1783009274]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 3
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble4" unique_id=1651039275]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 2
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble4" unique_id=221623996]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 1
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble3" type="Node3D" parent="PlayerBookmark/pStatusDisplay" unique_id=522851710]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.25, 0.6999998, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble3" unique_id=367245405]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble3" unique_id=455265635]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble3" unique_id=727157137]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble2" type="Node3D" parent="PlayerBookmark/pStatusDisplay" unique_id=897091660]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.65, 1.1, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble2" unique_id=299573280]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 3
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble2" unique_id=1080615141]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 2
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble2" unique_id=1926683057]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 1
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble" type="Node3D" parent="PlayerBookmark/pStatusDisplay" unique_id=1016513582]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.25, 1.5, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble" unique_id=178943028]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble" unique_id=850867434]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="PlayerBookmark/pStatusDisplay/Bubble" unique_id=1564898230]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="NameLabel" type="Label3D" parent="PlayerBookmark" unique_id=1207314251]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 3.55, 0)
+layers = 4
+shaded = true
+render_priority = 2
+outline_render_priority = 1
+text = "Faeble Name"
+font_size = 72
+outline_size = 24
+
+[node name="LevelLabel" type="Label3D" parent="PlayerBookmark" unique_id=652166677]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 0.99999994, 0, 2.775, 0)
+layers = 4
+shaded = true
+render_priority = 2
+outline_render_priority = 1
+text = "Ch. XX"
+font_size = 54
+outline_size = 18
+
+[node name="StatusMark" type="Label3D" parent="PlayerBookmark" unique_id=138736151]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -4.25, 0)
+layers = 4
+shaded = true
+render_priority = 2
+outline_render_priority = 1
+text = "Status"
+font_size = 82
+outline_size = 24
+
+[node name="EnemyBookmark" type="Node3D" parent="." unique_id=1930405658 node_paths=PackedStringArray("hpDisplay", "buildupDisplay", "statusLabel")]
+transform = Transform3D(0.525, 0, 0, 0, 0.525, 0, 0, 0, 0.525, 5.5, 3.75, 0)
+script = ExtResource("7_8u81x")
+hpDisplay = NodePath("eHPDisplay")
+buildupDisplay = NodePath("eStatusDisplay")
+statusLabel = NodePath("StatusMark")
+homeTarget = Vector3(5.5, 3.75, 0)
+shiftTarget = Vector3(10, 3.75, 0)
+
+[node name="MarkBack" type="Sprite3D" parent="EnemyBookmark" unique_id=348481066]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, 0)
+layers = 4
+shaded = true
+render_priority = -1
+texture = ExtResource("7_480hh")
+
+[node name="eHPDisplay" type="Node3D" parent="EnemyBookmark" unique_id=1376160378]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.024999619, -0.3000002, 0)
+script = ExtResource("7_e14oo")
+
+[node name="Heart" type="Node3D" parent="EnemyBookmark/eHPDisplay" unique_id=879912745]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.75, 1.2, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart" unique_id=1764545633]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart" unique_id=1815327750]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart" unique_id=787050481]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart2" type="Node3D" parent="EnemyBookmark/eHPDisplay" unique_id=1878050704]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.25, 0.9, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart2" unique_id=1032402019]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart2" unique_id=1626937639]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart2" unique_id=1174647692]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart3" type="Node3D" parent="EnemyBookmark/eHPDisplay" unique_id=1139743375]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.75, 0.6, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart3" unique_id=1625154460]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart3" unique_id=1965422318]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart3" unique_id=1864618643]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart4" type="Node3D" parent="EnemyBookmark/eHPDisplay" unique_id=1461584669]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.25, 0.3, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart4" unique_id=1641181410]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart4" unique_id=1706787547]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart4" unique_id=22809227]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart5" type="Node3D" parent="EnemyBookmark/eHPDisplay" unique_id=2114744988]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.75, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart5" unique_id=714142396]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart5" unique_id=775351670]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart5" unique_id=275924098]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart6" type="Node3D" parent="EnemyBookmark/eHPDisplay" unique_id=1882046087]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.25, -0.3, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart6" unique_id=1601593376]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart6" unique_id=712035283]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart6" unique_id=149986660]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart7" type="Node3D" parent="EnemyBookmark/eHPDisplay" unique_id=1876710578]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.75, -0.6, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart7" unique_id=1914460925]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart7" unique_id=251490625]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart7" unique_id=1036479728]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart8" type="Node3D" parent="EnemyBookmark/eHPDisplay" unique_id=1666754258]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.25, -0.9, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart8" unique_id=578213120]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart8" unique_id=102327762]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart8" unique_id=1419566608]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart9" type="Node3D" parent="EnemyBookmark/eHPDisplay" unique_id=2123414444]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.75, -1.2, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart9" unique_id=1884073278]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart9" unique_id=1763009763]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart9" unique_id=1863042209]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart10" type="Node3D" parent="EnemyBookmark/eHPDisplay" unique_id=1302492491]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.25, -1.5, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart10" unique_id=16955723]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart10" unique_id=1592775356]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="EnemyBookmark/eHPDisplay/Heart10" unique_id=1777268716]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="eStatusDisplay" type="Node3D" parent="EnemyBookmark" unique_id=1804516213]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 1.125, -1, 0)
+script = ExtResource("13_6px8s")
+
+[node name="Bubble10" type="Node3D" parent="EnemyBookmark/eStatusDisplay" unique_id=499456914]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.65, -2.1, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble10" unique_id=1749079776]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 3
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble10" unique_id=74457906]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 2
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble10" unique_id=1498306141]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 1
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble9" type="Node3D" parent="EnemyBookmark/eStatusDisplay" unique_id=689093195]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.25, -1.7000003, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble9" unique_id=626427442]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble9" unique_id=1516019769]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble9" unique_id=326376380]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble8" type="Node3D" parent="EnemyBookmark/eStatusDisplay" unique_id=937115131]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.65, -1.3, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble8" unique_id=1329474108]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 3
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble8" unique_id=863284307]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 2
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble8" unique_id=1061414389]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 1
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble7" type="Node3D" parent="EnemyBookmark/eStatusDisplay" unique_id=289537150]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.25, -0.8999996, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble7" unique_id=509130315]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble7" unique_id=1336525057]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble7" unique_id=1884117496]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble6" type="Node3D" parent="EnemyBookmark/eStatusDisplay" unique_id=1725559398]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.65, -0.5, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble6" unique_id=1718255325]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 3
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble6" unique_id=1011273615]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 2
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble6" unique_id=772939749]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 1
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble5" type="Node3D" parent="EnemyBookmark/eStatusDisplay" unique_id=99297572]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.25, -0.099999905, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble5" unique_id=1192272149]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble5" unique_id=717484390]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble5" unique_id=758444403]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble4" type="Node3D" parent="EnemyBookmark/eStatusDisplay" unique_id=785309855]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.65, 0.3, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble4" unique_id=444679178]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 3
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble4" unique_id=1138293757]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 2
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble4" unique_id=762221494]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 1
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble3" type="Node3D" parent="EnemyBookmark/eStatusDisplay" unique_id=797904176]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.25, 0.6999998, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble3" unique_id=1914902042]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble3" unique_id=1610626094]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble3" unique_id=1981727074]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble2" type="Node3D" parent="EnemyBookmark/eStatusDisplay" unique_id=64281386]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.65, 1.1, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble2" unique_id=1307386343]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 3
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble2" unique_id=506728049]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 2
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble2" unique_id=2115077043]
+layers = 4
+flip_h = true
+shaded = true
+render_priority = 1
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble" type="Node3D" parent="EnemyBookmark/eStatusDisplay" unique_id=410572696]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.25, 1.5, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble" unique_id=1218984683]
+layers = 4
+shaded = true
+render_priority = 3
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble" unique_id=1632164930]
+layers = 4
+shaded = true
+render_priority = 2
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="EnemyBookmark/eStatusDisplay/Bubble" unique_id=1025411650]
+layers = 4
+shaded = true
+render_priority = 1
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="NameLabel" type="Label3D" parent="EnemyBookmark" unique_id=1044686274]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 3.55, 0)
+layers = 4
+shaded = true
+render_priority = 2
+outline_render_priority = 1
+text = "Faeble Name"
+font_size = 72
+outline_size = 24
+
+[node name="LevelLabel" type="Label3D" parent="EnemyBookmark" unique_id=518145976]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 0.99999994, 0, 2.775, 0)
+layers = 4
+shaded = true
+render_priority = 2
+outline_render_priority = 1
+text = "Ch. XX"
+font_size = 54
+outline_size = 18
+
+[node name="StatusMark" type="Label3D" parent="EnemyBookmark" unique_id=464436102]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -4.25, 0)
+layers = 4
+shaded = true
+render_priority = 2
+outline_render_priority = 1
+text = "Status"
+font_size = 82
+outline_size = 24
+
+[node name="Rangefinder" type="Node3D" parent="." unique_id=1733932639]
+transform = Transform3D(-2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, -1.2, 0.5)
+script = ExtResource("17_6px8s")
+shiftSpeed = 1.0
+homeTarget = Vector3(0, -1.2, 0.5)
+shiftTarget = Vector3(0, -8, 0.5)
+
+[node name="Wheel" type="Sprite3D" parent="Rangefinder" unique_id=15802194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+layers = 4
+shaded = true
+render_priority = 5
+texture = ExtResource("10_xumtd")
+
+[node name="Dial" type="Sprite3D" parent="Rangefinder" unique_id=1800274868]
+layers = 4
+shaded = true
+render_priority = 6
+texture = ExtResource("11_585yl")
+
+[node name="BondMeter" type="Node3D" parent="." unique_id=12209989]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 1.75, -0.5)
+visible = false
+script = ExtResource("6_480hh")
+shiftSpeed = 1.0
+homeTarget = Vector3(0, 1.75, -0.5)
+shiftTarget = Vector3(0, -10, 0.5)
+
+[node name="SystemMessage" type="Sprite3D" parent="BondMeter" unique_id=1816854181]
+transform = Transform3D(0.4, 0, 0, 0, 0.2, 0, 0, 0, 0.8, 0, 0, 0)
+visible = false
+layers = 4
+render_priority = -2
+texture = ExtResource("27_h8dlg")
+
+[node name="SwitchMenu" type="Node3D" parent="." unique_id=1407123668]
+visible = false
+script = ExtResource("6_480hh")
+shiftTarget = Vector3(0, 15, 0)
+
+[node name="BackButton" type="Node3D" parent="SwitchMenu" unique_id=774642027]
+script = ExtResource("6_480hh")
+shiftTarget = Vector3(0, 15, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="SwitchMenu/BackButton" unique_id=1846032709]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -5.5, -0.6, 0.826967)
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 6
+texture = ExtResource("22_4vyji")
+
+[node name="Area3D" type="Area3D" parent="SwitchMenu/BackButton/Sprite3D" unique_id=56033044]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SwitchMenu/BackButton/Sprite3D/Area3D" unique_id=488978192]
+shape = SubResource("BoxShape3D_6jxk8")
+
+[node name="DetailsBookmark" type="Node3D" parent="SwitchMenu/BackButton" unique_id=1336154615 node_paths=PackedStringArray("hpDisplay", "buildupDisplay", "statusLabel")]
+transform = Transform3D(-0.615, 0, -9.286242e-08, 0, 0.615, 0, 9.286242e-08, 0, -0.615, -1.05, 2.5, 1.208)
+script = ExtResource("7_8u81x")
+hpDisplay = NodePath("pHPDisplay")
+buildupDisplay = NodePath("pStatusDisplay")
+statusLabel = NodePath("StatusMark")
+
+[node name="MarkBack" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark" unique_id=1905069079]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, 0)
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 4
+texture = ExtResource("7_480hh")
+
+[node name="pHPDisplay" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark" unique_id=1481669546]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.025, -0.3, 0)
+script = ExtResource("7_e14oo")
+
+[node name="Heart" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay" unique_id=1452301259]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.75, 1.2, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart" unique_id=540439723]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 10
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart" unique_id=177159910]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart" unique_id=1505499958]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart2" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay" unique_id=1671759347]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.25, 0.9, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart2" unique_id=2027998836]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 10
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart2" unique_id=536294226]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart2" unique_id=991347243]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart3" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay" unique_id=229076535]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.75, 0.6, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart3" unique_id=1041066061]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 10
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart3" unique_id=749552012]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart3" unique_id=1614763591]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart4" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay" unique_id=1224913491]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.25, 0.3, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart4" unique_id=484077424]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 10
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart4" unique_id=336649842]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart4" unique_id=1489307089]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart5" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay" unique_id=2042107548]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.75, 0, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart5" unique_id=2053127425]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 10
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart5" unique_id=1250145365]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart5" unique_id=1503644818]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart6" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay" unique_id=904916623]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.25, -0.3, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart6" unique_id=832367804]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 10
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart6" unique_id=591631450]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart6" unique_id=1176658090]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart7" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay" unique_id=1442952279]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.75, -0.6, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart7" unique_id=2033929846]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 10
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart7" unique_id=1284439137]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart7" unique_id=2013980919]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart8" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay" unique_id=1903977491]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.25, -0.9, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart8" unique_id=2036807147]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 10
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart8" unique_id=620731034]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart8" unique_id=409389715]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart9" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay" unique_id=1817713051]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.75, -1.2, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart9" unique_id=1248398947]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 10
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart9" unique_id=1114760857]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart9" unique_id=2089035475]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="Heart10" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay" unique_id=669930943]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.25, -1.5, 0)
+
+[node name="HeartContainer" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart10" unique_id=1357992730]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 10
+texture = ExtResource("11_axl0h")
+hframes = 7
+frame = 4
+
+[node name="HeartFill" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart10" unique_id=54986031]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("12_ohokk")
+hframes = 7
+frame = 4
+
+[node name="HeartBack" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pHPDisplay/Heart10" unique_id=945634779]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("13_lbhgl")
+hframes = 7
+frame = 4
+
+[node name="pStatusDisplay" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark" unique_id=1475202673]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 1.125, -1, 0)
+script = ExtResource("13_6px8s")
+
+[node name="Bubble10" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay" unique_id=421297881]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.65, -2.1, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble10" unique_id=1924391236]
+layers = 4
+flip_h = true
+shaded = true
+double_sided = false
+render_priority = 10
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble10" unique_id=387724306]
+layers = 4
+flip_h = true
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble10" unique_id=1878077550]
+layers = 4
+flip_h = true
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble9" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay" unique_id=1980715919]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.25, -1.7000003, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble9" unique_id=1873348382]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 10
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble9" unique_id=1242085988]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble9" unique_id=1148801229]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble8" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay" unique_id=657704099]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.65, -1.3, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble8" unique_id=146601274]
+layers = 4
+flip_h = true
+shaded = true
+double_sided = false
+render_priority = 10
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble8" unique_id=1692981573]
+layers = 4
+flip_h = true
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble8" unique_id=2028029492]
+layers = 4
+flip_h = true
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble7" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay" unique_id=1263686916]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.25, -0.8999996, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble7" unique_id=963129279]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 10
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble7" unique_id=924305293]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble7" unique_id=1957372681]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble6" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay" unique_id=2086014695]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.65, -0.5, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble6" unique_id=1347397771]
+layers = 4
+flip_h = true
+shaded = true
+double_sided = false
+render_priority = 10
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble6" unique_id=145334019]
+layers = 4
+flip_h = true
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble6" unique_id=590319598]
+layers = 4
+flip_h = true
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble5" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay" unique_id=1868545837]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.25, -0.099999905, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble5" unique_id=330797788]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 10
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble5" unique_id=184596047]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble5" unique_id=628278249]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble4" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay" unique_id=1041828549]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.65, 0.3, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble4" unique_id=601492159]
+layers = 4
+flip_h = true
+shaded = true
+double_sided = false
+render_priority = 10
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble4" unique_id=2132906784]
+layers = 4
+flip_h = true
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble4" unique_id=787013421]
+layers = 4
+flip_h = true
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble3" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay" unique_id=1362253606]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.25, 0.6999998, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble3" unique_id=2075241978]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 10
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble3" unique_id=1997457333]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble3" unique_id=220746447]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble2" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay" unique_id=405634854]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.65, 1.1, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble2" unique_id=1852596124]
+layers = 4
+flip_h = true
+shaded = true
+double_sided = false
+render_priority = 10
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble2" unique_id=1564732152]
+layers = 4
+flip_h = true
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble2" unique_id=360004881]
+layers = 4
+flip_h = true
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="Bubble" type="Node3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay" unique_id=1588465607]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.25, 1.5, 0)
+
+[node name="BubbleContainer" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble" unique_id=1641184632]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 10
+texture = ExtResource("13_seg87")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleFill" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble" unique_id=2055131927]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("14_6px8s")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="BubbleBack" type="Sprite3D" parent="SwitchMenu/BackButton/DetailsBookmark/pStatusDisplay/Bubble" unique_id=1537541414]
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("15_xumtd")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="NameLabel" type="Label3D" parent="SwitchMenu/BackButton/DetailsBookmark" unique_id=1686112656]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 3.55, 0)
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 6
+outline_render_priority = 5
+text = "Faeble Name"
+font_size = 72
+outline_size = 24
+
+[node name="LevelLabel" type="Label3D" parent="SwitchMenu/BackButton/DetailsBookmark" unique_id=986938350]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 0.99999994, 0, 2.775, 0)
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 6
+outline_render_priority = 5
+text = "Ch. XX"
+font_size = 54
+outline_size = 18
+
+[node name="StatusMark" type="Label3D" parent="SwitchMenu/BackButton/DetailsBookmark" unique_id=1790093378]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -4.25, 0)
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 6
+outline_render_priority = 5
+text = "Status"
+font_size = 82
+outline_size = 24
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SwitchMenu/BackButton" unique_id=92709309]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 2.5, 0.5)
+layers = 4
+mesh = SubResource("PlaneMesh_h2f0b")
+
+[node name="PartySlot1" type="Node3D" parent="SwitchMenu" unique_id=1581015180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2, 3, 1.2)
+script = ExtResource("6_480hh")
+homeTarget = Vector3(-5.2, 3, 1.2)
+shiftTarget = Vector3(-5.2, 10, 1.2)
+
+[node name="MarkBack" type="Sprite3D" parent="SwitchMenu/PartySlot1" unique_id=486983438]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 6
+texture = ExtResource("20_585yl")
+
+[node name="FaebleDisplay" type="Sprite3D" parent="SwitchMenu/PartySlot1/MarkBack" unique_id=563737889]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("21_585yl")
+region_enabled = true
+region_rect = Rect2(250, 50, 485, 905)
+
+[node name="Blocker" type="Sprite3D" parent="SwitchMenu/PartySlot1/MarkBack" unique_id=320321569]
+layers = 4
+modulate = Color(0, 0, 0, 0.62352943)
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("20_585yl")
+
+[node name="BlockTag" type="Label3D" parent="SwitchMenu/PartySlot1/MarkBack/Blocker" unique_id=1888851630]
+transform = Transform3D(0.34202012, 0.93969256, 0, -0.93969256, 0.34202012, 0, 0, 0, 1, 0, 0, 0)
+layers = 4
+render_priority = 11
+outline_render_priority = 10
+text = "Unsummoned"
+font_size = 300
+
+[node name="Area3D" type="Area3D" parent="SwitchMenu/PartySlot1" unique_id=1587301214]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SwitchMenu/PartySlot1/Area3D" unique_id=563748508]
+shape = SubResource("BoxShape3D_585yl")
+
+[node name="PartySlot2" type="Node3D" parent="SwitchMenu" unique_id=959164818]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.125, 2.5, 1.2)
+script = ExtResource("6_480hh")
+homeTarget = Vector3(-3.125, 2.5, 1.2)
+shiftTarget = Vector3(-3.125, 10, 1.2)
+
+[node name="MarkBack" type="Sprite3D" parent="SwitchMenu/PartySlot2" unique_id=548426370]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 5
+texture = ExtResource("20_585yl")
+
+[node name="FaebleDisplay" type="Sprite3D" parent="SwitchMenu/PartySlot2/MarkBack" unique_id=1493248058]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("21_585yl")
+region_enabled = true
+region_rect = Rect2(250, 50, 485, 905)
+
+[node name="Blocker" type="Sprite3D" parent="SwitchMenu/PartySlot2/MarkBack" unique_id=188805334]
+layers = 4
+modulate = Color(0, 0, 0, 0.62352943)
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("20_585yl")
+
+[node name="BlockTag" type="Label3D" parent="SwitchMenu/PartySlot2/MarkBack/Blocker" unique_id=47561853]
+transform = Transform3D(0.34202012, 0.93969256, 0, -0.93969256, 0.34202012, 0, 0, 0, 1, 0, 0, 0)
+layers = 4
+render_priority = 11
+outline_render_priority = 10
+text = "Unsummoned"
+font_size = 300
+
+[node name="Area3D" type="Area3D" parent="SwitchMenu/PartySlot2" unique_id=550323226]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SwitchMenu/PartySlot2/Area3D" unique_id=1195759768]
+shape = SubResource("BoxShape3D_585yl")
+
+[node name="PartySlot3" type="Node3D" parent="SwitchMenu" unique_id=1146946608]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05, 2.5, 1.208)
+script = ExtResource("6_480hh")
+homeTarget = Vector3(-1.05, 2.5, 1.208)
+shiftTarget = Vector3(-1.05, 10, 1.208)
+
+[node name="MarkBack" type="Sprite3D" parent="SwitchMenu/PartySlot3" unique_id=294689471]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 5
+texture = ExtResource("20_585yl")
+
+[node name="FaebleDisplay" type="Sprite3D" parent="SwitchMenu/PartySlot3/MarkBack" unique_id=579365734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("21_585yl")
+region_enabled = true
+region_rect = Rect2(250, 50, 485, 905)
+
+[node name="Blocker" type="Sprite3D" parent="SwitchMenu/PartySlot3/MarkBack" unique_id=317098005]
+layers = 4
+modulate = Color(0, 0, 0, 0.62352943)
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("20_585yl")
+
+[node name="BlockTag" type="Label3D" parent="SwitchMenu/PartySlot3/MarkBack/Blocker" unique_id=448588269]
+transform = Transform3D(0.34202012, 0.93969256, 0, -0.93969256, 0.34202012, 0, 0, 0, 1, 0, 0, 0)
+layers = 4
+render_priority = 11
+outline_render_priority = 10
+text = "Unsummoned"
+font_size = 300
+
+[node name="Area3D" type="Area3D" parent="SwitchMenu/PartySlot3" unique_id=1670069021]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SwitchMenu/PartySlot3/Area3D" unique_id=1805146140]
+shape = SubResource("BoxShape3D_585yl")
+
+[node name="PartySlot4" type="Node3D" parent="SwitchMenu" unique_id=410131479]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05, 2.5, 1.208)
+script = ExtResource("6_480hh")
+homeTarget = Vector3(1.05, 2.5, 1.208)
+shiftTarget = Vector3(1.05, 10, 1.208)
+
+[node name="MarkBack" type="Sprite3D" parent="SwitchMenu/PartySlot4" unique_id=1538544267]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 5
+texture = ExtResource("20_585yl")
+
+[node name="FaebleDisplay" type="Sprite3D" parent="SwitchMenu/PartySlot4/MarkBack" unique_id=1759284659]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("21_585yl")
+region_enabled = true
+region_rect = Rect2(250, 50, 485, 905)
+
+[node name="Blocker" type="Sprite3D" parent="SwitchMenu/PartySlot4/MarkBack" unique_id=702137788]
+layers = 4
+modulate = Color(0, 0, 0, 0.62352943)
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("20_585yl")
+
+[node name="BlockTag" type="Label3D" parent="SwitchMenu/PartySlot4/MarkBack/Blocker" unique_id=531864875]
+transform = Transform3D(0.34202012, 0.93969256, 0, -0.93969256, 0.34202012, 0, 0, 0, 1, 0, 0, 0)
+layers = 4
+render_priority = 11
+outline_render_priority = 10
+text = "Unsummoned"
+font_size = 300
+
+[node name="Area3D" type="Area3D" parent="SwitchMenu/PartySlot4" unique_id=852865783]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SwitchMenu/PartySlot4/Area3D" unique_id=844572074]
+shape = SubResource("BoxShape3D_585yl")
+
+[node name="PartySlot5" type="Node3D" parent="SwitchMenu" unique_id=1868832156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.125, 2.5, 1.208)
+script = ExtResource("6_480hh")
+homeTarget = Vector3(3.125, 2.5, 1.208)
+shiftTarget = Vector3(3.125, 10, 1.208)
+
+[node name="MarkBack" type="Sprite3D" parent="SwitchMenu/PartySlot5" unique_id=1668578986]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 5
+texture = ExtResource("20_585yl")
+
+[node name="FaebleDisplay" type="Sprite3D" parent="SwitchMenu/PartySlot5/MarkBack" unique_id=444000251]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("21_585yl")
+region_enabled = true
+region_rect = Rect2(250, 50, 485, 905)
+
+[node name="Blocker" type="Sprite3D" parent="SwitchMenu/PartySlot5/MarkBack" unique_id=148204755]
+layers = 4
+modulate = Color(0, 0, 0, 0.62352943)
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("20_585yl")
+
+[node name="BlockTag" type="Label3D" parent="SwitchMenu/PartySlot5/MarkBack/Blocker" unique_id=652277392]
+transform = Transform3D(0.34202012, 0.93969256, 0, -0.93969256, 0.34202012, 0, 0, 0, 1, 0, 0, 0)
+layers = 4
+render_priority = 11
+outline_render_priority = 10
+text = "Unsummoned"
+font_size = 300
+
+[node name="Area3D" type="Area3D" parent="SwitchMenu/PartySlot5" unique_id=1271121349]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SwitchMenu/PartySlot5/Area3D" unique_id=1686547136]
+shape = SubResource("BoxShape3D_585yl")
+
+[node name="PartySlot6" type="Node3D" parent="SwitchMenu" unique_id=347263534]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, 2.5, 1.208)
+script = ExtResource("6_480hh")
+homeTarget = Vector3(5.2, 2.5, 1.208)
+shiftTarget = Vector3(5.2, 10, 1.208)
+
+[node name="MarkBack" type="Sprite3D" parent="SwitchMenu/PartySlot6" unique_id=1873801955]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 5
+texture = ExtResource("20_585yl")
+
+[node name="FaebleDisplay" type="Sprite3D" parent="SwitchMenu/PartySlot6/MarkBack" unique_id=291322933]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+layers = 4
+shaded = true
+double_sided = false
+render_priority = 8
+texture = ExtResource("21_585yl")
+region_enabled = true
+region_rect = Rect2(250, 50, 485, 905)
+
+[node name="Blocker" type="Sprite3D" parent="SwitchMenu/PartySlot6/MarkBack" unique_id=1190690653]
+layers = 4
+modulate = Color(0, 0, 0, 0.62352943)
+shaded = true
+double_sided = false
+render_priority = 9
+texture = ExtResource("20_585yl")
+
+[node name="BlockTag" type="Label3D" parent="SwitchMenu/PartySlot6/MarkBack/Blocker" unique_id=61449708]
+transform = Transform3D(0.34202012, 0.93969256, 0, -0.93969256, 0.34202012, 0, 0, 0, 1, 0, 0, 0)
+layers = 4
+render_priority = 11
+outline_render_priority = 10
+text = "Unsummoned"
+font_size = 300
+
+[node name="Area3D" type="Area3D" parent="SwitchMenu/PartySlot6" unique_id=263454787]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SwitchMenu/PartySlot6/Area3D" unique_id=980883855]
+shape = SubResource("BoxShape3D_585yl")
+
+[node name="PlayerMessages" type="Node3D" parent="." unique_id=1150985371]
+
+[node name="CastAttack" type="Sprite3D" parent="PlayerMessages" unique_id=601909297]
+transform = Transform3D(0.39048213, -0.08673942, 0, 0.08673942, 0.39048213, 0, 0, 0, 0.39999998, -4.709129, 0.7734412, 4.7683716e-07)
+visible = false
+layers = 4
+render_priority = 14
+texture = ExtResource("25_aou6j")
+script = ExtResource("6_480hh")
+
+[node name="Label3D" type="Label3D" parent="PlayerMessages/CastAttack" unique_id=1812943833]
+layers = 4
+render_priority = 17
+outline_render_priority = 16
+text = "1234567890 cast..."
+font_size = 180
+outline_size = 32
+
+[node name="CastName" type="Sprite3D" parent="PlayerMessages/CastAttack" unique_id=1572617216]
+transform = Transform3D(0.7451479, 0.08517552, 0, -0.08517552, 0.7451479, 0, 0, 0, 0.7500002, -0.4271822, -2.6414437, 0)
+layers = 4
+render_priority = 18
+texture = ExtResource("26_6jxk8")
+
+[node name="Label3D" type="Label3D" parent="PlayerMessages/CastAttack/CastName" unique_id=512549484]
+layers = 4
+render_priority = 20
+outline_render_priority = 19
+text = "Big Fireball!"
+font_size = 220
+outline_size = 32
+
+[node name="SystemMessage" type="Sprite3D" parent="PlayerMessages" unique_id=375878131]
+transform = Transform3D(0.5, 0, 0, 0, 0.4, 0, 0, 0, 0.8, 0, 5.9768915, 0)
+layers = 4
+render_priority = 21
+texture = ExtResource("27_h8dlg")
+
+[node name="PlayerMessages2" type="Node3D" parent="." unique_id=421327670]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+
+[node name="CastAttack" type="Sprite3D" parent="PlayerMessages2" unique_id=670432746]
+transform = Transform3D(0.39048213, -0.08673942, 0, 0.08673942, 0.39048213, 0, 0, 0, 0.39999998, -4.709129, 0.7734412, 4.7683716e-07)
+layers = 4
+render_priority = 14
+texture = ExtResource("25_aou6j")
+script = ExtResource("6_480hh")
+
+[node name="Label3D" type="Label3D" parent="PlayerMessages2/CastAttack" unique_id=1136557328]
+layers = 4
+render_priority = 17
+outline_render_priority = 16
+text = "1234567890 cast..."
+font_size = 180
+outline_size = 32
+
+[node name="CastName" type="Sprite3D" parent="PlayerMessages2/CastAttack" unique_id=904327570]
+transform = Transform3D(0.7451479, 0.08517552, 0, -0.08517552, 0.7451479, 0, 0, 0, 0.7500002, -0.7336426, -3.0099988, -1.192093e-06)
+layers = 4
+render_priority = 18
+texture = ExtResource("26_6jxk8")
+
+[node name="Label3D" type="Label3D" parent="PlayerMessages2/CastAttack/CastName" unique_id=346098418]
+layers = 4
+render_priority = 20
+outline_render_priority = 19
+text = "Big Fireball!"
+font_size = 220
+outline_size = 32
+
+[node name="SystemMessage" type="Sprite3D" parent="PlayerMessages2" unique_id=1850821121]
+transform = Transform3D(0.8, 0, 0, 0, 0.4, 0, 0, 0, 0.8, 0, 5.9768915, 0)
+visible = false
+layers = 4
+render_priority = 21
+texture = ExtResource("27_h8dlg")
+
+[connection signal="input_event" from="CommandBook/TopMenu/FightButton" to="." method="TopMenuButton" binds= [1]]
+[connection signal="input_event" from="CommandBook/TopMenu/TacticsButton" to="." method="TopMenuButton" binds= [3]]
+[connection signal="input_event" from="CommandBook/AttackMenu/Book/Themes/Theme1/Area2D" to="." method="AttackMenuButton"]
+[connection signal="input_event" from="CommandBook/AttackMenu/Book/Themes/Theme2/Area2D" to="." method="AttackMenuButton"]
+[connection signal="input_event" from="CommandBook/AttackMenu/Book/Themes/Theme3/Area2D" to="." method="AttackMenuButton"]
+[connection signal="input_event" from="CommandBook/AttackMenu/Book/Themes/Theme4/Area2D" to="." method="AttackMenuButton"]
+[connection signal="input_event" from="CommandBook/AttackMenu/BackButton" to="." method="AttackMenuButton" binds= [0]]
+[connection signal="input_event" from="CommandBook/AttackMenu/Attack1" to="." method="AttackMenuButton" binds= [1]]
+[connection signal="input_event" from="CommandBook/AttackMenu/Attack2" to="." method="AttackMenuButton" binds= [2]]
+[connection signal="input_event" from="CommandBook/AttackMenu/Attack3" to="." method="AttackMenuButton" binds= [3]]
+[connection signal="input_event" from="CommandBook/AttackMenu/AttackCircle/Cast" to="." method="AttackMenuButton" binds= [4]]
+[connection signal="input_event" from="CommandBook/WitchMenu/BackButton" to="." method="AttackMenuButton" binds= [0]]
+[connection signal="input_event" from="CommandBook/WitchMenu/Attack1" to="." method="AttackMenuButton" binds= [1]]
+[connection signal="input_event" from="CommandBook/WitchMenu/Attack2" to="." method="AttackMenuButton" binds= [2]]
+[connection signal="input_event" from="CommandBook/WitchMenu/Attack3" to="." method="AttackMenuButton" binds= [3]]
+[connection signal="input_event" from="CommandBook/WitchMenu/AttackCircle/Cast" to="." method="AttackMenuButton" binds= [4]]
+[connection signal="input_event" from="CommandBook/TacticsMenu/BackButton" to="." method="TacticsMenuButton" binds= [0]]
+[connection signal="input_event" from="CommandBook/TacticsMenu/AdvanceButton" to="." method="TacticsMenuButton" binds= [1, 1]]
+[connection signal="input_event" from="CommandBook/TacticsMenu/RetreatButton" to="." method="TacticsMenuButton" binds= [1, 2]]
+[connection signal="input_event" from="CommandBook/TacticsMenu/SwitchButton" to="." method="TacticsMenuButton" binds= [2]]
+[connection signal="input_event" from="CommandBook/TacticsMenu/ForfeitButton" to="." method="TacticsMenuButton" binds= [3]]
+[connection signal="input_event" from="SwitchMenu/BackButton/Sprite3D/Area3D" to="." method="PartyMenuButton" binds= [-1]]
+[connection signal="input_event" from="SwitchMenu/PartySlot1/Area3D" to="." method="PartyMenuButton" binds= [0]]
+[connection signal="input_event" from="SwitchMenu/PartySlot2/Area3D" to="." method="PartyMenuButton" binds= [1]]

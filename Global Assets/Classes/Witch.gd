@@ -16,6 +16,7 @@ var spellSlot3
 @export var learnedThemes:Array[SpellTheme]
 @export var assignedThemes:Array[SpellTheme] = [null,null,null]
 
+#Codex Knowledge Bools, used for player book unlocks, used for NPC AI knowledge checks
 
 #AI NPC Only
 var personality #Similar to Faeble personalities, used for determining AI behavior trees

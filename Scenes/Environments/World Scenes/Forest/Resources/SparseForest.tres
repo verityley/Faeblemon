@@ -1,34 +1,25 @@
-[gd_resource type="Resource" script_class="Stage" load_steps=16 format=3 uid="uid://4erh8hya8gt4"]
+[gd_resource type="Resource" script_class="Stage" format=3 uid="uid://4erh8hya8gt4"]
 
 [ext_resource type="Script" uid="uid://ddwiku72pt2uk" path="res://Global Assets/Classes/Stage.gd" id="1_4wqbr"]
 [ext_resource type="Script" uid="uid://cl11ae273swpi" path="res://Global Assets/Classes/FaebleEntry.gd" id="2_ldc1f"]
-[ext_resource type="Texture2D" uid="uid://c4udwyw0qkx7n" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleL.png" id="3_6ae6g"]
 [ext_resource type="Resource" uid="uid://bjgo376dt3vew" path="res://Database/Faebles/094Ananseed.tres" id="3_w6yky"]
 [ext_resource type="Texture2D" uid="uid://od1gcoy3ghkp" path="res://Scenes/Environments/World Scenes/Forest/Assets/FrontR.png" id="4_0d3pc"]
 [ext_resource type="Resource" uid="uid://eufk3iycdxhw" path="res://Database/Faebles/095Aconid.tres" id="4_ndl50"]
+[ext_resource type="Texture2D" uid="uid://blxmhwv4hm1pr" path="res://Global Assets/Graphics/Scene Graphics/Forest/MiddleL.png" id="5_ivpq7"]
 [ext_resource type="Texture2D" uid="uid://bwow6qp1qrw3p" path="res://Scenes/Environments/World Scenes/Forest/Assets/FrontL.png" id="5_nnust"]
-[ext_resource type="Texture2D" uid="uid://b1yvjqp318bci" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleR.png" id="6_imhhl"]
+[ext_resource type="Texture2D" uid="uid://0r7kesy832ik" path="res://Global Assets/Graphics/Scene Graphics/Forest/MiddleLargeDecoR.png" id="6_flivn"]
+[ext_resource type="Texture2D" uid="uid://df11xdgy1o5b6" path="res://Global Assets/Graphics/Scene Graphics/Forest/MiddleLargeL.png" id="7_qtdmw"]
 [ext_resource type="Texture2D" uid="uid://c5lwnfjt36q35" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleSmallDecoL.png" id="7_rcrs7"]
 [ext_resource type="Texture2D" uid="uid://dfmjqud1wdo68" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleSmallDecoR.png" id="8_k7n0v"]
-[ext_resource type="Texture2D" uid="uid://cgnjjvbdbarj" path="res://Scenes/Environments/World Scenes/Forest/Assets/MiddleLargeL.png" id="9_tsmqp"]
-[ext_resource type="Texture2D" uid="uid://cnj8lj53pij0l" path="res://Scenes/Environments/World Scenes/Forest/Assets/BackDecoL.png" id="10_wk46y"]
+[ext_resource type="Texture2D" uid="uid://c237np05gqnn4" path="res://Global Assets/Graphics/Scene Graphics/Forest/MiddleR.png" id="8_ldc1f"]
 [ext_resource type="Texture2D" uid="uid://1dy8ehv02fo0" path="res://Scenes/Environments/World Scenes/Forest/Assets/BackL.png" id="11_od8nv"]
-[ext_resource type="Texture2D" uid="uid://rsklskjod1lq" path="res://Scenes/Environments/World Scenes/Forest/Assets/BackDecoR.png" id="12_gsg8w"]
 [ext_resource type="Texture2D" uid="uid://dc775xn1o4ruy" path="res://Scenes/Environments/World Scenes/Forest/Assets/BackR.png" id="13_kk8j2"]
 
 [resource]
 resource_name = "Stage: Deep Forest"
 script = ExtResource("1_4wqbr")
 stageName = "Sparse Forest"
-stageLayers = Array[Texture2D]([ExtResource("3_6ae6g"), ExtResource("4_0d3pc"), ExtResource("5_nnust"), ExtResource("6_imhhl"), ExtResource("8_k7n0v"), ExtResource("7_rcrs7"), ExtResource("3_6ae6g"), ExtResource("6_imhhl"), ExtResource("9_tsmqp"), ExtResource("10_wk46y"), ExtResource("11_od8nv"), ExtResource("12_gsg8w"), ExtResource("13_kk8j2")])
-stageLighting = {
-"Color": Color(1, 1, 1, 1),
-"Energy": 40.0
-}
-componentPool = {}
-componentPositions = Array[Vector3]([])
-propSet = Dictionary[Texture2D, float]({})
-propPositions = Array[Vector3]([])
+stageLayers = Array[Texture2D]([ExtResource("5_ivpq7"), ExtResource("5_nnust"), ExtResource("8_ldc1f"), ExtResource("4_0d3pc"), ExtResource("5_ivpq7"), ExtResource("7_rcrs7"), ExtResource("8_ldc1f"), ExtResource("8_k7n0v"), ExtResource("5_ivpq7"), ExtResource("5_nnust"), ExtResource("8_ldc1f"), ExtResource("7_qtdmw"), ExtResource("6_flivn"), ExtResource("11_od8nv"), ExtResource("13_kk8j2")])
 spawnPool = Dictionary[ExtResource("2_ldc1f"), int]({
 ExtResource("3_w6yky"): 4,
 ExtResource("4_ndl50"): 2

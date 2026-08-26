@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b3q66tf15lqrx"]
 
 [ext_resource type="Script" uid="uid://bhn5x1qc1v88q" path="res://Scenes/Environments/Battle System/Scripts/BattleSystem.gd" id="1_tvdob"]
-[ext_resource type="Script" uid="uid://cw0xpw01j1oeg" path="res://Scenes/Environments/Battle System/Scripts/HealthManager.gd" id="2_l1ntt"]
+[ext_resource type="Script" uid="uid://cw0xpw01j1oeg" path="res://FINAL Battle System/Scripts/HealthManager.gd" id="2_l1ntt"]
 [ext_resource type="Script" uid="uid://dwiw8hhn08y8r" path="res://Scenes/Environments/Battle System/Scripts/StageBattler.gd" id="2_o3jra"]
 [ext_resource type="Texture2D" uid="uid://bggyleai1wado" path="res://Global Assets/Graphics/Monster Graphics/Arachalyx.png" id="2_v2ywi"]
 [ext_resource type="Texture2D" uid="uid://cpsxhd42h2dfo" path="res://Global Assets/Graphics/UI Graphics/HeartContainerFills.png" id="3_o6qe0"]
