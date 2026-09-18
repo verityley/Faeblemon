@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Skill" format=3 uid="uid://cb8r46toquk1g"]
 
-[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Spell.gd" id="1_cdgl6"]
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Database/_Classes/Spell.gd" id="1_cdgl6"]
 
 [resource]
 resource_name = "ihmp_Cleave"

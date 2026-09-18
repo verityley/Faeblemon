@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Spell" format=3 uid="uid://dpfenjq0l30vd"]
 
 [ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Charm.tres" id="1_rscnp"]
-[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Spell.gd" id="2_2jhxc"]
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Database/_Classes/Spell.gd" id="2_2jhxc"]
 
 [resource]
 script = ExtResource("2_2jhxc")

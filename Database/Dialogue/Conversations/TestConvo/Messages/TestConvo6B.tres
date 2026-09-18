@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Message" load_steps=3 format=3 uid="uid://b1j8e1nlmcqo0"]
+[gd_resource type="Resource" script_class="Message" format=3 uid="uid://b1j8e1nlmcqo0"]
 
-[ext_resource type="Script" uid="uid://cnfvsc68h8k77" path="res://Global Assets/Classes/Message.gd" id="1_8ps8v"]
+[ext_resource type="Script" uid="uid://cnfvsc68h8k77" path="res://Database/_Classes/Message.gd" id="1_8ps8v"]
 [ext_resource type="Resource" uid="uid://bxntiemesdgnj" path="res://Database/Dialogue/Speakers/TestSpeaker.tres" id="2_7tp3g"]
 
 [resource]

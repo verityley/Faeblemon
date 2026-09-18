@@ -182,7 +182,8 @@ func StatusCalc(attack:Spell, user:BattlerData, target:BattlerData, currentRange
 		"Buildup": 0, #How much status buildup to deal
 		"MatchupMult": 0, #Positive if effective, negative if weakness
 		"Missed": false,
-		"AuraEffect": false
+		"AuraEffect": false,
+		"Crit": false
 	}
 	
 	#Affinity damage declaration

@@ -120,17 +120,6 @@ enum Transitions {
 	Accordion
 }
 
-enum Actors {
-	pFaeble=1,
-	pWitch,
-	pUI,
-	eFaeble,
-	eWitch,
-	eUI,
-	camera,
-	commands
-}
-
 enum Events{
 	None=0,
 	MoveNPC,

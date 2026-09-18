@@ -2,14 +2,14 @@
 
 [ext_resource type="Resource" uid="uid://bit2tuyhefdhg" path="res://Database/Schools/Pact.tres" id="1_o3vbj"]
 [ext_resource type="Resource" uid="uid://bldym4cl8lnh7" path="res://Database/Domains/Fairytale.tres" id="3_lf37e"]
-[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Spell.gd" id="3_t28v2"]
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Database/_Classes/Spell.gd" id="3_t28v2"]
 [ext_resource type="Texture2D" uid="uid://dxihe3743hu8g" path="res://Global Assets/Graphics/Monster Graphics/Ananseed.png" id="4_7cby4"]
 [ext_resource type="Resource" uid="uid://cba8kh4jyh2ks" path="res://Database/Spells/Debug Skills/BasicHitM.tres" id="4_07eip"]
-[ext_resource type="Script" uid="uid://bst1aj7yglpus" path="res://Global Assets/Classes/Feat.gd" id="4_m7kmw"]
+[ext_resource type="Script" uid="uid://bst1aj7yglpus" path="res://Database/_Classes/Feat.gd" id="4_m7kmw"]
 [ext_resource type="Resource" uid="uid://kwo71ocdw2up" path="res://Database/Spells/Debug Skills/StatusDecay.tres" id="5_07eip"]
 [ext_resource type="Resource" uid="uid://drvdcos208o8u" path="res://Database/Spells/Debug Skills/MovingHitM.tres" id="6_htto1"]
 [ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="6_xt2rn"]
-[ext_resource type="Script" uid="uid://cl11ae273swpi" path="res://Global Assets/Classes/FaebleEntry.gd" id="8_p0i24"]
+[ext_resource type="Script" uid="uid://cl11ae273swpi" path="res://Database/_Classes/FaebleEntry.gd" id="8_p0i24"]
 [ext_resource type="Resource" uid="uid://drf8u1qvxp5de" path="res://Database/Themes/AnansBld2P1.tres" id="11_07eip"]
 
 [resource]

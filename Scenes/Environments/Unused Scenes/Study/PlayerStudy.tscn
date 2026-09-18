@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkqk74nhipfxi"]
+[gd_scene format=3 uid="uid://bkqk74nhipfxi"]
 
 [ext_resource type="ArrayMesh" uid="uid://rtpcpjv13uwt" path="res://Scenes/Environments/Unused Scenes/Study/FaebleStudy.obj" id="1_t6ggw"]
 [ext_resource type="Texture2D" uid="uid://bqtn72gigxxhy" path="res://Scenes/Environments/Unused Scenes/Study/VerBust.png" id="2_mk7sv"]
 [ext_resource type="Texture2D" uid="uid://o8pghkkhyq84" path="res://Scenes/Environments/Unused Scenes/Study/PlayerChar.png" id="3_crm74"]
-[ext_resource type="PackedScene" uid="uid://gkuup4yoe8gb" path="res://Scenes/UI/DialogueSystem/ChatterNode.tscn" id="4_rpjnh"]
+[ext_resource type="PackedScene" uid="uid://gkuup4yoe8gb" path="res://Scenes/Menu/DialogueSystem/ChatterNode.tscn" id="4_rpjnh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d6tab"]
 

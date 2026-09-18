@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Faeble" format=3 uid="uid://rij6snba6q0t"]
 
-[ext_resource type="Script" uid="uid://cl11ae273swpi" path="res://Global Assets/Classes/FaebleEntry.gd" id="1_3560i"]
+[ext_resource type="Script" uid="uid://cl11ae273swpi" path="res://Database/_Classes/FaebleEntry.gd" id="1_3560i"]
 [ext_resource type="Resource" uid="uid://cy460pjjcakrm" path="res://Database/Schools/Curse.tres" id="1_irpsw"]
 [ext_resource type="Resource" uid="uid://cvhcgyhumqrql" path="res://Database/Domains/Primal.tres" id="2_ewhh8"]
-[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Spell.gd" id="3_6vt1n"]
-[ext_resource type="Script" uid="uid://bst1aj7yglpus" path="res://Global Assets/Classes/Feat.gd" id="4_0sm8c"]
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Database/_Classes/Spell.gd" id="3_6vt1n"]
+[ext_resource type="Script" uid="uid://bst1aj7yglpus" path="res://Database/_Classes/Feat.gd" id="4_0sm8c"]
 [ext_resource type="Resource" uid="uid://uprv6nect8d4" path="res://Database/Spells/Debug Skills/BasicHitP.tres" id="4_bsx7x"]
 [ext_resource type="Resource" uid="uid://dpfenjq0l30vd" path="res://Database/Spells/Debug Skills/GuardHitP.tres" id="5_f0qd1"]
 [ext_resource type="Resource" uid="uid://capgkhjk2jdlj" path="res://Database/Schools/Grove.tres" id="5_f8cj3"]

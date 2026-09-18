@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdvql8c8yek5u"]
+[gd_scene format=3 uid="uid://cdvql8c8yek5u"]
 
-[ext_resource type="Texture2D" uid="uid://c4j1x7filgrrx" path="res://Scenes/Environments/Dialogue System/Assets/SpeechBubble.png" id="1_in506"]
+[ext_resource type="Texture2D" uid="uid://c4j1x7filgrrx" path="res://Scenes/Systems/Dialogue System/Assets/SpeechBubble.png" id="1_in506"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_twrti"]
 size = Vector2(4.5, 2)

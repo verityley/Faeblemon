@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Message" load_steps=4 format=3 uid="uid://i0neopki1k2v"]
+[gd_resource type="Resource" script_class="Message" format=3 uid="uid://i0neopki1k2v"]
 
 [ext_resource type="Resource" uid="uid://bxntiemesdgnj" path="res://Database/Dialogue/Speakers/TestSpeaker.tres" id="1_ht6yi"]
-[ext_resource type="Script" uid="uid://cnfvsc68h8k77" path="res://Global Assets/Classes/Message.gd" id="2_sdtku"]
+[ext_resource type="Script" uid="uid://cnfvsc68h8k77" path="res://Database/_Classes/Message.gd" id="2_sdtku"]
 [ext_resource type="Resource" uid="uid://bjnklpaai3714" path="res://Database/Dialogue/Conversations/TestConvo/Messages/TestConvo4A.tres" id="3_io88t"]
 
 [resource]

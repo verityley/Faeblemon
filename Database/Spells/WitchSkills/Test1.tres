@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Skill" format=3 uid="uid://bgs8aoc0thf8h"]
 
 [ext_resource type="Texture2D" uid="uid://bnxkks50fg1xo" path="res://Global Assets/Graphics/Skill Graphics/SpellCharm.png" id="1_h87eb"]
-[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Global Assets/Classes/Spell.gd" id="1_p634m"]
+[ext_resource type="Script" uid="uid://bdq6g8fwo7q4j" path="res://Database/_Classes/Spell.gd" id="1_p634m"]
 [ext_resource type="Resource" uid="uid://dv4xkcc0cgpxo" path="res://Database/Schools/Charm.tres" id="2_8bnnj"]
 
 [resource]

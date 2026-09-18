@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Stage" format=3 uid="uid://4erh8hya8gt4"]
 
-[ext_resource type="Script" uid="uid://ddwiku72pt2uk" path="res://Global Assets/Classes/Stage.gd" id="1_4wqbr"]
-[ext_resource type="Script" uid="uid://cl11ae273swpi" path="res://Global Assets/Classes/FaebleEntry.gd" id="2_ldc1f"]
+[ext_resource type="Script" uid="uid://ddwiku72pt2uk" path="res://Database/_Classes/Stage.gd" id="1_4wqbr"]
+[ext_resource type="Script" uid="uid://cl11ae273swpi" path="res://Database/_Classes/FaebleEntry.gd" id="2_ldc1f"]
 [ext_resource type="Resource" uid="uid://bjgo376dt3vew" path="res://Database/Faebles/094Ananseed.tres" id="3_w6yky"]
 [ext_resource type="Texture2D" uid="uid://od1gcoy3ghkp" path="res://Scenes/Environments/World Scenes/Forest/Assets/FrontR.png" id="4_0d3pc"]
 [ext_resource type="Resource" uid="uid://eufk3iycdxhw" path="res://Database/Faebles/095Aconid.tres" id="4_ndl50"]

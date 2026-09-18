@@ -1,0 +1,1242 @@
+[gd_scene format=3 uid="uid://dobyobov0qqux"]
+
+[ext_resource type="Script" uid="uid://cpkfxxcb81cn4" path="res://Scenes/Systems/TrickBattle System/Scripts/obj_Rule.gd" id="1_lm58o"]
+[ext_resource type="Script" uid="uid://bop5lpygkskru" path="res://Scenes/Systems/TrickBattle System/Scripts/sys_TrickBattle.gd" id="1_njnjn"]
+[ext_resource type="Script" uid="uid://3wvdrr8q0cui" path="res://Scenes/Systems/TrickBattle System/Scripts/cap_RulesList.gd" id="1_pakg1"]
+[ext_resource type="ArrayMesh" uid="uid://c3snvmk0ft61w" path="res://Scenes/Systems/Battle System/Assets/Models/BattleTheater.obj" id="4_aoksd"]
+[ext_resource type="Texture2D" uid="uid://mpplelkkb6ws" path="res://Scenes/Systems/FINAL Battle System/Assets/TheaterFramePLACEHOLDER.png" id="5_43xun"]
+[ext_resource type="Texture2D" uid="uid://bggyleai1wado" path="res://Global Assets/Graphics/Monster Graphics/Arachalyx.png" id="6_4mgif"]
+[ext_resource type="Texture2D" uid="uid://caiewfp3er42k" path="res://Scenes/Systems/FINAL Battle System/Assets/TheaterBackPLACEHOLDER.png" id="7_38q50"]
+[ext_resource type="PackedScene" uid="uid://bok3gqa86lbq0" path="res://Scenes/Systems/The Cleansing/Scenes/LayerManager.tscn" id="8_crj6q"]
+[ext_resource type="Resource" uid="uid://4erh8hya8gt4" path="res://Scenes/Environments/World Scenes/Forest/Resources/SparseForest.tres" id="9_pbawb"]
+[ext_resource type="Script" uid="uid://dnbwoy0k7uwsb" path="res://Scenes/Systems/The Cleansing/Scripts/Stage/cap_BattleActors.gd" id="10_xryfp"]
+[ext_resource type="Script" uid="uid://du2xquuv5dtiy" path="res://Scenes/Systems/The Cleansing/Scripts/Stage/act_BattleCam.gd" id="11_3hen8"]
+[ext_resource type="Script" uid="uid://dy3hpw8jfxl4y" path="res://Scenes/Systems/The Cleansing/Scripts/Stage/act_StageActor.gd" id="12_6jvgp"]
+[ext_resource type="Texture2D" uid="uid://br7ow2hlldf62" path="res://Global Assets/Graphics/Monster Graphics/Ratonic.png" id="13_tqobp"]
+[ext_resource type="Texture2D" uid="uid://bik83etyy05sr" path="res://Global Assets/Graphics/Dialogue Graphics/WitchBackSprite.png" id="14_vvpnv"]
+[ext_resource type="Script" uid="uid://duwpvb80miqte" path="res://Scenes/Systems/The Cleansing/Scripts/Stage/mng_PopupManager.gd" id="15_i08by"]
+[ext_resource type="Script" uid="uid://bplgciwqqmc14" path="res://Scenes/Systems/The Cleansing/Scripts/Stage/act_Popup.gd" id="16_oe6jp"]
+[ext_resource type="Texture2D" uid="uid://boc1ew856wnfo" path="res://Scenes/Systems/FINAL Battle System/Assets/WeakPop.png" id="17_ecota"]
+[ext_resource type="Texture2D" uid="uid://csqcqvxlxhaae" path="res://Scenes/Systems/FINAL Battle System/Assets/ResistPop.png" id="18_tbyge"]
+[ext_resource type="Texture2D" uid="uid://dtmetmk438n3n" path="res://Scenes/Systems/FINAL Battle System/Assets/GrazePop.png" id="19_j7gj0"]
+[ext_resource type="Texture2D" uid="uid://i8s03tx2r4kk" path="res://Scenes/Systems/FINAL Battle System/Assets/CritPop.png" id="20_kpb6h"]
+[ext_resource type="Texture2D" uid="uid://d37u7perb3jge" path="res://Scenes/Systems/FINAL Battle System/Assets/DamagePop.png" id="21_i863m"]
+[ext_resource type="Texture2D" uid="uid://cxr0l0pyrsj10" path="res://Scenes/Systems/FINAL Battle System/Assets/decayPop.png" id="22_jpliu"]
+[ext_resource type="Texture2D" uid="uid://on1v8sm8nmwx" path="res://Scenes/Systems/FINAL Battle System/Assets/slowPop.png" id="23_5bdkf"]
+[ext_resource type="Texture2D" uid="uid://co0m27gooim6b" path="res://Scenes/Systems/FINAL Battle System/Assets/silencePop.png" id="24_7wo30"]
+[ext_resource type="Texture2D" uid="uid://vpwkn1psmtyy" path="res://Scenes/Systems/FINAL Battle System/Assets/fixatePop.png" id="25_5e2mr"]
+[ext_resource type="Texture2D" uid="uid://caf8xfnbsg4m2" path="res://Scenes/Systems/FINAL Battle System/Assets/breakPop.png" id="26_dkjr1"]
+[ext_resource type="Texture2D" uid="uid://b57t6my1drn4k" path="res://Scenes/Systems/FINAL Battle System/Assets/MagiGuard.png" id="27_28l7g"]
+[ext_resource type="Texture2D" uid="uid://cv20q8hjo6t2u" path="res://Scenes/Systems/FINAL Battle System/Assets/PhysGuard.png" id="28_nt1ik"]
+[ext_resource type="Texture2D" uid="uid://bw0xi48npvx6l" path="res://Scenes/Systems/FINAL Battle System/Assets/BuffsAtlas.png" id="29_vnicm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_huo2n"]
+albedo_color = Color(0.2, 0.101333335, 0.04, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plww1"]
+albedo_color = Color(0.6748511, 0.49172533, 0.37058282, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_iflce"]
+lightmap_size_hint = Vector2i(12, 17)
+size = Vector2(16, 9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufgi5"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("5_43xun")
+detail_albedo = ExtResource("6_4mgif")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0m5u5"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("7_38q50")
+detail_albedo = ExtResource("6_4mgif")
+
+[sub_resource type="QuadMesh" id="QuadMesh_aijgx"]
+lightmap_size_hint = Vector2i(12, 17)
+size = Vector2(18, 18)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0tmxn"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_color = Color(0.77, 0.55478495, 0.4389, 1)
+detail_albedo = ExtResource("6_4mgif")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m67ah"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_color = Color(0.22, 0.15851, 0.12539999, 1)
+detail_albedo = ExtResource("6_4mgif")
+
+[sub_resource type="QuadMesh" id="QuadMesh_4octo"]
+lightmap_size_hint = Vector2i(12, 17)
+size = Vector2(18, 4)
+
+[sub_resource type="QuadMesh" id="QuadMesh_qeva1"]
+lightmap_size_hint = Vector2i(12, 17)
+size = Vector2(14, 18)
+
+[sub_resource type="QuadMesh" id="QuadMesh_jy6xa"]
+lightmap_size_hint = Vector2i(12, 17)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6bh6"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("13_tqobp")
+detail_albedo = ExtResource("6_4mgif")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_haww2"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("14_vvpnv")
+detail_albedo = ExtResource("6_4mgif")
+
+[sub_resource type="QuadMesh" id="QuadMesh_jhd0x"]
+lightmap_size_hint = Vector2i(12, 17)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxpmm"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("13_tqobp")
+detail_albedo = ExtResource("6_4mgif")
+
+[sub_resource type="QuadMesh" id="QuadMesh_da1hs"]
+lightmap_size_hint = Vector2i(12, 17)
+size = Vector2(2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_juwj5"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("17_ecota")
+detail_albedo = ExtResource("6_4mgif")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ud4qi"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("18_tbyge")
+detail_albedo = ExtResource("6_4mgif")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ukisy"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("19_j7gj0")
+detail_albedo = ExtResource("6_4mgif")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_closa"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("20_kpb6h")
+detail_albedo = ExtResource("6_4mgif")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0wb5"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("21_i863m")
+detail_albedo = ExtResource("6_4mgif")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2wq3i"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("22_jpliu")
+detail_albedo = ExtResource("6_4mgif")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nfpi2"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("23_5bdkf")
+detail_albedo = ExtResource("6_4mgif")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vo6bi"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("24_7wo30")
+detail_albedo = ExtResource("6_4mgif")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_88dvn"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("25_5e2mr")
+detail_albedo = ExtResource("6_4mgif")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4pt6a"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("26_dkjr1")
+detail_albedo = ExtResource("6_4mgif")
+
+[sub_resource type="QuadMesh" id="QuadMesh_2tl4k"]
+lightmap_size_hint = Vector2i(12, 17)
+size = Vector2(4, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqjjs"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("27_28l7g")
+detail_albedo = ExtResource("6_4mgif")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frq4p"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("28_nt1ik")
+detail_albedo = ExtResource("6_4mgif")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wgbip"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("29_vnicm")
+detail_albedo = ExtResource("6_4mgif")
+uv1_scale = Vector3(0.2, 0.25, 1)
+
+[node name="Trick Battle System" type="Node" unique_id=1375376629]
+script = ExtResource("1_njnjn")
+
+[node name="Rule Capsule" type="Node" parent="." unique_id=1037428412]
+script = ExtResource("1_pakg1")
+
+[node name="Base Rule Object" type="Node" parent="Rule Capsule" unique_id=1188157122]
+script = ExtResource("1_lm58o")
+
+[node name="Modifier Capsule" type="Node" parent="." unique_id=1702239088]
+
+[node name="Modifier Object" type="Node" parent="Modifier Capsule" unique_id=1740933846]
+
+[node name="NPC Behavior Manager" type="Node" parent="." unique_id=131837920]
+
+[node name="Player Battler Capsule" type="Node" parent="." unique_id=1523754929]
+
+[node name="LeadBattler" type="Node" parent="Player Battler Capsule" unique_id=289243743]
+
+[node name="CrewBattler" type="Node" parent="Player Battler Capsule" unique_id=1925632798]
+
+[node name="Theater" type="Node3D" parent="." unique_id=126817181]
+transform = Transform3D(-6.556708e-07, 0, -3, 0, 3.8, 0, 15, 0, -1.3113416e-07, 0, -3.728, -8.489)
+
+[node name="Battle Theater Object" type="MeshInstance3D" parent="Theater" unique_id=2025313591]
+transform = Transform3D(0.99999994, 0, 1.7763568e-15, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+mesh = ExtResource("4_aoksd")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_huo2n")
+surface_material_override/1 = SubResource("StandardMaterial3D_plww1")
+surface_material_override/2 = SubResource("StandardMaterial3D_huo2n")
+surface_material_override/3 = SubResource("StandardMaterial3D_plww1")
+surface_material_override/4 = SubResource("StandardMaterial3D_huo2n")
+
+[node name="FrameMesh" type="MeshInstance3D" parent="Theater" unique_id=2064984653]
+transform = Transform3D(-2.9140925e-09, 0, 0.066666655, 0, 0.34210527, 0, -0.33333334, 0, -1.4570463e-08, 1.0835333, 0.7836842, -2.3681375e-07)
+mesh = SubResource("QuadMesh_iflce")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ufgi5")
+
+[node name="FrameMesh5" type="MeshInstance3D" parent="Theater" unique_id=1481977222]
+transform = Transform3D(-2.9140925e-09, 0, 0.066666655, 0, 0.34210527, 0, -0.33333334, 0, -1.4570463e-08, 1.0564439, 0.89535934, -2.3089316e-07)
+visible = false
+mesh = SubResource("QuadMesh_iflce")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ufgi5")
+
+[node name="FrameMesh6" type="MeshInstance3D" parent="Theater" unique_id=1165587301]
+transform = Transform3D(-3.6426155e-09, 0, 0.08333333, 0, 0.4276316, 0, -0.4166667, 0, -1.8213079e-08, 1.0943334, 0.71789473, -2.3917414e-07)
+mesh = SubResource("QuadMesh_iflce")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ufgi5")
+
+[node name="FrameMesh3" type="MeshInstance3D" parent="Theater" unique_id=783658483]
+transform = Transform3D(-2.9140925e-09, 0, 0.066666655, 0, 0.5263158, 0, -0.33333334, 0, -1.4570463e-08, 1.0501711, 1.8590257, -2.2952221e-07)
+visible = false
+mesh = SubResource("QuadMesh_iflce")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ufgi5")
+
+[node name="FrameMesh2" type="MeshInstance3D" parent="Theater" unique_id=441194717]
+transform = Transform3D(-2.7975287e-09, 0, 0.06399999, 0, 0.3157895, 0, -0.32, 0, -1.3987643e-08, -0.3827442, 0.9523861, 0.04886731)
+mesh = SubResource("QuadMesh_iflce")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_0m5u5")
+
+[node name="FrameMesh4" type="MeshInstance3D" parent="Theater" unique_id=1292146421]
+transform = Transform3D(-2.7975287e-09, -0.07999998, -2.7975284e-09, 0, -1.38035965e-08, 0.25263157, -0.32, 1.7484554e-08, 6.1141935e-16, 0.33260003, -0.2031579, -7.2692046e-08)
+mesh = SubResource("QuadMesh_aijgx")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_0tmxn")
+
+[node name="FrameMesh6" type="MeshInstance3D" parent="Theater/FrameMesh4" unique_id=1848632210]
+transform = Transform3D(1, -8.4703295e-22, -5.04871e-29, 0, 1, 0, 0, -7.1054274e-15, 1, 0, 0, 9.25)
+mesh = SubResource("QuadMesh_aijgx")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_m67ah")
+
+[node name="FrameMesh9" type="MeshInstance3D" parent="Theater/FrameMesh4" unique_id=840052427]
+transform = Transform3D(1, -3.7007445e-15, -3.7007407e-15, -3.700744e-15, -4.371138e-08, -1, 3.7007437e-15, 1, -4.3711363e-08, 9.934108e-07, -9.016962, -1.9453521)
+mesh = SubResource("QuadMesh_4octo")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_m67ah")
+
+[node name="FrameMesh7" type="MeshInstance3D" parent="Theater/FrameMesh4" unique_id=2107095494]
+transform = Transform3D(-4.371139e-08, -3.4969123e-08, 1, 3.4969112e-08, 1, 3.496911e-08, -1, 3.4969112e-08, -4.371139e-08, 8.5, 0, 3)
+mesh = SubResource("QuadMesh_qeva1")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_m67ah")
+
+[node name="FrameMesh8" type="MeshInstance3D" parent="Theater/FrameMesh4" unique_id=832199839]
+transform = Transform3D(-4.371139e-08, -3.4969123e-08, 1, 3.4969112e-08, 1, 3.496911e-08, -1, 3.4969112e-08, -4.371139e-08, -8.5, 0, 3)
+mesh = SubResource("QuadMesh_qeva1")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_m67ah")
+
+[node name="Stage Manager" parent="." unique_id=1461810912 instance=ExtResource("8_crj6q")]
+stageResource = ExtResource("9_pbawb")
+startPos = 4.0
+
+[node name="DirectionalLight3D" parent="Stage Manager/FXManager" parent_id_path=PackedInt32Array(1461810912, 657640823) index="0" unique_id=1462193148]
+layers = 5
+
+[node name="SpotLight3D" parent="Stage Manager/FXManager" parent_id_path=PackedInt32Array(1461810912, 657640823) index="2" unique_id=705521505]
+layers = 5
+
+[node name="SpotLight3D2" parent="Stage Manager/FXManager" parent_id_path=PackedInt32Array(1461810912, 657640823) index="3" unique_id=2085312088]
+layers = 5
+
+[node name="Battle Actor Capsule" type="Node3D" parent="." unique_id=1782199683 node_paths=PackedStringArray("actors", "anchorLayers")]
+script = ExtResource("10_xryfp")
+actors = {
+0: NodePath(""),
+1: NodePath(""),
+2: NodePath(""),
+3: NodePath(""),
+4: NodePath(""),
+5: NodePath(""),
+6: NodePath(""),
+7: NodePath("")
+}
+anchorLayers = {
+1: NodePath(""),
+2: NodePath(""),
+3: NodePath(""),
+4: NodePath(""),
+5: NodePath(""),
+6: NodePath(""),
+7: NodePath("")
+}
+anchorLocations = Dictionary[int, Vector3]({
+1: Vector3(-3, -1.75, 0.5),
+2: Vector3(-6, -1.5, 0.5),
+3: Vector3(-3, -3, -0.5),
+4: Vector3(1.5, -1.75, 0.5),
+5: Vector3(5, -1.5, 0.5),
+6: Vector3(1.5, -3, -0.5),
+7: Vector3(0, -2.25, 29),
+8: Vector3(0, -0.5, 7)
+})
+
+[node name="Battle Camera Actor" type="Camera3D" parent="Battle Actor Capsule" unique_id=846894016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.25, 29)
+cull_mask = 1048571
+current = true
+fov = 30.0
+script = ExtResource("11_3hen8")
+camPositions = Dictionary[int, Vector3]({
+-1: Vector3(0, -2.25, 29),
+0: Vector3(0, 0, 20),
+1: Vector3(-1.5, 0, 18),
+2: Vector3(-2.5, 0, 19),
+4: Vector3(1.5, 0, 16),
+5: Vector3(2.5, 0, 14)
+})
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Battle Actor Capsule/Battle Camera Actor" unique_id=858280020]
+light_energy = 2.0
+light_cull_mask = 4294966273
+shadow_enabled = true
+spot_range = 30.0
+spot_attenuation = 0.05
+spot_angle = 30.0
+spot_angle_attenuation = 0.22531249
+
+[node name="pFaebleActor" type="Node3D" parent="Battle Actor Capsule" unique_id=1948652280]
+script = ExtResource("12_6jvgp")
+homeTarget = Vector3(3, 5, 0)
+shiftTarget = Vector3(-3, -5, 0)
+
+[node name="FaebleMesh" type="MeshInstance3D" parent="Battle Actor Capsule/pFaebleActor" unique_id=1136518722]
+transform = Transform3D(-5, 0, -4.371139e-07, 0, 5, 0, 4.371139e-07, 0, -5, 0, 0, 0)
+mesh = SubResource("QuadMesh_jy6xa")
+skeleton = NodePath("../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_v6bh6")
+
+[node name="pWitchActor" type="Node3D" parent="Battle Actor Capsule" unique_id=1327100153]
+
+[node name="WitchMesh" type="MeshInstance3D" parent="Battle Actor Capsule/pWitchActor" unique_id=920923774]
+transform = Transform3D(4.8, 0, 0, 0, 4.8, 0, 0, 0, 4.8, 0, 0, 0)
+mesh = SubResource("QuadMesh_jy6xa")
+skeleton = NodePath("../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_haww2")
+
+[node name="eFaebleActor" type="Node3D" parent="Battle Actor Capsule" unique_id=276770527]
+script = ExtResource("12_6jvgp")
+homeTarget = Vector3(-3, 5, 0)
+shiftTarget = Vector3(3, -5, 0)
+
+[node name="FaebleMesh" type="MeshInstance3D" parent="Battle Actor Capsule/eFaebleActor" unique_id=1537998290]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("QuadMesh_jhd0x")
+skeleton = NodePath("../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_uxpmm")
+
+[node name="eWitchActor" type="Node3D" parent="Battle Actor Capsule" unique_id=210764957]
+
+[node name="WitchMesh" type="MeshInstance3D" parent="Battle Actor Capsule/eWitchActor" unique_id=91124025]
+transform = Transform3D(-4.8, 0, -4.1962934e-07, 0, 4.8, 0, 4.1962934e-07, 0, -4.8, 0, 0, 0)
+mesh = SubResource("QuadMesh_jy6xa")
+skeleton = NodePath("../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_haww2")
+
+[node name="pUI" type="Node3D" parent="Battle Actor Capsule" unique_id=1338472060 node_paths=PackedStringArray("popups")]
+visible = false
+script = ExtResource("15_i08by")
+popups = {
+0: NodePath(""),
+1: NodePath(""),
+2: NodePath(""),
+3: NodePath(""),
+4: NodePath(""),
+5: NodePath(""),
+6: NodePath(""),
+7: NodePath(""),
+8: NodePath("")
+}
+
+[node name="HealthPop" type="Node3D" parent="Battle Actor Capsule/pUI" unique_id=1087646279 node_paths=PackedStringArray("popMesh", "popLabel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0.5)
+script = ExtResource("16_oe6jp")
+hidePos = Vector3(0, -3, 0.5)
+showPos = Vector3(0, 4, 0.5)
+popMesh = NodePath("DamagePopup")
+popLabel = NodePath("DamagePopup/Label3D")
+buffStages = Array[float]([0.0, 0.25, 0.5, 0.75])
+buffStats = Dictionary[int, float]({
+0: 0.0,
+1: 0.2,
+2: 0.4,
+3: 0.6,
+4: 0.8
+})
+
+[node name="DamageTags" type="Node3D" parent="Battle Actor Capsule/pUI/HealthPop" unique_id=709477675]
+
+[node name="WeakTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/HealthPop/DamageTags" unique_id=1502808623]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.05, 0.05, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_juwj5")
+
+[node name="ResistTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/HealthPop/DamageTags" unique_id=296359947]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.05, 0.05, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ud4qi")
+
+[node name="GrazeTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/HealthPop/DamageTags" unique_id=844058748]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.1, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ukisy")
+
+[node name="CritTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/HealthPop/DamageTags" unique_id=2102718493]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.1, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_closa")
+
+[node name="DamagePopup" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/HealthPop" unique_id=2104589855]
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_v0wb5")
+
+[node name="Label3D" type="Label3D" parent="Battle Actor Capsule/pUI/HealthPop/DamagePopup" unique_id=1281470214]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.05, 0.02)
+text = "00"
+font_size = 100
+outline_size = 32
+
+[node name="DecayPop" type="Node3D" parent="Battle Actor Capsule/pUI" unique_id=1856854514 node_paths=PackedStringArray("popMesh", "popLabel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0.5)
+script = ExtResource("16_oe6jp")
+hidePos = Vector3(0, -3, 0.5)
+showPos = Vector3(0, 4, 0.5)
+popMesh = NodePath("StatusPopup")
+popLabel = NodePath("StatusPopup/Label3D")
+buffStages = Array[float]([0.0, 0.25, 0.5, 0.75])
+buffStats = Dictionary[int, float]({
+0: 0.0,
+1: 0.2,
+2: 0.4,
+3: 0.6,
+4: 0.8
+})
+
+[node name="DamageTags" type="Node3D" parent="Battle Actor Capsule/pUI/DecayPop" unique_id=1076397441]
+
+[node name="WeakTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/DecayPop/DamageTags" unique_id=1276400466]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_juwj5")
+
+[node name="ResistTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/DecayPop/DamageTags" unique_id=56095645]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ud4qi")
+
+[node name="GrazeTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/DecayPop/DamageTags" unique_id=202062527]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.05, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ukisy")
+
+[node name="CritTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/DecayPop/DamageTags" unique_id=586884249]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_closa")
+
+[node name="StatusPopup" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/DecayPop" unique_id=911980398]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.143, 0)
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_2wq3i")
+
+[node name="Label3D" type="Label3D" parent="Battle Actor Capsule/pUI/DecayPop/StatusPopup" unique_id=670478317]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, -0.1, 0.02)
+text = "00"
+font_size = 120
+outline_size = 32
+
+[node name="SlowPop" type="Node3D" parent="Battle Actor Capsule/pUI" unique_id=1033768975 node_paths=PackedStringArray("popMesh", "popLabel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0.5)
+script = ExtResource("16_oe6jp")
+hidePos = Vector3(0, -3, 0.5)
+showPos = Vector3(0, 4, 0.5)
+popMesh = NodePath("StatusPopup")
+popLabel = NodePath("StatusPopup/Label3D")
+buffStages = Array[float]([0.0, 0.25, 0.5, 0.75])
+buffStats = Dictionary[int, float]({
+0: 0.0,
+1: 0.2,
+2: 0.4,
+3: 0.6,
+4: 0.8
+})
+
+[node name="DamageTags" type="Node3D" parent="Battle Actor Capsule/pUI/SlowPop" unique_id=2045972004]
+
+[node name="WeakTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/SlowPop/DamageTags" unique_id=1355742826]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_juwj5")
+
+[node name="ResistTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/SlowPop/DamageTags" unique_id=700795998]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ud4qi")
+
+[node name="GrazeTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/SlowPop/DamageTags" unique_id=656149559]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.05, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ukisy")
+
+[node name="CritTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/SlowPop/DamageTags" unique_id=1084496183]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_closa")
+
+[node name="StatusPopup" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/SlowPop" unique_id=331860545]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.143, 0)
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_nfpi2")
+
+[node name="Label3D" type="Label3D" parent="Battle Actor Capsule/pUI/SlowPop/StatusPopup" unique_id=1124761277]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, -0.1, 0.02)
+text = "00"
+font_size = 120
+outline_size = 32
+
+[node name="SilencePop" type="Node3D" parent="Battle Actor Capsule/pUI" unique_id=1265727309 node_paths=PackedStringArray("popMesh", "popLabel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0.5)
+script = ExtResource("16_oe6jp")
+hidePos = Vector3(0, -3, 0.5)
+showPos = Vector3(0, 4, 0.5)
+popMesh = NodePath("StatusPopup")
+popLabel = NodePath("StatusPopup/Label3D")
+buffStages = Array[float]([0.0, 0.25, 0.5, 0.75])
+buffStats = Dictionary[int, float]({
+0: 0.0,
+1: 0.2,
+2: 0.4,
+3: 0.6,
+4: 0.8
+})
+
+[node name="DamageTags" type="Node3D" parent="Battle Actor Capsule/pUI/SilencePop" unique_id=1805006140]
+
+[node name="WeakTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/SilencePop/DamageTags" unique_id=1383144504]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_juwj5")
+
+[node name="ResistTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/SilencePop/DamageTags" unique_id=247336608]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ud4qi")
+
+[node name="GrazeTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/SilencePop/DamageTags" unique_id=1703402887]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.05, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ukisy")
+
+[node name="CritTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/SilencePop/DamageTags" unique_id=86703696]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_closa")
+
+[node name="StatusPopup" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/SilencePop" unique_id=1667998002]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.143, 0)
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_vo6bi")
+
+[node name="Label3D" type="Label3D" parent="Battle Actor Capsule/pUI/SilencePop/StatusPopup" unique_id=1246854947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, -0.1, 0.02)
+text = "00"
+font_size = 120
+outline_size = 32
+
+[node name="FixatePop" type="Node3D" parent="Battle Actor Capsule/pUI" unique_id=1660504133 node_paths=PackedStringArray("popMesh", "popLabel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0.5)
+script = ExtResource("16_oe6jp")
+hidePos = Vector3(0, -3, 0.5)
+showPos = Vector3(0, 4, 0.5)
+popMesh = NodePath("StatusPopup")
+popLabel = NodePath("StatusPopup/Label3D")
+buffStages = Array[float]([0.0, 0.25, 0.5, 0.75])
+buffStats = Dictionary[int, float]({
+0: 0.0,
+1: 0.2,
+2: 0.4,
+3: 0.6,
+4: 0.8
+})
+
+[node name="DamageTags" type="Node3D" parent="Battle Actor Capsule/pUI/FixatePop" unique_id=1007974007]
+
+[node name="WeakTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/FixatePop/DamageTags" unique_id=2064416939]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_juwj5")
+
+[node name="ResistTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/FixatePop/DamageTags" unique_id=56380150]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ud4qi")
+
+[node name="GrazeTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/FixatePop/DamageTags" unique_id=938616882]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.05, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ukisy")
+
+[node name="CritTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/FixatePop/DamageTags" unique_id=263724333]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_closa")
+
+[node name="StatusPopup" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/FixatePop" unique_id=610172350]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.143, 0)
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_88dvn")
+
+[node name="Label3D" type="Label3D" parent="Battle Actor Capsule/pUI/FixatePop/StatusPopup" unique_id=19213388]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, -0.1, 0.02)
+text = "00"
+font_size = 120
+outline_size = 32
+
+[node name="BreakPop" type="Node3D" parent="Battle Actor Capsule/pUI" unique_id=2143024866 node_paths=PackedStringArray("popMesh", "popLabel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0.5)
+script = ExtResource("16_oe6jp")
+hidePos = Vector3(0, -3, 0.5)
+showPos = Vector3(0, 4, 0.5)
+popMesh = NodePath("StatusPopup")
+popLabel = NodePath("StatusPopup/Label3D")
+buffStages = Array[float]([0.0, 0.25, 0.5, 0.75])
+buffStats = Dictionary[int, float]({
+0: 0.0,
+1: 0.2,
+2: 0.4,
+3: 0.6,
+4: 0.8
+})
+
+[node name="DamageTags" type="Node3D" parent="Battle Actor Capsule/pUI/BreakPop" unique_id=1919148873]
+
+[node name="WeakTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/BreakPop/DamageTags" unique_id=1102887136]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_juwj5")
+
+[node name="ResistTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/BreakPop/DamageTags" unique_id=1821710716]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ud4qi")
+
+[node name="GrazeTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/BreakPop/DamageTags" unique_id=25296773]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.05, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ukisy")
+
+[node name="CritTag" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/BreakPop/DamageTags" unique_id=105878204]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_closa")
+
+[node name="StatusPopup" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/BreakPop" unique_id=371490936]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.143, 0)
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_4pt6a")
+
+[node name="Label3D" type="Label3D" parent="Battle Actor Capsule/pUI/BreakPop/StatusPopup" unique_id=1379648277]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, -0.1, 0.02)
+text = "00"
+font_size = 120
+outline_size = 32
+
+[node name="MagiGuard" type="Node3D" parent="Battle Actor Capsule/pUI" unique_id=1994350126 node_paths=PackedStringArray("popMesh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 1.5)
+script = ExtResource("16_oe6jp")
+hidePos = Vector3(0, -3, -0.5)
+showPos = Vector3(0, 1.5, -0.5)
+popSpeed = 0.5
+popMesh = NodePath("MagiGuardPopup")
+
+[node name="MagiGuardPopup" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/MagiGuard" unique_id=303347044]
+mesh = SubResource("QuadMesh_2tl4k")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_nqjjs")
+
+[node name="PhysGuard" type="Node3D" parent="Battle Actor Capsule/pUI" unique_id=1980751812 node_paths=PackedStringArray("popMesh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 1.5)
+script = ExtResource("16_oe6jp")
+hidePos = Vector3(0, -3, -0.5)
+showPos = Vector3(0, 1.5, -0.5)
+popSpeed = 0.5
+popMesh = NodePath("PhysGuardPopup")
+
+[node name="PhysGuardPopup" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/PhysGuard" unique_id=490397503]
+mesh = SubResource("QuadMesh_2tl4k")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_frq4p")
+
+[node name="BuffPop" type="Node3D" parent="Battle Actor Capsule/pUI" unique_id=1314100260 node_paths=PackedStringArray("popMesh")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -3, 1.5)
+script = ExtResource("16_oe6jp")
+hidePos = Vector3(0, -3, 1.5)
+showPos = Vector3(0, 1.5, 1.5)
+popSpeed = 0.5
+popMesh = NodePath("BuffPopup")
+buffStages = Array[float]([0.0, 0.25, 0.5, 0.75])
+buffStats = Dictionary[int, float]({
+0: 0.0,
+1: 0.2,
+2: 0.4,
+3: 0.6,
+4: 0.8
+})
+
+[node name="BuffPopup" type="MeshInstance3D" parent="Battle Actor Capsule/pUI/BuffPop" unique_id=228447782]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+mesh = SubResource("QuadMesh_2tl4k")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wgbip")
+
+[node name="eUI" type="Node3D" parent="Battle Actor Capsule" unique_id=1203637860 node_paths=PackedStringArray("popups")]
+visible = false
+script = ExtResource("15_i08by")
+popups = {
+0: NodePath(""),
+1: NodePath(""),
+2: NodePath(""),
+3: NodePath(""),
+4: NodePath(""),
+5: NodePath(""),
+6: NodePath(""),
+7: NodePath(""),
+8: NodePath("")
+}
+
+[node name="HealthPop" type="Node3D" parent="Battle Actor Capsule/eUI" unique_id=353359219 node_paths=PackedStringArray("popMesh", "popLabel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0.5)
+script = ExtResource("16_oe6jp")
+popMesh = NodePath("DamagePopup")
+popLabel = NodePath("DamagePopup/Label3D")
+buffStages = Array[float]([0.0, 0.25, 0.5, 0.75])
+buffStats = Dictionary[int, float]({
+0: 0.0,
+1: 0.2,
+2: 0.4,
+3: 0.6,
+4: 0.8
+})
+
+[node name="DamageTags" type="Node3D" parent="Battle Actor Capsule/eUI/HealthPop" unique_id=2009323684]
+
+[node name="WeakTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/HealthPop/DamageTags" unique_id=264078053]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.05, 0.05, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_juwj5")
+
+[node name="ResistTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/HealthPop/DamageTags" unique_id=860415188]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.05, 0.05, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ud4qi")
+
+[node name="GrazeTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/HealthPop/DamageTags" unique_id=1418669229]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.1, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ukisy")
+
+[node name="CritTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/HealthPop/DamageTags" unique_id=2147045462]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.1, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_closa")
+
+[node name="DamagePopup" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/HealthPop" unique_id=2087637266]
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_v0wb5")
+
+[node name="Label3D" type="Label3D" parent="Battle Actor Capsule/eUI/HealthPop/DamagePopup" unique_id=1713069633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.05, 0.02)
+text = "00"
+font_size = 100
+outline_size = 32
+
+[node name="DecayPop" type="Node3D" parent="Battle Actor Capsule/eUI" unique_id=128775934 node_paths=PackedStringArray("popMesh", "popLabel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0.5)
+script = ExtResource("16_oe6jp")
+popMesh = NodePath("StatusPopup")
+popLabel = NodePath("StatusPopup/Label3D")
+buffStages = Array[float]([0.0, 0.25, 0.5, 0.75])
+buffStats = Dictionary[int, float]({
+0: 0.0,
+1: 0.2,
+2: 0.4,
+3: 0.6,
+4: 0.8
+})
+
+[node name="DamageTags" type="Node3D" parent="Battle Actor Capsule/eUI/DecayPop" unique_id=241643911]
+
+[node name="WeakTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/DecayPop/DamageTags" unique_id=133772982]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_juwj5")
+
+[node name="ResistTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/DecayPop/DamageTags" unique_id=696467936]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ud4qi")
+
+[node name="GrazeTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/DecayPop/DamageTags" unique_id=309163314]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.05, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ukisy")
+
+[node name="CritTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/DecayPop/DamageTags" unique_id=1747325418]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_closa")
+
+[node name="StatusPopup" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/DecayPop" unique_id=782333013]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.143, 0)
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_2wq3i")
+
+[node name="Label3D" type="Label3D" parent="Battle Actor Capsule/eUI/DecayPop/StatusPopup" unique_id=993802625]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, -0.1, 0.02)
+text = "00"
+font_size = 120
+outline_size = 32
+
+[node name="SlowPop" type="Node3D" parent="Battle Actor Capsule/eUI" unique_id=534154170 node_paths=PackedStringArray("popMesh", "popLabel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0.5)
+script = ExtResource("16_oe6jp")
+popMesh = NodePath("StatusPopup")
+popLabel = NodePath("StatusPopup/Label3D")
+buffStages = Array[float]([0.0, 0.25, 0.5, 0.75])
+buffStats = Dictionary[int, float]({
+0: 0.0,
+1: 0.2,
+2: 0.4,
+3: 0.6,
+4: 0.8
+})
+
+[node name="DamageTags" type="Node3D" parent="Battle Actor Capsule/eUI/SlowPop" unique_id=1566348315]
+
+[node name="WeakTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/SlowPop/DamageTags" unique_id=1400867939]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_juwj5")
+
+[node name="ResistTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/SlowPop/DamageTags" unique_id=2072380876]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ud4qi")
+
+[node name="GrazeTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/SlowPop/DamageTags" unique_id=168253467]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.05, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ukisy")
+
+[node name="CritTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/SlowPop/DamageTags" unique_id=1457477244]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_closa")
+
+[node name="StatusPopup" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/SlowPop" unique_id=1458873622]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.143, 0)
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_nfpi2")
+
+[node name="Label3D" type="Label3D" parent="Battle Actor Capsule/eUI/SlowPop/StatusPopup" unique_id=1924089739]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, -0.1, 0.02)
+text = "00"
+font_size = 120
+outline_size = 32
+
+[node name="SilencePop" type="Node3D" parent="Battle Actor Capsule/eUI" unique_id=1719259534 node_paths=PackedStringArray("popMesh", "popLabel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0.5)
+script = ExtResource("16_oe6jp")
+popMesh = NodePath("StatusPopup")
+popLabel = NodePath("StatusPopup/Label3D")
+buffStages = Array[float]([0.0, 0.25, 0.5, 0.75])
+buffStats = Dictionary[int, float]({
+0: 0.0,
+1: 0.2,
+2: 0.4,
+3: 0.6,
+4: 0.8
+})
+
+[node name="DamageTags" type="Node3D" parent="Battle Actor Capsule/eUI/SilencePop" unique_id=781204628]
+
+[node name="WeakTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/SilencePop/DamageTags" unique_id=483297611]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_juwj5")
+
+[node name="ResistTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/SilencePop/DamageTags" unique_id=694991399]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ud4qi")
+
+[node name="GrazeTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/SilencePop/DamageTags" unique_id=378386546]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.05, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ukisy")
+
+[node name="CritTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/SilencePop/DamageTags" unique_id=275307976]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_closa")
+
+[node name="StatusPopup" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/SilencePop" unique_id=1656289571]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.143, 0)
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_vo6bi")
+
+[node name="Label3D" type="Label3D" parent="Battle Actor Capsule/eUI/SilencePop/StatusPopup" unique_id=2025011183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, -0.1, 0.02)
+text = "00"
+font_size = 120
+outline_size = 32
+
+[node name="FixatePop" type="Node3D" parent="Battle Actor Capsule/eUI" unique_id=819596111 node_paths=PackedStringArray("popMesh", "popLabel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0.5)
+script = ExtResource("16_oe6jp")
+popMesh = NodePath("StatusPopup")
+popLabel = NodePath("StatusPopup/Label3D")
+buffStages = Array[float]([0.0, 0.25, 0.5, 0.75])
+buffStats = Dictionary[int, float]({
+0: 0.0,
+1: 0.2,
+2: 0.4,
+3: 0.6,
+4: 0.8
+})
+
+[node name="DamageTags" type="Node3D" parent="Battle Actor Capsule/eUI/FixatePop" unique_id=336085047]
+
+[node name="WeakTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/FixatePop/DamageTags" unique_id=427418904]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_juwj5")
+
+[node name="ResistTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/FixatePop/DamageTags" unique_id=1466959319]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ud4qi")
+
+[node name="GrazeTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/FixatePop/DamageTags" unique_id=1586311584]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.05, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ukisy")
+
+[node name="CritTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/FixatePop/DamageTags" unique_id=183632533]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_closa")
+
+[node name="StatusPopup" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/FixatePop" unique_id=1115184457]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.143, 0)
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_88dvn")
+
+[node name="Label3D" type="Label3D" parent="Battle Actor Capsule/eUI/FixatePop/StatusPopup" unique_id=602392158]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, -0.1, 0.02)
+text = "00"
+font_size = 120
+outline_size = 32
+
+[node name="BreakPop" type="Node3D" parent="Battle Actor Capsule/eUI" unique_id=1589340695 node_paths=PackedStringArray("popMesh", "popLabel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0.5)
+script = ExtResource("16_oe6jp")
+popMesh = NodePath("StatusPopup")
+popLabel = NodePath("StatusPopup/Label3D")
+buffStages = Array[float]([0.0, 0.25, 0.5, 0.75])
+buffStats = Dictionary[int, float]({
+0: 0.0,
+1: 0.2,
+2: 0.4,
+3: 0.6,
+4: 0.8
+})
+
+[node name="DamageTags" type="Node3D" parent="Battle Actor Capsule/eUI/BreakPop" unique_id=2133675416]
+
+[node name="WeakTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/BreakPop/DamageTags" unique_id=1356349167]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_juwj5")
+
+[node name="ResistTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/BreakPop/DamageTags" unique_id=958313918]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ud4qi")
+
+[node name="GrazeTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/BreakPop/DamageTags" unique_id=23859148]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.05, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ukisy")
+
+[node name="CritTag" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/BreakPop/DamageTags" unique_id=779732062]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.1, 0.1)
+visible = false
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_closa")
+
+[node name="StatusPopup" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/BreakPop" unique_id=1992811823]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.143, 0)
+mesh = SubResource("QuadMesh_da1hs")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_4pt6a")
+
+[node name="Label3D" type="Label3D" parent="Battle Actor Capsule/eUI/BreakPop/StatusPopup" unique_id=1241784187]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, -0.1, 0.02)
+text = "00"
+font_size = 120
+outline_size = 32
+
+[node name="MagiGuard" type="Node3D" parent="Battle Actor Capsule/eUI" unique_id=1517413692 node_paths=PackedStringArray("popMesh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 1.5)
+script = ExtResource("16_oe6jp")
+hidePos = Vector3(0, -3, -0.5)
+showPos = Vector3(0, 1.5, -0.5)
+popSpeed = 0.5
+popMesh = NodePath("MagiGuardPopup")
+
+[node name="MagiGuardPopup" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/MagiGuard" unique_id=46440525]
+mesh = SubResource("QuadMesh_2tl4k")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_nqjjs")
+
+[node name="PhysGuard" type="Node3D" parent="Battle Actor Capsule/eUI" unique_id=696907657 node_paths=PackedStringArray("popMesh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 1.5)
+script = ExtResource("16_oe6jp")
+hidePos = Vector3(0, -3, -0.5)
+showPos = Vector3(0, 1.5, -0.5)
+popSpeed = 0.5
+popMesh = NodePath("PhysGuardPopup")
+
+[node name="PhysGuardPopup" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/PhysGuard" unique_id=1405340041]
+mesh = SubResource("QuadMesh_2tl4k")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_frq4p")
+
+[node name="BuffPop" type="Node3D" parent="Battle Actor Capsule/eUI" unique_id=507866666 node_paths=PackedStringArray("popMesh")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -3, 1.5)
+script = ExtResource("16_oe6jp")
+hidePos = Vector3(0, -3, 1.5)
+showPos = Vector3(0, 1.5, 1.5)
+popSpeed = 0.5
+popMesh = NodePath("BuffPopup")
+buffStages = Array[float]([0.0, 0.25, 0.5, 0.75])
+buffStats = Dictionary[int, float]({
+0: 0.0,
+1: 0.2,
+2: 0.4,
+3: 0.6,
+4: 0.8
+})
+
+[node name="BuffPopup" type="MeshInstance3D" parent="Battle Actor Capsule/eUI/BuffPop" unique_id=1974453814]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+mesh = SubResource("QuadMesh_2tl4k")
+skeleton = NodePath("../../../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wgbip")
+
+[editable path="Stage Manager"]
